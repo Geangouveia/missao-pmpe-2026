@@ -3,6 +3,7 @@ import { Flame, Sparkles, X, ShieldAlert, Award } from 'lucide-react';
 import type { MotivationalQuote } from '../utils/motivationalQuotes';
 import { sound } from '../utils/sound';
 import confetti from 'canvas-confetti';
+import { StreakFlame } from './StreakFlame';
 
 interface DailyMotivationModalProps {
   userName: string;
@@ -49,20 +50,13 @@ export const DailyMotivationModal: React.FC<DailyMotivationModalProps> = ({
           <X size={20} />
         </button>
 
-        {/* Emblema com chama motivacional */}
+        {/* Emblema com chama motivacional viva */}
         <div style={{
-          width: '76px',
-          height: '76px',
-          borderRadius: '24px',
-          background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(239, 68, 68, 0.3))',
-          border: '2px solid rgba(245, 158, 11, 0.6)',
           display: 'flex',
-          alignItems: 'center',
           justifyContent: 'center',
-          margin: '0 auto 1.25rem',
-          boxShadow: '0 0 30px rgba(245, 158, 11, 0.4)'
+          marginBottom: '1.25rem'
         }}>
-          <Flame size={44} color="#f59e0b" />
+          <StreakFlame days={1} size="lg" showLabel={false} />
         </div>
 
         {/* Badge do dia */}

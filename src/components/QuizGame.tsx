@@ -33,9 +33,17 @@ interface QuizGameProps {
     averageTimePerQuestion?: number;
   }) => void;
   onExit: () => void;
+  onAwardXp?: (amount: number) => void;
+  onQuestionAnswered?: (isCorrect: boolean, xpGained: number) => void;
 }
 
-export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit }) => {
+export const QuizGame: React.FC<QuizGameProps> = ({ 
+  questions, 
+  onFinish, 
+  onExit,
+  onAwardXp,
+  onQuestionAnswered 
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -43,6 +51,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
   const [isTimerPaused, setIsTimerPaused] = useState(false);
   const [combo, setCombo] = useState(0);
   const [maxCombo, setMaxCombo] = useState(0);
+  const [justEarnedXp, setJustEarnedXp] = useState<number | null>(null);
   const [score, setScore] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [subjectBreakdown, setSubjectBreakdown] = useState<Record<string, { total: number; correct: number }>>({});
@@ -80,6 +89,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
     sound.playError();
     setCombo(0);
     setTimeSpentTotal((prev) => prev + 30);
+    onQuestionAnswered?.(false, 0);
     const subj = currentQ?.materiaNome || currentQ?.categoryId || 'Geral';
     setSubjectBreakdown((prev) => {
       const current = prev[subj] || { total: 0, correct: 0 };
@@ -88,7 +98,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
         [subj]: { total: current.total + 1, correct: current.correct }
       };
     });
-  }, [currentQ]);
+  }, [currentQ, onQuestionAnswered]);
 
   // Selecionar Opção
   const handleSelectOption = (index: number) => {
@@ -123,6 +133,14 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
       const points = Math.floor((100 + timeBonus) * comboMultiplier);
       setScore((prev) => prev + points);
 
+      // XP imediato por acerto para elevar o nível em tempo real
+      const gainedXp = 25 + Math.min(25, nextCombo * 5);
+      setJustEarnedXp(gainedXp);
+      setTimeout(() => setJustEarnedXp(null), 2500);
+
+      onAwardXp?.(gainedXp);
+      onQuestionAnswered?.(true, gainedXp);
+
       if (nextCombo >= 3) {
         sound.playCombo(nextCombo);
         confetti({
@@ -137,6 +155,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
     } else {
       sound.playError();
       setCombo(0);
+      onQuestionAnswered?.(false, 0);
     }
   };
 
@@ -185,12 +204,12 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
       setShowHint(false);
       setEliminatedOptions([]);
     } else {
-      // Fim do Simulado
-      const calculatedXp = Math.floor(score / 5) + correctCount * 25;
+      // Fim do Simulado: Bônus de finalização
+      const completionBonusXp = 50 + Math.floor(score / 15);
       const avgTime = Math.round((timeSpentTotal / Math.max(1, questions.length)) * 10) / 10;
       onFinish({
         score,
-        xpEarned: calculatedXp,
+        xpEarned: completionBonusXp,
         maxCombo,
         correctCount,
         totalCount: questions.length,
@@ -224,7 +243,27 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
           </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+          {justEarnedXp && (
+            <div style={{
+              background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.25) 0%, rgba(6, 182, 212, 0.25) 100%)',
+              border: '1px solid rgba(16, 185, 129, 0.6)',
+              color: '#34d399',
+              padding: '0.3rem 0.75rem',
+              borderRadius: '20px',
+              fontSize: '0.82rem',
+              fontWeight: 900,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.35rem',
+              boxShadow: '0 0 15px rgba(16, 185, 129, 0.4)',
+              animation: 'pulse 1s ease-in-out infinite'
+            }}>
+              <Sparkles size={14} color="#34d399" />
+              <span>+{justEarnedXp} XP (Nível Subindo!)</span>
+            </div>
+          )}
+
           {combo > 1 && (
             <div className="combo-pill">
               <Zap size={16} fill="white" />

@@ -112,6 +112,37 @@ export function App() {
     localStorage.setItem('neuroquest_pmpe_stats', JSON.stringify(stats));
   }, [stats]);
 
+  // Atualizar e calcular Sequência Diária (Streak) de Estudos Militar
+  useEffect(() => {
+    try {
+      const today = new Date().toISOString().split('T')[0];
+      const lastDate = localStorage.getItem('pmpe_last_study_date');
+
+      if (!lastDate) {
+        localStorage.setItem('pmpe_last_study_date', today);
+        setStats((prev) => ({ ...prev, streakDays: Math.max(1, prev.streakDays) }));
+      } else if (lastDate !== today) {
+        const last = new Date(lastDate);
+        const cur = new Date(today);
+        const diffTime = cur.getTime() - last.getTime();
+        const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays === 1) {
+          // Dia consecutivo: aviva a chama e incrementa streak
+          const newStreak = (stats.streakDays || 1) + 1;
+          localStorage.setItem('pmpe_last_study_date', today);
+          setStats((prev) => ({ ...prev, streakDays: newStreak }));
+        } else if (diffDays > 1) {
+          // Quebrou a sequência
+          localStorage.setItem('pmpe_last_study_date', today);
+          setStats((prev) => ({ ...prev, streakDays: 1 }));
+        }
+      }
+    } catch {
+      // fallback
+    }
+  }, []);
+
   // Função para adicionar XP e recalcular nível
   const addXp = (amount: number) => {
     setStats((prev) => {
@@ -122,9 +153,10 @@ export function App() {
       if (leveledUp) {
         sound.playLevelUp();
         confetti({
-          particleCount: 100,
-          spread: 80,
-          origin: { y: 0.4 },
+          particleCount: 120,
+          spread: 90,
+          origin: { y: 0.35 },
+          colors: ['#06b6d4', '#fbbf24', '#10b981', '#ec4899', '#f97316']
         });
       }
 
@@ -132,6 +164,33 @@ export function App() {
         ...prev,
         xp: newXp,
         level: newLevel,
+      };
+    });
+  };
+
+  // Elevação de nível e registro em tempo real a cada resposta dada
+  const handleQuestionAnswered = (isCorrect: boolean, xpGained: number) => {
+    setStats((prev) => {
+      const newXp = prev.xp + xpGained;
+      const newLevel = Math.floor(newXp / 100) + 1;
+      const leveledUp = newLevel > prev.level;
+
+      if (leveledUp) {
+        sound.playLevelUp();
+        confetti({
+          particleCount: 130,
+          spread: 90,
+          origin: { y: 0.35 },
+          colors: ['#06b6d4', '#fbbf24', '#10b981', '#ec4899', '#f97316']
+        });
+      }
+
+      return {
+        ...prev,
+        xp: newXp,
+        level: newLevel,
+        totalAnswered: prev.totalAnswered + 1,
+        correctAnswers: prev.correctAnswers + (isCorrect ? 1 : 0),
       };
     });
   };
@@ -219,12 +278,8 @@ export function App() {
     timeSpentSeconds?: number;
     averageTimePerQuestion?: number;
   }) => {
+    // Adiciona bônus de conclusão
     addXp(result.xpEarned);
-    setStats((prev) => ({
-      ...prev,
-      totalAnswered: prev.totalAnswered + result.totalCount,
-      correctAnswers: prev.correctAnswers + result.correctCount,
-    }));
 
     if (currentUser) {
       const simLabel = selectedSimulado === 'aocp_elite'
@@ -429,6 +484,8 @@ export function App() {
           questions={filteredQuestions.length > 0 ? filteredQuestions : questions}
           onFinish={handleQuizFinish}
           onExit={() => setActiveMode(null)}
+          onAwardXp={(xp) => addXp(xp)}
+          onQuestionAnswered={handleQuestionAnswered}
         />
       )}
 
@@ -448,6 +505,8 @@ export function App() {
           boss={BOSS_ENEMIES[0]}
           onFinish={handleBossFinish}
           onExit={() => setActiveMode(null)}
+          onAwardXp={(xp) => addXp(xp)}
+          onQuestionAnswered={handleQuestionAnswered}
         />
       )}
 

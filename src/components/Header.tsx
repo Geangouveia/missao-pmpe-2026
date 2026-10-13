@@ -1,7 +1,9 @@
 import React from 'react';
-import { Volume2, VolumeX, Trophy, PlusCircle, Flame, Sparkles, ShieldAlert, LogOut, UserCheck, BarChart3 } from 'lucide-react';
+import { Volume2, VolumeX, Trophy, PlusCircle, Flame, Sparkles, LogOut, UserCheck, BarChart3 } from 'lucide-react';
 import type { PlayerStats } from '../types/game';
 import { sound } from '../utils/sound';
+import { StreakFlame } from './StreakFlame';
+import { PmpeBrasaoLogo } from './PmpeBrasaoLogo';
 
 interface HeaderProps {
   stats: PlayerStats;
@@ -42,9 +44,16 @@ export const Header: React.FC<HeaderProps> = ({
           onResetToHome();
         }}
         title="Voltar ao Menu Principal"
+        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.85rem' }}
       >
-        <div className="brand-icon-box" style={{ background: 'linear-gradient(135deg, #1e3a8a, #06b6d4)' }}>
-          <ShieldAlert size={26} color="#fbbf24" />
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          filter: 'drop-shadow(0 0 10px rgba(6, 182, 212, 0.4))',
+          transition: 'transform 0.2s ease'
+        }}>
+          <PmpeBrasaoLogo size={42} showText={false} />
         </div>
         <div>
           <div className="brand-title">
@@ -60,28 +69,48 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       <div className="player-hud">
-        {/* Nível & Barra de XP */}
-        <div className="hud-stat-pill" title={`Nível ${stats.level} • ${xpCurrentLevel}/100 XP`}>
-          <Sparkles size={18} color="var(--neon-purple)" />
+        {/* Nível & Barra de XP com transição dinâmica */}
+        <div 
+          className="hud-stat-pill" 
+          title={`Nível Militar ${stats.level} • ${xpCurrentLevel}/100 XP (Cada questão correta eleva o XP)`}
+          style={{
+            background: 'linear-gradient(135deg, rgba(30, 27, 75, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%)',
+            border: '1px solid rgba(168, 85, 247, 0.35)',
+            boxShadow: '0 0 14px rgba(139, 92, 246, 0.15)'
+          }}
+        >
+          <div style={{
+            width: '28px',
+            height: '28px',
+            borderRadius: '8px',
+            background: 'linear-gradient(135deg, #7c3aed, #06b6d4)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 0 10px rgba(139, 92, 246, 0.4)'
+          }}>
+            <Sparkles size={16} color="#ffffff" />
+          </div>
           <div className="xp-progress-bar-wrap">
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem' }}>
-              <span style={{ color: 'var(--neon-purple)', fontWeight: 800 }}>NV. {stats.level}</span>
-              <span style={{ color: 'var(--text-dim)' }}>{xpCurrentLevel}/100 XP</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.76rem', gap: '0.5rem' }}>
+              <span style={{ color: '#c084fc', fontWeight: 900, letterSpacing: '0.04em' }}>NÍVEL {stats.level}</span>
+              <span style={{ color: '#94a3b8', fontWeight: 700 }}>{xpCurrentLevel}/100 XP</span>
             </div>
-            <div className="xp-bar-track">
+            <div className="xp-bar-track" style={{ height: '7px', background: 'rgba(255, 255, 255, 0.1)' }}>
               <div 
                 className="xp-bar-fill" 
-                style={{ width: `${xpPercentage}%` }} 
+                style={{ 
+                  width: `${xpPercentage}%`,
+                  background: 'linear-gradient(90deg, #a855f7 0%, #06b6d4 100%)',
+                  boxShadow: '0 0 12px rgba(6, 182, 212, 0.7)'
+                }} 
               />
             </div>
           </div>
         </div>
 
-        {/* Sequência / Streak */}
-        <div className="hud-stat-pill" title="Dias seguidos de estudo">
-          <Flame size={18} color="#f97316" />
-          <span style={{ color: '#fed7aa' }}>{stats.streakDays} {stats.streakDays === 1 ? 'Dia' : 'Dias'}</span>
-        </div>
+        {/* Sequência / Chama da Diária Viva */}
+        <StreakFlame days={stats.streakDays} size="sm" />
 
         {/* Ações Rápidas */}
         <div className="hud-actions">
