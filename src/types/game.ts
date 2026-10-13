@@ -38,6 +38,7 @@ export interface QuizQuestion {
   hint: string;
   difficulty: 'easy' | 'medium' | 'hard';
   banca?: string; // Ex: 'Instituto AOCP'
+  simuladoOrigem?: string; // Ex: 'Simulado 1ª Semana', 'Simulado 2ª Semana', 'Simulado Oficial NUCE PMPE'
 }
 
 export interface MatchPair {
