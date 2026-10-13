@@ -1,0 +1,104 @@
+export type GameMode = 'quiz' | 'match' | 'battle' | 'flashcards';
+
+export type CategoryId = 
+  | 'portugues' 
+  | 'historia_pe' 
+  | 'raciocinio' 
+  | 'informatica' 
+  | 'constitucional' 
+  | 'humanos_leis' 
+  | 'simulado_geral'
+  | 'custom';
+
+export type BlocoEdital = 'bloco_1' | 'bloco_2' | 'bloco_3';
+
+export interface Category {
+  id: CategoryId;
+  name: string;
+  bloco?: BlocoEdital;
+  blocoNome?: string;
+  description: string;
+  icon: string;
+  color: string;
+  accent: string;
+  badge?: string;
+}
+
+export interface QuizQuestion {
+  id: string;
+  categoryId: CategoryId;
+  bloco: BlocoEdital;
+  materiaNome: string;
+  topicoEdital?: string;
+  question: string;
+  options: string[];
+  correctIndex: number; // 0 a 4 (A, B, C, D, E)
+  explanation: string;
+  fundamentacaoLegal?: string;
+  hint: string;
+  difficulty: 'easy' | 'medium' | 'hard';
+  banca?: string; // Ex: 'Instituto AOCP'
+}
+
+export interface MatchPair {
+  id: string;
+  categoryId: CategoryId;
+  bloco: BlocoEdital;
+  term: string;
+  definition: string;
+}
+
+export interface Flashcard {
+  id: string;
+  categoryId: CategoryId;
+  bloco: BlocoEdital;
+  front: string;
+  back: string;
+  categoryName: string;
+  tag?: string;
+}
+
+export interface BossEnemy {
+  id: string;
+  name: string;
+  title: string;
+  avatar: string;
+  maxHp: number;
+  attackPower: number;
+  description: string;
+  weakness: string;
+}
+
+export interface Achievement {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  unlocked: boolean;
+  unlockedAt?: string;
+}
+
+export interface PlayerStats {
+  xp: number;
+  level: number;
+  streakDays: number;
+  totalAnswered: number;
+  correctAnswers: number;
+  bossesDefeated: number;
+  matchesCompleted: number;
+  flashcardsMastered: number;
+  achievements: Achievement[];
+  // Estatísticas específicas PMPE por Bloco
+  bloco1Stats?: { answered: number; correct: number };
+  bloco2Stats?: { answered: number; correct: number };
+  bloco3Stats?: { answered: number; correct: number };
+}
+
+export interface CustomDeck {
+  id: string;
+  name: string;
+  description: string;
+  questions: QuizQuestion[];
+  matchPairs: MatchPair[];
+  flashcards: Flashcard[];
+}
