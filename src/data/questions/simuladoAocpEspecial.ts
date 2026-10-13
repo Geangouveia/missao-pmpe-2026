@@ -1,0 +1,687 @@
+import type { QuizQuestion } from '../../types/game';
+
+export const SIMULADO_AOCP_ESPECIAL: QuizQuestion[] = [
+  // ==========================================
+  // LÍNGUA PORTUGUESA - BANCA AOCP (BLOCO I)
+  // ==========================================
+  {
+    id: 'aocp-por-01',
+    categoryId: 'portugues',
+    bloco: 'bloco_1',
+    materiaNome: 'Língua Portuguesa',
+    topicoEdital: 'Emprego do Sinal Indicativo de Crase (Casos Proibidos e Obrigatórios)',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Assinale a alternativa em que o uso do acento grave indicativo de crase está empregado em inteira conformidade com a norma-padrão da Língua Portuguesa:',
+    options: [
+      'O comandante dirigiu-se à pé até o posto policial da corporação.',
+      'A decisão do juiz militar foi comunicada à todas as testemunhas presentes.',
+      'O policial militar prestou atendimento dedicado à mulher vítima de agressão.',
+      'O sargento começou à preencher o boletim de ocorrência de pronto.',
+      'A viatura militar retornou à uma hora da madrugada para abastecer.'
+    ],
+    correctIndex: 2,
+    explanation: 'Na alternativa C, o verbo prestar (prestar algo A alguém) exige a preposição "a", que se funde com o artigo definido feminino "a" que precede o substantivo "mulher" (prestar atendimento a + a mulher = à mulher). Nas demais: não há crase antes de palavra masculina ("a pé"), antes de pronome indefinido ("a todas"), antes de verbo ("a preencher") e antes do artigo indefinido "uma" quando não indica hora exata determinada.',
+    fundamentacaoLegal: 'Sintaxe de Regência e Crase: Fusão da preposição "a" com o artigo feminino "a" diante de substantivo feminino determinado.',
+    hint: 'Substitua "à mulher" por "ao homem": se der "ao", a crase é obrigatória!',
+    difficulty: 'medium'
+  },
+  {
+    id: 'aocp-por-02',
+    categoryId: 'portugues',
+    bloco: 'bloco_1',
+    materiaNome: 'Língua Portuguesa',
+    topicoEdital: 'Concordância Verbal com a Partícula SE (VTD vs VTI)',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Assinale a alternativa em que a concordância verbal com a partícula "se" atende rigorosamente à norma culta:',
+    options: [
+      'Alugam-se salas comerciais no centro histórico do Recife.',
+      'Precisa-se de novos policiais militares para o batalhão.',
+      'Tratam-se de questões complexas sobre a segurança pública.',
+      'Consertou-se os veículos da frota ostensiva da polícia.',
+      'Assistiram-se aos vídeos de monitoramento na central.'
+    ],
+    correctIndex: 0,
+    explanation: 'Na alternativa A, "alugar" é Verbo Transitivo Direto (VTD). Com a partícula apassivadora "se", a oração está na voz passiva sintética, onde "salas comerciais" é o sujeito paciente no plural, exigindo o verbo no plural ("Alugam-se salas"). Em B, "precisar" é VTI e o "se" é índice de indeterminação, ficando no singular (mas a opção A é a clássica da voz passiva exigida pela AOCP). Em C, "tratar-se de" é VTI e deve ficar no singular ("Trata-se de"). Em D, "Consertaram-se os veículos". Em E, "Assistiu-se aos vídeos".',
+    fundamentacaoLegal: 'Gramática Normativa: Voz Passiva Sintética com VTD + SE apassivador (o verbo concorda com o sujeito paciente).',
+    hint: 'VTD + SE = Voz passiva sintética: o verbo concorda com o sujeito ("salas são alugadas" -> alugam-se salas).',
+    difficulty: 'medium'
+  },
+  {
+    id: 'aocp-por-03',
+    categoryId: 'portugues',
+    bloco: 'bloco_1',
+    materiaNome: 'Língua Portuguesa',
+    topicoEdital: 'Regência dos Verbos ASSISTIR, ASPIRAR e VISAR',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) De acordo com a regência verbal recomendada pela norma-padrão, assinale a frase correta:',
+    options: [
+      'O soldado aspirava o cargo de sargento desde que ingressou na corporação.',
+      'Todos os cidadãos devem obedecer o regulamento de trânsito estadual.',
+      'O policial assistiu ao treinamento prático de tiro tático com atenção.',
+      'O advogado visou ao passaporte antes do embarque internacional da testemunha.',
+      'Custou para o concursando compreender a regra da crase facultativa.'
+    ],
+    correctIndex: 2,
+    explanation: 'O verbo ASSISTIR no sentido de presenciar/ver é Transitivo Indireto e rege a preposição "a" ("assistiu AO treinamento"). O verbo aspirar (desejar) rege "a" ("aspirava AO cargo"); obedecer rege preposição "a" ("obedecer AO regulamento"); visar no sentido de rubricar é VTD ("visou O passaporte"); e custar no sentido de ser difícil rege: "Custou AO concursando compreender".',
+    fundamentacaoLegal: 'Sintaxe de Regência Verbal: Assistir (presenciar) = VTI regido pela preposição "A".',
+    hint: 'Assistir no sentido de ver/presenciar sempre pede "A": assistir AO jogo, assistir AO filme.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'aocp-por-04',
+    categoryId: 'portugues',
+    bloco: 'bloco_1',
+    materiaNome: 'Língua Portuguesa',
+    topicoEdital: 'Significação das Palavras - Homônimos e Parônimos',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Assinale a alternativa que preenche corretamente as lacunas:\n"O perito criminal agiu com extremo ______ para não cometer um ______ grave durante a apuração."' ,
+    options: [
+      'bom senso / delinto',
+      'discrição / deslize',
+      'descrição / deslize',
+      'descrição / flagrante',
+      'discrição / flagelo'
+    ],
+    correctIndex: 1,
+    explanation: '"Discrição" (com "i") significa qualidade de quem é discreto, reservado, prudente e circunspecto. "Descrição" (com "e") significa ato de descrever, representar por palavras ou relatar características. "Deslize" significa falta leve, engano, erro ou desvio.',
+    fundamentacaoLegal: 'Semântica e Ortografia: Parônimos Discrição (reserva, prudência) vs Descrição (ato de descrever).',
+    hint: 'Quem é discreto tem DIS-CRI-ÇÃO.',
+    difficulty: 'easy'
+  },
+  {
+    id: 'aocp-por-05',
+    categoryId: 'portugues',
+    bloco: 'bloco_1',
+    materiaNome: 'Língua Portuguesa',
+    topicoEdital: 'Conjunções Subordinativas Concessivas',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Na frase "Conquanto houvesse tempestades e ventos fortes na serra, a patrulha policial concluiu a missão de resgate", o conectivo "Conquanto" pode ser substituído, mantendo o mesmo sentido e correção, por:',
+    options: [
+      'Portanto',
+      'Porquanto',
+      'Embora',
+      'Contanto que',
+      'Desde que'
+    ],
+    correctIndex: 2,
+    explanation: '"Conquanto" é uma conjunção subordinativa concessiva (introduz uma oração que expressa um obstáculo que não impede a realização do fato principal), equivalendo exatamente a "Embora", "Ainda que", "Mesmo que" e "Se bem que". "Porquanto" exprime causa ou explicação.',
+    fundamentacaoLegal: 'Morfossintaxe: Conjunções Subordinativas Concessivas (conquanto = embora).',
+    hint: 'Cuidado com a pegadinha clássica da AOCP: Conquanto = EMBORA (concessão); Porquanto = PORQUE (causa).',
+    difficulty: 'medium'
+  },
+
+  // ==========================================
+  // HISTÓRIA DE PERNAMBUCO (BLOCO I)
+  // ==========================================
+  {
+    id: 'aocp-his-06',
+    categoryId: 'historia_pe',
+    bloco: 'bloco_1',
+    materiaNome: 'História de Pernambuco',
+    topicoEdital: 'A Revolução Pernambucana de 1817 (A República de 75 Dias)',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) A Revolução Pernambucana de 1817 foi um dos movimentos emancipacionistas mais expressivos da história do Brasil colônia. Sobre as suas causas e características, assinale a alternativa correta:',
+    options: [
+      'O movimento visava restabelecer o monopólio da Coroa Portuguesa sobre a produção de açúcar em Olinda.',
+      'Deflagrada em março de 1817, instalou um governo provisório republicano, extinguiu tributos reais e consagrou a liberdade de consciência e de imprensa.',
+      'Teve apoio militar incondicional e imediato da corte instalada no Rio de Janeiro.',
+      'A revolução libertou e aboliu imediatamente a escravidão de todos os trabalhadores negros de Pernambuco.',
+      'Os rebeldes pernambucanos renderam-se prontamente aos britânicos sem qualquer confronto armado.'
+    ],
+    correctIndex: 1,
+    explanation: 'A Revolução de 1817 fundou a República de Pernambuco (que durou 75 dias), aprovou uma Lei Orgânica com separação de poderes, liberdade de imprensa, tolerância religiosa e aboliu tributos da corte joanina. Porém, para manter a aliança com os grandes proprietários rurais de engenho, os revolucionários NÃO aboliram a escravidão de imediato.',
+    fundamentacaoLegal: 'História de Pernambuco: Revolução Pernambucana de 1817 e a Lei Orgânica do Governo Provisório.',
+    hint: 'Em 1817 proclamou-se uma República liberal e iluminista, cuja bandeira tricolor se tornou a bandeira do Estado.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'aocp-his-07',
+    categoryId: 'historia_pe',
+    bloco: 'bloco_1',
+    materiaNome: 'História de Pernambuco',
+    topicoEdital: 'A Confederação do Equador (1824) e a Atuação de Frei Caneca',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Em 1824, eclodiu em Pernambuco a Confederação do Equador, reação armada contra o autoritarismo de D. Pedro I. A principal figura intelectual e líder do movimento foi:',
+    options: [
+      'Duarte Coelho de Albuquerque.',
+      'Joaquim do Amor Divino Rabelo (Frei Caneca).',
+      'Maurício de Nassau.',
+      'Matias de Albuquerque.',
+      'Agamenon Sérgio de Godoy Magalhães.'
+    ],
+    correctIndex: 1,
+    explanation: 'Frei Caneca (Joaquim do Amor Divino Rabelo), carmelita, jornalista do Typhis Pernambucano e líder republicano, combateu fervorosamente a dissolução da Constituinte de 1823 e a outorga da Constituição autoritária de 1824 com o Poder Moderador. Foi condenado e fuzilado no Forte das Cinco Pontas em 1825.',
+    fundamentacaoLegal: 'História do Império em Pernambuco: Confederação do Equador (1824) e o martírio de Frei Caneca.',
+    hint: 'Líder carmelita, jornalista do Typhis Pernambucano e herói da Confederação do Equador = Frei Caneca.',
+    difficulty: 'easy'
+  },
+  {
+    id: 'aocp-his-08',
+    categoryId: 'historia_pe',
+    bloco: 'bloco_1',
+    materiaNome: 'História de Pernambuco',
+    topicoEdital: 'Insurreição Pernambucana e as Batalhas dos Guararapes (1648-1649)',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) As Batalhas dos Guararapes (1648 e 1649) marcaram a expulsão das forças holandesas do território pernambucano. Esse episódio é historicamente considerado pela historiografia e pelas Forças Armadas brasileiras como:',
+    options: [
+      'o marco inicial da independência de Pernambuco da tutela de Portugal.',
+      'o berço simbólico do Exército Brasileiro, em razão da união em combate de brancos, negros e indígenas.',
+      'o início do monopólio econômico das Companhias das Índias Ocidentais no Brasil.',
+      'a aliança formal e pacífica que integrou os Países Baixos à Coroa portuguesa.',
+      'o episódio de extinção definitiva do Quilombo dos Palmares.'
+    ],
+    correctIndex: 1,
+    explanation: 'As Batalhas dos Guararapes representam o berço do Exército Brasileiro porque uniram os líderes João Fernandes Vieira (colonos brancos), Henrique Dias (terço de homens negros) e Felipe Camarão (guerreiros indígenas potiguaras) contra o invasor neerlandês.',
+    fundamentacaoLegal: 'Historiografia Militar e Social de Pernambuco: Batalha dos Guararapes e a Insurreição Pernambucana (1645-1654).',
+    hint: 'União das três etnias (Felipe Camarão, Henrique Dias e Fernandes Vieira) = Berço do Exército Brasileiro.',
+    difficulty: 'easy'
+  },
+  {
+    id: 'aocp-his-09',
+    categoryId: 'historia_pe',
+    bloco: 'bloco_1',
+    materiaNome: 'História de Pernambuco',
+    topicoEdital: 'A Revolução Praieira de 1848 e o Manifesto ao Mundo',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) A Revolução Praieira (1848-1850) encerrou o ciclo de revoltas liberais do período imperial no Brasil. Seu documento programático fundamental, de forte inspiração democrática e socialista utópica, foi denominado:',
+    options: [
+      'Manifesto de Olinda.',
+      'Carta de Vrijburg.',
+      'Manifesto ao Mundo.',
+      'Tratado de Taborda.',
+      'Declaração dos Mascates.'
+    ],
+    correctIndex: 2,
+    explanation: 'Redigido por Borges da Fonseca em 1849, o "Manifesto ao Mundo" sintetizou as reivindicações praieiras: voto livre e universal do povo, plena liberdade de imprensa, garantia de trabalho, nacionalização do comércio a retalho e extinção do Poder Moderador.',
+    fundamentacaoLegal: 'História do Segundo Reinado em Pernambuco: Revolução Praieira (1848) e o Manifesto ao Mundo.',
+    hint: 'Borges da Fonseca e o Manifesto ao Mundo (voto universal e fim do Poder Moderador).',
+    difficulty: 'medium'
+  },
+  {
+    id: 'aocp-his-10',
+    categoryId: 'historia_pe',
+    bloco: 'bloco_1',
+    materiaNome: 'História de Pernambuco',
+    topicoEdital: 'O Frevo e o Carnaval de Pernambuco como Patrimônio Imaterial',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) O Frevo, elemento cultural consagrado como Patrimônio Cultural Imaterial da Humanidade pela UNESCO, originou-se no Recife no final do século XIX intimamente associado a:',
+    options: [
+      'marchas processionais religiosas da Igreja Católica durante a Páscoa.',
+      'disputas acirradas entre bandas marciais de rua e lutadores capoeiristas que abriam alas na multidão.',
+      'cantos de marinheiros holandeses que celebravam as chegadas ao porto.',
+      'danças aristocráticas francesas nos salões da elite cafeeira do agreste.',
+      'jogos de azar praticados exclusivamente nos navios que aportavam no porto do Recife.'
+    ],
+    correctIndex: 1,
+    explanation: 'O frevo surgiu da efervescência popular urbana no Recife, derivado do ritmo acelerado das marchas e dobrados das bandas rivais de rua (como Espanha e Quarto), onde capoeiras (jogadores de capoeira) marchavam à frente dos blocos com guarda-chuvas para defender suas bandeiras e abrir caminho com passos acrobáticos.',
+    fundamentacaoLegal: 'Patrimônio Histórico e Cultural (UNESCO/IPHAN): Origem sociológica e musical do Frevo.',
+    hint: 'Bandas marciais rivais + Capoeiristas com passos rápidos e sombrinhas = nascimento do Frevo.',
+    difficulty: 'easy'
+  },
+
+  // ==========================================
+  // RACIOCÍNIO LÓGICO - BANCA AOCP (BLOCO II)
+  // ==========================================
+  {
+    id: 'aocp-rlm-11',
+    categoryId: 'raciocinio',
+    bloco: 'bloco_2',
+    materiaNome: 'Raciocínio Lógico',
+    topicoEdital: 'Equivalência Lógica da Condicional (Regra do Né-Ou e Contrapositiva)',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Considere a proposição verdadeira: "Se o alarme toca, então a equipe tática se desloca". Qual das sentenças abaixo é logicamente equivalente a essa afirmação?',
+    options: [
+      'O alarme não toca ou a equipe tática se desloca.',
+      'O alarme toca e a equipe tática não se desloca.',
+      'Se a equipe tática se desloca, então o alarme toca.',
+      'Se o alarme não toca, então a equipe tática não se desloca.',
+      'O alarme toca se, e somente se, a equipe tática se desloca.'
+    ],
+    correctIndex: 0,
+    explanation: 'A condicional P → Q possui duas formas equivalentes clássicas:\n1) Contrapositiva: ~Q → ~P (Se a equipe NÃO se desloca, então o alarme NÃO toca);\n2) Disjunção (Regra do "Né-Ou"): ~P ∨ Q (Nega o antecedente OU Mantém o consequente).\nAqui: "O alarme NÃO toca OU a equipe tática se desloca".',
+    fundamentacaoLegal: 'Lógica Proposicional: (P → Q) ≡ (~P ∨ Q).',
+    hint: 'Regra do Né-Ou: Nega a primeira (não toca) OU Mantém a segunda (se desloca).',
+    difficulty: 'easy'
+  },
+  {
+    id: 'aocp-rlm-12',
+    categoryId: 'raciocinio',
+    bloco: 'bloco_2',
+    materiaNome: 'Raciocínio Lógico',
+    topicoEdital: 'Negação de Proposição Condicional (Regra do MANÉ)',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) A negação lógica da afirmação "Se o indivíduo cometeu crime, então será preso em flagrante" é:',
+    options: [
+      'Se o indivíduo não cometeu crime, então não será preso em flagrante.',
+      'O indivíduo cometeu crime e não será preso em flagrante.',
+      'O indivíduo não cometeu crime ou será preso em flagrante.',
+      'Se o indivíduo não for preso em flagrante, então não cometeu crime.',
+      'O indivíduo não cometeu crime e não será preso em flagrante.'
+    ],
+    correctIndex: 1,
+    explanation: 'A negação da condicional ~(P → Q) aplica a regra do MANÉ: Mantém a primeira (P) E Nega a segunda (~Q) -> P ∧ ~Q.\nResultado: "O indivíduo cometeu crime E não será preso em flagrante".',
+    fundamentacaoLegal: 'Lógica Proposicional: ~(P → Q) ≡ P ∧ ~Q.',
+    hint: 'MANÉ: Mantém a primeira E Nega a segunda!',
+    difficulty: 'easy'
+  },
+  {
+    id: 'aocp-rlm-13',
+    categoryId: 'raciocinio',
+    bloco: 'bloco_2',
+    materiaNome: 'Raciocínio Lógico',
+    topicoEdital: 'Análise Combinatória - Formação de Equipes Policiais',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Um oficial da PMPE dispõe de 7 soldados e 5 cabos para formar uma guarnição composta por 3 soldados e 2 cabos. O número de maneiras distintas pelas quais essa guarnição pode ser escalada é:',
+    options: [
+      '350',
+      '210',
+      '120',
+      '35',
+      '700'
+    ],
+    correctIndex: 0,
+    explanation: 'Como a ordem dos integrantes dentro da guarnição não altera a equipe, utilizamos combinação simples:\n1) Soldados: escolher 3 entre 7 = C(7, 3) = (7 × 6 × 5) / (3 × 2 × 1) = 35 maneiras.\n2) Cabos: escolher 2 entre 5 = C(5, 2) = (5 × 4) / (2 × 1) = 10 maneiras.\nPelo Princípio Multiplicativo: 35 × 10 = 350 guarnições distintas.',
+    fundamentacaoLegal: 'Cálculo Combinatório: C(n, p) = n! / (p!(n - p)!). Total = C(7, 3) × C(5, 2) = 35 × 10 = 350.',
+    hint: 'Calcule a combinação de soldados (35) e multiplique pela combinação de cabos (10): 35 × 10 = 350.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'aocp-rlm-14',
+    categoryId: 'raciocinio',
+    bloco: 'bloco_2',
+    materiaNome: 'Raciocínio Lógico',
+    topicoEdital: 'Probabilidade de Eventos Sucessivos sem Reposição',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Em uma urna há 6 viaturas com rastreador GPS operacional e 4 viaturas com o rastreador inoperante. Duas viaturas são sorteadas sucessivamente e sem reposição. A probabilidade de ambas possuírem o rastreador operacional é de:',
+    options: [
+      '1/3',
+      '2/5',
+      '3/10',
+      '6/10',
+      '1/2'
+    ],
+    correctIndex: 0,
+    explanation: 'Total de viaturas = 6 + 4 = 10 viaturas.\n1) Probabilidade da primeira ser operacional: 6 / 10.\n2) Como não há reposição, restam 9 viaturas no total, sendo 5 operacionais: 5 / 9.\nProbabilidade conjunta: (6 / 10) × (5 / 9) = 30 / 90 = 1 / 3 (aproximadamente 33,33%).',
+    fundamentacaoLegal: 'Teoria das Probabilidades: Multiplicação de probabilidades dependentes P(A ∩ B) = P(A) × P(B|A).',
+    hint: '(6/10) × (5/9) = 30/90 = 1/3.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'aocp-rlm-15',
+    categoryId: 'raciocinio',
+    bloco: 'bloco_2',
+    materiaNome: 'Raciocínio Lógico',
+    topicoEdital: 'Tautologia, Contradição e Contingência',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Uma proposição composta que resulta em valor lógico VERDADEIRO para todas as possíveis atribuições de valores lógicos de suas proposições simples componentes é denominada:',
+    options: [
+      'Contingência.',
+      'Contradição.',
+      'Tautologia.',
+      'Equivalência relativa.',
+      'Paradoxo lógico.'
+    ],
+    correctIndex: 2,
+    explanation: 'Tautologia é a proposição composta que é sempre verdadeira em todas as linhas de sua tabela-verdade, independentemente dos valores lógicos das proposições simples (ex: P ∨ ~P). Se for sempre falsa, é uma contradição. Se puder ser verdadeira ou falsa, é uma contingência.',
+    fundamentacaoLegal: 'Lógica Proposicional: Definição dogmática de Tautologia.',
+    hint: 'Tautologia = SEMPRE VERDADEIRA em qualquer situação.',
+    difficulty: 'easy'
+  },
+
+  // ==========================================
+  // NOÇÕES DE INFORMÁTICA - BANCA AOCP (BLOCO II)
+  // ==========================================
+  {
+    id: 'aocp-inf-16',
+    categoryId: 'informatica',
+    bloco: 'bloco_2',
+    materiaNome: 'Noções de Informática',
+    topicoEdital: 'Portas Padrão de Protocolos de Rede da Camada de Aplicação',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Em redes de computadores TCP/IP, qual é a porta padrão bem conhecida (well-known port) utilizada para conexões web seguras e criptografadas pelo protocolo HTTPS?',
+    options: [
+      'Porta 21',
+      'Porta 25',
+      'Porta 80',
+      'Porta 443',
+      'Porta 53'
+    ],
+    correctIndex: 3,
+    explanation: 'A porta padrão do HTTPS é a 443 (TCP). O HTTP comum usa a porta 80, o FTP usa as portas 20/21, o SMTP usa a porta 25 (ou 587) e o DNS opera na porta 53.',
+    fundamentacaoLegal: 'Padrão IANA de Portas Bem Conhecidas (0 a 1023): HTTPS = Porta 443.',
+    hint: 'HTTP = 80; HTTPS = 443; DNS = 53.',
+    difficulty: 'easy'
+  },
+  {
+    id: 'aocp-inf-17',
+    categoryId: 'informatica',
+    bloco: 'bloco_2',
+    materiaNome: 'Noções de Informática',
+    topicoEdital: 'Segurança da Informação - Ataques de Ransomware',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Um tipo de código malicioso muito temido pelas corporações infecta os sistemas, criptografa os arquivos do usuário com chaves fortes e exige o pagamento de uma quantia (resgate), geralmente em criptomoedas, para liberar a chave de decodificação. Esse malware é o:',
+    options: [
+      'Adware.',
+      'Spyware.',
+      'Ransomware.',
+      'Keylogger.',
+      'Rootkit.'
+    ],
+    correctIndex: 2,
+    explanation: 'O Ransomware (do inglês "ransom" = resgate) sequestra os dados do usuário por meio de criptografia assimétrica e exige resgate financeiro para restaurar o acesso aos arquivos.',
+    fundamentacaoLegal: 'Cartilha de Segurança do CERT.br: Tipos de Malwares - Ransomware.',
+    hint: 'Ransom = Resgate. Malware que sequestra arquivos por criptografia = RANSOMWARE.',
+    difficulty: 'easy'
+  },
+  {
+    id: 'aocp-inf-18',
+    categoryId: 'informatica',
+    bloco: 'bloco_2',
+    materiaNome: 'Noções de Informática',
+    topicoEdital: 'Teclas de Atalho do Windows 10',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) No sistema operacional Windows 10, qual atalho de teclado tem a função direta de bloquear instantaneamente o computador ou alternar entre contas de usuário?',
+    options: [
+      'Win + D',
+      'Win + L',
+      'Win + E',
+      'Win + R',
+      'Win + Tab'
+    ],
+    correctIndex: 1,
+    explanation: 'A tecla com logotipo do Windows + L (Lock) bloqueia o computador imediatamente, exigindo a senha ou PIN para retorno à área de trabalho. Win + D minimiza todas as janelas; Win + E abre o Explorador de Arquivos; Win + R abre o Executar.',
+    fundamentacaoLegal: 'Guia de Atalhos Microsoft Windows 10: Tecla Windows + L (Lock Screen).',
+    hint: 'L de "Lock" (Trancar/Bloquear o Windows).',
+    difficulty: 'easy'
+  },
+  {
+    id: 'aocp-inf-19',
+    categoryId: 'informatica',
+    bloco: 'bloco_2',
+    materiaNome: 'Noções de Informática',
+    topicoEdital: 'Criptografia Simétrica vs Criptografia Assimétrica',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Sobre os conceitos de criptografia na segurança digital, assinale a afirmativa correta:',
+    options: [
+      'Na criptografia simétrica, utilizam-se duas chaves distintas: uma chave pública e uma chave privada.',
+      'Na criptografia assimétrica, é utilizada uma única chave secreta compartilhada tanto para cifrar quanto para decifrar os dados.',
+      'A criptografia assimétrica utiliza um par de chaves matematicamente correlacionadas: a chave pública (para cifrar) e a chave privada (para decifrar).',
+      'A função Hash é um algoritmo de criptografia simétrica bidirecional reversível.',
+      'Certificados digitais utilizam apenas criptografia simétrica de chave única sem necessidade de autoridade certificadora.'
+    ],
+    correctIndex: 2,
+    explanation: 'A criptografia assimétrica (chave pública) opera com um par de chaves: a pública (distribuída abertamente para quem deseja enviar dados criptografados) e a privada (mantida em absoluto segredo pelo destinatário para decifrar). A simétrica utiliza apenas uma mesma chave secreta para ambos os processos.',
+    fundamentacaoLegal: 'Criptografia e Infraestrutura de Chaves Públicas (ICP-Brasil): Chaves Simétricas vs Assimétricas.',
+    hint: 'Assimétrica = 2 chaves (pública e privada). Simétrica = 1 única chave compartilhada.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'aocp-inf-20',
+    categoryId: 'informatica',
+    bloco: 'bloco_2',
+    materiaNome: 'Noções de Informática',
+    topicoEdital: 'LibreOffice Calc - Referências Mistas e Fixação de Célula',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) No LibreOffice Calc versão 7, ao construir uma fórmula que precisa fixar permanentemente tanto a linha quanto a coluna da célula A1 durante o arrasto ou cópia, deve-se utilizar a notação:',
+    options: [
+      'A1#',
+      '$A$1',
+      '&A&1',
+      '#A#1',
+      '@A@1'
+    ],
+    correctIndex: 1,
+    explanation: 'O caractere cifrão ($) é o operador de fixação absoluta em planilhas eletrônicas. Para fixar totalmente a célula A1, coloca-se $ antes da coluna e antes da linha: $A$1.',
+    fundamentacaoLegal: 'LibreOffice Calc / MS Excel: Referências Absolutas com o operador cifrão ($).',
+    hint: '$A$1 trava tanto a coluna quanto a linha.',
+    difficulty: 'easy'
+  },
+
+  // ==========================================
+  // DIREITO CONSTITUCIONAL - BANCA AOCP (BLOCO III)
+  // ==========================================
+  {
+    id: 'aocp-con-21',
+    categoryId: 'constitucional',
+    bloco: 'bloco_3',
+    materiaNome: 'Direito Constitucional',
+    topicoEdital: 'Inviolabilidade de Domicílio e Exceções Noturnas (Art. 5º, XI da CF/88)',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Segundo o Art. 5º, XI da Constituição Federal de 1988, a casa é asilo inviolável do indivíduo, ninguém nela podendo penetrar sem consentimento do morador. Durante o período NOTURNO, a entrada SEM consentimento só é admitida:',
+    options: [
+      'por determinação judicial ou para prestar socorro.',
+      'em caso de flagrante delito, desastre, ou para prestar socorro.',
+      'por determinação judicial em qualquer crime hediondo.',
+      'quando houver denúncia anônima de tráfico de drogas acompanhada de mandado judicial.',
+      'exclusivamente com a presença de um membro do Ministério Público.'
+    ],
+    correctIndex: 1,
+    explanation: 'Conforme o Art. 5º, XI da CF/88: "a casa é asilo inviolável do indivíduo, ninguém nela podendo penetrar sem consentimento do morador, salvo em caso de FLAGRANTE DELITO ou DESASTRE, ou para PRESTAR SOCORRO, ou, durante o DIA, por determinação judicial". À NOITE, mandado judicial NÃO autoriza a entrada!',
+    fundamentacaoLegal: 'CF/88, Art. 5º, inciso XI.',
+    hint: 'À NOITE: apenas Flagrante, Desastre e Socorro (FDS). Mandado judicial somente durante o DIA!',
+    difficulty: 'medium'
+  },
+  {
+    id: 'aocp-con-22',
+    categoryId: 'constitucional',
+    bloco: 'bloco_3',
+    materiaNome: 'Direito Constitucional',
+    topicoEdital: 'Remédios Constitucionais - Habeas Corpus vs Mandado de Segurança',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Para proteger direito líquido e certo, não amparado por habeas corpus ou habeas data, quando o responsável pela ilegalidade ou abuso de poder for autoridade pública ou agente de pessoa jurídica no exercício de atribuições do Poder Público, concede-se:',
+    options: [
+      'Ação Popular.',
+      'Mandado de Injunção.',
+      'Habeas Data.',
+      'Mandado de Segurança.',
+      'Reclamação Constitucional.'
+    ],
+    correctIndex: 3,
+    explanation: 'Conforme o Art. 5º, LXIX da CF/88: "conceder-se-á mandado de segurança para proteger direito líquido e certo, não amparado por habeas corpus ou habeas data, quando o responsável pela ilegalidade ou abuso de poder for autoridade pública...". É o remédio residual para direito líquido e certo comprovado documentalmente de plano.',
+    fundamentacaoLegal: 'CF/88, Art. 5º, inciso LXIX.',
+    hint: 'Direito líquido e certo não amparado por HC nem HD = Mandado de Segurança (MS).',
+    difficulty: 'easy'
+  },
+  {
+    id: 'aocp-con-23',
+    categoryId: 'constitucional',
+    bloco: 'bloco_3',
+    materiaNome: 'Direito Constitucional',
+    topicoEdital: 'Segurança Pública (Art. 144 da CF/88) - Competência das Polícias Militares',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Conforme expressamente disposto no § 5º do Artigo 144 da Constituição Federal de 1988, às Polícias Militares cabem:',
+    options: [
+      'a apuração de infrações penais contra a ordem política e social.',
+      'as funções de polícia judiciária e a apuração de infrações penais, exceto as militares.',
+      'a polícia ostensiva e a preservação da ordem pública.',
+      'o patrulhamento ostensivo das rodovias federais e ferrovias.',
+      'a segurança exclusiva das fronteiras e dos presídios estaduais.'
+    ],
+    correctIndex: 2,
+    explanation: 'O Art. 144, § 5º da CF/88 declara categoricamente: "Às polícias militares cabem a polícia ostensiva e a preservação da ordem pública; aos corpos de bombeiros militares, além das atribuições definidas em lei, incumbe a execução de atividades de defesa civil".',
+    fundamentacaoLegal: 'CF/88, Art. 144, § 5º.',
+    hint: 'Art. 144, § 5º: Polícia Militar = Polícia Ostensiva e Preservação da Ordem Pública.',
+    difficulty: 'easy'
+  },
+  {
+    id: 'aocp-con-24',
+    categoryId: 'constitucional',
+    bloco: 'bloco_3',
+    materiaNome: 'Direito Constitucional',
+    topicoEdital: 'Prisão em Flagrante e Mandado Judicial (Art. 5º, LXI da CF/88)',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Ninguém será preso senão em flagrante delito ou por ordem escrita e fundamentada de autoridade judiciária competente, SALVO nos casos de:',
+    options: [
+      'crimes contra o patrimônio público municipal.',
+      'transgressão militar ou crime propriamente militar, definidos em lei.',
+      'recusa em apresentar documento de identificação em blitz de trânsito.',
+      'dívida civil decorrente de empréstimo financeiro bancário.',
+      'infrações penais cometidas durante a vigência de estado de sítio.'
+    ],
+    correctIndex: 1,
+    explanation: 'O Art. 5º, LXI da CF/88 preceitua: "ninguém será preso senão em flagrante delito ou por ordem escrita e fundamentada de autoridade judiciária competente, salvo nos casos de transgressão militar ou crime propriamente militar, definidos em lei".',
+    fundamentacaoLegal: 'CF/88, Art. 5º, inciso LXI.',
+    hint: 'Exceção constitucional à ordem judicial escrita para prisão: transgressão militar ou crime propriamente militar.',
+    difficulty: 'medium'
+  },
+  {
+    id: 'aocp-con-25',
+    categoryId: 'constitucional',
+    bloco: 'bloco_3',
+    materiaNome: 'Direito Constitucional',
+    topicoEdital: 'Nacionalidade e Cargos Privativos de Brasileiro Nato (Art. 12, § 3º)',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) De acordo com o Art. 12, § 3º da Constituição Federal de 1988, são privativos de brasileiro nato os seguintes cargos, EXCETO:',
+    options: [
+      'Presidente e Vice-Presidente da República.',
+      'Presidente da Câmara dos Deputados e Presidente do Senado Federal.',
+      'Ministro do Supremo Tribunal Federal.',
+      'Oficial das Forças Armadas e Ministro de Estado da Defesa.',
+      'Governador de Estado e Secretário de Segurança Pública.'
+    ],
+    correctIndex: 4,
+    explanation: 'Os cargos privativos de brasileiro nato constam no rol taxativo do Art. 12, § 3º (mnemônico MP3.COM): Ministros do STF; Presidente e Vice da República; Presidente da Câmara; Presidente do Senado; Carreira diplomática; Oficial das Forças Armadas; e Ministro da Defesa. Governadores e Secretários de Segurança podem ser brasileiros naturalizados.',
+    fundamentacaoLegal: 'CF/88, Art. 12, § 3º.',
+    hint: 'Mnemônico MP3.COM: Ministros do STF, Presidente/Vice, Pres. Câmara, Pres. Senado, Carreira Diplomática, Oficial FA, Ministro Defesa.',
+    difficulty: 'easy'
+  },
+
+  // ==========================================
+  // LEGISLAÇÃO EXTRAVAGANTE - BANCA AOCP (BLOCO III)
+  // ==========================================
+  {
+    id: 'aocp-leg-26',
+    categoryId: 'humanos_leis',
+    bloco: 'bloco_3',
+    materiaNome: 'Legislação & Direitos Humanos',
+    topicoEdital: 'Lei Maria da Penha (Art. 12-C) - Afastamento Imediato pelo Policial Militar',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Verificada a existência de risco atual ou iminente à vida da mulher em situação de violência doméstica, o agressor será imediatamente afastado do lar. Conforme o Art. 12-C da Lei nº 11.340/2006, se o município NÃO for sede de comarca e NÃO houver delegado disponível no momento do atendimento, a medida de afastamento poderá ser aplicada pelo:',
+    options: [
+      'escrivão de polícia plantonista.',
+      'policial militar ou policial civil.',
+      'conselheiro tutelar da região.',
+      'advogado da vítima nomeado ad hoc.',
+      'prefeito municipal mediante decreto de urgência.'
+    ],
+    correctIndex: 1,
+    explanation: 'Conforme o Art. 12-C da Lei 11.340/2006 (incluído pela Lei 13.827/2019): o agressor será afastado: I - pela autoridade judicial; II - pelo delegado de polícia, quando o município não for sede de comarca; ou III - pelo POLICIAL (civil ou militar), quando o município não for sede de comarca e NÃO houver delegado disponível no momento da denúncia. Nesse caso, o juiz deve ser comunicado em até 24 horas.',
+    fundamentacaoLegal: 'Lei nº 11.340/2006, Art. 12-C, inciso III.',
+    hint: 'Sem juiz (não comarca) e sem delegado disponível = o Policial Militar pode afastar o agressor de imediato!',
+    difficulty: 'hard'
+  },
+  {
+    id: 'aocp-leg-27',
+    categoryId: 'humanos_leis',
+    bloco: 'bloco_3',
+    materiaNome: 'Legislação & Direitos Humanos',
+    topicoEdital: 'Estatuto do Desarmamento (Lei 10.826/2003) - Posse vs Porte Ilegal',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) No Estatuto do Desarmamento (Lei 10.826/2003), manter sob sua guarda arma de fogo de uso permitido, acessório ou munição, no interior de sua residência ou dependência desta, sem autorização legal, configura o crime de:',
+    options: [
+      'Porte ilegal de arma de fogo de uso permitido (Art. 14).',
+      'Posse irregular de arma de fogo de uso permitido (Art. 12).',
+      'Comércio ilegal de arma de fogo (Art. 17).',
+      'Disparo de arma de fogo em via pública (Art. 15).',
+      'Mero ilícito administrativo sem repercussão penal.'
+    ],
+    correctIndex: 1,
+    explanation: 'O Art. 12 tipifica a POSSE irregular de arma de fogo de uso permitido (no interior da residência ou no local de trabalho do qual seja o titular/responsável legal). Já o PORTE ilegal (Art. 14) ocorre quando a arma de fogo está fora da residência ou do local de trabalho (na rua, no carro, na cintura).',
+    fundamentacaoLegal: 'Lei nº 10.826/2003, Art. 12 (Posse) vs Art. 14 (Porte).',
+    hint: 'Dentro de casa ou do próprio comércio = POSSE (art. 12). Na rua ou transporte = PORTE (art. 14).',
+    difficulty: 'easy'
+  },
+  {
+    id: 'aocp-leg-28',
+    categoryId: 'humanos_leis',
+    bloco: 'bloco_3',
+    materiaNome: 'Legislação & Direitos Humanos',
+    topicoEdital: 'Lei de Abuso de Autoridade (Lei 13.869/2019) - Dolo Específico e Hermenêutica',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) De acordo com o Art. 1º, § 2º da Lei nº 13.869/2019 (Lei de Abuso de Autoridade), NÃO configura crime de abuso de autoridade:',
+    options: [
+      'o ato praticado com a finalidade exclusiva de prejudicar desafeto político.',
+      'a divergência na interpretação de lei ou na avaliação de fatos e provas.',
+      'a invasão de domicílio sem mandado e fora das hipóteses legais.',
+      'a decretação de prisão manifestamente ilegal com dolo de vingança pessoal.',
+      'a retenção ilegal de documentos de identificação da vítima.'
+    ],
+    correctIndex: 1,
+    explanation: 'O Art. 1º, § 2º da Lei 13.869/2019 estabelece categoricamente o chamado "crime de hermenêutica": "A divergência na interpretação de lei ou na avaliação de fatos e provas NÃO CONFIGURA abuso de autoridade". Além disso, todos os crimes exigem dolo específico (benefício próprio, prejudicar outrem ou capricho).',
+    fundamentacaoLegal: 'Lei nº 13.869/2019, Art. 1º, § 2º.',
+    hint: 'Divergência na interpretação da lei NÃO é crime de abuso de autoridade!',
+    difficulty: 'easy'
+  },
+  {
+    id: 'aocp-leg-29',
+    categoryId: 'humanos_leis',
+    bloco: 'bloco_3',
+    materiaNome: 'Legislação & Direitos Humanos',
+    topicoEdital: 'Estatuto dos Policiais Militares de PE (Lei 6.783/1974) - Conceito de Posto e Graduação',
+    banca: 'Instituto AOCP / Edital PMPE',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: 'Conforme a Lei Estadual nº 6.783/1974 (Estatuto dos Policiais Militares de Pernambuco), a distinção correta entre POSTO e GRADUAÇÃO é:',
+    options: [
+      'Posto é o grau hierárquico das praças conferido pelo Secretário de Defesa Social, e Graduação é o grau dos oficiais conferido pelo Governador.',
+      'Posto é o grau hierárquico do oficial, conferido por carta patente pelo Governador do Estado; e Graduação é o grau hierárquico da praça, conferido pelo Comandante Geral da PMPE.',
+      'Posto e Graduação são sinônimos perfeitos na hierarquia militar pernambucana.',
+      'Posto refere-se exclusivamente aos cabos e soldados do serviço ativo.',
+      'Graduação é conferida unicamente após a passagem para a reserva remunerada.'
+    ],
+    correctIndex: 1,
+    explanation: 'Nos termos do Estatuto dos Policiais Militares de PE: "Posto é o grau hierárquico do oficial, conferido por ato do Governador do Estado e confirmado em Carta Patente"; "Graduação é o grau hierárquico da praça, conferido pelo Comandante-Geral da Corporação".',
+    fundamentacaoLegal: 'Lei Estadual nº 6.783/1974 (Estatuto da PMPE), Artigos 14 e 15.',
+    hint: 'OFICIAL tem POSTO (Governador por carta patente). PRAÇA tem GRADUAÇÃO (Comandante Geral).',
+    difficulty: 'easy'
+  },
+  {
+    id: 'aocp-leg-30',
+    categoryId: 'humanos_leis',
+    bloco: 'bloco_3',
+    materiaNome: 'Legislação & Direitos Humanos',
+    topicoEdital: 'Declaração Universal dos Direitos Humanos (DUDH) de 1948',
+    banca: 'Instituto AOCP',
+    simuladoOrigem: 'Super Simulado Banca AOCP',
+    question: '(Instituto AOCP) Segundo o Artigo 1º da Declaração Universal dos Direitos Humanos (DUDH) proclamada pela ONU em 1948:',
+    options: [
+      'Todos os seres humanos nascem dependentes da soberania de seus respectivos governos.',
+      'Todos os seres humanos nascem livres e iguais em dignidade e direitos. São dotados de razão e consciência e devem agir em relação uns aos outros com espírito de fraternidade.',
+      'A pena de morte e a prisão perpétua são direitos soberanos inalienáveis de cada Estado-membro.',
+      'Os direitos humanos aplicam-se exclusivamente aos cidadãos de nações democráticas.',
+      'Nenhum indivíduo poderá deixar o território de seu próprio país sem autorização prévia.'
+    ],
+    correctIndex: 1,
+    explanation: 'O Artigo 1º da DUDH de 1948 é o fundamento universal da dignidade humana: "Todos os seres humanos nascem livres e iguais em dignidade e direitos. São dotados de razão e consciência e devem agir em relação uns aos outros com espírito de fraternidade".',
+    fundamentacaoLegal: 'Declaração Universal dos Direitos Humanos (DUDH/ONU, 1948), Artigo 1º.',
+    hint: 'Art. 1º da DUDH: Livres e iguais em dignidade e direitos + espírito de fraternidade.',
+    difficulty: 'easy'
+  }
+];

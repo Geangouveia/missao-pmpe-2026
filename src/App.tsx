@@ -19,9 +19,23 @@ import { FlashcardGame } from './components/FlashcardGame';
 import { AchievementsModal } from './components/AchievementsModal';
 import { DeckCreatorModal } from './components/DeckCreatorModal';
 import { SummaryModal } from './components/SummaryModal';
+import { LoginScreen } from './components/LoginScreen';
 import confetti from 'canvas-confetti';
 
 export function App() {
+  // Autenticação e Controle de Acesso
+  const [currentUser, setCurrentUser] = useState<string | null>(() => {
+    try {
+      const local = localStorage.getItem('pmpe_auth_user');
+      if (local) return JSON.parse(local).name;
+      const session = sessionStorage.getItem('pmpe_auth_user');
+      if (session) return JSON.parse(session).name;
+    } catch {
+      // fallback
+    }
+    return null;
+  });
+
   // Estado do Jogador
   const [stats, setStats] = useState<PlayerStats>(() => {
     const saved = localStorage.getItem('neuroquest_pmpe_stats');
@@ -139,6 +153,7 @@ export function App() {
     else if (selectedSimulado === 'semana_3') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('3ª Semana') : true;
     else if (selectedSimulado === 'semana_4') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('4ª Semana') : true;
     else if (selectedSimulado === 'nuce_completo') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('Completo') : true;
+    else if (selectedSimulado === 'aocp_especial') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('AOCP') : true;
 
     return matchCat && matchSim;
   };
@@ -299,6 +314,23 @@ export function App() {
     });
   };
 
+  // Handlers de Login e Logout
+  const handleLoginSuccess = (name: string) => {
+    setCurrentUser(name);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('pmpe_auth_user');
+    sessionStorage.removeItem('pmpe_auth_user');
+    setCurrentUser(null);
+    setActiveMode(null);
+  };
+
+  // Se o guerreiro ainda não autenticou, exibe a tela de login tático
+  if (!currentUser) {
+    return <LoginScreen onLoginSuccess={handleLoginSuccess} />;
+  }
+
   const hasCustomDecks = questions.some((q) => q.categoryId === 'custom');
 
   return (
@@ -314,6 +346,8 @@ export function App() {
           setActiveMode(null);
           setSummaryData(null);
         }}
+        userName={currentUser}
+        onLogout={handleLogout}
       />
 
       {/* Roteamento de Telas */}

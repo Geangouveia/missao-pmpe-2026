@@ -1,5 +1,5 @@
 import React from 'react';
-import { Volume2, VolumeX, Trophy, PlusCircle, Flame, Sparkles, Brain, ShieldAlert } from 'lucide-react';
+import { Volume2, VolumeX, Trophy, PlusCircle, Flame, Sparkles, ShieldAlert, LogOut, UserCheck } from 'lucide-react';
 import type { PlayerStats } from '../types/game';
 import { sound } from '../utils/sound';
 
@@ -10,6 +10,8 @@ interface HeaderProps {
   onOpenAchievements: () => void;
   onOpenDeckCreator: () => void;
   onResetToHome: () => void;
+  userName?: string;
+  onLogout?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -19,6 +21,8 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenAchievements,
   onOpenDeckCreator,
   onResetToHome,
+  userName,
+  onLogout,
 }) => {
   // Cálculo de XP para o próximo nível (100 XP por nível com escala suave)
   const xpCurrentLevel = stats.xp % 100;
@@ -111,6 +115,41 @@ export const Header: React.FC<HeaderProps> = ({
           >
             {isMuted ? <VolumeX size={18} color="var(--text-dim)" /> : <Volume2 size={18} color="var(--neon-cyan)" />}
           </button>
+
+          {userName && (
+            <div 
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                padding: '0.4rem 0.75rem',
+                borderRadius: '12px',
+                background: 'rgba(6, 182, 212, 0.1)',
+                border: '1px solid rgba(6, 182, 212, 0.25)',
+                fontSize: '0.8rem',
+                color: '#38bdf8',
+                fontWeight: 700
+              }}
+              title={`Guerreiro autenticado: ${userName}`}
+            >
+              <UserCheck size={14} color="#38bdf8" />
+              <span>{userName}</span>
+            </div>
+          )}
+
+          {onLogout && (
+            <button
+              className="icon-btn"
+              onClick={() => {
+                sound.playClick();
+                onLogout();
+              }}
+              title="Encerrar Sessão / Bloquear Acesso"
+              style={{ color: '#f87171' }}
+            >
+              <LogOut size={17} />
+            </button>
+          )}
         </div>
       </div>
     </header>
