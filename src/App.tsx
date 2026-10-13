@@ -167,7 +167,8 @@ export function App() {
     else if (selectedSimulado === 'semana_3') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('3ª Semana') : true;
     else if (selectedSimulado === 'semana_4') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('4ª Semana') : true;
     else if (selectedSimulado === 'nuce_completo') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('Completo') : true;
-    else if (selectedSimulado === 'aocp_especial') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('AOCP') : true;
+    else if (selectedSimulado === 'aocp_elite') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('Elite') : true;
+    else if (selectedSimulado === 'aocp_especial') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('Especial') : true;
 
     return matchCat && matchSim;
   };
@@ -226,11 +227,13 @@ export function App() {
     }));
 
     if (currentUser) {
-      const simLabel = selectedSimulado === 'aocp_especial'
-        ? 'Simulado Especial AOCP'
-        : selectedSimulado !== 'all'
-          ? `Simulado ${selectedSimulado.replace('_', ' ').toUpperCase()}`
-          : 'Simulado Geral PMPE';
+      const simLabel = selectedSimulado === 'aocp_elite'
+        ? 'Caderno Elite AOCP'
+        : selectedSimulado === 'aocp_especial'
+          ? 'Simulado Especial AOCP'
+          : selectedSimulado !== 'all'
+            ? `Simulado ${selectedSimulado.replace('_', ' ').toUpperCase()}`
+            : 'Simulado Geral PMPE';
 
       recordQuizCompletion(currentUser, {
         simuladoName: simLabel,

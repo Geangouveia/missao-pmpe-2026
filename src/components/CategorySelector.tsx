@@ -35,13 +35,14 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
   };
 
   const simuladosOptions = [
-    { id: 'all', label: 'Todos os Simulados (180Q)' },
+    { id: 'all', label: 'Todos os Simulados (205Q)' },
+    { id: 'aocp_elite', label: '⭐ Caderno Elite AOCP (Didática & Contas)' },
+    { id: 'aocp_especial', label: '⚡ Foco AOCP Edital (30Q)' },
+    { id: 'nuce_completo', label: 'Simulado PMPE Completo (60Q)' },
     { id: 'semana_1', label: '1ª Semana (15Q)' },
     { id: 'semana_2', label: '2ª Semana (25Q)' },
     { id: 'semana_3', label: '3ª Semana (25Q)' },
     { id: 'semana_4', label: '4ª Semana (25Q)' },
-    { id: 'nuce_completo', label: 'Simulado PMPE Completo (60Q)' },
-    { id: 'aocp_especial', label: '⚡ Foco AOCP Edital (30Q)' }
   ];
 
   return (

@@ -39,6 +39,10 @@ export interface QuizQuestion {
   difficulty: 'easy' | 'medium' | 'hard';
   banca?: string; // Ex: 'Instituto AOCP'
   simuladoOrigem?: string; // Ex: 'Simulado 1ª Semana', 'Simulado 2ª Semana', 'Simulado Oficial NUCE PMPE'
+  passoAPassoConta?: string[]; // Passo a passo detalhado de resolução matemática em RLM
+  analiseAlternativas?: Record<string, string>; // Raio-X de cada alternativa: A, B, C, D, E
+  dicaMacete?: string; // Macete mnemônico tático da PMPE / AOCP
+  porqueErrou?: Record<number, string>; // Feedback específico para a alternativa incorreta que o usuário marcou
 }
 
 export interface MatchPair {
