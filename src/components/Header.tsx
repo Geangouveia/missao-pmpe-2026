@@ -1,5 +1,5 @@
 import React from 'react';
-import { Volume2, VolumeX, Trophy, PlusCircle, Flame, Sparkles, ShieldAlert, LogOut, UserCheck } from 'lucide-react';
+import { Volume2, VolumeX, Trophy, PlusCircle, Flame, Sparkles, ShieldAlert, LogOut, UserCheck, BarChart3 } from 'lucide-react';
 import type { PlayerStats } from '../types/game';
 import { sound } from '../utils/sound';
 
@@ -12,6 +12,8 @@ interface HeaderProps {
   onResetToHome: () => void;
   userName?: string;
   onLogout?: () => void;
+  onOpenAnalytics?: () => void;
+  onOpenMotivation?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -23,6 +25,8 @@ export const Header: React.FC<HeaderProps> = ({
   onResetToHome,
   userName,
   onLogout,
+  onOpenAnalytics,
+  onOpenMotivation,
 }) => {
   // Cálculo de XP para o próximo nível (100 XP por nível com escala suave)
   const xpCurrentLevel = stats.xp % 100;
@@ -81,6 +85,46 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Ações Rápidas */}
         <div className="hud-actions">
+          {onOpenAnalytics && (
+            <button 
+              className="btn-secondary"
+              style={{
+                padding: '0.45rem 0.85rem',
+                fontSize: '0.82rem',
+                borderRadius: '12px',
+                background: 'rgba(6, 182, 212, 0.12)',
+                borderColor: 'rgba(6, 182, 212, 0.4)',
+                color: '#38bdf8'
+              }}
+              onClick={() => {
+                sound.playClick();
+                onOpenAnalytics();
+              }}
+              title="Quadro de Acompanhamento e Comparativo dos Alunos"
+            >
+              <BarChart3 size={16} color="#38bdf8" />
+              <span>Pelotão</span>
+            </button>
+          )}
+
+          {onOpenMotivation && (
+            <button 
+              className="icon-btn"
+              style={{
+                background: 'rgba(245, 158, 11, 0.12)',
+                borderColor: 'rgba(245, 158, 11, 0.35)',
+                color: '#f59e0b'
+              }}
+              onClick={() => {
+                sound.playClick();
+                onOpenMotivation();
+              }}
+              title="Ordem do Dia • Frase Motivacional"
+            >
+              <Flame size={17} color="#f59e0b" />
+            </button>
+          )}
+
           <button 
             className="btn-secondary"
             style={{ padding: '0.5rem 0.9rem', fontSize: '0.85rem', borderRadius: '12px' }}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trophy, Sparkles, Zap, RotateCcw, Home, Award } from 'lucide-react';
+import { Trophy, Sparkles, Zap, RotateCcw, Home, Award, BarChart2 } from 'lucide-react';
 import { sound } from '../utils/sound';
 
 interface SummaryModalProps {
@@ -9,6 +9,7 @@ interface SummaryModalProps {
   statsDetail: { label: string; value: string | number; icon?: React.ReactNode }[];
   onPlayAgain: () => void;
   onHome: () => void;
+  onOpenAnalytics?: () => void;
 }
 
 export const SummaryModal: React.FC<SummaryModalProps> = ({
@@ -18,10 +19,11 @@ export const SummaryModal: React.FC<SummaryModalProps> = ({
   statsDetail,
   onPlayAgain,
   onHome,
+  onOpenAnalytics,
 }) => {
   return (
     <div className="modal-overlay">
-      <div className="modal-content" style={{ textAlign: 'center', maxWidth: '520px' }}>
+      <div className="modal-content" style={{ textAlign: 'center', maxWidth: '540px' }}>
         <div
           style={{
             width: '80px',
@@ -79,7 +81,7 @@ export const SummaryModal: React.FC<SummaryModalProps> = ({
         </div>
 
         {/* Detalhes extras */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '2rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '1.5rem' }}>
           {statsDetail.map((item, idx) => (
             <div
               key={idx}
@@ -97,6 +99,35 @@ export const SummaryModal: React.FC<SummaryModalProps> = ({
             </div>
           ))}
         </div>
+
+        {/* Botão de Acesso Direto ao Relatório de Evolução */}
+        {onOpenAnalytics && (
+          <button
+            className="btn-primary"
+            style={{
+              width: '100%',
+              marginBottom: '1rem',
+              background: 'linear-gradient(135deg, #0ea5e9, #10b981)',
+              border: '1px solid rgba(16, 185, 129, 0.4)',
+              boxShadow: '0 4px 20px rgba(16, 185, 129, 0.3)',
+              fontWeight: 800,
+              padding: '0.85rem 1.25rem',
+              borderRadius: '14px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.5rem',
+              cursor: 'pointer'
+            }}
+            onClick={() => {
+              sound.playSuccess();
+              onOpenAnalytics();
+            }}
+          >
+            <BarChart2 size={20} />
+            <span>📊 Ver Relatório & Comparativo do Pelotão</span>
+          </button>
+        )}
 
         {/* Botões de Ação */}
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>

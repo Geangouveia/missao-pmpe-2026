@@ -20,6 +20,10 @@ import { AchievementsModal } from './components/AchievementsModal';
 import { DeckCreatorModal } from './components/DeckCreatorModal';
 import { SummaryModal } from './components/SummaryModal';
 import { LoginScreen } from './components/LoginScreen';
+import { DailyMotivationModal } from './components/DailyMotivationModal';
+import { StudentAnalyticsModal } from './components/StudentAnalyticsModal';
+import { getDailyMotivationalQuote, type MotivationalQuote } from './utils/motivationalQuotes';
+import { recordStudentLogin, recordQuizCompletion } from './utils/studentAnalytics';
 import confetti from 'canvas-confetti';
 
 export function App() {
@@ -86,12 +90,22 @@ export function App() {
   // Modais
   const [isAchievementsOpen, setIsAchievementsOpen] = useState(false);
   const [isDeckCreatorOpen, setIsDeckCreatorOpen] = useState(false);
+  const [isMotivationModalOpen, setIsMotivationModalOpen] = useState(false);
+  const [isAnalyticsModalOpen, setIsAnalyticsModalOpen] = useState(false);
+  const [dailyQuote, setDailyQuote] = useState<MotivationalQuote>(() => getDailyMotivationalQuote());
   const [summaryData, setSummaryData] = useState<{
     title: string;
     score: number;
     xpEarned: number;
     statsDetail: { label: string; value: string | number }[];
   } | null>(null);
+
+  // Registrar login inicial do aluno se já autenticado
+  useEffect(() => {
+    if (currentUser) {
+      recordStudentLogin(currentUser);
+    }
+  }, [currentUser]);
 
   // Persistir stats
   useEffect(() => {
@@ -200,6 +214,7 @@ export function App() {
     maxCombo: number;
     correctCount: number;
     totalCount: number;
+    subjectBreakdown?: Record<string, { total: number; correct: number }>;
   }) => {
     addXp(result.xpEarned);
     setStats((prev) => ({
@@ -208,6 +223,23 @@ export function App() {
       correctAnswers: prev.correctAnswers + result.correctCount,
     }));
 
+    if (currentUser) {
+      const simLabel = selectedSimulado === 'aocp_especial'
+        ? 'Simulado Especial AOCP'
+        : selectedSimulado !== 'all'
+          ? `Simulado ${selectedSimulado.replace('_', ' ').toUpperCase()}`
+          : 'Simulado Geral PMPE';
+
+      recordQuizCompletion(currentUser, {
+        simuladoName: simLabel,
+        totalAnswered: result.totalCount,
+        correctAnswers: result.correctCount,
+        score: result.score,
+        xpEarned: result.xpEarned,
+        subjectBreakdown: result.subjectBreakdown || {},
+      });
+    }
+
     unlockAchievement('first-win');
     if (result.maxCombo >= 5) {
       unlockAchievement('combo-5');
@@ -215,6 +247,7 @@ export function App() {
 
     const accuracy = Math.round((result.correctCount / Math.max(1, result.totalCount)) * 100);
     const passCutoff = accuracy >= 30;
+    const wrongCount = Math.max(0, result.totalCount - result.correctCount);
 
     setSummaryData({
       title: accuracy >= 70 ? 'Aprovado com Excelência PMPE!' : passCutoff ? 'Acima do Ponto de Corte (30%)!' : 'Abaixo da Nota de Corte',
@@ -224,6 +257,7 @@ export function App() {
         { label: 'Aproveitamento', value: `${accuracy}%` },
         { label: 'Corte do Edital (mín. 30%)', value: passCutoff ? '✅ Atingido' : '⚠️ Não atingido' },
         { label: 'Acertos da Rodada', value: `${result.correctCount} / ${result.totalCount} questões` },
+        { label: 'Erros da Rodada', value: `${wrongCount} questões` },
         { label: 'Maior Sequência de Acertos', value: `${result.maxCombo}x consecutivas` },
       ],
     });
@@ -316,7 +350,10 @@ export function App() {
 
   // Handlers de Login e Logout
   const handleLoginSuccess = (name: string) => {
+    recordStudentLogin(name);
     setCurrentUser(name);
+    setDailyQuote(getDailyMotivationalQuote());
+    setIsMotivationModalOpen(true);
   };
 
   const handleLogout = () => {
@@ -348,6 +385,8 @@ export function App() {
         }}
         userName={currentUser}
         onLogout={handleLogout}
+        onOpenAnalytics={() => setIsAnalyticsModalOpen(true)}
+        onOpenMotivation={() => setIsMotivationModalOpen(true)}
       />
 
       {/* Roteamento de Telas */}
@@ -443,6 +482,24 @@ export function App() {
             setSummaryData(null);
             setActiveMode(null);
           }}
+          onOpenAnalytics={() => setIsAnalyticsModalOpen(true)}
+        />
+      )}
+
+      {/* MODAL: MENSAGEM MOTIVACIONAL DO DIA */}
+      {isMotivationModalOpen && currentUser && (
+        <DailyMotivationModal
+          userName={currentUser}
+          quote={dailyQuote}
+          onClose={() => setIsMotivationModalOpen(false)}
+        />
+      )}
+
+      {/* MODAL: RELATÓRIO E COMPARATIVO DE ALUNOS DO PELOTÃO */}
+      {isAnalyticsModalOpen && currentUser && (
+        <StudentAnalyticsModal
+          currentUserName={currentUser}
+          onClose={() => setIsAnalyticsModalOpen(false)}
         />
       )}
     </div>

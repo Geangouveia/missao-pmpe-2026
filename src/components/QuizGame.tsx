@@ -12,6 +12,7 @@ interface QuizGameProps {
     maxCombo: number;
     correctCount: number;
     totalCount: number;
+    subjectBreakdown?: Record<string, { total: number; correct: number }>;
   }) => void;
   onExit: () => void;
 }
@@ -26,6 +27,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
   const [maxCombo, setMaxCombo] = useState(0);
   const [score, setScore] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
+  const [subjectBreakdown, setSubjectBreakdown] = useState<Record<string, { total: number; correct: number }>>({});
 
   // Power-ups state
   const [powerUps, setPowerUps] = useState({
@@ -58,7 +60,15 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
     setIsAnswered(true);
     sound.playError();
     setCombo(0);
-  }, []);
+    const subj = currentQ?.materiaNome || currentQ?.categoryId || 'Geral';
+    setSubjectBreakdown((prev) => {
+      const current = prev[subj] || { total: 0, correct: 0 };
+      return {
+        ...prev,
+        [subj]: { total: current.total + 1, correct: current.correct }
+      };
+    });
+  }, [currentQ]);
 
   // Selecionar Opção
   const handleSelectOption = (index: number) => {
@@ -68,6 +78,15 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
     setIsAnswered(true);
 
     const isCorrect = index === currentQ.correctIndex;
+    const subj = currentQ?.materiaNome || currentQ?.categoryId || 'Geral';
+
+    setSubjectBreakdown((prev) => {
+      const current = prev[subj] || { total: 0, correct: 0 };
+      return {
+        ...prev,
+        [subj]: { total: current.total + 1, correct: current.correct + (isCorrect ? 1 : 0) }
+      };
+    });
 
     if (isCorrect) {
       const nextCombo = combo + 1;
@@ -151,6 +170,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
         maxCombo,
         correctCount,
         totalCount: questions.length,
+        subjectBreakdown,
       });
     }
   };

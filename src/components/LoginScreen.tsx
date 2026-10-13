@@ -295,8 +295,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
             </div>
           </div>
 
-          {/* Opções: Lembrar de mim & Dica */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.82rem' }}>
+          {/* Opção: Lembrar de mim */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', fontSize: '0.82rem' }}>
             <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#94a3b8', cursor: 'pointer' }}>
               <input
                 type="checkbox"
@@ -306,10 +306,6 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
               />
               <span>Lembrar neste aparelho</span>
             </label>
-
-            <span style={{ color: '#06b6d4', fontWeight: 600 }}>
-              Chave: PMPE2026
-            </span>
           </div>
 
           {/* Botão de Entrar */}
