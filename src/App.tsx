@@ -67,6 +67,7 @@ export function App() {
   // Navegação e Filtros PMPE
   const [activeMode, setActiveMode] = useState<GameMode | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<CategoryId | 'all' | 'bloco_1' | 'bloco_2' | 'bloco_3'>('all');
+  const [selectedSimulado, setSelectedSimulado] = useState<string>('all');
 
   // Modais
   const [isAchievementsOpen, setIsAchievementsOpen] = useState(false);
@@ -122,13 +123,24 @@ export function App() {
     });
   };
 
-  // Filtrar dados pela categoria ou bloco selecionado
-  const filterByBlockOrCat = <T extends { categoryId: CategoryId; bloco?: string }>(item: T) => {
-    if (selectedCategory === 'all') return true;
-    if (selectedCategory === 'bloco_1') return item.bloco === 'bloco_1';
-    if (selectedCategory === 'bloco_2') return item.bloco === 'bloco_2';
-    if (selectedCategory === 'bloco_3') return item.bloco === 'bloco_3';
-    return item.categoryId === selectedCategory;
+  // Filtrar dados pela categoria/bloco E pelo simulado/semana selecionado
+  const filterByBlockOrCat = <T extends { categoryId: CategoryId; bloco?: string; simuladoOrigem?: string }>(item: T) => {
+    // 1. Filtro por Categoria ou Bloco Oficial PMPE
+    let matchCat = true;
+    if (selectedCategory === 'bloco_1') matchCat = item.bloco === 'bloco_1';
+    else if (selectedCategory === 'bloco_2') matchCat = item.bloco === 'bloco_2';
+    else if (selectedCategory === 'bloco_3') matchCat = item.bloco === 'bloco_3';
+    else if (selectedCategory !== 'all') matchCat = item.categoryId === selectedCategory;
+
+    // 2. Filtro por Origem do Simulado / Semana
+    let matchSim = true;
+    if (selectedSimulado === 'semana_1') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('1ª Semana') : true;
+    else if (selectedSimulado === 'semana_2') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('2ª Semana') : true;
+    else if (selectedSimulado === 'semana_3') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('3ª Semana') : true;
+    else if (selectedSimulado === 'semana_4') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('4ª Semana') : true;
+    else if (selectedSimulado === 'nuce_completo') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('Completo') : true;
+
+    return matchCat && matchSim;
   };
 
   const filteredQuestions = questions.filter(filterByBlockOrCat);
@@ -307,12 +319,15 @@ export function App() {
       {/* Roteamento de Telas */}
       {activeMode === null && (
         <>
-          {/* Seletor de Categoria e Blocos PMPE */}
+          {/* Seletor de Categoria, Semanas e Blocos PMPE */}
           <CategorySelector
             categories={CATEGORIES}
             selectedCategoryId={selectedCategory}
             onSelectCategory={setSelectedCategory}
             hasCustomDecks={hasCustomDecks}
+            selectedSimulado={selectedSimulado}
+            onSelectSimulado={setSelectedSimulado}
+            totalFilteredQuestions={filteredQuestions.length}
           />
 
           {/* Seletor de Modo de Jogo */}

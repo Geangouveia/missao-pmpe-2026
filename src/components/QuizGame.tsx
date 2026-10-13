@@ -251,6 +251,22 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
               {currentQ.banca || 'Instituto AOCP'}
             </span>
 
+            {currentQ.simuladoOrigem && (
+              <span
+                style={{
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
+                  padding: '0.25rem 0.6rem',
+                  borderRadius: '8px',
+                  background: 'rgba(168, 85, 247, 0.18)',
+                  color: '#e9d5ff',
+                  border: '1px solid rgba(168, 85, 247, 0.35)'
+                }}
+              >
+                📋 {currentQ.simuladoOrigem}
+              </span>
+            )}
+
             <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)', marginLeft: 'auto' }}>
               Pontos: <strong style={{ color: 'var(--neon-cyan)' }}>{score} pts</strong>
             </span>

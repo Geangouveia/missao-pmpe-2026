@@ -8,13 +8,19 @@ interface CategorySelectorProps {
   selectedCategoryId: CategoryId | 'all' | 'bloco_1' | 'bloco_2' | 'bloco_3';
   onSelectCategory: (id: CategoryId | 'all' | 'bloco_1' | 'bloco_2' | 'bloco_3') => void;
   hasCustomDecks: boolean;
+  selectedSimulado?: string;
+  onSelectSimulado?: (simuladoId: string) => void;
+  totalFilteredQuestions?: number;
 }
 
 export const CategorySelector: React.FC<CategorySelectorProps> = ({
   categories,
   selectedCategoryId,
   onSelectCategory,
-  hasCustomDecks
+  hasCustomDecks,
+  selectedSimulado = 'all',
+  onSelectSimulado,
+  totalFilteredQuestions
 }) => {
   const getIcon = (id: string) => {
     switch (id) {
@@ -28,9 +34,18 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
     }
   };
 
+  const simuladosOptions = [
+    { id: 'all', label: 'Todos os Simulados (150Q)' },
+    { id: 'semana_1', label: '1ª Semana (15Q)' },
+    { id: 'semana_2', label: '2ª Semana (25Q)' },
+    { id: 'semana_3', label: '3ª Semana (25Q)' },
+    { id: 'semana_4', label: '4ª Semana (25Q)' },
+    { id: 'nuce_completo', label: 'Simulado PMPE Completo (60Q)' }
+  ];
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-      {/* Barra de Filtro de Blocos Oficiais */}
+      {/* Barra de Filtro de Blocos Oficiais & Status */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <span style={{ fontSize: '0.82rem', fontWeight: 800, color: '#f59e0b', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
@@ -40,6 +55,44 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
             Mínimo 30% por Bloco
           </span>
         </div>
+        {typeof totalFilteredQuestions === 'number' && (
+          <div style={{ fontSize: '0.78rem', color: '#38bdf8', fontWeight: 700, background: 'rgba(56, 189, 248, 0.12)', padding: '0.2rem 0.6rem', borderRadius: '12px', border: '1px solid rgba(56, 189, 248, 0.25)' }}>
+            🎯 {totalFilteredQuestions} questões ativas
+          </div>
+        )}
+      </div>
+
+      {/* Seletor Rápido de Simulado / Semanas */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap', padding: '0.4rem 0.6rem', background: 'rgba(255, 255, 255, 0.03)', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+        <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', marginRight: '0.25rem', letterSpacing: '0.05em' }}>
+          Semana:
+        </span>
+        {simuladosOptions.map((sim) => {
+          const isActive = selectedSimulado === sim.id;
+          return (
+            <button
+              key={sim.id}
+              onClick={() => {
+                sound.playClick();
+                onSelectSimulado?.(sim.id);
+              }}
+              style={{
+                padding: '0.28rem 0.65rem',
+                fontSize: '0.76rem',
+                fontWeight: isActive ? 700 : 500,
+                color: isActive ? '#ffffff' : '#94a3b8',
+                background: isActive ? 'linear-gradient(135deg, #2563eb, #1d4ed8)' : 'rgba(255, 255, 255, 0.05)',
+                border: isActive ? '1px solid #3b82f6' : '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                transition: 'all 0.15s ease',
+                boxShadow: isActive ? '0 0 12px rgba(59, 130, 246, 0.45)' : 'none'
+              }}
+            >
+              {sim.label}
+            </button>
+          );
+        })}
       </div>
 
       {/* Seleção de Disciplinas e Blocos */}
