@@ -1,9 +1,10 @@
 import React from 'react';
-import { Volume2, VolumeX, Trophy, PlusCircle, Flame, Sparkles, LogOut, UserCheck, BarChart3 } from 'lucide-react';
+import { Volume2, VolumeX, Trophy, PlusCircle, Flame, Sparkles, LogOut, UserCheck, BarChart3, ShieldCheck } from 'lucide-react';
 import type { PlayerStats } from '../types/game';
 import { sound } from '../utils/sound';
 import { StreakFlame } from './StreakFlame';
 import { PmpeBrasaoLogo } from './PmpeBrasaoLogo';
+import { isMasterUser } from '../utils/authManager';
 
 interface HeaderProps {
   stats: PlayerStats;
@@ -16,6 +17,8 @@ interface HeaderProps {
   onLogout?: () => void;
   onOpenAnalytics?: () => void;
   onOpenMotivation?: () => void;
+  onOpenCommanderAccess?: () => void;
+  pendingUsersCount?: number;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -29,6 +32,8 @@ export const Header: React.FC<HeaderProps> = ({
   onLogout,
   onOpenAnalytics,
   onOpenMotivation,
+  onOpenCommanderAccess,
+  pendingUsersCount,
 }) => {
   // Cálculo de XP para o próximo nível (100 XP por nível com escala suave)
   const xpCurrentLevel = stats.xp % 100;
@@ -114,6 +119,39 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Ações Rápidas */}
         <div className="hud-actions">
+          {isMasterUser(userName || '') && onOpenCommanderAccess && (
+            <button 
+              className="btn-secondary"
+              style={{
+                padding: '0.45rem 0.85rem',
+                fontSize: '0.82rem',
+                borderRadius: '12px',
+                background: (pendingUsersCount && pendingUsersCount > 0)
+                  ? 'linear-gradient(135deg, rgba(245, 158, 11, 0.3) 0%, rgba(217, 119, 6, 0.25) 100%)'
+                  : 'rgba(245, 158, 11, 0.12)',
+                borderColor: (pendingUsersCount && pendingUsersCount > 0)
+                  ? '#f59e0b'
+                  : 'rgba(245, 158, 11, 0.4)',
+                color: '#fbbf24',
+                fontWeight: 800,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                boxShadow: (pendingUsersCount && pendingUsersCount > 0)
+                  ? '0 0 15px rgba(245, 158, 11, 0.4)'
+                  : 'none'
+              }}
+              onClick={() => {
+                sound.playClick();
+                onOpenCommanderAccess();
+              }}
+              title="Painel de Controle de Acesso Militar (Exclusivo Titular Gean)"
+            >
+              <ShieldCheck size={16} color="#fbbf24" />
+              <span>Comando {pendingUsersCount && pendingUsersCount > 0 ? `(${pendingUsersCount})` : ''}</span>
+            </button>
+          )}
+
           {onOpenAnalytics && (
             <button 
               className="btn-secondary"

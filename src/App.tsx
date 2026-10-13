@@ -22,8 +22,10 @@ import { SummaryModal } from './components/SummaryModal';
 import { LoginScreen } from './components/LoginScreen';
 import { DailyMotivationModal } from './components/DailyMotivationModal';
 import { StudentAnalyticsModal } from './components/StudentAnalyticsModal';
+import { CommanderAccessModal } from './components/CommanderAccessModal';
 import { getDailyMotivationalQuote, type MotivationalQuote } from './utils/motivationalQuotes';
 import { recordStudentLogin, recordQuizCompletion } from './utils/studentAnalytics';
+import { fetchRegistryFromCloud, isMasterUser } from './utils/authManager';
 import confetti from 'canvas-confetti';
 
 export function App() {
@@ -92,6 +94,8 @@ export function App() {
   const [isDeckCreatorOpen, setIsDeckCreatorOpen] = useState(false);
   const [isMotivationModalOpen, setIsMotivationModalOpen] = useState(false);
   const [isAnalyticsModalOpen, setIsAnalyticsModalOpen] = useState(false);
+  const [isCommanderAccessModalOpen, setIsCommanderAccessModalOpen] = useState(false);
+  const [pendingUsersCount, setPendingUsersCount] = useState(0);
   const [dailyQuote, setDailyQuote] = useState<MotivationalQuote>(() => getDailyMotivationalQuote());
   const [summaryData, setSummaryData] = useState<{
     title: string;
@@ -99,6 +103,25 @@ export function App() {
     xpEarned: number;
     statsDetail: { label: string; value: string | number }[];
   } | null>(null);
+
+  // Monitorar solicitações pendentes de acesso para a conta Titular do Comandante Gean
+  const checkPendingUsers = async () => {
+    try {
+      const reg = await fetchRegistryFromCloud();
+      const count = Object.values(reg).filter((u) => u.status === 'pending').length;
+      setPendingUsersCount(count);
+    } catch {
+      // fallback
+    }
+  };
+
+  useEffect(() => {
+    if (currentUser && isMasterUser(currentUser)) {
+      checkPendingUsers();
+      const interval = setInterval(checkPendingUsers, 12000);
+      return () => clearInterval(interval);
+    }
+  }, [currentUser]);
 
   // Registrar login inicial do aluno se já autenticado
   useEffect(() => {
@@ -228,6 +251,9 @@ export function App() {
     else if (selectedSimulado === 'nuce_completo') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('Completo') : true;
     else if (selectedSimulado === 'aocp_elite') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('Elite') : true;
     else if (selectedSimulado === 'aocp_especial') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('Especial') : true;
+    else if (selectedSimulado === 'banco_bloco1') matchSim = item.simuladoOrigem === 'banco_bloco1' || item.bloco === 'bloco_1';
+    else if (selectedSimulado === 'banco_bloco2') matchSim = item.simuladoOrigem === 'banco_bloco2' || item.bloco === 'bloco_2';
+    else if (selectedSimulado === 'banco_bloco3') matchSim = item.simuladoOrigem === 'banco_bloco3' || item.bloco === 'bloco_3';
 
     return matchCat && matchSim;
   };
@@ -453,6 +479,8 @@ export function App() {
         onLogout={handleLogout}
         onOpenAnalytics={() => setIsAnalyticsModalOpen(true)}
         onOpenMotivation={() => setIsMotivationModalOpen(true)}
+        onOpenCommanderAccess={() => setIsCommanderAccessModalOpen(true)}
+        pendingUsersCount={pendingUsersCount}
       />
 
       {/* Roteamento de Telas */}
@@ -570,6 +598,14 @@ export function App() {
         <StudentAnalyticsModal
           currentUserName={currentUser}
           onClose={() => setIsAnalyticsModalOpen(false)}
+        />
+      )}
+
+      {/* MODAL: COMANDO GERAL DE AUTORIZAÇÃO DE ACESSOS (EXCLUSIVO GEAN) */}
+      {isCommanderAccessModalOpen && (
+        <CommanderAccessModal
+          onClose={() => setIsCommanderAccessModalOpen(false)}
+          onRefreshPendingCount={checkPendingUsers}
         />
       )}
     </div>

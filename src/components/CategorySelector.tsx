@@ -35,8 +35,11 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
   };
 
   const simuladosOptions = [
-    { id: 'all', label: 'Todos os Simulados (205Q)' },
-    { id: 'aocp_elite', label: '⭐ Caderno Elite AOCP (Didática & Contas)' },
+    { id: 'all', label: 'Todos os Cadernos (510Q Totais)' },
+    { id: 'banco_bloco1', label: '📚 Super Caderno Bloco I (Português & Hist. PE - 100Q)' },
+    { id: 'banco_bloco2', label: '🧮 Super Caderno Bloco II (RLM & Informática - 100Q)' },
+    { id: 'banco_bloco3', label: '⚖️ Super Caderno Bloco III (Direito, DH & PMPE - 105Q)' },
+    { id: 'aocp_elite', label: '⭐ Caderno Elite AOCP (Resoluções Passo a Passo)' },
     { id: 'aocp_especial', label: '⚡ Foco AOCP Edital (30Q)' },
     { id: 'nuce_completo', label: 'Simulado PMPE Completo (60Q)' },
     { id: 'semana_1', label: '1ª Semana (15Q)' },
