@@ -13,6 +13,8 @@ interface QuizGameProps {
     correctCount: number;
     totalCount: number;
     subjectBreakdown?: Record<string, { total: number; correct: number }>;
+    timeSpentSeconds?: number;
+    averageTimePerQuestion?: number;
   }) => void;
   onExit: () => void;
 }
@@ -28,6 +30,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
   const [score, setScore] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [subjectBreakdown, setSubjectBreakdown] = useState<Record<string, { total: number; correct: number }>>({});
+  const [timeSpentTotal, setTimeSpentTotal] = useState(0);
 
   // Power-ups state
   const [powerUps, setPowerUps] = useState({
@@ -60,6 +63,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
     setIsAnswered(true);
     sound.playError();
     setCombo(0);
+    setTimeSpentTotal((prev) => prev + 30);
     const subj = currentQ?.materiaNome || currentQ?.categoryId || 'Geral';
     setSubjectBreakdown((prev) => {
       const current = prev[subj] || { total: 0, correct: 0 };
@@ -76,6 +80,9 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
 
     setSelectedOption(index);
     setIsAnswered(true);
+
+    const timeSpent = Math.max(1, 30 - timeLeft);
+    setTimeSpentTotal((prev) => prev + timeSpent);
 
     const isCorrect = index === currentQ.correctIndex;
     const subj = currentQ?.materiaNome || currentQ?.categoryId || 'Geral';
@@ -164,6 +171,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
     } else {
       // Fim do Simulado
       const calculatedXp = Math.floor(score / 5) + correctCount * 25;
+      const avgTime = Math.round((timeSpentTotal / Math.max(1, questions.length)) * 10) / 10;
       onFinish({
         score,
         xpEarned: calculatedXp,
@@ -171,6 +179,8 @@ export const QuizGame: React.FC<QuizGameProps> = ({ questions, onFinish, onExit 
         correctCount,
         totalCount: questions.length,
         subjectBreakdown,
+        timeSpentSeconds: timeSpentTotal,
+        averageTimePerQuestion: avgTime,
       });
     }
   };

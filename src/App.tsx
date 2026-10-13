@@ -215,6 +215,8 @@ export function App() {
     correctCount: number;
     totalCount: number;
     subjectBreakdown?: Record<string, { total: number; correct: number }>;
+    timeSpentSeconds?: number;
+    averageTimePerQuestion?: number;
   }) => {
     addXp(result.xpEarned);
     setStats((prev) => ({
@@ -237,6 +239,8 @@ export function App() {
         score: result.score,
         xpEarned: result.xpEarned,
         subjectBreakdown: result.subjectBreakdown || {},
+        timeSpentSeconds: result.timeSpentSeconds,
+        averageTimePerQuestion: result.averageTimePerQuestion,
       });
     }
 
@@ -248,6 +252,9 @@ export function App() {
     const accuracy = Math.round((result.correctCount / Math.max(1, result.totalCount)) * 100);
     const passCutoff = accuracy >= 30;
     const wrongCount = Math.max(0, result.totalCount - result.correctCount);
+    const timeDisplay = result.timeSpentSeconds
+      ? `${Math.floor(result.timeSpentSeconds / 60)}m ${result.timeSpentSeconds % 60}s (méd. ${result.averageTimePerQuestion || 0}s/q)`
+      : 'Ritmo Padrão';
 
     setSummaryData({
       title: accuracy >= 70 ? 'Aprovado com Excelência PMPE!' : passCutoff ? 'Acima do Ponto de Corte (30%)!' : 'Abaixo da Nota de Corte',
@@ -258,6 +265,7 @@ export function App() {
         { label: 'Corte do Edital (mín. 30%)', value: passCutoff ? '✅ Atingido' : '⚠️ Não atingido' },
         { label: 'Acertos da Rodada', value: `${result.correctCount} / ${result.totalCount} questões` },
         { label: 'Erros da Rodada', value: `${wrongCount} questões` },
+        { label: 'Tempo & Ritmo de Prova', value: timeDisplay },
         { label: 'Maior Sequência de Acertos', value: `${result.maxCombo}x consecutivas` },
       ],
     });

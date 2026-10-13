@@ -9,6 +9,8 @@ export interface StudentSessionRecord {
   accuracy: number; // percentage 0-100
   score: number;
   xpEarned: number;
+  timeSpentSeconds: number;
+  averageTimePerQuestion: number; // segundos por questão
   subjectBreakdown: Record<string, { total: number; correct: number }>;
 }
 
@@ -23,18 +25,28 @@ export interface StudentProfile {
   overallAccuracy: number;
   totalScore: number;
   totalXp: number;
+  totalTimeSpentSeconds: number;
+  averageTimePerQuestion: number;
   sessions: StudentSessionRecord[];
   subjectStats: Record<string, { answered: number; correct: number; accuracy: number }>;
 }
 
 const STORAGE_KEY = 'pmpe_students_analytics_db';
 
+// Nuvem KVdb do Pelotão PMPE 2026 (CORS aberto, persistente para múltiplos dispositivos)
+const CLOUD_BUCKET_ID = 'NdxEHuePZcZiBQmK9oR99o';
+const CLOUD_API_BASE = `https://kvdb.io/${CLOUD_BUCKET_ID}`;
+
+function sanitizeKey(name: string): string {
+  return encodeURIComponent(name.trim().toLowerCase().replace(/\s+/g, '_'));
+}
+
 export function getAllStudents(): Record<string, StudentProfile> {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) return JSON.parse(raw);
   } catch (err) {
-    console.error('Erro ao carregar estudantes:', err);
+    console.error('Erro ao carregar estudantes locais:', err);
   }
   return {};
 }
@@ -43,7 +55,77 @@ export function saveAllStudents(data: Record<string, StudentProfile>): void {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch (err) {
-    console.error('Erro ao salvar estudantes:', err);
+    console.error('Erro ao salvar estudantes locais:', err);
+  }
+}
+
+/**
+ * Envia o perfil do aluno para a Nuvem do Pelotão
+ */
+export async function syncStudentToCloud(profile: StudentProfile): Promise<boolean> {
+  try {
+    const key = `student_${sanitizeKey(profile.name)}`;
+    const res = await fetch(`${CLOUD_API_BASE}/${key}?ttl=31536000`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(profile),
+    });
+    return res.ok;
+  } catch (err) {
+    console.warn('Erro ao sincronizar perfil do aluno na nuvem:', err);
+    return false;
+  }
+}
+
+/**
+ * Busca todos os estudantes cadastrados na Nuvem do Pelotão
+ * e mescla com os dados locais sem sobrescrever dados mais recentes.
+ */
+export async function fetchCloudPelotao(): Promise<Record<string, StudentProfile>> {
+  try {
+    const res = await fetch(`${CLOUD_API_BASE}/?prefix=student_&format=json`);
+    if (!res.ok) throw new Error('Falha ao listar membros do pelotão na nuvem');
+    const keys: string[] = await res.json();
+
+    const cloudProfiles: Record<string, StudentProfile> = {};
+
+    await Promise.all(
+      keys.map(async (key) => {
+        try {
+          const r = await fetch(`${CLOUD_API_BASE}/${key}`);
+          if (r.ok) {
+            const profile: StudentProfile = await r.json();
+            if (profile && profile.name) {
+              cloudProfiles[profile.name] = profile;
+            }
+          }
+        } catch {
+          // Continua para as outras chaves
+        }
+      })
+    );
+
+    const localDb = getAllStudents();
+    const mergedDb: Record<string, StudentProfile> = { ...localDb };
+
+    for (const [name, cloudP] of Object.entries(cloudProfiles)) {
+      const localP = mergedDb[name];
+      if (!localP) {
+        mergedDb[name] = cloudP;
+      } else {
+        const cloudDate = new Date(cloudP.lastLogin || 0).getTime();
+        const localDate = new Date(localP.lastLogin || 0).getTime();
+        if (cloudDate >= localDate || (cloudP.sessions && cloudP.sessions.length >= (localP.sessions?.length || 0))) {
+          mergedDb[name] = cloudP;
+        }
+      }
+    }
+
+    saveAllStudents(mergedDb);
+    return mergedDb;
+  } catch (err) {
+    console.warn('Falha na sincronização em nuvem, mantendo dados locais:', err);
+    return getAllStudents();
   }
 }
 
@@ -65,6 +147,8 @@ export function recordStudentLogin(name: string): StudentProfile {
       overallAccuracy: 0,
       totalScore: 0,
       totalXp: 0,
+      totalTimeSpentSeconds: 0,
+      averageTimePerQuestion: 0,
       sessions: [],
       subjectStats: {}
     };
@@ -73,6 +157,10 @@ export function recordStudentLogin(name: string): StudentProfile {
   }
 
   saveAllStudents(db);
+
+  // Sincroniza em segundo plano com a nuvem
+  syncStudentToCloud(db[cleanName]).catch(() => {});
+
   return db[cleanName];
 }
 
@@ -85,6 +173,8 @@ export function recordQuizCompletion(
     score: number;
     xpEarned: number;
     subjectBreakdown: Record<string, { total: number; correct: number }>;
+    timeSpentSeconds?: number;
+    averageTimePerQuestion?: number;
   }
 ): StudentProfile {
   const cleanName = name.trim();
@@ -107,6 +197,10 @@ export function recordQuizCompletion(
     minute: '2-digit'
   });
 
+  const sessionTimeSpent = sessionData.timeSpentSeconds || 0;
+  const sessionAvgTime = sessionData.averageTimePerQuestion || 
+    (sessionTimeSpent > 0 ? Math.round((sessionTimeSpent / Math.max(1, sessionData.totalAnswered)) * 10) / 10 : 0);
+
   const newSession: StudentSessionRecord = {
     id: `sess-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
     date: now.toISOString(),
@@ -118,6 +212,8 @@ export function recordQuizCompletion(
     accuracy,
     score: sessionData.score,
     xpEarned: sessionData.xpEarned,
+    timeSpentSeconds: sessionTimeSpent,
+    averageTimePerQuestion: sessionAvgTime,
     subjectBreakdown: sessionData.subjectBreakdown || {}
   };
 
@@ -128,6 +224,10 @@ export function recordQuizCompletion(
   profile.totalWrong += wrongAnswers;
   profile.totalScore += sessionData.score;
   profile.totalXp += sessionData.xpEarned;
+  profile.totalTimeSpentSeconds = (profile.totalTimeSpentSeconds || 0) + sessionTimeSpent;
+  profile.averageTimePerQuestion = profile.totalAnswered > 0
+    ? Math.round(((profile.totalTimeSpentSeconds || 0) / profile.totalAnswered) * 10) / 10
+    : 0;
   profile.overallAccuracy = Math.round((profile.totalCorrect / Math.max(1, profile.totalAnswered)) * 100);
   profile.lastLogin = now.toISOString();
 
@@ -150,6 +250,10 @@ export function recordQuizCompletion(
   }
 
   saveAllStudents(db);
+
+  // Sincroniza em segundo plano com a nuvem compartilhada
+  syncStudentToCloud(profile).catch(() => {});
+
   return profile;
 }
 
