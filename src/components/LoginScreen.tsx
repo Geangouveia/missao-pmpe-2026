@@ -159,16 +159,6 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
     }
   };
 
-  const handleQuickName = (warriorName: string) => {
-    sound.playClick();
-    setName(warriorName);
-    setErrorMsg('');
-    setPendingNotice(null);
-    if (!password) {
-      setPassword('PMPE2026');
-    }
-  };
-
   return (
     <div style={{
       minHeight: '100vh',
@@ -213,7 +203,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
             position: 'relative',
             filter: 'drop-shadow(0 0 25px rgba(245, 158, 11, 0.45))'
           }}>
-            <PmpeBrasaoLogo size={135} showText={false} />
+            <PmpeBrasaoLogo size={105} showText={false} />
           </div>
 
           {/* Insígnia e Título Nobre */}
@@ -409,43 +399,9 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                 Identificação do Guerreiro:
               </label>
 
-              {/* Atalhos de Conta */}
-              <div style={{ display: 'flex', gap: '0.35rem' }}>
-                <button
-                  type="button"
-                  onClick={() => handleQuickName('Gean')}
-                  style={{
-                    fontSize: '0.68rem',
-                    padding: '0.15rem 0.5rem',
-                    borderRadius: '6px',
-                    background: 'rgba(245, 158, 11, 0.2)',
-                    border: '1px solid rgba(245, 158, 11, 0.45)',
-                    color: '#fbbf24',
-                    cursor: 'pointer',
-                    fontWeight: 800
-                  }}
-                  title="Acesso Titular Gean"
-                >
-                  ⭐ Gean (Titular)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleQuickName('Thiago')}
-                  style={{
-                    fontSize: '0.68rem',
-                    padding: '0.15rem 0.45rem',
-                    borderRadius: '6px',
-                    background: 'rgba(6, 182, 212, 0.15)',
-                    border: '1px solid rgba(6, 182, 212, 0.35)',
-                    color: '#38bdf8',
-                    cursor: 'pointer',
-                    fontWeight: 700
-                  }}
-                  title="Testar acesso como Thiago"
-                >
-                  Thiago
-                </button>
-              </div>
+              <span style={{ fontSize: '0.7rem', color: '#38bdf8', fontWeight: 700 }}>
+                Acesso Individual
+              </span>
             </div>
 
             <div style={{ position: 'relative' }}>
@@ -460,7 +416,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
               </div>
               <input
                 type="text"
-                placeholder="Ex: Gean, Thiago ou seu Nome"
+                placeholder="Digite seu nome ou identificação de guerreiro"
                 value={name}
                 onChange={(e) => {
                   setName(e.target.value);
@@ -500,7 +456,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
               </label>
 
               <span style={{ fontSize: '0.68rem', color: '#94a3b8' }}>
-                (Padrão 1º Acesso: PMPE2026)
+                (Senha Pessoal Cadastrada)
               </span>
             </div>
 
@@ -516,7 +472,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
               </div>
               <input
                 type={showPassword ? 'text' : 'password'}
-                placeholder="Insira a chave (Ex: PMPE2026 ou sua nova senha)"
+                placeholder="Insira sua senha de acesso"
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);

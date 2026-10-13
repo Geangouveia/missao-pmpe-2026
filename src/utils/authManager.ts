@@ -219,6 +219,35 @@ export async function resetUserToDefaultPass(targetName: string): Promise<boolea
   return true;
 }
 
+/**
+ * Altera a senha da conta titular do Comandante Gean
+ */
+export async function setMasterUserPassword(newPass: string): Promise<boolean> {
+  const cleanPass = newPass.trim();
+  if (!cleanPass || cleanPass.length < 4) return false;
+
+  const registry = await fetchRegistryFromCloud();
+  const masterKey = 'gean';
+
+  const existing = registry[masterKey] || {
+    name: 'Soldado Gean',
+    status: 'approved' as const,
+    isAdmin: true,
+    requestedAt: new Date().toISOString(),
+    approvedAt: new Date().toISOString(),
+  };
+
+  registry[masterKey] = {
+    ...existing,
+    personalPassword: cleanPass,
+    hasChangedPassword: true,
+  };
+
+  saveLocalUsersRegistry(registry);
+  await pushRegistryToCloud(registry);
+  return true;
+}
+
 export interface LoginValidationResult {
   allowed: boolean;
   status: 'approved' | 'pending' | 'rejected' | 'wrong_password' | 'needs_new_password';
@@ -249,11 +278,10 @@ export async function validateLoginAttempt(
 
   // 1. Caso seja o Comandante Titular Gean
   if (user.isAdmin || isMasterUser(cleanName)) {
-    const isMasterPassValid =
-      DEFAULT_PASSCODES.includes(cleanPass) ||
-      (user.personalPassword && cleanPass === user.personalPassword.toUpperCase()) ||
-      cleanPass === 'GEAN2026' ||
-      cleanPass === 'COMANDANTE';
+    const hasCustomPass = Boolean(user.personalPassword && user.personalPassword.toUpperCase() !== 'PMPE2026');
+    const isMasterPassValid = hasCustomPass
+      ? (user.personalPassword && cleanPass === user.personalPassword.toUpperCase())
+      : (DEFAULT_PASSCODES.includes(cleanPass) || cleanPass === 'GEAN2026' || cleanPass === 'COMANDANTE');
 
     if (isMasterPassValid) {
       return {
@@ -266,7 +294,9 @@ export async function validateLoginAttempt(
       return {
         allowed: false,
         status: 'wrong_password',
-        message: 'Chave Master Incorreta. Digite sua chave de segurança titular.',
+        message: hasCustomPass 
+          ? 'Senha Master Incorreta. Digite a sua nova senha pessoal de Comandante.'
+          : 'Chave Master Incorreta. Digite sua chave de segurança titular.',
       };
     }
   }

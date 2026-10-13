@@ -13,6 +13,7 @@ import { Header } from './components/Header';
 import { CategorySelector } from './components/CategorySelector';
 import { ModeSelector } from './components/ModeSelector';
 import { QuizGame } from './components/QuizGame';
+import { SurvivalGame } from './components/SurvivalGame';
 import { MatchGame } from './components/MatchGame';
 import { BossBattleGame } from './components/BossBattleGame';
 import { FlashcardGame } from './components/FlashcardGame';
@@ -504,6 +505,17 @@ export function App() {
             }}
           />
         </>
+      )}
+
+      {/* NOVO MODO: OPERAÇÃO SOBREVIVÊNCIA (TIRO CERTO) */}
+      {activeMode === 'survival' && (
+        <SurvivalGame
+          questions={filteredQuestions.length > 0 ? filteredQuestions : questions}
+          onFinish={handleQuizFinish}
+          onExit={() => setActiveMode(null)}
+          onAwardXp={(xp) => addXp(xp)}
+          onQuestionAnswered={handleQuestionAnswered}
+        />
       )}
 
       {/* MODO 1: SIMULADO TURBO AOCP */}

@@ -1,6 +1,6 @@
 import React from 'react';
 import type { GameMode } from '../types/game';
-import { Target, Network, Swords, BookOpen, ArrowRight } from 'lucide-react';
+import { Target, Network, Swords, BookOpen, ArrowRight, Flame } from 'lucide-react';
 import { sound } from '../utils/sound';
 
 interface ModeSelectorProps {
@@ -9,6 +9,17 @@ interface ModeSelectorProps {
 
 export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
   const modes = [
+    {
+      id: 'survival' as GameMode,
+      title: 'Operação Sobrevivência: Tiro Certo',
+      subtitle: 'Morte Súbita • 3 Vidas, Combos & Power-ups',
+      description: '3 vidas táticas, cronômetro de 35s e 3 habilidades especiais (50/50, +15s, Doutrina AOCP). Suba de patente militar e bata o recorde!',
+      icon: <Flame size={28} />,
+      badge: 'Mais Viciante 🔥',
+      color: '#f59e0b',
+      accentBg: 'linear-gradient(135deg, #d97706, #b45309)',
+      shadow: 'rgba(245, 158, 11, 0.45)'
+    },
     {
       id: 'quiz' as GameMode,
       title: 'Batalha de Questões AOCP',

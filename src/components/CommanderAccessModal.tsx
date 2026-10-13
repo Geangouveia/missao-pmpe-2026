@@ -18,6 +18,7 @@ import {
   approveUserAccess, 
   rejectUserAccess, 
   resetUserToDefaultPass,
+  setMasterUserPassword,
   type UserAccessRecord 
 } from '../utils/authManager';
 import { sound } from '../utils/sound';
@@ -76,6 +77,56 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
   const userList = Object.values(users);
   const pendingCount = userList.filter((u) => u.status === 'pending').length;
   const approvedCount = userList.filter((u) => u.status === 'approved').length;
+
+  // Estados para alteração da senha titular do Gean
+  const [showMasterPassSection, setShowMasterPassSection] = useState(false);
+  const [newMasterPass, setNewMasterPass] = useState('');
+  const [confirmMasterPass, setConfirmMasterPass] = useState('');
+  const [showPassText, setShowPassText] = useState(false);
+  const [masterPassError, setMasterPassError] = useState('');
+  const [isSavingMasterPass, setIsSavingMasterPass] = useState(false);
+
+  const handleUpdateMasterPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setMasterPassError('');
+
+    const clean = newMasterPass.trim();
+    const cleanConfirm = confirmMasterPass.trim();
+
+    if (!clean || clean.length < 4) {
+      sound.playError();
+      setMasterPassError('A nova senha deve ter no mínimo 4 caracteres.');
+      return;
+    }
+
+    if (clean !== cleanConfirm) {
+      sound.playError();
+      setMasterPassError('A confirmação da senha não confere com a nova senha digitada.');
+      return;
+    }
+
+    setIsSavingMasterPass(true);
+    try {
+      const ok = await setMasterUserPassword(clean);
+      if (ok) {
+        sound.playLevelUp();
+        showFeedback('🔑 Senha titular do Comandante Gean alterada e sincronizada na nuvem com sucesso!');
+        setNewMasterPass('');
+        setConfirmMasterPass('');
+        setShowMasterPassSection(false);
+        await loadData();
+      } else {
+        sound.playError();
+        setMasterPassError('Erro ao atualizar a senha.');
+      }
+    } catch (err) {
+      console.error(err);
+      sound.playError();
+      setMasterPassError('Falha de conexão ao gravar senha.');
+    } finally {
+      setIsSavingMasterPass(false);
+    }
+  };
 
   return (
     <div style={{
@@ -265,6 +316,165 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
               {approvedCount} Ativos
             </div>
           </div>
+        </div>
+
+        {/* Painel do Comandante Gean: Alterar Minha Própria Senha Master */}
+        <div style={{
+          padding: '1rem 1.75rem',
+          background: showMasterPassSection ? 'rgba(245, 158, 11, 0.12)' : 'rgba(30, 41, 59, 0.45)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+          transition: 'all 0.2s ease'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+              <div style={{
+                width: '34px',
+                height: '34px',
+                borderRadius: '10px',
+                background: 'rgba(245, 158, 11, 0.25)',
+                border: '1px solid rgba(245, 158, 11, 0.5)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#fbbf24'
+              }}>
+                <KeyRound size={18} />
+              </div>
+              <div>
+                <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#ffffff' }}>
+                  Segurança da Conta Titular (Comandante Gean)
+                </div>
+                <div style={{ fontSize: '0.74rem', color: '#94a3b8' }}>
+                  Altere e defina sua senha exclusiva de Comandante a qualquer momento.
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => {
+                sound.playClick();
+                setShowMasterPassSection(!showMasterPassSection);
+                setMasterPassError('');
+              }}
+              style={{
+                padding: '0.45rem 0.95rem',
+                borderRadius: '10px',
+                background: showMasterPassSection ? 'rgba(239, 68, 68, 0.2)' : 'linear-gradient(135deg, #d97706, #f59e0b)',
+                border: showMasterPassSection ? '1px solid rgba(239, 68, 68, 0.4)' : '1px solid #fbbf24',
+                color: showMasterPassSection ? '#fca5a5' : '#000000',
+                fontWeight: 800,
+                fontSize: '0.78rem',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem'
+              }}
+            >
+              <KeyRound size={14} />
+              <span>{showMasterPassSection ? 'Fechar' : '🔑 Alterar Minha Senha Master'}</span>
+            </button>
+          </div>
+
+          {showMasterPassSection && (
+            <form onSubmit={handleUpdateMasterPassword} style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {masterPassError && (
+                <div style={{
+                  padding: '0.55rem 0.85rem',
+                  borderRadius: '8px',
+                  background: 'rgba(239, 68, 68, 0.2)',
+                  border: '1px solid rgba(239, 68, 68, 0.4)',
+                  color: '#fca5a5',
+                  fontSize: '0.78rem',
+                  fontWeight: 700
+                }}>
+                  ⚠️ {masterPassError}
+                </div>
+              )}
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.75rem' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.72rem', color: '#cbd5e1', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.3rem' }}>
+                    Nova Senha do Comandante Gean:
+                  </label>
+                  <input
+                    type={showPassText ? 'text' : 'password'}
+                    placeholder="Mínimo 4 caracteres"
+                    value={newMasterPass}
+                    onChange={(e) => setNewMasterPass(e.target.value)}
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '0.6rem 0.85rem',
+                      background: 'rgba(15, 23, 42, 0.85)',
+                      border: '1px solid rgba(245, 158, 11, 0.5)',
+                      borderRadius: '10px',
+                      color: '#ffffff',
+                      fontSize: '0.85rem',
+                      outline: 'none',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.72rem', color: '#cbd5e1', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.3rem' }}>
+                    Confirmar Nova Senha:
+                  </label>
+                  <input
+                    type={showPassText ? 'text' : 'password'}
+                    placeholder="Repita a nova senha"
+                    value={confirmMasterPass}
+                    onChange={(e) => setConfirmMasterPass(e.target.value)}
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '0.6rem 0.85rem',
+                      background: 'rgba(15, 23, 42, 0.85)',
+                      border: '1px solid rgba(245, 158, 11, 0.5)',
+                      borderRadius: '10px',
+                      color: '#ffffff',
+                      fontSize: '0.85rem',
+                      outline: 'none',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.35rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', color: '#94a3b8', cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    checked={showPassText}
+                    onChange={(e) => setShowPassText(e.target.checked)}
+                  />
+                  <span>Mostrar texto da senha</span>
+                </label>
+
+                <button
+                  type="submit"
+                  disabled={isSavingMasterPass}
+                  style={{
+                    padding: '0.55rem 1.25rem',
+                    borderRadius: '10px',
+                    background: 'linear-gradient(135deg, #10b981, #059669)',
+                    border: '1px solid #34d399',
+                    color: '#ffffff',
+                    fontWeight: 800,
+                    fontSize: '0.82rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.4rem'
+                  }}
+                >
+                  <CheckCircle2 size={15} />
+                  <span>{isSavingMasterPass ? 'Salvando...' : 'Salvar Nova Senha Master'}</span>
+                </button>
+              </div>
+            </form>
+          )}
         </div>
 
         {/* Lista de Alunos e Pedidos de Acesso */}
@@ -466,6 +676,35 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
                           <span>Resetar Senha</span>
                         </button>
                       )}
+                    </div>
+                  )}
+
+                  {/* Ações para a conta titular Gean */}
+                  {isGeanMaster && (
+                    <div>
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setShowMasterPassSection(true);
+                        }}
+                        style={{
+                          padding: '0.55rem 0.95rem',
+                          borderRadius: '10px',
+                          background: 'linear-gradient(135deg, #d97706, #f59e0b)',
+                          border: '1px solid #fbbf24',
+                          color: '#000000',
+                          fontWeight: 800,
+                          fontSize: '0.82rem',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.4rem',
+                          boxShadow: '0 4px 12px rgba(245, 158, 11, 0.35)'
+                        }}
+                      >
+                        <KeyRound size={15} />
+                        <span>Mudar Minha Senha</span>
+                      </button>
                     </div>
                   )}
                 </div>
