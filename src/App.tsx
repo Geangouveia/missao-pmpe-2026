@@ -233,14 +233,20 @@ export function App() {
       if (hour < 8) toUnlock.push('early-bird');
       if (hour >= 21 || hour < 4) toUnlock.push('night-patrol');
 
+      let hasNewUnlock = false;
       let updatedAch = prev.achievements;
       for (const achId of toUnlock) {
         const item = updatedAch.find((a) => a.id === achId);
         if (item && !item.unlocked) {
+          hasNewUnlock = true;
           updatedAch = updatedAch.map((a) =>
             a.id === achId ? { ...a, unlocked: true, unlockedAt: new Date().toLocaleDateString('pt-BR') } : a
           );
         }
+      }
+
+      if (hasNewUnlock) {
+        sound.playMilitaryAchievement();
       }
 
       return {
@@ -259,7 +265,7 @@ export function App() {
     setStats((prev) => {
       const ach = prev.achievements.find((a) => a.id === id);
       if (ach && !ach.unlocked) {
-        sound.playLevelUp();
+        sound.playMilitaryAchievement();
         const updated = prev.achievements.map((a) =>
           a.id === id ? { ...a, unlocked: true, unlockedAt: new Date().toLocaleDateString('pt-BR') } : a
         );

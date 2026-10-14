@@ -208,6 +208,230 @@ class SoundController {
       });
     });
   }
+
+  // Gera ruído branco em um AudioBuffer para síntese balística
+  private createNoiseBuffer(duration = 0.5): AudioBuffer | null {
+    if (!this.ctx) return null;
+    const bufferSize = Math.floor(this.ctx.sampleRate * duration);
+    const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) {
+      data[i] = Math.random() * 2 - 1;
+    }
+    return buffer;
+  }
+
+  // Disparo militar único potente (.38 Revolver / Pistola Tática 9mm)
+  public playGunshot38(startTimeOffset = 0) {
+    if (this.isMuted) return;
+    this.initContext();
+    if (!this.ctx) return;
+
+    const t = this.ctx.currentTime + startTimeOffset;
+
+    // 1. Estalo de pólvora (Ruído filtrado)
+    const noiseBuffer = this.createNoiseBuffer(0.25);
+    if (noiseBuffer) {
+      const noise = this.ctx.createBufferSource();
+      noise.buffer = noiseBuffer;
+
+      const filter = this.ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(2600, t);
+      filter.frequency.exponentialRampToValueAtTime(280, t + 0.12);
+
+      const noiseGain = this.ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.32, t);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, t + 0.14);
+
+      noise.connect(filter);
+      filter.connect(noiseGain);
+      noiseGain.connect(this.ctx.destination);
+
+      noise.start(t);
+      noise.stop(t + 0.15);
+    }
+
+    // 2. Punch grave do calibre
+    const osc = this.ctx.createOscillator();
+    const oscGain = this.ctx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(150, t);
+    osc.frequency.exponentialRampToValueAtTime(38, t + 0.13);
+
+    oscGain.gain.setValueAtTime(0.28, t);
+    oscGain.gain.exponentialRampToValueAtTime(0.001, t + 0.135);
+
+    osc.connect(oscGain);
+    oscGain.connect(this.ctx.destination);
+
+    osc.start(t);
+    osc.stop(t + 0.14);
+  }
+
+  // Disparo Duplo Tático Militar (.38 / Pistola - BAM-BAM!)
+  // Acionado no combo de 2 acertos consecutivos
+  public playDoubleTap() {
+    if (this.isMuted) return;
+    this.playGunshot38(0);
+    this.playGunshot38(0.13);
+  }
+
+  // Rajada Automática de Fuzil AK-47 (TAT-TAT-TAT-TAT!)
+  // Acionado no combo de 4 acertos consecutivos
+  public playAk47Burst() {
+    if (this.isMuted) return;
+    this.initContext();
+    if (!this.ctx) return;
+
+    const shots = [0, 0.085, 0.17, 0.255];
+    shots.forEach((timeOffset) => {
+      const t = this.ctx!.currentTime + timeOffset;
+
+      const noiseBuffer = this.createNoiseBuffer(0.18);
+      if (noiseBuffer) {
+        const noise = this.ctx!.createBufferSource();
+        noise.buffer = noiseBuffer;
+
+        const filter = this.ctx!.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(1500, t);
+        filter.Q.setValueAtTime(2.2, t);
+
+        const noiseGain = this.ctx!.createGain();
+        noiseGain.gain.setValueAtTime(0.30, t);
+        noiseGain.gain.exponentialRampToValueAtTime(0.001, t + 0.08);
+
+        noise.connect(filter);
+        filter.connect(noiseGain);
+        noiseGain.connect(this.ctx!.destination);
+
+        noise.start(t);
+        noise.stop(t + 0.085);
+      }
+
+      // Punch seco e potente do fuzil 7.62mm
+      const osc = this.ctx!.createOscillator();
+      const oscGain = this.ctx!.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(180, t);
+      osc.frequency.exponentialRampToValueAtTime(42, t + 0.075);
+
+      oscGain.gain.setValueAtTime(0.25, t);
+      oscGain.gain.exponentialRampToValueAtTime(0.001, t + 0.08);
+
+      osc.connect(oscGain);
+      oscGain.connect(this.ctx!.destination);
+
+      osc.start(t);
+      osc.stop(t + 0.085);
+    });
+  }
+
+  // Disparo de Sniper de Precisão
+  public playSniperShot() {
+    if (this.isMuted) return;
+    this.initContext();
+    if (!this.ctx) return;
+
+    const t = this.ctx.currentTime;
+    const noiseBuffer = this.createNoiseBuffer(0.38);
+    if (noiseBuffer) {
+      const noise = this.ctx.createBufferSource();
+      noise.buffer = noiseBuffer;
+
+      const filter = this.ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(3200, t);
+      filter.frequency.exponentialRampToValueAtTime(180, t + 0.32);
+
+      const noiseGain = this.ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.38, t);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, t + 0.36);
+
+      noise.connect(filter);
+      filter.connect(noiseGain);
+      noiseGain.connect(this.ctx.destination);
+
+      noise.start(t);
+      noise.stop(t + 0.37);
+    }
+
+    const osc = this.ctx.createOscillator();
+    const oscGain = this.ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(200, t);
+    osc.frequency.exponentialRampToValueAtTime(35, t + 0.25);
+    oscGain.gain.setValueAtTime(0.32, t);
+    oscGain.gain.exponentialRampToValueAtTime(0.001, t + 0.26);
+
+    osc.connect(oscGain);
+    oscGain.connect(this.ctx.destination);
+    osc.start(t);
+    osc.stop(t + 0.27);
+  }
+
+  // Condecoração Militar / Conquista Desbloqueada (Salva de Tiro + Clarim Militar)
+  public playMilitaryAchievement() {
+    if (this.isMuted) return;
+    // Salva de tiro militar com eco cerimonial
+    this.playGunshot38(0);
+
+    const notes = [
+      { freq: 392.00, time: 0.14, dur: 0.12 }, // G4
+      { freq: 523.25, time: 0.28, dur: 0.14 }, // C5
+      { freq: 659.25, time: 0.44, dur: 0.16 }, // E5
+      { freq: 783.99, time: 0.62, dur: 0.38 }, // G5 (sustentado)
+    ];
+
+    this.initContext();
+    if (!this.ctx) return;
+
+    notes.forEach(({ freq, time, dur }) => {
+      const startTime = this.ctx!.currentTime + time;
+      const osc = this.ctx!.createOscillator();
+      const gain = this.ctx!.createGain();
+
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(freq, startTime);
+
+      gain.gain.setValueAtTime(0.001, startTime);
+      gain.gain.linearRampToValueAtTime(0.18, startTime + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, startTime + dur);
+
+      osc.connect(gain);
+      gain.connect(this.ctx!.destination);
+
+      osc.start(startTime);
+      osc.stop(startTime + dur);
+    });
+  }
+
+  // Clique Tático Militar de Rádio / Gatilho
+  public playTacticalClick() {
+    if (this.isMuted) return;
+    this.initContext();
+    if (!this.ctx) return;
+
+    const t = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(750, t);
+    osc.frequency.exponentialRampToValueAtTime(160, t + 0.03);
+
+    gain.gain.setValueAtTime(0.14, t);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.035);
+
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+
+    osc.start(t);
+    osc.stop(t + 0.035);
+  }
 }
 
 export const sound = new SoundController();

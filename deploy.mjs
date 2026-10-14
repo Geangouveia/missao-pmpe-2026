@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'deploy: sistema atualizado PMPE 2026 oficial (batalha removida, 100Q reduzidas, alinhamento corrigido)';
+  const commitMsg = 'deploy: efeitos sonoros militares (AK-47, .38, double-tap), questoes do Estatuto PMPE e tema militar aprofundado';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;

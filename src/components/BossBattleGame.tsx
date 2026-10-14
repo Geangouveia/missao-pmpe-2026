@@ -59,6 +59,7 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
       onAwardXp?.(30);
       onQuestionAnswered?.(true, 30);
 
+      sound.playGunshot38();
       sound.playBossHit();
       setIsBossHurt(true);
       setTimeout(() => setIsBossHurt(false), 400);
@@ -66,14 +67,14 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
       setBossHp(nextBossHp);
       setPlayerMana((prev) => Math.min(100, prev + 25));
       setBattleLog((prev) => [
-        `✨ Resposta Correta! Você lançou "Clarão do Conhecimento" causando ${damage} de dano!`,
+        `💥 Disparo Tático Certeiro! Você atingiu a Banca causando ${damage} de dano!`,
         ...prev.slice(0, 3)
       ]);
 
       if (nextBossHp <= 0) {
         // Vitória contra o Boss!
         setTimeout(() => {
-          sound.playLevelUp();
+          sound.playMilitaryAchievement();
           confetti({
             particleCount: 120,
             spread: 100,

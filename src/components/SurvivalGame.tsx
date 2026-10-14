@@ -143,10 +143,22 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     const isCorrect = idx === currentQ.correctIndex;
 
     if (isCorrect) {
-      sound.playSuccess();
       const newStreak = streak + 1;
       setStreak(newStreak);
       if (newStreak > maxStreak) setMaxStreak(newStreak);
+
+      // Efeitos Sonoros Militares Imersivos (Tiros AK, .38, Double Tap, etc.)
+      if (newStreak === 2) {
+        sound.playDoubleTap(); // Duplo disparo rápido .38
+      } else if (newStreak === 4) {
+        sound.playAk47Burst(); // Rajada de Fuzil AK-47
+      } else if (newStreak >= 6 && newStreak % 2 === 0) {
+        sound.playSniperShot(); // Tiro de Precisão Sniper
+      } else if ((totalCorrect + 1) % 5 === 0) {
+        sound.playMilitaryAchievement(); // Salva de honra militar
+      } else {
+        sound.playGunshot38(); // Tiro tático seco .38
+      }
 
       // Multiplicador de Combo
       const multiplier = Math.min(5, Math.floor(newStreak / 2) + 1);
@@ -158,9 +170,8 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
       setTotalCorrect((prev) => prev + 1);
       onAwardXp(xpGained);
 
-      // Comemoração a cada marco de acertos
+      // Comemoração visual a cada marco de 5 acertos
       if ((totalCorrect + 1) % 5 === 0) {
-        sound.playLevelUp();
         confetti({ particleCount: 60, spread: 60, origin: { y: 0.7 } });
       }
 
