@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'deploy: painel tatico de duelo 1vs1 do pelotao (6 vagas), 25 novas questoes de Direitos Humanos PMPE e banco purgado para comandante gean';
+  const commitMsg = 'deploy: 4 vidas, 50s por questao, disparo triplo de pistola com som (4 cargas), explicacao tintim por tintim, sem repeticao diaria e tela de game over com tempo para analise';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;

@@ -17,14 +17,18 @@ import {
   ChevronRight,
   TrendingUp,
   AlertTriangle,
-  ArrowLeft
+  ArrowLeft,
+  Scale,
+  BookOpen
 } from 'lucide-react';
 import { sound } from '../utils/sound';
 import confetti from 'canvas-confetti';
 import { prepareGameQuestions } from '../utils/questionRandomizer';
+import { filterOutAnsweredToday, markQuestionAnsweredToday } from '../utils/dailyQuestionTracker';
 
 interface SurvivalGameProps {
   questions: QuizQuestion[];
+  userName?: string;
   onFinish: (result: {
     score: number;
     xpEarned: number;
@@ -51,25 +55,27 @@ const MILITARY_RANKS = [
 
 export const SurvivalGame: React.FC<SurvivalGameProps> = ({
   questions,
+  userName = '',
   onFinish,
   onExit,
   onAwardXp,
   onQuestionAnswered,
 }) => {
-  // Embaralhar as questões e alternativas para esta sessão de sobrevivência
+  // Embaralhar as questões e filtrar não repetidas no mesmo dia (pedido pelo Comandante Gean)
   const [shuffledQuestions, setShuffledQuestions] = useState<QuizQuestion[]>(() => {
-    return prepareGameQuestions(questions);
+    const unrepeated = filterOutAnsweredToday(questions, userName);
+    return prepareGameQuestions(unrepeated.length > 0 ? unrepeated : questions);
   });
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [lives, setLives] = useState(3);
+  const [lives, setLives] = useState(4); // Comandante Gean: Aumentado para 4 vidas (+1 vida)!
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
   const [maxStreak, setMaxStreak] = useState(0);
   const [totalCorrect, setTotalCorrect] = useState(0);
 
-  // Tempo por questão (35 segundos padrão)
-  const QUESTION_TIME = 35;
+  // Tempo por questão (50 segundos - Comandante Gean)
+  const QUESTION_TIME = 50;
   const [timeLeft, setTimeLeft] = useState(QUESTION_TIME);
   const [isAnswered, setIsAnswered] = useState(false);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
@@ -79,6 +85,9 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
   const [powerupFiftyFiftyCharges, setPowerupFiftyFiftyCharges] = useState(2);
   const [powerupTimeCharges, setPowerupTimeCharges] = useState(2);
   const [powerupHintCharges, setPowerupHintCharges] = useState(2);
+  // NOVO PODER: Disparo Triplo de Pistola (4 chances no jogo - Comandante Gean)
+  const [powerupTripleShotCharges, setPowerupTripleShotCharges] = useState(4);
+  const [isShootingPistol, setIsShootingPistol] = useState(false);
 
   const [disabledOptions, setDisabledOptions] = useState<number[]>([]);
   const [showHintActive, setShowHintActive] = useState(false);
@@ -123,13 +132,16 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     const newLives = lives - 1;
     setLives(newLives);
 
+    if (currentQ?.id) {
+      markQuestionAnsweredToday(userName, currentQ.id);
+    }
+
     if (onQuestionAnswered) {
       onQuestionAnswered(false, 0);
     }
 
-    if (newLives <= 0) {
-      setTimeout(() => triggerGameOver(score, totalCorrect), 1200);
-    }
+    // Comandante Gean pediu: se perdeu todas as vidas, NÃO fechar a tela automaticamente!
+    // O aluno precisa ler a explicação com calma e ver onde errou.
   };
 
   // Responder Questão
@@ -138,6 +150,11 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
 
     if (timerRef.current) clearInterval(timerRef.current);
     setSelectedOption(idx);
+    setIsAnswered(true);
+
+    if (currentQ?.id) {
+      markQuestionAnsweredToday(userName, currentQ.id);
+    }
     setIsAnswered(true);
 
     const isCorrect = idx === currentQ.correctIndex;
@@ -188,9 +205,8 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
         onQuestionAnswered(false, 0);
       }
 
-      if (newLives <= 0) {
-        setTimeout(() => triggerGameOver(score, totalCorrect), 1600);
-      }
+      // Comandante Gean: NÃO fechar a tela automaticamente se zerar as vidas!
+      // O combatente terá todo o tempo que precisar para ler a explicação da última questão.
     }
   };
 
@@ -254,11 +270,33 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     setShowHintActive(true);
   };
 
+  // NOVO PODER: Disparo Triplo de Pistola (-3 Opções Incorretas - 4 Cargas - Comandante Gean)
+  const useTripleShot = () => {
+    if (powerupTripleShotCharges <= 0 || isAnswered || disabledOptions.length >= 3) return;
+    setPowerupTripleShotCharges((prev) => prev - 1);
+    setIsShootingPistol(true);
+    sound.playTriplePistolShot();
+
+    // Eliminar exatamente 3 alternativas incorretas, restando apenas 1 certa e 1 errada (2 opções no total)
+    const incorrectIndices = currentQ.options
+      .map((_, i) => i)
+      .filter((i) => i !== currentQ.correctIndex && !disabledOptions.includes(i));
+
+    const shuffledIncorrect = incorrectIndices.sort(() => Math.random() - 0.5);
+    const toDisable = shuffledIncorrect.slice(0, 3);
+
+    setTimeout(() => {
+      setDisabledOptions((prev) => Array.from(new Set([...prev, ...toDisable])));
+      setIsShootingPistol(false);
+    }, 450);
+  };
+
   // Reiniciar Missão com perguntas e gabaritos totalmente novos
   const handleRestart = () => {
     sound.playClick();
-    setShuffledQuestions(prepareGameQuestions(questions));
-    setLives(3);
+    const unrepeated = filterOutAnsweredToday(questions, userName || '');
+    setShuffledQuestions(prepareGameQuestions(unrepeated.length > 0 ? unrepeated : questions));
+    setLives(4);
     setScore(0);
     setStreak(0);
     setMaxStreak(0);
@@ -273,6 +311,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     setPowerupFiftyFiftyCharges(2);
     setPowerupTimeCharges(2);
     setPowerupHintCharges(2);
+    setPowerupTripleShotCharges(4);
   };
 
   // Concluir e Voltar
@@ -400,7 +439,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                 Vidas:
               </span>
               <div style={{ display: 'flex', gap: '0.35rem' }}>
-                {[1, 2, 3].map((heartIndex) => (
+                {[1, 2, 3, 4].map((heartIndex) => (
                   <Heart
                     key={heartIndex}
                     size={22}
@@ -531,6 +570,42 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
             >
               <Crosshair size={15} />
               <span>Tiro Certeiro (50/50) [{powerupFiftyFiftyCharges}]</span>
+            </button>
+
+            {/* NOVO PODER: DISPARO TRIPLO DE PISTOLA COM SOM (4 CHANCES - COMANDANTE GEAN) */}
+            <button
+              onClick={useTripleShot}
+              disabled={powerupTripleShotCharges <= 0 || isAnswered || disabledOptions.length >= 3}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                padding: '0.45rem 0.95rem',
+                borderRadius: '12px',
+                background: powerupTripleShotCharges > 0 && !isAnswered && disabledOptions.length < 3
+                  ? isShootingPistol
+                    ? 'linear-gradient(135deg, rgba(239, 68, 68, 0.5), rgba(220, 38, 38, 0.7))'
+                    : 'linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(185, 28, 28, 0.35))'
+                  : 'rgba(255, 255, 255, 0.05)',
+                border: powerupTripleShotCharges > 0 && !isAnswered && disabledOptions.length < 3
+                  ? '1px solid #ef4444'
+                  : '1px solid rgba(255, 255, 255, 0.1)',
+                color: powerupTripleShotCharges > 0 && !isAnswered && disabledOptions.length < 3 ? '#fca5a5' : '#64748b',
+                fontWeight: 800,
+                fontSize: '0.78rem',
+                cursor: powerupTripleShotCharges > 0 && !isAnswered && disabledOptions.length < 3 ? 'pointer' : 'not-allowed',
+                transform: isShootingPistol ? 'scale(1.05)' : 'none',
+                boxShadow: isShootingPistol ? '0 0 15px rgba(239, 68, 68, 0.8)' : 'none',
+                transition: 'all 0.18s ease'
+              }}
+              title="Disparo Triplo de Pistola (POW! POW! POW!) - Elimina 3 alternativas erradas, restando apenas 2 opções!"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 10h14l3-3v5l-3 1-1 7-4-1 1-6H3v-3z" />
+                <path d="M7 13v3" />
+                <circle cx="17" cy="8" r="1" fill="currentColor" />
+              </svg>
+              <span>Disparo Triplo (-3 Opções) [{powerupTripleShotCharges}]</span>
             </button>
 
             <button
@@ -737,6 +812,24 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
 
                     <span style={{ flex: 1, lineHeight: 1.4 }}>{opt}</span>
 
+                    {isDisabled && !isAnswered && (
+                      <span style={{
+                        fontSize: '0.72rem',
+                        color: '#f87171',
+                        fontWeight: 800,
+                        background: 'rgba(239, 68, 68, 0.15)',
+                        border: '1px solid rgba(239, 68, 68, 0.3)',
+                        padding: '0.2rem 0.5rem',
+                        borderRadius: '6px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.25rem',
+                        flexShrink: 0
+                      }}>
+                        💥 Abatida
+                      </span>
+                    )}
+
                     {isAnswered && isCorrect && (
                       <CheckCircle2 size={20} color="#10b981" style={{ flexShrink: 0 }} />
                     )}
@@ -748,7 +841,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
               })}
             </div>
 
-            {/* FUNDAMENTAÇÃO LEGAL & BOTÃO PRÓXIMA */}
+            {/* QUADRO DE EXPLICAÇÃO COMPLETO TINTIM POR TINTIM (COMANDANTE GEAN) */}
             {isAnswered && (
               <div style={{
                 marginTop: '1.5rem',
@@ -759,56 +852,235 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                 gap: '1rem',
                 animation: 'fadeIn 0.25s ease-out'
               }}>
-                <div style={{
-                  padding: '1rem',
-                  borderRadius: '14px',
-                  background: selectedOption === currentQ.correctIndex ? 'rgba(16, 185, 129, 0.12)' : 'rgba(239, 68, 68, 0.12)',
-                  border: `1px solid ${selectedOption === currentQ.correctIndex ? 'rgba(16, 185, 129, 0.35)' : 'rgba(239, 68, 68, 0.35)'}`
-                }}>
+                {/* AVISO QUANDO ESGOTA AS 4 VIDAS - NÃO FECHA ATÉ O ALUNO CLICAR */}
+                {lives <= 0 && (
                   <div style={{
-                    fontSize: '0.82rem',
+                    padding: '1.1rem 1.25rem',
+                    borderRadius: '16px',
+                    background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(185, 28, 28, 0.35))',
+                    border: '1.5px solid #ef4444',
+                    color: '#fecaca',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '0.85rem',
+                    boxShadow: '0 8px 25px rgba(239, 68, 68, 0.3)'
+                  }}>
+                    <AlertTriangle size={24} color="#f87171" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    <div style={{ fontSize: '0.88rem', lineHeight: 1.5 }}>
+                      <strong style={{ color: '#ffffff', display: 'block', fontSize: '1rem', marginBottom: '0.25rem' }}>
+                        🚨 VOCÊ PERDEU SUA ÚLTIMA VIDA NESTA QUESTÃO!
+                      </strong>
+                      Tome todo o tempo necessário para estudar e analisar a explicação detalhada <strong>tintim por tintim</strong> logo abaixo.
+                      Quando terminar sua análise com calma, clique no botão vermelho ao final para ver o relatório oficial da missão.
+                    </div>
+                  </div>
+                )}
+
+                {/* PAINEL PEDAGÓGICO TINTIM POR TINTIM */}
+                <div style={{
+                  padding: '1.25rem',
+                  borderRadius: '16px',
+                  background: selectedOption === currentQ.correctIndex 
+                    ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 95, 70, 0.2))' 
+                    : 'linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(127, 29, 29, 0.2))',
+                  border: `1.5px solid ${selectedOption === currentQ.correctIndex ? 'rgba(16, 185, 129, 0.4)' : 'rgba(239, 68, 68, 0.4)'}`,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.85rem'
+                }}>
+                  {/* Status do Disparo */}
+                  <div style={{
+                    fontSize: '0.86rem',
                     fontWeight: 900,
                     color: selectedOption === currentQ.correctIndex ? '#34d399' : '#f87171',
                     textTransform: 'uppercase',
-                    marginBottom: '0.35rem',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.4rem'
+                    gap: '0.45rem'
                   }}>
-                    {selectedOption === currentQ.correctIndex ? '🎯 TIRO CERTEIRO! ACERTO TÁTICO' : '⚠️ IMPACTO SOFRIDO! MENOS 1 VIDA'}
+                    {selectedOption === currentQ.correctIndex 
+                      ? '🎯 TIRO CERTEIRO! ACERTO TÁTICO CONFIRMADO' 
+                      : '⚠️ TIRO DESVIADO! IMPACTO SOFRIDO (-1 VIDA)'}
                   </div>
 
-                  <p style={{ margin: '0 0 0.5rem', fontSize: '0.88rem', color: '#e2e8f0', lineHeight: 1.45 }}>
-                    {currentQ.explanation}
-                  </p>
+                  {/* Comparativo de Respostas */}
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                    gap: '0.75rem',
+                    padding: '0.85rem',
+                    borderRadius: '12px',
+                    background: 'rgba(15, 23, 42, 0.65)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)'
+                  }}>
+                    {selectedOption !== null && selectedOption !== -1 && (
+                      <div style={{ fontSize: '0.84rem' }}>
+                        <span style={{ color: '#94a3b8', fontWeight: 700 }}>Sua Resposta: </span>
+                        <strong style={{ color: selectedOption === currentQ.correctIndex ? '#34d399' : '#f87171' }}>
+                          Alternativa {['A', 'B', 'C', 'D', 'E'][selectedOption]}
+                        </strong>
+                        <div style={{ color: '#cbd5e1', fontSize: '0.8rem', marginTop: '0.2rem', fontStyle: 'italic' }}>
+                          "{currentQ.options[selectedOption]}"
+                        </div>
+                      </div>
+                    )}
+                    <div style={{ fontSize: '0.84rem' }}>
+                      <span style={{ color: '#94a3b8', fontWeight: 700 }}>Gabarito Oficial AOCP: </span>
+                      <strong style={{ color: '#34d399' }}>
+                        Alternativa {['A', 'B', 'C', 'D', 'E'][currentQ.correctIndex]}
+                      </strong>
+                      <div style={{ color: '#86efac', fontSize: '0.8rem', marginTop: '0.2rem', fontWeight: 600 }}>
+                        "{currentQ.options[currentQ.correctIndex]}"
+                      </div>
+                    </div>
+                  </div>
 
+                  {/* Raio-X do Erro Específico (Por que o aluno errou) */}
+                  {selectedOption !== currentQ.correctIndex && selectedOption !== null && selectedOption !== -1 && (
+                    <div style={{
+                      padding: '0.9rem 1rem',
+                      borderRadius: '12px',
+                      background: 'rgba(239, 68, 68, 0.08)',
+                      border: '1px dashed rgba(239, 68, 68, 0.45)',
+                      fontSize: '0.86rem',
+                      color: '#fca5a5',
+                      lineHeight: 1.5
+                    }}>
+                      <strong style={{ color: '#f87171', display: 'flex', alignItems: 'center', gap: '0.35rem', marginBottom: '0.3rem' }}>
+                        🔍 Raio-X do seu Erro na Alternativa {['A', 'B', 'C', 'D', 'E'][selectedOption]}:
+                      </strong>
+                      {currentQ.porqueErrou?.[selectedOption] ||
+                       currentQ.analiseAlternativas?.[['A', 'B', 'C', 'D', 'E'][selectedOption]] ||
+                       `A alternativa ${['A', 'B', 'C', 'D', 'E'][selectedOption]} está incorreta porque diverge da literalidade legal e do posicionamento consolidado exigido pela banca AOCP para a PMPE.`}
+                    </div>
+                  )}
+
+                  {/* Explicação Tintim por Tintim (Passo a Passo e Fundamentação) */}
+                  <div style={{
+                    padding: '1rem',
+                    borderRadius: '12px',
+                    background: 'rgba(15, 23, 42, 0.75)',
+                    border: '1px solid rgba(56, 189, 248, 0.3)',
+                    fontSize: '0.88rem',
+                    color: '#e2e8f0',
+                    lineHeight: 1.6
+                  }}>
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.45rem',
+                      fontWeight: 800,
+                      color: '#38bdf8',
+                      fontSize: '0.82rem',
+                      textTransform: 'uppercase',
+                      marginBottom: '0.5rem'
+                    }}>
+                      <BookOpen size={16} />
+                      <span>Explicação Tintim por Tintim da Questão:</span>
+                    </div>
+
+                    <p style={{ margin: 0, color: '#f1f5f9' }}>
+                      {currentQ.explanation}
+                    </p>
+
+                    {/* Resolução Matemática Passo a Passo (RLM) */}
+                    {currentQ.passoAPassoConta && currentQ.passoAPassoConta.length > 0 && (
+                      <div style={{ marginTop: '0.9rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                        <div style={{ fontWeight: 800, color: '#fbbf24', fontSize: '0.8rem', marginBottom: '0.45rem' }}>
+                          📐 Resolução Matemática / Lógica Passo a Passo:
+                        </div>
+                        {currentQ.passoAPassoConta.map((step, sIdx) => (
+                          <div key={sIdx} style={{ fontSize: '0.83rem', color: '#cbd5e1', marginBottom: '0.3rem', paddingLeft: '0.6rem', borderLeft: '2px solid #fbbf24' }}>
+                            {step}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Raio-X de Todas as Alternativas se disponível */}
+                    {currentQ.analiseAlternativas && Object.keys(currentQ.analiseAlternativas).length > 0 && (
+                      <div style={{ marginTop: '0.9rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                        <div style={{ fontWeight: 800, color: '#94a3b8', fontSize: '0.8rem', marginBottom: '0.45rem' }}>
+                          📋 Análise Tática das Alternativas:
+                        </div>
+                        {Object.entries(currentQ.analiseAlternativas).map(([altLetter, analise]) => (
+                          <div key={altLetter} style={{ 
+                            fontSize: '0.82rem', 
+                            color: altLetter === ['A', 'B', 'C', 'D', 'E'][currentQ.correctIndex] ? '#86efac' : '#cbd5e1', 
+                            marginBottom: '0.35rem' 
+                          }}>
+                            <strong>Alternativa {altLetter}:</strong> {analise}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Fundamentação Legal / Legislação Oficial */}
                   {currentQ.fundamentacaoLegal && (
-                    <div style={{ fontSize: '0.78rem', color: '#38bdf8', fontWeight: 700 }}>
-                      ⚖️ Base Legal: {currentQ.fundamentacaoLegal}
+                    <div style={{
+                      padding: '0.8rem 1rem',
+                      borderRadius: '10px',
+                      background: 'rgba(56, 189, 248, 0.1)',
+                      border: '1px solid rgba(56, 189, 248, 0.3)',
+                      color: '#7dd3fc',
+                      fontSize: '0.83rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem'
+                    }}>
+                      <Scale size={18} color="#38bdf8" style={{ flexShrink: 0 }} />
+                      <div>
+                        <strong>⚖️ Base Legal / Dispositivo Normativo:</strong> {currentQ.fundamentacaoLegal}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Mnemônico / Dica Tática da PMPE */}
+                  {(currentQ.dicaMacete || currentQ.hint) && (
+                    <div style={{
+                      padding: '0.8rem 1rem',
+                      borderRadius: '10px',
+                      background: 'rgba(245, 158, 11, 0.1)',
+                      border: '1px solid rgba(245, 158, 11, 0.3)',
+                      color: '#fde68a',
+                      fontSize: '0.83rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem'
+                    }}>
+                      <Sparkles size={18} color="#f59e0b" style={{ flexShrink: 0 }} />
+                      <div>
+                        <strong>💡 Macete Tático da PMPE / AOCP:</strong> {currentQ.dicaMacete || currentQ.hint}
+                      </div>
                     </div>
                   )}
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                {/* BOTÃO DE AVANÇO OU RELATÓRIO DE MISSÃO */}
+                <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.5rem' }}>
                   <button
                     onClick={handleNextQuestion}
                     style={{
-                      padding: '0.75rem 1.6rem',
-                      borderRadius: '12px',
-                      background: 'linear-gradient(135deg, #0284c7, #0369a1)',
-                      border: '1px solid #38bdf8',
+                      padding: '0.85rem 1.8rem',
+                      borderRadius: '14px',
+                      background: lives <= 0 
+                        ? 'linear-gradient(135deg, #dc2626 0%, #991b1b 100%)' 
+                        : 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)',
+                      border: lives <= 0 ? '1.5px solid #ef4444' : '1px solid #38bdf8',
                       color: '#ffffff',
-                      fontWeight: 800,
-                      fontSize: '0.9rem',
+                      fontWeight: 900,
+                      fontSize: '0.95rem',
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '0.5rem',
-                      boxShadow: '0 4px 15px rgba(2, 132, 199, 0.4)'
+                      gap: '0.6rem',
+                      boxShadow: lives <= 0 ? '0 6px 20px rgba(220, 38, 38, 0.5)' : '0 4px 15px rgba(2, 132, 199, 0.4)',
+                      transition: 'transform 0.15s ease'
                     }}
                   >
-                    <span>{lives <= 0 ? 'Ver Resultado Final' : 'Próxima Questão'}</span>
-                    <ChevronRight size={18} />
+                    <span>{lives <= 0 ? '🚨 MISSÃO ENCERRADA • VER RELATÓRIO DO COMBATENTE' : 'Próxima Questão'}</span>
+                    <ChevronRight size={20} />
                   </button>
                 </div>
               </div>

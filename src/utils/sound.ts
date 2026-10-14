@@ -278,6 +278,15 @@ class SoundController {
     this.playGunshot38(0.13);
   }
 
+  // Disparo Triplo de Pistola Tática (POW - POW - POW!)
+  // Acionado no Power-up de Arma (Elimina 3 alternativas incorretas)
+  public playTriplePistolShot() {
+    if (this.isMuted) return;
+    this.playGunshot38(0);
+    this.playGunshot38(0.20);
+    this.playGunshot38(0.40);
+  }
+
   // Rajada Automática de Fuzil AK-47 (TAT-TAT-TAT-TAT!)
   // Acionado no combo de 4 acertos consecutivos
   public playAk47Burst() {

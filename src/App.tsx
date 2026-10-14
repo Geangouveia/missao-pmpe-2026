@@ -743,6 +743,7 @@ export function App() {
         <SurvivalGame
           key={`survival-${selectedCategory}-${selectedSimulado}-${gameSessionNonce}`}
           questions={filteredQuestions.length > 0 ? filteredQuestions : questions}
+          userName={currentUser || ''}
           onFinish={handleQuizFinish}
           onExit={() => setActiveMode(null)}
           onAwardXp={addXp}
