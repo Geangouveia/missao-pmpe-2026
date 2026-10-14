@@ -11,13 +11,18 @@ import {
   AlertCircle, 
   Lock, 
   Sparkles,
-  Users
+  Users,
+  Trash2,
+  AlertTriangle,
+  Ban,
+  ShieldAlert
 } from 'lucide-react';
 import { 
   fetchRegistryFromCloud, 
   approveUserAccess, 
   rejectUserAccess, 
   resetUserToDefaultPass,
+  deleteUserPermanently,
   setMasterUserPassword,
   type UserAccessRecord 
 } from '../utils/authManager';
@@ -35,6 +40,29 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
   const [users, setUsers] = useState<Record<string, UserAccessRecord>>({});
   const [isLoading, setIsLoading] = useState(true);
   const [actionSuccessMsg, setActionSuccessMsg] = useState<string | null>(null);
+  const [processingUserKey, setProcessingUserKey] = useState<string | null>(null);
+  const [deleteConfirmKey, setDeleteConfirmKey] = useState<string | null>(null);
+
+  // Estados para alteração da senha titular do Gean
+  const [showMasterPassSection, setShowMasterPassSection] = useState(false);
+  const [newMasterPass, setNewMasterPass] = useState('');
+  const [confirmMasterPass, setConfirmMasterPass] = useState('');
+  const [showPassText, setShowPassText] = useState(false);
+  const [masterPassError, setMasterPassError] = useState('');
+  const [isSavingMasterPass, setIsSavingMasterPass] = useState(false);
+
+  // 1. BLOQUEIO DE SCROLL NO BODY: A tela de trás nunca se move enquanto este modal estiver aberto!
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+    const originalOverscroll = document.body.style.overscrollBehavior;
+    document.body.style.overflow = 'hidden';
+    document.body.style.overscrollBehavior = 'none';
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      document.body.style.overscrollBehavior = originalOverscroll;
+    };
+  }, []);
 
   const loadData = async () => {
     setIsLoading(true);
@@ -50,16 +78,14 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
 
   const showFeedback = (msg: string) => {
     setActionSuccessMsg(msg);
-    setTimeout(() => setActionSuccessMsg(null), 3500);
+    setTimeout(() => setActionSuccessMsg(null), 3800);
   };
 
-  const [processingUserKey, setProcessingUserKey] = useState<string | null>(null);
-
+  // Reativar / Aprovar Acesso
   const handleApprove = async (userKey: string, displayName: string) => {
     sound.playLevelUp();
     setProcessingUserKey(userKey);
 
-    // 1. Atualização OTIMISTA imediata na interface (0ms, tela NUNCA trava!)
     setUsers((prev) => ({
       ...prev,
       [userKey]: {
@@ -68,23 +94,23 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
         approvedAt: new Date().toISOString(),
       }
     }));
-    showFeedback(`✅ Acesso de "${displayName}" AUTORIZADO com sucesso!`);
+    showFeedback(`✅ Acesso de "${displayName}" ATIVADO/LIBERADO com sucesso!`);
     onRefreshPendingCount?.();
 
     try {
       await approveUserAccess(userKey);
     } catch (err) {
-      console.error('Erro na sincronização de aprovação:', err);
+      console.error('Erro ao reativar:', err);
     } finally {
       setProcessingUserKey(null);
     }
   };
 
+  // Cancelar / Bloquear Acesso do Aluno
   const handleReject = async (userKey: string, displayName: string) => {
     sound.playError();
     setProcessingUserKey(userKey);
 
-    // Atualização OTIMISTA imediata
     setUsers((prev) => ({
       ...prev,
       [userKey]: {
@@ -92,32 +118,56 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
         status: 'rejected',
       }
     }));
-    showFeedback(`🚫 Acesso de "${displayName}" BLOQUEADO/REVOGADO.`);
+    showFeedback(`🚫 Acesso de "${displayName}" CANCELADO / SUSPENSO. O aluno não conseguirá entrar!`);
     onRefreshPendingCount?.();
 
     try {
       await rejectUserAccess(userKey);
     } catch (err) {
-      console.error('Erro na sincronização de bloqueio:', err);
+      console.error('Erro ao bloquear:', err);
     } finally {
       setProcessingUserKey(null);
     }
   };
 
+  // Excluir Aluno Permanentemente
+  const handleDeleteUser = async (userKey: string, displayName: string) => {
+    sound.playGunshot38();
+    setProcessingUserKey(userKey);
+
+    setUsers((prev) => {
+      const copy = { ...prev };
+      delete copy[userKey];
+      return copy;
+    });
+
+    setDeleteConfirmKey(null);
+    showFeedback(`🗑️ Aluno "${displayName}" EXCLUÍDO definitivamente do sistema e da nuvem!`);
+    onRefreshPendingCount?.();
+
+    try {
+      await deleteUserPermanently(userKey);
+    } catch (err) {
+      console.error('Erro ao excluir:', err);
+    } finally {
+      setProcessingUserKey(null);
+    }
+  };
+
+  // Resetar Senha do Aluno para a Chave Padrão
   const handleResetPassword = async (userKey: string, displayName: string) => {
     sound.playClick();
     setProcessingUserKey(userKey);
 
-    // Atualização OTIMISTA imediata
     setUsers((prev) => ({
       ...prev,
       [userKey]: {
         ...prev[userKey],
         hasChangedPassword: false,
-        personalPassword: undefined,
+        personalPassword: 'PMPE2026',
       }
     }));
-    showFeedback(`🔑 Senha de "${displayName}" resetada para a chave padrão militar.`);
+    showFeedback(`🔑 Senha de "${displayName}" resetada para a chave padrão militar (PMPE2026).`);
 
     try {
       await resetUserToDefaultPass(userKey);
@@ -127,18 +177,6 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
       setProcessingUserKey(null);
     }
   };
-
-  const userList = Object.values(users);
-  const pendingCount = userList.filter((u) => u.status === 'pending').length;
-  const approvedCount = userList.filter((u) => u.status === 'approved').length;
-
-  // Estados para alteração da senha titular do Gean
-  const [showMasterPassSection, setShowMasterPassSection] = useState(false);
-  const [newMasterPass, setNewMasterPass] = useState('');
-  const [confirmMasterPass, setConfirmMasterPass] = useState('');
-  const [showPassText, setShowPassText] = useState(false);
-  const [masterPassError, setMasterPassError] = useState('');
-  const [isSavingMasterPass, setIsSavingMasterPass] = useState(false);
 
   const handleUpdateMasterPassword = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -164,7 +202,7 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
       const ok = await setMasterUserPassword(clean);
       if (ok) {
         sound.playLevelUp();
-        showFeedback('🔑 Senha titular do Comandante Gean alterada e sincronizada na nuvem com sucesso!');
+        showFeedback('🔒 Senha Master do Comandante Gean atualizada com sucesso!');
         setNewMasterPass('');
         setConfirmMasterPass('');
         setShowMasterPassSection(false);
@@ -182,99 +220,120 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
     }
   };
 
+  const userList = Object.values(users);
+  const studentsOnly = userList.filter(u => !u.isAdmin && !u.name.toLowerCase().includes('gean'));
+  const approvedCount = studentsOnly.filter(u => u.status === 'approved').length;
+  const blockedCount = studentsOnly.filter(u => u.status === 'rejected').length;
+
   return (
-    <div style={{
-      position: 'fixed',
-      inset: 0,
-      background: 'rgba(2, 6, 23, 0.85)',
-      backdropFilter: 'blur(12px)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      zIndex: 9999,
-      padding: '1.25rem',
-      animation: 'fadeIn 0.2s ease-out'
-    }}>
-      <div style={{
-        width: '100%',
-        maxWidth: '780px',
-        maxHeight: '90vh',
-        background: 'rgba(17, 24, 19, 0.98)',
-        border: '1.5px solid rgba(245, 158, 11, 0.5)',
-        borderRadius: '24px',
-        boxShadow: '0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(34, 197, 94, 0.15)',
+    <div 
+      style={{
+        position: 'fixed',
+        inset: 0,
+        background: 'rgba(2, 6, 23, 0.88)',
+        backdropFilter: 'blur(14px)',
         display: 'flex',
-        flexDirection: 'column',
-        overflow: 'hidden'
-      }}>
-        {/* Top Header */}
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 9999,
+        padding: '1rem',
+        overscrollBehavior: 'contain'
+      }}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          sound.playClick();
+          onClose();
+        }
+      }}
+    >
+      <div 
+        style={{
+          width: '100%',
+          maxWidth: '960px',
+          maxHeight: '92vh',
+          background: 'linear-gradient(180deg, #132216 0%, #0c140d 60%, #060a07 100%)',
+          border: '2px solid rgba(245, 158, 11, 0.65)',
+          borderRadius: '24px',
+          boxShadow: '0 25px 80px rgba(0, 0, 0, 0.95), 0 0 50px rgba(245, 158, 11, 0.25)',
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
+          overscrollBehavior: 'contain'
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* CABEÇALHO TÁTICO EXPANDIDO */}
         <div style={{
-          padding: '1.5rem 1.75rem',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          padding: '1.4rem 1.75rem',
+          borderBottom: '1px solid rgba(245, 158, 11, 0.25)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          background: 'linear-gradient(90deg, rgba(24, 34, 27, 0.95) 0%, rgba(14, 20, 16, 0.95) 100%)'
+          background: 'linear-gradient(90deg, rgba(20, 36, 24, 0.98) 0%, rgba(12, 22, 14, 0.98) 100%)',
+          flexWrap: 'wrap',
+          gap: '1rem'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
             <div style={{
               width: '46px',
               height: '46px',
-              borderRadius: '14px',
+              borderRadius: '12px',
               background: 'linear-gradient(135deg, #b45309, #f59e0b)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 0 15px rgba(245, 158, 11, 0.5)'
+              boxShadow: '0 0 15px rgba(245, 158, 11, 0.6)',
+              flexShrink: 0
             }}>
               <ShieldCheck size={28} color="#ffffff" />
             </div>
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <h2 style={{ fontSize: '1.25rem', fontWeight: 900, margin: 0, color: '#ffffff' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                <h2 style={{ fontSize: '1.35rem', fontWeight: 900, margin: 0, color: '#ffffff', letterSpacing: '-0.01em' }}>
                   Comando Geral de Acessos • PMPE 2026
                 </h2>
                 <span style={{
-                  fontSize: '0.7rem',
-                  fontWeight: 800,
-                  padding: '0.2rem 0.5rem',
-                  borderRadius: '12px',
-                  background: 'rgba(234, 179, 8, 0.2)',
-                  color: '#fbbf24',
-                  border: '1px solid rgba(245, 158, 11, 0.4)'
+                  fontSize: '0.72rem',
+                  fontWeight: 900,
+                  padding: '0.2rem 0.6rem',
+                  borderRadius: '6px',
+                  background: '#f59e0b',
+                  color: '#000000',
+                  letterSpacing: '0.04em'
                 }}>
                   COMANDANTE: GEAN
                 </span>
               </div>
-              <p style={{ margin: 0, fontSize: '0.8rem', color: '#86efac' }}>
-                ⭐ Entrada livre ativa: Novos alunos podem se cadastrar e treinar imediatamente sem bloqueio!
+              <p style={{ margin: '0.25rem 0 0', fontSize: '0.82rem', color: '#86efac' }}>
+                ⭐ Gestão Operacional de Alunos: Controle total para cancelar, bloquear ou reativar qualquer conta com 1 clique!
               </p>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
             <button
               onClick={() => {
                 sound.playClick();
                 loadData();
               }}
+              disabled={isLoading}
               title="Sincronizar Nuvem em Tempo Real"
               style={{
-                background: 'rgba(255, 255, 255, 0.08)',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                color: '#38bdf8',
+                background: 'rgba(34, 197, 94, 0.15)',
+                border: '1px solid #22c55e',
+                color: '#86efac',
                 borderRadius: '10px',
-                padding: '0.5rem',
+                padding: '0.5rem 0.95rem',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.4rem',
-                fontSize: '0.8rem',
-                fontWeight: 700
+                gap: '0.45rem',
+                fontSize: '0.84rem',
+                fontWeight: 800
               }}
             >
-              <RefreshCw size={15} className={isLoading ? 'spin-anim' : ''} />
-              <span>Atualizar</span>
+              <RefreshCw size={15} className={isLoading ? 'animate-spin' : ''} />
+              <span>{isLoading ? 'Atualizando...' : 'Atualizar'}</span>
             </button>
 
             <button
@@ -284,122 +343,124 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
               }}
               style={{
                 background: 'rgba(255, 255, 255, 0.08)',
-                border: 'none',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
                 color: '#94a3b8',
                 borderRadius: '10px',
-                width: '36px',
-                height: '36px',
+                width: '38px',
+                height: '38px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer'
               }}
+              title="Fechar Painel"
             >
               <X size={20} />
             </button>
           </div>
         </div>
 
-        {/* Notificação Temporária de Ação */}
+        {/* FEEDBACK DE AÇÃO REALIZADA */}
         {actionSuccessMsg && (
           <div style={{
-            background: 'rgba(16, 185, 129, 0.2)',
-            borderBottom: '1px solid rgba(16, 185, 129, 0.4)',
-            color: '#6ee7b7',
-            padding: '0.65rem 1.75rem',
-            fontSize: '0.85rem',
+            background: 'linear-gradient(90deg, rgba(34, 197, 94, 0.25) 0%, rgba(20, 83, 45, 0.3) 100%)',
+            borderBottom: '1px solid #22c55e',
+            color: '#86efac',
+            padding: '0.75rem 1.75rem',
+            fontSize: '0.88rem',
             fontWeight: 800,
             display: 'flex',
             alignItems: 'center',
-            gap: '0.5rem',
-            animation: 'fadeIn 0.2s ease-in'
+            gap: '0.5rem'
           }}>
             <Sparkles size={16} />
             <span>{actionSuccessMsg}</span>
           </div>
         )}
 
-        {/* Resumo de Status */}
+        {/* CARDS RESUMO DO EFETIVO DE ALUNOS */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
           gap: '1rem',
           padding: '1.25rem 1.75rem',
-          background: 'rgba(0, 0, 0, 0.2)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.06)'
+          background: 'rgba(0, 0, 0, 0.3)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
         }}>
           <div style={{
-            background: 'rgba(30, 41, 59, 0.6)',
-            padding: '0.85rem 1rem',
+            background: 'rgba(20, 32, 24, 0.8)',
+            padding: '0.95rem 1.15rem',
             borderRadius: '14px',
-            border: '1px solid rgba(255, 255, 255, 0.1)'
+            border: '1px solid rgba(245, 158, 11, 0.35)'
           }}>
-            <div style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase' }}>
-              Total de Cadastros
+            <div style={{ fontSize: '0.74rem', color: '#fbbf24', fontWeight: 800, textTransform: 'uppercase' }}>
+              Alunos Cadastrados
             </div>
-            <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#ffffff', marginTop: '0.2rem' }}>
-              {userList.length} Alunos
+            <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#ffffff', marginTop: '0.2rem' }}>
+              {studentsOnly.length} Guerreiro(s)
             </div>
+            <div style={{ fontSize: '0.72rem', color: '#94a3b8' }}>Capacidade ideal: até 20 alunos</div>
           </div>
 
           <div style={{
-            background: pendingCount > 0 ? 'rgba(245, 158, 11, 0.15)' : 'rgba(30, 41, 59, 0.6)',
-            padding: '0.85rem 1rem',
+            background: 'rgba(34, 197, 94, 0.12)',
+            padding: '0.95rem 1.15rem',
             borderRadius: '14px',
-            border: pendingCount > 0 ? '1px solid rgba(245, 158, 11, 0.5)' : '1px solid rgba(255, 255, 255, 0.1)',
-            boxShadow: pendingCount > 0 ? '0 0 15px rgba(245, 158, 11, 0.2)' : 'none'
+            border: '1px solid #22c55e'
           }}>
-            <div style={{ fontSize: '0.75rem', color: pendingCount > 0 ? '#fbbf24' : '#94a3b8', fontWeight: 800, textTransform: 'uppercase' }}>
-              Aguardando Sua Autorização
+            <div style={{ fontSize: '0.74rem', color: '#86efac', fontWeight: 800, textTransform: 'uppercase' }}>
+              Acessos Ativos (Liberados)
             </div>
-            <div style={{ fontSize: '1.4rem', fontWeight: 900, color: pendingCount > 0 ? '#fbbf24' : '#ffffff', marginTop: '0.2rem' }}>
-              {pendingCount} Pendente(s)
+            <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#4ade80', marginTop: '0.2rem' }}>
+              {approvedCount} Ativo(s)
             </div>
+            <div style={{ fontSize: '0.72rem', color: '#86efac' }}>Podem treinar normalmente</div>
           </div>
 
           <div style={{
-            background: 'rgba(16, 185, 129, 0.12)',
-            padding: '0.85rem 1rem',
+            background: blockedCount > 0 ? 'rgba(239, 68, 68, 0.2)' : 'rgba(255, 255, 255, 0.03)',
+            padding: '0.95rem 1.15rem',
             borderRadius: '14px',
-            border: '1px solid rgba(16, 185, 129, 0.35)'
+            border: blockedCount > 0 ? '1px solid #ef4444' : '1px solid rgba(255, 255, 255, 0.1)'
           }}>
-            <div style={{ fontSize: '0.75rem', color: '#6ee7b7', fontWeight: 700, textTransform: 'uppercase' }}>
-              Acessos Autorizados
+            <div style={{ fontSize: '0.74rem', color: blockedCount > 0 ? '#fca5a5' : '#94a3b8', fontWeight: 800, textTransform: 'uppercase' }}>
+              Acessos Bloqueados / Cancelados
             </div>
-            <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#34d399', marginTop: '0.2rem' }}>
-              {approvedCount} Ativos
+            <div style={{ fontSize: '1.6rem', fontWeight: 900, color: blockedCount > 0 ? '#ef4444' : '#94a3b8', marginTop: '0.2rem' }}>
+              {blockedCount} Suspenso(s)
             </div>
+            <div style={{ fontSize: '0.72rem', color: blockedCount > 0 ? '#fca5a5' : '#64748b' }}>Entrada barrada na tela de login</div>
           </div>
         </div>
 
-        {/* Painel do Comandante Gean: Alterar Minha Própria Senha Master */}
+        {/* SEGURANÇA DA CONTA TITULAR DO COMANDANTE GEAN */}
         <div style={{
-          padding: '1rem 1.75rem',
-          background: showMasterPassSection ? 'rgba(245, 158, 11, 0.12)' : 'rgba(30, 41, 59, 0.45)',
+          padding: '0.85rem 1.75rem',
+          background: showMasterPassSection ? 'rgba(245, 158, 11, 0.15)' : 'rgba(0, 0, 0, 0.2)',
           borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
           transition: 'all 0.2s ease'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
               <div style={{
-                width: '34px',
-                height: '34px',
-                borderRadius: '10px',
+                width: '32px',
+                height: '32px',
+                borderRadius: '8px',
                 background: 'rgba(245, 158, 11, 0.25)',
-                border: '1px solid rgba(245, 158, 11, 0.5)',
+                border: '1px solid #f59e0b',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#fbbf24'
               }}>
-                <KeyRound size={18} />
+                <KeyRound size={16} />
               </div>
               <div>
-                <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#ffffff' }}>
+                <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#ffffff' }}>
                   Segurança da Conta Titular (Comandante Gean)
                 </div>
-                <div style={{ fontSize: '0.74rem', color: '#94a3b8' }}>
-                  Altere e defina sua senha exclusiva de Comandante a qualquer momento.
+                <div style={{ fontSize: '0.72rem', color: '#94a3b8' }}>
+                  Altere sua senha de Comandante a qualquer momento.
                 </div>
               </div>
             </div>
@@ -412,10 +473,10 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
                 setMasterPassError('');
               }}
               style={{
-                padding: '0.45rem 0.95rem',
-                borderRadius: '10px',
+                padding: '0.4rem 0.85rem',
+                borderRadius: '8px',
                 background: showMasterPassSection ? 'rgba(239, 68, 68, 0.2)' : 'linear-gradient(135deg, #d97706, #f59e0b)',
-                border: showMasterPassSection ? '1px solid rgba(239, 68, 68, 0.4)' : '1px solid #fbbf24',
+                border: showMasterPassSection ? '1px solid #ef4444' : '1px solid #fbbf24',
                 color: showMasterPassSection ? '#fca5a5' : '#000000',
                 fontWeight: 800,
                 fontSize: '0.78rem',
@@ -425,19 +486,19 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
                 gap: '0.4rem'
               }}
             >
-              <KeyRound size={14} />
+              <KeyRound size={13} />
               <span>{showMasterPassSection ? 'Fechar' : '🔑 Alterar Minha Senha Master'}</span>
             </button>
           </div>
 
           {showMasterPassSection && (
-            <form onSubmit={handleUpdateMasterPassword} style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <form onSubmit={handleUpdateMasterPassword} style={{ marginTop: '0.85rem', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
               {masterPassError && (
                 <div style={{
-                  padding: '0.55rem 0.85rem',
+                  padding: '0.5rem 0.85rem',
                   borderRadius: '8px',
-                  background: 'rgba(239, 68, 68, 0.2)',
-                  border: '1px solid rgba(239, 68, 68, 0.4)',
+                  background: 'rgba(239, 68, 68, 0.25)',
+                  border: '1px solid #ef4444',
                   color: '#fca5a5',
                   fontSize: '0.78rem',
                   fontWeight: 700
@@ -447,56 +508,37 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
               )}
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.75rem' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.72rem', color: '#cbd5e1', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.3rem' }}>
-                    Nova Senha do Comandante Gean:
-                  </label>
-                  <input
-                    type={showPassText ? 'text' : 'password'}
-                    placeholder="Mínimo 4 caracteres"
-                    value={newMasterPass}
-                    onChange={(e) => setNewMasterPass(e.target.value)}
-                    required
-                    style={{
-                      width: '100%',
-                      padding: '0.6rem 0.85rem',
-                      background: 'rgba(15, 23, 42, 0.85)',
-                      border: '1px solid rgba(245, 158, 11, 0.5)',
-                      borderRadius: '10px',
-                      color: '#ffffff',
-                      fontSize: '0.85rem',
-                      outline: 'none',
-                      boxSizing: 'border-box'
-                    }}
-                  />
-                </div>
-
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.72rem', color: '#cbd5e1', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.3rem' }}>
-                    Confirmar Nova Senha:
-                  </label>
-                  <input
-                    type={showPassText ? 'text' : 'password'}
-                    placeholder="Repita a nova senha"
-                    value={confirmMasterPass}
-                    onChange={(e) => setConfirmMasterPass(e.target.value)}
-                    required
-                    style={{
-                      width: '100%',
-                      padding: '0.6rem 0.85rem',
-                      background: 'rgba(15, 23, 42, 0.85)',
-                      border: '1px solid rgba(245, 158, 11, 0.5)',
-                      borderRadius: '10px',
-                      color: '#ffffff',
-                      fontSize: '0.85rem',
-                      outline: 'none',
-                      boxSizing: 'border-box'
-                    }}
-                  />
-                </div>
+                <input
+                  type={showPassText ? 'text' : 'password'}
+                  placeholder="Nova Senha Master..."
+                  value={newMasterPass}
+                  onChange={(e) => setNewMasterPass(e.target.value)}
+                  style={{
+                    padding: '0.55rem 0.85rem',
+                    borderRadius: '8px',
+                    background: 'rgba(0,0,0,0.4)',
+                    border: '1px solid rgba(245, 158, 11, 0.4)',
+                    color: '#ffffff',
+                    fontSize: '0.85rem'
+                  }}
+                />
+                <input
+                  type={showPassText ? 'text' : 'password'}
+                  placeholder="Confirmar Nova Senha..."
+                  value={confirmMasterPass}
+                  onChange={(e) => setConfirmMasterPass(e.target.value)}
+                  style={{
+                    padding: '0.55rem 0.85rem',
+                    borderRadius: '8px',
+                    background: 'rgba(0,0,0,0.4)',
+                    border: '1px solid rgba(245, 158, 11, 0.4)',
+                    color: '#ffffff',
+                    fontSize: '0.85rem'
+                  }}
+                />
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.35rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', color: '#94a3b8', cursor: 'pointer' }}>
                   <input
                     type="checkbox"
@@ -510,313 +552,343 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
                   type="submit"
                   disabled={isSavingMasterPass}
                   style={{
-                    padding: '0.55rem 1.25rem',
-                    borderRadius: '10px',
+                    padding: '0.45rem 1.15rem',
+                    borderRadius: '8px',
                     background: 'linear-gradient(135deg, #10b981, #059669)',
                     border: '1px solid #34d399',
                     color: '#ffffff',
                     fontWeight: 800,
-                    fontSize: '0.82rem',
+                    fontSize: '0.8rem',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.4rem'
                   }}
                 >
-                  <CheckCircle2 size={15} />
-                  <span>{isSavingMasterPass ? 'Salvando...' : 'Salvar Nova Senha Master'}</span>
+                  <CheckCircle2 size={14} />
+                  <span>{isSavingMasterPass ? 'Salvando...' : 'Salvar Nova Senha'}</span>
                 </button>
               </div>
             </form>
           )}
         </div>
 
-        {/* Lista de Alunos e Pedidos de Acesso */}
-        {/* Lista de Alunos e Pedidos de Acesso */}
+        {/* LISTA EXPANDIDA DE ALUNOS COM CONTROLE TOTAL DE ACESSO */}
         <div style={{
-          padding: '1rem',
+          padding: '1.25rem 1.75rem',
           overflowY: 'auto',
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
-          gap: '0.85rem'
+          gap: '0.85rem',
+          overscrollBehavior: 'contain'
         }}>
-          {Object.keys(users).length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '3rem 1rem', color: '#94a3b8' }}>
-              <Users size={40} style={{ opacity: 0.4, marginBottom: '0.75rem' }} />
-              <p>Nenhuma solicitação de acesso registrada no momento.</p>
+          {/* Card Especial da Conta Gean */}
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(30, 42, 26, 0.95) 0%, rgba(16, 26, 18, 0.98) 100%)',
+            border: '2px solid #f59e0b',
+            borderRadius: '16px',
+            padding: '1rem 1.25rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '0.85rem',
+            boxShadow: '0 0 20px rgba(245, 158, 11, 0.2)'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <div style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #b45309, #f59e0b)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#ffffff',
+                fontWeight: 900
+              }}>
+                ⭐
+              </div>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <span style={{ fontSize: '1.15rem', fontWeight: 900, color: '#ffffff' }}>
+                    {users['gean']?.name || 'Soldado Gean'}
+                  </span>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.5rem', borderRadius: '4px', background: '#b45309', color: '#fef3c7', fontWeight: 900 }}>
+                    CONTA PRINCIPAL
+                  </span>
+                </div>
+                <div style={{ fontSize: '0.74rem', color: '#fbbf24', marginTop: '0.15rem' }}>
+                  🛡️ Acesso Master Permanente • Administrador Geral da Plataforma
+                </div>
+              </div>
+            </div>
+
+            <div style={{ fontSize: '0.8rem', color: '#86efac', fontWeight: 800 }}>
+              ✅ Blindado & Conectado
+            </div>
+          </div>
+
+          {/* LISTAGEM DOS ALUNOS */}
+          <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#fbbf24', marginTop: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <Users size={16} />
+            <span>ALUNOS CADASTRADOS NA PLATAFORMA ({studentsOnly.length}):</span>
+          </div>
+
+          {studentsOnly.length === 0 ? (
+            <div style={{
+              textAlign: 'center',
+              padding: '2.5rem 1rem',
+              borderRadius: '16px',
+              border: '2px dashed rgba(255, 255, 255, 0.15)',
+              background: 'rgba(0, 0, 0, 0.2)',
+              color: '#94a3b8'
+            }}>
+              <Users size={40} style={{ opacity: 0.35, marginBottom: '0.65rem' }} />
+              <h4 style={{ color: '#ffffff', margin: 0, fontSize: '1rem', fontWeight: 800 }}>Nenhum aluno adicional no momento</h4>
+              <p style={{ margin: '0.35rem 0 0', fontSize: '0.8rem' }}>
+                Os alunos que comprarem ou se cadastrarem aparecerão aqui com o botão de controle imediato.
+              </p>
             </div>
           ) : (
-            Object.entries(users).map(([userKey, user]) => {
-              const isGeanMaster = user.isAdmin;
+            studentsOnly.map((user) => {
+              const userKey = Object.keys(users).find(k => users[k] === user) || user.name.toLowerCase().replace(/\s+/g, '_');
+              const isBlocked = user.status === 'rejected';
+              const isProcessing = processingUserKey === userKey;
               const formattedDate = user.requestedAt ? new Date(user.requestedAt).toLocaleDateString('pt-BR', {
                 day: '2-digit',
                 month: '2-digit',
                 hour: '2-digit',
                 minute: '2-digit'
               }) : 'Recente';
-              const isProcessing = processingUserKey === userKey;
 
               return (
                 <div
                   key={userKey}
                   style={{
-                    background: user.status === 'pending'
-                      ? 'linear-gradient(135deg, rgba(45, 25, 10, 0.85) 0%, rgba(30, 41, 59, 0.85) 100%)'
-                      : 'rgba(30, 41, 59, 0.55)',
-                    border: user.status === 'pending'
-                      ? '1.5px solid rgba(245, 158, 11, 0.75)'
-                      : user.status === 'approved'
-                        ? '1px solid rgba(16, 185, 129, 0.4)'
-                        : '1px solid rgba(239, 68, 68, 0.4)',
+                    background: isBlocked ? 'rgba(69, 10, 10, 0.65)' : 'rgba(20, 30, 22, 0.75)',
+                    border: isBlocked ? '1.5px solid #ef4444' : '1.5px solid rgba(34, 197, 94, 0.4)',
                     borderRadius: '16px',
-                    padding: '0.9rem 1.1rem',
+                    padding: '1rem 1.25rem',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     flexWrap: 'wrap',
-                    gap: '0.85rem'
+                    gap: '1rem',
+                    transition: 'all 0.2s ease',
+                    boxShadow: isBlocked ? '0 0 15px rgba(239, 68, 68, 0.2)' : 'none'
                   }}
                 >
-                  {/* Informações do Usuário */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flex: 1, minWidth: '220px' }}>
+                  {/* Dados do Aluno */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', flex: 1, minWidth: '220px' }}>
                     <div style={{
                       width: '42px',
                       height: '42px',
                       borderRadius: '12px',
-                      background: isGeanMaster
-                        ? 'linear-gradient(135deg, #b45309, #f59e0b)'
-                        : user.status === 'pending'
-                          ? 'rgba(245, 158, 11, 0.2)'
-                          : user.status === 'approved'
-                            ? 'rgba(16, 185, 129, 0.2)'
-                            : 'rgba(239, 68, 68, 0.2)',
-                      border: user.status === 'pending' ? '1px solid #f59e0b' : 'none',
+                      background: isBlocked ? 'rgba(239, 68, 68, 0.2)' : 'rgba(34, 197, 94, 0.2)',
+                      border: isBlocked ? '1px solid #ef4444' : '1px solid #22c55e',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: isGeanMaster ? '#ffffff' : user.status === 'approved' ? '#34d399' : '#f87171',
+                      color: isBlocked ? '#f87171' : '#4ade80',
                       flexShrink: 0
                     }}>
-                      {isGeanMaster ? <ShieldCheck size={22} /> : <UserCheck size={20} />}
+                      {isBlocked ? <Ban size={22} /> : <UserCheck size={22} />}
                     </div>
 
                     <div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: '1rem', fontWeight: 800, color: '#ffffff' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                        <span style={{ fontSize: '1.05rem', fontWeight: 900, color: '#ffffff' }}>
                           {user.name}
                         </span>
-                        {isGeanMaster && (
-                          <span style={{
-                            fontSize: '0.68rem',
-                            fontWeight: 900,
-                            padding: '0.15rem 0.5rem',
-                            borderRadius: '10px',
-                            background: '#f59e0b',
-                            color: '#000000',
-                            textTransform: 'uppercase'
-                          }}>
-                            Comandante Titular
+                        {isBlocked ? (
+                          <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.55rem', borderRadius: '4px', background: '#dc2626', color: '#ffffff', fontWeight: 900 }}>
+                            🚫 ACESSO CANCELADO
                           </span>
-                        )}
-                        {user.status === 'pending' && (
-                          <span style={{
-                            fontSize: '0.68rem',
-                            fontWeight: 900,
-                            padding: '0.15rem 0.5rem',
-                            borderRadius: '10px',
-                            background: 'rgba(245, 158, 11, 0.25)',
-                            color: '#fbbf24',
-                            border: '1px solid #f59e0b',
-                            animation: 'pulse 1.5s infinite'
-                          }}>
-                            ⏳ Aguardando Sua Aprovação
-                          </span>
-                        )}
-                        {user.status === 'approved' && !isGeanMaster && (
-                          <span style={{
-                            fontSize: '0.68rem',
-                            fontWeight: 800,
-                            padding: '0.15rem 0.45rem',
-                            borderRadius: '10px',
-                            background: 'rgba(16, 185, 129, 0.2)',
-                            color: '#6ee7b7'
-                          }}>
-                            Aprovado
-                          </span>
-                        )}
-                        {user.status === 'rejected' && (
-                          <span style={{
-                            fontSize: '0.68rem',
-                            fontWeight: 800,
-                            padding: '0.15rem 0.45rem',
-                            borderRadius: '10px',
-                            background: 'rgba(239, 68, 68, 0.2)',
-                            color: '#f87171'
-                          }}>
-                            Bloqueado
+                        ) : (
+                          <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.55rem', borderRadius: '4px', background: '#15803d', color: '#dcfce7', fontWeight: 900 }}>
+                            ✅ ATIVO (PODE ENTRAR)
                           </span>
                         )}
                       </div>
 
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginTop: '0.25rem', fontSize: '0.75rem', color: '#94a3b8', flexWrap: 'wrap' }}>
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                          <Clock size={12} />
-                          {formattedDate}
-                        </span>
-
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                          <Lock size={12} />
-                          {user.hasChangedPassword
-                            ? 'Senha própria cadastrada'
-                            : 'Chave inicial (senha pendente)'}
-                        </span>
+                      <div style={{ fontSize: '0.74rem', color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem', marginTop: '0.2rem' }}>
+                        <Clock size={12} />
+                        <span>Cadastrado em {formattedDate}</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Ações de Comando (apenas para contas não-master) */}
-                  {!isGeanMaster && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', flexWrap: 'wrap' }}>
-                      {user.status !== 'approved' && (
-                        <button
-                          type="button"
-                          disabled={isProcessing}
-                          onClick={() => handleApprove(userKey, user.name)}
-                          style={{
-                            padding: '0.55rem 0.95rem',
-                            minHeight: '40px',
-                            borderRadius: '10px',
-                            background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-                            border: '1px solid rgba(16, 185, 129, 0.5)',
-                            color: '#ffffff',
-                            fontWeight: 800,
-                            fontSize: '0.82rem',
-                            cursor: isProcessing ? 'wait' : 'pointer',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.35rem',
-                            boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)',
-                            opacity: isProcessing ? 0.7 : 1
-                          }}
-                        >
-                          <CheckCircle2 size={16} />
-                          <span>{isProcessing ? 'Gravando...' : 'Autorizar Acesso'}</span>
-                        </button>
-                      )}
-
-                      {user.status === 'approved' && (
-                        <button
-                          type="button"
-                          disabled={isProcessing}
-                          onClick={() => handleReject(userKey, user.name)}
-                          style={{
-                            padding: '0.55rem 0.85rem',
-                            minHeight: '40px',
-                            borderRadius: '10px',
-                            background: 'rgba(239, 68, 68, 0.15)',
-                            border: '1px solid rgba(239, 68, 68, 0.4)',
-                            color: '#f87171',
-                            fontWeight: 700,
-                            fontSize: '0.82rem',
-                            cursor: isProcessing ? 'wait' : 'pointer',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.35rem',
-                            opacity: isProcessing ? 0.7 : 1
-                          }}
-                        >
-                          <UserX size={15} />
-                          <span>Bloquear</span>
-                        </button>
-                      )}
-
-                      {user.hasChangedPassword && (
-                        <button
-                          type="button"
-                          disabled={isProcessing}
-                          onClick={() => handleResetPassword(userKey, user.name)}
-                          title="Resetar senha caso o aluno tenha esquecido"
-                          style={{
-                            padding: '0.55rem 0.75rem',
-                            minHeight: '40px',
-                            borderRadius: '10px',
-                            background: 'rgba(56, 189, 248, 0.12)',
-                            border: '1px solid rgba(56, 189, 248, 0.35)',
-                            color: '#38bdf8',
-                            fontWeight: 700,
-                            fontSize: '0.82rem',
-                            cursor: isProcessing ? 'wait' : 'pointer',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.35rem',
-                            opacity: isProcessing ? 0.7 : 1
-                          }}
-                        >
-                          <KeyRound size={14} />
-                          <span>Resetar Senha</span>
-                        </button>
-                      )}
-                    </div>
-                  )}
-
-                  {/* Ações para a conta titular Gean */}
-                  {isGeanMaster && (
-                    <div>
+                  {/* AÇÕES DE PODER DO COMANDANTE GEAN */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    {/* Botão de Bloquear / Cancelar ou Reativar */}
+                    {isBlocked ? (
                       <button
-                        type="button"
-                        onClick={() => {
-                          sound.playClick();
-                          setShowMasterPassSection(true);
-                        }}
+                        onClick={() => handleApprove(userKey, user.name)}
+                        disabled={isProcessing}
                         style={{
-                          padding: '0.55rem 0.95rem',
-                          minHeight: '40px',
-                          borderRadius: '10px',
-                          background: 'linear-gradient(135deg, #d97706, #f59e0b)',
-                          border: '1px solid #fbbf24',
-                          color: '#000000',
-                          fontWeight: 800,
-                          fontSize: '0.82rem',
+                          padding: '0.5rem 0.95rem',
+                          borderRadius: '8px',
+                          background: 'linear-gradient(135deg, #15803d, #16a34a)',
+                          border: '1px solid #22c55e',
+                          color: '#ffffff',
+                          fontWeight: 900,
+                          fontSize: '0.78rem',
                           cursor: 'pointer',
                           display: 'flex',
                           alignItems: 'center',
                           gap: '0.4rem',
-                          boxShadow: '0 4px 12px rgba(245, 158, 11, 0.35)'
+                          boxShadow: '0 0 12px rgba(34, 197, 94, 0.4)'
                         }}
+                        title="Reativar e permitir a entrada deste aluno"
                       >
-                        <KeyRound size={15} />
-                        <span>Mudar Minha Senha</span>
+                        <UserCheck size={14} />
+                        <span>Reativar Acesso</span>
                       </button>
-                    </div>
-                  )}
+                    ) : (
+                      <button
+                        onClick={() => handleReject(userKey, user.name)}
+                        disabled={isProcessing}
+                        style={{
+                          padding: '0.5rem 0.95rem',
+                          borderRadius: '8px',
+                          background: 'rgba(239, 68, 68, 0.18)',
+                          border: '1px solid #ef4444',
+                          color: '#fca5a5',
+                          fontWeight: 900,
+                          fontSize: '0.78rem',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.4rem'
+                        }}
+                        title="Cancelar e suspender a conta deste aluno (ele não conseguirá mais entrar)"
+                      >
+                        <Ban size={14} color="#ef4444" />
+                        <span>Cancelar / Bloquear</span>
+                      </button>
+                    )}
+
+                    {/* Resetar Senha para PMPE2026 */}
+                    <button
+                      onClick={() => handleResetPassword(userKey, user.name)}
+                      disabled={isProcessing}
+                      style={{
+                        padding: '0.5rem 0.85rem',
+                        borderRadius: '8px',
+                        background: 'rgba(245, 158, 11, 0.15)',
+                        border: '1px solid rgba(245, 158, 11, 0.4)',
+                        color: '#fbbf24',
+                        fontWeight: 800,
+                        fontSize: '0.78rem',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.35rem'
+                      }}
+                      title="Resetar a senha do aluno para PMPE2026 caso ele esqueça"
+                    >
+                      <KeyRound size={13} />
+                      <span>Resetar Senha</span>
+                    </button>
+
+                    {/* Excluir Aluno Permanentemente */}
+                    {deleteConfirmKey === userKey ? (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                        <button
+                          onClick={() => handleDeleteUser(userKey, user.name)}
+                          disabled={isProcessing}
+                          style={{
+                            padding: '0.5rem 0.85rem',
+                            borderRadius: '8px',
+                            background: '#dc2626',
+                            border: '1px solid #ef4444',
+                            color: '#ffffff',
+                            fontWeight: 900,
+                            fontSize: '0.76rem',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          Confirmar Exclusão?
+                        </button>
+                        <button
+                          onClick={() => setDeleteConfirmKey(null)}
+                          style={{
+                            padding: '0.5rem',
+                            borderRadius: '8px',
+                            background: 'rgba(255,255,255,0.1)',
+                            border: 'none',
+                            color: '#cbd5e1',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setDeleteConfirmKey(userKey);
+                        }}
+                        disabled={isProcessing}
+                        style={{
+                          padding: '0.5rem 0.75rem',
+                          borderRadius: '8px',
+                          background: 'rgba(255, 255, 255, 0.05)',
+                          border: '1px solid rgba(255, 255, 255, 0.12)',
+                          color: '#94a3b8',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.3rem',
+                          fontSize: '0.76rem'
+                        }}
+                        title="Excluir o aluno definitivamente do banco"
+                      >
+                        <Trash2 size={13} />
+                        <span>Excluir</span>
+                      </button>
+                    )}
+                  </div>
                 </div>
               );
             })
           )}
         </div>
 
-        {/* Rodapé Informativo */}
+        {/* RODAPÉ DO PAINEL */}
         <div style={{
           padding: '1rem 1.75rem',
           borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-          background: 'rgba(0, 0, 0, 0.3)',
+          background: 'rgba(0, 0, 0, 0.4)',
           display: 'flex',
-          alignItems: 'center',
           justifyContent: 'space-between',
-          fontSize: '0.78rem',
-          color: '#64748b'
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '0.5rem'
         }}>
-          <div>
-            🛡️ Doutrina de Acesso Blindado: Nenhum candidato entra sem aprovação da conta Gean.
+          <div style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <ShieldAlert size={14} color="#f59e0b" />
+            <span>Doutrina de Comando: O Comandante Gean tem o poder exclusivo de cancelar acessos e gerenciar o efetivo.</span>
           </div>
+
           <button
             onClick={() => {
               sound.playClick();
               onClose();
             }}
-            className="btn-secondary"
-            style={{ padding: '0.4rem 1rem', fontSize: '0.82rem', borderRadius: '10px' }}
+            style={{
+              padding: '0.5rem 1.25rem',
+              borderRadius: '10px',
+              background: 'linear-gradient(135deg, #1f2937, #111827)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              color: '#ffffff',
+              fontWeight: 800,
+              fontSize: '0.84rem',
+              cursor: 'pointer'
+            }}
           >
             Fechar Painel
           </button>

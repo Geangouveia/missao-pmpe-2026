@@ -37,13 +37,41 @@ export function isMasterUser(name: string): boolean {
   return clean === 'gean' || clean === 'soldado gean' || clean === 'comandante gean' || clean.includes('gean');
 }
 
+export const PURGED_LEGACY_KEYS = ['cleiton', 'kleiton', 'kleiton_o', 'kayke', 'caique', 'jemerson', 'carlos', 'ninho', 'gomes'];
+
+export function filterPurgedUsers(record: Record<string, UserAccessRecord>): Record<string, UserAccessRecord> {
+  const clean: Record<string, UserAccessRecord> = {};
+  for (const [k, u] of Object.entries(record)) {
+    const isPurged = PURGED_LEGACY_KEYS.some(p => k.toLowerCase().includes(p) || (u.name && u.name.toLowerCase().includes(p)));
+    if (!isPurged) {
+      clean[k] = u;
+    }
+  }
+  if (!clean['gean']) {
+    clean['gean'] = {
+      name: 'Soldado Gean',
+      status: 'approved',
+      isAdmin: true,
+      requestedAt: '2026-10-13T09:49:38.463Z',
+      approvedAt: '2026-10-14T14:26:07.510Z',
+      hasChangedPassword: true,
+      personalPassword: 'PMPE2026',
+    };
+  }
+  return clean;
+}
+
 /**
- * Carrega todos os usuários do localStorage
+ * Carrega todos os usuários do localStorage, expurgando automaticamente os usuários antigos
  */
 export function getLocalUsersRegistry(): Record<string, UserAccessRecord> {
   try {
     const raw = localStorage.getItem(LOCAL_AUTH_KEY);
-    if (raw) return JSON.parse(raw);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      const filtered = filterPurgedUsers(parsed);
+      return filtered;
+    }
   } catch (err) {
     console.error('Erro ao ler registro local de usuários:', err);
   }
@@ -54,8 +82,8 @@ export function getLocalUsersRegistry(): Record<string, UserAccessRecord> {
       name: 'Soldado Gean',
       status: 'approved',
       isAdmin: true,
-      requestedAt: new Date().toISOString(),
-      approvedAt: new Date().toISOString(),
+      requestedAt: '2026-10-13T09:49:38.463Z',
+      approvedAt: '2026-10-14T14:26:07.510Z',
       hasChangedPassword: true,
       personalPassword: 'PMPE2026',
     },
@@ -129,7 +157,7 @@ export async function pushRegistryToCloud(registry: Record<string, UserAccessRec
 }
 
 /**
- * Puxa o registro mais recente da nuvem KVdb e mescla com o local
+ * Puxa o registro mais recente da nuvem KVdb (filtrando legados) e atualiza o local
  */
 export async function fetchRegistryFromCloud(): Promise<Record<string, UserAccessRecord>> {
   const local = getLocalUsersRegistry();
@@ -138,33 +166,48 @@ export async function fetchRegistryFromCloud(): Promise<Record<string, UserAcces
     if (res.ok) {
       const cloudData: Record<string, UserAccessRecord> = await res.json();
       if (cloudData && typeof cloudData === 'object') {
-        const merged: Record<string, UserAccessRecord> = { ...local };
-
-        for (const [k, cloudUser] of Object.entries(cloudData)) {
-          if (!merged[k]) {
-            merged[k] = cloudUser;
-          } else {
-            // Regra crucial: Se já está aprovado localmente, NÃO regredir para pendente!
-            const isApproved = merged[k].status === 'approved' || cloudUser.status === 'approved';
-            merged[k] = {
-              ...cloudUser,
-              ...merged[k],
-              status: isApproved ? 'approved' : cloudUser.status,
-              approvedAt: merged[k].approvedAt || cloudUser.approvedAt,
-              hasChangedPassword: merged[k].hasChangedPassword || cloudUser.hasChangedPassword,
-              personalPassword: merged[k].personalPassword || cloudUser.personalPassword,
-            };
-          }
-        }
-
-        saveLocalUsersRegistry(merged);
-        return merged;
+        const cleanCloud = filterPurgedUsers(cloudData);
+        saveLocalUsersRegistry(cleanCloud);
+        return cleanCloud;
       }
     }
   } catch (err) {
     console.warn('Nuvem indisponível no momento, utilizando dados locais.');
   }
   return local;
+}
+
+/**
+ * Exclui permanentemente um usuário (da nuvem e do armazenamento local)
+ */
+export async function deleteUserPermanently(targetKeyOrName: string): Promise<boolean> {
+  const local = getLocalUsersRegistry();
+  const key = findUserKey(local, targetKeyOrName) || normalizeUserName(targetKeyOrName);
+  
+  if (local[key]) {
+    delete local[key];
+    saveLocalUsersRegistry(local);
+  }
+
+  try {
+    const res = await fetchWithTimeout(`${CLOUD_API_BASE}/${MASTER_KEY_PREFIX}`, {}, 3500);
+    if (res.ok) {
+      const cloudData: Record<string, UserAccessRecord> = await res.json();
+      if (cloudData && cloudData[key]) {
+        delete cloudData[key];
+        const clean = filterPurgedUsers(cloudData);
+        saveLocalUsersRegistry(clean);
+        await pushRegistryToCloud(clean);
+      }
+    }
+  } catch {}
+
+  try {
+    const studentKey = `student_${key}`;
+    await fetch(`${CLOUD_API_BASE}/${studentKey}`, { method: 'DELETE' });
+  } catch {}
+
+  return true;
 }
 
 /**

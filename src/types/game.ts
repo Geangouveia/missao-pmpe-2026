@@ -7,6 +7,7 @@ export type CategoryId =
   | 'informatica' 
   | 'constitucional' 
   | 'humanos_leis' 
+  | 'legislacao_pmpe'
   | 'simulado_geral'
   | 'custom';
 

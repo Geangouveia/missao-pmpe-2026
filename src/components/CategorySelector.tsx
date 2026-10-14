@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Category, CategoryId } from '../types/game';
-import { BookOpen, Landmark, BrainCircuit, Laptop, Scale, ShieldAlert, Layers, Sparkles } from 'lucide-react';
+import { BookOpen, Landmark, BrainCircuit, Laptop, Scale, ShieldAlert, Shield, Layers, Sparkles } from 'lucide-react';
 import { sound } from '../utils/sound';
 
 interface CategorySelectorProps {
@@ -30,12 +30,14 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
       case 'informatica': return <Laptop size={16} />;
       case 'constitucional': return <Scale size={16} />;
       case 'humanos_leis': return <ShieldAlert size={16} />;
+      case 'legislacao_pmpe': return <Shield size={16} />;
       default: return <Layers size={16} />;
     }
   };
 
   const simuladosOptions = [
     { id: 'all', label: 'Todos os Cadernos (615Q Totais)' },
+    { id: 'caderno_pmpe_estatuto', label: '🛡️ Caderno Exclusivo: Estatuto da PMPE (Lei 6.783/74 - 25Q)' },
     { id: 'edital_200', label: '🔥 Caderno Oficial Edital AOCP (100Q)' },
     { id: 'banco_bloco1', label: '📚 Super Caderno Bloco I (Português & Hist. PE - 100Q)' },
     { id: 'banco_bloco2', label: '🧮 Super Caderno Bloco II (RLM & Informática - 100Q)' },

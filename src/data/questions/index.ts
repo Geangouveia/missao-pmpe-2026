@@ -27,6 +27,7 @@ export {
 
 export const SIMULADOS_LIST = [
   { id: 'all', name: 'Todos os Simulados (Banco Geral - 615 Questões)', count: 615, tag: '⭐ Acervo Completo' },
+  { id: 'caderno_pmpe_estatuto', name: '🛡️ Caderno Especial: Estatuto da PMPE (Lei 6.783/74)', count: 25, tag: 'Estatuto PMPE' },
   { id: 'edital_200', name: 'Caderno Oficial Edital AOCP (100 Questões)', count: 100, tag: '🔥 Edital 100Q' },
   { id: 'banco_bloco1', name: 'Super Caderno Bloco I (Português & História de PE)', count: 100, tag: 'Bloco I (100 Q)' },
   { id: 'banco_bloco2', name: 'Super Caderno Bloco II (Raciocínio Lógico & Informática)', count: 100, tag: 'Bloco II (100 Q)' },

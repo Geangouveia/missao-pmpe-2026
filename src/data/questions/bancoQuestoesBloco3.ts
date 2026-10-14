@@ -2648,7 +2648,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-01",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE (Lei 6.783/74) - Pilares Institucionais",
@@ -2684,7 +2684,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-02",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Posto e Graduação",
@@ -2720,7 +2720,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-03",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Situação dos Policiais Militares",
@@ -2756,7 +2756,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-04",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Diferença entre Reserva e Reforma",
@@ -2792,7 +2792,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-05",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Círculos Hierárquicos",
@@ -2828,7 +2828,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-06",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Critérios de Desempate na Antiguidade",
@@ -2864,7 +2864,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-07",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Vedações ao Militar da Ativa",
@@ -2900,7 +2900,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-08",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Direitos e Prerrogativas",
@@ -2936,7 +2936,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-09",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Agregação",
@@ -2972,7 +2972,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-10",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Reversão",
@@ -3008,7 +3008,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-11",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Ausência e Deserção",
@@ -3044,7 +3044,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-12",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Licença Especial",
@@ -3080,7 +3080,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-13",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Uso Exclusivo de Uniformes",
@@ -3116,7 +3116,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-14",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Conselhos Disciplinares",
@@ -3152,7 +3152,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-15",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Perda do Posto e da Patente",
@@ -3188,7 +3188,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-16",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Policial Militar Excedente",
@@ -3224,7 +3224,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-17",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Conceito de Comando e Subordinação",
@@ -3260,7 +3260,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-18",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Ética Policial Militar",
@@ -3296,7 +3296,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-19",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Férias Policiais Militares",
@@ -3332,7 +3332,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-20",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Transferência para a Reserva Remunerada",
@@ -3368,7 +3368,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-21",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Requisitos de Matrícula e Ingresso",
@@ -3404,7 +3404,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-22",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Demissão e Exclusão a Bem da Disciplina",
@@ -3440,7 +3440,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-23",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Reabilitação do Policial Militar",
@@ -3476,7 +3476,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-24",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Policial Desaparecido e Extraviado",
@@ -3512,7 +3512,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
   },
   {
     "id": "b3-pm-25",
-    "categoryId": "humanos_leis",
+    "categoryId": "legislacao_pmpe",
     "bloco": "bloco_3",
     "materiaNome": "Legislação da PMPE",
     "topicoEdital": "Estatuto da PMPE - Princípio da Subordinação Legal",

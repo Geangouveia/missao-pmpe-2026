@@ -64,14 +64,25 @@ export const CATEGORIES: Category[] = [
   },
   {
     id: 'humanos_leis',
-    name: 'Legislação & Direitos Humanos',
+    name: 'Direitos Humanos & Extravagante',
     bloco: 'bloco_3',
     blocoNome: 'Bloco III (AOCP)',
-    description: 'Estatuto dos Militares da PMPE, Lei Maria da Penha, Lei de Drogas, Crimes Hediondos e Abuso de Autoridade.',
+    description: 'DUDH, Pacto San José, Uso da Força (Lei 13.060/14), Tortura (Lei 9.455/97) e Abuso de Autoridade.',
     icon: 'ShieldAlert',
     color: '#ef4444',
     accent: 'from-red-500 to-rose-600',
     badge: 'Bloco III'
+  },
+  {
+    id: 'legislacao_pmpe',
+    name: 'Legislação da PMPE (Estatuto)',
+    bloco: 'bloco_3',
+    blocoNome: 'Bloco III (AOCP)',
+    description: 'Estatuto dos Policiais Militares de Pernambuco (Lei Estadual nº 6.783/1974), bases, hierarquia e deveres.',
+    icon: 'Shield',
+    color: '#22c55e',
+    accent: 'from-green-600 to-emerald-700',
+    badge: 'Estatuto PMPE'
   }
 ];
 
