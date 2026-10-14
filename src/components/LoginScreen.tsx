@@ -7,12 +7,11 @@ import {
   CheckCircle2, 
   Eye, 
   EyeOff, 
-  Sparkles, 
   Quote, 
   RefreshCw, 
-  Clock, 
-  ShieldAlert, 
-  ShieldCheck 
+  ShieldCheck,
+  UserPlus,
+  LogIn
 } from 'lucide-react';
 import { PmpeBrasaoLogo } from './PmpeBrasaoLogo';
 import { StreakFlame } from './StreakFlame';
@@ -20,6 +19,7 @@ import { getDailyMotivationalQuote, MOTIVATIONAL_QUOTES } from '../utils/motivat
 import { 
   validateLoginAttempt, 
   setUserPersonalPassword, 
+  registerNewUser,
   isMasterUser 
 } from '../utils/authManager';
 import { sound } from '../utils/sound';
@@ -29,16 +29,27 @@ interface LoginScreenProps {
 }
 
 export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
+  // Aba ativa: 'login' (Entrar) ou 'register' (Novo Alistamento)
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
+
+  // Formulário de Login
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
+
+  // Formulário de Cadastro Rápido (Entrada Imediata)
+  const [regName, setRegName] = useState('');
+  const [regPassword, setRegPassword] = useState('');
+  const [regConfirmPassword, setRegConfirmPassword] = useState('');
+  const [showRegPassword, setShowRegPassword] = useState(false);
+
   const [errorMsg, setErrorMsg] = useState('');
-  const [pendingNotice, setPendingNotice] = useState<string | null>(null);
+  const [successMsg, setSuccessMsg] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [quoteIndex, setQuoteIndex] = useState(0);
 
-  // Estados para o Modal de Criação Obrigatória de Nova Senha no 1º Acesso
+  // Modal de Criação de Senha (caso use a chave padrão inicial)
   const [isFirstLoginNewPasswordModal, setIsFirstLoginNewPasswordModal] = useState(false);
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -54,23 +65,24 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
     setQuoteIndex((prev) => (prev + 1) % MOTIVATIONAL_QUOTES.length);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // 1. Submit de Login (Entrar)
+  const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
-    setPendingNotice(null);
+    setSuccessMsg('');
 
     const trimmedName = name.trim();
     const cleanPass = password.trim();
 
     if (!trimmedName) {
       sound.playError();
-      setErrorMsg('Informe seu nome de guerra ou matrícula.');
+      setErrorMsg('Informe seu nome de guerra ou identificação.');
       return;
     }
 
     if (!cleanPass) {
       sound.playError();
-      setErrorMsg('Digite a chave de acesso da corporação.');
+      setErrorMsg('Digite sua senha de acesso militar.');
       return;
     }
 
@@ -93,25 +105,85 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
         }
         onLoginSuccess(trimmedName);
       } else if (res.status === 'needs_new_password') {
-        // Aluno aprovado no primeiro acesso com a senha padrão: exige criação de senha pessoal
         sound.playSuccess();
         setIsFirstLoginNewPasswordModal(true);
-      } else if (res.status === 'pending') {
-        sound.playError();
-        setPendingNotice(res.message);
       } else {
         sound.playError();
         setErrorMsg(res.message);
       }
     } catch (err) {
       console.error(err);
-      setErrorMsg('Falha de conexão com a rede militar de autenticação.');
+      setErrorMsg('Falha de conexão com a rede de autenticação.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Salvar a nova senha criada pelo aluno no 1º acesso
+  // 2. Submit de Cadastro Rápido (Entrada Imediata Sem Autorização Prévia)
+  const handleRegisterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMsg('');
+    setSuccessMsg('');
+
+    const trimmedName = regName.trim();
+    const cleanPass = regPassword.trim();
+    const confirmPass = regConfirmPassword.trim();
+
+    if (!trimmedName || trimmedName.length < 2) {
+      sound.playError();
+      setErrorMsg('Informe seu nome ou identificação com pelo menos 2 caracteres.');
+      return;
+    }
+
+    if (!cleanPass || cleanPass.length < 4) {
+      sound.playError();
+      setErrorMsg('A sua senha militar deve conter pelo menos 4 caracteres.');
+      return;
+    }
+
+    if (cleanPass !== confirmPass) {
+      sound.playError();
+      setErrorMsg('A confirmação da senha não confere com a senha digitada.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const res = await registerNewUser(trimmedName, cleanPass);
+
+      if (res.success) {
+        sound.playLevelUp();
+        setSuccessMsg(res.message);
+
+        const userData = {
+          name: trimmedName,
+          authenticatedAt: new Date().toISOString(),
+          isAdmin: isMasterUser(trimmedName)
+        };
+
+        if (rememberMe) {
+          localStorage.setItem('pmpe_auth_user', JSON.stringify(userData));
+        } else {
+          sessionStorage.setItem('pmpe_auth_user', JSON.stringify(userData));
+        }
+
+        setTimeout(() => {
+          onLoginSuccess(trimmedName);
+        }, 300);
+      } else {
+        sound.playError();
+        setErrorMsg(res.message);
+      }
+    } catch (err) {
+      console.error(err);
+      setErrorMsg('Erro ao registrar novo guerreiro. Tente novamente.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // 3. Salvar nova senha se usou chave padrão
   const handleSaveNewPassword = async (e: React.FormEvent) => {
     e.preventDefault();
     setPasswordModalError('');
@@ -154,7 +226,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
       onLoginSuccess(trimmedName);
     } catch (err) {
       console.error(err);
-      setPasswordModalError('Erro ao gravar sua nova senha na nuvem.');
+      setPasswordModalError('Erro ao gravar sua nova senha.');
       setIsSubmittingPassword(false);
     }
   };
@@ -166,21 +238,30 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
       alignItems: 'center',
       justifyContent: 'center',
       padding: '2rem 1.25rem',
-      background: 'radial-gradient(circle at 50% 15%, #0f1c3f 0%, #060d1f 55%, #02050e 100%)',
+      background: 'radial-gradient(circle at 50% 12%, #18231c 0%, #0d1410 50%, #060907 100%)',
       position: 'relative',
       overflow: 'hidden'
     }}>
-      {/* Luzes Nebulares e Feixes Militares */}
+      {/* Iluminação Tática Militar (Verde Oliva & Dourado PMPE) */}
       <div style={{
         position: 'absolute',
-        top: '5%',
+        top: '2%',
         left: '50%',
         transform: 'translateX(-50%)',
-        width: '650px',
-        height: '650px',
-        background: 'radial-gradient(circle, rgba(6, 182, 212, 0.16) 0%, rgba(245, 158, 11, 0.08) 35%, rgba(30, 58, 138, 0.04) 70%, transparent 80%)',
+        width: '680px',
+        height: '680px',
+        background: 'radial-gradient(circle, rgba(34, 197, 94, 0.12) 0%, rgba(245, 158, 11, 0.08) 40%, transparent 75%)',
         borderRadius: '50%',
-        filter: 'blur(70px)',
+        filter: 'blur(75px)',
+        pointerEvents: 'none'
+      }} />
+
+      {/* Grid Tático Militar de Fundo */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: 'linear-gradient(rgba(34, 197, 94, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 197, 94, 0.03) 1px, transparent 1px)',
+        backgroundSize: '36px 36px',
         pointerEvents: 'none'
       }} />
 
@@ -189,79 +270,79 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
         style={{
           width: '100%',
           maxWidth: '520px',
-          background: 'rgba(15, 23, 42, 0.92)',
+          background: 'rgba(17, 24, 19, 0.94)',
           backdropFilter: 'blur(24px)',
-          border: '1.5px solid rgba(56, 189, 248, 0.3)',
-          borderRadius: '26px',
-          padding: '2.5rem 2.25rem',
-          boxShadow: '0 25px 55px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(6, 182, 212, 0.18)',
+          border: '1.5px solid rgba(34, 197, 94, 0.35)',
+          borderRadius: '24px',
+          padding: '2.25rem 2rem',
+          boxShadow: '0 25px 60px -10px rgba(0, 0, 0, 0.9), 0 0 35px rgba(34, 197, 94, 0.15)',
           position: 'relative',
           zIndex: 10
         }}
       >
         {/* Brasão Oficial da PMPE no Topo */}
-        <div style={{ textAlign: 'center', marginBottom: '1.5rem', position: 'relative' }}>
+        <div style={{ textAlign: 'center', marginBottom: '1.35rem', position: 'relative' }}>
           <div style={{
             display: 'inline-block',
             position: 'relative',
-            filter: 'drop-shadow(0 0 25px rgba(245, 158, 11, 0.45))'
+            filter: 'drop-shadow(0 0 20px rgba(245, 158, 11, 0.4))'
           }}>
-            <PmpeBrasaoLogo size={105} showText={false} />
+            <PmpeBrasaoLogo size={98} showText={false} />
           </div>
 
-          {/* Insígnia e Título Nobre */}
+          {/* Insígnia Militar e Título Oficial */}
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.45rem',
-            padding: '0.3rem 0.9rem',
-            borderRadius: '24px',
+            padding: '0.3rem 0.85rem',
+            borderRadius: '20px',
             background: 'rgba(234, 179, 8, 0.15)',
             border: '1px solid rgba(245, 158, 11, 0.45)',
             color: '#fbbf24',
             fontSize: '0.74rem',
             fontWeight: 800,
             textTransform: 'uppercase',
-            letterSpacing: '0.09em',
-            margin: '0.85rem auto 0.6rem'
+            letterSpacing: '0.08em',
+            margin: '0.75rem auto 0.45rem'
           }}>
             <Lock size={12} />
-            <span>PORTAL TÁTICO MILITAR • PMPE 2026</span>
+            <span>SISTEMA TÁTICO MILITAR • PMPE 2026</span>
           </div>
 
           <h1 style={{
-            fontSize: '1.65rem',
+            fontSize: '1.6rem',
             fontWeight: 900,
             letterSpacing: '-0.02em',
-            color: '#ffffff',
-            margin: '0 0 0.35rem',
+            color: '#f8fafc',
+            margin: '0 0 0.25rem',
             lineHeight: 1.2
           }}>
             Polícia Militar de Pernambuco
           </h1>
 
           <p style={{
-            fontSize: '0.85rem',
-            color: '#93c5fd',
+            fontSize: '0.84rem',
+            color: '#86efac',
             fontWeight: 600,
             margin: 0,
             letterSpacing: '0.04em'
           }}>
-            Preparatório Oficial para Soldado • Instituto AOCP
+            Preparatório Oficial Soldado • Instituto AOCP
           </p>
         </div>
 
-        {/* Card Motivacional Militar Dinâmico */}
+        {/* Card Motivacional Militar */}
         <div style={{
-          background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%)',
+          background: 'linear-gradient(135deg, rgba(24, 34, 27, 0.9) 0%, rgba(14, 20, 16, 0.95) 100%)',
           border: '1px solid rgba(245, 158, 11, 0.35)',
-          borderRadius: '16px',
-          padding: '1rem 1.15rem',
-          marginBottom: '1.5rem',
+          borderRadius: '14px',
+          padding: '0.85rem 1rem',
+          marginBottom: '1.25rem',
           position: 'relative',
-          boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(245, 158, 11, 0.08)'
+          boxShadow: '0 6px 16px rgba(0, 0, 0, 0.4)'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
               <StreakFlame days={1} size="sm" showLabel={false} />
               <span style={{
@@ -278,7 +359,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
             <button
               type="button"
               onClick={handleNextQuote}
-              title="Nova Frase Motivacional"
+              title="Trocar Citação Motivacional"
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -297,22 +378,22 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
             </button>
           </div>
 
-          <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start' }}>
-            <Quote size={20} color="#f59e0b" style={{ flexShrink: 0, opacity: 0.85, marginTop: '2px' }} />
+          <div style={{ display: 'flex', gap: '0.55rem', alignItems: 'flex-start' }}>
+            <Quote size={18} color="#f59e0b" style={{ flexShrink: 0, opacity: 0.85, marginTop: '2px' }} />
             <div>
               <p style={{
                 margin: 0,
-                fontSize: '0.86rem',
+                fontSize: '0.84rem',
                 color: '#f8fafc',
                 fontWeight: 600,
                 fontStyle: 'italic',
-                lineHeight: 1.45
+                lineHeight: 1.4
               }}>
                 "{currentQuote.quote}"
               </p>
               <div style={{
-                marginTop: '0.4rem',
-                fontSize: '0.75rem',
+                marginTop: '0.35rem',
+                fontSize: '0.74rem',
                 color: '#fbbf24',
                 fontWeight: 800,
                 letterSpacing: '0.03em'
@@ -323,63 +404,108 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
           </div>
         </div>
 
-        {/* Notificação de Solicitação Pendente de Autorização por Gean */}
-        {pendingNotice && (
+        {/* Abas Táticas Militares: Entrar vs. Novo Alistamento */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '0.5rem',
+          background: 'rgba(0, 0, 0, 0.35)',
+          padding: '0.35rem',
+          borderRadius: '14px',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          marginBottom: '1.25rem'
+        }}>
+          <button
+            type="button"
+            onClick={() => {
+              sound.playClick();
+              setAuthMode('login');
+              setErrorMsg('');
+              setSuccessMsg('');
+            }}
+            style={{
+              padding: '0.65rem 0.8rem',
+              borderRadius: '10px',
+              border: 'none',
+              background: authMode === 'login' ? 'linear-gradient(135deg, #15803d, #16a34a)' : 'transparent',
+              color: authMode === 'login' ? '#ffffff' : '#94a3b8',
+              fontWeight: 800,
+              fontSize: '0.84rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.45rem',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              boxShadow: authMode === 'login' ? '0 4px 14px rgba(22, 163, 74, 0.4)' : 'none'
+            }}
+          >
+            <LogIn size={15} />
+            <span>Entrar na Missão</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              sound.playClick();
+              setAuthMode('register');
+              setErrorMsg('');
+              setSuccessMsg('');
+            }}
+            style={{
+              padding: '0.65rem 0.8rem',
+              borderRadius: '10px',
+              border: 'none',
+              background: authMode === 'register' ? 'linear-gradient(135deg, #d97706, #f59e0b)' : 'transparent',
+              color: authMode === 'register' ? '#000000' : '#94a3b8',
+              fontWeight: 800,
+              fontSize: '0.84rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.45rem',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              boxShadow: authMode === 'register' ? '0 4px 14px rgba(245, 158, 11, 0.4)' : 'none'
+            }}
+          >
+            <UserPlus size={15} />
+            <span>Novo Alistamento</span>
+          </button>
+        </div>
+
+        {/* Mensagens de Sucesso e Erro */}
+        {successMsg && (
           <div style={{
-            padding: '1rem',
-            borderRadius: '14px',
-            background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(217, 119, 6, 0.15) 100%)',
-            border: '1.5px solid rgba(245, 158, 11, 0.65)',
-            marginBottom: '1.25rem',
-            boxShadow: '0 0 20px rgba(245, 158, 11, 0.25)',
-            animation: 'fadeIn 0.25s ease-out'
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.65rem',
+            padding: '0.8rem 1rem',
+            borderRadius: '12px',
+            background: 'rgba(34, 197, 94, 0.2)',
+            border: '1px solid rgba(34, 197, 94, 0.5)',
+            color: '#86efac',
+            fontSize: '0.84rem',
+            fontWeight: 700,
+            marginBottom: '1.15rem'
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#fbbf24', fontWeight: 900, fontSize: '0.9rem' }}>
-              <Clock size={20} />
-              <span>Aguardando Autorização da Conta Gean</span>
-            </div>
-            <p style={{ margin: '0.45rem 0 0.85rem', fontSize: '0.82rem', color: '#e2e8f0', lineHeight: 1.45 }}>
-              {pendingNotice}
-            </p>
-            <button
-              type="button"
-              onClick={handleSubmit}
-              disabled={isSubmitting}
-              style={{
-                width: '100%',
-                padding: '0.6rem 1rem',
-                borderRadius: '10px',
-                background: 'linear-gradient(135deg, #d97706, #f59e0b)',
-                border: 'none',
-                color: '#000000',
-                fontWeight: 900,
-                fontSize: '0.8rem',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.4rem'
-              }}
-            >
-              <RefreshCw size={14} className={isSubmitting ? 'spin-anim' : ''} />
-              <span>Verificar se Gean já Autorizou</span>
-            </button>
+            <CheckCircle2 size={18} color="#22c55e" style={{ flexShrink: 0 }} />
+            <span>{successMsg}</span>
           </div>
         )}
 
-        {/* Mensagem de Erro */}
         {errorMsg && (
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.75rem',
-            padding: '0.85rem 1rem',
+            gap: '0.65rem',
+            padding: '0.8rem 1rem',
             borderRadius: '12px',
-            background: 'rgba(239, 68, 68, 0.15)',
-            border: '1px solid rgba(239, 68, 68, 0.4)',
+            background: 'rgba(239, 68, 68, 0.18)',
+            border: '1px solid rgba(239, 68, 68, 0.45)',
             color: '#fca5a5',
             fontSize: '0.84rem',
-            marginBottom: '1.25rem',
+            marginBottom: '1.15rem',
             animation: 'shake 0.3s ease-in-out'
           }}>
             <AlertTriangle size={18} color="#ef4444" style={{ flexShrink: 0 }} />
@@ -387,206 +513,332 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
           </div>
         )}
 
-        {/* Formulário de Acesso Militar */}
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
-          {/* Identificação do Aluno */}
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.45rem' }}>
-              <label style={{
-                fontSize: '0.78rem',
-                fontWeight: 800,
-                color: '#cbd5e1',
-                textTransform: 'uppercase',
-                letterSpacing: '0.06em'
-              }}>
-                Identificação do Guerreiro:
+        {/* 1. ABA DE LOGIN (JÁ ALISTADO) */}
+        {authMode === 'login' ? (
+          <form onSubmit={handleLoginSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.05rem' }}>
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
+                <label style={{ fontSize: '0.78rem', fontWeight: 800, color: '#cbd5e1', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  Identificação do Guerreiro:
+                </label>
+                <span style={{ fontSize: '0.7rem', color: '#4ade80', fontWeight: 700 }}>
+                  Acesso Militar
+                </span>
+              </div>
+
+              <div style={{ position: 'relative' }}>
+                <div style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }}>
+                  <User size={18} />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Nome de guerra ou identificação"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    setErrorMsg('');
+                  }}
+                  style={{
+                    width: '100%',
+                    padding: '0.85rem 1rem 0.85rem 2.8rem',
+                    background: 'rgba(24, 34, 27, 0.85)',
+                    border: '1px solid rgba(71, 85, 105, 0.55)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '0.95rem',
+                    outline: 'none',
+                    boxSizing: 'border-box'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = '#22c55e'}
+                  onBlur={(e) => e.target.style.borderColor = 'rgba(71, 85, 105, 0.55)'}
+                  required
+                />
+              </div>
+            </div>
+
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
+                <label style={{ fontSize: '0.78rem', fontWeight: 800, color: '#cbd5e1', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  Senha de Acesso Militar:
+                </label>
+                <span style={{ fontSize: '0.68rem', color: '#94a3b8' }}>
+                  (Senha do Guerreiro)
+                </span>
+              </div>
+
+              <div style={{ position: 'relative' }}>
+                <div style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }}>
+                  <KeyRound size={18} />
+                </div>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Insira sua senha militar"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    setErrorMsg('');
+                  }}
+                  style={{
+                    width: '100%',
+                    padding: '0.85rem 3rem 0.85rem 2.8rem',
+                    background: 'rgba(24, 34, 27, 0.85)',
+                    border: '1px solid rgba(71, 85, 105, 0.55)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '0.95rem',
+                    outline: 'none',
+                    boxSizing: 'border-box',
+                    letterSpacing: showPassword ? 'normal' : '0.12em'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = '#22c55e'}
+                  onBlur={(e) => e.target.style.borderColor = 'rgba(71, 85, 105, 0.55)'}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    position: 'absolute',
+                    right: '0.75rem',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'transparent',
+                    border: 'none',
+                    color: '#64748b',
+                    cursor: 'pointer',
+                    padding: '0.25rem'
+                  }}
+                  title={showPassword ? 'Ocultar senha' : 'Exibir senha'}
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.82rem' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#94a3b8', cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
+                  style={{ accentColor: '#22c55e', width: '16px', height: '16px', cursor: 'pointer' }}
+                />
+                <span>Manter conectado neste aparelho</span>
               </label>
 
-              <span style={{ fontSize: '0.7rem', color: '#38bdf8', fontWeight: 700 }}>
-                Acesso Individual
+              <span style={{ color: '#4ade80', fontSize: '0.74rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                <ShieldCheck size={14} />
+                <span>Entrada Direta</span>
               </span>
             </div>
 
-            <div style={{ position: 'relative' }}>
-              <div style={{
-                position: 'absolute',
-                left: '1rem',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                color: '#64748b'
-              }}>
-                <User size={18} />
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              style={{
+                marginTop: '0.4rem',
+                padding: '0.95rem 1.5rem',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #15803d 0%, #16a34a 60%, #22c55e 100%)',
+                border: '1px solid rgba(34, 197, 94, 0.6)',
+                color: '#ffffff',
+                fontSize: '0.98rem',
+                fontWeight: 900,
+                letterSpacing: '0.04em',
+                textTransform: 'uppercase',
+                cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.65rem',
+                boxShadow: '0 8px 24px rgba(22, 163, 74, 0.45)',
+                transition: 'all 0.15s ease',
+                opacity: isSubmitting ? 0.8 : 1
+              }}
+            >
+              {isSubmitting ? (
+                <span>Validando Acesso Militar...</span>
+              ) : (
+                <>
+                  <CheckCircle2 size={19} />
+                  <span>Entrar na Missão PMPE</span>
+                </>
+              )}
+            </button>
+          </form>
+        ) : (
+          /* 2. ABA DE NOVO ALISTAMENTO (CADASTRO INSTANTÂNEO SEM ESPERA) */
+          <form onSubmit={handleRegisterSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.05rem' }}>
+            <div style={{
+              padding: '0.65rem 0.85rem',
+              borderRadius: '10px',
+              background: 'rgba(245, 158, 11, 0.12)',
+              border: '1px solid rgba(245, 158, 11, 0.35)',
+              color: '#fef08a',
+              fontSize: '0.78rem',
+              lineHeight: 1.4
+            }}>
+              ⭐ <strong>Entrada Imediata:</strong> Novos guerreiros são cadastrados e liberados instantaneamente para treinar, sem fila de espera!
+            </div>
+
+            <div>
+              <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 800, color: '#cbd5e1', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
+                Seu Nome de Guerra / Identificação:
+              </label>
+              <div style={{ position: 'relative' }}>
+                <div style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }}>
+                  <User size={18} />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Ex: Aluno Silva, Carlos, Maria..."
+                  value={regName}
+                  onChange={(e) => {
+                    setRegName(e.target.value);
+                    setErrorMsg('');
+                  }}
+                  style={{
+                    width: '100%',
+                    padding: '0.85rem 1rem 0.85rem 2.8rem',
+                    background: 'rgba(24, 34, 27, 0.85)',
+                    border: '1px solid rgba(71, 85, 105, 0.55)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '0.95rem',
+                    outline: 'none',
+                    boxSizing: 'border-box'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = '#f59e0b'}
+                  onBlur={(e) => e.target.style.borderColor = 'rgba(71, 85, 105, 0.55)'}
+                  required
+                />
               </div>
+            </div>
+
+            <div>
+              <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 800, color: '#cbd5e1', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
+                Crie Sua Senha Pessoal (mínimo 4 dígitos):
+              </label>
+              <div style={{ position: 'relative' }}>
+                <div style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }}>
+                  <KeyRound size={18} />
+                </div>
+                <input
+                  type={showRegPassword ? 'text' : 'password'}
+                  placeholder="Defina sua senha de acesso"
+                  value={regPassword}
+                  onChange={(e) => {
+                    setRegPassword(e.target.value);
+                    setErrorMsg('');
+                  }}
+                  style={{
+                    width: '100%',
+                    padding: '0.85rem 3rem 0.85rem 2.8rem',
+                    background: 'rgba(24, 34, 27, 0.85)',
+                    border: '1px solid rgba(71, 85, 105, 0.55)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '0.95rem',
+                    outline: 'none',
+                    boxSizing: 'border-box'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = '#f59e0b'}
+                  onBlur={(e) => e.target.style.borderColor = 'rgba(71, 85, 105, 0.55)'}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowRegPassword(!showRegPassword)}
+                  style={{
+                    position: 'absolute',
+                    right: '0.75rem',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'transparent',
+                    border: 'none',
+                    color: '#64748b',
+                    cursor: 'pointer',
+                    padding: '0.25rem'
+                  }}
+                >
+                  {showRegPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 800, color: '#cbd5e1', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
+                Confirmar Senha:
+              </label>
               <input
-                type="text"
-                placeholder="Digite seu nome ou identificação de guerreiro"
-                value={name}
+                type={showRegPassword ? 'text' : 'password'}
+                placeholder="Repita a senha digitada"
+                value={regConfirmPassword}
                 onChange={(e) => {
-                  setName(e.target.value);
-                  setPendingNotice(null);
+                  setRegConfirmPassword(e.target.value);
                   setErrorMsg('');
                 }}
                 style={{
                   width: '100%',
-                  padding: '0.85rem 1rem 0.85rem 2.8rem',
-                  background: 'rgba(30, 41, 59, 0.75)',
+                  padding: '0.85rem 1rem',
+                  background: 'rgba(24, 34, 27, 0.85)',
                   border: '1px solid rgba(71, 85, 105, 0.55)',
-                  borderRadius: '14px',
+                  borderRadius: '12px',
                   color: '#ffffff',
                   fontSize: '0.95rem',
                   outline: 'none',
-                  boxSizing: 'border-box',
-                  transition: 'border-color 0.2s, box-shadow 0.2s'
+                  boxSizing: 'border-box'
                 }}
-                onFocus={(e) => e.target.style.borderColor = '#06b6d4'}
+                onFocus={(e) => e.target.style.borderColor = '#f59e0b'}
                 onBlur={(e) => e.target.style.borderColor = 'rgba(71, 85, 105, 0.55)'}
                 required
               />
             </div>
-          </div>
 
-          {/* Chave de Segurança */}
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.45rem' }}>
-              <label style={{
-                fontSize: '0.78rem',
-                fontWeight: 800,
-                color: '#cbd5e1',
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              style={{
+                marginTop: '0.4rem',
+                padding: '0.95rem 1.5rem',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #d97706 0%, #f59e0b 60%, #fbbf24 100%)',
+                border: '1px solid rgba(245, 158, 11, 0.6)',
+                color: '#000000',
+                fontSize: '0.98rem',
+                fontWeight: 900,
+                letterSpacing: '0.04em',
                 textTransform: 'uppercase',
-                letterSpacing: '0.06em'
-              }}>
-                Chave Militar / Senha:
-              </label>
+                cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.65rem',
+                boxShadow: '0 8px 24px rgba(245, 158, 11, 0.45)',
+                transition: 'all 0.15s ease',
+                opacity: isSubmitting ? 0.8 : 1
+              }}
+            >
+              {isSubmitting ? (
+                <span>Efetivando Alistamento Militar...</span>
+              ) : (
+                <>
+                  <UserPlus size={19} />
+                  <span>Cadastrar & Iniciar Missão</span>
+                </>
+              )}
+            </button>
+          </form>
+        )}
 
-              <span style={{ fontSize: '0.68rem', color: '#94a3b8' }}>
-                (Senha Pessoal Cadastrada)
-              </span>
-            </div>
-
-            <div style={{ position: 'relative' }}>
-              <div style={{
-                position: 'absolute',
-                left: '1rem',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                color: '#64748b'
-              }}>
-                <KeyRound size={18} />
-              </div>
-              <input
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Insira sua senha de acesso"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                  setErrorMsg('');
-                }}
-                style={{
-                  width: '100%',
-                  padding: '0.85rem 3rem 0.85rem 2.8rem',
-                  background: 'rgba(30, 41, 59, 0.75)',
-                  border: '1px solid rgba(71, 85, 105, 0.55)',
-                  borderRadius: '14px',
-                  color: '#ffffff',
-                  fontSize: '0.95rem',
-                  outline: 'none',
-                  boxSizing: 'border-box',
-                  letterSpacing: showPassword ? 'normal' : '0.15em',
-                  transition: 'border-color 0.2s, box-shadow 0.2s'
-                }}
-                onFocus={(e) => e.target.style.borderColor = '#06b6d4'}
-                onBlur={(e) => e.target.style.borderColor = 'rgba(71, 85, 105, 0.55)'}
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                style={{
-                  position: 'absolute',
-                  right: '0.75rem',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  background: 'transparent',
-                  border: 'none',
-                  color: '#64748b',
-                  cursor: 'pointer',
-                  padding: '0.25rem'
-                }}
-                title={showPassword ? 'Ocultar chave' : 'Exibir chave'}
-              >
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-              </button>
-            </div>
-          </div>
-
-          {/* Opção: Lembrar no dispositivo */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.82rem' }}>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#94a3b8', cursor: 'pointer' }}>
-              <input
-                type="checkbox"
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-                style={{ accentColor: '#06b6d4', width: '16px', height: '16px', cursor: 'pointer' }}
-              />
-              <span>Lembrar neste aparelho</span>
-            </label>
-
-            <span style={{ color: '#06b6d4', fontSize: '0.76rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-              <Sparkles size={13} />
-              <span>Controle Militar Ativo</span>
-            </span>
-          </div>
-
-          {/* Botão Principal de Login */}
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            style={{
-              marginTop: '0.5rem',
-              padding: '1rem 1.5rem',
-              borderRadius: '14px',
-              background: 'linear-gradient(135deg, #1d4ed8 0%, #0284c7 50%, #06b6d4 100%)',
-              border: '1px solid rgba(56, 189, 248, 0.5)',
-              color: '#ffffff',
-              fontSize: '1rem',
-              fontWeight: 900,
-              letterSpacing: '0.05em',
-              textTransform: 'uppercase',
-              cursor: isSubmitting ? 'not-allowed' : 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '0.65rem',
-              boxShadow: '0 12px 28px rgba(6, 182, 212, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.3)',
-              transition: 'transform 0.15s, box-shadow 0.15s',
-              opacity: isSubmitting ? 0.8 : 1
-            }}
-            onMouseEnter={(e) => {
-              if (!isSubmitting) e.currentTarget.style.transform = 'translateY(-2px)';
-            }}
-            onMouseLeave={(e) => {
-              if (!isSubmitting) e.currentTarget.style.transform = 'translateY(0)';
-            }}
-          >
-            {isSubmitting ? (
-              <span>Autenticando na Nuvem Militar...</span>
-            ) : (
-              <>
-                <CheckCircle2 size={20} />
-                <span>Entrar na Missão PMPE</span>
-              </>
-            )}
-          </button>
-        </form>
-
-        {/* Rodapé do Card com Lema Militar */}
+        {/* Rodapé com Lema Militar Oficial */}
         <div style={{
-          marginTop: '1.75rem',
-          paddingTop: '1.25rem',
+          marginTop: '1.5rem',
+          paddingTop: '1.15rem',
           borderTop: '1px solid rgba(255, 255, 255, 0.08)',
           textAlign: 'center',
           fontSize: '0.76rem',
-          color: '#64748b',
+          color: '#94a3b8',
           display: 'flex',
           flexDirection: 'column',
           gap: '0.3rem'
@@ -595,45 +847,44 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
             ⚔️ "O SUOR NO TREINO POUPA O SANGUE NA BATALHA"
           </div>
           <div>
-            Acessos controlados sob autorização do Comandante Gean • PMPE 2026
+            Polícia Militar de Pernambuco • CFSD Soldado 2026
           </div>
         </div>
       </div>
 
-      {/* MODAL OBRIGATÓRIO: CRIAÇÃO DE NOVA SENHA PESSOAL NO PRIMEIRO ACESSO */}
+      {/* Modal de Criação de Senha Caso o Aluno Tenha Usado Chave Padrão */}
       {isFirstLoginNewPasswordModal && (
         <div style={{
           position: 'fixed',
           inset: 0,
-          background: 'rgba(2, 6, 23, 0.92)',
+          background: 'rgba(2, 6, 4, 0.94)',
           backdropFilter: 'blur(16px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           zIndex: 99999,
-          padding: '1.5rem',
-          animation: 'fadeIn 0.25s ease-out'
+          padding: '1.5rem'
         }}>
           <div style={{
             width: '100%',
             maxWidth: '460px',
-            background: 'rgba(15, 23, 42, 0.96)',
-            border: '2px solid rgba(16, 185, 129, 0.65)',
+            background: 'rgba(17, 24, 19, 0.98)',
+            border: '2px solid rgba(34, 197, 94, 0.65)',
             borderRadius: '24px',
             padding: '2.25rem 2rem',
-            boxShadow: '0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(16, 185, 129, 0.25)',
+            boxShadow: '0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(34, 197, 94, 0.25)',
             textAlign: 'center'
           }}>
             <div style={{
               width: '64px',
               height: '64px',
               borderRadius: '20px',
-              background: 'linear-gradient(135deg, #10b981, #059669)',
+              background: 'linear-gradient(135deg, #15803d, #22c55e)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               margin: '0 auto 1.25rem',
-              boxShadow: '0 0 25px rgba(16, 185, 129, 0.5)'
+              boxShadow: '0 0 25px rgba(34, 197, 94, 0.5)'
             }}>
               <ShieldCheck size={36} color="#ffffff" />
             </div>
@@ -644,24 +895,24 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
               gap: '0.4rem',
               padding: '0.25rem 0.75rem',
               borderRadius: '16px',
-              background: 'rgba(16, 185, 129, 0.2)',
-              border: '1px solid rgba(16, 185, 129, 0.5)',
-              color: '#34d399',
+              background: 'rgba(34, 197, 94, 0.2)',
+              border: '1px solid rgba(34, 197, 94, 0.5)',
+              color: '#86efac',
               fontSize: '0.74rem',
               fontWeight: 800,
               textTransform: 'uppercase',
               marginBottom: '0.75rem'
             }}>
               <CheckCircle2 size={13} />
-              <span>Acesso Autorizado por Gean!</span>
+              <span>Acesso Liberado!</span>
             </div>
 
             <h2 style={{ fontSize: '1.4rem', fontWeight: 900, color: '#ffffff', margin: '0 0 0.5rem' }}>
-              Crie Sua Nova Senha Pessoal
+              Crie Sua Senha Pessoal Militar
             </h2>
 
             <p style={{ fontSize: '0.84rem', color: '#94a3b8', margin: '0 0 1.5rem', lineHeight: 1.45 }}>
-              Olá, <strong style={{ color: '#ffffff' }}>{name}</strong>! Este é o seu primeiro acesso. Por questões de segurança militar, crie sua senha exclusiva para os próximos logins.
+              Guerreiro <strong style={{ color: '#ffffff' }}>{name}</strong>! Crie sua senha de uso pessoal para os próximos acessos.
             </p>
 
             {passwordModalError && (
@@ -686,18 +937,18 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
             <form onSubmit={handleSaveNewPassword} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', textAlign: 'left' }}>
               <div>
                 <label style={{ display: 'block', fontSize: '0.76rem', fontWeight: 800, color: '#cbd5e1', marginBottom: '0.35rem', textTransform: 'uppercase' }}>
-                  Nova Senha Pessoal (mínimo 4 dígitos):
+                  Nova Senha (mínimo 4 dígitos):
                 </label>
                 <div style={{ position: 'relative' }}>
                   <input
                     type={showNewPassword ? 'text' : 'password'}
-                    placeholder="Digite sua nova senha"
+                    placeholder="Digite sua nova senha militar"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     style={{
                       width: '100%',
                       padding: '0.8rem 2.8rem 0.8rem 1rem',
-                      background: 'rgba(30, 41, 59, 0.85)',
+                      background: 'rgba(24, 34, 27, 0.85)',
                       border: '1px solid rgba(71, 85, 105, 0.6)',
                       borderRadius: '12px',
                       color: '#ffffff',
@@ -732,13 +983,13 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                 </label>
                 <input
                   type={showNewPassword ? 'text' : 'password'}
-                  placeholder="Repita sua nova senha"
+                  placeholder="Repita sua nova senha militar"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   style={{
                     width: '100%',
                     padding: '0.8rem 1rem',
-                    background: 'rgba(30, 41, 59, 0.85)',
+                    background: 'rgba(24, 34, 27, 0.85)',
                     border: '1px solid rgba(71, 85, 105, 0.6)',
                     borderRadius: '12px',
                     color: '#ffffff',
@@ -757,7 +1008,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                   marginTop: '0.5rem',
                   padding: '0.95rem',
                   borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #10b981, #059669)',
+                  background: 'linear-gradient(135deg, #15803d, #22c55e)',
                   border: 'none',
                   color: '#ffffff',
                   fontSize: '0.95rem',
@@ -768,7 +1019,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '0.5rem',
-                  boxShadow: '0 8px 20px rgba(16, 185, 129, 0.4)'
+                  boxShadow: '0 8px 20px rgba(34, 197, 94, 0.4)'
                 }}
               >
                 {isSubmittingPassword ? (
@@ -776,7 +1027,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                 ) : (
                   <>
                     <CheckCircle2 size={18} />
-                    <span>Cadastrar Senha & Entrar</span>
+                    <span>Gravar Senha & Entrar</span>
                   </>
                 )}
               </button>

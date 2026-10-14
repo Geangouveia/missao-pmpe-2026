@@ -90,40 +90,40 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       <div className="player-hud">
-        {/* Nível & Barra de XP com transição dinâmica */}
+        {/* Nível & Barra de XP Militar com transição dinâmica */}
         <div 
           className="hud-stat-pill" 
           title={`Nível Militar ${stats.level} • ${xpCurrentLevel}/100 XP (Cada questão correta eleva o XP)`}
           style={{
-            background: 'linear-gradient(135deg, rgba(30, 27, 75, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%)',
-            border: '1px solid rgba(168, 85, 247, 0.35)',
-            boxShadow: '0 0 14px rgba(139, 92, 246, 0.15)'
+            background: 'linear-gradient(135deg, rgba(20, 32, 24, 0.9) 0%, rgba(12, 18, 14, 0.95) 100%)',
+            border: '1px solid rgba(34, 197, 94, 0.35)',
+            boxShadow: '0 0 14px rgba(34, 197, 94, 0.15)'
           }}
         >
           <div style={{
             width: '28px',
             height: '28px',
             borderRadius: '8px',
-            background: 'linear-gradient(135deg, #7c3aed, #06b6d4)',
+            background: 'linear-gradient(135deg, #15803d, #22c55e)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 0 10px rgba(139, 92, 246, 0.4)'
+            boxShadow: '0 0 10px rgba(34, 197, 94, 0.4)'
           }}>
             <Sparkles size={16} color="#ffffff" />
           </div>
           <div className="xp-progress-bar-wrap">
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.76rem', gap: '0.5rem' }}>
-              <span style={{ color: '#c084fc', fontWeight: 900, letterSpacing: '0.04em' }}>NÍVEL {stats.level}</span>
+              <span style={{ color: '#4ade80', fontWeight: 900, letterSpacing: '0.04em' }}>NÍVEL {stats.level}</span>
               <span style={{ color: '#94a3b8', fontWeight: 700 }}>{xpCurrentLevel}/100 XP</span>
             </div>
-            <div className="xp-bar-track" style={{ height: '7px', background: 'rgba(255, 255, 255, 0.1)' }}>
+            <div className="xp-bar-track" style={{ height: '7px', background: 'rgba(0, 0, 0, 0.45)' }}>
               <div 
                 className="xp-bar-fill" 
                 style={{ 
                   width: `${xpPercentage}%`,
-                  background: 'linear-gradient(90deg, #a855f7 0%, #06b6d4 100%)',
-                  boxShadow: '0 0 12px rgba(6, 182, 212, 0.7)'
+                  background: 'linear-gradient(90deg, #16a34a 0%, #22c55e 60%, #f59e0b 100%)',
+                  boxShadow: '0 0 12px rgba(34, 197, 94, 0.7)'
                 }} 
               />
             </div>
@@ -175,9 +175,9 @@ export const Header: React.FC<HeaderProps> = ({
                 padding: '0.45rem 0.85rem',
                 fontSize: '0.82rem',
                 borderRadius: '12px',
-                background: 'rgba(6, 182, 212, 0.12)',
-                borderColor: 'rgba(6, 182, 212, 0.4)',
-                color: '#38bdf8'
+                background: 'rgba(34, 197, 94, 0.12)',
+                borderColor: 'rgba(34, 197, 94, 0.4)',
+                color: '#86efac'
               }}
               onClick={() => {
                 sound.playClick();
@@ -185,7 +185,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               title="Quadro de Acompanhamento e Comparativo dos Alunos"
             >
-              <BarChart3 size={16} color="#38bdf8" />
+              <BarChart3 size={16} color="#4ade80" />
               <span>Pelotão</span>
             </button>
           )}
@@ -217,7 +217,7 @@ export const Header: React.FC<HeaderProps> = ({
             }}
             title="Criar ou Importar Decks Personalizados"
           >
-            <PlusCircle size={16} color="var(--neon-cyan)" />
+            <PlusCircle size={16} color="#22c55e" />
             <span>Criar Deck</span>
           </button>
 
@@ -229,7 +229,7 @@ export const Header: React.FC<HeaderProps> = ({
             }}
             title="Conquistas e Medalhas"
           >
-            <Trophy size={18} />
+            <Trophy size={18} color="#f59e0b" />
             {unlockedBadgesCount > 0 && (
               <span className="badge-counter">{unlockedBadgesCount}</span>
             )}
@@ -240,7 +240,7 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={onToggleMute}
             title={isMuted ? 'Ativar Efeitos Sonoros' : 'Mutar Sons'}
           >
-            {isMuted ? <VolumeX size={18} color="var(--text-dim)" /> : <Volume2 size={18} color="var(--neon-cyan)" />}
+            {isMuted ? <VolumeX size={18} color="var(--text-dim)" /> : <Volume2 size={18} color="#22c55e" />}
           </button>
 
           {userName && (
@@ -251,15 +251,15 @@ export const Header: React.FC<HeaderProps> = ({
                 gap: '0.4rem',
                 padding: '0.4rem 0.75rem',
                 borderRadius: '12px',
-                background: 'rgba(6, 182, 212, 0.1)',
-                border: '1px solid rgba(6, 182, 212, 0.25)',
+                background: 'rgba(34, 197, 94, 0.12)',
+                border: '1px solid rgba(34, 197, 94, 0.35)',
                 fontSize: '0.8rem',
-                color: '#38bdf8',
+                color: '#86efac',
                 fontWeight: 700
               }}
               title={`Guerreiro autenticado: ${userName}`}
             >
-              <UserCheck size={14} color="#38bdf8" />
+              <UserCheck size={14} color="#22c55e" />
               <span>{userName}</span>
             </div>
           )}

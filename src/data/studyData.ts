@@ -201,11 +201,42 @@ export const BOSS_ENEMIES: BossEnemy[] = [
 ];
 
 export const INITIAL_ACHIEVEMENTS: Achievement[] = [
+  // 1. Apresentação & Início
+  { id: 'recruit', title: 'Alistamento Concluído', description: 'Apresentou-se para a missão militar rumo à aprovação na PMPE 2026.', icon: '🎖️', unlocked: true },
   { id: 'first-win', title: 'Primeiro Turno Cumprido', description: 'Complete seu primeiro simulado ou sessão de estudos da PMPE.', icon: '🎯', unlocked: false },
-  { id: 'combo-5', title: 'Operação Precisa 5x', description: 'Acerte 5 questões consecutivas sem errar nenhuma pegadinha.', icon: '⚡', unlocked: false },
-  { id: 'boss-slayer', title: 'Banca AOCP Superada', description: 'Derrote a temível Banca Examinadora AOCP no modo Guardião.', icon: '⚔️', unlocked: false },
-  { id: 'pe-master', title: 'Coração Pernambucano', description: 'Acerte questões sobre os heróis de 1817 e a Batalha dos Guararapes.', icon: '🦁', unlocked: false },
-  { id: 'matrix-master', title: 'Conexão Tática Perfeita', description: 'Conecte todos os pares de História e Leis sem cometer erros.', icon: '🧠', unlocked: false },
-  { id: 'card-scholar', title: 'Lei Seca na Ponta da Língua', description: 'Revise os flashcards do Art. 5º e do Art. 144 da CF/88 no Cofre.', icon: '🗂️', unlocked: false },
+
+  // 2. Pontaria & Combos de Precisão
+  { id: 'combo-5', title: 'Operação Precisa 5x', description: 'Acerte 5 questões consecutivas sem errar nenhuma pegadinha da AOCP.', icon: '⚡', unlocked: false },
+  { id: 'combo-10', title: 'Sniper de Elite 10x', description: 'Alcance uma sequência de 10 acertos consecutivos com mira cirúrgica.', icon: '🎯', unlocked: false },
+  { id: 'combo-20', title: 'Atirador Especial 20x', description: 'Sequência lendária de 20 acertos consecutivos sem falhas na prova.', icon: '🦅', unlocked: false },
+
+  // 3. Patentes por Volume de Questões Respondidas
+  { id: 'soldier-25', title: 'Soldado de Infantaria', description: 'Responda a 25 questões no total e consolide sua base operacional.', icon: '🪖', unlocked: false },
+  { id: 'cabo-50', title: 'Graduação: Cabo Tático', description: 'Supere a marca de 50 questões resolvidas na plataforma.', icon: '⚔️', unlocked: false },
+  { id: 'sargento-100', title: 'Graduação: 3º Sargento', description: 'Alcance a marca de 100 questões resolvidas com disciplina policial.', icon: '🛡️', unlocked: false },
+  { id: 'subtenente-200', title: 'Graduação: Subtenente', description: 'Bata 200 questões de treinamento e lidere a preparação da tropa.', icon: '🌟', unlocked: false },
+  { id: 'oficial-500', title: 'Oficial Superior da PMPE', description: 'Complete 500 questões resolvidas e domine o edital da AOCP por completo.', icon: '👑', unlocked: false },
+
+  // 4. Disciplina & Ofensiva Diária (Fogo Sagrado)
+  { id: 'streak-3', title: 'Chama Invicta (3 Dias)', description: 'Mantenha 3 dias consecutivos de estudos sem falhar um único dia.', icon: '🔥', unlocked: false },
+  { id: 'streak-7', title: 'Fogo Sagrado (7 Dias)', description: 'Mantenha 7 dias seguidos de dedicação tática inabalável.', icon: '🏆', unlocked: false },
+  { id: 'early-bird', title: 'Alvorada Operacional', description: 'Inicie uma sessão de treinamento logo cedo antes das 08h da manhã.', icon: '🌅', unlocked: false },
+  { id: 'night-patrol', title: 'Vigília da Noite', description: 'Treine durante o plantão noturno após as 21h com foco total.', icon: '🌙', unlocked: false },
+
+  // 5. Domínio por Disciplinas do Edital AOCP
+  { id: 'pe-master', title: 'Coração Pernambucano', description: 'Acerte questões sobre a Revolução de 1817, Mascates e Guararapes.', icon: '🦁', unlocked: false },
+  { id: 'cf-guardian', title: 'Sentinela da Constituição', description: 'Acerte questões fundamentais dos Artigos 5º e 144 da CF/88.', icon: '⚖️', unlocked: false },
+  { id: 'dh-patriot', title: 'Guardião dos Direitos Humanos', description: 'Acerte questões de Direitos Humanos e Legislação Institucional.', icon: '🕊️', unlocked: false },
+  { id: 'rlm-strategist', title: 'Raciocínio Blindado', description: 'Resolva questões complexas de Raciocínio Lógico e Matemática AOCP.', icon: '🧮', unlocked: false },
+  { id: 'info-operator', title: 'Operador de Cibersegurança', description: 'Domine as questões de Informática, Redes e Segurança Policial.', icon: '💻', unlocked: false },
+  { id: 'portugues-mestre', title: 'Mestre da Língua Pátria', description: 'Domine concordância, regência e interpretação da banca AOCP.', icon: '📚', unlocked: false },
+
+  // 6. Modos Táticos Especiais
+  { id: 'survival-veteran', title: 'Sobrevivente do Batalhão', description: 'Alcance mais de 10 acertos na Operação Sobrevivência: Tiro Certo.', icon: '🩸', unlocked: false },
+  { id: 'matrix-master', title: 'Conexão Tática Perfeita', description: 'Conecte todos os pares de História e Leis sem cometer nenhum erro.', icon: '🧠', unlocked: false },
+  { id: 'card-scholar', title: 'Lei Seca na Ponta da Língua', description: 'Revise os flashcards de artigos e prazos no Cofre da Lei Seca.', icon: '🗂️', unlocked: false },
+  { id: 'card-vault-30', title: 'Mestre do Cofre Legal', description: 'Revise mais de 30 flashcards para consolidar a memória de longo prazo.', icon: '🗝️', unlocked: false },
+  { id: 'boss-slayer', title: 'Banca AOCP Superada', description: 'Derrote a temível Banca Examinadora AOCP no modo Desafio da Banca.', icon: '⚔️', unlocked: false },
   { id: 'creator-badge', title: 'Instrutor do Concurso', description: 'Crie sua própria questão ou flashcard no estúdio personalizado.', icon: '🛠️', unlocked: false }
 ];
+

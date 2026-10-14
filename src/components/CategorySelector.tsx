@@ -86,13 +86,13 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
                 padding: '0.28rem 0.65rem',
                 fontSize: '0.76rem',
                 fontWeight: isActive ? 700 : 500,
-                color: isActive ? '#ffffff' : '#94a3b8',
-                background: isActive ? 'linear-gradient(135deg, #2563eb, #1d4ed8)' : 'rgba(255, 255, 255, 0.05)',
-                border: isActive ? '1px solid #3b82f6' : '1px solid rgba(255, 255, 255, 0.08)',
+                color: isActive ? '#ffffff' : '#9ca3af',
+                background: isActive ? 'linear-gradient(135deg, #15803d, #16a34a)' : 'rgba(255, 255, 255, 0.05)',
+                border: isActive ? '1px solid #22c55e' : '1px solid rgba(255, 255, 255, 0.08)',
                 borderRadius: '8px',
                 cursor: 'pointer',
                 transition: 'all 0.15s ease',
-                boxShadow: isActive ? '0 0 12px rgba(59, 130, 246, 0.45)' : 'none'
+                boxShadow: isActive ? '0 0 12px rgba(34, 197, 94, 0.45)' : 'none'
               }}
             >
               {sim.label}
@@ -122,7 +122,7 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
             sound.playClick();
             onSelectCategory('bloco_1');
           }}
-          style={{ ['--active-color' as string]: '#3b82f6' }}
+          style={{ ['--active-color' as string]: '#38bdf8' }}
           title="Português + História de PE"
         >
           <span style={{ fontWeight: 800, color: '#93c5fd' }}>Bloco I</span>
@@ -136,10 +136,10 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
             sound.playClick();
             onSelectCategory('bloco_2');
           }}
-          style={{ ['--active-color' as string]: '#8b5cf6' }}
+          style={{ ['--active-color' as string]: '#22c55e' }}
           title="Raciocínio Lógico + Informática"
         >
-          <span style={{ fontWeight: 800, color: '#c084fc' }}>Bloco II</span>
+          <span style={{ fontWeight: 800, color: '#86efac' }}>Bloco II</span>
           <span>(RLM & Informática)</span>
         </button>
 

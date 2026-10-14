@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import type { GameMode, CategoryId, QuizQuestion, MatchPair, Flashcard, PlayerStats } from './types/game';
+import type { GameMode, CategoryId, QuizQuestion, MatchPair, Flashcard, PlayerStats, Achievement } from './types/game';
 import {
   CATEGORIES,
   INITIAL_QUESTIONS,
@@ -42,12 +42,21 @@ export function App() {
     return null;
   });
 
-  // Estado do Jogador
+  // Estado do Jogador com mesclagem garantida de todas as 26 conquistas militares
   const [stats, setStats] = useState<PlayerStats>(() => {
     const saved = localStorage.getItem('neuroquest_pmpe_stats');
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        const existingMap = new Map<string, Achievement>((parsed.achievements || []).map((a: Achievement) => [a.id, a]));
+        const mergedAchievements = INITIAL_ACHIEVEMENTS.map((initAch) => {
+          const found = existingMap.get(initAch.id);
+          return found ? { ...initAch, unlocked: found.unlocked, unlockedAt: found.unlockedAt } : initAch;
+        });
+        return {
+          ...parsed,
+          achievements: mergedAchievements,
+        };
       } catch {
         // Fallback
       }
@@ -209,12 +218,38 @@ export function App() {
         });
       }
 
+      const nextTotal = prev.totalAnswered + 1;
+      const nextCorrect = prev.correctAnswers + (isCorrect ? 1 : 0);
+
+      // Verificação automática de marcos militares (patentes por volume e vigília)
+      const toUnlock: string[] = ['first-win'];
+      if (nextTotal >= 25) toUnlock.push('soldier-25');
+      if (nextTotal >= 50) toUnlock.push('cabo-50');
+      if (nextTotal >= 100) toUnlock.push('sargento-100');
+      if (nextTotal >= 200) toUnlock.push('subtenente-200');
+      if (nextTotal >= 500) toUnlock.push('oficial-500');
+
+      const hour = new Date().getHours();
+      if (hour < 8) toUnlock.push('early-bird');
+      if (hour >= 21 || hour < 4) toUnlock.push('night-patrol');
+
+      let updatedAch = prev.achievements;
+      for (const achId of toUnlock) {
+        const item = updatedAch.find((a) => a.id === achId);
+        if (item && !item.unlocked) {
+          updatedAch = updatedAch.map((a) =>
+            a.id === achId ? { ...a, unlocked: true, unlockedAt: new Date().toLocaleDateString('pt-BR') } : a
+          );
+        }
+      }
+
       return {
         ...prev,
         xp: newXp,
         level: newLevel,
-        totalAnswered: prev.totalAnswered + 1,
-        correctAnswers: prev.correctAnswers + (isCorrect ? 1 : 0),
+        totalAnswered: nextTotal,
+        correctAnswers: nextCorrect,
+        achievements: updatedAch,
       };
     });
   }, []);
@@ -333,8 +368,18 @@ export function App() {
     }
 
     unlockAchievement('first-win');
-    if (result.maxCombo >= 5) {
-      unlockAchievement('combo-5');
+    if (result.maxCombo >= 5) unlockAchievement('combo-5');
+    if (result.maxCombo >= 10) unlockAchievement('combo-10');
+    if (result.maxCombo >= 20) unlockAchievement('combo-20');
+    if (result.correctCount >= 10) unlockAchievement('survival-veteran');
+
+    if (result.subjectBreakdown) {
+      if ((result.subjectBreakdown['historia_pe']?.correct || 0) > 0) unlockAchievement('pe-master');
+      if ((result.subjectBreakdown['constitucional']?.correct || 0) > 0) unlockAchievement('cf-guardian');
+      if ((result.subjectBreakdown['humanos_leis']?.correct || 0) > 0) unlockAchievement('dh-patriot');
+      if ((result.subjectBreakdown['raciocinio']?.correct || 0) > 0) unlockAchievement('rlm-strategist');
+      if ((result.subjectBreakdown['informatica']?.correct || 0) > 0) unlockAchievement('info-operator');
+      if ((result.subjectBreakdown['portugues']?.correct || 0) > 0) unlockAchievement('portugues-mestre');
     }
 
     const accuracy = Math.round((result.correctCount / Math.max(1, result.totalCount)) * 100);
@@ -432,6 +477,9 @@ export function App() {
     if (result.cardsMastered >= 4) {
       unlockAchievement('card-scholar');
     }
+    if (stats.flashcardsMastered + result.cardsMastered >= 30) {
+      unlockAchievement('card-vault-30');
+    }
 
     setSummaryData({
       title: 'Lei Seca Revisada com Sucesso!',
@@ -450,6 +498,9 @@ export function App() {
     setCurrentUser(name);
     setDailyQuote(getDailyMotivationalQuote());
     setIsMotivationModalOpen(true);
+    unlockAchievement('recruit');
+    if (stats.streakDays >= 3) unlockAchievement('streak-3');
+    if (stats.streakDays >= 7) unlockAchievement('streak-7');
   };
 
   const handleLogout = () => {

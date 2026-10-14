@@ -183,19 +183,82 @@ export async function getOrCreateUser(name: string): Promise<UserAccessRecord> {
     return registry[existingKey];
   }
 
-  // Novo usuário solicitando acesso: inicia como PENDENTE aguardando Gean!
+  // Novo usuário solicitando acesso: AUTO-APROVAÇÃO ATIVA! Entrada imediata sem fila.
   const newRecord: UserAccessRecord = {
     name: cleanName,
-    status: 'pending',
+    status: 'approved',
     isAdmin: false,
     requestedAt: new Date().toISOString(),
+    approvedAt: new Date().toISOString(),
     hasChangedPassword: false,
+    personalPassword: 'PMPE2026',
   };
 
   registry[key] = newRecord;
   saveLocalUsersRegistry(registry);
   pushRegistryToCloud(registry);
   return newRecord;
+}
+
+/**
+ * Cadastra um novo usuário militar e libera entrada IMEDIATA sem necessidade de aprovação
+ */
+export async function registerNewUser(
+  name: string,
+  pass: string
+): Promise<{ success: boolean; message: string; userRecord?: UserAccessRecord }> {
+  const cleanName = name.trim();
+  const cleanPass = pass.trim();
+
+  if (!cleanName || cleanName.length < 2) {
+    return { success: false, message: 'Informe seu nome ou identificação com pelo menos 2 caracteres.' };
+  }
+
+  if (!cleanPass || cleanPass.length < 4) {
+    return { success: false, message: 'A sua senha de segurança deve conter pelo menos 4 caracteres.' };
+  }
+
+  const key = normalizeUserName(cleanName);
+  const registry = await fetchRegistryFromCloud();
+
+  const existingKey = Object.keys(registry).find(
+    k => k === key || (registry[k].name && registry[k].name.trim().toLowerCase() === cleanName.toLowerCase())
+  );
+
+  // Se já existe e já tem senha pessoal cadastrada:
+  if (existingKey && registry[existingKey] && registry[existingKey].hasChangedPassword) {
+    if (registry[existingKey].personalPassword && registry[existingKey].personalPassword.toUpperCase() === cleanPass.toUpperCase()) {
+      return {
+        success: true,
+        message: `Bem-vindo de volta, guerreiro ${cleanName}!`,
+        userRecord: registry[existingKey]
+      };
+    }
+    return {
+      success: false,
+      message: `O guerreiro "${cleanName}" já está cadastrado. Vá para a aba "Entrar" e digite sua senha de acesso.`
+    };
+  }
+
+  const newUser: UserAccessRecord = {
+    name: cleanName,
+    status: 'approved',
+    isAdmin: isMasterUser(cleanName),
+    requestedAt: new Date().toISOString(),
+    approvedAt: new Date().toISOString(),
+    hasChangedPassword: true,
+    personalPassword: cleanPass,
+  };
+
+  registry[key] = newUser;
+  saveLocalUsersRegistry(registry);
+  await pushRegistryToCloud(registry);
+
+  return {
+    success: true,
+    message: `Alistamento concluído com sucesso! Bem-vindo(a) à Missão PMPE, ${cleanName}!`,
+    userRecord: newUser
+  };
 }
 
 /**
@@ -408,29 +471,33 @@ export async function validateLoginAttempt(
     }
   }
 
-  // 2. Caso seja outro usuário: checar status de autorização pelo Gean
+  // 2. Auto-aprovação Militar: Qualquer guerreiro é aprovado automaticamente sem fila!
   if (user.status === 'pending') {
-    return {
-      allowed: false,
-      status: 'pending',
-      message: `Acesso Pendente! A sua entrada (${cleanName}) precisa ser autorizada pela conta principal do Comandante Gean. Solicitação registrada!`,
-      userRecord: user,
-    };
+    user.status = 'approved';
+    user.approvedAt = new Date().toISOString();
+    const registry = getLocalUsersRegistry();
+    const key = normalizeUserName(cleanName);
+    if (registry[key]) {
+      registry[key].status = 'approved';
+      registry[key].approvedAt = user.approvedAt;
+      saveLocalUsersRegistry(registry);
+      pushRegistryToCloud(registry);
+    }
   }
 
   if (user.status === 'rejected') {
     return {
       allowed: false,
       status: 'rejected',
-      message: `Acesso Negado: A autorização para ${cleanName} foi revogada ou não foi concedida pelo Comandante Gean.`,
+      message: `Acesso Restrito: A identificação ${cleanName} foi desativada pelo Comando Militar.`,
       userRecord: user,
     };
   }
 
-  // 3. Usuário está APROVADO: Checagem de Senha
+  // 3. Usuário APROVADO: Checagem ou Definição Imediata de Senha
   // Caso 3.1: Já cadastrou senha pessoal própria
   if (user.hasChangedPassword && user.personalPassword) {
-    if (cleanPass === user.personalPassword.toUpperCase()) {
+    if (cleanPass === user.personalPassword.toUpperCase() || cleanPass === user.personalPassword) {
       return {
         allowed: true,
         status: 'approved',
@@ -441,15 +508,14 @@ export async function validateLoginAttempt(
       return {
         allowed: false,
         status: 'wrong_password',
-        message: `Senha incorreta. Você já cadastrou sua senha pessoal exclusiva para ${cleanName}.`,
+        message: `Senha incorreta para ${cleanName}. Digite a senha cadastrada pelo guerreiro.`,
       };
     }
   }
 
-  // Caso 3.2: Primeiro acesso com a senha padrão da corporação
+  // Caso 3.2: Usuário novo definindo senha ou usando chave padrão
   const isDefaultValid = DEFAULT_PASSCODES.includes(cleanPass);
   if (isDefaultValid) {
-    // Aluno usou a senha padrão, mas é o primeiro acesso -> Obriga a criar nova senha!
     return {
       allowed: false,
       status: 'needs_new_password',
@@ -457,11 +523,23 @@ export async function validateLoginAttempt(
       userRecord: user,
       isFirstLogin: true,
     };
+  } else if (cleanPass.length >= 4) {
+    // Aluno digitou uma senha pessoal inédita no login: grava e libera na hora!
+    await setUserPersonalPassword(cleanName, cleanPass);
+    user.hasChangedPassword = true;
+    user.personalPassword = cleanPass;
+    return {
+      allowed: true,
+      status: 'approved',
+      message: `Acesso Militar Liberado! Senha registrada com sucesso para ${cleanName}.`,
+      userRecord: user,
+    };
   } else {
     return {
       allowed: false,
       status: 'wrong_password',
-      message: 'Chave inicial incorreta. No primeiro acesso, use a chave padrão (ex: PMPE2026).',
+      message: 'A senha de acesso deve ter pelo menos 4 dígitos.',
     };
   }
 }
+

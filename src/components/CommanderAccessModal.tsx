@@ -199,10 +199,10 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
         width: '100%',
         maxWidth: '780px',
         maxHeight: '90vh',
-        background: 'rgba(15, 23, 42, 0.95)',
+        background: 'rgba(17, 24, 19, 0.98)',
         border: '1.5px solid rgba(245, 158, 11, 0.5)',
         borderRadius: '24px',
-        boxShadow: '0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(245, 158, 11, 0.2)',
+        boxShadow: '0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(34, 197, 94, 0.15)',
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden'
@@ -214,7 +214,7 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          background: 'linear-gradient(90deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%)'
+          background: 'linear-gradient(90deg, rgba(24, 34, 27, 0.95) 0%, rgba(14, 20, 16, 0.95) 100%)'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
             <div style={{
@@ -243,11 +243,11 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
                   color: '#fbbf24',
                   border: '1px solid rgba(245, 158, 11, 0.4)'
                 }}>
-                  TITULAR: GEAN
+                  COMANDANTE: GEAN
                 </span>
               </div>
-              <p style={{ margin: 0, fontSize: '0.8rem', color: '#94a3b8' }}>
-                Somente sua conta principal (Gean) pode autorizar a entrada de novos guerreiros no sistema.
+              <p style={{ margin: 0, fontSize: '0.8rem', color: '#86efac' }}>
+                ⭐ Entrada livre ativa: Novos alunos podem se cadastrar e treinar imediatamente sem bloqueio!
               </p>
             </div>
           </div>

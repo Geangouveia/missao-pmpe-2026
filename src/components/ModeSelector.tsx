@@ -27,9 +27,9 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
       description: 'Conecte datas históricas de PE (1817, 1824, Guararapes), crimes extravagantes e dispositivos constitucionais às definições certas.',
       icon: <Network size={28} />,
       badge: 'Treino de Memória',
-      color: '#c084fc',
-      accentBg: 'linear-gradient(135deg, #7c3aed, #a855f7)',
-      shadow: 'rgba(124, 58, 237, 0.4)'
+      color: '#38bdf8',
+      accentBg: 'linear-gradient(135deg, #0284c7, #0369a1)',
+      shadow: 'rgba(2, 132, 199, 0.4)'
     },
     {
       id: 'battle' as GameMode,
