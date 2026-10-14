@@ -52,6 +52,8 @@ export interface MatchPair {
   bloco: BlocoEdital;
   term: string;
   definition: string;
+  difficulty?: 'facilimo' | 'facil' | 'medio' | 'dificil' | 'dificilimo';
+  explanation?: string;
 }
 
 export interface Flashcard {

@@ -424,7 +424,7 @@ export function App() {
     timeTaken: number;
     mistakes: number;
   }) => {
-    addXp(result.xpEarned);
+    // XP já foi concedido gradualmente a cada nível superado via onAwardXp
     setStats((prev) => ({
       ...prev,
       matchesCompleted: prev.matchesCompleted + 1,
@@ -758,6 +758,7 @@ export function App() {
           pairs={filteredMatchPairs.length > 0 ? filteredMatchPairs : matchPairs}
           onFinish={handleMatchFinish}
           onExit={() => setActiveMode(null)}
+          onAwardXp={addXp}
         />
       )}
 

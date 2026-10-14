@@ -88,37 +88,192 @@ export const CATEGORIES: Category[] = [
 
 export const INITIAL_QUESTIONS: QuizQuestion[] = ALL_QUESTIONS;
 
+import { FULL_TACTICAL_MATCH_PAIRS } from './matchPairsData';
+
 export const INITIAL_MATCH_PAIRS: MatchPair[] = [
+  ...FULL_TACTICAL_MATCH_PAIRS,
   // História de PE
-  { id: 'm-hist-1', categoryId: 'historia_pe', bloco: 'bloco_1', term: 'Batalha dos Guararapes (1648-1649)', definition: 'Vitória sobre os holandeses nos montes de Jaboatão, considerada berço do Exército Brasileiro.' },
-  { id: 'm-hist-2', categoryId: 'historia_pe', bloco: 'bloco_1', term: 'Revolução Pernambucana de 1817', definition: 'Movimento republicano e iluminista que proclamou a República de Pernambuco por 75 dias.' },
-  { id: 'm-hist-3', categoryId: 'historia_pe', bloco: 'bloco_1', term: 'Confederação do Equador (1824)', definition: 'Revolta federalista liderada por Frei Caneca em oposição ao autoritarismo de D. Pedro I.' },
-  { id: 'm-hist-4', categoryId: 'historia_pe', bloco: 'bloco_1', term: 'Guerra dos Mascates (1710-1711)', definition: 'Conflito entre a nobreza agrária de Olinda e os comerciantes portugueses do Recife.' },
-  { id: 'm-hist-5', categoryId: 'historia_pe', bloco: 'bloco_1', term: 'Guerra dos Cabanos (1832-1835)', definition: 'Revolta restauradora do período regencial em PE e AL em defesa do retorno de D. Pedro I.' },
+  {
+    id: 'm-hist-1',
+    categoryId: 'historia_pe',
+    bloco: 'bloco_1',
+    difficulty: 'facilimo',
+    term: 'Batalha dos Guararapes (1648-1649)',
+    definition: 'Vitória sobre os holandeses nos montes de Jaboatão, considerada berço do Exército Brasileiro.',
+    explanation: 'A Batalha dos Guararapes (1648 e 1649) uniu brancos, negros e indígenas nos Montes Guararapes em Jaboatão para expulsar os invasores holandeses.'
+  },
+  {
+    id: 'm-hist-2',
+    categoryId: 'historia_pe',
+    bloco: 'bloco_1',
+    difficulty: 'facilimo',
+    term: 'Revolução Pernambucana de 1817',
+    definition: 'Movimento republicano e iluminista que proclamou a República de Pernambuco por 75 dias.',
+    explanation: 'A Revolução de 1817 foi o único movimento separatista do período colonial que de fato instalou um governo republicano em solo pernambucano.'
+  },
+  {
+    id: 'm-hist-3',
+    categoryId: 'historia_pe',
+    bloco: 'bloco_1',
+    difficulty: 'facil',
+    term: 'Confederação do Equador (1824)',
+    definition: 'Revolta federalista liderada por Frei Caneca em oposição ao autoritarismo de D. Pedro I.',
+    explanation: 'A Confederação do Equador rebelou-se contra a outorga autoritária da Carta Constitucional de 1824 e o Poder Moderador do Imperador.'
+  },
+  {
+    id: 'm-hist-4',
+    categoryId: 'historia_pe',
+    bloco: 'bloco_1',
+    difficulty: 'medio',
+    term: 'Guerra dos Mascates (1710-1711)',
+    definition: 'Conflito entre a nobreza agrária de Olinda e os comerciantes portugueses do Recife.',
+    explanation: 'A Guerra dos Mascates eclodiu quando Recife foi elevado a vila, gerando forte revolta na aristocracia canavieira endividada de Olinda.'
+  },
+  {
+    id: 'm-hist-5',
+    categoryId: 'historia_pe',
+    bloco: 'bloco_1',
+    difficulty: 'medio',
+    term: 'Guerra dos Cabanos (1832-1835)',
+    definition: 'Revolta restauradora do período regencial em PE e AL em defesa do retorno de D. Pedro I.',
+    explanation: 'A Cabanada mobilizou camponeses, índios e ex-escravizados nas matas do sul de Pernambuco e Alagoas lutando pelo retorno de D. Pedro I.'
+  },
 
   // Português
-  { id: 'm-port-1', categoryId: 'portugues', bloco: 'bloco_1', term: 'Conquanto / Embora', definition: 'Conjunção subordinativa concessiva (indica oposição que não anula a oração principal).' },
-  { id: 'm-port-2', categoryId: 'portugues', bloco: 'bloco_1', term: 'À medida que', definition: 'Locução conjuntiva proporcional (ideia de proporção simultânea entre dois fatos).' },
-  { id: 'm-port-3', categoryId: 'portugues', bloco: 'bloco_1', term: 'Verbo Têm (com circunflexo)', definition: 'Acento diferencial de número para concordância com sujeito na 3ª pessoa do plural.' },
+  {
+    id: 'm-port-1',
+    categoryId: 'portugues',
+    bloco: 'bloco_1',
+    difficulty: 'facil',
+    term: 'Conquanto / Embora',
+    definition: 'Conjunção subordinativa concessiva (indica oposição que não anula a oração principal).',
+    explanation: '"Conquanto" e "embora" são conjunções concessivas por excelência; introduzem fato que admite quebra de expectativa sem anular a matriz.'
+  },
+  {
+    id: 'm-port-2',
+    categoryId: 'portugues',
+    bloco: 'bloco_1',
+    difficulty: 'facil',
+    term: 'À medida que',
+    definition: 'Locução conjuntiva proporcional (ideia de proporção simultânea entre dois fatos).',
+    explanation: '"À medida que" exprime proporção exata entre duas ações ("à medida que estudo, aprendo mais"). Pegadinha: "na medida em que" tem valor causal!'
+  },
+  {
+    id: 'm-port-3',
+    categoryId: 'portugues',
+    bloco: 'bloco_1',
+    difficulty: 'facilimo',
+    term: 'Verbo Têm (com circunflexo)',
+    definition: 'Acento diferencial de número para concordância com sujeito na 3ª pessoa do plural.',
+    explanation: 'No padrão culto, ele tem (sem acento, singular) e eles têm (com circunflexo diferencial de plural).'
+  },
 
   // RLM
-  { id: 'm-rlm-1', categoryId: 'raciocinio', bloco: 'bloco_2', term: 'Regra do MANÉ (~(P -> Q))', definition: 'Para negar o condicional: Mantém a primeira E Nega a segunda (P ^ ~Q).' },
-  { id: 'm-rlm-2', categoryId: 'raciocinio', bloco: 'bloco_2', term: '1ª Lei de De Morgan (~(P ^ Q))', definition: 'Negação da conjunção: troca o "E" por "OU" e nega as duas partes (~P v ~Q).' },
+  {
+    id: 'm-rlm-1',
+    categoryId: 'raciocinio',
+    bloco: 'bloco_2',
+    difficulty: 'facilimo',
+    term: 'Regra do MANÉ (~(P -> Q))',
+    definition: 'Para negar o condicional: Mantém a primeira E Nega a segunda (P ^ ~Q).',
+    explanation: 'Para negar "Se P, então Q", mantém a primeira proposição verdadeira e afirma a falsidade da segunda com a conjunção "E".'
+  },
+  {
+    id: 'm-rlm-2',
+    categoryId: 'raciocinio',
+    bloco: 'bloco_2',
+    difficulty: 'facil',
+    term: '1ª Lei de De Morgan (~(P ^ Q))',
+    definition: 'Negação da conjunção: troca o "E" por "OU" e nega as duas partes (~P v ~Q).',
+    explanation: 'Para negar uma conjunção (P e Q), negam-se ambas as componentes e substitui-se o conectivo pelo disjuntivo OU (~P ou ~Q).'
+  },
 
   // Informática
-  { id: 'm-inf-1', categoryId: 'informatica', bloco: 'bloco_2', term: 'Endereço MAC', definition: 'Identificador físico exclusivo de 48 bits gravado na placa de rede do computador.' },
-  { id: 'm-inf-2', categoryId: 'informatica', bloco: 'bloco_2', term: 'Protocolo IMAP', definition: 'Acesso e sincronização de e-mails mantendo cópia das mensagens no servidor.' },
-  { id: 'm-inf-3', categoryId: 'informatica', bloco: 'bloco_2', term: 'Servidor DHCP', definition: 'Distribuição e configuração dinâmica e automatizada de endereços IP na rede.' },
+  {
+    id: 'm-inf-1',
+    categoryId: 'informatica',
+    bloco: 'bloco_2',
+    difficulty: 'medio',
+    term: 'Endereço MAC',
+    definition: 'Identificador físico exclusivo de 48 bits gravado na placa de rede do computador.',
+    explanation: 'O MAC address é o endereço físico de nível 2 (enlace de dados), hexadecimal e único mundialmente para cada placa de rede.'
+  },
+  {
+    id: 'm-inf-2',
+    categoryId: 'informatica',
+    bloco: 'bloco_2',
+    difficulty: 'medio',
+    term: 'Protocolo IMAP',
+    definition: 'Acesso e sincronização de e-mails mantendo cópia das mensagens no servidor.',
+    explanation: 'O IMAP permite ler e gerenciar mensagens de correio eletrônico remotamente preservando a estrutura de pastas no servidor de e-mail.'
+  },
+  {
+    id: 'm-inf-3',
+    categoryId: 'informatica',
+    bloco: 'bloco_2',
+    difficulty: 'facil',
+    term: 'Servidor DHCP',
+    definition: 'Distribuição e configuração dinâmica e automatizada de endereços IP na rede.',
+    explanation: 'O DHCP (Dynamic Host Configuration Protocol) concede IPs e gateways automaticamente aos computadores clientes na rede local.'
+  },
 
   // Direito Constitucional
-  { id: 'm-const-1', categoryId: 'constitucional', bloco: 'bloco_3', term: 'Art. 144, § 5º da CF/88', definition: 'Atribui às Polícias Militares a polícia ostensiva e a preservação da ordem pública.' },
-  { id: 'm-const-2', categoryId: 'constitucional', bloco: 'bloco_3', term: 'Inviolabilidade de Domicílio', definition: 'Casa é asilo inviolável: determinação judicial SÓ pode ser cumprida durante o dia.' },
-  { id: 'm-const-3', categoryId: 'constitucional', bloco: 'bloco_3', term: 'Mandado de Injunção', definition: 'Remédio constitucional cabível diante da falta de norma regulamentadora.' },
+  {
+    id: 'm-const-1',
+    categoryId: 'constitucional',
+    bloco: 'bloco_3',
+    difficulty: 'facilimo',
+    term: 'Art. 144, § 5º da CF/88',
+    definition: 'Atribui às Polícias Militares a polícia ostensiva e a preservação da ordem pública.',
+    explanation: 'O art. 144, § 5º da Carta Magna estabelece como competências da PM o policiamento preventivo e ostensivo fardado para assegurar a ordem pública.'
+  },
+  {
+    id: 'm-const-2',
+    categoryId: 'constitucional',
+    bloco: 'bloco_3',
+    difficulty: 'facilimo',
+    term: 'Inviolabilidade de Domicílio',
+    definition: 'Casa é asilo inviolável: determinação judicial SÓ pode ser cumprida durante o dia.',
+    explanation: 'CF art. 5º, XI: Por ordem judicial, apenas durante o dia! À noite, apenas com consentimento do morador, flagrante, desastre ou socorro.'
+  },
+  {
+    id: 'm-const-3',
+    categoryId: 'constitucional',
+    bloco: 'bloco_3',
+    difficulty: 'medio',
+    term: 'Mandado de Injunção',
+    definition: 'Remédio constitucional cabível diante da falta de norma regulamentadora.',
+    explanation: 'O Mandado de Injunção (art. 5º, LXXI) sana a inércia legislativa que impede o exercício de direitos e liberdades constitucionais.'
+  },
 
   // Direitos Humanos e Leis
-  { id: 'm-dh-1', categoryId: 'humanos_leis', bloco: 'bloco_3', term: 'Lei 13.869/2019 (Abuso de Autoridade)', definition: 'Exige dolo específico: finalidade de prejudicar outrem, beneficiar-se ou mero capricho.' },
-  { id: 'm-dh-2', categoryId: 'humanos_leis', bloco: 'bloco_3', term: 'Art. 28 da Lei de Drogas (11.343/06)', definition: 'Posse de drogas para consumo pessoal NÃO prevê pena privativa de liberdade.' },
-  { id: 'm-dh-3', categoryId: 'humanos_leis', bloco: 'bloco_3', term: 'Estatuto da PMPE (Lei 6.783/74)', definition: 'Licença especial de 6 meses a cada decênio (10 anos) de efetivo serviço prestado.' }
+  {
+    id: 'm-dh-1',
+    categoryId: 'humanos_leis',
+    bloco: 'bloco_3',
+    difficulty: 'dificil',
+    term: 'Lei 13.869/2019 (Abuso de Autoridade)',
+    definition: 'Exige dolo específico: finalidade de prejudicar outrem, beneficiar-se ou mero capricho.',
+    explanation: 'A caracterização de abuso de autoridade requer elemento subjetivo específico: intenção de prejudicar outrem, beneficiar a si ou satisfazer capricho pessoal.'
+  },
+  {
+    id: 'm-dh-2',
+    categoryId: 'humanos_leis',
+    bloco: 'bloco_3',
+    difficulty: 'medio',
+    term: 'Art. 28 da Lei de Drogas (11.343/06)',
+    definition: 'Posse de drogas para consumo pessoal NÃO prevê pena privativa de liberdade.',
+    explanation: 'O porte de drogas para consumo próprio comina apenas advertência sobre os efeitos, prestação de serviços à comunidade e medida educativa, sem prisão.'
+  },
+  {
+    id: 'm-dh-3',
+    categoryId: 'humanos_leis',
+    bloco: 'bloco_3',
+    difficulty: 'dificil',
+    term: 'Estatuto da PMPE (Lei 6.783/74)',
+    definition: 'Licença especial de 6 meses a cada decênio (10 anos) de efetivo serviço prestado.',
+    explanation: 'Segundo a Lei 6.783/74, a licença especial é uma autorização de afastamento temporário de 6 meses concedida após 10 anos de serviço policial militar.'
+  }
 ];
 
 export const INITIAL_FLASHCARDS: Flashcard[] = [
