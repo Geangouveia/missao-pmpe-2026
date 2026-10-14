@@ -12,7 +12,6 @@ import { sound } from './utils/sound';
 import { Header } from './components/Header';
 import { CategorySelector } from './components/CategorySelector';
 import { ModeSelector } from './components/ModeSelector';
-import { QuizGame } from './components/QuizGame';
 import { SurvivalGame } from './components/SurvivalGame';
 import { MatchGame } from './components/MatchGame';
 import { BossBattleGame } from './components/BossBattleGame';
@@ -312,7 +311,7 @@ export function App() {
 
     if (currentUser) {
       const simLabel = selectedSimulado === 'edital_200'
-        ? 'Super Caderno Edital AOCP (200Q)'
+        ? 'Caderno Oficial Edital AOCP (100Q)'
         : selectedSimulado === 'aocp_elite'
           ? 'Caderno Elite AOCP'
           : selectedSimulado === 'aocp_especial'
@@ -516,18 +515,6 @@ export function App() {
       {activeMode === 'survival' && (
         <SurvivalGame
           key={`survival-${selectedCategory}-${selectedSimulado}-${gameSessionNonce}`}
-          questions={filteredQuestions.length > 0 ? filteredQuestions : questions}
-          onFinish={handleQuizFinish}
-          onExit={() => setActiveMode(null)}
-          onAwardXp={addXp}
-          onQuestionAnswered={handleQuestionAnswered}
-        />
-      )}
-
-      {/* MODO 1: SIMULADO TURBO AOCP */}
-      {activeMode === 'quiz' && (
-        <QuizGame
-          key={`quiz-${selectedCategory}-${selectedSimulado}-${gameSessionNonce}`}
           questions={filteredQuestions.length > 0 ? filteredQuestions : questions}
           onFinish={handleQuizFinish}
           onExit={() => setActiveMode(null)}

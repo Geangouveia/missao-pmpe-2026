@@ -21,17 +21,6 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
       shadow: 'rgba(245, 158, 11, 0.45)'
     },
     {
-      id: 'quiz' as GameMode,
-      title: 'Batalha de Questões AOCP',
-      subtitle: 'Simulado Turbo • 5 Alternativas (A a E)',
-      description: 'Resolva questões no padrão exato do Instituto AOCP. Treine sob pressão de tempo e domine a fundamentação legal.',
-      icon: <Target size={28} />,
-      badge: 'Padrão Prova',
-      color: '#38bdf8',
-      accentBg: 'linear-gradient(135deg, #0284c7, #1e3a8a)',
-      shadow: 'rgba(2, 132, 199, 0.4)'
-    },
-    {
       id: 'match' as GameMode,
       title: 'Conexão Tática',
       subtitle: 'Fixação de Fatos & Artigos de Lei',

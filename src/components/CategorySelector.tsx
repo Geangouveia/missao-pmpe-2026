@@ -35,8 +35,8 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
   };
 
   const simuladosOptions = [
-    { id: 'all', label: 'Todos os Cadernos (710Q Totais)' },
-    { id: 'edital_200', label: '🔥 Super Caderno Edital AOCP (200Q Inéditas)' },
+    { id: 'all', label: 'Todos os Cadernos (610Q Totais)' },
+    { id: 'edital_200', label: '🔥 Caderno Oficial Edital AOCP (100Q)' },
     { id: 'banco_bloco1', label: '📚 Super Caderno Bloco I (Português & Hist. PE - 100Q)' },
     { id: 'banco_bloco2', label: '🧮 Super Caderno Bloco II (RLM & Informática - 100Q)' },
     { id: 'banco_bloco3', label: '⚖️ Super Caderno Bloco III (Direito, DH & PMPE - 105Q)' },

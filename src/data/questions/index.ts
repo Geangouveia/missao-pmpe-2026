@@ -26,8 +26,8 @@ export {
 };
 
 export const SIMULADOS_LIST = [
-  { id: 'all', name: 'Todos os Simulados (Banco Geral - 710 Questões)', count: 710, tag: '⭐ Acervo Completo' },
-  { id: 'edital_200', name: 'Super Caderno Edital AOCP (200 Questões Inéditas)', count: 200, tag: '🔥 Edital 200Q' },
+  { id: 'all', name: 'Todos os Simulados (Banco Geral - 610 Questões)', count: 610, tag: '⭐ Acervo Completo' },
+  { id: 'edital_200', name: 'Caderno Oficial Edital AOCP (100 Questões)', count: 100, tag: '🔥 Edital 100Q' },
   { id: 'banco_bloco1', name: 'Super Caderno Bloco I (Português & História de PE)', count: 100, tag: 'Bloco I (100 Q)' },
   { id: 'banco_bloco2', name: 'Super Caderno Bloco II (Raciocínio Lógico & Informática)', count: 100, tag: 'Bloco II (100 Q)' },
   { id: 'banco_bloco3', name: 'Super Caderno Bloco III (Direito, DH & Legislação PMPE)', count: 105, tag: 'Bloco III (105 Q)' },
