@@ -162,6 +162,87 @@ button:focus-visible {
   border-color: rgba(255, 255, 255, 0.16);
 }
 
+/* Utilitários de Botões Globais */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Botão de Saída e Encerramento em Alta Visibilidade */
+.quiz-exit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1rem;
+  border-radius: 12px;
+  background: rgba(239, 68, 68, 0.18);
+  border: 1.5px solid rgba(239, 68, 68, 0.55);
+  color: #fca5a5;
+  font-weight: 800;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.22);
+  flex-shrink: 0;
+}
+
+.quiz-exit-btn:hover {
+  background: rgba(239, 68, 68, 0.35);
+  border-color: #ef4444;
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Barra do Topo da Marca & Sair */
+.header-brand-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.header-logout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: 12px;
+  background: rgba(239, 68, 68, 0.18);
+  border: 1.5px solid rgba(239, 68, 68, 0.5);
+  color: #fca5a5;
+  font-weight: 800;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.25);
+  flex-shrink: 0;
+}
+
+.header-logout-btn:hover {
+  background: rgba(239, 68, 68, 0.35);
+  border-color: #ef4444;
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+  transform: translateY(-1px);
+}
+
 /* Header & Barra Superior */
 .main-header {
   display: flex;
@@ -1022,7 +1103,7 @@ button:focus-visible {
   }
 
   .app-container {
-    padding: 0.75rem 0.6rem 3rem;
+    padding: max(0.75rem, env(safe-area-inset-top, 0px)) max(0.6rem, env(safe-area-inset-right, 0px)) max(3rem, env(safe-area-inset-bottom, 0px)) max(0.6rem, env(safe-area-inset-left, 0px));
     gap: 1.25rem;
     max-width: 100%;
   }
@@ -1036,14 +1117,23 @@ button:focus-visible {
     border-radius: 18px;
   }
 
-  .brand-section {
+  .header-brand-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
+    gap: 0.5rem;
+  }
+
+  .brand-section {
+    flex: 1;
+    min-width: 0;
     justify-content: flex-start;
     gap: 0.65rem;
   }
 
   .brand-title {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     flex-wrap: wrap;
     gap: 0.3rem;
   }

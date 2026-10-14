@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import type { QuizQuestion, BossEnemy } from '../types/game';
-import { Swords, Shield, Zap, Heart, Sparkles, CheckCircle2, XCircle } from 'lucide-react';
+import { Swords, Shield, Zap, Heart, Sparkles, CheckCircle2, XCircle, ArrowLeft } from 'lucide-react';
 import { sound } from '../utils/sound';
 import confetti from 'canvas-confetti';
 import { prepareGameQuestions } from '../utils/questionRandomizer';
@@ -27,13 +27,9 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
   onAwardXp,
   onQuestionAnswered
 }) => {
-  const [shuffledQuestions, setShuffledQuestions] = useState<QuizQuestion[]>(() => {
+  const [shuffledQuestions] = useState<QuizQuestion[]>(() => {
     return prepareGameQuestions(questions);
   });
-
-  useEffect(() => {
-    setShuffledQuestions(prepareGameQuestions(questions));
-  }, [questions]);
 
   const [bossHp, setBossHp] = useState(boss.maxHp);
   const [playerHp, setPlayerHp] = useState(100);
@@ -148,10 +144,11 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
             sound.playClick();
             onExit();
           }}
-          className="btn-secondary"
-          style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem', borderRadius: '10px' }}
+          className="quiz-exit-btn"
+          title="Fugir da Arena e voltar ao menu"
         >
-          ← Fugir da Arena
+          <ArrowLeft size={16} />
+          <span>Fugir da Arena</span>
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#f87171', fontWeight: 800 }}>

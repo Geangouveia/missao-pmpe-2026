@@ -42,35 +42,51 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="main-header">
-      <div 
-        className="brand-section" 
-        onClick={() => {
-          sound.playClick();
-          onResetToHome();
-        }}
-        title="Voltar ao Menu Principal"
-        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.85rem' }}
-      >
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          filter: 'drop-shadow(0 0 10px rgba(6, 182, 212, 0.4))',
-          transition: 'transform 0.2s ease'
-        }}>
-          <PmpeBrasaoLogo size={42} showText={false} />
-        </div>
-        <div>
-          <div className="brand-title">
-            MISSÃO PMPE
-            <span className="brand-badge" style={{ background: 'rgba(234, 179, 8, 0.2)', color: '#fbbf24', borderColor: '#f59e0b' }}>
-              SOLDADO 2026
-            </span>
+      <div className="header-brand-row">
+        <div 
+          className="brand-section" 
+          onClick={() => {
+            sound.playClick();
+            onResetToHome();
+          }}
+          title="Voltar ao Menu Principal"
+        >
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            filter: 'drop-shadow(0 0 10px rgba(6, 182, 212, 0.4))',
+            transition: 'transform 0.2s ease'
+          }}>
+            <PmpeBrasaoLogo size={42} showText={false} />
           </div>
-          <div style={{ fontSize: '0.78rem', color: '#93c5fd' }}>
-            Preparatório Oficial • Instituto AOCP
+          <div>
+            <div className="brand-title">
+              MISSÃO PMPE
+              <span className="brand-badge" style={{ background: 'rgba(234, 179, 8, 0.2)', color: '#fbbf24', borderColor: '#f59e0b' }}>
+                SOLDADO 2026
+              </span>
+            </div>
+            <div style={{ fontSize: '0.78rem', color: '#93c5fd' }}>
+              Preparatório Oficial • Instituto AOCP
+            </div>
           </div>
         </div>
+
+        {/* Botão de Sair em Destaque Visível no Topo Direito */}
+        {onLogout && (
+          <button
+            className="header-logout-btn"
+            onClick={() => {
+              sound.playClick();
+              onLogout();
+            }}
+            title="Encerrar Sessão / Sair do Jogo"
+          >
+            <LogOut size={16} />
+            <span>Sair</span>
+          </button>
+        )}
       </div>
 
       <div className="player-hud">
@@ -246,20 +262,6 @@ export const Header: React.FC<HeaderProps> = ({
               <UserCheck size={14} color="#38bdf8" />
               <span>{userName}</span>
             </div>
-          )}
-
-          {onLogout && (
-            <button
-              className="icon-btn"
-              onClick={() => {
-                sound.playClick();
-                onLogout();
-              }}
-              title="Encerrar Sessão / Bloquear Acesso"
-              style={{ color: '#f87171' }}
-            >
-              <LogOut size={17} />
-            </button>
           )}
         </div>
       </div>

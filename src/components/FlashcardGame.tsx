@@ -82,10 +82,11 @@ export const FlashcardGame: React.FC<FlashcardGameProps> = ({ cards, onFinish, o
             sound.playClick();
             onExit();
           }}
-          className="btn-secondary"
-          style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem', borderRadius: '10px' }}
+          className="quiz-exit-btn"
+          title="Voltar ao Menu Principal"
         >
-          ← Sair
+          <ArrowLeft size={16} />
+          <span>Sair</span>
         </button>
 
         <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>

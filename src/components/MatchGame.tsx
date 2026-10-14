@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { MatchPair } from '../types/game';
-import { Timer, Check, ArrowRight, Zap, RefreshCw } from 'lucide-react';
+import { Timer, Check, ArrowRight, ArrowLeft, Zap, RefreshCw } from 'lucide-react';
 import { sound } from '../utils/sound';
 import confetti from 'canvas-confetti';
 
@@ -120,10 +120,11 @@ export const MatchGame: React.FC<MatchGameProps> = ({ pairs, onFinish, onExit })
             sound.playClick();
             onExit();
           }}
-          className="btn-secondary"
-          style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem', borderRadius: '10px' }}
+          className="quiz-exit-btn"
+          title="Voltar ao Menu Principal"
         >
-          ← Sair
+          <ArrowLeft size={16} />
+          <span>Sair</span>
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>

@@ -55,7 +55,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "Se o alarme não toca, então a guarnição não sai em disparada."
     ],
     "correctIndex": 1,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência da Condicional (Contrapositiva).",
+    "explanation": "Resolução lógica AOCP: A alternativa B expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência da Condicional (Contrapositiva).",
     "hint": "Aplique a propriedade canônica de Equivalência da Condicional (Contrapositiva).",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -64,7 +64,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa B."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -89,7 +89,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "Vou à praia se, e somente se, fizer sol em Recife."
     ],
     "correctIndex": 2,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência com Disjunção (NEOU).",
+    "explanation": "Resolução lógica AOCP: A alternativa C expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência com Disjunção (NEOU).",
     "hint": "Aplique a propriedade canônica de Equivalência com Disjunção (NEOU).",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -98,7 +98,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa C."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -123,7 +123,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "O tenente não é rigoroso se o soldado for desatento."
     ],
     "correctIndex": 3,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Leis de De Morgan.",
+    "explanation": "Resolução lógica AOCP: A alternativa D expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Leis de De Morgan.",
     "hint": "Aplique a propriedade canônica de Leis de De Morgan.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -132,7 +132,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa D."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -157,7 +157,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "13 policiais."
     ],
     "correctIndex": 4,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Princípio da Casa dos Pombos.",
+    "explanation": "Resolução lógica AOCP: A alternativa E expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Princípio da Casa dos Pombos.",
     "hint": "Aplique a propriedade canônica de Princípio da Casa dos Pombos.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -166,7 +166,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa E."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -225,7 +225,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "36 comissões."
     ],
     "correctIndex": 1,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Análise Combinatória: Combinação.",
+    "explanation": "Resolução lógica AOCP: A alternativa B expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Análise Combinatória: Combinação.",
     "hint": "Aplique a propriedade canônica de Análise Combinatória: Combinação.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -234,7 +234,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa B."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -259,7 +259,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "16,6% (1 em 6)."
     ],
     "correctIndex": 2,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Probabilidade Simples.",
+    "explanation": "Resolução lógica AOCP: A alternativa C expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Probabilidade Simples.",
     "hint": "Aplique a propriedade canônica de Probabilidade Simples.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -268,7 +268,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa C."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -293,7 +293,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "1 hora."
     ],
     "correctIndex": 3,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Regra de Três Simples Inversa.",
+    "explanation": "Resolução lógica AOCP: A alternativa D expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Regra de Três Simples Inversa.",
     "hint": "Aplique a propriedade canônica de Regra de Três Simples Inversa.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -302,7 +302,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa D."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -327,7 +327,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "30%."
     ],
     "correctIndex": 4,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Porcentagem e Lucro.",
+    "explanation": "Resolução lógica AOCP: A alternativa E expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Porcentagem e Lucro.",
     "hint": "Aplique a propriedade canônica de Porcentagem e Lucro.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -336,7 +336,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa E."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -395,7 +395,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "Se o alarme não toca, então a guarnição não sai em disparada."
     ],
     "correctIndex": 1,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência da Condicional (Contrapositiva).",
+    "explanation": "Resolução lógica AOCP: A alternativa B expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência da Condicional (Contrapositiva).",
     "hint": "Aplique a propriedade canônica de Equivalência da Condicional (Contrapositiva).",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -404,7 +404,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa B."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -429,7 +429,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "Vou à praia se, e somente se, fizer sol em Recife."
     ],
     "correctIndex": 2,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência com Disjunção (NEOU).",
+    "explanation": "Resolução lógica AOCP: A alternativa C expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência com Disjunção (NEOU).",
     "hint": "Aplique a propriedade canônica de Equivalência com Disjunção (NEOU).",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -438,7 +438,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa C."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -463,7 +463,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "O tenente não é rigoroso se o soldado for desatento."
     ],
     "correctIndex": 3,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Leis de De Morgan.",
+    "explanation": "Resolução lógica AOCP: A alternativa D expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Leis de De Morgan.",
     "hint": "Aplique a propriedade canônica de Leis de De Morgan.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -472,7 +472,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa D."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -497,7 +497,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "13 policiais."
     ],
     "correctIndex": 4,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Princípio da Casa dos Pombos.",
+    "explanation": "Resolução lógica AOCP: A alternativa E expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Princípio da Casa dos Pombos.",
     "hint": "Aplique a propriedade canônica de Princípio da Casa dos Pombos.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -506,7 +506,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa E."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -565,7 +565,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "36 comissões."
     ],
     "correctIndex": 1,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Análise Combinatória: Combinação.",
+    "explanation": "Resolução lógica AOCP: A alternativa B expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Análise Combinatória: Combinação.",
     "hint": "Aplique a propriedade canônica de Análise Combinatória: Combinação.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -574,7 +574,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa B."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -599,7 +599,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "16,6% (1 em 6)."
     ],
     "correctIndex": 2,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Probabilidade Simples.",
+    "explanation": "Resolução lógica AOCP: A alternativa C expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Probabilidade Simples.",
     "hint": "Aplique a propriedade canônica de Probabilidade Simples.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -608,7 +608,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa C."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -633,7 +633,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "1 hora."
     ],
     "correctIndex": 3,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Regra de Três Simples Inversa.",
+    "explanation": "Resolução lógica AOCP: A alternativa D expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Regra de Três Simples Inversa.",
     "hint": "Aplique a propriedade canônica de Regra de Três Simples Inversa.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -642,7 +642,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa D."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -667,7 +667,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "30%."
     ],
     "correctIndex": 4,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Porcentagem e Lucro.",
+    "explanation": "Resolução lógica AOCP: A alternativa E expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Porcentagem e Lucro.",
     "hint": "Aplique a propriedade canônica de Porcentagem e Lucro.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -676,7 +676,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa E."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -735,7 +735,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "Se o alarme não toca, então a guarnição não sai em disparada."
     ],
     "correctIndex": 1,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência da Condicional (Contrapositiva).",
+    "explanation": "Resolução lógica AOCP: A alternativa B expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência da Condicional (Contrapositiva).",
     "hint": "Aplique a propriedade canônica de Equivalência da Condicional (Contrapositiva).",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -744,7 +744,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa B."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -769,7 +769,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "Vou à praia se, e somente se, fizer sol em Recife."
     ],
     "correctIndex": 2,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência com Disjunção (NEOU).",
+    "explanation": "Resolução lógica AOCP: A alternativa C expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência com Disjunção (NEOU).",
     "hint": "Aplique a propriedade canônica de Equivalência com Disjunção (NEOU).",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -778,7 +778,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa C."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -803,7 +803,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "O tenente não é rigoroso se o soldado for desatento."
     ],
     "correctIndex": 3,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Leis de De Morgan.",
+    "explanation": "Resolução lógica AOCP: A alternativa D expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Leis de De Morgan.",
     "hint": "Aplique a propriedade canônica de Leis de De Morgan.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -812,7 +812,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa D."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -837,7 +837,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "13 policiais."
     ],
     "correctIndex": 4,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Princípio da Casa dos Pombos.",
+    "explanation": "Resolução lógica AOCP: A alternativa E expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Princípio da Casa dos Pombos.",
     "hint": "Aplique a propriedade canônica de Princípio da Casa dos Pombos.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -846,7 +846,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa E."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -905,7 +905,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "36 comissões."
     ],
     "correctIndex": 1,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Análise Combinatória: Combinação.",
+    "explanation": "Resolução lógica AOCP: A alternativa B expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Análise Combinatória: Combinação.",
     "hint": "Aplique a propriedade canônica de Análise Combinatória: Combinação.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -914,7 +914,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa B."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -939,7 +939,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "16,6% (1 em 6)."
     ],
     "correctIndex": 2,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Probabilidade Simples.",
+    "explanation": "Resolução lógica AOCP: A alternativa C expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Probabilidade Simples.",
     "hint": "Aplique a propriedade canônica de Probabilidade Simples.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -948,7 +948,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa C."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -973,7 +973,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "1 hora."
     ],
     "correctIndex": 3,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Regra de Três Simples Inversa.",
+    "explanation": "Resolução lógica AOCP: A alternativa D expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Regra de Três Simples Inversa.",
     "hint": "Aplique a propriedade canônica de Regra de Três Simples Inversa.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -982,7 +982,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa D."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1007,7 +1007,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "30%."
     ],
     "correctIndex": 4,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Porcentagem e Lucro.",
+    "explanation": "Resolução lógica AOCP: A alternativa E expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Porcentagem e Lucro.",
     "hint": "Aplique a propriedade canônica de Porcentagem e Lucro.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -1016,7 +1016,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa E."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1075,7 +1075,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "Se o alarme não toca, então a guarnição não sai em disparada."
     ],
     "correctIndex": 1,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência da Condicional (Contrapositiva).",
+    "explanation": "Resolução lógica AOCP: A alternativa B expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência da Condicional (Contrapositiva).",
     "hint": "Aplique a propriedade canônica de Equivalência da Condicional (Contrapositiva).",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1084,7 +1084,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa B."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1109,7 +1109,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "Vou à praia se, e somente se, fizer sol em Recife."
     ],
     "correctIndex": 2,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência com Disjunção (NEOU).",
+    "explanation": "Resolução lógica AOCP: A alternativa C expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência com Disjunção (NEOU).",
     "hint": "Aplique a propriedade canônica de Equivalência com Disjunção (NEOU).",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -1118,7 +1118,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa C."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1143,7 +1143,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "O tenente não é rigoroso se o soldado for desatento."
     ],
     "correctIndex": 3,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Leis de De Morgan.",
+    "explanation": "Resolução lógica AOCP: A alternativa D expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Leis de De Morgan.",
     "hint": "Aplique a propriedade canônica de Leis de De Morgan.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -1152,7 +1152,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa D."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1177,7 +1177,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "13 policiais."
     ],
     "correctIndex": 4,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Princípio da Casa dos Pombos.",
+    "explanation": "Resolução lógica AOCP: A alternativa E expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Princípio da Casa dos Pombos.",
     "hint": "Aplique a propriedade canônica de Princípio da Casa dos Pombos.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1186,7 +1186,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa E."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1245,7 +1245,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "36 comissões."
     ],
     "correctIndex": 1,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Análise Combinatória: Combinação.",
+    "explanation": "Resolução lógica AOCP: A alternativa B expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Análise Combinatória: Combinação.",
     "hint": "Aplique a propriedade canônica de Análise Combinatória: Combinação.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -1254,7 +1254,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa B."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1279,7 +1279,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "16,6% (1 em 6)."
     ],
     "correctIndex": 2,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Probabilidade Simples.",
+    "explanation": "Resolução lógica AOCP: A alternativa C expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Probabilidade Simples.",
     "hint": "Aplique a propriedade canônica de Probabilidade Simples.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1288,7 +1288,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa C."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1313,7 +1313,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "1 hora."
     ],
     "correctIndex": 3,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Regra de Três Simples Inversa.",
+    "explanation": "Resolução lógica AOCP: A alternativa D expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Regra de Três Simples Inversa.",
     "hint": "Aplique a propriedade canônica de Regra de Três Simples Inversa.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -1322,7 +1322,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa D."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1347,7 +1347,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "30%."
     ],
     "correctIndex": 4,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Porcentagem e Lucro.",
+    "explanation": "Resolução lógica AOCP: A alternativa E expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Porcentagem e Lucro.",
     "hint": "Aplique a propriedade canônica de Porcentagem e Lucro.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -1356,7 +1356,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa E."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1415,7 +1415,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "Se o alarme não toca, então a guarnição não sai em disparada."
     ],
     "correctIndex": 1,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência da Condicional (Contrapositiva).",
+    "explanation": "Resolução lógica AOCP: A alternativa B expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência da Condicional (Contrapositiva).",
     "hint": "Aplique a propriedade canônica de Equivalência da Condicional (Contrapositiva).",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -1424,7 +1424,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa B."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1449,7 +1449,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "Vou à praia se, e somente se, fizer sol em Recife."
     ],
     "correctIndex": 2,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência com Disjunção (NEOU).",
+    "explanation": "Resolução lógica AOCP: A alternativa C expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência com Disjunção (NEOU).",
     "hint": "Aplique a propriedade canônica de Equivalência com Disjunção (NEOU).",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -1458,7 +1458,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa C."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1483,7 +1483,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "O tenente não é rigoroso se o soldado for desatento."
     ],
     "correctIndex": 3,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Leis de De Morgan.",
+    "explanation": "Resolução lógica AOCP: A alternativa D expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Leis de De Morgan.",
     "hint": "Aplique a propriedade canônica de Leis de De Morgan.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1492,7 +1492,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa D."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1517,7 +1517,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "13 policiais."
     ],
     "correctIndex": 4,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Princípio da Casa dos Pombos.",
+    "explanation": "Resolução lógica AOCP: A alternativa E expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Princípio da Casa dos Pombos.",
     "hint": "Aplique a propriedade canônica de Princípio da Casa dos Pombos.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -1526,7 +1526,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa E."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1585,7 +1585,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "36 comissões."
     ],
     "correctIndex": 1,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Análise Combinatória: Combinação.",
+    "explanation": "Resolução lógica AOCP: A alternativa B expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Análise Combinatória: Combinação.",
     "hint": "Aplique a propriedade canônica de Análise Combinatória: Combinação.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1594,7 +1594,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa B."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1619,7 +1619,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "16,6% (1 em 6)."
     ],
     "correctIndex": 2,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Probabilidade Simples.",
+    "explanation": "Resolução lógica AOCP: A alternativa C expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Probabilidade Simples.",
     "hint": "Aplique a propriedade canônica de Probabilidade Simples.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -1628,7 +1628,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa C."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1653,7 +1653,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "1 hora."
     ],
     "correctIndex": 3,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Regra de Três Simples Inversa.",
+    "explanation": "Resolução lógica AOCP: A alternativa D expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Regra de Três Simples Inversa.",
     "hint": "Aplique a propriedade canônica de Regra de Três Simples Inversa.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -1662,7 +1662,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa D."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",
@@ -1687,7 +1687,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "30%."
     ],
     "correctIndex": 4,
-    "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Porcentagem e Lucro.",
+    "explanation": "Resolução lógica AOCP: A alternativa E expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Porcentagem e Lucro.",
     "hint": "Aplique a propriedade canônica de Porcentagem e Lucro.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1696,7 +1696,7 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "passoAPassoConta": [
       "1. Analisar as proposições ou números do enunciado.",
       "2. Aplicar a fórmula específica do conteúdo.",
-      "3. Obter o resultado inequívoco da alternativa A."
+      "3. Obter o resultado inequívoco da alternativa E."
     ],
     "analiseAlternativas": {
       "A": "Alternativa incorreta.",

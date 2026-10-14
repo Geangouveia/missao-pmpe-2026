@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import type { GameMode, CategoryId, QuizQuestion, MatchPair, Flashcard, PlayerStats } from './types/game';
 import {
   CATEGORIES,
@@ -89,6 +89,7 @@ export function App() {
   const [activeMode, setActiveMode] = useState<GameMode | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<CategoryId | 'all' | 'bloco_1' | 'bloco_2' | 'bloco_3'>('all');
   const [selectedSimulado, setSelectedSimulado] = useState<string>('all');
+  const [gameSessionNonce, setGameSessionNonce] = useState(0);
 
   // Modais
   const [isAchievementsOpen, setIsAchievementsOpen] = useState(false);
@@ -168,7 +169,7 @@ export function App() {
   }, []);
 
   // Função para adicionar XP e recalcular nível
-  const addXp = (amount: number) => {
+  const addXp = useCallback((amount: number) => {
     setStats((prev) => {
       const newXp = prev.xp + amount;
       const newLevel = Math.floor(newXp / 100) + 1;
@@ -190,10 +191,10 @@ export function App() {
         level: newLevel,
       };
     });
-  };
+  }, []);
 
   // Elevação de nível e registro em tempo real a cada resposta dada
-  const handleQuestionAnswered = (isCorrect: boolean, xpGained: number) => {
+  const handleQuestionAnswered = useCallback((isCorrect: boolean, xpGained: number) => {
     setStats((prev) => {
       const newXp = prev.xp + xpGained;
       const newLevel = Math.floor(newXp / 100) + 1;
@@ -217,7 +218,7 @@ export function App() {
         correctAnswers: prev.correctAnswers + (isCorrect ? 1 : 0),
       };
     });
-  };
+  }, []);
 
   // Desbloquear Conquista
   const unlockAchievement = (id: string) => {
@@ -235,7 +236,7 @@ export function App() {
   };
 
   // Filtrar dados pela categoria/bloco E pelo simulado/semana selecionado
-  const filterByBlockOrCat = <T extends { id?: string; categoryId: CategoryId; bloco?: string; simuladoOrigem?: string }>(item: T) => {
+  const filterByBlockOrCat = useCallback(<T extends { id?: string; categoryId: CategoryId; bloco?: string; simuladoOrigem?: string }>(item: T) => {
     // 1. Filtro por Categoria ou Bloco Oficial PMPE
     let matchCat = true;
     if (selectedCategory === 'bloco_1') matchCat = item.bloco === 'bloco_1';
@@ -258,11 +259,11 @@ export function App() {
     else if (selectedSimulado === 'banco_bloco3') matchSim = item.simuladoOrigem === 'banco_bloco3' || item.bloco === 'bloco_3';
 
     return matchCat && matchSim;
-  };
+  }, [selectedCategory, selectedSimulado]);
 
-  const filteredQuestions = questions.filter(filterByBlockOrCat);
-  const filteredMatchPairs = matchPairs.filter(filterByBlockOrCat);
-  const filteredFlashcards = flashcards.filter(filterByBlockOrCat);
+  const filteredQuestions = useMemo(() => questions.filter(filterByBlockOrCat), [questions, filterByBlockOrCat]);
+  const filteredMatchPairs = useMemo(() => matchPairs.filter(filterByBlockOrCat), [matchPairs, filterByBlockOrCat]);
+  const filteredFlashcards = useMemo(() => flashcards.filter(filterByBlockOrCat), [flashcards, filterByBlockOrCat]);
 
   const handleToggleMute = () => {
     const nextMuted = sound.toggleMute();
@@ -504,6 +505,7 @@ export function App() {
           {/* Seletor de Modo de Jogo */}
           <ModeSelector
             onSelectMode={(mode) => {
+              setGameSessionNonce((prev) => prev + 1);
               setActiveMode(mode);
             }}
           />
@@ -513,10 +515,11 @@ export function App() {
       {/* NOVO MODO: OPERAÇÃO SOBREVIVÊNCIA (TIRO CERTO) */}
       {activeMode === 'survival' && (
         <SurvivalGame
+          key={`survival-${selectedCategory}-${selectedSimulado}-${gameSessionNonce}`}
           questions={filteredQuestions.length > 0 ? filteredQuestions : questions}
           onFinish={handleQuizFinish}
           onExit={() => setActiveMode(null)}
-          onAwardXp={(xp) => addXp(xp)}
+          onAwardXp={addXp}
           onQuestionAnswered={handleQuestionAnswered}
         />
       )}
@@ -524,10 +527,11 @@ export function App() {
       {/* MODO 1: SIMULADO TURBO AOCP */}
       {activeMode === 'quiz' && (
         <QuizGame
+          key={`quiz-${selectedCategory}-${selectedSimulado}-${gameSessionNonce}`}
           questions={filteredQuestions.length > 0 ? filteredQuestions : questions}
           onFinish={handleQuizFinish}
           onExit={() => setActiveMode(null)}
-          onAwardXp={(xp) => addXp(xp)}
+          onAwardXp={addXp}
           onQuestionAnswered={handleQuestionAnswered}
         />
       )}
@@ -535,6 +539,7 @@ export function App() {
       {/* MODO 2: CONEXÃO TÁTICA (MATCH) */}
       {activeMode === 'match' && (
         <MatchGame
+          key={`match-${selectedCategory}-${selectedSimulado}-${gameSessionNonce}`}
           pairs={filteredMatchPairs.length > 0 ? filteredMatchPairs : matchPairs}
           onFinish={handleMatchFinish}
           onExit={() => setActiveMode(null)}
@@ -544,11 +549,12 @@ export function App() {
       {/* MODO 3: OPERAÇÃO CFSD (BOSS AOCP) */}
       {activeMode === 'battle' && (
         <BossBattleGame
+          key={`battle-${selectedCategory}-${selectedSimulado}-${gameSessionNonce}`}
           questions={filteredQuestions.length > 0 ? filteredQuestions : questions}
           boss={BOSS_ENEMIES[0]}
           onFinish={handleBossFinish}
           onExit={() => setActiveMode(null)}
-          onAwardXp={(xp) => addXp(xp)}
+          onAwardXp={addXp}
           onQuestionAnswered={handleQuestionAnswered}
         />
       )}
@@ -556,6 +562,7 @@ export function App() {
       {/* MODO 4: COFRE DA LEI SECA (FLASHCARDS 3D) */}
       {activeMode === 'flashcards' && (
         <FlashcardGame
+          key={`flashcards-${selectedCategory}-${selectedSimulado}-${gameSessionNonce}`}
           cards={filteredFlashcards.length > 0 ? filteredFlashcards : flashcards}
           onFinish={handleFlashcardFinish}
           onExit={() => setActiveMode(null)}
@@ -589,6 +596,7 @@ export function App() {
           xpEarned={summaryData.xpEarned}
           statsDetail={summaryData.statsDetail}
           onPlayAgain={() => {
+            setGameSessionNonce((prev) => prev + 1);
             setSummaryData(null);
           }}
           onHome={() => {

@@ -7,6 +7,7 @@ import {
   Snowflake, 
   Scissors, 
   ArrowRight, 
+  ArrowLeft,
   HelpCircle, 
   CheckCircle2, 
   XCircle, 
@@ -45,8 +46,8 @@ export const QuizGame: React.FC<QuizGameProps> = ({
   onAwardXp,
   onQuestionAnswered 
 }) => {
-  // Inicializa o banco de questões completamente embaralhado e com alternativas sorteadas
-  const [activeQuestions, setActiveQuestions] = useState<QuizQuestion[]>(() => prepareGameQuestions(questions));
+  // Inicializa o lote de questões com Fisher-Yates de ordem e alternativas A-E fixas para esta sessão
+  const [activeQuestions] = useState<QuizQuestion[]>(() => prepareGameQuestions(questions));
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -68,23 +69,6 @@ export const QuizGame: React.FC<QuizGameProps> = ({
   });
   const [showHint, setShowHint] = useState(false);
   const [eliminatedOptions, setEliminatedOptions] = useState<number[]>([]);
-
-  // Sempre que a lista de questões base mudar, reembaralha e reseta estado
-  useEffect(() => {
-    setActiveQuestions(prepareGameQuestions(questions));
-    setCurrentIndex(0);
-    setSelectedOption(null);
-    setIsAnswered(false);
-    setTimeLeft(30);
-    setShowHint(false);
-    setEliminatedOptions([]);
-    setScore(0);
-    setCorrectCount(0);
-    setCombo(0);
-    setMaxCombo(0);
-    setTimeSpentTotal(0);
-    setSubjectBreakdown({});
-  }, [questions]);
 
   const currentQ = activeQuestions[currentIndex] || activeQuestions[0];
 
@@ -253,10 +237,11 @@ export const QuizGame: React.FC<QuizGameProps> = ({
               sound.playClick();
               onExit();
             }}
-            className="btn-secondary"
-            style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem', borderRadius: '10px' }}
+            className="quiz-exit-btn"
+            title="Voltar ao Menu Principal"
           >
-            ← Sair da Prova
+            <ArrowLeft size={16} />
+            <span>Sair da Prova</span>
           </button>
           <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontWeight: 600 }}>
             Questão <span style={{ color: 'white', fontWeight: 800 }}>{currentIndex + 1}</span> de {activeQuestions.length}
@@ -693,7 +678,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({
               {/* Botão de Avançar */}
               <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.5rem' }}>
                 <button className="btn-primary" onClick={handleNext} style={{ padding: '0.75rem 1.4rem' }}>
-                  <span>{currentIndex + 1 < questions.length ? 'Avançar Próxima Questão' : 'Concluir Simulado & Ver Resultado'}</span>
+                  <span>{currentIndex + 1 < activeQuestions.length ? 'Avançar Próxima Questão' : 'Concluir Simulado & Ver Resultado'}</span>
                   <ArrowRight size={18} />
                 </button>
               </div>

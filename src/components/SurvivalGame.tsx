@@ -16,7 +16,8 @@ import {
   Crosshair, 
   ChevronRight,
   TrendingUp,
-  AlertTriangle
+  AlertTriangle,
+  ArrowLeft
 } from 'lucide-react';
 import { sound } from '../utils/sound';
 import confetti from 'canvas-confetti';
@@ -55,14 +56,10 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
   onAwardXp,
   onQuestionAnswered,
 }) => {
-  // Embaralhar as questões e alternativas para uma missão tática imprevisível e dinâmica
+  // Embaralhar as questões e alternativas para esta sessão de sobrevivência
   const [shuffledQuestions, setShuffledQuestions] = useState<QuizQuestion[]>(() => {
     return prepareGameQuestions(questions);
   });
-
-  useEffect(() => {
-    setShuffledQuestions(prepareGameQuestions(questions));
-  }, [questions]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lives, setLives] = useState(3);
@@ -483,18 +480,11 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                 sound.playClick();
                 onExit();
               }}
-              style={{
-                background: 'rgba(255, 255, 255, 0.08)',
-                border: 'none',
-                color: '#94a3b8',
-                borderRadius: '10px',
-                padding: '0.4rem 0.75rem',
-                fontSize: '0.75rem',
-                cursor: 'pointer',
-                fontWeight: 700
-              }}
+              className="quiz-exit-btn"
+              title="Sair da Missão Sobrevivência"
             >
-              Abandonar
+              <ArrowLeft size={16} />
+              <span>Sair da Missão</span>
             </button>
           </div>
 

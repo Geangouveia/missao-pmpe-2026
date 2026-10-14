@@ -50,7 +50,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Ordem administrativa de delegado."
     ],
     "correctIndex": 1,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Inviolabilidade de Domicílio: Art. 5º XI.",
+    "explanation": "Fundamentação Constitucional: A alternativa B reflete com fidelidade as normas da CF/88 no tema Inviolabilidade de Domicílio: Art. 5º XI.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Inviolabilidade de Domicílio: Art. 5º XI.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -79,7 +79,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Ação Popular."
     ],
     "correctIndex": 2,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Remédios Constitucionais: Habeas Corpus.",
+    "explanation": "Fundamentação Constitucional: A alternativa C reflete com fidelidade as normas da CF/88 no tema Remédios Constitucionais: Habeas Corpus.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Remédios Constitucionais: Habeas Corpus.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -108,7 +108,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Mandado de Injunção."
     ],
     "correctIndex": 3,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Remédios Constitucionais: Habeas Data.",
+    "explanation": "Fundamentação Constitucional: A alternativa D reflete com fidelidade as normas da CF/88 no tema Remédios Constitucionais: Habeas Data.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Remédios Constitucionais: Habeas Data.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -137,7 +137,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "O respeito à sua integridade física e moral."
     ],
     "correctIndex": 4,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Direitos dos Presos: Art. 5º.",
+    "explanation": "Fundamentação Constitucional: A alternativa E reflete com fidelidade as normas da CF/88 no tema Direitos dos Presos: Art. 5º.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Direitos dos Presos: Art. 5º.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -195,7 +195,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Dívida civil de pensão não alimentar."
     ],
     "correctIndex": 1,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Flagrante Delito: Art. 301 CPP e CF.",
+    "explanation": "Fundamentação Constitucional: A alternativa B reflete com fidelidade as normas da CF/88 no tema Flagrante Delito: Art. 301 CPP e CF.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Flagrante Delito: Art. 301 CPP e CF.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -224,7 +224,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Aos Corpos de Bombeiros Militares exclusivamente."
     ],
     "correctIndex": 2,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Segurança Pública: Art. 144 CF.",
+    "explanation": "Fundamentação Constitucional: A alternativa C reflete com fidelidade as normas da CF/88 no tema Segurança Pública: Art. 144 CF.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Segurança Pública: Art. 144 CF.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -253,7 +253,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Ordem administrativa de delegado."
     ],
     "correctIndex": 3,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Inviolabilidade de Domicílio: Art. 5º XI.",
+    "explanation": "Fundamentação Constitucional: A alternativa D reflete com fidelidade as normas da CF/88 no tema Inviolabilidade de Domicílio: Art. 5º XI.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Inviolabilidade de Domicílio: Art. 5º XI.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -282,7 +282,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Habeas Corpus."
     ],
     "correctIndex": 4,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Remédios Constitucionais: Habeas Corpus.",
+    "explanation": "Fundamentação Constitucional: A alternativa E reflete com fidelidade as normas da CF/88 no tema Remédios Constitucionais: Habeas Corpus.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Remédios Constitucionais: Habeas Corpus.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -340,7 +340,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "A proibição de contato com familiares e advogado."
     ],
     "correctIndex": 1,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Direitos dos Presos: Art. 5º.",
+    "explanation": "Fundamentação Constitucional: A alternativa B reflete com fidelidade as normas da CF/88 no tema Direitos dos Presos: Art. 5º.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Direitos dos Presos: Art. 5º.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -369,7 +369,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "A promoção por merecimento."
     ],
     "correctIndex": 2,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Vedações aos Militares: Art. 142 e 42.",
+    "explanation": "Fundamentação Constitucional: A alternativa C reflete com fidelidade as normas da CF/88 no tema Vedações aos Militares: Art. 142 e 42.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Vedações aos Militares: Art. 142 e 42.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -398,7 +398,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Dívida civil de pensão não alimentar."
     ],
     "correctIndex": 3,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Flagrante Delito: Art. 301 CPP e CF.",
+    "explanation": "Fundamentação Constitucional: A alternativa D reflete com fidelidade as normas da CF/88 no tema Flagrante Delito: Art. 301 CPP e CF.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Flagrante Delito: Art. 301 CPP e CF.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -427,7 +427,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Às Polícias Militares."
     ],
     "correctIndex": 4,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Segurança Pública: Art. 144 CF.",
+    "explanation": "Fundamentação Constitucional: A alternativa E reflete com fidelidade as normas da CF/88 no tema Segurança Pública: Art. 144 CF.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Segurança Pública: Art. 144 CF.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -485,7 +485,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Ação Popular."
     ],
     "correctIndex": 1,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Remédios Constitucionais: Habeas Corpus.",
+    "explanation": "Fundamentação Constitucional: A alternativa B reflete com fidelidade as normas da CF/88 no tema Remédios Constitucionais: Habeas Corpus.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Remédios Constitucionais: Habeas Corpus.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -514,7 +514,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Mandado de Injunção."
     ],
     "correctIndex": 2,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Remédios Constitucionais: Habeas Data.",
+    "explanation": "Fundamentação Constitucional: A alternativa C reflete com fidelidade as normas da CF/88 no tema Remédios Constitucionais: Habeas Data.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Remédios Constitucionais: Habeas Data.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -543,7 +543,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "A proibição de contato com familiares e advogado."
     ],
     "correctIndex": 3,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Direitos dos Presos: Art. 5º.",
+    "explanation": "Fundamentação Constitucional: A alternativa D reflete com fidelidade as normas da CF/88 no tema Direitos dos Presos: Art. 5º.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Direitos dos Presos: Art. 5º.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -572,7 +572,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "A sindicalização e a greve."
     ],
     "correctIndex": 4,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Vedações aos Militares: Art. 142 e 42.",
+    "explanation": "Fundamentação Constitucional: A alternativa E reflete com fidelidade as normas da CF/88 no tema Vedações aos Militares: Art. 142 e 42.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Vedações aos Militares: Art. 142 e 42.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -630,7 +630,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Aos Corpos de Bombeiros Militares exclusivamente."
     ],
     "correctIndex": 1,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Segurança Pública: Art. 144 CF.",
+    "explanation": "Fundamentação Constitucional: A alternativa B reflete com fidelidade as normas da CF/88 no tema Segurança Pública: Art. 144 CF.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Segurança Pública: Art. 144 CF.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -659,7 +659,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Ordem administrativa de delegado."
     ],
     "correctIndex": 2,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Inviolabilidade de Domicílio: Art. 5º XI.",
+    "explanation": "Fundamentação Constitucional: A alternativa C reflete com fidelidade as normas da CF/88 no tema Inviolabilidade de Domicílio: Art. 5º XI.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Inviolabilidade de Domicílio: Art. 5º XI.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -688,7 +688,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Ação Popular."
     ],
     "correctIndex": 3,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Remédios Constitucionais: Habeas Corpus.",
+    "explanation": "Fundamentação Constitucional: A alternativa D reflete com fidelidade as normas da CF/88 no tema Remédios Constitucionais: Habeas Corpus.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Remédios Constitucionais: Habeas Corpus.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -717,7 +717,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Habeas Data."
     ],
     "correctIndex": 4,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Remédios Constitucionais: Habeas Data.",
+    "explanation": "Fundamentação Constitucional: A alternativa E reflete com fidelidade as normas da CF/88 no tema Remédios Constitucionais: Habeas Data.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Remédios Constitucionais: Habeas Data.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -775,7 +775,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "A promoção por merecimento."
     ],
     "correctIndex": 1,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Vedações aos Militares: Art. 142 e 42.",
+    "explanation": "Fundamentação Constitucional: A alternativa B reflete com fidelidade as normas da CF/88 no tema Vedações aos Militares: Art. 142 e 42.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Vedações aos Militares: Art. 142 e 42.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -804,7 +804,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Dívida civil de pensão não alimentar."
     ],
     "correctIndex": 2,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Flagrante Delito: Art. 301 CPP e CF.",
+    "explanation": "Fundamentação Constitucional: A alternativa C reflete com fidelidade as normas da CF/88 no tema Flagrante Delito: Art. 301 CPP e CF.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Flagrante Delito: Art. 301 CPP e CF.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -833,7 +833,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Aos Corpos de Bombeiros Militares exclusivamente."
     ],
     "correctIndex": 3,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Segurança Pública: Art. 144 CF.",
+    "explanation": "Fundamentação Constitucional: A alternativa D reflete com fidelidade as normas da CF/88 no tema Segurança Pública: Art. 144 CF.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Segurança Pública: Art. 144 CF.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -862,7 +862,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Flagrante delito, desastre ou para prestar socorro."
     ],
     "correctIndex": 4,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Inviolabilidade de Domicílio: Art. 5º XI.",
+    "explanation": "Fundamentação Constitucional: A alternativa E reflete com fidelidade as normas da CF/88 no tema Inviolabilidade de Domicílio: Art. 5º XI.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Inviolabilidade de Domicílio: Art. 5º XI.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -920,7 +920,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Mandado de Injunção."
     ],
     "correctIndex": 1,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Remédios Constitucionais: Habeas Data.",
+    "explanation": "Fundamentação Constitucional: A alternativa B reflete com fidelidade as normas da CF/88 no tema Remédios Constitucionais: Habeas Data.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Remédios Constitucionais: Habeas Data.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -949,7 +949,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "A proibição de contato com familiares e advogado."
     ],
     "correctIndex": 2,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Direitos dos Presos: Art. 5º.",
+    "explanation": "Fundamentação Constitucional: A alternativa C reflete com fidelidade as normas da CF/88 no tema Direitos dos Presos: Art. 5º.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Direitos dos Presos: Art. 5º.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -978,7 +978,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "A promoção por merecimento."
     ],
     "correctIndex": 3,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Vedações aos Militares: Art. 142 e 42.",
+    "explanation": "Fundamentação Constitucional: A alternativa D reflete com fidelidade as normas da CF/88 no tema Vedações aos Militares: Art. 142 e 42.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Vedações aos Militares: Art. 142 e 42.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -1007,7 +1007,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Flagrante delito."
     ],
     "correctIndex": 4,
-    "explanation": "Fundamentação Constitucional: A alternativa A reflete com fidelidade as normas da CF/88 no tema Flagrante Delito: Art. 301 CPP e CF.",
+    "explanation": "Fundamentação Constitucional: A alternativa E reflete com fidelidade as normas da CF/88 no tema Flagrante Delito: Art. 301 CPP e CF.",
     "hint": "Veja o texto literal da Constituição Federal de 1988 sobre Flagrante Delito: Art. 301 CPP e CF.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1065,7 +1065,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Um conselho de sentença leigo."
     ],
     "correctIndex": 1,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de CADH: Audiência de Custódia.",
+    "explanation": "Direitos Humanos: A alternativa B está alinhada aos tratados internacionais e à doutrina jurídica de CADH: Audiência de Custódia.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1094,7 +1094,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Resposta obrigatória a qualquer desacato verbal."
     ],
     "correctIndex": 2,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de Uso Diferenciado da Força.",
+    "explanation": "Direitos Humanos: A alternativa C está alinhada aos tratados internacionais e à doutrina jurídica de Uso Diferenciado da Força.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -1123,7 +1123,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "O denunciante preste depoimento isolado."
     ],
     "correctIndex": 3,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de DUDH: Presunção de Inocência.",
+    "explanation": "Direitos Humanos: A alternativa D está alinhada aos tratados internacionais e à doutrina jurídica de DUDH: Presunção de Inocência.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -1152,7 +1152,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "O isolamento indefinido ou prolongado em cela escura."
     ],
     "correctIndex": 4,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de Regras de Mandela.",
+    "explanation": "Direitos Humanos: A alternativa E está alinhada aos tratados internacionais e à doutrina jurídica de Regras de Mandela.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1210,7 +1210,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Um conselho de sentença leigo."
     ],
     "correctIndex": 1,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de CADH: Audiência de Custódia.",
+    "explanation": "Direitos Humanos: A alternativa B está alinhada aos tratados internacionais e à doutrina jurídica de CADH: Audiência de Custódia.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -1239,7 +1239,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Resposta obrigatória a qualquer desacato verbal."
     ],
     "correctIndex": 2,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de Uso Diferenciado da Força.",
+    "explanation": "Direitos Humanos: A alternativa C está alinhada aos tratados internacionais e à doutrina jurídica de Uso Diferenciado da Força.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1268,7 +1268,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "O denunciante preste depoimento isolado."
     ],
     "correctIndex": 3,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de DUDH: Presunção de Inocência.",
+    "explanation": "Direitos Humanos: A alternativa D está alinhada aos tratados internacionais e à doutrina jurídica de DUDH: Presunção de Inocência.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -1297,7 +1297,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "O isolamento indefinido ou prolongado em cela escura."
     ],
     "correctIndex": 4,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de Regras de Mandela.",
+    "explanation": "Direitos Humanos: A alternativa E está alinhada aos tratados internacionais e à doutrina jurídica de Regras de Mandela.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -1355,7 +1355,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Um conselho de sentença leigo."
     ],
     "correctIndex": 1,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de CADH: Audiência de Custódia.",
+    "explanation": "Direitos Humanos: A alternativa B está alinhada aos tratados internacionais e à doutrina jurídica de CADH: Audiência de Custódia.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -1384,7 +1384,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Resposta obrigatória a qualquer desacato verbal."
     ],
     "correctIndex": 2,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de Uso Diferenciado da Força.",
+    "explanation": "Direitos Humanos: A alternativa C está alinhada aos tratados internacionais e à doutrina jurídica de Uso Diferenciado da Força.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -1413,7 +1413,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "O denunciante preste depoimento isolado."
     ],
     "correctIndex": 3,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de DUDH: Presunção de Inocência.",
+    "explanation": "Direitos Humanos: A alternativa D está alinhada aos tratados internacionais e à doutrina jurídica de DUDH: Presunção de Inocência.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1442,7 +1442,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "O isolamento indefinido ou prolongado em cela escura."
     ],
     "correctIndex": 4,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de Regras de Mandela.",
+    "explanation": "Direitos Humanos: A alternativa E está alinhada aos tratados internacionais e à doutrina jurídica de Regras de Mandela.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -1500,7 +1500,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Um conselho de sentença leigo."
     ],
     "correctIndex": 1,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de CADH: Audiência de Custódia.",
+    "explanation": "Direitos Humanos: A alternativa B está alinhada aos tratados internacionais e à doutrina jurídica de CADH: Audiência de Custódia.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1529,7 +1529,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Resposta obrigatória a qualquer desacato verbal."
     ],
     "correctIndex": 2,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de Uso Diferenciado da Força.",
+    "explanation": "Direitos Humanos: A alternativa C está alinhada aos tratados internacionais e à doutrina jurídica de Uso Diferenciado da Força.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -1558,7 +1558,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "O denunciante preste depoimento isolado."
     ],
     "correctIndex": 3,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de DUDH: Presunção de Inocência.",
+    "explanation": "Direitos Humanos: A alternativa D está alinhada aos tratados internacionais e à doutrina jurídica de DUDH: Presunção de Inocência.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -1587,7 +1587,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "O isolamento indefinido ou prolongado em cela escura."
     ],
     "correctIndex": 4,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de Regras de Mandela.",
+    "explanation": "Direitos Humanos: A alternativa E está alinhada aos tratados internacionais e à doutrina jurídica de Regras de Mandela.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1645,7 +1645,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Um conselho de sentença leigo."
     ],
     "correctIndex": 1,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de CADH: Audiência de Custódia.",
+    "explanation": "Direitos Humanos: A alternativa B está alinhada aos tratados internacionais e à doutrina jurídica de CADH: Audiência de Custódia.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -1674,7 +1674,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Resposta obrigatória a qualquer desacato verbal."
     ],
     "correctIndex": 2,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de Uso Diferenciado da Força.",
+    "explanation": "Direitos Humanos: A alternativa C está alinhada aos tratados internacionais e à doutrina jurídica de Uso Diferenciado da Força.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1703,7 +1703,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "O denunciante preste depoimento isolado."
     ],
     "correctIndex": 3,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de DUDH: Presunção de Inocência.",
+    "explanation": "Direitos Humanos: A alternativa D está alinhada aos tratados internacionais e à doutrina jurídica de DUDH: Presunção de Inocência.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -1732,7 +1732,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "O isolamento indefinido ou prolongado em cela escura."
     ],
     "correctIndex": 4,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de Regras de Mandela.",
+    "explanation": "Direitos Humanos: A alternativa E está alinhada aos tratados internacionais e à doutrina jurídica de Regras de Mandela.",
     "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -1790,7 +1790,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Sancionado apenas administrativamente."
     ],
     "correctIndex": 1,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Estatuto do Desarmamento (10.826/03).",
+    "explanation": "Legislação Especial: A alternativa B reflete o texto expresso da legislação penal extravagante para Estatuto do Desarmamento (10.826/03).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Estatuto do Desarmamento (10.826/03).",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1819,7 +1819,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Trabalho forçado nas estradas estaduais."
     ],
     "correctIndex": 2,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Lei de Drogas (11.343/06).",
+    "explanation": "Legislação Especial: A alternativa C reflete o texto expresso da legislação penal extravagante para Lei de Drogas (11.343/06).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Lei de Drogas (11.343/06).",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -1848,7 +1848,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Sexual."
     ],
     "correctIndex": 3,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Lei Maria da Penha (11.340/06).",
+    "explanation": "Legislação Especial: A alternativa D reflete o texto expresso da legislação penal extravagante para Lei Maria da Penha (11.340/06).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Lei Maria da Penha (11.340/06).",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -1877,7 +1877,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "A perda do cargo público e a interdição para seu exercício pelo dobro do prazo da pena aplicada."
     ],
     "correctIndex": 4,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Lei de Tortura (9.455/97).",
+    "explanation": "Legislação Especial: A alternativa E reflete o texto expresso da legislação penal extravagante para Lei de Tortura (9.455/97).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Lei de Tortura (9.455/97).",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1935,7 +1935,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Sancionado apenas administrativamente."
     ],
     "correctIndex": 1,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Estatuto do Desarmamento (10.826/03).",
+    "explanation": "Legislação Especial: A alternativa B reflete o texto expresso da legislação penal extravagante para Estatuto do Desarmamento (10.826/03).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Estatuto do Desarmamento (10.826/03).",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -1964,7 +1964,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Trabalho forçado nas estradas estaduais."
     ],
     "correctIndex": 2,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Lei de Drogas (11.343/06).",
+    "explanation": "Legislação Especial: A alternativa C reflete o texto expresso da legislação penal extravagante para Lei de Drogas (11.343/06).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Lei de Drogas (11.343/06).",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -1993,7 +1993,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Sexual."
     ],
     "correctIndex": 3,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Lei Maria da Penha (11.340/06).",
+    "explanation": "Legislação Especial: A alternativa D reflete o texto expresso da legislação penal extravagante para Lei Maria da Penha (11.340/06).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Lei Maria da Penha (11.340/06).",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -2022,7 +2022,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "A perda do cargo público e a interdição para seu exercício pelo dobro do prazo da pena aplicada."
     ],
     "correctIndex": 4,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Lei de Tortura (9.455/97).",
+    "explanation": "Legislação Especial: A alternativa E reflete o texto expresso da legislação penal extravagante para Lei de Tortura (9.455/97).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Lei de Tortura (9.455/97).",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -2080,7 +2080,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Sancionado apenas administrativamente."
     ],
     "correctIndex": 1,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Estatuto do Desarmamento (10.826/03).",
+    "explanation": "Legislação Especial: A alternativa B reflete o texto expresso da legislação penal extravagante para Estatuto do Desarmamento (10.826/03).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Estatuto do Desarmamento (10.826/03).",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -2109,7 +2109,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Trabalho forçado nas estradas estaduais."
     ],
     "correctIndex": 2,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Lei de Drogas (11.343/06).",
+    "explanation": "Legislação Especial: A alternativa C reflete o texto expresso da legislação penal extravagante para Lei de Drogas (11.343/06).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Lei de Drogas (11.343/06).",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -2138,7 +2138,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Sexual."
     ],
     "correctIndex": 3,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Lei Maria da Penha (11.340/06).",
+    "explanation": "Legislação Especial: A alternativa D reflete o texto expresso da legislação penal extravagante para Lei Maria da Penha (11.340/06).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Lei Maria da Penha (11.340/06).",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -2167,7 +2167,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "A perda do cargo público e a interdição para seu exercício pelo dobro do prazo da pena aplicada."
     ],
     "correctIndex": 4,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Lei de Tortura (9.455/97).",
+    "explanation": "Legislação Especial: A alternativa E reflete o texto expresso da legislação penal extravagante para Lei de Tortura (9.455/97).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Lei de Tortura (9.455/97).",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -2225,7 +2225,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Sancionado apenas administrativamente."
     ],
     "correctIndex": 1,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Estatuto do Desarmamento (10.826/03).",
+    "explanation": "Legislação Especial: A alternativa B reflete o texto expresso da legislação penal extravagante para Estatuto do Desarmamento (10.826/03).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Estatuto do Desarmamento (10.826/03).",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -2254,7 +2254,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Trabalho forçado nas estradas estaduais."
     ],
     "correctIndex": 2,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Lei de Drogas (11.343/06).",
+    "explanation": "Legislação Especial: A alternativa C reflete o texto expresso da legislação penal extravagante para Lei de Drogas (11.343/06).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Lei de Drogas (11.343/06).",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -2283,7 +2283,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Sexual."
     ],
     "correctIndex": 3,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Lei Maria da Penha (11.340/06).",
+    "explanation": "Legislação Especial: A alternativa D reflete o texto expresso da legislação penal extravagante para Lei Maria da Penha (11.340/06).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Lei Maria da Penha (11.340/06).",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -2312,7 +2312,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "A perda do cargo público e a interdição para seu exercício pelo dobro do prazo da pena aplicada."
     ],
     "correctIndex": 4,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Lei de Tortura (9.455/97).",
+    "explanation": "Legislação Especial: A alternativa E reflete o texto expresso da legislação penal extravagante para Lei de Tortura (9.455/97).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Lei de Tortura (9.455/97).",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -2370,7 +2370,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Sancionado apenas administrativamente."
     ],
     "correctIndex": 1,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Estatuto do Desarmamento (10.826/03).",
+    "explanation": "Legislação Especial: A alternativa B reflete o texto expresso da legislação penal extravagante para Estatuto do Desarmamento (10.826/03).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Estatuto do Desarmamento (10.826/03).",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
@@ -2399,7 +2399,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Trabalho forçado nas estradas estaduais."
     ],
     "correctIndex": 2,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Lei de Drogas (11.343/06).",
+    "explanation": "Legislação Especial: A alternativa C reflete o texto expresso da legislação penal extravagante para Lei de Drogas (11.343/06).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Lei de Drogas (11.343/06).",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
@@ -2428,7 +2428,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "Sexual."
     ],
     "correctIndex": 3,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Lei Maria da Penha (11.340/06).",
+    "explanation": "Legislação Especial: A alternativa D reflete o texto expresso da legislação penal extravagante para Lei Maria da Penha (11.340/06).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Lei Maria da Penha (11.340/06).",
     "difficulty": "hard",
     "banca": "Instituto AOCP",
@@ -2457,7 +2457,7 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
       "A perda do cargo público e a interdição para seu exercício pelo dobro do prazo da pena aplicada."
     ],
     "correctIndex": 4,
-    "explanation": "Legislação Especial: A alternativa A reflete o texto expresso da legislação penal extravagante para Lei de Tortura (9.455/97).",
+    "explanation": "Legislação Especial: A alternativa E reflete o texto expresso da legislação penal extravagante para Lei de Tortura (9.455/97).",
     "hint": "Veja os dispositivos e penalidades previstas na lei especial sobre Lei de Tortura (9.455/97).",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
