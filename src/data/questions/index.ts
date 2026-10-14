@@ -11,6 +11,10 @@ import { BANCO_QUESTOES_BLOCO_2 } from './bancoQuestoesBloco2';
 import { BANCO_QUESTOES_BLOCO_3 } from './bancoQuestoesBloco3';
 import { BANCO_QUESTOES_EDITAL_200 } from './bancoQuestoesEdital200';
 
+import { CADERNO_AOCP_BLOCO_1 } from './cadernoAocpBloco1';
+import { CADERNO_AOCP_BLOCO_2 } from './cadernoAocpBloco2';
+import { CADERNO_AOCP_BLOCO_3 } from './cadernoAocpBloco3';
+
 export {
   SIMULADO_SEMANA_1,
   SIMULADO_SEMANA_2,
@@ -22,12 +26,19 @@ export {
   BANCO_QUESTOES_BLOCO_1,
   BANCO_QUESTOES_BLOCO_2,
   BANCO_QUESTOES_BLOCO_3,
-  BANCO_QUESTOES_EDITAL_200
+  BANCO_QUESTOES_EDITAL_200,
+  CADERNO_AOCP_BLOCO_1,
+  CADERNO_AOCP_BLOCO_2,
+  CADERNO_AOCP_BLOCO_3
 };
 
 export const SIMULADOS_LIST = [
-  { id: 'all', name: 'Todos os Simulados (Banco Geral - 615 Questões)', count: 615, tag: '⭐ Acervo Completo' },
-  { id: 'caderno_pmpe_estatuto', name: '🛡️ Caderno Especial: Estatuto da PMPE (Lei 6.783/74)', count: 25, tag: 'Estatuto PMPE' },
+  { id: 'all', name: 'Todos os Simulados e Cadernos (Acervo Completo - 1.420 Q)', count: 1420, tag: '⭐ Acervo Completo' },
+  { id: 'caderno_aocp_1000', name: '📚 Caderno Oficial 1.000 Questões Instituto AOCP (Completo)', count: 1010, tag: '🏆 1.000 Questões' },
+  { id: 'caderno_aocp_bloco1', name: '📖 Caderno AOCP Bloco I (Português & História PE - 346 Q)', count: 346, tag: 'AOCP Bloco I' },
+  { id: 'caderno_aocp_bloco2', name: '🧮 Caderno AOCP Bloco II (RLM & Informática - 297 Q)', count: 297, tag: 'AOCP Bloco II' },
+  { id: 'caderno_aocp_bloco3', name: '⚖️ Caderno AOCP Bloco III (Direito, DH & Legislação - 367 Q)', count: 367, tag: 'AOCP Bloco III' },
+  { id: 'caderno_pmpe_estatuto', name: '🛡️ Caderno Especial: Estatuto da PMPE (Lei 6.783/74)', count: 50, tag: 'Estatuto PMPE' },
   { id: 'edital_200', name: 'Caderno Oficial Edital AOCP (100 Questões)', count: 100, tag: '🔥 Edital 100Q' },
   { id: 'banco_bloco1', name: 'Super Caderno Bloco I (Português & História de PE)', count: 100, tag: 'Bloco I (100 Q)' },
   { id: 'banco_bloco2', name: 'Super Caderno Bloco II (Raciocínio Lógico & Informática)', count: 100, tag: 'Bloco II (100 Q)' },
@@ -42,6 +53,9 @@ export const SIMULADOS_LIST = [
 ];
 
 export const ALL_QUESTIONS: QuizQuestion[] = [
+  ...CADERNO_AOCP_BLOCO_1,
+  ...CADERNO_AOCP_BLOCO_2,
+  ...CADERNO_AOCP_BLOCO_3,
   ...BANCO_QUESTOES_BLOCO_1,
   ...BANCO_QUESTOES_BLOCO_2,
   ...BANCO_QUESTOES_BLOCO_3,

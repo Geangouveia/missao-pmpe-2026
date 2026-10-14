@@ -36,8 +36,12 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
   };
 
   const simuladosOptions = [
-    { id: 'all', label: 'Todos os Cadernos (615Q Totais)' },
-    { id: 'caderno_pmpe_estatuto', label: '🛡️ Caderno Exclusivo: Estatuto da PMPE (Lei 6.783/74 - 25Q)' },
+    { id: 'all', label: 'Todos os Cadernos (1.420Q Totais)' },
+    { id: 'caderno_aocp_1000', label: '🏆 Caderno 1.000 Questões Instituto AOCP (Completo)' },
+    { id: 'caderno_aocp_bloco1', label: '📖 Caderno AOCP Bloco I (Português & Hist. PE - 346Q)' },
+    { id: 'caderno_aocp_bloco2', label: '🧮 Caderno AOCP Bloco II (RLM & Informática - 297Q)' },
+    { id: 'caderno_aocp_bloco3', label: '⚖️ Caderno AOCP Bloco III (Direito, DH & Legislação - 367Q)' },
+    { id: 'caderno_pmpe_estatuto', label: '🛡️ Caderno Exclusivo: Estatuto da PMPE (Lei 6.783/74 - 50Q)' },
     { id: 'edital_200', label: '🔥 Caderno Oficial Edital AOCP (100Q)' },
     { id: 'banco_bloco1', label: '📚 Super Caderno Bloco I (Português & Hist. PE - 100Q)' },
     { id: 'banco_bloco2', label: '🧮 Super Caderno Bloco II (RLM & Informática - 100Q)' },

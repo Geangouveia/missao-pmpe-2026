@@ -23,10 +23,11 @@ import { LoginScreen } from './components/LoginScreen';
 import { DailyMotivationModal } from './components/DailyMotivationModal';
 import { StudentAnalyticsModal } from './components/StudentAnalyticsModal';
 import { CommanderAccessModal } from './components/CommanderAccessModal';
+import { CommanderDashboardView } from './components/CommanderDashboardView';
 import { getDailyMotivationalQuote, type MotivationalQuote } from './utils/motivationalQuotes';
 import { recordStudentLogin, recordQuizCompletion } from './utils/studentAnalytics';
 import { fetchRegistryFromCloud, isMasterUser } from './utils/authManager';
-import { Swords, ArrowRight } from 'lucide-react';
+import { Swords, ArrowRight, ShieldCheck, Shield } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export function App() {
@@ -105,7 +106,7 @@ export function App() {
   const [isDeckCreatorOpen, setIsDeckCreatorOpen] = useState(false);
   const [isMotivationModalOpen, setIsMotivationModalOpen] = useState(false);
   const [isAnalyticsModalOpen, setIsAnalyticsModalOpen] = useState(false);
-  const [isCommanderAccessModalOpen, setIsCommanderAccessModalOpen] = useState(false);
+  const [isCommanderScreenOpen, setIsCommanderScreenOpen] = useState(false);
   const [pendingUsersCount, setPendingUsersCount] = useState(0);
   const [dailyQuote, setDailyQuote] = useState<MotivationalQuote>(() => getDailyMotivationalQuote());
   const [summaryData, setSummaryData] = useState<{
@@ -287,7 +288,11 @@ export function App() {
 
     // 2. Filtro por Origem do Simulado / Semana
     let matchSim = true;
-    if (selectedSimulado === 'caderno_pmpe_estatuto') matchSim = item.categoryId === 'legislacao_pmpe' || (item.topicoEdital ? item.topicoEdital.includes('Estatuto') : false) || (item.materiaNome ? item.materiaNome.includes('PMPE') : false);
+    if (selectedSimulado === 'caderno_aocp_1000') matchSim = item.simuladoOrigem === 'caderno_aocp_1000';
+    else if (selectedSimulado === 'caderno_aocp_bloco1') matchSim = item.simuladoOrigem === 'caderno_aocp_1000' && item.bloco === 'bloco_1';
+    else if (selectedSimulado === 'caderno_aocp_bloco2') matchSim = item.simuladoOrigem === 'caderno_aocp_1000' && item.bloco === 'bloco_2';
+    else if (selectedSimulado === 'caderno_aocp_bloco3') matchSim = item.simuladoOrigem === 'caderno_aocp_1000' && item.bloco === 'bloco_3';
+    else if (selectedSimulado === 'caderno_pmpe_estatuto') matchSim = item.categoryId === 'legislacao_pmpe' || (item.topicoEdital ? item.topicoEdital.includes('Estatuto') : false) || (item.materiaNome ? item.materiaNome.includes('PMPE') : false);
     else if (selectedSimulado === 'edital_200') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('Edital 200') : (item.id ? item.id.startsWith('ed200-') : true);
     else if (selectedSimulado === 'semana_1') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('1ª Semana') : true;
     else if (selectedSimulado === 'semana_2') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('2ª Semana') : true;
@@ -525,6 +530,16 @@ export function App() {
 
   const hasCustomDecks = questions.some((q) => q.categoryId === 'custom');
 
+  // TELA DEDICADA E COMPLETA DE COMANDO GERAL DE ALUNOS (EXCLUSIVO COMANDANTE GEAN)
+  if (isCommanderScreenOpen && currentUser && isMasterUser(currentUser)) {
+    return (
+      <CommanderDashboardView
+        onBackToApp={() => setIsCommanderScreenOpen(false)}
+        onRefreshPendingCount={checkPendingUsers}
+      />
+    );
+  }
+
   return (
     <div className="app-container">
       {/* Top HUD Header */}
@@ -542,13 +557,90 @@ export function App() {
         onLogout={handleLogout}
         onOpenAnalytics={() => setIsAnalyticsModalOpen(true)}
         onOpenMotivation={() => setIsMotivationModalOpen(true)}
-        onOpenCommanderAccess={() => setIsCommanderAccessModalOpen(true)}
+        onOpenCommanderAccess={() => setIsCommanderScreenOpen(true)}
         pendingUsersCount={pendingUsersCount}
       />
 
       {/* Roteamento de Telas */}
       {activeMode === null && (
         <>
+          {/* BANNER DE ACESSO DIRETO À TELA DE COMANDO (EXCLUSIVO GEAN) */}
+          {isMasterUser(currentUser) && (
+            <div 
+              onClick={() => {
+                sound.playClick();
+                setIsCommanderScreenOpen(true);
+              }}
+              style={{
+                cursor: 'pointer',
+                padding: '0.95rem 1.35rem',
+                borderRadius: '16px',
+                background: 'linear-gradient(135deg, rgba(180, 83, 9, 0.3) 0%, rgba(245, 158, 11, 0.2) 100%)',
+                border: '2px solid #f59e0b',
+                boxShadow: '0 0 25px rgba(245, 158, 11, 0.25)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '1rem',
+                marginBottom: '1rem',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 0 35px rgba(245, 158, 11, 0.45)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 0 25px rgba(245, 158, 11, 0.25)';
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                <div style={{
+                  width: '42px',
+                  height: '42px',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #b45309, #f59e0b)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 0 15px rgba(245, 158, 11, 0.4)'
+                }}>
+                  <Shield color="#ffffff" size={22} />
+                </div>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <span style={{ fontSize: '1.05rem', fontWeight: 900, color: '#ffffff' }}>
+                      Sala de Comando Geral & Gestão de Alunos
+                    </span>
+                    <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.5rem', borderRadius: '4px', background: '#b45309', color: '#fef3c7', fontWeight: 900 }}>
+                      COMANDANTE GEAN
+                    </span>
+                  </div>
+                  <div style={{ fontSize: '0.78rem', color: '#fbbf24', marginTop: '0.15rem' }}>
+                    Clique aqui para gerenciar os alunos matriculados, bloquear/cancelar acessos e alterar senhas
+                  </div>
+                </div>
+              </div>
+
+              <button 
+                className="btn-primary" 
+                style={{
+                  padding: '0.5rem 1.15rem',
+                  fontSize: '0.84rem',
+                  borderRadius: '10px',
+                  background: 'linear-gradient(135deg, #d97706, #b45309)',
+                  border: '1px solid #f59e0b',
+                  color: '#ffffff',
+                  fontWeight: 900,
+                  cursor: 'pointer'
+                }}
+              >
+                Abrir Tela de Gestão de Alunos ➔
+              </button>
+            </div>
+          )}
+
           {/* Seletor de Categoria, Semanas e Blocos PMPE */}
           <CategorySelector
             categories={CATEGORIES}
@@ -743,14 +835,6 @@ export function App() {
         <StudentAnalyticsModal
           currentUserName={currentUser}
           onClose={() => setIsAnalyticsModalOpen(false)}
-        />
-      )}
-
-      {/* MODAL: COMANDO GERAL DE AUTORIZAÇÃO DE ACESSOS (EXCLUSIVO GEAN) */}
-      {isCommanderAccessModalOpen && (
-        <CommanderAccessModal
-          onClose={() => setIsCommanderAccessModalOpen(false)}
-          onRefreshPendingCount={checkPendingUsers}
         />
       )}
     </div>
