@@ -53,25 +53,79 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
     setTimeout(() => setActionSuccessMsg(null), 3500);
   };
 
-  const handleApprove = async (userName: string) => {
+  const [processingUserKey, setProcessingUserKey] = useState<string | null>(null);
+
+  const handleApprove = async (userKey: string, displayName: string) => {
     sound.playLevelUp();
-    await approveUserAccess(userName);
-    showFeedback(`✅ Acesso de "${userName}" AUTORIZADO com sucesso!`);
-    await loadData();
+    setProcessingUserKey(userKey);
+
+    // 1. Atualização OTIMISTA imediata na interface (0ms, tela NUNCA trava!)
+    setUsers((prev) => ({
+      ...prev,
+      [userKey]: {
+        ...prev[userKey],
+        status: 'approved',
+        approvedAt: new Date().toISOString(),
+      }
+    }));
+    showFeedback(`✅ Acesso de "${displayName}" AUTORIZADO com sucesso!`);
+    onRefreshPendingCount?.();
+
+    try {
+      await approveUserAccess(userKey);
+    } catch (err) {
+      console.error('Erro na sincronização de aprovação:', err);
+    } finally {
+      setProcessingUserKey(null);
+    }
   };
 
-  const handleReject = async (userName: string) => {
+  const handleReject = async (userKey: string, displayName: string) => {
     sound.playError();
-    await rejectUserAccess(userName);
-    showFeedback(`🚫 Acesso de "${userName}" BLOQUEADO/REVOGADO.`);
-    await loadData();
+    setProcessingUserKey(userKey);
+
+    // Atualização OTIMISTA imediata
+    setUsers((prev) => ({
+      ...prev,
+      [userKey]: {
+        ...prev[userKey],
+        status: 'rejected',
+      }
+    }));
+    showFeedback(`🚫 Acesso de "${displayName}" BLOQUEADO/REVOGADO.`);
+    onRefreshPendingCount?.();
+
+    try {
+      await rejectUserAccess(userKey);
+    } catch (err) {
+      console.error('Erro na sincronização de bloqueio:', err);
+    } finally {
+      setProcessingUserKey(null);
+    }
   };
 
-  const handleResetPassword = async (userName: string) => {
+  const handleResetPassword = async (userKey: string, displayName: string) => {
     sound.playClick();
-    await resetUserToDefaultPass(userName);
-    showFeedback(`🔑 Senha de "${userName}" resetada para a chave padrão militar (PMPE2026).`);
-    await loadData();
+    setProcessingUserKey(userKey);
+
+    // Atualização OTIMISTA imediata
+    setUsers((prev) => ({
+      ...prev,
+      [userKey]: {
+        ...prev[userKey],
+        hasChangedPassword: false,
+        personalPassword: undefined,
+      }
+    }));
+    showFeedback(`🔑 Senha de "${displayName}" resetada para a chave padrão militar.`);
+
+    try {
+      await resetUserToDefaultPass(userKey);
+    } catch (err) {
+      console.error('Erro no reset de senha:', err);
+    } finally {
+      setProcessingUserKey(null);
+    }
   };
 
   const userList = Object.values(users);
@@ -478,21 +532,22 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
         </div>
 
         {/* Lista de Alunos e Pedidos de Acesso */}
+        {/* Lista de Alunos e Pedidos de Acesso */}
         <div style={{
-          padding: '1.25rem 1.75rem',
+          padding: '1rem',
           overflowY: 'auto',
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
           gap: '0.85rem'
         }}>
-          {userList.length === 0 ? (
+          {Object.keys(users).length === 0 ? (
             <div style={{ textAlign: 'center', padding: '3rem 1rem', color: '#94a3b8' }}>
               <Users size={40} style={{ opacity: 0.4, marginBottom: '0.75rem' }} />
               <p>Nenhuma solicitação de acesso registrada no momento.</p>
             </div>
           ) : (
-            userList.map((user) => {
+            Object.entries(users).map(([userKey, user]) => {
               const isGeanMaster = user.isAdmin;
               const formattedDate = user.requestedAt ? new Date(user.requestedAt).toLocaleDateString('pt-BR', {
                 day: '2-digit',
@@ -500,30 +555,31 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
                 hour: '2-digit',
                 minute: '2-digit'
               }) : 'Recente';
+              const isProcessing = processingUserKey === userKey;
 
               return (
                 <div
-                  key={user.name}
+                  key={userKey}
                   style={{
                     background: user.status === 'pending'
-                      ? 'linear-gradient(135deg, rgba(45, 25, 10, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%)'
-                      : 'rgba(30, 41, 59, 0.5)',
+                      ? 'linear-gradient(135deg, rgba(45, 25, 10, 0.85) 0%, rgba(30, 41, 59, 0.85) 100%)'
+                      : 'rgba(30, 41, 59, 0.55)',
                     border: user.status === 'pending'
-                      ? '1.5px solid rgba(245, 158, 11, 0.7)'
+                      ? '1.5px solid rgba(245, 158, 11, 0.75)'
                       : user.status === 'approved'
-                        ? '1px solid rgba(16, 185, 129, 0.35)'
-                        : '1px solid rgba(239, 68, 68, 0.35)',
+                        ? '1px solid rgba(16, 185, 129, 0.4)'
+                        : '1px solid rgba(239, 68, 68, 0.4)',
                     borderRadius: '16px',
-                    padding: '1rem 1.25rem',
+                    padding: '0.9rem 1.1rem',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     flexWrap: 'wrap',
-                    gap: '1rem'
+                    gap: '0.85rem'
                   }}
                 >
                   {/* Informações do Usuário */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flex: 1, minWidth: '220px' }}>
                     <div style={{
                       width: '42px',
                       height: '42px',
@@ -539,13 +595,14 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: isGeanMaster ? '#ffffff' : user.status === 'approved' ? '#34d399' : '#f87171'
+                      color: isGeanMaster ? '#ffffff' : user.status === 'approved' ? '#34d399' : '#f87171',
+                      flexShrink: 0
                     }}>
                       {isGeanMaster ? <ShieldCheck size={22} /> : <UserCheck size={20} />}
                     </div>
 
                     <div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', flexWrap: 'wrap' }}>
                         <span style={{ fontSize: '1rem', fontWeight: 800, color: '#ffffff' }}>
                           {user.name}
                         </span>
@@ -588,19 +645,31 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
                             Aprovado
                           </span>
                         )}
+                        {user.status === 'rejected' && (
+                          <span style={{
+                            fontSize: '0.68rem',
+                            fontWeight: 800,
+                            padding: '0.15rem 0.45rem',
+                            borderRadius: '10px',
+                            background: 'rgba(239, 68, 68, 0.2)',
+                            color: '#f87171'
+                          }}>
+                            Bloqueado
+                          </span>
+                        )}
                       </div>
 
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '0.3rem', fontSize: '0.78rem', color: '#94a3b8' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginTop: '0.25rem', fontSize: '0.75rem', color: '#94a3b8', flexWrap: 'wrap' }}>
                         <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
                           <Clock size={12} />
-                          Solicitado em: {formattedDate}
+                          {formattedDate}
                         </span>
 
                         <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
                           <Lock size={12} />
                           {user.hasChangedPassword
                             ? 'Senha própria cadastrada'
-                            : 'Usando chave padrão (precisa criar nova senha)'}
+                            : 'Chave inicial (senha pendente)'}
                         </span>
                       </div>
                     </div>
@@ -608,68 +677,80 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
 
                   {/* Ações de Comando (apenas para contas não-master) */}
                   {!isGeanMaster && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', flexWrap: 'wrap' }}>
                       {user.status !== 'approved' && (
                         <button
-                          onClick={() => handleApprove(user.name)}
+                          type="button"
+                          disabled={isProcessing}
+                          onClick={() => handleApprove(userKey, user.name)}
                           style={{
                             padding: '0.55rem 0.95rem',
+                            minHeight: '40px',
                             borderRadius: '10px',
                             background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
                             border: '1px solid rgba(16, 185, 129, 0.5)',
                             color: '#ffffff',
                             fontWeight: 800,
                             fontSize: '0.82rem',
-                            cursor: 'pointer',
+                            cursor: isProcessing ? 'wait' : 'pointer',
                             display: 'flex',
                             alignItems: 'center',
                             gap: '0.35rem',
-                            boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)'
+                            boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)',
+                            opacity: isProcessing ? 0.7 : 1
                           }}
                         >
-                          <CheckCircle2 size={15} />
-                          <span>Autorizar Acesso</span>
+                          <CheckCircle2 size={16} />
+                          <span>{isProcessing ? 'Gravando...' : 'Autorizar Acesso'}</span>
                         </button>
                       )}
 
                       {user.status === 'approved' && (
                         <button
-                          onClick={() => handleReject(user.name)}
+                          type="button"
+                          disabled={isProcessing}
+                          onClick={() => handleReject(userKey, user.name)}
                           style={{
                             padding: '0.55rem 0.85rem',
+                            minHeight: '40px',
                             borderRadius: '10px',
                             background: 'rgba(239, 68, 68, 0.15)',
                             border: '1px solid rgba(239, 68, 68, 0.4)',
                             color: '#f87171',
                             fontWeight: 700,
                             fontSize: '0.82rem',
-                            cursor: 'pointer',
+                            cursor: isProcessing ? 'wait' : 'pointer',
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '0.35rem'
+                            gap: '0.35rem',
+                            opacity: isProcessing ? 0.7 : 1
                           }}
                         >
                           <UserX size={15} />
-                          <span>Revogar / Bloquear</span>
+                          <span>Bloquear</span>
                         </button>
                       )}
 
                       {user.hasChangedPassword && (
                         <button
-                          onClick={() => handleResetPassword(user.name)}
+                          type="button"
+                          disabled={isProcessing}
+                          onClick={() => handleResetPassword(userKey, user.name)}
                           title="Resetar senha caso o aluno tenha esquecido"
                           style={{
                             padding: '0.55rem 0.75rem',
+                            minHeight: '40px',
                             borderRadius: '10px',
                             background: 'rgba(56, 189, 248, 0.12)',
                             border: '1px solid rgba(56, 189, 248, 0.35)',
                             color: '#38bdf8',
                             fontWeight: 700,
                             fontSize: '0.82rem',
-                            cursor: 'pointer',
+                            cursor: isProcessing ? 'wait' : 'pointer',
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '0.35rem'
+                            gap: '0.35rem',
+                            opacity: isProcessing ? 0.7 : 1
                           }}
                         >
                           <KeyRound size={14} />
@@ -683,12 +764,14 @@ export const CommanderAccessModal: React.FC<CommanderAccessModalProps> = ({
                   {isGeanMaster && (
                     <div>
                       <button
+                        type="button"
                         onClick={() => {
                           sound.playClick();
                           setShowMasterPassSection(true);
                         }}
                         style={{
                           padding: '0.55rem 0.95rem',
+                          minHeight: '40px',
                           borderRadius: '10px',
                           background: 'linear-gradient(135deg, #d97706, #f59e0b)',
                           border: '1px solid #fbbf24',

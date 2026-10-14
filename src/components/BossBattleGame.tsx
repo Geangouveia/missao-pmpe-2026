@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { QuizQuestion, BossEnemy } from '../types/game';
 import { Swords, Shield, Zap, Heart, Sparkles, CheckCircle2, XCircle } from 'lucide-react';
 import { sound } from '../utils/sound';
 import confetti from 'canvas-confetti';
+import { prepareGameQuestions } from '../utils/questionRandomizer';
 
 interface BossBattleGameProps {
   questions: QuizQuestion[];
@@ -26,6 +27,14 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
   onAwardXp,
   onQuestionAnswered
 }) => {
+  const [shuffledQuestions, setShuffledQuestions] = useState<QuizQuestion[]>(() => {
+    return prepareGameQuestions(questions);
+  });
+
+  useEffect(() => {
+    setShuffledQuestions(prepareGameQuestions(questions));
+  }, [questions]);
+
   const [bossHp, setBossHp] = useState(boss.maxHp);
   const [playerHp, setPlayerHp] = useState(100);
   const [playerMana, setPlayerMana] = useState(60);
@@ -36,7 +45,7 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
   const [isBossHurt, setIsBossHurt] = useState(false);
   const [isPlayerHurt, setIsPlayerHurt] = useState(false);
 
-  const currentQ = questions[currentQIndex % questions.length];
+  const currentQ = shuffledQuestions[currentQIndex % shuffledQuestions.length] || questions[0];
 
   const handleSelectOption = (index: number) => {
     if (isAnswered) return;

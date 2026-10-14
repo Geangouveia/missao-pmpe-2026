@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { sound } from '../utils/sound';
 import confetti from 'canvas-confetti';
+import { prepareGameQuestions } from '../utils/questionRandomizer';
 
 interface QuizGameProps {
   questions: QuizQuestion[];
@@ -44,6 +45,8 @@ export const QuizGame: React.FC<QuizGameProps> = ({
   onAwardXp,
   onQuestionAnswered 
 }) => {
+  // Inicializa o banco de questões completamente embaralhado e com alternativas sorteadas
+  const [activeQuestions, setActiveQuestions] = useState<QuizQuestion[]>(() => prepareGameQuestions(questions));
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -66,7 +69,24 @@ export const QuizGame: React.FC<QuizGameProps> = ({
   const [showHint, setShowHint] = useState(false);
   const [eliminatedOptions, setEliminatedOptions] = useState<number[]>([]);
 
-  const currentQ = questions[currentIndex] || questions[0];
+  // Sempre que a lista de questões base mudar, reembaralha e reseta estado
+  useEffect(() => {
+    setActiveQuestions(prepareGameQuestions(questions));
+    setCurrentIndex(0);
+    setSelectedOption(null);
+    setIsAnswered(false);
+    setTimeLeft(30);
+    setShowHint(false);
+    setEliminatedOptions([]);
+    setScore(0);
+    setCorrectCount(0);
+    setCombo(0);
+    setMaxCombo(0);
+    setTimeSpentTotal(0);
+    setSubjectBreakdown({});
+  }, [questions]);
+
+  const currentQ = activeQuestions[currentIndex] || activeQuestions[0];
 
   // Timer Effect (30 segundos por questão para simular ritmo ágil de prova)
   useEffect(() => {
@@ -196,7 +216,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({
   // Próxima Pergunta
   const handleNext = () => {
     sound.playClick();
-    if (currentIndex + 1 < questions.length) {
+    if (currentIndex + 1 < activeQuestions.length) {
       setCurrentIndex((prev) => prev + 1);
       setSelectedOption(null);
       setIsAnswered(false);
@@ -206,13 +226,13 @@ export const QuizGame: React.FC<QuizGameProps> = ({
     } else {
       // Fim do Simulado: Bônus de finalização
       const completionBonusXp = 50 + Math.floor(score / 15);
-      const avgTime = Math.round((timeSpentTotal / Math.max(1, questions.length)) * 10) / 10;
+      const avgTime = Math.round((timeSpentTotal / Math.max(1, activeQuestions.length)) * 10) / 10;
       onFinish({
         score,
         xpEarned: completionBonusXp,
         maxCombo,
         correctCount,
-        totalCount: questions.length,
+        totalCount: activeQuestions.length,
         subjectBreakdown,
         timeSpentSeconds: timeSpentTotal,
         averageTimePerQuestion: avgTime,
@@ -239,7 +259,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({
             ← Sair da Prova
           </button>
           <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontWeight: 600 }}>
-            Questão <span style={{ color: 'white', fontWeight: 800 }}>{currentIndex + 1}</span> de {questions.length}
+            Questão <span style={{ color: 'white', fontWeight: 800 }}>{currentIndex + 1}</span> de {activeQuestions.length}
           </div>
         </div>
 

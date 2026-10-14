@@ -1009,3 +1009,251 @@ button:focus-visible {
   border-color: rgba(251, 146, 60, 0.9) !important;
 }
 
+/* ==========================================================================
+   OTIMIZAÇÃO RESPONSIVA PARA DISPOSITIVOS MÓVEIS (SMARTPHONES & TABLETS)
+   Garante navegação suave, botões de toque confortáveis e layout impecável
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    font-size: 15px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .app-container {
+    padding: 0.75rem 0.6rem 3rem;
+    gap: 1.25rem;
+    max-width: 100%;
+  }
+
+  /* Header & HUD Compacto */
+  .main-header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.85rem 1rem;
+    gap: 0.85rem;
+    border-radius: 18px;
+  }
+
+  .brand-section {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.65rem;
+  }
+
+  .brand-title {
+    font-size: 1.2rem;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .player-hud {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .hud-stat-pill {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.8rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .xp-progress-bar-wrap {
+    min-width: 70px;
+    flex: 1;
+  }
+
+  .hud-actions {
+    gap: 0.35rem;
+  }
+
+  .icon-btn {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 10px;
+  }
+
+  /* Modos de Estudo (Grid em 1 Coluna Confortável) */
+  .modes-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .mode-card {
+    padding: 1.25rem 1.1rem;
+    border-radius: 18px;
+    gap: 1rem;
+  }
+
+  .mode-icon-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    font-size: 1.35rem;
+  }
+
+  .mode-title {
+    font-size: 1.15rem;
+  }
+
+  .mode-desc {
+    font-size: 0.86rem;
+  }
+
+  /* Seletor de Categorias e Cadernos */
+  .categories-wrap {
+    padding-bottom: 0.4rem;
+    gap: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .category-chip {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.82rem;
+    border-radius: 20px;
+  }
+
+  /* QUIZ GAME MOBILE TOUCH */
+  .quiz-top-bar {
+    padding: 0.85rem 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+
+  .quiz-question-card {
+    padding: 1.25rem 1rem;
+    gap: 1.25rem;
+  }
+
+  .question-text {
+    font-size: 1.12rem;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+
+  .quiz-options-list {
+    gap: 0.65rem;
+  }
+
+  .quiz-option-btn {
+    padding: 0.95rem 1rem;
+    font-size: 0.94rem;
+    border-radius: 14px;
+    min-height: 52px;
+    gap: 0.75rem;
+    line-height: 1.45;
+  }
+
+  .quiz-option-btn:hover:not(:disabled) {
+    transform: none; /* Evita jitter visual em touchscreens */
+  }
+
+  .option-prefix {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .quiz-powerups-bar {
+    gap: 0.45rem;
+    justify-content: flex-start;
+    padding-top: 0.85rem;
+  }
+
+  .powerup-btn {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.8rem;
+    border-radius: 10px;
+    min-height: 38px;
+  }
+
+  .explanation-box {
+    padding: 1rem;
+    font-size: 0.88rem;
+    border-radius: 12px;
+  }
+
+  /* Modais no Mobile: Preenchimento de Tela Adaptativo */
+  .modal-overlay, [style*="position: fixed"][style*="z-index: 9999"], [style*="zIndex: 9999"] {
+    padding: 0.5rem !important;
+  }
+
+  /* Garantir que containers internos dos modais caibam em telas estreitas */
+  [style*="maxWidth: '780px'"], [style*="maxWidth: '850px'"], [style*="maxWidth: '900px'"] {
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: 94vh !important;
+    border-radius: 18px !important;
+  }
+
+  /* Boss Arena Mobile */
+  .boss-character-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .boss-avatar-display {
+    width: 80px;
+    height: 80px;
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    padding: 0.5rem 0.4rem 2.5rem;
+  }
+
+  .main-header {
+    padding: 0.75rem 0.75rem;
+  }
+
+  .brand-title {
+    font-size: 1.05rem;
+  }
+
+  .question-text {
+    font-size: 1.04rem;
+    line-height: 1.45;
+  }
+
+  .quiz-option-btn {
+    padding: 0.85rem 0.85rem;
+    font-size: 0.9rem;
+    gap: 0.6rem;
+  }
+
+  .option-prefix {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+
+  .combo-pill {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.82rem;
+  }
+
+  .timer-badge {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .login-card-container {
+    padding: 1.5rem 1.15rem !important;
+    border-radius: 20px !important;
+  }
+}
+
+
+

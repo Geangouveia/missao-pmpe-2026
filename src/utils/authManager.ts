@@ -76,15 +76,32 @@ export function saveLocalUsersRegistry(registry: Record<string, UserAccessRecord
 }
 
 /**
+ * Fetch com timeout para impedir congelamento de tela em redes lentas de celular
+ */
+async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutMs = 3800): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal
+    });
+    return response;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+/**
  * Sincroniza o registro na nuvem KVdb
  */
 export async function pushRegistryToCloud(registry: Record<string, UserAccessRecord>): Promise<boolean> {
   try {
-    const res = await fetch(`${CLOUD_API_BASE}/${MASTER_KEY_PREFIX}?ttl=31536000`, {
+    const res = await fetchWithTimeout(`${CLOUD_API_BASE}/${MASTER_KEY_PREFIX}?ttl=31536000`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(registry),
-    });
+    }, 4000);
     return res.ok;
   } catch (err) {
     console.warn('Erro ao sincronizar registro com a nuvem:', err);
@@ -98,11 +115,29 @@ export async function pushRegistryToCloud(registry: Record<string, UserAccessRec
 export async function fetchRegistryFromCloud(): Promise<Record<string, UserAccessRecord>> {
   const local = getLocalUsersRegistry();
   try {
-    const res = await fetch(`${CLOUD_API_BASE}/${MASTER_KEY_PREFIX}`);
+    const res = await fetchWithTimeout(`${CLOUD_API_BASE}/${MASTER_KEY_PREFIX}`, {}, 3500);
     if (res.ok) {
       const cloudData: Record<string, UserAccessRecord> = await res.json();
       if (cloudData && typeof cloudData === 'object') {
-        const merged: Record<string, UserAccessRecord> = { ...local, ...cloudData };
+        const merged: Record<string, UserAccessRecord> = { ...local };
+
+        for (const [k, cloudUser] of Object.entries(cloudData)) {
+          if (!merged[k]) {
+            merged[k] = cloudUser;
+          } else {
+            // Regra crucial: Se já está aprovado localmente, NÃO regredir para pendente!
+            const isApproved = merged[k].status === 'approved' || cloudUser.status === 'approved';
+            merged[k] = {
+              ...cloudUser,
+              ...merged[k],
+              status: isApproved ? 'approved' : cloudUser.status,
+              approvedAt: merged[k].approvedAt || cloudUser.approvedAt,
+              hasChangedPassword: merged[k].hasChangedPassword || cloudUser.hasChangedPassword,
+              personalPassword: merged[k].personalPassword || cloudUser.personalPassword,
+            };
+          }
+        }
+
         saveLocalUsersRegistry(merged);
         return merged;
       }
@@ -122,23 +157,30 @@ export async function getOrCreateUser(name: string): Promise<UserAccessRecord> {
   const registry = await fetchRegistryFromCloud();
 
   if (isMasterUser(cleanName)) {
+    const existing = registry[key] || registry['gean'];
     const masterRecord: UserAccessRecord = {
       name: cleanName,
       status: 'approved',
       isAdmin: true,
-      requestedAt: registry[key]?.requestedAt || new Date().toISOString(),
+      requestedAt: existing?.requestedAt || new Date().toISOString(),
       approvedAt: new Date().toISOString(),
-      hasChangedPassword: registry[key]?.hasChangedPassword ?? true,
-      personalPassword: registry[key]?.personalPassword || 'PMPE2026',
+      hasChangedPassword: existing?.hasChangedPassword ?? true,
+      personalPassword: existing?.personalPassword || 'PMPE2026',
     };
     registry[key] = masterRecord;
+    registry['gean'] = masterRecord;
     saveLocalUsersRegistry(registry);
     pushRegistryToCloud(registry);
     return masterRecord;
   }
 
-  if (registry[key]) {
-    return registry[key];
+  // Busca se já existe por chave direta ou normalizada
+  const existingKey = Object.keys(registry).find(
+    k => k === key || k.toLowerCase() === key || (registry[k].name && registry[k].name.trim().toLowerCase() === cleanName.toLowerCase())
+  );
+
+  if (existingKey && registry[existingKey]) {
+    return registry[existingKey];
   }
 
   // Novo usuário solicitando acesso: inicia como PENDENTE aguardando Gean!
@@ -157,66 +199,131 @@ export async function getOrCreateUser(name: string): Promise<UserAccessRecord> {
 }
 
 /**
+ * Encontra a chave exata no registro
+ */
+function findUserKey(registry: Record<string, UserAccessRecord>, targetKeyOrName: string): string | null {
+  if (registry[targetKeyOrName]) return targetKeyOrName;
+  const norm = normalizeUserName(targetKeyOrName);
+  if (registry[norm]) return norm;
+  const lower = targetKeyOrName.trim().toLowerCase();
+  for (const [k, u] of Object.entries(registry)) {
+    if (k.toLowerCase() === lower || (u.name && u.name.trim().toLowerCase() === lower)) {
+      return k;
+    }
+  }
+  return null;
+}
+
+/**
  * Autoriza um usuário (Apenas o Comandante Gean pode acionar)
  */
-export async function approveUserAccess(targetName: string): Promise<boolean> {
-  const key = normalizeUserName(targetName);
+export async function approveUserAccess(targetKeyOrName: string): Promise<boolean> {
+  // 1. Atualização local imediata
+  const local = getLocalUsersRegistry();
+  const localKey = findUserKey(local, targetKeyOrName);
+  if (localKey && local[localKey]) {
+    local[localKey].status = 'approved';
+    local[localKey].approvedAt = new Date().toISOString();
+    saveLocalUsersRegistry(local);
+  }
+
+  // 2. Atualização e sincronização na nuvem
   const registry = await fetchRegistryFromCloud();
+  const key = findUserKey(registry, targetKeyOrName) || localKey;
 
-  if (!registry[key]) return false;
-
-  registry[key].status = 'approved';
-  registry[key].approvedAt = new Date().toISOString();
-  saveLocalUsersRegistry(registry);
-  await pushRegistryToCloud(registry);
-  return true;
+  if (key && registry[key]) {
+    registry[key].status = 'approved';
+    registry[key].approvedAt = new Date().toISOString();
+    saveLocalUsersRegistry(registry);
+    await pushRegistryToCloud(registry);
+    return true;
+  } else if (localKey) {
+    await pushRegistryToCloud(local);
+    return true;
+  }
+  return false;
 }
 
 /**
  * Rejeita ou bloqueia o acesso de um usuário
  */
-export async function rejectUserAccess(targetName: string): Promise<boolean> {
-  const key = normalizeUserName(targetName);
+export async function rejectUserAccess(targetKeyOrName: string): Promise<boolean> {
+  const local = getLocalUsersRegistry();
+  const localKey = findUserKey(local, targetKeyOrName);
+  if (localKey && local[localKey]) {
+    local[localKey].status = 'rejected';
+    saveLocalUsersRegistry(local);
+  }
+
   const registry = await fetchRegistryFromCloud();
+  const key = findUserKey(registry, targetKeyOrName) || localKey;
 
-  if (!registry[key]) return false;
-
-  registry[key].status = 'rejected';
-  saveLocalUsersRegistry(registry);
-  await pushRegistryToCloud(registry);
-  return true;
+  if (key && registry[key]) {
+    registry[key].status = 'rejected';
+    saveLocalUsersRegistry(registry);
+    await pushRegistryToCloud(registry);
+    return true;
+  } else if (localKey) {
+    await pushRegistryToCloud(local);
+    return true;
+  }
+  return false;
 }
 
 /**
  * Registra a nova senha pessoal do usuário (obrigatório no primeiro acesso)
  */
-export async function setUserPersonalPassword(targetName: string, newPass: string): Promise<boolean> {
-  const key = normalizeUserName(targetName);
+export async function setUserPersonalPassword(targetKeyOrName: string, newPass: string): Promise<boolean> {
+  const local = getLocalUsersRegistry();
+  const localKey = findUserKey(local, targetKeyOrName);
+  if (localKey && local[localKey]) {
+    local[localKey].personalPassword = newPass.trim();
+    local[localKey].hasChangedPassword = true;
+    saveLocalUsersRegistry(local);
+  }
+
   const registry = await fetchRegistryFromCloud();
+  const key = findUserKey(registry, targetKeyOrName) || localKey;
 
-  if (!registry[key]) return false;
-
-  registry[key].personalPassword = newPass.trim();
-  registry[key].hasChangedPassword = true;
-  saveLocalUsersRegistry(registry);
-  await pushRegistryToCloud(registry);
-  return true;
+  if (key && registry[key]) {
+    registry[key].personalPassword = newPass.trim();
+    registry[key].hasChangedPassword = true;
+    saveLocalUsersRegistry(registry);
+    await pushRegistryToCloud(registry);
+    return true;
+  } else if (localKey) {
+    await pushRegistryToCloud(local);
+    return true;
+  }
+  return false;
 }
 
 /**
  * Reseta a senha de um aluno de volta para o padrão (pelo Comandante Gean)
  */
-export async function resetUserToDefaultPass(targetName: string): Promise<boolean> {
-  const key = normalizeUserName(targetName);
+export async function resetUserToDefaultPass(targetKeyOrName: string): Promise<boolean> {
+  const local = getLocalUsersRegistry();
+  const localKey = findUserKey(local, targetKeyOrName);
+  if (localKey && local[localKey]) {
+    delete local[localKey].personalPassword;
+    local[localKey].hasChangedPassword = false;
+    saveLocalUsersRegistry(local);
+  }
+
   const registry = await fetchRegistryFromCloud();
+  const key = findUserKey(registry, targetKeyOrName) || localKey;
 
-  if (!registry[key]) return false;
-
-  delete registry[key].personalPassword;
-  registry[key].hasChangedPassword = false;
-  saveLocalUsersRegistry(registry);
-  await pushRegistryToCloud(registry);
-  return true;
+  if (key && registry[key]) {
+    delete registry[key].personalPassword;
+    registry[key].hasChangedPassword = false;
+    saveLocalUsersRegistry(registry);
+    await pushRegistryToCloud(registry);
+    return true;
+  } else if (localKey) {
+    await pushRegistryToCloud(local);
+    return true;
+  }
+  return false;
 }
 
 /**

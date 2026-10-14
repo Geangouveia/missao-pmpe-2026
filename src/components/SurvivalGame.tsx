@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { sound } from '../utils/sound';
 import confetti from 'canvas-confetti';
+import { prepareGameQuestions } from '../utils/questionRandomizer';
 
 interface SurvivalGameProps {
   questions: QuizQuestion[];
@@ -54,10 +55,14 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
   onAwardXp,
   onQuestionAnswered,
 }) => {
-  // Embaralhar as questões para uma missão tática imprevisível
-  const [shuffledQuestions] = useState<QuizQuestion[]>(() => {
-    return [...questions].sort(() => Math.random() - 0.5);
+  // Embaralhar as questões e alternativas para uma missão tática imprevisível e dinâmica
+  const [shuffledQuestions, setShuffledQuestions] = useState<QuizQuestion[]>(() => {
+    return prepareGameQuestions(questions);
   });
+
+  useEffect(() => {
+    setShuffledQuestions(prepareGameQuestions(questions));
+  }, [questions]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lives, setLives] = useState(3);
@@ -241,9 +246,10 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     setShowHintActive(true);
   };
 
-  // Reiniciar Missão
+  // Reiniciar Missão com perguntas e gabaritos totalmente novos
   const handleRestart = () => {
     sound.playClick();
+    setShuffledQuestions(prepareGameQuestions(questions));
     setLives(3);
     setScore(0);
     setStreak(0);

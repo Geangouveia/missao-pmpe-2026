@@ -48,13 +48,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Equivalência da Condicional (Contrapositiva)",
     "question": "(AOCP / Questão 2) A proposição logicamente equivalente a \"Se o alarme toca, então a guarnição sai em disparada\" é:",
     "options": [
-      "Se a guarnição não sai em disparada, então o alarme não tocou.",
       "Se a guarnição sai em disparada, então o alarme tocou.",
+      "Se a guarnição não sai em disparada, então o alarme não tocou.",
       "O alarme toca e a guarnição não sai em disparada.",
       "O alarme não toca e a guarnição sai em disparada.",
       "Se o alarme não toca, então a guarnição não sai em disparada."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência da Condicional (Contrapositiva).",
     "hint": "Aplique a propriedade canônica de Equivalência da Condicional (Contrapositiva).",
     "difficulty": "medium",
@@ -67,11 +67,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -82,13 +82,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Equivalência com Disjunção (NEOU)",
     "question": "(AOCP / Questão 3) A condicional \"Se faz sol em Recife, então vou à praia\" é logicamente equivalente a:",
     "options": [
-      "Não faz sol em Recife ou vou à praia.",
-      "Faz sol em Recife e não vou à praia.",
       "Se não faz sol em Recife, então não vou à praia.",
+      "Faz sol em Recife e não vou à praia.",
+      "Não faz sol em Recife ou vou à praia.",
       "Não faz sol em Recife e não vou à praia.",
       "Vou à praia se, e somente se, fizer sol em Recife."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência com Disjunção (NEOU).",
     "hint": "Aplique a propriedade canônica de Equivalência com Disjunção (NEOU).",
     "difficulty": "hard",
@@ -101,11 +101,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -116,13 +116,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Leis de De Morgan",
     "question": "(AOCP / Questão 4) A negação da disjunção \"O tenente é rigoroso ou o soldado é desatento\" corresponde a:",
     "options": [
-      "O tenente não é rigoroso e o soldado não é desatento.",
+      "O tenente é rigoroso e o soldado é desatento.",
       "O tenente não é rigoroso ou o soldado não é desatento.",
       "Se o tenente não é rigoroso, então o soldado é desatento.",
-      "O tenente é rigoroso e o soldado é desatento.",
+      "O tenente não é rigoroso e o soldado não é desatento.",
       "O tenente não é rigoroso se o soldado for desatento."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Leis de De Morgan.",
     "hint": "Aplique a propriedade canônica de Leis de De Morgan.",
     "difficulty": "easy",
@@ -135,11 +135,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -150,13 +150,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Princípio da Casa dos Pombos",
     "question": "(AOCP / Questão 5) Em um batalhão, qual é o número mínimo de policiais militares que devem ser reunidos para garantir que pelo menos 2 deles façam aniversário no mesmo mês?",
     "options": [
-      "13 policiais.",
+      "365 policiais.",
       "12 policiais.",
       "24 policiais.",
       "25 policiais.",
-      "365 policiais."
+      "13 policiais."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Princípio da Casa dos Pombos.",
     "hint": "Aplique a propriedade canônica de Princípio da Casa dos Pombos.",
     "difficulty": "medium",
@@ -169,11 +169,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -218,13 +218,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Análise Combinatória: Combinação",
     "question": "(AOCP / Questão 7) Quantas comissões distintas de 2 sargentos podem ser formadas a partir de um grupo de 8 sargentos disponíveis?",
     "options": [
-      "28 comissões.",
       "56 comissões.",
+      "28 comissões.",
       "16 comissões.",
       "64 comissões.",
       "36 comissões."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Análise Combinatória: Combinação.",
     "hint": "Aplique a propriedade canônica de Análise Combinatória: Combinação.",
     "difficulty": "easy",
@@ -237,11 +237,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -252,13 +252,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Probabilidade Simples",
     "question": "(AOCP / Questão 8) Ao lançar um dado comum honesto de 6 faces, a probabilidade de se obter um número primo é de:",
     "options": [
-      "50% (3 em 6).",
-      "33,3% (2 em 6).",
       "66,6% (4 em 6).",
+      "33,3% (2 em 6).",
+      "50% (3 em 6).",
       "25% (1 em 4).",
       "16,6% (1 em 6)."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Probabilidade Simples.",
     "hint": "Aplique a propriedade canônica de Probabilidade Simples.",
     "difficulty": "medium",
@@ -271,11 +271,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -286,13 +286,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Regra de Três Simples Inversa",
     "question": "(AOCP / Questão 9) Uma viatura a 80 km/h faz um trajeto em 3 horas. Se aumentasse a velocidade para 120 km/h, faria o mesmo trajeto em:",
     "options": [
-      "2 horas.",
+      "4 horas.",
       "1 hora e meia.",
       "2 horas e meia.",
-      "4 horas.",
+      "2 horas.",
       "1 hora."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Regra de Três Simples Inversa.",
     "hint": "Aplique a propriedade canônica de Regra de Três Simples Inversa.",
     "difficulty": "hard",
@@ -305,11 +305,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -320,13 +320,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Porcentagem e Lucro",
     "question": "(AOCP / Questão 10) Um colete tático comprado por R$ 400,00 foi vendido por R$ 520,00. O lucro percentual sobre o preço de custo foi de:",
     "options": [
-      "30%.",
+      "40%.",
       "25%.",
       "20%.",
       "35%.",
-      "40%."
+      "30%."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Porcentagem e Lucro.",
     "hint": "Aplique a propriedade canônica de Porcentagem e Lucro.",
     "difficulty": "easy",
@@ -339,11 +339,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -388,13 +388,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Equivalência da Condicional (Contrapositiva)",
     "question": "(AOCP / Questão 12) A proposição logicamente equivalente a \"Se o alarme toca, então a guarnição sai em disparada\" é:",
     "options": [
-      "Se a guarnição não sai em disparada, então o alarme não tocou.",
       "Se a guarnição sai em disparada, então o alarme tocou.",
+      "Se a guarnição não sai em disparada, então o alarme não tocou.",
       "O alarme toca e a guarnição não sai em disparada.",
       "O alarme não toca e a guarnição sai em disparada.",
       "Se o alarme não toca, então a guarnição não sai em disparada."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência da Condicional (Contrapositiva).",
     "hint": "Aplique a propriedade canônica de Equivalência da Condicional (Contrapositiva).",
     "difficulty": "hard",
@@ -407,11 +407,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -422,13 +422,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Equivalência com Disjunção (NEOU)",
     "question": "(AOCP / Questão 13) A condicional \"Se faz sol em Recife, então vou à praia\" é logicamente equivalente a:",
     "options": [
-      "Não faz sol em Recife ou vou à praia.",
-      "Faz sol em Recife e não vou à praia.",
       "Se não faz sol em Recife, então não vou à praia.",
+      "Faz sol em Recife e não vou à praia.",
+      "Não faz sol em Recife ou vou à praia.",
       "Não faz sol em Recife e não vou à praia.",
       "Vou à praia se, e somente se, fizer sol em Recife."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência com Disjunção (NEOU).",
     "hint": "Aplique a propriedade canônica de Equivalência com Disjunção (NEOU).",
     "difficulty": "easy",
@@ -441,11 +441,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -456,13 +456,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Leis de De Morgan",
     "question": "(AOCP / Questão 14) A negação da disjunção \"O tenente é rigoroso ou o soldado é desatento\" corresponde a:",
     "options": [
-      "O tenente não é rigoroso e o soldado não é desatento.",
+      "O tenente é rigoroso e o soldado é desatento.",
       "O tenente não é rigoroso ou o soldado não é desatento.",
       "Se o tenente não é rigoroso, então o soldado é desatento.",
-      "O tenente é rigoroso e o soldado é desatento.",
+      "O tenente não é rigoroso e o soldado não é desatento.",
       "O tenente não é rigoroso se o soldado for desatento."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Leis de De Morgan.",
     "hint": "Aplique a propriedade canônica de Leis de De Morgan.",
     "difficulty": "medium",
@@ -475,11 +475,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -490,13 +490,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Princípio da Casa dos Pombos",
     "question": "(AOCP / Questão 15) Em um batalhão, qual é o número mínimo de policiais militares que devem ser reunidos para garantir que pelo menos 2 deles façam aniversário no mesmo mês?",
     "options": [
-      "13 policiais.",
+      "365 policiais.",
       "12 policiais.",
       "24 policiais.",
       "25 policiais.",
-      "365 policiais."
+      "13 policiais."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Princípio da Casa dos Pombos.",
     "hint": "Aplique a propriedade canônica de Princípio da Casa dos Pombos.",
     "difficulty": "hard",
@@ -509,11 +509,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -558,13 +558,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Análise Combinatória: Combinação",
     "question": "(AOCP / Questão 17) Quantas comissões distintas de 2 sargentos podem ser formadas a partir de um grupo de 8 sargentos disponíveis?",
     "options": [
-      "28 comissões.",
       "56 comissões.",
+      "28 comissões.",
       "16 comissões.",
       "64 comissões.",
       "36 comissões."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Análise Combinatória: Combinação.",
     "hint": "Aplique a propriedade canônica de Análise Combinatória: Combinação.",
     "difficulty": "medium",
@@ -577,11 +577,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -592,13 +592,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Probabilidade Simples",
     "question": "(AOCP / Questão 18) Ao lançar um dado comum honesto de 6 faces, a probabilidade de se obter um número primo é de:",
     "options": [
-      "50% (3 em 6).",
-      "33,3% (2 em 6).",
       "66,6% (4 em 6).",
+      "33,3% (2 em 6).",
+      "50% (3 em 6).",
       "25% (1 em 4).",
       "16,6% (1 em 6)."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Probabilidade Simples.",
     "hint": "Aplique a propriedade canônica de Probabilidade Simples.",
     "difficulty": "hard",
@@ -611,11 +611,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -626,13 +626,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Regra de Três Simples Inversa",
     "question": "(AOCP / Questão 19) Uma viatura a 80 km/h faz um trajeto em 3 horas. Se aumentasse a velocidade para 120 km/h, faria o mesmo trajeto em:",
     "options": [
-      "2 horas.",
+      "4 horas.",
       "1 hora e meia.",
       "2 horas e meia.",
-      "4 horas.",
+      "2 horas.",
       "1 hora."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Regra de Três Simples Inversa.",
     "hint": "Aplique a propriedade canônica de Regra de Três Simples Inversa.",
     "difficulty": "easy",
@@ -645,11 +645,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -660,13 +660,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Porcentagem e Lucro",
     "question": "(AOCP / Questão 20) Um colete tático comprado por R$ 400,00 foi vendido por R$ 520,00. O lucro percentual sobre o preço de custo foi de:",
     "options": [
-      "30%.",
+      "40%.",
       "25%.",
       "20%.",
       "35%.",
-      "40%."
+      "30%."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Porcentagem e Lucro.",
     "hint": "Aplique a propriedade canônica de Porcentagem e Lucro.",
     "difficulty": "medium",
@@ -679,11 +679,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -728,13 +728,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Equivalência da Condicional (Contrapositiva)",
     "question": "(AOCP / Questão 22) A proposição logicamente equivalente a \"Se o alarme toca, então a guarnição sai em disparada\" é:",
     "options": [
-      "Se a guarnição não sai em disparada, então o alarme não tocou.",
       "Se a guarnição sai em disparada, então o alarme tocou.",
+      "Se a guarnição não sai em disparada, então o alarme não tocou.",
       "O alarme toca e a guarnição não sai em disparada.",
       "O alarme não toca e a guarnição sai em disparada.",
       "Se o alarme não toca, então a guarnição não sai em disparada."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência da Condicional (Contrapositiva).",
     "hint": "Aplique a propriedade canônica de Equivalência da Condicional (Contrapositiva).",
     "difficulty": "easy",
@@ -747,11 +747,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -762,13 +762,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Equivalência com Disjunção (NEOU)",
     "question": "(AOCP / Questão 23) A condicional \"Se faz sol em Recife, então vou à praia\" é logicamente equivalente a:",
     "options": [
-      "Não faz sol em Recife ou vou à praia.",
-      "Faz sol em Recife e não vou à praia.",
       "Se não faz sol em Recife, então não vou à praia.",
+      "Faz sol em Recife e não vou à praia.",
+      "Não faz sol em Recife ou vou à praia.",
       "Não faz sol em Recife e não vou à praia.",
       "Vou à praia se, e somente se, fizer sol em Recife."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência com Disjunção (NEOU).",
     "hint": "Aplique a propriedade canônica de Equivalência com Disjunção (NEOU).",
     "difficulty": "medium",
@@ -781,11 +781,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -796,13 +796,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Leis de De Morgan",
     "question": "(AOCP / Questão 24) A negação da disjunção \"O tenente é rigoroso ou o soldado é desatento\" corresponde a:",
     "options": [
-      "O tenente não é rigoroso e o soldado não é desatento.",
+      "O tenente é rigoroso e o soldado é desatento.",
       "O tenente não é rigoroso ou o soldado não é desatento.",
       "Se o tenente não é rigoroso, então o soldado é desatento.",
-      "O tenente é rigoroso e o soldado é desatento.",
+      "O tenente não é rigoroso e o soldado não é desatento.",
       "O tenente não é rigoroso se o soldado for desatento."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Leis de De Morgan.",
     "hint": "Aplique a propriedade canônica de Leis de De Morgan.",
     "difficulty": "hard",
@@ -815,11 +815,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -830,13 +830,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Princípio da Casa dos Pombos",
     "question": "(AOCP / Questão 25) Em um batalhão, qual é o número mínimo de policiais militares que devem ser reunidos para garantir que pelo menos 2 deles façam aniversário no mesmo mês?",
     "options": [
-      "13 policiais.",
+      "365 policiais.",
       "12 policiais.",
       "24 policiais.",
       "25 policiais.",
-      "365 policiais."
+      "13 policiais."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Princípio da Casa dos Pombos.",
     "hint": "Aplique a propriedade canônica de Princípio da Casa dos Pombos.",
     "difficulty": "easy",
@@ -849,11 +849,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -898,13 +898,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Análise Combinatória: Combinação",
     "question": "(AOCP / Questão 27) Quantas comissões distintas de 2 sargentos podem ser formadas a partir de um grupo de 8 sargentos disponíveis?",
     "options": [
-      "28 comissões.",
       "56 comissões.",
+      "28 comissões.",
       "16 comissões.",
       "64 comissões.",
       "36 comissões."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Análise Combinatória: Combinação.",
     "hint": "Aplique a propriedade canônica de Análise Combinatória: Combinação.",
     "difficulty": "hard",
@@ -917,11 +917,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -932,13 +932,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Probabilidade Simples",
     "question": "(AOCP / Questão 28) Ao lançar um dado comum honesto de 6 faces, a probabilidade de se obter um número primo é de:",
     "options": [
-      "50% (3 em 6).",
-      "33,3% (2 em 6).",
       "66,6% (4 em 6).",
+      "33,3% (2 em 6).",
+      "50% (3 em 6).",
       "25% (1 em 4).",
       "16,6% (1 em 6)."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Probabilidade Simples.",
     "hint": "Aplique a propriedade canônica de Probabilidade Simples.",
     "difficulty": "easy",
@@ -951,11 +951,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -966,13 +966,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Regra de Três Simples Inversa",
     "question": "(AOCP / Questão 29) Uma viatura a 80 km/h faz um trajeto em 3 horas. Se aumentasse a velocidade para 120 km/h, faria o mesmo trajeto em:",
     "options": [
-      "2 horas.",
+      "4 horas.",
       "1 hora e meia.",
       "2 horas e meia.",
-      "4 horas.",
+      "2 horas.",
       "1 hora."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Regra de Três Simples Inversa.",
     "hint": "Aplique a propriedade canônica de Regra de Três Simples Inversa.",
     "difficulty": "medium",
@@ -985,11 +985,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1000,13 +1000,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Porcentagem e Lucro",
     "question": "(AOCP / Questão 30) Um colete tático comprado por R$ 400,00 foi vendido por R$ 520,00. O lucro percentual sobre o preço de custo foi de:",
     "options": [
-      "30%.",
+      "40%.",
       "25%.",
       "20%.",
       "35%.",
-      "40%."
+      "30%."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Porcentagem e Lucro.",
     "hint": "Aplique a propriedade canônica de Porcentagem e Lucro.",
     "difficulty": "hard",
@@ -1019,11 +1019,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -1068,13 +1068,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Equivalência da Condicional (Contrapositiva)",
     "question": "(AOCP / Questão 32) A proposição logicamente equivalente a \"Se o alarme toca, então a guarnição sai em disparada\" é:",
     "options": [
-      "Se a guarnição não sai em disparada, então o alarme não tocou.",
       "Se a guarnição sai em disparada, então o alarme tocou.",
+      "Se a guarnição não sai em disparada, então o alarme não tocou.",
       "O alarme toca e a guarnição não sai em disparada.",
       "O alarme não toca e a guarnição sai em disparada.",
       "Se o alarme não toca, então a guarnição não sai em disparada."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência da Condicional (Contrapositiva).",
     "hint": "Aplique a propriedade canônica de Equivalência da Condicional (Contrapositiva).",
     "difficulty": "medium",
@@ -1087,11 +1087,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1102,13 +1102,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Equivalência com Disjunção (NEOU)",
     "question": "(AOCP / Questão 33) A condicional \"Se faz sol em Recife, então vou à praia\" é logicamente equivalente a:",
     "options": [
-      "Não faz sol em Recife ou vou à praia.",
-      "Faz sol em Recife e não vou à praia.",
       "Se não faz sol em Recife, então não vou à praia.",
+      "Faz sol em Recife e não vou à praia.",
+      "Não faz sol em Recife ou vou à praia.",
       "Não faz sol em Recife e não vou à praia.",
       "Vou à praia se, e somente se, fizer sol em Recife."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência com Disjunção (NEOU).",
     "hint": "Aplique a propriedade canônica de Equivalência com Disjunção (NEOU).",
     "difficulty": "hard",
@@ -1121,11 +1121,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1136,13 +1136,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Leis de De Morgan",
     "question": "(AOCP / Questão 34) A negação da disjunção \"O tenente é rigoroso ou o soldado é desatento\" corresponde a:",
     "options": [
-      "O tenente não é rigoroso e o soldado não é desatento.",
+      "O tenente é rigoroso e o soldado é desatento.",
       "O tenente não é rigoroso ou o soldado não é desatento.",
       "Se o tenente não é rigoroso, então o soldado é desatento.",
-      "O tenente é rigoroso e o soldado é desatento.",
+      "O tenente não é rigoroso e o soldado não é desatento.",
       "O tenente não é rigoroso se o soldado for desatento."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Leis de De Morgan.",
     "hint": "Aplique a propriedade canônica de Leis de De Morgan.",
     "difficulty": "easy",
@@ -1155,11 +1155,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1170,13 +1170,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Princípio da Casa dos Pombos",
     "question": "(AOCP / Questão 35) Em um batalhão, qual é o número mínimo de policiais militares que devem ser reunidos para garantir que pelo menos 2 deles façam aniversário no mesmo mês?",
     "options": [
-      "13 policiais.",
+      "365 policiais.",
       "12 policiais.",
       "24 policiais.",
       "25 policiais.",
-      "365 policiais."
+      "13 policiais."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Princípio da Casa dos Pombos.",
     "hint": "Aplique a propriedade canônica de Princípio da Casa dos Pombos.",
     "difficulty": "medium",
@@ -1189,11 +1189,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -1238,13 +1238,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Análise Combinatória: Combinação",
     "question": "(AOCP / Questão 37) Quantas comissões distintas de 2 sargentos podem ser formadas a partir de um grupo de 8 sargentos disponíveis?",
     "options": [
-      "28 comissões.",
       "56 comissões.",
+      "28 comissões.",
       "16 comissões.",
       "64 comissões.",
       "36 comissões."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Análise Combinatória: Combinação.",
     "hint": "Aplique a propriedade canônica de Análise Combinatória: Combinação.",
     "difficulty": "easy",
@@ -1257,11 +1257,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1272,13 +1272,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Probabilidade Simples",
     "question": "(AOCP / Questão 38) Ao lançar um dado comum honesto de 6 faces, a probabilidade de se obter um número primo é de:",
     "options": [
-      "50% (3 em 6).",
-      "33,3% (2 em 6).",
       "66,6% (4 em 6).",
+      "33,3% (2 em 6).",
+      "50% (3 em 6).",
       "25% (1 em 4).",
       "16,6% (1 em 6)."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Probabilidade Simples.",
     "hint": "Aplique a propriedade canônica de Probabilidade Simples.",
     "difficulty": "medium",
@@ -1291,11 +1291,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1306,13 +1306,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Regra de Três Simples Inversa",
     "question": "(AOCP / Questão 39) Uma viatura a 80 km/h faz um trajeto em 3 horas. Se aumentasse a velocidade para 120 km/h, faria o mesmo trajeto em:",
     "options": [
-      "2 horas.",
+      "4 horas.",
       "1 hora e meia.",
       "2 horas e meia.",
-      "4 horas.",
+      "2 horas.",
       "1 hora."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Regra de Três Simples Inversa.",
     "hint": "Aplique a propriedade canônica de Regra de Três Simples Inversa.",
     "difficulty": "hard",
@@ -1325,11 +1325,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1340,13 +1340,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Porcentagem e Lucro",
     "question": "(AOCP / Questão 40) Um colete tático comprado por R$ 400,00 foi vendido por R$ 520,00. O lucro percentual sobre o preço de custo foi de:",
     "options": [
-      "30%.",
+      "40%.",
       "25%.",
       "20%.",
       "35%.",
-      "40%."
+      "30%."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Porcentagem e Lucro.",
     "hint": "Aplique a propriedade canônica de Porcentagem e Lucro.",
     "difficulty": "easy",
@@ -1359,11 +1359,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -1408,13 +1408,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Equivalência da Condicional (Contrapositiva)",
     "question": "(AOCP / Questão 42) A proposição logicamente equivalente a \"Se o alarme toca, então a guarnição sai em disparada\" é:",
     "options": [
-      "Se a guarnição não sai em disparada, então o alarme não tocou.",
       "Se a guarnição sai em disparada, então o alarme tocou.",
+      "Se a guarnição não sai em disparada, então o alarme não tocou.",
       "O alarme toca e a guarnição não sai em disparada.",
       "O alarme não toca e a guarnição sai em disparada.",
       "Se o alarme não toca, então a guarnição não sai em disparada."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência da Condicional (Contrapositiva).",
     "hint": "Aplique a propriedade canônica de Equivalência da Condicional (Contrapositiva).",
     "difficulty": "hard",
@@ -1427,11 +1427,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1442,13 +1442,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Equivalência com Disjunção (NEOU)",
     "question": "(AOCP / Questão 43) A condicional \"Se faz sol em Recife, então vou à praia\" é logicamente equivalente a:",
     "options": [
-      "Não faz sol em Recife ou vou à praia.",
-      "Faz sol em Recife e não vou à praia.",
       "Se não faz sol em Recife, então não vou à praia.",
+      "Faz sol em Recife e não vou à praia.",
+      "Não faz sol em Recife ou vou à praia.",
       "Não faz sol em Recife e não vou à praia.",
       "Vou à praia se, e somente se, fizer sol em Recife."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Equivalência com Disjunção (NEOU).",
     "hint": "Aplique a propriedade canônica de Equivalência com Disjunção (NEOU).",
     "difficulty": "easy",
@@ -1461,11 +1461,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1476,13 +1476,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Leis de De Morgan",
     "question": "(AOCP / Questão 44) A negação da disjunção \"O tenente é rigoroso ou o soldado é desatento\" corresponde a:",
     "options": [
-      "O tenente não é rigoroso e o soldado não é desatento.",
+      "O tenente é rigoroso e o soldado é desatento.",
       "O tenente não é rigoroso ou o soldado não é desatento.",
       "Se o tenente não é rigoroso, então o soldado é desatento.",
-      "O tenente é rigoroso e o soldado é desatento.",
+      "O tenente não é rigoroso e o soldado não é desatento.",
       "O tenente não é rigoroso se o soldado for desatento."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Leis de De Morgan.",
     "hint": "Aplique a propriedade canônica de Leis de De Morgan.",
     "difficulty": "medium",
@@ -1495,11 +1495,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1510,13 +1510,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Princípio da Casa dos Pombos",
     "question": "(AOCP / Questão 45) Em um batalhão, qual é o número mínimo de policiais militares que devem ser reunidos para garantir que pelo menos 2 deles façam aniversário no mesmo mês?",
     "options": [
-      "13 policiais.",
+      "365 policiais.",
       "12 policiais.",
       "24 policiais.",
       "25 policiais.",
-      "365 policiais."
+      "13 policiais."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Princípio da Casa dos Pombos.",
     "hint": "Aplique a propriedade canônica de Princípio da Casa dos Pombos.",
     "difficulty": "hard",
@@ -1529,11 +1529,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -1578,13 +1578,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Análise Combinatória: Combinação",
     "question": "(AOCP / Questão 47) Quantas comissões distintas de 2 sargentos podem ser formadas a partir de um grupo de 8 sargentos disponíveis?",
     "options": [
-      "28 comissões.",
       "56 comissões.",
+      "28 comissões.",
       "16 comissões.",
       "64 comissões.",
       "36 comissões."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Análise Combinatória: Combinação.",
     "hint": "Aplique a propriedade canônica de Análise Combinatória: Combinação.",
     "difficulty": "medium",
@@ -1597,11 +1597,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1612,13 +1612,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Probabilidade Simples",
     "question": "(AOCP / Questão 48) Ao lançar um dado comum honesto de 6 faces, a probabilidade de se obter um número primo é de:",
     "options": [
-      "50% (3 em 6).",
-      "33,3% (2 em 6).",
       "66,6% (4 em 6).",
+      "33,3% (2 em 6).",
+      "50% (3 em 6).",
       "25% (1 em 4).",
       "16,6% (1 em 6)."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Probabilidade Simples.",
     "hint": "Aplique a propriedade canônica de Probabilidade Simples.",
     "difficulty": "hard",
@@ -1631,11 +1631,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1646,13 +1646,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Regra de Três Simples Inversa",
     "question": "(AOCP / Questão 49) Uma viatura a 80 km/h faz um trajeto em 3 horas. Se aumentasse a velocidade para 120 km/h, faria o mesmo trajeto em:",
     "options": [
-      "2 horas.",
+      "4 horas.",
       "1 hora e meia.",
       "2 horas e meia.",
-      "4 horas.",
+      "2 horas.",
       "1 hora."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Regra de Três Simples Inversa.",
     "hint": "Aplique a propriedade canônica de Regra de Três Simples Inversa.",
     "difficulty": "easy",
@@ -1665,11 +1665,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1680,13 +1680,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Porcentagem e Lucro",
     "question": "(AOCP / Questão 50) Um colete tático comprado por R$ 400,00 foi vendido por R$ 520,00. O lucro percentual sobre o preço de custo foi de:",
     "options": [
-      "30%.",
+      "40%.",
       "25%.",
       "20%.",
       "35%.",
-      "40%."
+      "30%."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Resolução lógica AOCP: A alternativa A expressa a resolução exata aplicando as leis da lógica proposicional e matemática sobre Porcentagem e Lucro.",
     "hint": "Aplique a propriedade canônica de Porcentagem e Lucro.",
     "difficulty": "medium",
@@ -1699,11 +1699,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
       "3. Obter o resultado inequívoco da alternativa A."
     ],
     "analiseAlternativas": {
-      "A": "Correta: Resposta exata pelo cálculo e raciocínio lógico.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -1743,13 +1743,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Segurança: Phishing",
     "question": "(AOCP / Informática Questão 2) O golpe que utiliza e-mails falsificados ou páginas clonadas para induzir a vítima a fornecer senhas bancárias é denominado:",
     "options": [
-      "Phishing.",
       "DDoS.",
+      "Phishing.",
       "Sniffing.",
       "Brute force.",
       "Defacement."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Segurança: Phishing cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Segurança: Phishing.",
     "difficulty": "medium",
@@ -1757,11 +1757,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1772,13 +1772,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Windows: Atalho de Bloqueio",
     "question": "(AOCP / Informática Questão 3) A combinação de teclas no Windows 10/11 para bloquear instantaneamente a tela do computador é:",
     "options": [
-      "Windows + L.",
-      "Windows + D.",
       "Windows + E.",
+      "Windows + D.",
+      "Windows + L.",
       "Ctrl + Alt + Del.",
       "Alt + F4."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Windows: Atalho de Bloqueio cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Windows: Atalho de Bloqueio.",
     "difficulty": "hard",
@@ -1786,11 +1786,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1801,13 +1801,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Windows: Gerenciador de Tarefas",
     "question": "(AOCP / Informática Questão 4) Para abrir diretamente o Gerenciador de Tarefas no Windows, o usuário pode pressionar:",
     "options": [
-      "Ctrl + Shift + Esc.",
+      "Alt + Tab.",
       "Ctrl + Alt + T.",
       "Windows + R.",
-      "Alt + Tab.",
+      "Ctrl + Shift + Esc.",
       "Ctrl + F4."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Windows: Gerenciador de Tarefas cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Windows: Gerenciador de Tarefas.",
     "difficulty": "easy",
@@ -1815,11 +1815,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1830,13 +1830,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Excel: Função SE",
     "question": "(AOCP / Informática Questão 5) No Excel, a fórmula =SE(A1>=10; \"APTO\"; \"INAPTO\") retornará \"APTO\" se a célula A1 contiver:",
     "options": [
-      "10 ou mais.",
+      "Zero.",
       "Apenas números maiores que 10.",
       "Qualquer valor negativo.",
       "Apenas texto.",
-      "Zero."
+      "10 ou mais."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Excel: Função SE cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Excel: Função SE.",
     "difficulty": "medium",
@@ -1844,11 +1844,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -1888,13 +1888,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Navegadores: Janela Anônima",
     "question": "(AOCP / Informática Questão 7) Ao fechar uma janela anônima no Google Chrome, qual dado NÃO é mantido salvo no disco local?",
     "options": [
-      "Histórico de navegação e cookies.",
       "Arquivos baixados na pasta Downloads.",
+      "Histórico de navegação e cookies.",
       "Favoritos adicionados.",
       "O sistema operacional.",
       "A conexão física de rede."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Navegadores: Janela Anônima cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Navegadores: Janela Anônima.",
     "difficulty": "easy",
@@ -1902,11 +1902,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1917,13 +1917,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Correio Eletrônico: Cco",
     "question": "(AOCP / Informática Questão 8) Para enviar um e-mail para múltiplos destinatários sem que nenhum deles veja os endereços dos demais, usa-se o campo:",
     "options": [
-      "Cco (Cópia Oculta).",
-      "Cc (Cópia Carbono).",
       "Para.",
+      "Cc (Cópia Carbono).",
+      "Cco (Cópia Oculta).",
       "Assunto.",
       "Anexo."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Correio Eletrônico: Cco cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Correio Eletrônico: Cco.",
     "difficulty": "medium",
@@ -1931,11 +1931,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1946,13 +1946,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Redes: Protocolo DNS",
     "question": "(AOCP / Informática Questão 9) O protocolo encarregado de traduzir endereços de domínios (como pm.pe.gov.br) para endereços IP é o:",
     "options": [
-      "DNS.",
+      "SMTP.",
       "DHCP.",
       "FTP.",
-      "SMTP.",
+      "DNS.",
       "HTTP."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Redes: Protocolo DNS cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Redes: Protocolo DNS.",
     "difficulty": "hard",
@@ -1960,11 +1960,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1975,13 +1975,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Nuvem: SaaS",
     "question": "(AOCP / Informática Questão 10) O serviço de computação em nuvem que entrega o software aplicativo pronto para uso diretamente no navegador é o:",
     "options": [
-      "SaaS.",
+      "HaaS.",
       "PaaS.",
       "IaaS.",
       "DaaS.",
-      "HaaS."
+      "SaaS."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Nuvem: SaaS cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Nuvem: SaaS.",
     "difficulty": "easy",
@@ -1989,11 +1989,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -2033,13 +2033,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Segurança: Phishing",
     "question": "(AOCP / Informática Questão 12) O golpe que utiliza e-mails falsificados ou páginas clonadas para induzir a vítima a fornecer senhas bancárias é denominado:",
     "options": [
-      "Phishing.",
       "DDoS.",
+      "Phishing.",
       "Sniffing.",
       "Brute force.",
       "Defacement."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Segurança: Phishing cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Segurança: Phishing.",
     "difficulty": "hard",
@@ -2047,11 +2047,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2062,13 +2062,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Windows: Atalho de Bloqueio",
     "question": "(AOCP / Informática Questão 13) A combinação de teclas no Windows 10/11 para bloquear instantaneamente a tela do computador é:",
     "options": [
-      "Windows + L.",
-      "Windows + D.",
       "Windows + E.",
+      "Windows + D.",
+      "Windows + L.",
       "Ctrl + Alt + Del.",
       "Alt + F4."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Windows: Atalho de Bloqueio cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Windows: Atalho de Bloqueio.",
     "difficulty": "easy",
@@ -2076,11 +2076,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2091,13 +2091,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Windows: Gerenciador de Tarefas",
     "question": "(AOCP / Informática Questão 14) Para abrir diretamente o Gerenciador de Tarefas no Windows, o usuário pode pressionar:",
     "options": [
-      "Ctrl + Shift + Esc.",
+      "Alt + Tab.",
       "Ctrl + Alt + T.",
       "Windows + R.",
-      "Alt + Tab.",
+      "Ctrl + Shift + Esc.",
       "Ctrl + F4."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Windows: Gerenciador de Tarefas cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Windows: Gerenciador de Tarefas.",
     "difficulty": "medium",
@@ -2105,11 +2105,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2120,13 +2120,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Excel: Função SE",
     "question": "(AOCP / Informática Questão 15) No Excel, a fórmula =SE(A1>=10; \"APTO\"; \"INAPTO\") retornará \"APTO\" se a célula A1 contiver:",
     "options": [
-      "10 ou mais.",
+      "Zero.",
       "Apenas números maiores que 10.",
       "Qualquer valor negativo.",
       "Apenas texto.",
-      "Zero."
+      "10 ou mais."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Excel: Função SE cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Excel: Função SE.",
     "difficulty": "hard",
@@ -2134,11 +2134,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -2178,13 +2178,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Navegadores: Janela Anônima",
     "question": "(AOCP / Informática Questão 17) Ao fechar uma janela anônima no Google Chrome, qual dado NÃO é mantido salvo no disco local?",
     "options": [
-      "Histórico de navegação e cookies.",
       "Arquivos baixados na pasta Downloads.",
+      "Histórico de navegação e cookies.",
       "Favoritos adicionados.",
       "O sistema operacional.",
       "A conexão física de rede."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Navegadores: Janela Anônima cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Navegadores: Janela Anônima.",
     "difficulty": "medium",
@@ -2192,11 +2192,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2207,13 +2207,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Correio Eletrônico: Cco",
     "question": "(AOCP / Informática Questão 18) Para enviar um e-mail para múltiplos destinatários sem que nenhum deles veja os endereços dos demais, usa-se o campo:",
     "options": [
-      "Cco (Cópia Oculta).",
-      "Cc (Cópia Carbono).",
       "Para.",
+      "Cc (Cópia Carbono).",
+      "Cco (Cópia Oculta).",
       "Assunto.",
       "Anexo."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Correio Eletrônico: Cco cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Correio Eletrônico: Cco.",
     "difficulty": "hard",
@@ -2221,11 +2221,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2236,13 +2236,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Redes: Protocolo DNS",
     "question": "(AOCP / Informática Questão 19) O protocolo encarregado de traduzir endereços de domínios (como pm.pe.gov.br) para endereços IP é o:",
     "options": [
-      "DNS.",
+      "SMTP.",
       "DHCP.",
       "FTP.",
-      "SMTP.",
+      "DNS.",
       "HTTP."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Redes: Protocolo DNS cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Redes: Protocolo DNS.",
     "difficulty": "easy",
@@ -2250,11 +2250,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2265,13 +2265,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Nuvem: SaaS",
     "question": "(AOCP / Informática Questão 20) O serviço de computação em nuvem que entrega o software aplicativo pronto para uso diretamente no navegador é o:",
     "options": [
-      "SaaS.",
+      "HaaS.",
       "PaaS.",
       "IaaS.",
       "DaaS.",
-      "HaaS."
+      "SaaS."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Nuvem: SaaS cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Nuvem: SaaS.",
     "difficulty": "medium",
@@ -2279,11 +2279,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -2323,13 +2323,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Segurança: Phishing",
     "question": "(AOCP / Informática Questão 22) O golpe que utiliza e-mails falsificados ou páginas clonadas para induzir a vítima a fornecer senhas bancárias é denominado:",
     "options": [
-      "Phishing.",
       "DDoS.",
+      "Phishing.",
       "Sniffing.",
       "Brute force.",
       "Defacement."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Segurança: Phishing cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Segurança: Phishing.",
     "difficulty": "easy",
@@ -2337,11 +2337,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2352,13 +2352,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Windows: Atalho de Bloqueio",
     "question": "(AOCP / Informática Questão 23) A combinação de teclas no Windows 10/11 para bloquear instantaneamente a tela do computador é:",
     "options": [
-      "Windows + L.",
-      "Windows + D.",
       "Windows + E.",
+      "Windows + D.",
+      "Windows + L.",
       "Ctrl + Alt + Del.",
       "Alt + F4."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Windows: Atalho de Bloqueio cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Windows: Atalho de Bloqueio.",
     "difficulty": "medium",
@@ -2366,11 +2366,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2381,13 +2381,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Windows: Gerenciador de Tarefas",
     "question": "(AOCP / Informática Questão 24) Para abrir diretamente o Gerenciador de Tarefas no Windows, o usuário pode pressionar:",
     "options": [
-      "Ctrl + Shift + Esc.",
+      "Alt + Tab.",
       "Ctrl + Alt + T.",
       "Windows + R.",
-      "Alt + Tab.",
+      "Ctrl + Shift + Esc.",
       "Ctrl + F4."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Windows: Gerenciador de Tarefas cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Windows: Gerenciador de Tarefas.",
     "difficulty": "hard",
@@ -2395,11 +2395,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2410,13 +2410,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Excel: Função SE",
     "question": "(AOCP / Informática Questão 25) No Excel, a fórmula =SE(A1>=10; \"APTO\"; \"INAPTO\") retornará \"APTO\" se a célula A1 contiver:",
     "options": [
-      "10 ou mais.",
+      "Zero.",
       "Apenas números maiores que 10.",
       "Qualquer valor negativo.",
       "Apenas texto.",
-      "Zero."
+      "10 ou mais."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Excel: Função SE cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Excel: Função SE.",
     "difficulty": "easy",
@@ -2424,11 +2424,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -2468,13 +2468,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Navegadores: Janela Anônima",
     "question": "(AOCP / Informática Questão 27) Ao fechar uma janela anônima no Google Chrome, qual dado NÃO é mantido salvo no disco local?",
     "options": [
-      "Histórico de navegação e cookies.",
       "Arquivos baixados na pasta Downloads.",
+      "Histórico de navegação e cookies.",
       "Favoritos adicionados.",
       "O sistema operacional.",
       "A conexão física de rede."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Navegadores: Janela Anônima cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Navegadores: Janela Anônima.",
     "difficulty": "hard",
@@ -2482,11 +2482,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2497,13 +2497,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Correio Eletrônico: Cco",
     "question": "(AOCP / Informática Questão 28) Para enviar um e-mail para múltiplos destinatários sem que nenhum deles veja os endereços dos demais, usa-se o campo:",
     "options": [
-      "Cco (Cópia Oculta).",
-      "Cc (Cópia Carbono).",
       "Para.",
+      "Cc (Cópia Carbono).",
+      "Cco (Cópia Oculta).",
       "Assunto.",
       "Anexo."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Correio Eletrônico: Cco cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Correio Eletrônico: Cco.",
     "difficulty": "easy",
@@ -2511,11 +2511,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2526,13 +2526,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Redes: Protocolo DNS",
     "question": "(AOCP / Informática Questão 29) O protocolo encarregado de traduzir endereços de domínios (como pm.pe.gov.br) para endereços IP é o:",
     "options": [
-      "DNS.",
+      "SMTP.",
       "DHCP.",
       "FTP.",
-      "SMTP.",
+      "DNS.",
       "HTTP."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Redes: Protocolo DNS cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Redes: Protocolo DNS.",
     "difficulty": "medium",
@@ -2540,11 +2540,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2555,13 +2555,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Nuvem: SaaS",
     "question": "(AOCP / Informática Questão 30) O serviço de computação em nuvem que entrega o software aplicativo pronto para uso diretamente no navegador é o:",
     "options": [
-      "SaaS.",
+      "HaaS.",
       "PaaS.",
       "IaaS.",
       "DaaS.",
-      "HaaS."
+      "SaaS."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Nuvem: SaaS cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Nuvem: SaaS.",
     "difficulty": "hard",
@@ -2569,11 +2569,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -2613,13 +2613,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Segurança: Phishing",
     "question": "(AOCP / Informática Questão 32) O golpe que utiliza e-mails falsificados ou páginas clonadas para induzir a vítima a fornecer senhas bancárias é denominado:",
     "options": [
-      "Phishing.",
       "DDoS.",
+      "Phishing.",
       "Sniffing.",
       "Brute force.",
       "Defacement."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Segurança: Phishing cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Segurança: Phishing.",
     "difficulty": "medium",
@@ -2627,11 +2627,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2642,13 +2642,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Windows: Atalho de Bloqueio",
     "question": "(AOCP / Informática Questão 33) A combinação de teclas no Windows 10/11 para bloquear instantaneamente a tela do computador é:",
     "options": [
-      "Windows + L.",
-      "Windows + D.",
       "Windows + E.",
+      "Windows + D.",
+      "Windows + L.",
       "Ctrl + Alt + Del.",
       "Alt + F4."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Windows: Atalho de Bloqueio cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Windows: Atalho de Bloqueio.",
     "difficulty": "hard",
@@ -2656,11 +2656,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2671,13 +2671,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Windows: Gerenciador de Tarefas",
     "question": "(AOCP / Informática Questão 34) Para abrir diretamente o Gerenciador de Tarefas no Windows, o usuário pode pressionar:",
     "options": [
-      "Ctrl + Shift + Esc.",
+      "Alt + Tab.",
       "Ctrl + Alt + T.",
       "Windows + R.",
-      "Alt + Tab.",
+      "Ctrl + Shift + Esc.",
       "Ctrl + F4."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Windows: Gerenciador de Tarefas cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Windows: Gerenciador de Tarefas.",
     "difficulty": "easy",
@@ -2685,11 +2685,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2700,13 +2700,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Excel: Função SE",
     "question": "(AOCP / Informática Questão 35) No Excel, a fórmula =SE(A1>=10; \"APTO\"; \"INAPTO\") retornará \"APTO\" se a célula A1 contiver:",
     "options": [
-      "10 ou mais.",
+      "Zero.",
       "Apenas números maiores que 10.",
       "Qualquer valor negativo.",
       "Apenas texto.",
-      "Zero."
+      "10 ou mais."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Excel: Função SE cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Excel: Função SE.",
     "difficulty": "medium",
@@ -2714,11 +2714,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -2758,13 +2758,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Navegadores: Janela Anônima",
     "question": "(AOCP / Informática Questão 37) Ao fechar uma janela anônima no Google Chrome, qual dado NÃO é mantido salvo no disco local?",
     "options": [
-      "Histórico de navegação e cookies.",
       "Arquivos baixados na pasta Downloads.",
+      "Histórico de navegação e cookies.",
       "Favoritos adicionados.",
       "O sistema operacional.",
       "A conexão física de rede."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Navegadores: Janela Anônima cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Navegadores: Janela Anônima.",
     "difficulty": "easy",
@@ -2772,11 +2772,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2787,13 +2787,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Correio Eletrônico: Cco",
     "question": "(AOCP / Informática Questão 38) Para enviar um e-mail para múltiplos destinatários sem que nenhum deles veja os endereços dos demais, usa-se o campo:",
     "options": [
-      "Cco (Cópia Oculta).",
-      "Cc (Cópia Carbono).",
       "Para.",
+      "Cc (Cópia Carbono).",
+      "Cco (Cópia Oculta).",
       "Assunto.",
       "Anexo."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Correio Eletrônico: Cco cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Correio Eletrônico: Cco.",
     "difficulty": "medium",
@@ -2801,11 +2801,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2816,13 +2816,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Redes: Protocolo DNS",
     "question": "(AOCP / Informática Questão 39) O protocolo encarregado de traduzir endereços de domínios (como pm.pe.gov.br) para endereços IP é o:",
     "options": [
-      "DNS.",
+      "SMTP.",
       "DHCP.",
       "FTP.",
-      "SMTP.",
+      "DNS.",
       "HTTP."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Redes: Protocolo DNS cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Redes: Protocolo DNS.",
     "difficulty": "hard",
@@ -2830,11 +2830,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2845,13 +2845,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Nuvem: SaaS",
     "question": "(AOCP / Informática Questão 40) O serviço de computação em nuvem que entrega o software aplicativo pronto para uso diretamente no navegador é o:",
     "options": [
-      "SaaS.",
+      "HaaS.",
       "PaaS.",
       "IaaS.",
       "DaaS.",
-      "HaaS."
+      "SaaS."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Nuvem: SaaS cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Nuvem: SaaS.",
     "difficulty": "easy",
@@ -2859,11 +2859,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -2903,13 +2903,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Segurança: Phishing",
     "question": "(AOCP / Informática Questão 42) O golpe que utiliza e-mails falsificados ou páginas clonadas para induzir a vítima a fornecer senhas bancárias é denominado:",
     "options": [
-      "Phishing.",
       "DDoS.",
+      "Phishing.",
       "Sniffing.",
       "Brute force.",
       "Defacement."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Segurança: Phishing cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Segurança: Phishing.",
     "difficulty": "hard",
@@ -2917,11 +2917,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2932,13 +2932,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Windows: Atalho de Bloqueio",
     "question": "(AOCP / Informática Questão 43) A combinação de teclas no Windows 10/11 para bloquear instantaneamente a tela do computador é:",
     "options": [
-      "Windows + L.",
-      "Windows + D.",
       "Windows + E.",
+      "Windows + D.",
+      "Windows + L.",
       "Ctrl + Alt + Del.",
       "Alt + F4."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Windows: Atalho de Bloqueio cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Windows: Atalho de Bloqueio.",
     "difficulty": "easy",
@@ -2946,11 +2946,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2961,13 +2961,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Windows: Gerenciador de Tarefas",
     "question": "(AOCP / Informática Questão 44) Para abrir diretamente o Gerenciador de Tarefas no Windows, o usuário pode pressionar:",
     "options": [
-      "Ctrl + Shift + Esc.",
+      "Alt + Tab.",
       "Ctrl + Alt + T.",
       "Windows + R.",
-      "Alt + Tab.",
+      "Ctrl + Shift + Esc.",
       "Ctrl + F4."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Windows: Gerenciador de Tarefas cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Windows: Gerenciador de Tarefas.",
     "difficulty": "medium",
@@ -2975,11 +2975,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2990,13 +2990,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Excel: Função SE",
     "question": "(AOCP / Informática Questão 45) No Excel, a fórmula =SE(A1>=10; \"APTO\"; \"INAPTO\") retornará \"APTO\" se a célula A1 contiver:",
     "options": [
-      "10 ou mais.",
+      "Zero.",
       "Apenas números maiores que 10.",
       "Qualquer valor negativo.",
       "Apenas texto.",
-      "Zero."
+      "10 ou mais."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Excel: Função SE cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Excel: Função SE.",
     "difficulty": "hard",
@@ -3004,11 +3004,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -3048,13 +3048,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Navegadores: Janela Anônima",
     "question": "(AOCP / Informática Questão 47) Ao fechar uma janela anônima no Google Chrome, qual dado NÃO é mantido salvo no disco local?",
     "options": [
-      "Histórico de navegação e cookies.",
       "Arquivos baixados na pasta Downloads.",
+      "Histórico de navegação e cookies.",
       "Favoritos adicionados.",
       "O sistema operacional.",
       "A conexão física de rede."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Navegadores: Janela Anônima cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Navegadores: Janela Anônima.",
     "difficulty": "medium",
@@ -3062,11 +3062,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -3077,13 +3077,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Correio Eletrônico: Cco",
     "question": "(AOCP / Informática Questão 48) Para enviar um e-mail para múltiplos destinatários sem que nenhum deles veja os endereços dos demais, usa-se o campo:",
     "options": [
-      "Cco (Cópia Oculta).",
-      "Cc (Cópia Carbono).",
       "Para.",
+      "Cc (Cópia Carbono).",
+      "Cco (Cópia Oculta).",
       "Assunto.",
       "Anexo."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Correio Eletrônico: Cco cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Correio Eletrônico: Cco.",
     "difficulty": "hard",
@@ -3091,11 +3091,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -3106,13 +3106,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Redes: Protocolo DNS",
     "question": "(AOCP / Informática Questão 49) O protocolo encarregado de traduzir endereços de domínios (como pm.pe.gov.br) para endereços IP é o:",
     "options": [
-      "DNS.",
+      "SMTP.",
       "DHCP.",
       "FTP.",
-      "SMTP.",
+      "DNS.",
       "HTTP."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Redes: Protocolo DNS cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Redes: Protocolo DNS.",
     "difficulty": "easy",
@@ -3120,11 +3120,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -3135,13 +3135,13 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "topicoEdital": "Nuvem: SaaS",
     "question": "(AOCP / Informática Questão 50) O serviço de computação em nuvem que entrega o software aplicativo pronto para uso diretamente no navegador é o:",
     "options": [
-      "SaaS.",
+      "HaaS.",
       "PaaS.",
       "IaaS.",
       "DaaS.",
-      "HaaS."
+      "SaaS."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A define com exatidão técnica o conceito de Nuvem: SaaS cobrado no edital da PMPE.",
     "hint": "Lembre-se do funcionamento essencial de Nuvem: SaaS.",
     "difficulty": "medium",
@@ -3149,11 +3149,11 @@ export const BANCO_QUESTOES_BLOCO_2: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco2",
     "dicaMacete": "BIZU DE INFORMÁTICA: Instituto AOCP adora conceitos de segurança, atalhos do Windows e fórmulas do Excel!",
     "analiseAlternativas": {
-      "A": "Correta: Conceito técnico padrão do edital.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   }
 ];

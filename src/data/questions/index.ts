@@ -9,6 +9,7 @@ import { SIMULADO_AOCP_ELITE } from './simuladoAocpElite';
 import { BANCO_QUESTOES_BLOCO_1 } from './bancoQuestoesBloco1';
 import { BANCO_QUESTOES_BLOCO_2 } from './bancoQuestoesBloco2';
 import { BANCO_QUESTOES_BLOCO_3 } from './bancoQuestoesBloco3';
+import { BANCO_QUESTOES_EDITAL_200 } from './bancoQuestoesEdital200';
 
 export {
   SIMULADO_SEMANA_1,
@@ -20,11 +21,13 @@ export {
   SIMULADO_AOCP_ELITE,
   BANCO_QUESTOES_BLOCO_1,
   BANCO_QUESTOES_BLOCO_2,
-  BANCO_QUESTOES_BLOCO_3
+  BANCO_QUESTOES_BLOCO_3,
+  BANCO_QUESTOES_EDITAL_200
 };
 
 export const SIMULADOS_LIST = [
-  { id: 'all', name: 'Todos os Simulados (Banco Geral - 510 Questões)', count: 510, tag: '⭐ Acervo Completo' },
+  { id: 'all', name: 'Todos os Simulados (Banco Geral - 710 Questões)', count: 710, tag: '⭐ Acervo Completo' },
+  { id: 'edital_200', name: 'Super Caderno Edital AOCP (200 Questões Inéditas)', count: 200, tag: '🔥 Edital 200Q' },
   { id: 'banco_bloco1', name: 'Super Caderno Bloco I (Português & História de PE)', count: 100, tag: 'Bloco I (100 Q)' },
   { id: 'banco_bloco2', name: 'Super Caderno Bloco II (Raciocínio Lógico & Informática)', count: 100, tag: 'Bloco II (100 Q)' },
   { id: 'banco_bloco3', name: 'Super Caderno Bloco III (Direito, DH & Legislação PMPE)', count: 105, tag: 'Bloco III (105 Q)' },
@@ -41,6 +44,7 @@ export const ALL_QUESTIONS: QuizQuestion[] = [
   ...BANCO_QUESTOES_BLOCO_1,
   ...BANCO_QUESTOES_BLOCO_2,
   ...BANCO_QUESTOES_BLOCO_3,
+  ...BANCO_QUESTOES_EDITAL_200,
   ...SIMULADO_AOCP_ELITE,
   ...SIMULADO_AOCP_ESPECIAL,
   ...SIMULADO_COMPLETO_PMPE,

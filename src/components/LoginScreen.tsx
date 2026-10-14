@@ -184,18 +184,21 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
         pointerEvents: 'none'
       }} />
 
-      <div style={{
-        width: '100%',
-        maxWidth: '520px',
-        background: 'rgba(15, 23, 42, 0.92)',
-        backdropFilter: 'blur(24px)',
-        border: '1.5px solid rgba(56, 189, 248, 0.3)',
-        borderRadius: '26px',
-        padding: '2.5rem 2.25rem',
-        boxShadow: '0 25px 55px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(6, 182, 212, 0.18)',
-        position: 'relative',
-        zIndex: 10
-      }}>
+      <div 
+        className="login-card-container"
+        style={{
+          width: '100%',
+          maxWidth: '520px',
+          background: 'rgba(15, 23, 42, 0.92)',
+          backdropFilter: 'blur(24px)',
+          border: '1.5px solid rgba(56, 189, 248, 0.3)',
+          borderRadius: '26px',
+          padding: '2.5rem 2.25rem',
+          boxShadow: '0 25px 55px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(6, 182, 212, 0.18)',
+          position: 'relative',
+          zIndex: 10
+        }}
+      >
         {/* Brasão Oficial da PMPE no Topo */}
         <div style={{ textAlign: 'center', marginBottom: '1.5rem', position: 'relative' }}>
           <div style={{

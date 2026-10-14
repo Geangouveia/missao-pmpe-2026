@@ -43,13 +43,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Ortografia Oficial",
     "question": "Assinale a opção em que a palavra destacada está grafada CORRETAMENTE segundo as regras ortográficas vigentes:",
     "options": [
-      "O policial agiu com extrema sensatez durante a abordagem.",
       "O policial agiu com extrema sensates durante a abordagem.",
+      "O policial agiu com extrema sensatez durante a abordagem.",
       "A paralização do trânsito foi inevitável após o acidente.",
       "Ele quis expontaneamente prestar esclarecimentos ao pelotão.",
       "O comandante pediu que todos fizessem a contensão dos ânimos."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Sensatez grafa-se com Z (sufixo -ez formador de substantivo a partir de adjetivo sensato). Paralisação é com S (de paralisar), espontaneamente é com S e contenção é com Ç.",
     "hint": "Sensato forma o substantivo abstrato sensatez com Z no final.",
     "difficulty": "medium",
@@ -57,11 +57,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "Adjetivo que vira substantivo termina em -EZ com Z: lúcido -> lucidez, sensato -> sensatez!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -72,13 +72,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Emprego do Sinal Indicativo de Crase",
     "question": "O uso da crase é FACULTATIVO em qual das seguintes alternativas?",
     "options": [
-      "O soldado entregou o distintivo à sua mãe.",
-      "O comandante dirigiu-se à cidade vizinha.",
       "Os policiais compareceram à audiência judicial.",
+      "O comandante dirigiu-se à cidade vizinha.",
+      "O soldado entregou o distintivo à sua mãe.",
       "O suspeito foi levado às pressas para o hospital.",
       "A viatura seguiu à risca as instruções operacionais."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Diante de pronome possessivo feminino singular (sua, minha, tua, nossa), o uso do artigo definido é facultativo, tornando o acento grave de crase facultativo.",
     "hint": "Casos facultativos clássicos: diante de nome próprio feminino, pronome possessivo feminino singular e depois da preposição até.",
     "difficulty": "hard",
@@ -86,11 +86,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "MACETE DO \"PRO-NOME\": Até Maria, Minha irmã! (Até + Nome Feminino + Pronome possessivo feminino = Crase Facultativa)!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -101,13 +101,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Concordância Verbal",
     "question": "Indique a alternativa que apresenta ERRO de concordância verbal de acordo com a norma culta:",
     "options": [
-      "Haviam muitos policiais militares patrulhando o evento festivo.",
+      "A maioria dos soldados compareceu pontualmente ao quartel.",
       "Havia muitos policiais militares patrulhando o evento festivo.",
       "Mais de um candidato alcançou a pontuação máxima no simulado.",
-      "A maioria dos soldados compareceu pontualmente ao quartel.",
+      "Haviam muitos policiais militares patrulhando o evento festivo.",
       "Fazia dez meses que a nova doutrina tática havia sido implantada."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "O verbo haver no sentido de existir é impessoal e não admite flexão no plural. A forma correta é \"Havia muitos policiais\".",
     "hint": "Haver no sentido de existir NUNCA vai para o plural!",
     "difficulty": "easy",
@@ -115,11 +115,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "Verbo HAVER no sentido de existir fica sempre no singular!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -130,13 +130,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Concordância Nominal",
     "question": "Assinale a alternativa que preenche CORRETAMENTE as lacunas: \"Enviamos _________ as guias de recolhimento; as declarações estão _________ ao processo.\"",
     "options": [
-      "anexas / apensas",
+      "em anexo / apenso",
       "anexo / apensas",
       "anexas / apenso",
       "anexo / apenso",
-      "em anexo / apenso"
+      "anexas / apensas"
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "O termo \"anexo\" concorda em gênero e número com o substantivo a que se refere: as guias anexas, declarações apensas.",
     "hint": "Anexo concorda com a palavra a que se refere!",
     "difficulty": "medium",
@@ -144,11 +144,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "ANEXO varia como adjetivo! Guia anexa, guias anexas, relatório anexo!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -188,13 +188,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Regência Verbal",
     "question": "Assinale a frase em que o verbo \"preferir\" foi empregado estritamente segundo a norma-padrão:",
     "options": [
-      "O soldado prefere o estudo da lei a horas de distração vazia.",
       "O soldado prefere mais o estudo da lei do que horas de distração.",
+      "O soldado prefere o estudo da lei a horas de distração vazia.",
       "O soldado prefere o estudo da lei do que horas de distração.",
       "O soldado prefere mil vezes o estudo da lei do que o descanso.",
       "O soldado prefere antes o estudo da lei que a distração."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "O verbo preferir é transitivo direto e indireto, regendo a preposição \"a\" no objeto indireto, sendo vedado o uso de termos intensificadores como \"mais\", \"muito mais\", \"antes\" ou \"do que\".",
     "hint": "Quem prefere, prefere uma coisa A outra, nunca \"do que\"!",
     "difficulty": "easy",
@@ -202,11 +202,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "PREFERIR: Prefere X A Y! Proibido usar \"do que\", \"mais\" ou \"mil vezes\"!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -217,13 +217,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Funções da Linguagem",
     "question": "Um panfleto da Polícia Militar com o texto \"Denuncie o tráfico de drogas pelo 190. Sua identidade será preservada. Colabore com a segurança!\" tem predomínio de qual função da linguagem?",
     "options": [
-      "Conativa (ou apelativa).",
-      "Referencial (ou denotativa).",
       "Emotiva (ou expressiva).",
+      "Referencial (ou denotativa).",
+      "Conativa (ou apelativa).",
       "Metalinguística.",
       "Fática."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "A função conativa ou apelativa centra-se no receptor (leitor), empregando verbos no imperativo (denuncie, colabore) para induzir um comportamento.",
     "hint": "Verbos no imperativo dirigidos ao leitor caracterizam a função conativa/apelativa.",
     "difficulty": "medium",
@@ -231,11 +231,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "CONATIVA / APELATIVA = Apela para o leitor agir! \"Denuncie!\", \"Faça!\", \"Compre!\"",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -246,13 +246,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Colocação Pronominal",
     "question": "Em qual das alternativas a próclise do pronome oblíquo é OBRIGATÓRIA devido à presença de fator atrativo?",
     "options": [
-      "Quem me chamou para a formatura do pelotão?",
+      "Embarcaram-se os militares nas viaturas.",
       "Disseram-me que o teste físico será rigoroso.",
       "O policial apresentou-se prontamente ao oficial.",
-      "Embarcaram-se os militares nas viaturas.",
+      "Quem me chamou para a formatura do pelotão?",
       "Preparar-me-ei com dedicação para a aprovação."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Pronomes interrogativos (como \"Quem\"), indefinidos e relativos são palavras atrativas que exigem o pronome antes do verbo (próclise).",
     "hint": "Pronome interrogativo puxa o pronome átono para antes do verbo.",
     "difficulty": "hard",
@@ -260,11 +260,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "QUEM, QUE, QUAL = Puxam o pronome para a frente do verbo!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -275,13 +275,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Pontuação",
     "question": "Assinale a alternativa em que os dois-pontos foram empregados para introduzir uma enumeração explicativa:",
     "options": [
-      "A equipe policial levava os seguintes itens: colete balístico, radiocomunicador e armamento regulamentar.",
+      "O motivo de sua ausência foi este: uma súbita enfermidade.",
       "O tenente exclamou com firmeza: \"Mantenham a posição!\"",
       "Ele tinha apenas um sonho: passar no concurso da PMPE.",
       "Ela não respondeu: estava profundamente concentrada.",
-      "O motivo de sua ausência foi este: uma súbita enfermidade."
+      "A equipe policial levava os seguintes itens: colete balístico, radiocomunicador e armamento regulamentar."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Os dois-pontos na alternativa A introduzem a enumeração ordenada dos itens táticos levados pela equipe.",
     "hint": "Enumeração lista múltiplos elementos em sequência.",
     "difficulty": "easy",
@@ -289,11 +289,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "Dois-pontos seguidos de lista com vírgulas = Enumeração explicativa!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -333,13 +333,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Semântica: Conotação e Denotação",
     "question": "(AOCP / Simulado Questão 12) A frase que apresenta linguagem estritamente DENOTATIVA (sentido real) é:",
     "options": [
-      "A viatura foi abastecida às 06h00 na sede do batalhão.",
       "O policial tinha um coração de pedra diante do perigo.",
+      "A viatura foi abastecida às 06h00 na sede do batalhão.",
       "A notícia caiu como uma bomba no quartel.",
       "A esperança iluminou o rosto dos novos recrutas.",
       "O tempo voou durante as aulas teóricas do CFSD."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Semântica: Conotação e Denotação.",
     "hint": "Atente-se aos conceitos fundamentais de Semântica: Conotação e Denotação.",
     "difficulty": "hard",
@@ -347,11 +347,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Semântica: Conotação e Denotação para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -362,13 +362,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Morfologia: Classes de Palavras",
     "question": "(AOCP / Simulado Questão 13) Na oração \"O soldado agiu corajosamente\", o termo destacado é morfologicamente:",
     "options": [
-      "Advérbio de modo.",
-      "Adjetivo qualificativo.",
       "Substantivo comum.",
+      "Adjetivo qualificativo.",
+      "Advérbio de modo.",
       "Pronome demonstrativo.",
       "Conjunção subordinativa."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Morfologia: Classes de Palavras.",
     "hint": "Atente-se aos conceitos fundamentais de Morfologia: Classes de Palavras.",
     "difficulty": "easy",
@@ -376,11 +376,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Morfologia: Classes de Palavras para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -391,13 +391,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Sintaxe: Termos Essenciais",
     "question": "(AOCP / Simulado Questão 14) Em \"Amanheceu subitamente no sertão pernambucano\", o sujeito da oração é classificado como:",
     "options": [
-      "Inexistente (oração sem sujeito).",
+      "Simples.",
       "Oculto ou elíptico.",
       "Indeterminado.",
-      "Simples.",
+      "Inexistente (oração sem sujeito).",
       "Composto."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Sintaxe: Termos Essenciais.",
     "hint": "Atente-se aos conceitos fundamentais de Sintaxe: Termos Essenciais.",
     "difficulty": "medium",
@@ -405,11 +405,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Sintaxe: Termos Essenciais para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -420,13 +420,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Sintaxe: Termos Integrantes",
     "question": "(AOCP / Simulado Questão 15) Na frase \"O oficial necessitava de apoio tático imediato\", o termo \"de apoio tático imediato\" exerce a função de:",
     "options": [
-      "Objeto indireto.",
+      "Agente da passiva.",
       "Objeto direto.",
       "Complemento nominal.",
       "Adjunto adnominal.",
-      "Agente da passiva."
+      "Objeto indireto."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Sintaxe: Termos Integrantes.",
     "hint": "Atente-se aos conceitos fundamentais de Sintaxe: Termos Integrantes.",
     "difficulty": "hard",
@@ -434,11 +434,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Sintaxe: Termos Integrantes para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -478,13 +478,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Coesão Referencial: Anáfora",
     "question": "(AOCP / Simulado Questão 17) O mecanismo de coesão em que um pronome retoma um termo mencionado anteriormente no texto denomina-se:",
     "options": [
-      "Anáfora.",
       "Catáfora.",
+      "Anáfora.",
       "Zeugma.",
       "Elipse temporal.",
       "Hiperonímia reversa."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Coesão Referencial: Anáfora.",
     "hint": "Atente-se aos conceitos fundamentais de Coesão Referencial: Anáfora.",
     "difficulty": "medium",
@@ -492,11 +492,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Coesão Referencial: Anáfora para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -507,13 +507,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Novo Acordo Ortográfico: Hífen",
     "question": "(AOCP / Simulado Questão 18) Assinale a palavra cuja grafia com hífen está CORRETA pelo Novo Acordo Ortográfico:",
     "options": [
-      "Anti-inflamatório (letras iguais se separam).",
-      "Auto-escola.",
       "Micro-ondas (unidas sem hífen).",
+      "Auto-escola.",
+      "Anti-inflamatório (letras iguais se separam).",
       "Super-homem (sem hífen).",
       "Contra-regra."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Novo Acordo Ortográfico: Hífen.",
     "hint": "Atente-se aos conceitos fundamentais de Novo Acordo Ortográfico: Hífen.",
     "difficulty": "hard",
@@ -521,11 +521,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Novo Acordo Ortográfico: Hífen para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -536,13 +536,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Semântica: Sinônimos e Antônimos",
     "question": "(AOCP / Simulado Questão 19) O vocábulo \"efêmero\" é antônimo de:",
     "options": [
-      "Duradouro.",
+      "Breve.",
       "Passageiro.",
       "Transitório.",
-      "Breve.",
+      "Duradouro.",
       "Momentâneo."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Semântica: Sinônimos e Antônimos.",
     "hint": "Atente-se aos conceitos fundamentais de Semântica: Sinônimos e Antônimos.",
     "difficulty": "easy",
@@ -550,11 +550,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Semântica: Sinônimos e Antônimos para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -565,13 +565,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Semântica: Conotação e Denotação",
     "question": "(AOCP / Simulado Questão 20) A frase que apresenta linguagem estritamente DENOTATIVA (sentido real) é:",
     "options": [
-      "A viatura foi abastecida às 06h00 na sede do batalhão.",
+      "O tempo voou durante as aulas teóricas do CFSD.",
       "O policial tinha um coração de pedra diante do perigo.",
       "A notícia caiu como uma bomba no quartel.",
       "A esperança iluminou o rosto dos novos recrutas.",
-      "O tempo voou durante as aulas teóricas do CFSD."
+      "A viatura foi abastecida às 06h00 na sede do batalhão."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Semântica: Conotação e Denotação.",
     "hint": "Atente-se aos conceitos fundamentais de Semântica: Conotação e Denotação.",
     "difficulty": "medium",
@@ -579,11 +579,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Semântica: Conotação e Denotação para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -623,13 +623,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Sintaxe: Termos Essenciais",
     "question": "(AOCP / Simulado Questão 22) Em \"Amanheceu subitamente no sertão pernambucano\", o sujeito da oração é classificado como:",
     "options": [
-      "Inexistente (oração sem sujeito).",
       "Oculto ou elíptico.",
+      "Inexistente (oração sem sujeito).",
       "Indeterminado.",
       "Simples.",
       "Composto."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Sintaxe: Termos Essenciais.",
     "hint": "Atente-se aos conceitos fundamentais de Sintaxe: Termos Essenciais.",
     "difficulty": "easy",
@@ -637,11 +637,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Sintaxe: Termos Essenciais para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -652,13 +652,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Sintaxe: Termos Integrantes",
     "question": "(AOCP / Simulado Questão 23) Na frase \"O oficial necessitava de apoio tático imediato\", o termo \"de apoio tático imediato\" exerce a função de:",
     "options": [
-      "Objeto indireto.",
-      "Objeto direto.",
       "Complemento nominal.",
+      "Objeto direto.",
+      "Objeto indireto.",
       "Adjunto adnominal.",
       "Agente da passiva."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Sintaxe: Termos Integrantes.",
     "hint": "Atente-se aos conceitos fundamentais de Sintaxe: Termos Integrantes.",
     "difficulty": "medium",
@@ -666,11 +666,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Sintaxe: Termos Integrantes para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -681,13 +681,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Sintaxe: Orações Coordenadas",
     "question": "(AOCP / Simulado Questão 24) No período \"Estude com método, pois a concorrência é acirrada\", a oração iniciada por \"pois\" é classificada como:",
     "options": [
-      "Coordenada sindética explicativa.",
+      "Coordenada assindética.",
       "Coordenada sindética conclusiva.",
       "Coordenada sindética adversativa.",
-      "Coordenada assindética.",
+      "Coordenada sindética explicativa.",
       "Subordinada concessiva."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Sintaxe: Orações Coordenadas.",
     "hint": "Atente-se aos conceitos fundamentais de Sintaxe: Orações Coordenadas.",
     "difficulty": "hard",
@@ -695,11 +695,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Sintaxe: Orações Coordenadas para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -710,13 +710,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Coesão Referencial: Anáfora",
     "question": "(AOCP / Simulado Questão 25) O mecanismo de coesão em que um pronome retoma um termo mencionado anteriormente no texto denomina-se:",
     "options": [
-      "Anáfora.",
+      "Hiperonímia reversa.",
       "Catáfora.",
       "Zeugma.",
       "Elipse temporal.",
-      "Hiperonímia reversa."
+      "Anáfora."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Coesão Referencial: Anáfora.",
     "hint": "Atente-se aos conceitos fundamentais de Coesão Referencial: Anáfora.",
     "difficulty": "easy",
@@ -724,11 +724,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Coesão Referencial: Anáfora para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -768,13 +768,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Semântica: Sinônimos e Antônimos",
     "question": "(AOCP / Simulado Questão 27) O vocábulo \"efêmero\" é antônimo de:",
     "options": [
-      "Duradouro.",
       "Passageiro.",
+      "Duradouro.",
       "Transitório.",
       "Breve.",
       "Momentâneo."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Semântica: Sinônimos e Antônimos.",
     "hint": "Atente-se aos conceitos fundamentais de Semântica: Sinônimos e Antônimos.",
     "difficulty": "hard",
@@ -782,11 +782,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Semântica: Sinônimos e Antônimos para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -797,13 +797,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Semântica: Conotação e Denotação",
     "question": "(AOCP / Simulado Questão 28) A frase que apresenta linguagem estritamente DENOTATIVA (sentido real) é:",
     "options": [
-      "A viatura foi abastecida às 06h00 na sede do batalhão.",
-      "O policial tinha um coração de pedra diante do perigo.",
       "A notícia caiu como uma bomba no quartel.",
+      "O policial tinha um coração de pedra diante do perigo.",
+      "A viatura foi abastecida às 06h00 na sede do batalhão.",
       "A esperança iluminou o rosto dos novos recrutas.",
       "O tempo voou durante as aulas teóricas do CFSD."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Semântica: Conotação e Denotação.",
     "hint": "Atente-se aos conceitos fundamentais de Semântica: Conotação e Denotação.",
     "difficulty": "easy",
@@ -811,11 +811,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Semântica: Conotação e Denotação para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -826,13 +826,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Morfologia: Classes de Palavras",
     "question": "(AOCP / Simulado Questão 29) Na oração \"O soldado agiu corajosamente\", o termo destacado é morfologicamente:",
     "options": [
-      "Advérbio de modo.",
+      "Pronome demonstrativo.",
       "Adjetivo qualificativo.",
       "Substantivo comum.",
-      "Pronome demonstrativo.",
+      "Advérbio de modo.",
       "Conjunção subordinativa."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Morfologia: Classes de Palavras.",
     "hint": "Atente-se aos conceitos fundamentais de Morfologia: Classes de Palavras.",
     "difficulty": "medium",
@@ -840,11 +840,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Morfologia: Classes de Palavras para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -855,13 +855,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Sintaxe: Termos Essenciais",
     "question": "(AOCP / Simulado Questão 30) Em \"Amanheceu subitamente no sertão pernambucano\", o sujeito da oração é classificado como:",
     "options": [
-      "Inexistente (oração sem sujeito).",
+      "Composto.",
       "Oculto ou elíptico.",
       "Indeterminado.",
       "Simples.",
-      "Composto."
+      "Inexistente (oração sem sujeito)."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Sintaxe: Termos Essenciais.",
     "hint": "Atente-se aos conceitos fundamentais de Sintaxe: Termos Essenciais.",
     "difficulty": "hard",
@@ -869,11 +869,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Sintaxe: Termos Essenciais para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -913,13 +913,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Sintaxe: Orações Coordenadas",
     "question": "(AOCP / Simulado Questão 32) No período \"Estude com método, pois a concorrência é acirrada\", a oração iniciada por \"pois\" é classificada como:",
     "options": [
-      "Coordenada sindética explicativa.",
       "Coordenada sindética conclusiva.",
+      "Coordenada sindética explicativa.",
       "Coordenada sindética adversativa.",
       "Coordenada assindética.",
       "Subordinada concessiva."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Sintaxe: Orações Coordenadas.",
     "hint": "Atente-se aos conceitos fundamentais de Sintaxe: Orações Coordenadas.",
     "difficulty": "medium",
@@ -927,11 +927,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Sintaxe: Orações Coordenadas para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -942,13 +942,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Coesão Referencial: Anáfora",
     "question": "(AOCP / Simulado Questão 33) O mecanismo de coesão em que um pronome retoma um termo mencionado anteriormente no texto denomina-se:",
     "options": [
-      "Anáfora.",
-      "Catáfora.",
       "Zeugma.",
+      "Catáfora.",
+      "Anáfora.",
       "Elipse temporal.",
       "Hiperonímia reversa."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Coesão Referencial: Anáfora.",
     "hint": "Atente-se aos conceitos fundamentais de Coesão Referencial: Anáfora.",
     "difficulty": "hard",
@@ -956,11 +956,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Coesão Referencial: Anáfora para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -971,13 +971,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Novo Acordo Ortográfico: Hífen",
     "question": "(AOCP / Simulado Questão 34) Assinale a palavra cuja grafia com hífen está CORRETA pelo Novo Acordo Ortográfico:",
     "options": [
-      "Anti-inflamatório (letras iguais se separam).",
+      "Super-homem (sem hífen).",
       "Auto-escola.",
       "Micro-ondas (unidas sem hífen).",
-      "Super-homem (sem hífen).",
+      "Anti-inflamatório (letras iguais se separam).",
       "Contra-regra."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Novo Acordo Ortográfico: Hífen.",
     "hint": "Atente-se aos conceitos fundamentais de Novo Acordo Ortográfico: Hífen.",
     "difficulty": "easy",
@@ -985,11 +985,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Novo Acordo Ortográfico: Hífen para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1000,13 +1000,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Semântica: Sinônimos e Antônimos",
     "question": "(AOCP / Simulado Questão 35) O vocábulo \"efêmero\" é antônimo de:",
     "options": [
-      "Duradouro.",
+      "Momentâneo.",
       "Passageiro.",
       "Transitório.",
       "Breve.",
-      "Momentâneo."
+      "Duradouro."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Semântica: Sinônimos e Antônimos.",
     "hint": "Atente-se aos conceitos fundamentais de Semântica: Sinônimos e Antônimos.",
     "difficulty": "medium",
@@ -1014,11 +1014,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Semântica: Sinônimos e Antônimos para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -1058,13 +1058,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Morfologia: Classes de Palavras",
     "question": "(AOCP / Simulado Questão 37) Na oração \"O soldado agiu corajosamente\", o termo destacado é morfologicamente:",
     "options": [
-      "Advérbio de modo.",
       "Adjetivo qualificativo.",
+      "Advérbio de modo.",
       "Substantivo comum.",
       "Pronome demonstrativo.",
       "Conjunção subordinativa."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Morfologia: Classes de Palavras.",
     "hint": "Atente-se aos conceitos fundamentais de Morfologia: Classes de Palavras.",
     "difficulty": "easy",
@@ -1072,11 +1072,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Morfologia: Classes de Palavras para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1087,13 +1087,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Sintaxe: Termos Essenciais",
     "question": "(AOCP / Simulado Questão 38) Em \"Amanheceu subitamente no sertão pernambucano\", o sujeito da oração é classificado como:",
     "options": [
-      "Inexistente (oração sem sujeito).",
-      "Oculto ou elíptico.",
       "Indeterminado.",
+      "Oculto ou elíptico.",
+      "Inexistente (oração sem sujeito).",
       "Simples.",
       "Composto."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Sintaxe: Termos Essenciais.",
     "hint": "Atente-se aos conceitos fundamentais de Sintaxe: Termos Essenciais.",
     "difficulty": "medium",
@@ -1101,11 +1101,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Sintaxe: Termos Essenciais para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1116,13 +1116,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Sintaxe: Termos Integrantes",
     "question": "(AOCP / Simulado Questão 39) Na frase \"O oficial necessitava de apoio tático imediato\", o termo \"de apoio tático imediato\" exerce a função de:",
     "options": [
-      "Objeto indireto.",
+      "Adjunto adnominal.",
       "Objeto direto.",
       "Complemento nominal.",
-      "Adjunto adnominal.",
+      "Objeto indireto.",
       "Agente da passiva."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Sintaxe: Termos Integrantes.",
     "hint": "Atente-se aos conceitos fundamentais de Sintaxe: Termos Integrantes.",
     "difficulty": "hard",
@@ -1130,11 +1130,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Sintaxe: Termos Integrantes para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1145,13 +1145,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Sintaxe: Orações Coordenadas",
     "question": "(AOCP / Simulado Questão 40) No período \"Estude com método, pois a concorrência é acirrada\", a oração iniciada por \"pois\" é classificada como:",
     "options": [
-      "Coordenada sindética explicativa.",
+      "Subordinada concessiva.",
       "Coordenada sindética conclusiva.",
       "Coordenada sindética adversativa.",
       "Coordenada assindética.",
-      "Subordinada concessiva."
+      "Coordenada sindética explicativa."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Sintaxe: Orações Coordenadas.",
     "hint": "Atente-se aos conceitos fundamentais de Sintaxe: Orações Coordenadas.",
     "difficulty": "easy",
@@ -1159,11 +1159,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Sintaxe: Orações Coordenadas para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -1203,13 +1203,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Novo Acordo Ortográfico: Hífen",
     "question": "(AOCP / Simulado Questão 42) Assinale a palavra cuja grafia com hífen está CORRETA pelo Novo Acordo Ortográfico:",
     "options": [
-      "Anti-inflamatório (letras iguais se separam).",
       "Auto-escola.",
+      "Anti-inflamatório (letras iguais se separam).",
       "Micro-ondas (unidas sem hífen).",
       "Super-homem (sem hífen).",
       "Contra-regra."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Novo Acordo Ortográfico: Hífen.",
     "hint": "Atente-se aos conceitos fundamentais de Novo Acordo Ortográfico: Hífen.",
     "difficulty": "hard",
@@ -1217,11 +1217,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Novo Acordo Ortográfico: Hífen para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1232,13 +1232,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Semântica: Sinônimos e Antônimos",
     "question": "(AOCP / Simulado Questão 43) O vocábulo \"efêmero\" é antônimo de:",
     "options": [
-      "Duradouro.",
-      "Passageiro.",
       "Transitório.",
+      "Passageiro.",
+      "Duradouro.",
       "Breve.",
       "Momentâneo."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Semântica: Sinônimos e Antônimos.",
     "hint": "Atente-se aos conceitos fundamentais de Semântica: Sinônimos e Antônimos.",
     "difficulty": "easy",
@@ -1246,11 +1246,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Semântica: Sinônimos e Antônimos para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1261,13 +1261,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Semântica: Conotação e Denotação",
     "question": "(AOCP / Simulado Questão 44) A frase que apresenta linguagem estritamente DENOTATIVA (sentido real) é:",
     "options": [
-      "A viatura foi abastecida às 06h00 na sede do batalhão.",
+      "A esperança iluminou o rosto dos novos recrutas.",
       "O policial tinha um coração de pedra diante do perigo.",
       "A notícia caiu como uma bomba no quartel.",
-      "A esperança iluminou o rosto dos novos recrutas.",
+      "A viatura foi abastecida às 06h00 na sede do batalhão.",
       "O tempo voou durante as aulas teóricas do CFSD."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Semântica: Conotação e Denotação.",
     "hint": "Atente-se aos conceitos fundamentais de Semântica: Conotação e Denotação.",
     "difficulty": "medium",
@@ -1275,11 +1275,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Semântica: Conotação e Denotação para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1290,13 +1290,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Morfologia: Classes de Palavras",
     "question": "(AOCP / Simulado Questão 45) Na oração \"O soldado agiu corajosamente\", o termo destacado é morfologicamente:",
     "options": [
-      "Advérbio de modo.",
+      "Conjunção subordinativa.",
       "Adjetivo qualificativo.",
       "Substantivo comum.",
       "Pronome demonstrativo.",
-      "Conjunção subordinativa."
+      "Advérbio de modo."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Morfologia: Classes de Palavras.",
     "hint": "Atente-se aos conceitos fundamentais de Morfologia: Classes de Palavras.",
     "difficulty": "hard",
@@ -1304,11 +1304,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Morfologia: Classes de Palavras para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -1348,13 +1348,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Sintaxe: Termos Integrantes",
     "question": "(AOCP / Simulado Questão 47) Na frase \"O oficial necessitava de apoio tático imediato\", o termo \"de apoio tático imediato\" exerce a função de:",
     "options": [
-      "Objeto indireto.",
       "Objeto direto.",
+      "Objeto indireto.",
       "Complemento nominal.",
       "Adjunto adnominal.",
       "Agente da passiva."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Sintaxe: Termos Integrantes.",
     "hint": "Atente-se aos conceitos fundamentais de Sintaxe: Termos Integrantes.",
     "difficulty": "medium",
@@ -1362,11 +1362,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Sintaxe: Termos Integrantes para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1377,13 +1377,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Sintaxe: Orações Coordenadas",
     "question": "(AOCP / Simulado Questão 48) No período \"Estude com método, pois a concorrência é acirrada\", a oração iniciada por \"pois\" é classificada como:",
     "options": [
-      "Coordenada sindética explicativa.",
-      "Coordenada sindética conclusiva.",
       "Coordenada sindética adversativa.",
+      "Coordenada sindética conclusiva.",
+      "Coordenada sindética explicativa.",
       "Coordenada assindética.",
       "Subordinada concessiva."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Sintaxe: Orações Coordenadas.",
     "hint": "Atente-se aos conceitos fundamentais de Sintaxe: Orações Coordenadas.",
     "difficulty": "hard",
@@ -1391,11 +1391,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Sintaxe: Orações Coordenadas para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1406,13 +1406,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Coesão Referencial: Anáfora",
     "question": "(AOCP / Simulado Questão 49) O mecanismo de coesão em que um pronome retoma um termo mencionado anteriormente no texto denomina-se:",
     "options": [
-      "Anáfora.",
+      "Elipse temporal.",
       "Catáfora.",
       "Zeugma.",
-      "Elipse temporal.",
+      "Anáfora.",
       "Hiperonímia reversa."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Coesão Referencial: Anáfora.",
     "hint": "Atente-se aos conceitos fundamentais de Coesão Referencial: Anáfora.",
     "difficulty": "easy",
@@ -1420,11 +1420,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Coesão Referencial: Anáfora para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1435,13 +1435,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Novo Acordo Ortográfico: Hífen",
     "question": "(AOCP / Simulado Questão 50) Assinale a palavra cuja grafia com hífen está CORRETA pelo Novo Acordo Ortográfico:",
     "options": [
-      "Anti-inflamatório (letras iguais se separam).",
+      "Contra-regra.",
       "Auto-escola.",
       "Micro-ondas (unidas sem hífen).",
       "Super-homem (sem hífen).",
-      "Contra-regra."
+      "Anti-inflamatório (letras iguais se separam)."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A apresenta a resolução correta fundamentada nas normas gramaticais para o tópico de Novo Acordo Ortográfico: Hífen.",
     "hint": "Atente-se aos conceitos fundamentais de Novo Acordo Ortográfico: Hífen.",
     "difficulty": "medium",
@@ -1449,11 +1449,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "REVISÃO TÁTICA: Guarde a definição chave de Novo Acordo Ortográfico: Hífen para gabaritar na prova da PMPE!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo o gabarito oficial da banca.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -1493,13 +1493,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Invasões Holandesas",
     "question": "Em 1630, a esquadra holandesa da Companhia das Índias Ocidentais (WIC) desembarcou em Pernambuco e ocupou inicialmente qual local estratégico?",
     "options": [
-      "Pau Amarelo, avançando sobre Olinda e Recife.",
       "A praia de Boa Viagem.",
+      "Pau Amarelo, avançando sobre Olinda e Recife.",
       "O arquipélago de Fernando de Noronha.",
       "A foz do Rio São Francisco em Petrolina.",
       "O porto de Suape."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "O desembarque neerlandês ocorreu na praia de Pau Amarelo (atual município de Paulista) em fevereiro de 1630, de onde marcharam sobre Olinda.",
     "hint": "Praia de Pau Amarelo, no litoral norte pernambucano.",
     "difficulty": "medium",
@@ -1507,11 +1507,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "DESEMBARQUE HOLANDÊS: Pau Amarelo -> Olinda (incendiada) -> Recife (fortificado)!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1522,13 +1522,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Governo de Nassau",
     "question": "Maurício de Nassau trouxe ao Recife artistas e cientistas de renome europeu. Dentre eles, destacaram-se os pintores:",
     "options": [
-      "Frans Post e Albert Eckhout.",
-      "Jean-Baptiste Debret e Nicolas Taunay.",
       "Cândido Portinari e Tarsila do Amaral.",
+      "Jean-Baptiste Debret e Nicolas Taunay.",
+      "Frans Post e Albert Eckhout.",
       "Aleijadinho e Mestre Ataíde.",
       "Di Cavalcanti e Anita Malfatti."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Frans Post retratou as paisagens e engenhos de Pernambuco, enquanto Albert Eckhout retratou os tipos humanos (indígenas, africanos e mestiços).",
     "hint": "Frans Post (paisagens) e Albert Eckhout (figuras humanas).",
     "difficulty": "hard",
@@ -1536,11 +1536,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "PINTORES DE NASSAU: Frans Post e Albert Eckhout!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1551,13 +1551,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Insurreição Pernambucana",
     "question": "A Batalha dos Montes Guararapes ocorreu em dois confrontos decisivos nos anos de:",
     "options": [
-      "1648 e 1649.",
+      "1817 e 1824.",
       "1630 e 1637.",
       "1710 e 1711.",
-      "1817 e 1824.",
+      "1648 e 1649.",
       "1825 e 1848."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "A Primeira Batalha dos Guararapes ocorreu em 19 de abril de 1648 e a Segunda em 19 de fevereiro de 1649, marcos da expulsão dos holandeses.",
     "hint": "Final da década de 1640: 1648 e 1649.",
     "difficulty": "easy",
@@ -1565,11 +1565,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "GUARARAPES: 1648 (1ª) e 1649 (2ª)! Berço do Exército Brasileiro!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1580,13 +1580,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Guerra dos Mascates",
     "question": "Qual fato político desencadeou diretamente o conflito armado da Guerra dos Mascates em 1710?",
     "options": [
-      "A elevação do povoado do Recife à condição de Vila autônoma com pelourinho próprio.",
+      "A invasão de corsários franceses no porto do Recife.",
       "A abolição dos impostos cobrados pela Câmara de Olinda.",
       "A expulsão dos jesuítas da Capitania de Pernambuco.",
       "A proclamação da República por Bernardo Vieira de Melo.",
-      "A invasão de corsários franceses no porto do Recife."
+      "A elevação do povoado do Recife à condição de Vila autônoma com pelourinho próprio."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "A Carta Régia de 1709 elevou o Recife a vila independente de Olinda com ereção do pelourinho em 1710, provocando a fúria dos nobres olindenses endividados.",
     "hint": "Recife virou vila independente e ganhou pelourinho próprio.",
     "difficulty": "medium",
@@ -1594,11 +1594,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "ESTOPIM DOS MASCATES: Recife virar VILA e sair do controle de Olinda!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -1638,13 +1638,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Confederação do Equador (1824)",
     "question": "Frei Caneca, um dos mártires da Confederação do Equador de 1824, foi condenado à morte e executado por fuzilamento nas imediações do:",
     "options": [
-      "Forte das Cinco Pontas, no Recife.",
       "Forte do Brum, no Porto do Recife.",
+      "Forte das Cinco Pontas, no Recife.",
       "Palácio das Princesas.",
       "Convento de São Francisco, em Olinda.",
       "Quartel do Derby."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Frei Caneca foi fuzilado junto aos muros do Forte das Cinco Pontas em janeiro de 1825, porque os carrascos se recusaram a enforcá-lo.",
     "hint": "Forte das Cinco Pontas, no bairro de São José.",
     "difficulty": "easy",
@@ -1652,11 +1652,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "FREI CANECA: Fuzilado no FORTE DAS CINCO PONTAS!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1667,13 +1667,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Criação da PMPE (1825)",
     "question": "A Polícia Militar de Pernambuco foi instituída em 11 de junho de 1825 no contexto da necessidade de pacificação da província logo após qual grande revolta?",
     "options": [
-      "A Confederação do Equador de 1824.",
-      "A Guerra dos Farrapos.",
       "A Revolução Praieira de 1848.",
+      "A Guerra dos Farrapos.",
+      "A Confederação do Equador de 1824.",
       "A Balaiada no Maranhão.",
       "A Revolta da Vacina."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Após a violenta repressão à Confederação do Equador (1824), D. Pedro I criou o Corpo de Polícia em junho de 1825 para manter a ordem pública na província.",
     "hint": "Criada no ano seguinte à Confederação do Equador (1824 -> 1825).",
     "difficulty": "medium",
@@ -1681,11 +1681,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "1824 (Confederação do Equador) -> 1825 (Criação da gloriosa PMPE)!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1696,13 +1696,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Revolução Praieira",
     "question": "O jornal \"Diário Novo\", localizado na Rua da Praia no Recife, serviu de tribuna e deu o nome aos revolucionários praieiros, associados politicamente ao Partido:",
     "options": [
-      "Liberal (chamados de praieiros).",
+      "Comunista pernambucano.",
       "Conservador (chamados de guabirus).",
       "Restaurador (caramurus).",
-      "Comunista pernambucano.",
+      "Liberal (chamados de praieiros).",
       "Social-democrata."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Os liberais praieiros combatiam os conservadores governistas, chamados de \"guabirus\", liderados pelos barões do açúcar.",
     "hint": "Praieiros eram os LIBERAIS radicais contra os conservadores.",
     "difficulty": "hard",
@@ -1710,11 +1710,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "PRAIEIROS = LIBERAIS do Diário Novo da Rua da Praia!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1725,13 +1725,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Movimentos Sociais em PE",
     "question": "A \"Pedra Bonita\" (1836-1838), em São José do Belmonte no sertão pernambucano, foi um movimento de caráter:",
     "options": [
-      "Messiânico e sebastianista, que acreditava no retorno de D. Sebastião.",
+      "Guerreiro de mercenários holandeses remanescentes.",
       "Abolicionista urbano liderado por intelectuais recifenses.",
       "Separatista inspirado na independência dos Estados Unidos.",
       "Científico de combate às secas por engenheiros ingleses.",
-      "Guerreiro de mercenários holandeses remanescentes."
+      "Messiânico e sebastianista, que acreditava no retorno de D. Sebastião."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "O episódio da Pedra Bonita foi um trágico surto messiânico sebastianista ocorrido no sertão do Pajeú, prometendo que sacrifícios humanos ressuscitariam o rei D. Sebastião.",
     "hint": "Messianismo sebastianista na serra da Pedra Bonita.",
     "difficulty": "easy",
@@ -1739,11 +1739,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "PEDRA BONITA (São José do Belmonte) = MESSIANISMO E SEBASTIANISMO!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -1783,13 +1783,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Quilombo dos Palmares",
     "question": "(AOCP / Simulado História PE Questão 12) Embora situado no atual estado de Alagoas, o Quilombo dos Palmares pertencia territorialmente no século XVII à:",
     "options": [
-      "Capitania de Pernambuco.",
       "Capitania da Bahia.",
+      "Capitania de Pernambuco.",
       "Capitania de Itamaracá.",
       "Capitania do Rio Grande.",
       "Capitania do Maranhão."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Quilombo dos Palmares constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Quilombo dos Palmares.",
     "difficulty": "hard",
@@ -1797,11 +1797,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1812,13 +1812,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Cangaço e a Volante da PMPE",
     "question": "(AOCP / Simulado História PE Questão 13) As tropas da Polícia Militar de Pernambuco que perseguiam os bandos armados de cangaceiros na caatinga eram denominadas:",
     "options": [
-      "Volantes.",
-      "Tropas de Choque.",
       "Legionários do Sertão.",
+      "Tropas de Choque.",
+      "Volantes.",
       "Bandeirantes do Capibaribe.",
       "Dragões da Independência."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Cangaço e a Volante da PMPE constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Cangaço e a Volante da PMPE.",
     "difficulty": "easy",
@@ -1826,11 +1826,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1841,13 +1841,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Patrimônio Imaterial de PE",
     "question": "(AOCP / Simulado História PE Questão 14) O ritmo e dança tradicional pernambucano reconhecido pela UNESCO em 2012 como Patrimônio Cultural Imaterial da Humanidade é o:",
     "options": [
-      "Frevo.",
+      "Coco de roda.",
       "Maracatu rural.",
       "Caboclinho.",
-      "Coco de roda.",
+      "Frevo.",
       "Xaxado sertanejo."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Patrimônio Imaterial de PE constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Patrimônio Imaterial de PE.",
     "difficulty": "medium",
@@ -1855,11 +1855,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1870,13 +1870,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Revolução de 1817 e a Igreja",
     "question": "(AOCP / Simulado História PE Questão 15) O Seminário de Olinda, fundado pelo Bispo Azeredo Coutinho, teve papel crucial na formação intelectual da Revolução de 1817 porque:",
     "options": [
-      "Difundiu ideias iluministas e pensamento científico moderno entre os clérigos.",
+      "Defendia o retorno da Inquisição ao Recife.",
       "Proibiu o ensino da língua portuguesa na colônia.",
       "Fidelizou os padres à Coroa Absolutista de Lisboa.",
       "Era exclusivo para nobres militares holandeses.",
-      "Defendia o retorno da Inquisição ao Recife."
+      "Difundiu ideias iluministas e pensamento científico moderno entre os clérigos."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Revolução de 1817 e a Igreja constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Revolução de 1817 e a Igreja.",
     "difficulty": "hard",
@@ -1884,11 +1884,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -1928,13 +1928,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Criação do Porto de Suape",
     "question": "(AOCP / Simulado História PE Questão 17) O Complexo Industrial Portuário de Suape, localizado nos municípios de Ipojuca e Cabo de Santo Agostinho, foi planejado no século XX para:",
     "options": [
-      "Polo petroquímico e portuário de águas profundas do Nordeste.",
       "Mineração de carvão mineral.",
+      "Polo petroquímico e portuário de águas profundas do Nordeste.",
       "Extração de ouro e pedras preciosas.",
       "Centro exclusivo de agricultura familiar.",
       "Base de lançamento de foguetes espaciais."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Criação do Porto de Suape constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Criação do Porto de Suape.",
     "difficulty": "medium",
@@ -1942,11 +1942,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1957,13 +1957,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Guerra dos Mascates - Personagens",
     "question": "(AOCP / Simulado História PE Questão 18) Dentre as lideranças de Olinda que se rebelaram contra a autonomia do Recife em 1710 destacou-se:",
     "options": [
-      "Bernardo Vieira de Melo.",
-      "Matias de Albuquerque.",
       "Filipe dos Santos.",
+      "Matias de Albuquerque.",
+      "Bernardo Vieira de Melo.",
       "Tiradentes.",
       "Domingos Jorge Velho."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Guerra dos Mascates - Personagens constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Guerra dos Mascates - Personagens.",
     "difficulty": "hard",
@@ -1971,11 +1971,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -1986,13 +1986,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Tratado de Utrecht e Limites",
     "question": "(AOCP / Simulado História PE Questão 19) A consolidação territorial da Capitania de Pernambuco ao longo dos séculos XVII e XVIII deu-se pela expansão da:",
     "options": [
-      "Pecuária extensiva em direção ao Rio São Francisco e Sertão.",
+      "Pesca da baleia no arquipélago de Fernando de Noronha.",
       "Mineração de carvão mineral na Zona da Mata.",
       "Extração de borracha em Caruaru.",
-      "Pesca da baleia no arquipélago de Fernando de Noronha.",
+      "Pecuária extensiva em direção ao Rio São Francisco e Sertão.",
       "Exportação de soja nos brejos de altitude."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Tratado de Utrecht e Limites constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Tratado de Utrecht e Limites.",
     "difficulty": "easy",
@@ -2000,11 +2000,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2015,13 +2015,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Quilombo dos Palmares",
     "question": "(AOCP / Simulado História PE Questão 20) Embora situado no atual estado de Alagoas, o Quilombo dos Palmares pertencia territorialmente no século XVII à:",
     "options": [
-      "Capitania de Pernambuco.",
+      "Capitania do Maranhão.",
       "Capitania da Bahia.",
       "Capitania de Itamaracá.",
       "Capitania do Rio Grande.",
-      "Capitania do Maranhão."
+      "Capitania de Pernambuco."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Quilombo dos Palmares constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Quilombo dos Palmares.",
     "difficulty": "medium",
@@ -2029,11 +2029,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -2073,13 +2073,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Patrimônio Imaterial de PE",
     "question": "(AOCP / Simulado História PE Questão 22) O ritmo e dança tradicional pernambucano reconhecido pela UNESCO em 2012 como Patrimônio Cultural Imaterial da Humanidade é o:",
     "options": [
-      "Frevo.",
       "Maracatu rural.",
+      "Frevo.",
       "Caboclinho.",
       "Coco de roda.",
       "Xaxado sertanejo."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Patrimônio Imaterial de PE constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Patrimônio Imaterial de PE.",
     "difficulty": "easy",
@@ -2087,11 +2087,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2102,13 +2102,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Revolução de 1817 e a Igreja",
     "question": "(AOCP / Simulado História PE Questão 23) O Seminário de Olinda, fundado pelo Bispo Azeredo Coutinho, teve papel crucial na formação intelectual da Revolução de 1817 porque:",
     "options": [
-      "Difundiu ideias iluministas e pensamento científico moderno entre os clérigos.",
-      "Proibiu o ensino da língua portuguesa na colônia.",
       "Fidelizou os padres à Coroa Absolutista de Lisboa.",
+      "Proibiu o ensino da língua portuguesa na colônia.",
+      "Difundiu ideias iluministas e pensamento científico moderno entre os clérigos.",
       "Era exclusivo para nobres militares holandeses.",
       "Defendia o retorno da Inquisição ao Recife."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Revolução de 1817 e a Igreja constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Revolução de 1817 e a Igreja.",
     "difficulty": "medium",
@@ -2116,11 +2116,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2131,13 +2131,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Frei Caneca e o Tífis Peloponense",
     "question": "(AOCP / Simulado História PE Questão 24) O principal veículo de imprensa panfletária utilizado por Frei Caneca para criticar o absolutismo imperial chamava-se:",
     "options": [
-      "O Tífis Pernambucano.",
+      "A Sentinela da Liberdade.",
       "O Diário de Pernambuco.",
       "A Gazeta do Recife.",
-      "A Sentinela da Liberdade.",
+      "O Tífis Pernambucano.",
       "O Correio Braziliense."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Frei Caneca e o Tífis Peloponense constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Frei Caneca e o Tífis Peloponense.",
     "difficulty": "hard",
@@ -2145,11 +2145,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2160,13 +2160,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Criação do Porto de Suape",
     "question": "(AOCP / Simulado História PE Questão 25) O Complexo Industrial Portuário de Suape, localizado nos municípios de Ipojuca e Cabo de Santo Agostinho, foi planejado no século XX para:",
     "options": [
-      "Polo petroquímico e portuário de águas profundas do Nordeste.",
+      "Base de lançamento de foguetes espaciais.",
       "Mineração de carvão mineral.",
       "Extração de ouro e pedras preciosas.",
       "Centro exclusivo de agricultura familiar.",
-      "Base de lançamento de foguetes espaciais."
+      "Polo petroquímico e portuário de águas profundas do Nordeste."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Criação do Porto de Suape constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Criação do Porto de Suape.",
     "difficulty": "easy",
@@ -2174,11 +2174,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -2218,13 +2218,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Tratado de Utrecht e Limites",
     "question": "(AOCP / Simulado História PE Questão 27) A consolidação territorial da Capitania de Pernambuco ao longo dos séculos XVII e XVIII deu-se pela expansão da:",
     "options": [
-      "Pecuária extensiva em direção ao Rio São Francisco e Sertão.",
       "Mineração de carvão mineral na Zona da Mata.",
+      "Pecuária extensiva em direção ao Rio São Francisco e Sertão.",
       "Extração de borracha em Caruaru.",
       "Pesca da baleia no arquipélago de Fernando de Noronha.",
       "Exportação de soja nos brejos de altitude."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Tratado de Utrecht e Limites constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Tratado de Utrecht e Limites.",
     "difficulty": "hard",
@@ -2232,11 +2232,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2247,13 +2247,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Quilombo dos Palmares",
     "question": "(AOCP / Simulado História PE Questão 28) Embora situado no atual estado de Alagoas, o Quilombo dos Palmares pertencia territorialmente no século XVII à:",
     "options": [
-      "Capitania de Pernambuco.",
-      "Capitania da Bahia.",
       "Capitania de Itamaracá.",
+      "Capitania da Bahia.",
+      "Capitania de Pernambuco.",
       "Capitania do Rio Grande.",
       "Capitania do Maranhão."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Quilombo dos Palmares constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Quilombo dos Palmares.",
     "difficulty": "easy",
@@ -2261,11 +2261,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2276,13 +2276,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Cangaço e a Volante da PMPE",
     "question": "(AOCP / Simulado História PE Questão 29) As tropas da Polícia Militar de Pernambuco que perseguiam os bandos armados de cangaceiros na caatinga eram denominadas:",
     "options": [
-      "Volantes.",
+      "Bandeirantes do Capibaribe.",
       "Tropas de Choque.",
       "Legionários do Sertão.",
-      "Bandeirantes do Capibaribe.",
+      "Volantes.",
       "Dragões da Independência."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Cangaço e a Volante da PMPE constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Cangaço e a Volante da PMPE.",
     "difficulty": "medium",
@@ -2290,11 +2290,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2305,13 +2305,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Patrimônio Imaterial de PE",
     "question": "(AOCP / Simulado História PE Questão 30) O ritmo e dança tradicional pernambucano reconhecido pela UNESCO em 2012 como Patrimônio Cultural Imaterial da Humanidade é o:",
     "options": [
-      "Frevo.",
+      "Xaxado sertanejo.",
       "Maracatu rural.",
       "Caboclinho.",
       "Coco de roda.",
-      "Xaxado sertanejo."
+      "Frevo."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Patrimônio Imaterial de PE constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Patrimônio Imaterial de PE.",
     "difficulty": "hard",
@@ -2319,11 +2319,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -2363,13 +2363,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Frei Caneca e o Tífis Peloponense",
     "question": "(AOCP / Simulado História PE Questão 32) O principal veículo de imprensa panfletária utilizado por Frei Caneca para criticar o absolutismo imperial chamava-se:",
     "options": [
-      "O Tífis Pernambucano.",
       "O Diário de Pernambuco.",
+      "O Tífis Pernambucano.",
       "A Gazeta do Recife.",
       "A Sentinela da Liberdade.",
       "O Correio Braziliense."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Frei Caneca e o Tífis Peloponense constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Frei Caneca e o Tífis Peloponense.",
     "difficulty": "medium",
@@ -2377,11 +2377,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2392,13 +2392,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Criação do Porto de Suape",
     "question": "(AOCP / Simulado História PE Questão 33) O Complexo Industrial Portuário de Suape, localizado nos municípios de Ipojuca e Cabo de Santo Agostinho, foi planejado no século XX para:",
     "options": [
-      "Polo petroquímico e portuário de águas profundas do Nordeste.",
-      "Mineração de carvão mineral.",
       "Extração de ouro e pedras preciosas.",
+      "Mineração de carvão mineral.",
+      "Polo petroquímico e portuário de águas profundas do Nordeste.",
       "Centro exclusivo de agricultura familiar.",
       "Base de lançamento de foguetes espaciais."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Criação do Porto de Suape constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Criação do Porto de Suape.",
     "difficulty": "hard",
@@ -2406,11 +2406,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2421,13 +2421,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Guerra dos Mascates - Personagens",
     "question": "(AOCP / Simulado História PE Questão 34) Dentre as lideranças de Olinda que se rebelaram contra a autonomia do Recife em 1710 destacou-se:",
     "options": [
-      "Bernardo Vieira de Melo.",
+      "Tiradentes.",
       "Matias de Albuquerque.",
       "Filipe dos Santos.",
-      "Tiradentes.",
+      "Bernardo Vieira de Melo.",
       "Domingos Jorge Velho."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Guerra dos Mascates - Personagens constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Guerra dos Mascates - Personagens.",
     "difficulty": "easy",
@@ -2435,11 +2435,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2450,13 +2450,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Tratado de Utrecht e Limites",
     "question": "(AOCP / Simulado História PE Questão 35) A consolidação territorial da Capitania de Pernambuco ao longo dos séculos XVII e XVIII deu-se pela expansão da:",
     "options": [
-      "Pecuária extensiva em direção ao Rio São Francisco e Sertão.",
+      "Exportação de soja nos brejos de altitude.",
       "Mineração de carvão mineral na Zona da Mata.",
       "Extração de borracha em Caruaru.",
       "Pesca da baleia no arquipélago de Fernando de Noronha.",
-      "Exportação de soja nos brejos de altitude."
+      "Pecuária extensiva em direção ao Rio São Francisco e Sertão."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Tratado de Utrecht e Limites constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Tratado de Utrecht e Limites.",
     "difficulty": "medium",
@@ -2464,11 +2464,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -2508,13 +2508,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Cangaço e a Volante da PMPE",
     "question": "(AOCP / Simulado História PE Questão 37) As tropas da Polícia Militar de Pernambuco que perseguiam os bandos armados de cangaceiros na caatinga eram denominadas:",
     "options": [
-      "Volantes.",
       "Tropas de Choque.",
+      "Volantes.",
       "Legionários do Sertão.",
       "Bandeirantes do Capibaribe.",
       "Dragões da Independência."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Cangaço e a Volante da PMPE constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Cangaço e a Volante da PMPE.",
     "difficulty": "easy",
@@ -2522,11 +2522,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2537,13 +2537,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Patrimônio Imaterial de PE",
     "question": "(AOCP / Simulado História PE Questão 38) O ritmo e dança tradicional pernambucano reconhecido pela UNESCO em 2012 como Patrimônio Cultural Imaterial da Humanidade é o:",
     "options": [
-      "Frevo.",
-      "Maracatu rural.",
       "Caboclinho.",
+      "Maracatu rural.",
+      "Frevo.",
       "Coco de roda.",
       "Xaxado sertanejo."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Patrimônio Imaterial de PE constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Patrimônio Imaterial de PE.",
     "difficulty": "medium",
@@ -2551,11 +2551,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2566,13 +2566,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Revolução de 1817 e a Igreja",
     "question": "(AOCP / Simulado História PE Questão 39) O Seminário de Olinda, fundado pelo Bispo Azeredo Coutinho, teve papel crucial na formação intelectual da Revolução de 1817 porque:",
     "options": [
-      "Difundiu ideias iluministas e pensamento científico moderno entre os clérigos.",
+      "Era exclusivo para nobres militares holandeses.",
       "Proibiu o ensino da língua portuguesa na colônia.",
       "Fidelizou os padres à Coroa Absolutista de Lisboa.",
-      "Era exclusivo para nobres militares holandeses.",
+      "Difundiu ideias iluministas e pensamento científico moderno entre os clérigos.",
       "Defendia o retorno da Inquisição ao Recife."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Revolução de 1817 e a Igreja constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Revolução de 1817 e a Igreja.",
     "difficulty": "hard",
@@ -2580,11 +2580,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2595,13 +2595,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Frei Caneca e o Tífis Peloponense",
     "question": "(AOCP / Simulado História PE Questão 40) O principal veículo de imprensa panfletária utilizado por Frei Caneca para criticar o absolutismo imperial chamava-se:",
     "options": [
-      "O Tífis Pernambucano.",
+      "O Correio Braziliense.",
       "O Diário de Pernambuco.",
       "A Gazeta do Recife.",
       "A Sentinela da Liberdade.",
-      "O Correio Braziliense."
+      "O Tífis Pernambucano."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Frei Caneca e o Tífis Peloponense constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Frei Caneca e o Tífis Peloponense.",
     "difficulty": "easy",
@@ -2609,11 +2609,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -2653,13 +2653,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Guerra dos Mascates - Personagens",
     "question": "(AOCP / Simulado História PE Questão 42) Dentre as lideranças de Olinda que se rebelaram contra a autonomia do Recife em 1710 destacou-se:",
     "options": [
-      "Bernardo Vieira de Melo.",
       "Matias de Albuquerque.",
+      "Bernardo Vieira de Melo.",
       "Filipe dos Santos.",
       "Tiradentes.",
       "Domingos Jorge Velho."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Guerra dos Mascates - Personagens constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Guerra dos Mascates - Personagens.",
     "difficulty": "hard",
@@ -2667,11 +2667,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2682,13 +2682,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Tratado de Utrecht e Limites",
     "question": "(AOCP / Simulado História PE Questão 43) A consolidação territorial da Capitania de Pernambuco ao longo dos séculos XVII e XVIII deu-se pela expansão da:",
     "options": [
-      "Pecuária extensiva em direção ao Rio São Francisco e Sertão.",
-      "Mineração de carvão mineral na Zona da Mata.",
       "Extração de borracha em Caruaru.",
+      "Mineração de carvão mineral na Zona da Mata.",
+      "Pecuária extensiva em direção ao Rio São Francisco e Sertão.",
       "Pesca da baleia no arquipélago de Fernando de Noronha.",
       "Exportação de soja nos brejos de altitude."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Tratado de Utrecht e Limites constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Tratado de Utrecht e Limites.",
     "difficulty": "easy",
@@ -2696,11 +2696,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2711,13 +2711,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Quilombo dos Palmares",
     "question": "(AOCP / Simulado História PE Questão 44) Embora situado no atual estado de Alagoas, o Quilombo dos Palmares pertencia territorialmente no século XVII à:",
     "options": [
-      "Capitania de Pernambuco.",
+      "Capitania do Rio Grande.",
       "Capitania da Bahia.",
       "Capitania de Itamaracá.",
-      "Capitania do Rio Grande.",
+      "Capitania de Pernambuco.",
       "Capitania do Maranhão."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Quilombo dos Palmares constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Quilombo dos Palmares.",
     "difficulty": "medium",
@@ -2725,11 +2725,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2740,13 +2740,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Cangaço e a Volante da PMPE",
     "question": "(AOCP / Simulado História PE Questão 45) As tropas da Polícia Militar de Pernambuco que perseguiam os bandos armados de cangaceiros na caatinga eram denominadas:",
     "options": [
-      "Volantes.",
+      "Dragões da Independência.",
       "Tropas de Choque.",
       "Legionários do Sertão.",
       "Bandeirantes do Capibaribe.",
-      "Dragões da Independência."
+      "Volantes."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Cangaço e a Volante da PMPE constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Cangaço e a Volante da PMPE.",
     "difficulty": "hard",
@@ -2754,11 +2754,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   },
   {
@@ -2798,13 +2798,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Revolução de 1817 e a Igreja",
     "question": "(AOCP / Simulado História PE Questão 47) O Seminário de Olinda, fundado pelo Bispo Azeredo Coutinho, teve papel crucial na formação intelectual da Revolução de 1817 porque:",
     "options": [
-      "Difundiu ideias iluministas e pensamento científico moderno entre os clérigos.",
       "Proibiu o ensino da língua portuguesa na colônia.",
+      "Difundiu ideias iluministas e pensamento científico moderno entre os clérigos.",
       "Fidelizou os padres à Coroa Absolutista de Lisboa.",
       "Era exclusivo para nobres militares holandeses.",
       "Defendia o retorno da Inquisição ao Recife."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Revolução de 1817 e a Igreja constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Revolução de 1817 e a Igreja.",
     "difficulty": "medium",
@@ -2812,11 +2812,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2827,13 +2827,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Frei Caneca e o Tífis Peloponense",
     "question": "(AOCP / Simulado História PE Questão 48) O principal veículo de imprensa panfletária utilizado por Frei Caneca para criticar o absolutismo imperial chamava-se:",
     "options": [
-      "O Tífis Pernambucano.",
-      "O Diário de Pernambuco.",
       "A Gazeta do Recife.",
+      "O Diário de Pernambuco.",
+      "O Tífis Pernambucano.",
       "A Sentinela da Liberdade.",
       "O Correio Braziliense."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Frei Caneca e o Tífis Peloponense constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Frei Caneca e o Tífis Peloponense.",
     "difficulty": "hard",
@@ -2841,11 +2841,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2856,13 +2856,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Criação do Porto de Suape",
     "question": "(AOCP / Simulado História PE Questão 49) O Complexo Industrial Portuário de Suape, localizado nos municípios de Ipojuca e Cabo de Santo Agostinho, foi planejado no século XX para:",
     "options": [
-      "Polo petroquímico e portuário de águas profundas do Nordeste.",
+      "Centro exclusivo de agricultura familiar.",
       "Mineração de carvão mineral.",
       "Extração de ouro e pedras preciosas.",
-      "Centro exclusivo de agricultura familiar.",
+      "Polo petroquímico e portuário de águas profundas do Nordeste.",
       "Base de lançamento de foguetes espaciais."
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Criação do Porto de Suape constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Criação do Porto de Suape.",
     "difficulty": "easy",
@@ -2870,11 +2870,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
+      "E": "Alternativa incorreta."
     }
   },
   {
@@ -2885,13 +2885,13 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "topicoEdital": "Guerra dos Mascates - Personagens",
     "question": "(AOCP / Simulado História PE Questão 50) Dentre as lideranças de Olinda que se rebelaram contra a autonomia do Recife em 1710 destacou-se:",
     "options": [
-      "Bernardo Vieira de Melo.",
+      "Domingos Jorge Velho.",
       "Matias de Albuquerque.",
       "Filipe dos Santos.",
       "Tiradentes.",
-      "Domingos Jorge Velho."
+      "Bernardo Vieira de Melo."
     ],
-    "correctIndex": 0,
+    "correctIndex": 4,
     "explanation": "Gabarito Oficial AOCP: A alternativa A retrata com exatidão os fatos históricos do tema Guerra dos Mascates - Personagens constantes no Edital da PMPE.",
     "hint": "Lembre-se do contexto histórico de Guerra dos Mascates - Personagens.",
     "difficulty": "medium",
@@ -2899,11 +2899,11 @@ export const BANCO_QUESTOES_BLOCO_1: QuizQuestion[] = [
     "simuladoOrigem": "banco_bloco1",
     "dicaMacete": "BIZU DE HISTÓRIA DE PE: Foque sempre nos marcos de liberdade e bravura do povo pernambucano!",
     "analiseAlternativas": {
-      "A": "Alternativa correta segundo a historiografia consagrada de PE.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "Alternativa incorreta.",
+      "B": "Alternativa incorreta.",
+      "C": "Alternativa incorreta.",
+      "D": "Alternativa incorreta.",
+      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
     }
   }
 ];

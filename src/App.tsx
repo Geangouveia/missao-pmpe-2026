@@ -235,7 +235,7 @@ export function App() {
   };
 
   // Filtrar dados pela categoria/bloco E pelo simulado/semana selecionado
-  const filterByBlockOrCat = <T extends { categoryId: CategoryId; bloco?: string; simuladoOrigem?: string }>(item: T) => {
+  const filterByBlockOrCat = <T extends { id?: string; categoryId: CategoryId; bloco?: string; simuladoOrigem?: string }>(item: T) => {
     // 1. Filtro por Categoria ou Bloco Oficial PMPE
     let matchCat = true;
     if (selectedCategory === 'bloco_1') matchCat = item.bloco === 'bloco_1';
@@ -245,7 +245,8 @@ export function App() {
 
     // 2. Filtro por Origem do Simulado / Semana
     let matchSim = true;
-    if (selectedSimulado === 'semana_1') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('1ª Semana') : true;
+    if (selectedSimulado === 'edital_200') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('Edital 200') : (item.id ? item.id.startsWith('ed200-') : true);
+    else if (selectedSimulado === 'semana_1') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('1ª Semana') : true;
     else if (selectedSimulado === 'semana_2') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('2ª Semana') : true;
     else if (selectedSimulado === 'semana_3') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('3ª Semana') : true;
     else if (selectedSimulado === 'semana_4') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('4ª Semana') : true;
@@ -309,13 +310,15 @@ export function App() {
     addXp(result.xpEarned);
 
     if (currentUser) {
-      const simLabel = selectedSimulado === 'aocp_elite'
-        ? 'Caderno Elite AOCP'
-        : selectedSimulado === 'aocp_especial'
-          ? 'Simulado Especial AOCP'
-          : selectedSimulado !== 'all'
-            ? `Simulado ${selectedSimulado.replace('_', ' ').toUpperCase()}`
-            : 'Simulado Geral PMPE';
+      const simLabel = selectedSimulado === 'edital_200'
+        ? 'Super Caderno Edital AOCP (200Q)'
+        : selectedSimulado === 'aocp_elite'
+          ? 'Caderno Elite AOCP'
+          : selectedSimulado === 'aocp_especial'
+            ? 'Simulado Especial AOCP'
+            : selectedSimulado !== 'all'
+              ? `Simulado ${selectedSimulado.replace('_', ' ').toUpperCase()}`
+              : 'Simulado Geral PMPE';
 
       recordQuizCompletion(currentUser, {
         simuladoName: simLabel,
