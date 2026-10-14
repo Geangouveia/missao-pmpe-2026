@@ -81,6 +81,7 @@ interface MatchGameProps {
     xpEarned: number;
     timeTaken: number;
     mistakes: number;
+    completedLevels?: number[];
   }) => void;
   onExit: () => void;
   onAwardXp?: (amount: number) => void;
@@ -287,7 +288,8 @@ export const MatchGame: React.FC<MatchGameProps> = ({ pairs, onFinish, onExit, o
       score: finalScore,
       xpEarned: totalXpWon,
       timeTaken: seconds,
-      mistakes: totalMistakes
+      mistakes: totalMistakes,
+      completedLevels
     });
   };
 

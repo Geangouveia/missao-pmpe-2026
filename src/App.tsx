@@ -44,37 +44,75 @@ export function App() {
     return null;
   });
 
-  // Estado do Jogador com mesclagem garantida de todas as 26 conquistas militares
-  const [stats, setStats] = useState<PlayerStats>(() => {
-    const saved = localStorage.getItem('neuroquest_pmpe_stats');
+  // Gerador de chave exclusiva por usuário para isolamento absoluto de conquistas e dados
+  const getUserStatsKey = useCallback((userName: string | null | undefined): string => {
+    if (!userName || !userName.trim()) return 'pmpe_user_stats_guest';
+    const safe = userName.trim().toLowerCase().replace(/[^a-z0-9_-]/g, '_');
+    return `pmpe_user_stats_${safe}`;
+  }, []);
+
+  // Retorna estado 100% limpo e zerado para novos recrutas (0 conquistas, 0 XP, nível 1)
+  const getCleanPlayerStats = useCallback((): PlayerStats => ({
+    xp: 0,
+    level: 1,
+    streakDays: 1,
+    totalAnswered: 0,
+    correctAnswers: 0,
+    bossesDefeated: 0,
+    matchesCompleted: 0,
+    flashcardsMastered: 0,
+    achievements: INITIAL_ACHIEVEMENTS.map((ach) => ({
+      ...ach,
+      unlocked: false,
+      unlockedAt: undefined,
+    })),
+  }), []);
+
+  // Carrega os dados específicos e isolados do usuário
+  const loadUserStats = useCallback((userName: string | null | undefined): PlayerStats => {
+    if (!userName) return getCleanPlayerStats();
+    const userKey = getUserStatsKey(userName);
+    let saved = localStorage.getItem(userKey);
+
+    // Migração suave exclusiva para a conta titular do Comandante Gean (preserva histórico)
+    if (!saved && isMasterUser(userName)) {
+      saved = localStorage.getItem('neuroquest_pmpe_stats');
+    }
+
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        const existingMap = new Map<string, Achievement>((parsed.achievements || []).map((a: Achievement) => [a.id, a]));
+        const existingMap = new Map<string, Achievement>(
+          (parsed.achievements || []).map((a: Achievement) => [a.id, a])
+        );
         const mergedAchievements = INITIAL_ACHIEVEMENTS.map((initAch) => {
           const found = existingMap.get(initAch.id);
-          return found ? { ...initAch, unlocked: found.unlocked, unlockedAt: found.unlockedAt } : initAch;
+          return found
+            ? { ...initAch, unlocked: !!found.unlocked, unlockedAt: found.unlockedAt }
+            : { ...initAch, unlocked: false, unlockedAt: undefined };
         });
         return {
-          ...parsed,
+          xp: typeof parsed.xp === 'number' ? parsed.xp : 0,
+          level: typeof parsed.level === 'number' ? parsed.level : 1,
+          streakDays: typeof parsed.streakDays === 'number' ? parsed.streakDays : 1,
+          totalAnswered: typeof parsed.totalAnswered === 'number' ? parsed.totalAnswered : 0,
+          correctAnswers: typeof parsed.correctAnswers === 'number' ? parsed.correctAnswers : 0,
+          bossesDefeated: typeof parsed.bossesDefeated === 'number' ? parsed.bossesDefeated : 0,
+          matchesCompleted: typeof parsed.matchesCompleted === 'number' ? parsed.matchesCompleted : 0,
+          flashcardsMastered: typeof parsed.flashcardsMastered === 'number' ? parsed.flashcardsMastered : 0,
           achievements: mergedAchievements,
         };
       } catch {
         // Fallback
       }
     }
-    return {
-      xp: 0,
-      level: 1,
-      streakDays: 1,
-      totalAnswered: 0,
-      correctAnswers: 0,
-      bossesDefeated: 0,
-      matchesCompleted: 0,
-      flashcardsMastered: 0,
-      achievements: INITIAL_ACHIEVEMENTS,
-    };
-  });
+
+    // Novo usuário cadastrado: 100% zerado e sem conquistas prévias!
+    return getCleanPlayerStats();
+  }, [getUserStatsKey, getCleanPlayerStats]);
+
+  // Estado do Jogador carregado EXCLUSIVAMENTE para o usuário logado
+  const [stats, setStats] = useState<PlayerStats>(() => loadUserStats(currentUser));
 
   // Som mudo/desmudo
   const [isMuted, setIsMuted] = useState(() => sound.getIsMuted());
@@ -142,20 +180,24 @@ export function App() {
     }
   }, [currentUser]);
 
-  // Persistir stats
+  // Persistir stats EXCLUSIVAMENTE na chave do usuário atual logado
   useEffect(() => {
-    localStorage.setItem('neuroquest_pmpe_stats', JSON.stringify(stats));
-  }, [stats]);
+    if (currentUser) {
+      const userKey = getUserStatsKey(currentUser);
+      localStorage.setItem(userKey, JSON.stringify(stats));
+    }
+  }, [stats, currentUser, getUserStatsKey]);
 
-  // Atualizar e calcular Sequência Diária (Streak) de Estudos Militar
+  // Atualizar e calcular Sequência Diária (Streak) de Estudos Militar isolada por guerreiro
   useEffect(() => {
+    if (!currentUser) return;
     try {
       const today = new Date().toISOString().split('T')[0];
-      const lastDate = localStorage.getItem('pmpe_last_study_date');
+      const streakUserKey = `pmpe_last_study_date_${currentUser.trim().toLowerCase()}`;
+      const lastDate = localStorage.getItem(streakUserKey);
 
       if (!lastDate) {
-        localStorage.setItem('pmpe_last_study_date', today);
-        setStats((prev) => ({ ...prev, streakDays: Math.max(1, prev.streakDays) }));
+        localStorage.setItem(streakUserKey, today);
       } else if (lastDate !== today) {
         const last = new Date(lastDate);
         const cur = new Date(today);
@@ -164,19 +206,21 @@ export function App() {
 
         if (diffDays === 1) {
           // Dia consecutivo: aviva a chama e incrementa streak
-          const newStreak = (stats.streakDays || 1) + 1;
-          localStorage.setItem('pmpe_last_study_date', today);
-          setStats((prev) => ({ ...prev, streakDays: newStreak }));
+          localStorage.setItem(streakUserKey, today);
+          setStats((prev) => {
+            const newStreak = (prev.streakDays || 1) + 1;
+            return { ...prev, streakDays: newStreak };
+          });
         } else if (diffDays > 1) {
           // Quebrou a sequência
-          localStorage.setItem('pmpe_last_study_date', today);
+          localStorage.setItem(streakUserKey, today);
           setStats((prev) => ({ ...prev, streakDays: 1 }));
         }
       }
     } catch {
       // fallback
     }
-  }, []);
+  }, [currentUser]);
 
   // Função para adicionar XP e recalcular nível
   const addXp = useCallback((amount: number) => {
@@ -223,13 +267,19 @@ export function App() {
       const nextTotal = prev.totalAnswered + 1;
       const nextCorrect = prev.correctAnswers + (isCorrect ? 1 : 0);
 
-      // Verificação automática de marcos militares (patentes por volume e vigília)
-      const toUnlock: string[] = ['first-win'];
+      // Verificação automática de marcos militares (patentes por volume, XP e vigília)
+      const toUnlock: string[] = ['recruit', 'first-win'];
       if (nextTotal >= 25) toUnlock.push('soldier-25');
       if (nextTotal >= 50) toUnlock.push('cabo-50');
       if (nextTotal >= 100) toUnlock.push('sargento-100');
       if (nextTotal >= 200) toUnlock.push('subtenente-200');
+      if (nextTotal >= 350) toUnlock.push('aspirante-350');
       if (nextTotal >= 500) toUnlock.push('oficial-500');
+      if (nextTotal >= 1000) toUnlock.push('coronel-1000');
+
+      if (newXp >= 1000) toUnlock.push('xp-cadet-1000');
+      if (newXp >= 5000) toUnlock.push('xp-capitao-5000');
+      if (newXp >= 10000) toUnlock.push('xp-general-10000');
 
       const hour = new Date().getHours();
       if (hour < 8) toUnlock.push('early-bird');
@@ -383,8 +433,16 @@ export function App() {
     unlockAchievement('first-win');
     if (result.maxCombo >= 5) unlockAchievement('combo-5');
     if (result.maxCombo >= 10) unlockAchievement('combo-10');
+    if (result.maxCombo >= 15) unlockAchievement('combo-15');
     if (result.maxCombo >= 20) unlockAchievement('combo-20');
+    if (result.maxCombo >= 30) unlockAchievement('combo-30');
     if (result.correctCount >= 10) unlockAchievement('survival-veteran');
+    if (result.correctCount >= 25) unlockAchievement('survival-25');
+    if (result.correctCount >= 50) unlockAchievement('survival-50');
+
+    if (result.totalCount >= 5 && result.correctCount === result.totalCount) {
+      unlockAchievement('first-perfect');
+    }
 
     if (result.subjectBreakdown) {
       if ((result.subjectBreakdown['historia_pe']?.correct || 0) > 0) unlockAchievement('pe-master');
@@ -393,6 +451,8 @@ export function App() {
       if ((result.subjectBreakdown['raciocinio']?.correct || 0) > 0) unlockAchievement('rlm-strategist');
       if ((result.subjectBreakdown['informatica']?.correct || 0) > 0) unlockAchievement('info-operator');
       if ((result.subjectBreakdown['portugues']?.correct || 0) > 0) unlockAchievement('portugues-mestre');
+      if ((result.subjectBreakdown['legislacao_pmpe']?.correct || 0) > 0) unlockAchievement('estatuto-expert');
+      if ((result.subjectBreakdown['penal']?.correct || 0) > 0 || (result.subjectBreakdown['leis_especiais']?.correct || 0) > 0) unlockAchievement('penal-tactical');
     }
 
     const accuracy = Math.round((result.correctCount / Math.max(1, result.totalCount)) * 100);
@@ -423,6 +483,7 @@ export function App() {
     xpEarned: number;
     timeTaken: number;
     mistakes: number;
+    completedLevels?: number[];
   }) => {
     // XP já foi concedido gradualmente a cada nível superado via onAwardXp
     setStats((prev) => ({
@@ -434,6 +495,11 @@ export function App() {
     if (result.mistakes === 0) {
       unlockAchievement('matrix-master');
     }
+    if (result.completedLevels?.includes(1)) unlockAchievement('match-level-1');
+    if (result.completedLevels?.includes(2)) unlockAchievement('match-level-2');
+    if (result.completedLevels?.includes(3)) unlockAchievement('match-level-3');
+    if (result.completedLevels?.includes(4)) unlockAchievement('match-level-4');
+    if (result.completedLevels?.includes(5)) unlockAchievement('match-level-5');
 
     setSummaryData({
       title: 'Conexão Tática Estabelecida!',
@@ -461,6 +527,12 @@ export function App() {
         bossesDefeated: prev.bossesDefeated + 1,
       }));
       unlockAchievement('boss-slayer');
+      if (result.bossDefeatedName?.includes('Corte') || result.bossDefeatedName?.includes('Fantasma')) {
+        unlockAchievement('boss-phantom');
+      }
+      if (result.bossDefeatedName?.includes('CFSD') || result.bossDefeatedName?.includes('Instrutor')) {
+        unlockAchievement('boss-cfsd');
+      }
     }
 
     setSummaryData({
@@ -493,6 +565,9 @@ export function App() {
     if (stats.flashcardsMastered + result.cardsMastered >= 30) {
       unlockAchievement('card-vault-30');
     }
+    if (stats.flashcardsMastered + result.cardsMastered >= 100) {
+      unlockAchievement('card-vault-100');
+    }
 
     setSummaryData({
       title: 'Lei Seca Revisada com Sucesso!',
@@ -509,11 +584,11 @@ export function App() {
   const handleLoginSuccess = (name: string) => {
     recordStudentLogin(name);
     setCurrentUser(name);
+    // Carrega EXCLUSIVAMENTE os dados e conquistas deste usuário
+    const userStats = loadUserStats(name);
+    setStats(userStats);
     setDailyQuote(getDailyMotivationalQuote());
     setIsMotivationModalOpen(true);
-    unlockAchievement('recruit');
-    if (stats.streakDays >= 3) unlockAchievement('streak-3');
-    if (stats.streakDays >= 7) unlockAchievement('streak-7');
   };
 
   const handleLogout = () => {
@@ -521,6 +596,8 @@ export function App() {
     sessionStorage.removeItem('pmpe_auth_user');
     setCurrentUser(null);
     setActiveMode(null);
+    // Reseta estado para 100% limpo ao desconectar
+    setStats(getCleanPlayerStats());
   };
 
   // Se o guerreiro ainda não autenticou, exibe a tela de login tático
