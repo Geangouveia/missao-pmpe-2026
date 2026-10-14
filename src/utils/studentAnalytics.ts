@@ -60,6 +60,41 @@ export function saveAllStudents(data: Record<string, StudentProfile>): void {
 }
 
 /**
+ * Pega todos os perfis locais e da nuvem e apaga todos exceto o Comandante Gean
+ */
+export async function purgeAllStudentsExceptCommander(): Promise<boolean> {
+  try {
+    const all = getAllStudents();
+    const cleanDb: Record<string, StudentProfile> = {};
+    for (const [key, profile] of Object.entries(all)) {
+      if (key.toLowerCase().includes('gean')) {
+        cleanDb[key] = profile;
+      }
+    }
+    saveAllStudents(cleanDb);
+
+    // Na nuvem KVdb: buscar chaves student_* e deletar as que não forem gean
+    const res = await fetch(`${CLOUD_API_BASE}/?prefix=student_&format=json`);
+    if (res.ok) {
+      const keys: string[] = await res.json();
+      await Promise.all(
+        keys.map(async (k) => {
+          if (!k.toLowerCase().includes('gean')) {
+            try {
+              await fetch(`${CLOUD_API_BASE}/${k}`, { method: 'DELETE' });
+            } catch {}
+          }
+        })
+      );
+    }
+    return true;
+  } catch (err) {
+    console.error('Erro ao purgar estudantes exceto comandante:', err);
+    return false;
+  }
+}
+
+/**
  * Envia o perfil do aluno para a Nuvem do Pelotão
  */
 export async function syncStudentToCloud(profile: StudentProfile): Promise<boolean> {

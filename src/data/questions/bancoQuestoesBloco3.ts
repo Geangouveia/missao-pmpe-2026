@@ -1026,28 +1026,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "DUDH 1948: Tortura",
-    "question": "(AOCP / Direitos Humanos Questão 1) Segundo a Declaração Universal dos Direitos Humanos, ninguém será submetido a:",
+    "topicoEdital": "Teoria Geral dos Direitos Humanos - Conceito e Características",
+    "question": "(Instituto AOCP / PMPE) No exercício da atividade de polícia ostensiva e preservação da ordem pública, os policiais militares devem pautar suas ações pelos Direitos Humanos. Acerca das características fundamentais desses direitos, assinale a correta:",
     "options": [
-      "Tortura, nem a tratamento ou castigo cruel, desumano ou degradante.",
-      "Julgamento público por tribunal independente.",
-      "Presunção de inocência até prova em contrário.",
-      "Liberdade de locomoção e residência.",
-      "Direito a repouso e lazer."
+      "Os Direitos Humanos são renunciáveis pelo indivíduo quando este confessa a prática de crime violento.",
+      "A imprescritibilidade significa que os Direitos Humanos não perdem sua exigibilidade pelo decurso do tempo.",
+      "A relatividade dos direitos humanos autoriza a prática de tortura em interrogatórios militares de emergência.",
+      "Os Direitos Humanos pertencem exclusivamente aos cidadãos que estejam em pleno gozo dos direitos políticos.",
+      "A indivisibilidade autoriza o Estado a suspender arbitrariamente os direitos civis para assegurar direitos sociais."
     ],
-    "correctIndex": 0,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de DUDH 1948: Tortura.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
+    "correctIndex": 1,
+    "explanation": "A imprescritibilidade é característica basilar dos Direitos Humanos: tais direitos não prescrevem e podem ser exigidos a qualquer tempo pelo ser humano, independentemente do tempo transcorrido. Os direitos humanos são também irrenunciáveis, inalienáveis e universais.",
+    "fundamentacaoLegal": "Teoria Geral dos Direitos Humanos e DUDH/1948.",
+    "hint": "Imprescritível = O tempo não apaga nem anula a proteção aos Direitos Humanos.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "CARACTERÍSTICAS: U-I-I-I-R -> Universalidade, Imprescritibilidade, Inalienabilidade, Indivisibilidade, Irrenunciabilidade!",
     "analiseAlternativas": {
-      "A": "Correta: Princípio internacional consagrado.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "INCORRETA. Direitos humanos são irrenunciáveis; nem o próprio titular pode abrir mão deles.",
+      "B": "CORRETA. A imprescritibilidade assegura que não há prazo extintivo para a exigência dos direitos humanos.",
+      "C": "INCORRETA. A vedação à tortura é norma peremptória (jus cogens) absoluta, sem exceção em nenhuma situação.",
+      "D": "INCORRETA. São universais, inerentes a toda pessoa humana pelo simples fato de existir, sem distinção.",
+      "E": "INCORRETA. A indivisibilidade e a interdependência determinam que todos os direitos compõem um sistema integrado e indivisível."
+    },
+    "porqueErrou": {
+      "0": "Lembre-se: os Direitos Humanos são IRRENUNCIÁVEIS, nem a confissão autoriza renúncia.",
+      "2": "Cuidado: Tortura JAMAIS é permitida em qualquer circunstância (vedação absoluta).",
+      "3": "Atenção: Direitos Humanos são Universais, protegem inclusive quem não tem direitos políticos.",
+      "4": "Indivisibilidade significa que não se pode sacrificar uma categoria de direitos em prol de outra."
     }
   },
   {
@@ -1055,28 +1062,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "CADH: Audiência de Custódia",
-    "question": "(AOCP / Direitos Humanos Questão 2) O Pacto de São José da Costa Rica assegura que toda pessoa presa deve ser conduzida, sem demora, à presença de:",
+    "topicoEdital": "Dimensões dos Direitos Humanos - 1ª Geração e Segurança Pública",
+    "question": "(Instituto AOCP / PMPE) A doutrina de Direitos Humanos classifica os direitos fundamentais em dimensões ou gerações. Os direitos de primeira geração (ou dimensão) têm como núcleo protetivo e valor axiológico central:",
     "options": [
-      "Um ministro de Estado.",
-      "Um juiz ou outra autoridade autorizada por lei.",
-      "Um médico do trabalho.",
-      "Um representante consular estrangeiro.",
-      "Um conselho de sentença leigo."
+      "A liberdade individual, impondo ao Estado um dever de abstenção e respeito às garantias civis e políticas.",
+      "A solidariedade global e a tutela do meio ambiente ecologicamente equilibrado para futuras gerações.",
+      "A igualdade material e a obrigatoriedade de prestações sociais estatais de saúde, previdência e moradia.",
+      "A bioética, o desenvolvimento cibernético e a democracia virtual sem fronteiras.",
+      "A distribuição obrigatória de renda mínima sem exigência de trabalho voluntário."
     ],
-    "correctIndex": 1,
-    "explanation": "Direitos Humanos: A alternativa B está alinhada aos tratados internacionais e à doutrina jurídica de CADH: Audiência de Custódia.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
+    "correctIndex": 0,
+    "explanation": "Os Direitos de 1ª Geração/Dimensão (séculos XVII-XVIII, revoluções liberais) têm como valor a LIBERDADE civil e política. São direitos negativos (de defesa), que impõem limites à atuação do poder punitivo e policial do Estado, assegurando vida, locomoção e inviolabilidade domiciliar.",
+    "fundamentacaoLegal": "Teoria das Gerações de Direitos Fundamentais (Karel Vasak e Norberto Bobbio).",
+    "hint": "1ª Geração = Liberdade (direitos civis e políticos); 2ª = Igualdade (sociais); 3ª = Fraternidade (difusos).",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "LEMA DA REV. FRANCESA: 1ª Liberdade • 2ª Igualdade • 3ª Fraternidade!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
-      "C": "Alternativa incorreta.",
-      "D": "Alternativa incorreta.",
-      "E": "Alternativa incorreta."
+      "A": "CORRETA. 1ª Geração tutela as liberdades individuais em face do arbítrio do Estado (direitos civis e políticos).",
+      "B": "INCORRETA. Meio ambiente e solidariedade são de 3ª geração (direitos difusos e coletivos).",
+      "C": "INCORRETA. Direitos sociais, econômicos e culturais representam a 2ª geração (igualdade).",
+      "D": "INCORRETA. Bioética e cibernética são apontadas pela doutrina moderna como 4ª geração.",
+      "E": "INCORRETA. Direitos prestacionais socioeconômicos pertencem à 2ª geração."
+    },
+    "porqueErrou": {
+      "1": "Solidariedade e meio ambiente são de TERCEIRA geração.",
+      "2": "Saúde, previdência e prestações sociais são de SEGUNDA geração (igualdade).",
+      "3": "Bioética e tecnologia situam-se na Quarta geração segundo Bobbio e Paulo Bonavides.",
+      "4": "Prestações sociais exigem conduta positiva do Estado, típica da 2ª dimensão."
     }
   },
   {
@@ -1084,28 +1098,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Uso Diferenciado da Força",
-    "question": "(AOCP / Direitos Humanos Questão 3) No uso diferenciado da força pelo policial militar, a força letal com arma de fogo deve ser utilizada estritamente como:",
+    "topicoEdital": "Declaração Universal dos Direitos Humanos (1948) - Artigo 3º",
+    "question": "(Instituto AOCP / PMPE) O Artigo 3º da Declaração Universal dos Direitos Humanos (DUDH/1948) preconiza expressamente que 'todo ser humano tem direito à vida, à liberdade e à...':",
     "options": [
-      "Medida rotineira para dispersar aglomerações pacíficas.",
-      "Primeira opção para intimidação da multidão.",
-      "Último recurso em caso de perigo iminente de morte ou lesão grave.",
-      "Punição imediata de suspeitos desarmados em fuga.",
-      "Resposta obrigatória a qualquer desacato verbal."
+      "Posse irrestrita de armas de fogo defensivas.",
+      "Segurança pessoal.",
+      "Nomeação imediata em concurso militar.",
+      "Imunidade absoluta perante a autoridade judicial.",
+      "Remuneração superior à média estadual."
     ],
-    "correctIndex": 2,
-    "explanation": "Direitos Humanos: A alternativa C está alinhada aos tratados internacionais e à doutrina jurídica de Uso Diferenciado da Força.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
-    "difficulty": "hard",
+    "correctIndex": 1,
+    "explanation": "Conforme o texto literal do Artigo 3º da DUDH de 1948: 'Todo indivíduo tem direito à vida, à liberdade e à segurança pessoal.' A segurança pública e pessoal é dever do Estado e pilar para o exercício das demais liberdades.",
+    "fundamentacaoLegal": "Artigo 3º da Declaração Universal dos Direitos Humanos (DUDH/1948).",
+    "hint": "O tripé fundamental do Art. 3º: Vida, Liberdade e Segurança Pessoal.",
+    "difficulty": "easy",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "TRIPÉ DO ART. 3º DA DUDH: VIDA + LIBERDADE + SEGURANÇA PESSOAL!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa incorreta.",
-      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
-      "D": "Alternativa incorreta.",
-      "E": "Alternativa incorreta."
+      "A": "INCORRETA. A DUDH não consagra a posse de armas como direito humano universal.",
+      "B": "CORRETA. Texto exato e literal do Artigo 3º da DUDH.",
+      "C": "INCORRETA. Acesso a cargos públicos depende de critérios e requisitos de cada país.",
+      "D": "INCORRETA. Ninguém tem imunidade perante a lei ou julgamento justo.",
+      "E": "INCORRETA. Questão estranha ao escopo do Artigo 3º."
+    },
+    "porqueErrou": {
+      "0": "Cuidado: porte ou posse de armas é questão infraconstitucional regulada por cada nação.",
+      "2": "Concurso público é regido pelo direito administrativo e edital, não pelo Art. 3º da DUDH.",
+      "3": "A autoridade da lei é universal e não há imunidades que permitam cometer ilícitos.",
+      "4": "Remuneração é tratada sob a ótica de condições justas de trabalho (Art. 23)."
     }
   },
   {
@@ -1113,28 +1134,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "DUDH: Presunção de Inocência",
-    "question": "(AOCP / Direitos Humanos Questão 4) A DUDH prevê que toda pessoa acusada de um delito presume-se inocente até que:",
+    "topicoEdital": "DUDH / Convenção contra Tortura - Proibição Absoluta",
+    "question": "(Instituto AOCP / PMPE) Em patrulhamento ostensivo no centro de Recife, uma guarnição da PMPE captura em flagrante um assaltante de alta periculosidade que alega ter escondido armas e drogas. Segundo a DUDH e os tratados internacionais ratificados pelo Brasil:",
     "options": [
-      "A imprensa noticie os fatos com fotos.",
-      "O delegado indicie formalmente o suspeito.",
-      "Seja decretada sua prisão preventiva.",
-      "Sua culpabilidade tenha sido provada de acordo com a lei, em julgamento público.",
-      "O denunciante preste depoimento isolado."
+      "É legítimo empregar agressões físicas moderadas para obrigar o suspeito a indicar o esconderijo do armamento.",
+      "A tortura ou qualquer tratamento cruel, desumano ou degradante é terminantemente proibida, sob qualquer pretexto, mesmo em casos de comoção ou flagrante de crimes graves.",
+      "O comandante da operação pode autorizar técnicas de choque elétrico desde que assistido por enfermeiro do batalhão.",
+      "A vedação à tortura cede perante a necessidade imperiosa de obter a confissão do agente em menos de 2 horas.",
+      "O policial executor fica isento de responsabilidade penal caso a agressão tenha sido ordenada por oficial superior."
     ],
-    "correctIndex": 3,
-    "explanation": "Direitos Humanos: A alternativa D está alinhada aos tratados internacionais e à doutrina jurídica de DUDH: Presunção de Inocência.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
+    "correctIndex": 1,
+    "explanation": "O Art. 5º da DUDH e a Convenção da ONU contra a Tortura estipulam: 'Ninguém será submetido a tortura nem a tratamento ou castigo cruel, desumano ou degradante.' Trata-se de direito absoluto (não derrogável), cuja violação gera responsabilidade penal, civil e disciplinar inescusável.",
+    "fundamentacaoLegal": "Art. 5º da DUDH e Art. 5º, III, da CF/88 c/c Lei nº 9.455/1997.",
+    "hint": "A proibição da tortura não admite NENHUMA exceção, nem mesmo a ordem de superior.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "TORTURA NUNCA! Proibição absoluta em tempo de paz ou de guerra, sob qualquer pretexto!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa incorreta.",
-      "C": "Alternativa incorreta.",
-      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
-      "E": "Alternativa incorreta."
+      "A": "INCORRETA. Não existe 'agressão física moderada legítima' para arrancar confissões.",
+      "B": "CORRETA. A proibição à tortura é absoluta e de observância indeclinável pela PMPE.",
+      "C": "INCORRETA. Choque elétrico é método clássico de tortura, punido com reclusão severa.",
+      "D": "INCORRETA. A celeridade da investigação jamais relativiza garantias fundamentais.",
+      "E": "INCORRETA. Ordem manifestamente criminosa não deve ser cumprida e não isenta o executor (Art. 38 CPM)."
+    },
+    "porqueErrou": {
+      "0": "Violência para obter confissão configura crime hediondo de tortura-prova (Lei 9.455/97).",
+      "2": "Nenhum profissional de saúde ou oficial pode legalizar sessões de tortura.",
+      "3": "A gravidade do crime sob investigação não confere licença para o cometimento de tortura.",
+      "4": "Ordens ilegais e criminosas não geram obediência devida nem isentam de culpa."
     }
   },
   {
@@ -1142,28 +1170,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Regras de Mandela",
-    "question": "(AOCP / Direitos Humanos Questão 5) As Regras Mínimas da ONU para o Tratamento de Reclusos (Regras de Mandela) vedam categoricamente:",
+    "topicoEdital": "DUDH - Artigo 9º e Legalidade da Prisão pela PMPE",
+    "question": "(Instituto AOCP / PMPE) O Artigo 9º da Declaração Universal dos Direitos Humanos estabelece que 'ninguém será arbitrariamente preso, detido ou exilado'. No ordenamento jurídico brasileiro, a prisão efetuada por policial militar é legal apenas quando:",
     "options": [
-      "O trabalho remunerado facultativo.",
-      "O banho diário com água encanada.",
-      "A assistência médica básica pelo Estado.",
-      "O contato epistolar com familiares.",
-      "O isolamento indefinido ou prolongado em cela escura."
+      "O policial militar tiver mera intuição ou suspeita subjetiva sem elementos concretos.",
+      "Decorrer de flagrante delito ou de ordem escrita e fundamentada de autoridade judiciária competente (salvo transgressão militar ou crime propriamente militar).",
+      "O cidadão se recusar a saudar continência à viatura militar que trafega na rodovia.",
+      "Houver ordem verbal de autoridade política do município sem mandado judicial.",
+      "O indivíduo circular pela via pública após as 22h sem portar contracheque recente."
     ],
-    "correctIndex": 4,
-    "explanation": "Direitos Humanos: A alternativa E está alinhada aos tratados internacionais e à doutrina jurídica de Regras de Mandela.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
+    "correctIndex": 1,
+    "explanation": "O Art. 5º, LXI, da CF/88 reflete com rigor o Art. 9º da DUDH: 'Ninguém será preso senão em flagrante delito ou por ordem escrita e fundamentada de autoridade judiciária competente, salvo nos casos de transgressão militar ou crime propriamente militar, definidos em lei.'",
+    "fundamentacaoLegal": "Artigo 9º da DUDH c/c Art. 5º, inciso LXI, da Constituição Federal de 1988.",
+    "hint": "Flagrante delito ou ordem judicial escrita e motivada são as regras constitucionais de prisão.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "HIPÓTESES DE PRISÃO: FLAGRANTE DELITO ou MANDADO JUDICIAL ESCRITO!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa incorreta.",
-      "C": "Alternativa incorreta.",
-      "D": "Alternativa incorreta.",
-      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
+      "A": "INCORRETA. Prisão por mera 'intuição' sem justa causa é arbitrária e gera abuso de autoridade.",
+      "B": "CORRETA. Síntese do mandamento constitucional e da DUDH contra prisões arbitrárias.",
+      "C": "INCORRETA. Civil não presta continência a militar; conduta não configura crime nem transgressão.",
+      "D": "INCORRETA. Prefeitos ou vereadores não têm competência jurídica para expedir ordens de prisão.",
+      "E": "INCORRETA. O direito de locomoção em tempo de paz é livre em território nacional (Art. 5º, XV, CF)."
+    },
+    "porqueErrou": {
+      "0": "Mera desconfiança sem fundada suspeita objetiva não autoriza restrição de liberdade.",
+      "2": "Continência é manifestação de respeito estritamente militar interna entre pares.",
+      "3": "Apenas autoridade judicial pode expedir ordem de prisão (salvo prisões disciplinares militares em lei).",
+      "4": "Não há toque de recolher ou dever de portar holerite para transitar em vias públicas."
     }
   },
   {
@@ -1171,28 +1206,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "DUDH 1948: Tortura",
-    "question": "(AOCP / Direitos Humanos Questão 6) Segundo a Declaração Universal dos Direitos Humanos, ninguém será submetido a:",
+    "topicoEdital": "DUDH - Presunção de Inocência e Tratamento do Custodiado",
+    "question": "(Instituto AOCP / PMPE) Durante uma ocorrência de grande repercussão, a guarnição policial conduz à delegacia um indivíduo capturado. Em consonância com o princípio da presunção de inocência (DUDH, Art. 11) e a legislação vigente, a conduta correta do policial militar é:",
     "options": [
-      "Tortura, nem a tratamento ou castigo cruel, desumano ou degradante.",
-      "Julgamento público por tribunal independente.",
-      "Presunção de inocência até prova em contrário.",
-      "Liberdade de locomoção e residência.",
-      "Direito a repouso e lazer."
+      "Expor o preso a coletiva de imprensa com fotos para que o público o julgue nas redes sociais.",
+      "Garantir a integridade física e moral do custodiado, não o submetendo a situações vexatórias nem antecipando juízo de culpa perante a mídia.",
+      "Aplicar sanções punitivas sumárias ainda na viatura para adiantar o cumprimento da futura pena.",
+      "Divulgar os dados bancários e o endereço dos familiares do suspeito para coagi-lo.",
+      "Exigir que o preso conceda entrevista gravada admitindo ser culpado perante repórteres."
     ],
-    "correctIndex": 0,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de DUDH 1948: Tortura.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
-    "difficulty": "hard",
+    "correctIndex": 1,
+    "explanation": "O Art. 11 da DUDH consagra que toda pessoa acusada presume-se inocente até que sua culpabilidade tenha sido provada em julgamento público com garantias de defesa. O Art. 13 da Lei 13.869/2019 criminaliza expor o custodiado a vexame ou constrangimento público.",
+    "fundamentacaoLegal": "Artigo 11 da DUDH e Artigo 13 da Lei nº 13.869/2019 (Abuso de Autoridade).",
+    "hint": "Presunção de inocência protege o indivíduo de execração pública e julgamentos sumários.",
+    "difficulty": "easy",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "O POLICIAL PRENDE E PROTEGE A INTEGRIDADE; QUEM JULGA E CONDENA É O JUIZ!",
     "analiseAlternativas": {
-      "A": "Correta: Princípio internacional consagrado.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "INCORRETA. Expor preso à curiosidade pública é crime de abuso de autoridade (Art. 13, I, Lei 13.869/19).",
+      "B": "CORRETA. O policial militar deve salvaguardar a integridade e dignidade do preso sob sua custódia.",
+      "C": "INCORRETA. Punição sumária em viatura é agressão ilícita e crime grave contra a pessoa.",
+      "D": "INCORRETA. Violação de privacidade e perseguição ilegal a familiares.",
+      "E": "INCORRETA. Ninguém pode ser constrangido a produzir prova contra si ou a confessar."
+    },
+    "porqueErrou": {
+      "0": "Apresentar preso como troféu para imprensa viola a lei de abuso de autoridade.",
+      "2": "O policial não é carrasco; sua missão constitucional encerra-se com a entrega do preso na delegacia.",
+      "3": "A família do preso não responde penalmente pelos atos dele (princípio da pessoalidade da pena).",
+      "4": "A confissão forçada é nula e tipifica abuso de autoridade e tortura."
     }
   },
   {
@@ -1200,28 +1242,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "CADH: Audiência de Custódia",
-    "question": "(AOCP / Direitos Humanos Questão 7) O Pacto de São José da Costa Rica assegura que toda pessoa presa deve ser conduzida, sem demora, à presença de:",
+    "topicoEdital": "Pacto de San José da Costa Rica (CADH) - Audiência de Custódia",
+    "question": "(Instituto AOCP / PMPE) O Artigo 7º, item 5, da Convenção Americana sobre Direitos Humanos (Pacto de San José da Costa Rica) prevê expressamente o instituto da Audiência de Custódia. Sobre esse procedimento, assinale a correta:",
     "options": [
-      "Um ministro de Estado.",
-      "Um juiz ou outra autoridade autorizada por lei.",
-      "Um médico do trabalho.",
-      "Um representante consular estrangeiro.",
-      "Um conselho de sentença leigo."
+      "A pessoa presa deve ser conduzida, sem demora, à presença de um juiz ou outra autoridade autorizada por lei a exercer funções judiciais.",
+      "A audiência de custódia aplica-se apenas a indivíduos de alta renda, sendo vedada em prisões em flagrante de rua.",
+      "O policial condutor tem o poder discricionário de dispensar a audiência de custódia se o preso aparentar cansaço.",
+      "A apresentação perante o juiz pode ser postergada por até 90 dias a critério exclusivo do secretário de segurança.",
+      "Na audiência de custódia é proibida a presença de advogado ou defensor público do custodiado."
     ],
-    "correctIndex": 1,
-    "explanation": "Direitos Humanos: A alternativa B está alinhada aos tratados internacionais e à doutrina jurídica de CADH: Audiência de Custódia.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
-    "difficulty": "easy",
+    "correctIndex": 0,
+    "explanation": "O Art. 7.5 da CADH assegura que toda pessoa presa deve ser conduzida, sem demora, à presença de um juiz. No Brasil, o prazo legal é de 24 horas após a prisão (Art. 310 do CPP), momento em que o magistrado avalia a legalidade da prisão, a ocorrência de eventuais maus-tratos e a necessidade de manutenção da custódia.",
+    "fundamentacaoLegal": "Artigo 7º, item 5, da CADH (Decreto nº 678/1992) e Art. 310 do CPP.",
+    "hint": "Audiência de custódia = Apresentação da pessoa presa ao juiz em até 24 horas.",
+    "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "AUDIÊNCIA DE CUSTÓDIA: PRESO AO JUIZ SEM DEMORA (24H)! Verifica legalidade e maus-tratos!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
-      "C": "Alternativa incorreta.",
-      "D": "Alternativa incorreta.",
-      "E": "Alternativa incorreta."
+      "A": "CORRETA. Transcrição literal do Art. 7.5 do Pacto de San José da Costa Rica.",
+      "B": "INCORRETA. Princípio universal aplicável a toda e qualquer pessoa presa.",
+      "C": "INCORRETA. A apresentação judicial é mandamento cogente que não admite dispensa pelo policial.",
+      "D": "INCORRETA. O prazo é de 24 horas, não havendo prorrogações arbitrárias de 90 dias.",
+      "E": "INCORRETA. A presença de defesa técnica (advogado ou Defensoria Pública) é obrigatória e indispensável."
+    },
+    "porqueErrou": {
+      "1": "Todos os presos, sem distinção econômica, têm direito à audiência de custódia.",
+      "2": "O policial não pode dispensar a audiência; é ato judicial obrigatório por tratado e lei.",
+      "3": "O prazo no ordenamento pátrio é de até 24 horas.",
+      "4": "A ausência de defensor gera nulidade absoluta da audiência de custódia."
     }
   },
   {
@@ -1229,28 +1278,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Uso Diferenciado da Força",
-    "question": "(AOCP / Direitos Humanos Questão 8) No uso diferenciado da força pelo policial militar, a força letal com arma de fogo deve ser utilizada estritamente como:",
+    "topicoEdital": "Pacto de San José da Costa Rica - Artigo 5º (Integridade e Separação)",
+    "question": "(Instituto AOCP / PMPE) Nos termos do Artigo 5º do Pacto de San José da Costa Rica (Direito à Integridade Pessoal), no que tange ao tratamento de pessoas privadas de liberdade por forças de segurança pública, é correto afirmar:",
     "options": [
-      "Medida rotineira para dispersar aglomerações pacíficas.",
-      "Primeira opção para intimidação da multidão.",
-      "Último recurso em caso de perigo iminente de morte ou lesão grave.",
-      "Punição imediata de suspeitos desarmados em fuga.",
-      "Resposta obrigatória a qualquer desacato verbal."
+      "Os processados (presos provisórios) devem ficar separados dos condenados, salvo em circunstâncias excepcionais, e devem ser submetidos a tratamento adequado à sua condição de pessoas não condenadas.",
+      "Adolescentes e adultos podem ser mantidos juntos na mesma cela da viatura para promover a convivência pacífica.",
+      "A pena corporal privativa de membros é admitida para reincidentes específicos de furto qualificado.",
+      "O Estado fica isento de responsabilidade caso um custodiado venha a sofrer agressão fatal por outro preso no xadrez.",
+      "A integridade física pode ser ignorada no momento do transporte em compartimentos fechados sem ventilação."
     ],
-    "correctIndex": 2,
-    "explanation": "Direitos Humanos: A alternativa C está alinhada aos tratados internacionais e à doutrina jurídica de Uso Diferenciado da Força.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
+    "correctIndex": 0,
+    "explanation": "O Art. 5.4 da CADH determina: 'Os processados devem ficar separados dos condenados, salvo em circunstâncias excepcionais, e devem ser submetidos a tratamento adequado à sua condição de pessoas não condenadas.' O Art. 5.5 também exige a separação entre menores e adultos.",
+    "fundamentacaoLegal": "Artigo 5º, itens 4 e 5, da CADH (Decreto 678/1992).",
+    "hint": "Presos provisórios NÃO podem ser misturados com já condenados.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "SEPARAÇÃO OBRIGATÓRIA: Provisórios separados de Condenados • Menores separados de Adultos!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa incorreta.",
-      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
-      "D": "Alternativa incorreta.",
-      "E": "Alternativa incorreta."
+      "A": "CORRETA. Texto exato do Artigo 5.4 da Convenção Americana sobre Direitos Humanos.",
+      "B": "INCORRETA. Menores de 18 anos jamais podem ser colocados junto com adultos em viaturas ou celas.",
+      "C": "INCORRETA. Penas corporais, cruéis ou de mutilação são expressamente vedadas pelo direito internacional.",
+      "D": "INCORRETA. O Estado tem dever de custódia e responde objetivamente pela vida do preso (Art. 37, §6º, CF).",
+      "E": "INCORRETA. O transporte deve resguardar a integridade e evitar asfixia ou condições degradantes."
+    },
+    "porqueErrou": {
+      "1": "Misturar adolescentes com adultos em custódia viola frontalmente o ECA e a CADH.",
+      "2": "Não existe pena de castigo físico no ordenamento brasileiro e interamericano.",
+      "3": "O Supremo Tribunal Federal firmou tese de responsabilidade do Estado pela morte de detento.",
+      "4": "Transporte em condições desumanas gera responsabilização por abuso e maus-tratos."
     }
   },
   {
@@ -1258,28 +1314,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "DUDH: Presunção de Inocência",
-    "question": "(AOCP / Direitos Humanos Questão 9) A DUDH prevê que toda pessoa acusada de um delito presume-se inocente até que:",
+    "topicoEdital": "CADH - Artigo 8º e Direito ao Silêncio (Nemo Tenetur se Detegere)",
+    "question": "(Instituto AOCP / PMPE) O princípio da não autoincriminação ('nemo tenetur se detegere') e as garantias judiciais do Artigo 8º do Pacto de San José da Costa Rica orientam que o policial militar, ao prender um suspeito:",
     "options": [
-      "A imprensa noticie os fatos com fotos.",
-      "O delegado indicie formalmente o suspeito.",
-      "Seja decretada sua prisão preventiva.",
-      "Sua culpabilidade tenha sido provada de acordo com a lei, em julgamento público.",
-      "O denunciante preste depoimento isolado."
+      "Deve coagi-lo a assinar termo de confissão antes de permitir contato com a família.",
+      "Deve informá-lo de seus direitos fundamentais, dentre os quais o direito de permanecer em silêncio, sem que tal silêncio possa ser interpretado em seu desfavor.",
+      "Pode ameaçar o suspeito de perda da posse de seus bens caso este se recuse a responder ao interrogatório de campo.",
+      "Tem o dever de obrigar o conduzido a participar de reprodução simulada dos fatos contra sua expressa vontade.",
+      "Pode interpretar o silêncio do cidadão como confissão irretratável de culpa imediata."
     ],
-    "correctIndex": 3,
-    "explanation": "Direitos Humanos: A alternativa D está alinhada aos tratados internacionais e à doutrina jurídica de DUDH: Presunção de Inocência.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
-    "difficulty": "hard",
+    "correctIndex": 1,
+    "explanation": "O Art. 8.2, 'g', da CADH e o Art. 5º, LXIII, da CF/88 garantem o direito a não ser obrigado a depor contra si mesmo, nem a declarar-se culpado. O silêncio do preso é direito constitucional basilar e jamais pode ser valorado como presunção ou confissão de culpa.",
+    "fundamentacaoLegal": "Art. 8.2, 'g', da CADH c/c Art. 5º, LXIII, da Constituição Federal de 1988.",
+    "hint": "Direito de ficar calado: o cidadão não é obrigado a produzir prova contra si.",
+    "difficulty": "easy",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "AVISO DE MIRANDA / CF/88: O PRESO TEM DIREITO AO SILÊNCIO E NUNCA PODE SER COAGIDO A CONFESSAR!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa incorreta.",
-      "C": "Alternativa incorreta.",
-      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
-      "E": "Alternativa incorreta."
+      "A": "INCORRETA. Coação para confissão é crime de tortura e abuso de autoridade.",
+      "B": "CORRETA. O aviso dos direitos e a garantia do silêncio decorrem da CF/88 e dos tratados internacionais.",
+      "C": "INCORRETA. Ameaça a bens ou liberdade para forçar depoimento é conduta ilegal e criminosa.",
+      "D": "INCORRETA. O indivíduo não pode ser coagido a produzir prova ativa contra si mesmo.",
+      "E": "INCORRETA. O silêncio jamais importa em confissão ou prejuízo processual ao réu."
+    },
+    "porqueErrou": {
+      "0": "A confissão deve ser livre, voluntária e prestada perante autoridade judiciária competente.",
+      "2": "Ameaças configuram infração penal e quebra da legalidade estrita do policiamento militar.",
+      "3": "A participação em reconstituições é facultativa para o acusado em razão da ampla defesa.",
+      "4": "No processo penal brasileiro, 'quem cala não consente': o silêncio é garantia neutra."
     }
   },
   {
@@ -1287,28 +1350,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Regras de Mandela",
-    "question": "(AOCP / Direitos Humanos Questão 10) As Regras Mínimas da ONU para o Tratamento de Reclusos (Regras de Mandela) vedam categoricamente:",
+    "topicoEdital": "Código de Conduta da ONU (Resolução 34/169) - Uso Proporcional da Força",
+    "question": "(Instituto AOCP / PMPE) O Artigo 3º do Código de Conduta para os Funcionários Responsáveis pela Aplicação da Lei (Resolução 34/169 da ONU) preconiza que os policiais só podem empregar a força quando:",
     "options": [
-      "O trabalho remunerado facultativo.",
-      "O banho diário com água encanada.",
-      "A assistência médica básica pelo Estado.",
-      "O contato epistolar com familiares.",
-      "O isolamento indefinido ou prolongado em cela escura."
+      "Sentirem qualquer grau de cansaço ou irritação psicológica ao final da escala de serviço.",
+      "Estritamente necessária e na medida exigida para o cumprimento do seu dever legítimo.",
+      "Desejarem demonstrar autoridade militar perante transeuntes no bairro.",
+      "Houver autorização prévia por votação popular dos moradores vizinhos.",
+      "O abordado for conhecido de ocorrências pretéritas, mesmo que esteja cooperando no momento."
     ],
-    "correctIndex": 4,
-    "explanation": "Direitos Humanos: A alternativa E está alinhada aos tratados internacionais e à doutrina jurídica de Regras de Mandela.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
+    "correctIndex": 1,
+    "explanation": "O Art. 3º do Código de Conduta da ONU é inequívoco: 'Os funcionários responsáveis pela aplicação da lei só podem empregar a força quando tal se afigure estritamente necessário e na medida exigida para o cumprimento do seu dever.' Rege-se pelos princípios da legalidade, necessidade, proporcionalidade e conveniência.",
+    "fundamentacaoLegal": "Artigo 3º do Código de Conduta para os Funcionários da Aplicação da Lei (ONU, 1979).",
+    "hint": "A força policial só é legítima se for estritamente necessária e na medida proporcional.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "USO DA FORÇA: ESTRITAMENTE NECESSÁRIA + MEDIDA EXIGIDA (PROPORCIONALIDADE)!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa incorreta.",
-      "C": "Alternativa incorreta.",
-      "D": "Alternativa incorreta.",
-      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
+      "A": "INCORRETA. Cansaço ou estresse do policial não justificam emprego de violência.",
+      "B": "CORRETA. Texto clássico da ONU reproduzido na doutrina operacional da PMPE.",
+      "C": "INCORRETA. A força não existe para exibicionismo ou intimidação gratuita.",
+      "D": "INCORRETA. A intervenção policial obedece aos limites da lei, não a consultas informais.",
+      "E": "INCORRETA. Abordado cooperante exige respeito aos procedimentos operacionais padrão sem agressão."
+    },
+    "porqueErrou": {
+      "0": "O controle emocional e o preparo tático são exigências indispensáveis do profissional de polícia.",
+      "2": "Exibição de força desnecessária quebra a disciplina e mancha a imagem da corporação.",
+      "3": "A autoridade policial decorre do Estado de Direito e da lei formal.",
+      "4": "Antecedentes criminais não autorizam uso de força contra pessoa que não resiste."
     }
   },
   {
@@ -1316,28 +1386,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "DUDH 1948: Tortura",
-    "question": "(AOCP / Direitos Humanos Questão 11) Segundo a Declaração Universal dos Direitos Humanos, ninguém será submetido a:",
+    "topicoEdital": "Código de Conduta da ONU - Inescusabilidade de Ordens Ilegais",
+    "question": "(Instituto AOCP / PMPE) De acordo com o Artigo 5º do Código de Conduta da ONU e o Direito Internacional dos Direitos Humanos, nenhuma circunstância excepcional, tal como estado de guerra, instabilidade política ou ordem superior, pode ser invocada para:",
     "options": [
-      "Tortura, nem a tratamento ou castigo cruel, desumano ou degradante.",
-      "Julgamento público por tribunal independente.",
-      "Presunção de inocência até prova em contrário.",
-      "Liberdade de locomoção e residência.",
-      "Direito a repouso e lazer."
+      "Justificar a prática de tortura ou de outros tratamentos ou penas cruéis, desumanos ou degradantes.",
+      "Permitir o uso de colete balístico em patrulha noturna ostensiva.",
+      "Autorizar a prisão de criminoso pego em flagrante com arma de fogo raspada.",
+      "Requisitar reforço policial pelo rádio em caso de emboscada armada.",
+      "Realizar a escala de serviço dos soldados em regime de prontidão escalonada."
     ],
     "correctIndex": 0,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de DUDH 1948: Tortura.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
+    "explanation": "O Art. 5º do Código de Conduta da ONU prevê: 'Nenhum funcionário responsável pela aplicação da lei pode infligir, instigar ou tolerar qualquer ato de tortura ou outro tratamento cruel, desumano ou degradante, nem invocar ordens de superiores ou circunstâncias excepcionais, como estado de guerra ou ameaça à segurança nacional, como justificação.'",
+    "fundamentacaoLegal": "Artigo 5º do Código de Conduta para os Funcionários da Aplicação da Lei (ONU).",
+    "hint": "A proibição de tortura não aceita desculpa de 'ordem do superior' nem 'estado de guerra'.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "TORTURA NÃO SE JUSTIFICA POR ORDEM SUPERIOR NEM POR GUERRA! É ILEGAL SEMPRE!",
     "analiseAlternativas": {
-      "A": "Correta: Princípio internacional consagrado.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "CORRETA. O Artigo 5º veda categoricamente justificar tortura por ordem ou comoção.",
+      "B": "INCORRETA. O uso de EPI balístico é direito e dever de segurança do policial.",
+      "C": "INCORRETA. Prisão em flagrante de crime permanente é ato legal obrigatório para a PM.",
+      "D": "INCORRETA. Pedido de apoio em situação de perigo é procedimento tático regular.",
+      "E": "INCORRETA. Escala de serviço é ato ordinário de administração militar."
+    },
+    "porqueErrou": {
+      "1": "Colete balístico é equipamento de proteção individual indispensável.",
+      "2": "Arma raspada é crime previsto no Estatuto do Desarmamento e gera prisão em flagrante.",
+      "3": "Apoio de guarnições pelo rádio é procedimento operacional padrão na PMPE.",
+      "4": "A administração das escalas compete ao comando dentro dos limites da lei."
     }
   },
   {
@@ -1345,28 +1422,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "CADH: Audiência de Custódia",
-    "question": "(AOCP / Direitos Humanos Questão 12) O Pacto de São José da Costa Rica assegura que toda pessoa presa deve ser conduzida, sem demora, à presença de:",
+    "topicoEdital": "PBUFAF (Havana 1990) - Princípio 9 (Uso de Armas de Fogo)",
+    "question": "(Instituto AOCP / PMPE) Os Princípios Básicos sobre a Utilização da Força e de Armas de Fogo por Funcionários Responsáveis pela Aplicação da Lei (PBUFAF/ONU) regulam a força letal. O Princípio 9 estabelece que o uso letal intencional de armas de fogo só é admissível quando:",
     "options": [
-      "Um ministro de Estado.",
-      "Um juiz ou outra autoridade autorizada por lei.",
-      "Um médico do trabalho.",
-      "Um representante consular estrangeiro.",
-      "Um conselho de sentença leigo."
+      "O suspeito cometer desacato verbal e recusar-se a apresentar documento de identificação.",
+      "Estritamente inevitável para proteger a vida contra uma ameaça iminente de morte ou lesão grave.",
+      "Houver ordem expressa de vereador local em dia de eleição municipal.",
+      "O militar desejar praticar pontaria em alvos móveis durante perseguição veicular rotineira.",
+      "O policial militar estiver em inferioridade numérica, ainda que sem agressão física do grupo."
     ],
     "correctIndex": 1,
-    "explanation": "Direitos Humanos: A alternativa B está alinhada aos tratados internacionais e à doutrina jurídica de CADH: Audiência de Custódia.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
-    "difficulty": "hard",
+    "explanation": "O Princípio 9 dos PBUFAF estipula que funcionários encarregados da aplicação da lei não devem utilizar armas de fogo contra pessoas, salvo em legítima defesa própria ou de outrem contra perigo iminente de morte ou lesão grave, e o recurso letal intencional apenas pode ser utilizado quando for estritamente inevitável para proteger vidas.",
+    "fundamentacaoLegal": "Princípio 9 dos PBUFAF (Adotados pela ONU no Oitavo Congresso em Havana, 1990).",
+    "hint": "Arma de fogo letal = Somente para proteger a vida humana contra perigo de morte ou lesão grave.",
+    "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "ARMA DE FOGO LETAL: SÓ PARA SALVAR VIDAS CONTRA PERIGO IMINENTE DE MORTE/LESÃO GRAVE!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
-      "C": "Alternativa incorreta.",
-      "D": "Alternativa incorreta.",
-      "E": "Alternativa incorreta."
+      "A": "INCORRETA. Desacato verbal jamais autoriza disparo de arma de fogo letal.",
+      "B": "CORRETA. Definição exata e internacional do Princípio 9 dos PBUFAF.",
+      "C": "INCORRETA. Policiais não cumprem ordens informais de agentes políticos locais.",
+      "D": "INCORRETA. Conduta criminosa de disparo em via pública e tentativa de homicídio.",
+      "E": "INCORRETA. Inferioridade numérica sem agressão iminente exige recuo tático ou meios IMPO."
+    },
+    "porqueErrou": {
+      "0": "Ofensa verbal exige verbalização e condução por desacato, jamais disparo letal.",
+      "2": "O policial militar subordina-se à cadeia de comando e à lei, não a políticos.",
+      "3": "Tiro não é esporte em via pública; só pode ocorrer sob estrita legítima defesa.",
+      "4": "A ausência de agressão injusta afasta a legítima defesa."
     }
   },
   {
@@ -1374,28 +1458,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Uso Diferenciado da Força",
-    "question": "(AOCP / Direitos Humanos Questão 13) No uso diferenciado da força pelo policial militar, a força letal com arma de fogo deve ser utilizada estritamente como:",
+    "topicoEdital": "Lei Federal nº 13.060/2014 - Instrumentos de Menor Potencial Ofensivo",
+    "question": "(Instituto AOCP / PMPE) A Lei Federal nº 13.060/2014 disciplina o uso dos Instrumentos de Menor Potencial Ofensivo (IMPO) pelos órgãos de segurança pública. Nos termos dessa lei, é correto afirmar:",
     "options": [
-      "Medida rotineira para dispersar aglomerações pacíficas.",
-      "Primeira opção para intimidação da multidão.",
-      "Último recurso em caso de perigo iminente de morte ou lesão grave.",
-      "Punição imediata de suspeitos desarmados em fuga.",
-      "Resposta obrigatória a qualquer desacato verbal."
+      "O uso de armas de fogo sempre deve ter prioridade sobre os instrumentos de menor potencial ofensivo em qualquer abordagem.",
+      "Os órgãos de segurança pública devem priorizar a utilização de instrumentos de menor potencial ofensivo, desde que o seu uso não ponha em risco a vida dos policiais ou de terceiros.",
+      "É proibido que os policiais militares portem qualquer tipo de equipamento não letal em viaturas operacionais.",
+      "O policial militar que utiliza spray de pimenta em contenção moderada deve ser compulsoriamente demitido.",
+      "A lei autoriza o uso indiscriminado de força letal em eventos esportivos independentemente de agressão armada."
     ],
-    "correctIndex": 2,
-    "explanation": "Direitos Humanos: A alternativa C está alinhada aos tratados internacionais e à doutrina jurídica de Uso Diferenciado da Força.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
+    "correctIndex": 1,
+    "explanation": "O Art. 2º da Lei nº 13.060/2014 dispõe expressamente: 'Os órgãos de segurança pública deverão priorizar a utilização dos instrumentos de menor potencial ofensivo, desde que o seu uso não ponha em risco a integridade física ou psíquica dos policiais, e obedecidos os princípios da legalidade, necessidade, proporcionalidade, moderação e conveniência.'",
+    "fundamentacaoLegal": "Artigo 2º da Lei Federal nº 13.060/2014.",
+    "hint": "A regra da Lei 13.060 é priorizar os instrumentos não letais/menor potencial ofensivo.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "LEI 13.060/14: PRIORIZAR MENOR POTENCIAL OFENSIVO (Taser, Spray, Bastão) sem arriscar a vida!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa incorreta.",
-      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
-      "D": "Alternativa incorreta.",
-      "E": "Alternativa incorreta."
+      "A": "INCORRETA. A lei determina o oposto: priorizar os instrumentos de menor potencial ofensivo.",
+      "B": "CORRETA. Texto expresso do caput do Artigo 2º da Lei Federal nº 13.060/2014.",
+      "C": "INCORRETA. O poder público tem o dever de fornecer tais equipamentos não letais à tropa.",
+      "D": "INCORRETA. O uso moderado e legítimo de IMPO é respaldado pela legislação e doutrina.",
+      "E": "INCORRETA. Força letal é excepcionalíssima e vinculada a risco de morte iminente."
+    },
+    "porqueErrou": {
+      "0": "A arma de fogo é a 'ultima ratio', o último recurso da escala progressiva da força.",
+      "2": "O fornecimento de equipamentos IMPO é diretriz legal para proteger policiais e cidadãos.",
+      "3": "O uso legítimo de espargidores e tasers é técnica policial autorizada por lei.",
+      "4": "Eventos esportivos e manifestações exigem policiamento de choque com doutrina não letal."
     }
   },
   {
@@ -1403,28 +1494,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "DUDH: Presunção de Inocência",
-    "question": "(AOCP / Direitos Humanos Questão 14) A DUDH prevê que toda pessoa acusada de um delito presume-se inocente até que:",
+    "topicoEdital": "Lei Federal nº 13.060/2014 - Vedações Expressas ao Uso de Arma de Fogo",
+    "question": "(Instituto AOCP / PMPE) O Artigo 2º, Parágrafo Único, da Lei Federal nº 13.060/2014 veda expressamente o uso de arma de fogo em duas situações cotidianas do policiamento ostensivo. Assinale a alternativa que traz uma dessas hipóteses vedadas:",
     "options": [
-      "A imprensa noticie os fatos com fotos.",
-      "O delegado indicie formalmente o suspeito.",
-      "Seja decretada sua prisão preventiva.",
-      "Sua culpabilidade tenha sido provada de acordo com a lei, em julgamento público.",
-      "O denunciante preste depoimento isolado."
+      "Contra pessoa armada que aponta fuzil e efetua disparos contra a viatura da PMPE.",
+      "Contra pessoa desarmada em fuga ou contra veículo que desrespeite bloqueio policial em via pública, quando não representar risco imediato de morte ou de lesão grave aos agentes ou a terceiros.",
+      "Para deter assaltante que mantém refém sob faca no pescoço em via pública.",
+      "Para conter atirador ativo em escola que avança atirando contra os alunos.",
+      "Em caso de legítima defesa real diante de emboscada armada contra o posto policial."
     ],
-    "correctIndex": 3,
-    "explanation": "Direitos Humanos: A alternativa D está alinhada aos tratados internacionais e à doutrina jurídica de DUDH: Presunção de Inocência.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
+    "correctIndex": 1,
+    "explanation": "Conforme o Parágrafo Único do Art. 2º da Lei 13.060/2014, é VEDADO o disparo de arma de fogo: I - contra pessoa desarmada em fuga; II - contra veículo que desrespeite bloqueio policial em via pública, exceto quando represente risco imediato de morte ou de lesão grave.",
+    "fundamentacaoLegal": "Artigo 2º, Parágrafo Único, incisos I e II, da Lei Federal nº 13.060/2014.",
+    "hint": "Fuga a pé desarmada ou furação de bloqueio sem arma: NÃO PODE ATIRAR!",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "NÃO PODE ATIRAR SE NÃO HOUVER RISCO DE MORTE: 1) Fuga desarmada • 2) Furar blitz!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa incorreta.",
-      "C": "Alternativa incorreta.",
-      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
-      "E": "Alternativa incorreta."
+      "A": "INCORRETA. Há risco iminente de morte e agressão armada injusta; o uso de arma de fogo é legítimo.",
+      "B": "CORRETA. Vedação expressa do Parágrafo Único do Art. 2º da Lei 13.060/2014.",
+      "C": "INCORRETA. Situação de refém com perigo de morte iminente autoriza o uso seletivo da força letal.",
+      "D": "INCORRETA. Atirador ativo exige resposta imediata com neutralização armada para salvar vidas.",
+      "E": "INCORRETA. Legítima defesa própria e da tropa em emboscada permite emprego do armamento."
+    },
+    "porqueErrou": {
+      "0": "Agressores armados atirando geram legítima defesa real com meios proporcionais.",
+      "2": "O tiro tático do sniper/atirador de precisão para salvar refém é plenamente amparado pela lei.",
+      "3": "Protocolo de atirador ativo prevê entrada tática e neutralização letal imediata da ameaça.",
+      "4": "Em emboscada de criminosos, o revide armado é o único meio eficaz de salvar a guarnição."
     }
   },
   {
@@ -1432,28 +1530,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Regras de Mandela",
-    "question": "(AOCP / Direitos Humanos Questão 15) As Regras Mínimas da ONU para o Tratamento de Reclusos (Regras de Mandela) vedam categoricamente:",
+    "topicoEdital": "Súmula Vinculante nº 11 do STF - Uso de Algemas pela PMPE",
+    "question": "(Instituto AOCP / PMPE) O Supremo Tribunal Federal editou a Súmula Vinculante nº 11 disciplinando o uso de algemas. De acordo com o verbete sumular, o emprego de algemas pela Polícia Militar só é lícito em casos de:",
     "options": [
-      "O trabalho remunerado facultativo.",
-      "O banho diário com água encanada.",
-      "A assistência médica básica pelo Estado.",
-      "O contato epistolar com familiares.",
-      "O isolamento indefinido ou prolongado em cela escura."
+      "Conveniência da guarnição para almoçar tranquilamente sem vigiar o preso.",
+      "Resistência e de fundado receio de fuga ou de perigo à integridade física própria ou alheia, por parte do preso ou de terceiros, justificada a excepcionalidade por escrito.",
+      "Qualquer detenção de idoso ou pessoa com deficiência em protesto pacífico.",
+      "Mero capricho do soldado para causar humilhação e constrangimento ao detido.",
+      "Rotina obrigatória em 100% das abordagens para averiguação de rotina em praça pública."
     ],
-    "correctIndex": 4,
-    "explanation": "Direitos Humanos: A alternativa E está alinhada aos tratados internacionais e à doutrina jurídica de Regras de Mandela.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
-    "difficulty": "hard",
+    "correctIndex": 1,
+    "explanation": "A Súmula Vinculante nº 11 do STF dispõe: 'Só é lícito o uso de algemas em casos de resistência e de fundado receio de fuga ou de perigo à integridade física própria ou alheia, por parte do preso ou de terceiros, justificada a excepcionalidade por escrito, sob pena de responsabilidade disciplinar, civil e penal do agente ou da autoridade e de nulidade da prisão ou do ato processual a que se refere, sem prejuízo da responsabilidade civil do Estado.'",
+    "fundamentacaoLegal": "Súmula Vinculante nº 11 do Supremo Tribunal Federal (STF).",
+    "hint": "Algema é exceção (PR-F-P): Perigo, Resistência ou Fuga, justificado por escrito!",
+    "difficulty": "easy",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "REGRA DO USO DE ALGEMAS (STF): P-R-F (Perigo à integridade, Resistência, Fuga) + JUSTIFICATIVA POR ESCRITO!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa incorreta.",
-      "C": "Alternativa incorreta.",
-      "D": "Alternativa incorreta.",
-      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
+      "A": "INCORRETA. Comodidade da equipe não constitui requisito da Súmula Vinculante 11.",
+      "B": "CORRETA. Reprodução fiel dos requisitos cumulativos da Súmula Vinculante 11 do STF.",
+      "C": "INCORRETA. Protesto pacífico sem perigo à integridade não legitima algemamento abusivo.",
+      "D": "INCORRETA. Configura crime de abuso de autoridade e ilícito administrativo.",
+      "E": "INCORRETA. O uso de algemas não é rotina automática nem padronizada indistintamente."
+    },
+    "porqueErrou": {
+      "0": "Algema não é instrumento de comodidade, mas de segurança justificada nos autos.",
+      "2": "Pessoas vulneráveis em atos pacíficos sem agressão não oferecem perigo justificador de algemas.",
+      "3": "Humilhar o cidadão é infração gravíssima vedada pelas leis de regência.",
+      "4": "Na abordagem simples de averiguação não cabe algemamento sem fundada suspeita e perigo."
     }
   },
   {
@@ -1461,28 +1566,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "DUDH 1948: Tortura",
-    "question": "(AOCP / Direitos Humanos Questão 16) Segundo a Declaração Universal dos Direitos Humanos, ninguém será submetido a:",
+    "topicoEdital": "Lei de Tortura (Lei 9.455/1997) - Crime de Tortura-Prova",
+    "question": "(Instituto AOCP / PMPE) De acordo com o Artigo 1º, inciso I, alínea 'a', da Lei Federal nº 9.455/1997, constranger alguém com emprego de violência ou grave ameaça, causando-lhe sofrimento físico ou mental, com o fim de obter informação, declaração ou confissão da vítima ou de terceira pessoa, configura:",
     "options": [
-      "Tortura, nem a tratamento ou castigo cruel, desumano ou degradante.",
-      "Julgamento público por tribunal independente.",
-      "Presunção de inocência até prova em contrário.",
-      "Liberdade de locomoção e residência.",
-      "Direito a repouso e lazer."
+      "Mero excesso culposo desprovido de sanção criminal.",
+      "Crime de Tortura (tortura-prova), punido com pena de reclusão de 2 a 8 anos.",
+      "Infração de trânsito de natureza gravíssima com perda de 7 pontos na CNH.",
+      "Prerrogativa regular do poder de polícia investigativa de campo.",
+      "Contravenção penal branda com pena máxima de admoestação verbal."
     ],
-    "correctIndex": 0,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de DUDH 1948: Tortura.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
+    "correctIndex": 1,
+    "explanation": "O Art. 1º, I, 'a', da Lei 9.455/97 tipifica a chamada tortura-prova: constranger alguém com violência ou grave ameaça, causando sofrimento físico ou mental, com o fim de obter informação, declaração ou confissão. A pena prevista é de reclusão de 2 a 8 anos, sendo crime inafiançável e insuscetível de graça ou anistia.",
+    "fundamentacaoLegal": "Artigo 1º, inciso I, alínea 'a', da Lei Federal nº 9.455/1997.",
+    "hint": "Constranger com violência para obter confissão = Crime de Tortura (reclusão de 2 a 8 anos).",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "TORTURA-PROVA: Sofrimento físico/mental para arrancar confissão = RECLUSÃO DE 2 A 8 ANOS!",
     "analiseAlternativas": {
-      "A": "Correta: Princípio internacional consagrado.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "INCORRETA. Não existe tortura culposa; o crime é sempre doloso e gravíssimo.",
+      "B": "CORRETA. Definição típica da tortura-prova segundo a Lei 9.455/97.",
+      "C": "INCORRETA. Não é infração de trânsito, mas crime hediondo por equiparação.",
+      "D": "INCORRETA. A violência para confissão não é prerrogativa de polícia em nenhum Estado democrático.",
+      "E": "INCORRETA. É crime de elevada gravidade penal, inafiançável e imprescritível."
+    },
+    "porqueErrou": {
+      "0": "Tortura é crime formal doloso hediondo por equiparação constitucional.",
+      "2": "O Código de Trânsito Brasileiro trata de condutas ao volante, não de crimes contra a pessoa.",
+      "3": "O poder de polícia encontra limite intransponível na dignidade da pessoa humana.",
+      "4": "Contravenções são delitos anões; a tortura é apenada com reclusão em regime inicial fechado."
     }
   },
   {
@@ -1490,28 +1602,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "CADH: Audiência de Custódia",
-    "question": "(AOCP / Direitos Humanos Questão 17) O Pacto de São José da Costa Rica assegura que toda pessoa presa deve ser conduzida, sem demora, à presença de:",
+    "topicoEdital": "Lei de Tortura (Lei 9.455/1997) - Tortura por Omissão",
+    "question": "(Instituto AOCP / PMPE) Um sargento da PMPE presencia dois soldados subordinados agredindo fisicamente um indivíduo imobilizado dentro da sala de ocorrências do destacamento militar. O sargento, tendo o dever legal de evitar ou apurar a conduta, cruza os braços e nada faz. Conforme a Lei nº 9.455/1997, o sargento:",
     "options": [
-      "Um ministro de Estado.",
-      "Um juiz ou outra autoridade autorizada por lei.",
-      "Um médico do trabalho.",
-      "Um representante consular estrangeiro.",
-      "Um conselho de sentença leigo."
+      "Está isento de culpa penal porque não foi ele quem desferiu os golpes físicos.",
+      "Responde pelo crime de tortura por omissão (Art. 1º, § 2º), punido com pena de detenção de 1 a 4 anos.",
+      "Deve ser promovido imediatamente por preservar o espírito de camaradagem do quartel.",
+      "Comete apenas infração civil de trânsito se a viatura estiver estacionada em local proibido.",
+      "Fica sujeito exclusivamente a advertência confidencial sem registro em sua ficha funcional."
     ],
     "correctIndex": 1,
-    "explanation": "Direitos Humanos: A alternativa B está alinhada aos tratados internacionais e à doutrina jurídica de CADH: Audiência de Custódia.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
+    "explanation": "O Art. 1º, § 2º, da Lei nº 9.455/1997 prevê expressamente a figura da tortura por omissão: 'Aquele que se omite em face dessas condutas, quando tinha o dever de evitá-las ou apurá-las, incorre na pena de detenção de um a quatro anos.' Quem comanda ou presencia com dever de agir responde penalmente.",
+    "fundamentacaoLegal": "Artigo 1º, § 2º, da Lei Federal nº 9.455/1997 (Lei de Tortura).",
+    "hint": "Quem tinha o dever de evitar ou apurar e se omite = Tortura por omissão (detenção de 1 a 4 anos).",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "TORTURA POR OMISSÃO: DEVER DE EVITAR OU APURAR + OMISSÃO = DETENÇÃO DE 1 A 4 ANOS!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
-      "C": "Alternativa incorreta.",
-      "D": "Alternativa incorreta.",
-      "E": "Alternativa incorreta."
+      "A": "INCORRETA. A lei pune formalmente a omissão do garante que tinha o dever de agir.",
+      "B": "CORRETA. Tipificação perfeita do Artigo 1º, § 2º, da Lei de Tortura.",
+      "C": "INCORRETA. Espírito de corpo não acoberta crimes hediondos ou ilícitos penais militares.",
+      "D": "INCORRETA. A matéria é penal grave, não se confundindo com normas viárias.",
+      "E": "INCORRETA. Responde a processo criminal na Justiça Militar/Comum e a Processo Administrativo Disciplinar."
+    },
+    "porqueErrou": {
+      "0": "No direito penal, quem tem o dever de garante e se omite responde pelo crime (Art. 13, § 2º, CP).",
+      "2": "Omitir-se perante crime é prevaricação e crime de tortura por omissão.",
+      "3": "A conduta atingiu a integridade humana no quartel, sem qualquer elo com trânsito.",
+      "4": "A pena cominada em lei é de detenção de 1 a 4 anos, além da perda do cargo."
     }
   },
   {
@@ -1519,28 +1638,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Uso Diferenciado da Força",
-    "question": "(AOCP / Direitos Humanos Questão 18) No uso diferenciado da força pelo policial militar, a força letal com arma de fogo deve ser utilizada estritamente como:",
+    "topicoEdital": "Lei de Tortura (Lei 9.455/1997) - Efeito da Condenação do Policial Militar",
+    "question": "(Instituto AOCP / PMPE) Um policial militar de Pernambuco é condenado em sentença transitada em julgado pelo crime de tortura praticado durante o serviço ostensivo. Conforme o Artigo 1º, § 5º, da Lei Federal nº 9.455/1997, a condenação acarretará:",
     "options": [
-      "Medida rotineira para dispersar aglomerações pacíficas.",
-      "Primeira opção para intimidação da multidão.",
-      "Último recurso em caso de perigo iminente de morte ou lesão grave.",
-      "Punição imediata de suspeitos desarmados em fuga.",
-      "Resposta obrigatória a qualquer desacato verbal."
+      "Apenas a transferência do militar para outro batalhão no interior do Estado.",
+      "A perda do cargo, função ou emprego público e a interdição para seu exercício pelo dobro do prazo da pena aplicada.",
+      "Uma gratificação de periculosidade equivalente a 20% do soldo militar.",
+      "A suspensão dos plantões em feriados pelo período de 30 dias.",
+      "O cancelamento do porte de armas apenas durante os finais de semana de folga."
     ],
-    "correctIndex": 2,
-    "explanation": "Direitos Humanos: A alternativa C está alinhada aos tratados internacionais e à doutrina jurídica de Uso Diferenciado da Força.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
-    "difficulty": "hard",
+    "correctIndex": 1,
+    "explanation": "O Art. 1º, § 5º, da Lei 9.455/1997 estabelece como efeito automático e obrigatório da condenação por crime de tortura: 'A condenação acarretará a perda do cargo, função ou emprego público e a interdição para seu exercício pelo dobro do prazo da pena aplicada.'",
+    "fundamentacaoLegal": "Artigo 1º, § 5º, da Lei Federal nº 9.455/1997.",
+    "hint": "Efeito obrigatório na condenação por tortura: PERDA DO CARGO + INTERDIÇÃO PELO DOBRO DO TEMPO DA PENA.",
+    "difficulty": "easy",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "CONDENAÇÃO POR TORTURA = PERDA DO CARGO + DOBRO DO PRAZO DE INTERDIÇÃO PÚBLICA!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa incorreta.",
-      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
-      "D": "Alternativa incorreta.",
-      "E": "Alternativa incorreta."
+      "A": "INCORRETA. Não há mera remoção de quartel; a perda do cargo público é compulsória.",
+      "B": "CORRETA. Mandamento legal expresso do § 5º do Artigo 1º da Lei nº 9.455/1997.",
+      "C": "INCORRETA. Crime não gera benefício financeiro, mas sanções graves de perda funcional.",
+      "D": "INCORRETA. A pena imposta afasta o militar definitivamente das fileiras corporativas.",
+      "E": "INCORRETA. Com a perda do cargo, o militar é excluído da corporação e perde o porte institucional."
+    },
+    "porqueErrou": {
+      "0": "A gravidade do crime de tortura impede a permanência do militar na corporação.",
+      "2": "Cometer tortura acarreta demissão a bem da disciplina e cumprimento de pena de reclusão.",
+      "3": "A sanção não é mera escala administrativa de plantão.",
+      "4": "A exclusão das Forças de Segurança Pública é total e de longo prazo (dobro da pena)."
     }
   },
   {
@@ -1548,28 +1674,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "DUDH: Presunção de Inocência",
-    "question": "(AOCP / Direitos Humanos Questão 19) A DUDH prevê que toda pessoa acusada de um delito presume-se inocente até que:",
+    "topicoEdital": "Lei de Abuso de Autoridade (Lei 13.869/2019) - Dolo Específico",
+    "question": "(Instituto AOCP / PMPE) Para a configuração de qualquer dos crimes previstos na Lei Federal nº 13.869/2019 (Lei de Abuso de Autoridade), é indispensável demonstrar que o agente público agiu com uma finalidade especial. Assinale a alternativa que traz esses elementos subjetivos específicos:",
     "options": [
-      "A imprensa noticie os fatos com fotos.",
-      "O delegado indicie formalmente o suspeito.",
-      "Seja decretada sua prisão preventiva.",
-      "Sua culpabilidade tenha sido provada de acordo com a lei, em julgamento público.",
-      "O denunciante preste depoimento isolado."
+      "Agir em estrito cumprimento do dever legal sem qualquer interesse escuso.",
+      "A intenção de prejudicar outrem ou beneficiar a si mesmo ou a terceiro, ou, ainda, por mero capricho ou satisfação pessoal.",
+      "A vontade sincera de cumprir a Constituição e os regulamentos disciplinares da corporação.",
+      "O receio justificado de emboscada ou ataque armado contra o quartel militar.",
+      "A aplicação correta da doutrina de uso escalonado da força em contenção de tumultos."
     ],
-    "correctIndex": 3,
-    "explanation": "Direitos Humanos: A alternativa D está alinhada aos tratados internacionais e à doutrina jurídica de DUDH: Presunção de Inocência.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
-    "difficulty": "easy",
+    "correctIndex": 1,
+    "explanation": "O Art. 1º, § 1º, da Lei 13.869/2019 exige o dolo específico: 'As condutas descritas nesta Lei constituem crime de abuso de autoridade quando praticadas pelo agente com a finalidade específica de prejudicar outrem ou beneficiar a si mesmo ou a terceiro, ou, ainda, por mero capricho ou satisfação pessoal.' O § 2º veda a punição por mera divergência interpretativa.",
+    "fundamentacaoLegal": "Artigo 1º, § 1º e § 2º, da Lei Federal nº 13.869/2019.",
+    "hint": "Abuso de autoridade exige o fim de PREJUDICAR, BENEFICIAR OU MERO CAPRICHO.",
+    "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "DOLO ESPECÍFICO DO ABUSO: 1) Prejudicar outrem • 2) Beneficiar a si/terceiro • 3) Mero capricho/satisfação!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa incorreta.",
-      "C": "Alternativa incorreta.",
-      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
-      "E": "Alternativa incorreta."
+      "A": "INCORRETA. Estrito cumprimento do dever legal é causa excludente da ilicitude (Art. 23, CP).",
+      "B": "CORRETA. Texto literal do Art. 1º, § 1º, da Lei de Abuso de Autoridade.",
+      "C": "INCORRETA. Agir para cumprir a lei é conduta esperada do militar e afasta qualquer crime.",
+      "D": "INCORRETA. Cautela operacional não se confunde com intenção de abusar de prerrogativa.",
+      "E": "INCORRETA. O emprego técnico e legítimo da força é dever profissional regulamentar."
+    },
+    "porqueErrou": {
+      "0": "Quem age nos limites da lei não comete crime de abuso.",
+      "2": "O dolo específico exige má-fé (prejudicar, beneficiar-se ou mero capricho pessoal).",
+      "3": "A segurança do policial na operação é dever tático legítimo.",
+      "4": "A técnica policial bem aplicada exclui tipicidade do abuso de autoridade."
     }
   },
   {
@@ -1577,28 +1710,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Regras de Mandela",
-    "question": "(AOCP / Direitos Humanos Questão 20) As Regras Mínimas da ONU para o Tratamento de Reclusos (Regras de Mandela) vedam categoricamente:",
+    "topicoEdital": "Lei de Abuso de Autoridade - Constranger Preso (Artigo 13)",
+    "question": "(Instituto AOCP / PMPE) Durante uma condução de suspeito para a delegacia de plantão, policiais militares obrigam o preso, mediante ameaças de agressão, a gravar um vídeo dançando e pedindo desculpas para ser veiculado nos grupos de aplicativo da região. Essa conduta:",
     "options": [
-      "O trabalho remunerado facultativo.",
-      "O banho diário com água encanada.",
-      "A assistência médica básica pelo Estado.",
-      "O contato epistolar com familiares.",
-      "O isolamento indefinido ou prolongado em cela escura."
+      "É um ato lícito de entretenimento comunitário incentivado pelas diretrizes da corporação.",
+      "Configura o crime do Artigo 13 da Lei nº 13.869/2019 (constranger o preso, mediante violência ou ameaça, a submeter-se a situação vexatória ou ao constrangimento de exibir-se à curiosidade pública).",
+      "Gera apenas uma anotação positiva de elogio por engajamento digital da guarnição.",
+      "Está acobertada pelo direito fundamental à liberdade de expressão dos policiais militares.",
+      "É equiparada a legítima defesa putativa da moral da sociedade pernambucana."
     ],
-    "correctIndex": 4,
-    "explanation": "Direitos Humanos: A alternativa E está alinhada aos tratados internacionais e à doutrina jurídica de Regras de Mandela.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
-    "difficulty": "medium",
+    "correctIndex": 1,
+    "explanation": "O Art. 13 da Lei 13.869/2019 tipifica como crime de abuso de autoridade: 'Constranger o preso ou o detento, mediante violência, grave ameaça ou redução de sua capacidade de resistência, a: I - exibir-se ou ter seu corpo ou parte dele exibido à curiosidade pública; II - submeter-se a situação vexatória ou a constrangimento não autorizado em lei.' Pena: detenção de 1 a 4 anos e multa.",
+    "fundamentacaoLegal": "Artigo 13 da Lei Federal nº 13.869/2019.",
+    "hint": "Constranger o preso a exibir-se em vídeo ou vexame = Abuso de autoridade (Art. 13).",
+    "difficulty": "easy",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "PRESO NÃO É PALHAÇO DE REDE SOCIAL: Constranger a vexame em vídeo = CRIME DE ABUSO (ART. 13)!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa incorreta.",
-      "C": "Alternativa incorreta.",
-      "D": "Alternativa incorreta.",
-      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
+      "A": "INCORRETA. Não há entretenimento em violar a dignidade do cidadão custodiado.",
+      "B": "CORRETA. Tipificação clássica e expressa do Artigo 13 da Lei nº 13.869/2019.",
+      "C": "INCORRETA. Conduta reprovável que acarreta processo crime e punição disciplinar rigorosa.",
+      "D": "INCORRETA. A liberdade de expressão não agasalha a prática de ilícitos penais funcionais.",
+      "E": "INCORRETA. Não existe 'legítima defesa da moral da sociedade' para cometer abusos contra detentos."
+    },
+    "porqueErrou": {
+      "0": "Gravar vídeos vexatórios com presos quebra todos os preceitos de Direitos Humanos da PMPE.",
+      "2": "A polícia não faz publicidade às custas da dignidade do preso sob sua custódia.",
+      "3": "O exercício de função pública impõe estrito respeito à legalidade e aos direitos individuais.",
+      "4": "Legítima defesa exige agressão injusta real e atual, inexistente na custódia de quem já está rendido."
     }
   },
   {
@@ -1606,28 +1746,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "DUDH 1948: Tortura",
-    "question": "(AOCP / Direitos Humanos Questão 21) Segundo a Declaração Universal dos Direitos Humanos, ninguém será submetido a:",
+    "topicoEdital": "Lei de Abuso de Autoridade - Cumprimento Noturno de Mandado (Artigo 22)",
+    "question": "(Instituto AOCP / PMPE) A inviolabilidade do domicílio é direito fundamental (Art. 5º, XI, CF/88). Em reforço a essa garantia, o Artigo 22, inciso III, da Lei nº 13.869/2019 tipifica como crime de abuso de autoridade a conduta de quem cumpre mandado de busca e apreensão domiciliar:",
     "options": [
-      "Tortura, nem a tratamento ou castigo cruel, desumano ou degradante.",
-      "Julgamento público por tribunal independente.",
-      "Presunção de inocência até prova em contrário.",
-      "Liberdade de locomoção e residência.",
-      "Direito a repouso e lazer."
+      "Durante o período vespertino entre 14h e 17h mediante autorização judicial escrita.",
+      "Após as 21h (vinte e uma horas) ou antes das 5h (cinco horas).",
+      "Acompanhado do morador maior de idade que franqueou a entrada sem resistência.",
+      "Em caso flagrante de socorro a vítima de incêndio que grita por ajuda no imóvel.",
+      "Durante a manhã entre 8h e 11h munido do mandado assinado pelo juiz competente."
     ],
-    "correctIndex": 0,
-    "explanation": "Direitos Humanos: A alternativa A está alinhada aos tratados internacionais e à doutrina jurídica de DUDH 1948: Tortura.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
-    "difficulty": "hard",
+    "correctIndex": 1,
+    "explanation": "O Art. 22, § 1º, inciso III, da Lei nº 13.869/2019 estabelece que incorre na pena de detenção de 1 a 4 anos quem: 'cumpre mandado de busca e apreensão domiciliar após as 21h (vinte e uma horas) ou antes das 5h (cinco horas).' Durante a noite, somente em flagrante, desastre ou socorro admite-se o ingresso sem consentimento.",
+    "fundamentacaoLegal": "Artigo 22, § 1º, inciso III, da Lei Federal nº 13.869/2019.",
+    "hint": "Horário proibido para cumprir mandado judicial de busca: entre 21h e 5h da manhã!",
+    "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "MANDADO DE BUSCA NOTURNO PROIBIDO: DAS 21H ATÉ AS 5H DA MADRUGADA = CRIME DE ABUSO!",
     "analiseAlternativas": {
-      "A": "Correta: Princípio internacional consagrado.",
-      "B": "Incorreta.",
-      "C": "Incorreta.",
-      "D": "Incorreta.",
-      "E": "Incorreta."
+      "A": "INCORRETA. Período diurno regular; o cumprimento de mandado judicial é perfeitamente legal.",
+      "B": "CORRETA. Marco temporal fixado na lei: cumprimento de mandado entre 21h e 5h é crime.",
+      "C": "INCORRETA. Com o consentimento do morador, a entrada é franqueada a qualquer hora.",
+      "D": "INCORRETA. Prestar socorro é exceção constitucional expressa à inviolabilidade domiciliar.",
+      "E": "INCORRETA. Horário matutino com mandado regular é o padrão legal correto de atuação policial."
+    },
+    "porqueErrou": {
+      "0": "Durante o dia, com mandado judicial assinado por juiz, a busca é lícita.",
+      "2": "Havendo consentimento válido do titular do domicílio, afasta-se o abuso.",
+      "3": "Prestar socorro e flagrante delito autorizam entrada até mesmo no período noturno.",
+      "4": "Das 5h às 21h o mandado judicial pode ser cumprido regularmente."
     }
   },
   {
@@ -1635,28 +1782,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "CADH: Audiência de Custódia",
-    "question": "(AOCP / Direitos Humanos Questão 22) O Pacto de São José da Costa Rica assegura que toda pessoa presa deve ser conduzida, sem demora, à presença de:",
+    "topicoEdital": "Lei Maria da Penha (Lei 11.340/2006) e a Patrulha Maria da Penha da PMPE",
+    "question": "(Instituto AOCP / PMPE) A PMPE atua na vanguarda da proteção às mulheres vítimas de violência através da Patrulha Maria da Penha. Diante do descumprimento de Medida Protetiva de Urgência deferida pelo juiz (Art. 24-A da Lei nº 11.340/2006), assinale a correta conduta da guarnição militar:",
     "options": [
-      "Um ministro de Estado.",
-      "Um juiz ou outra autoridade autorizada por lei.",
-      "Um médico do trabalho.",
-      "Um representante consular estrangeiro.",
-      "Um conselho de sentença leigo."
+      "A guarnição deve prender em flagrante o agressor descumpridor, sabendo que a autoridade policial (delegado) NÃO pode arbitrar fiança nesse crime.",
+      "Os policiais devem orientar a vítima a perdoar o agressor e não lavrar ocorrência para evitar discórdia familiar.",
+      "O comandante da viatura pode arbitrar fiança de R$ 50,00 no local e liberar o agressor imediatamente.",
+      "A prisão só pode ser efetuada se o agressor concordar expressamente em ser algemado e levado.",
+      "O crime de descumprimento de medidas protetivas depende de representação e pode ser perdoado na rua pela guarnição."
     ],
-    "correctIndex": 1,
-    "explanation": "Direitos Humanos: A alternativa B está alinhada aos tratados internacionais e à doutrina jurídica de CADH: Audiência de Custódia.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
-    "difficulty": "easy",
+    "correctIndex": 0,
+    "explanation": "O Art. 24-A da Lei 11.340/2006 tipifica o crime de descumprimento de medidas protetivas de urgência (pena de reclusão de 2 a 5 anos, com a alteração recente). O § 2º dispõe categoricamente: 'Apenas a autoridade judicial poderá conceder fiança.' O policial militar deve efetuar a prisão em flagrante e conduzi-lo à delegacia, sem fiança no plantão policial.",
+    "fundamentacaoLegal": "Artigo 24-A, § 2º, da Lei Federal nº 11.340/2006 (Lei Maria da Penha).",
+    "hint": "Descumprimento de medida protetiva: Prisão em flagrante! Delegado NÃO concede fiança, só o JUIZ!",
+    "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "DESCUMPRIU MEDIDA PROTETIVA: FLAGRANTE DIRETO! Delegado e PM NÃO dão fiança, só o JUIZ!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
-      "C": "Alternativa incorreta.",
-      "D": "Alternativa incorreta.",
-      "E": "Alternativa incorreta."
+      "A": "CORRETA. O Art. 24-A, § 2º, veda expressamente o arbitramento de fiança pela autoridade policial.",
+      "B": "INCORRETA. Conciliação ou leniência em violência doméstica viola frontalmente a Lei Maria da Penha.",
+      "C": "INCORRETA. Policial militar não arbitra fiança em nenhuma hipótese legal.",
+      "D": "INCORRETA. A prisão em flagrante é ato de autoridade coercitivo que independe de concordância do infrator.",
+      "E": "INCORRETA. A ação penal é pública incondicionada; a guarnição tem o dever estrito de agir."
+    },
+    "porqueErrou": {
+      "1": "A atuação da PMPE na violência doméstica é rigorosa para evitar o feminicídio.",
+      "2": "Fiança é competência restrita do Delegado (em crimes até 4 anos) ou do Juiz, nunca de guarnição PM.",
+      "3": "A autoridade da lei não pede licença ao infrator flagrado no cometimento do crime.",
+      "4": "Crimes de violência doméstica e descumprimento de protetivas não admitem desistência informal de rua."
     }
   },
   {
@@ -1664,28 +1818,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Uso Diferenciado da Força",
-    "question": "(AOCP / Direitos Humanos Questão 23) No uso diferenciado da força pelo policial militar, a força letal com arma de fogo deve ser utilizada estritamente como:",
+    "topicoEdital": "ECA (Lei 8.069/1990) - Apreensão de Adolescente pela Guarnição PMPE",
+    "question": "(Instituto AOCP / PMPE) Uma equipe da PMPE apreende em flagrante um adolescente de 16 anos autor de ato infracional análogo a roubo circunstanciado. Em observância ao ECA e às garantias de Direitos Humanos, a guarnição deve:",
     "options": [
-      "Medida rotineira para dispersar aglomerações pacíficas.",
-      "Primeira opção para intimidação da multidão.",
-      "Último recurso em caso de perigo iminente de morte ou lesão grave.",
-      "Punição imediata de suspeitos desarmados em fuga.",
-      "Resposta obrigatória a qualquer desacato verbal."
+      "Encaminhar o adolescente imediatamente à autoridade policial competente (Delegacia/DPCA), garantindo sua integridade e comunicando incontinenti a apreensão à família e ao juiz.",
+      "Conduzir o jovem ao quartel militar para cumprir castigo disciplinar de flexões sob o sol por 48 horas.",
+      "Divulgar a foto e os dados escolares do adolescente na imprensa para alertar os comerciantes locais.",
+      "Colocar o jovem em cela comum com detentos adultos de facções prisionais para que ele aprenda a temer a lei.",
+      "Liberar o adolescente no local sem apreender a arma utilizada no delito caso ele prometa não reincidir."
     ],
-    "correctIndex": 2,
-    "explanation": "Direitos Humanos: A alternativa C está alinhada aos tratados internacionais e à doutrina jurídica de Uso Diferenciado da Força.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
-    "difficulty": "medium",
+    "correctIndex": 0,
+    "explanation": "Conforme o ECA (Arts. 106, 107 e 178), nenhum adolescente será privado de sua liberdade senão em flagrante de ato infracional ou por ordem judicial. A apreensão e o local onde se encontra devem ser comunicados imediatamente à autoridade judiciária e à família, sendo conduzido de pronto à autoridade policial especializada sem rigor excessivo ou exposição indevida.",
+    "fundamentacaoLegal": "Artigos 106, 107 e 178 da Lei Federal nº 8.069/1990 (Estatuto da Criança e do Adolescente).",
+    "hint": "Adolescente infrator: Condução imediata à autoridade policial e comunicação incontinenti à família e ao juiz.",
+    "difficulty": "easy",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "ATO INFRACIONAL: Apreensão legal + Comunicação imediata à família e ao juiz + DPCA/Delegacia!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa incorreta.",
-      "C": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
-      "D": "Alternativa incorreta.",
-      "E": "Alternativa incorreta."
+      "A": "CORRETA. Procedimento padrão legal previsto no ECA e nas diretrizes operacionais da PMPE.",
+      "B": "INCORRETA. Castigo físico é tortura e abuso grave de autoridade.",
+      "C": "INCORRETA. O Art. 247 do ECA proíbe a divulgação de atos judiciais ou policiais com identificação do menor.",
+      "D": "INCORRETA. Misturar adolescentes com adultos é vedação expressa do ECA e da CADH.",
+      "E": "INCORRETA. A arma e os objetos do crime devem ser apreendidos formalmente sob cadeia de custódia."
+    },
+    "porqueErrou": {
+      "1": "Quartéis militares não são centros socioeducativos nem locais de castigo físico.",
+      "2": "Exposição de imagem de adolescente infrator é vedada expressamente pelo Art. 247 do ECA.",
+      "3": "A separação de menores é imperativo legal e previne violações à integridade do jovem.",
+      "4": "A guarnição não pode abrir mão da apreensão dos instrumentos do crime nem prevaricar."
     }
   },
   {
@@ -1693,28 +1854,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "DUDH: Presunção de Inocência",
-    "question": "(AOCP / Direitos Humanos Questão 24) A DUDH prevê que toda pessoa acusada de um delito presume-se inocente até que:",
+    "topicoEdital": "Combate ao Racismo - Lei nº 7.716/1989 e Lei nº 14.532/2023",
+    "question": "(Instituto AOCP / PMPE) Durante fiscalização de trânsito em Olinda, um motorista ofende um policial militar negro em razão de sua cor e etnia, dirigindo-lhe insultos de cunho racista. Com o advento da Lei nº 14.532/2023, que equiparou a injúria racial ao crime de racismo, a conduta desse cidadão:",
     "options": [
-      "A imprensa noticie os fatos com fotos.",
-      "O delegado indicie formalmente o suspeito.",
-      "Seja decretada sua prisão preventiva.",
-      "Sua culpabilidade tenha sido provada de acordo com a lei, em julgamento público.",
-      "O denunciante preste depoimento isolado."
+      "É mera infração civil de menor potencial que não autoriza voz de prisão em flagrante.",
+      "Configura crime de racismo (Art. 2º-A da Lei nº 7.716/1989), sendo inafiançável e imprescritível pela Constituição Federal, devendo o autor ser preso em flagrante delito.",
+      "Só poderá ser punida se o militar pedir desculpas ao infrator no boletim de ocorrência.",
+      "Prescreve em 48 horas se a vítima for funcionário público no exercício de suas atribuições.",
+      "Permite ao policial agredir fisicamente o condutor até que ele retire as palavras proferidas."
     ],
-    "correctIndex": 3,
-    "explanation": "Direitos Humanos: A alternativa D está alinhada aos tratados internacionais e à doutrina jurídica de DUDH: Presunção de Inocência.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
-    "difficulty": "hard",
+    "correctIndex": 1,
+    "explanation": "A Lei nº 14.532/2023 tipificou a injúria racial no Art. 2º-A da Lei nº 7.716/1989, equiparando-a expressamente aos crimes de racismo. Por força do Art. 5º, XLII, da CF/88, a prática do racismo constitui crime inafiançável e imprescritível, sujeito à pena de reclusão (de 2 a 5 anos e multa), impondo prisão em flagrante imediata.",
+    "fundamentacaoLegal": "Artigo 2º-A da Lei nº 7.716/1989 (com redação da Lei nº 14.532/2023) e Art. 5º, XLII, da CF/88.",
+    "hint": "Injúria racial agora é RACISMO: Crime inafiançável e imprescritível! Gera prisão em flagrante!",
+    "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "INJÚRIA RACIAL É RACISMO (LEI 14.532/23): INAFIANÇÁVEL + IMPRESCRITÍVEL! Reclusão de 2 a 5 anos!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa incorreta.",
-      "C": "Alternativa incorreta.",
-      "D": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP.",
-      "E": "Alternativa incorreta."
+      "A": "INCORRETA. É crime de ação penal pública incondicionada com pena severa de reclusão de 2 a 5 anos.",
+      "B": "CORRETA. Alinhamento com a legislação atualizada e jurisprudência vinculante dos Tribunais Superiores.",
+      "C": "INCORRETA. A vítima não pede desculpas ao criminoso; a lei pune o preconceito com vigor.",
+      "D": "INCORRETA. O racismo é constitucionalmente imprescritível, não prescrevendo jamais.",
+      "E": "INCORRETA. O policial militar age dentro da estrita legalidade procedimental, sem agressão física de desforra."
+    },
+    "porqueErrou": {
+      "0": "Com a nova lei de 2023, injúria racial tem o mesmo tratamento severo do racismo.",
+      "2": "O policial agredido tem a proteção integral da lei penal e da corporação.",
+      "3": "A Constituição Federal declara expressamente que o racismo é imprescritível.",
+      "4": "A autoridade militar prende nos termos da lei, preservando a honra e a postura ética da farda."
     }
   },
   {
@@ -1722,28 +1890,35 @@ export const BANCO_QUESTOES_BLOCO_3: QuizQuestion[] = [
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Regras de Mandela",
-    "question": "(AOCP / Direitos Humanos Questão 25) As Regras Mínimas da ONU para o Tratamento de Reclusos (Regras de Mandela) vedam categoricamente:",
+    "topicoEdital": "Direitos Humanos e Segurança Cidadã na Doutrina Operacional da PMPE",
+    "question": "(Instituto AOCP / PMPE) A moderna doutrina de Segurança Cidadã adotada na formação dos Soldados da Polícia Militar de Pernambuco compreende os Direitos Humanos não como um obstáculo, mas como a própria essência da atividade policial. Sob essa ótica, a atuação legítima da PMPE caracteriza-se por:",
     "options": [
-      "O trabalho remunerado facultativo.",
-      "O banho diário com água encanada.",
-      "A assistência médica básica pelo Estado.",
-      "O contato epistolar com familiares.",
-      "O isolamento indefinido ou prolongado em cela escura."
+      "Priorizar o extermínio de suspeitos para reduzir custos processuais do Tribunal de Justiça.",
+      "Proteger a sociedade, garantir o pleno exercício da cidadania e agir com estrito respeito à dignidade da pessoa humana e à legalidade democrática em todas as intervenções.",
+      "Submeter as ordens de patrulhamento ao aval prévio das lideranças do crime organizado.",
+      "Utilizar a farda e o armamento do Estado como instrumento de perseguição de desafetos particulares.",
+      "Restringir o atendimento policial de emergência apenas a bairros de maior arrecadação tributária."
     ],
-    "correctIndex": 4,
-    "explanation": "Direitos Humanos: A alternativa E está alinhada aos tratados internacionais e à doutrina jurídica de Regras de Mandela.",
-    "hint": "Tratados internacionais de Direitos Humanos proíbem abusos e garantem dignidade.",
+    "correctIndex": 1,
+    "explanation": "A polícia comunitária e a segurança cidadã colocam a proteção dos Direitos Humanos e da dignidade da pessoa humana no centro da missão militar. O policial militar da PMPE é o primeiro garantidor dos direitos fundamentais da população nas ruas de Pernambuco, atuando com legalidade, ética e respeito aos cidadãos.",
+    "fundamentacaoLegal": "Art. 1º, III, e Art. 144 da CF/88 c/c Doutrina de Polícia Cidadã da PMPE.",
+    "hint": "A polícia militar protege o cidadão e garante os direitos humanos com legalidade e ética.",
     "difficulty": "easy",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "banco_bloco3",
-    "dicaMacete": "DIGNIDADE DA PESSOA HUMANA: Proteção contra tortura, proporcionalidade e devido processo legal!",
+    "dicaMacete": "MISSÃO PMPE: SERVIR E PROTEGER A SOCIEDADE PERNAMBUCANA COM HONRA, LEGALIDADE E DIGNIDADE!",
     "analiseAlternativas": {
-      "A": "Alternativa incorreta.",
-      "B": "Alternativa incorreta.",
-      "C": "Alternativa incorreta.",
-      "D": "Alternativa incorreta.",
-      "E": "Alternativa correta segundo o gabarito oficial da banca Instituto AOCP."
+      "A": "INCORRETA. Extermínio é crime hediondo e atrocidade incompatível com o Estado Democrático de Direito.",
+      "B": "CORRETA. Síntese doutrinária e humanitária da missão institucional da Polícia Militar de Pernambuco.",
+      "C": "INCORRETA. A PMPE combate com bravura o crime organizado e a impunidade.",
+      "D": "INCORRETA. O uso da farda para fins privados tipifica corrupção e prevaricação grave.",
+      "E": "INCORRETA. O serviço de segurança pública é universal e atende a toda a população indistintamente."
+    },
+    "porqueErrou": {
+      "0": "A PMPE existe para preservar vidas e aplicar a lei, jamais para executar pessoas.",
+      "2": "A polícia submete-se exclusivamente ao império da lei e aos poderes constituídos.",
+      "3": "A farda da PMPE é patrimônio moral do povo de Pernambuco e exige integridade moral.",
+      "4": "A universalidade do policiamento atende todas as comunidades e rincões do Estado."
     }
   },
   {

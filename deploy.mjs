@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'deploy: efeitos sonoros militares (AK-47, .38, double-tap), questoes do Estatuto PMPE e tema militar aprofundado';
+  const commitMsg = 'deploy: painel tatico de duelo 1vs1 do pelotao (6 vagas), 25 novas questoes de Direitos Humanos PMPE e banco purgado para comandante gean';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;

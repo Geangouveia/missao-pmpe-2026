@@ -26,6 +26,7 @@ import { CommanderAccessModal } from './components/CommanderAccessModal';
 import { getDailyMotivationalQuote, type MotivationalQuote } from './utils/motivationalQuotes';
 import { recordStudentLogin, recordQuizCompletion } from './utils/studentAnalytics';
 import { fetchRegistryFromCloud, isMasterUser } from './utils/authManager';
+import { Swords, ArrowRight } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export function App() {
@@ -557,6 +558,82 @@ export function App() {
             onSelectSimulado={setSelectedSimulado}
             totalFilteredQuestions={filteredQuestions.length}
           />
+
+          {/* BANNER MILITAR: DISPUTA DE PELOTÃO & DUELO AMIGÁVEL (6 VAGAS) */}
+          <div 
+            onClick={() => {
+              sound.playGunshot38();
+              setIsAnalyticsModalOpen(true);
+            }}
+            style={{
+              cursor: 'pointer',
+              padding: '1.15rem 1.4rem',
+              borderRadius: '16px',
+              background: 'linear-gradient(135deg, rgba(20, 36, 24, 0.95) 0%, rgba(12, 22, 14, 0.98) 100%)',
+              border: '2px solid #f59e0b',
+              boxShadow: '0 0 25px rgba(245, 158, 11, 0.25)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '1rem',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+              marginBottom: '0.75rem'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 0 35px rgba(245, 158, 11, 0.45)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 0 25px rgba(245, 158, 11, 0.25)';
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem' }}>
+              <div style={{
+                width: '46px',
+                height: '46px',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #b45309, #d97706)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 0 15px rgba(245, 158, 11, 0.6)',
+                flexShrink: 0
+              }}>
+                <Swords size={24} color="#ffffff" />
+              </div>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '1.05rem', fontWeight: 900, color: '#ffffff', textTransform: 'uppercase', letterSpacing: '0.02em' }}>
+                    ⚔️ DISPUTA DE PELOTÃO • DUELO 1 VS 1 (6 VAGAS)
+                  </span>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.5rem', borderRadius: '4px', background: '#22c55e', color: '#052e16', fontWeight: 900 }}>
+                    AO VIVO EM NUVEM
+                  </span>
+                </div>
+                <div style={{ fontSize: '0.82rem', color: '#cbd5e1', marginTop: '0.2rem' }}>
+                  Compare seu aproveitamento (% de acerto e disparos) lado a lado com os colegas para evoluir até a farda da PMPE!
+                </div>
+              </div>
+            </div>
+
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.45rem',
+              padding: '0.55rem 1.15rem',
+              borderRadius: '10px',
+              background: 'linear-gradient(135deg, #d97706, #b45309)',
+              color: '#ffffff',
+              fontWeight: 900,
+              fontSize: '0.84rem',
+              boxShadow: '0 0 15px rgba(217, 119, 6, 0.5)'
+            }}>
+              <span>Abrir Duelo do Pelotão</span>
+              <ArrowRight size={15} />
+            </div>
+          </div>
 
           {/* Seletor de Modo de Jogo */}
           <ModeSelector

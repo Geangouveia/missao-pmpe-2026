@@ -172,21 +172,26 @@ export const Header: React.FC<HeaderProps> = ({
             <button 
               className="btn-secondary"
               style={{
-                padding: '0.45rem 0.85rem',
-                fontSize: '0.82rem',
+                padding: '0.45rem 0.95rem',
+                fontSize: '0.84rem',
                 borderRadius: '12px',
-                background: 'rgba(34, 197, 94, 0.12)',
-                borderColor: 'rgba(34, 197, 94, 0.4)',
-                color: '#86efac'
+                background: 'linear-gradient(135deg, rgba(20, 36, 22, 0.9) 0%, rgba(14, 25, 16, 0.95) 100%)',
+                borderColor: '#f59e0b',
+                color: '#fbbf24',
+                fontWeight: 900,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                boxShadow: '0 0 12px rgba(245, 158, 11, 0.25)'
               }}
               onClick={() => {
-                sound.playClick();
+                sound.playGunshot38();
                 onOpenAnalytics();
               }}
-              title="Quadro de Acompanhamento e Comparativo dos Alunos"
+              title="Quadro de Guerra do Pelotão (6 Vagas) • Disputa 1 vs 1 e Aproveitamento"
             >
-              <BarChart3 size={16} color="#4ade80" />
-              <span>Pelotão</span>
+              <BarChart3 size={16} color="#fbbf24" />
+              <span>⚔️ Duelo & Pelotão</span>
             </button>
           )}
 

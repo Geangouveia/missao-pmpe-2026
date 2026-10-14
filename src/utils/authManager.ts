@@ -76,6 +76,25 @@ export function saveLocalUsersRegistry(registry: Record<string, UserAccessRecord
 }
 
 /**
+ * Apaga todos os usuários cadastrados mantendo exclusivamente o Comandante Gean (tanto local quanto em nuvem)
+ */
+export async function purgeAllUsersExceptCommander(): Promise<boolean> {
+  const cleanRegistry: Record<string, UserAccessRecord> = {
+    gean: {
+      name: 'Soldado Gean',
+      status: 'approved',
+      isAdmin: true,
+      requestedAt: '2026-10-13T09:49:38.463Z',
+      approvedAt: new Date().toISOString(),
+      hasChangedPassword: true,
+      personalPassword: 'PMPE2026',
+    },
+  };
+  saveLocalUsersRegistry(cleanRegistry);
+  return await pushRegistryToCloud(cleanRegistry);
+}
+
+/**
  * Fetch com timeout para impedir congelamento de tela em redes lentas de celular
  */
 async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutMs = 3800): Promise<Response> {
