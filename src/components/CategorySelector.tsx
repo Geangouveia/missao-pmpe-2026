@@ -36,16 +36,16 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
   };
 
   const simuladosOptions = [
-    { id: 'all', label: 'Todos os Cadernos (1.420Q Totais)' },
+    { id: 'all', label: 'Todos os Cadernos (1.470Q Totais)' },
     { id: 'caderno_aocp_1000', label: '🏆 Caderno 1.000 Questões Instituto AOCP (Completo)' },
     { id: 'caderno_aocp_bloco1', label: '📖 Caderno AOCP Bloco I (Português & Hist. PE - 346Q)' },
     { id: 'caderno_aocp_bloco2', label: '🧮 Caderno AOCP Bloco II (RLM & Informática - 297Q)' },
     { id: 'caderno_aocp_bloco3', label: '⚖️ Caderno AOCP Bloco III (Direito, DH & Legislação - 367Q)' },
-    { id: 'caderno_pmpe_estatuto', label: '🛡️ Caderno Exclusivo: Estatuto da PMPE (Lei 6.783/74 - 50Q)' },
+    { id: 'caderno_pmpe_estatuto', label: '🛡️ Caderno Exclusivo: Estatuto da PMPE (94Q)' },
     { id: 'edital_200', label: '🔥 Caderno Oficial Edital AOCP (100Q)' },
     { id: 'banco_bloco1', label: '📚 Super Caderno Bloco I (Português & Hist. PE - 100Q)' },
     { id: 'banco_bloco2', label: '🧮 Super Caderno Bloco II (RLM & Informática - 100Q)' },
-    { id: 'banco_bloco3', label: '⚖️ Super Caderno Bloco III (Direito, DH & PMPE - 110Q)' },
+    { id: 'banco_bloco3', label: '⚖️ Super Caderno Bloco III (Direito, DH & PMPE - 160Q)' },
     { id: 'aocp_elite', label: '⭐ Caderno Elite AOCP (Resoluções Passo a Passo)' },
     { id: 'aocp_especial', label: '⚡ Foco AOCP Edital (30Q)' },
     { id: 'nuce_completo', label: 'Simulado PMPE Completo (60Q)' },

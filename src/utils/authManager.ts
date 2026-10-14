@@ -37,16 +37,10 @@ export function isMasterUser(name: string): boolean {
   return clean === 'gean' || clean === 'soldado gean' || clean === 'comandante gean' || clean.includes('gean');
 }
 
-export const PURGED_LEGACY_KEYS = ['cleiton', 'kleiton', 'kleiton_o', 'kayke', 'caique', 'jemerson', 'carlos', 'ninho', 'gomes'];
+export const PURGED_LEGACY_KEYS: string[] = [];
 
 export function filterPurgedUsers(record: Record<string, UserAccessRecord>): Record<string, UserAccessRecord> {
-  const clean: Record<string, UserAccessRecord> = {};
-  for (const [k, u] of Object.entries(record)) {
-    const isPurged = PURGED_LEGACY_KEYS.some(p => k.toLowerCase().includes(p) || (u.name && u.name.toLowerCase().includes(p)));
-    if (!isPurged) {
-      clean[k] = u;
-    }
-  }
+  const clean: Record<string, UserAccessRecord> = { ...record };
   if (!clean['gean']) {
     clean['gean'] = {
       name: 'Soldado Gean',
@@ -157,24 +151,94 @@ export async function pushRegistryToCloud(registry: Record<string, UserAccessRec
 }
 
 /**
- * Puxa o registro mais recente da nuvem KVdb (filtrando legados) e atualiza o local
+ * Puxa o registro mais recente da nuvem KVdb (consolidando auth_registry_pmpe e todas as contas student_*)
  */
 export async function fetchRegistryFromCloud(): Promise<Record<string, UserAccessRecord>> {
   const local = getLocalUsersRegistry();
+  const t = Date.now();
+  let cloudRegistry: Record<string, UserAccessRecord> = {};
+
+  // 1. Busca auth_registry_pmpe com cache-busting
   try {
-    const res = await fetchWithTimeout(`${CLOUD_API_BASE}/${MASTER_KEY_PREFIX}`, {}, 3500);
+    const res = await fetchWithTimeout(`${CLOUD_API_BASE}/${MASTER_KEY_PREFIX}?_t=${t}`, {
+      cache: 'no-store',
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache'
+      }
+    }, 4000);
     if (res.ok) {
       const cloudData: Record<string, UserAccessRecord> = await res.json();
       if (cloudData && typeof cloudData === 'object') {
-        const cleanCloud = filterPurgedUsers(cloudData);
-        saveLocalUsersRegistry(cleanCloud);
-        return cleanCloud;
+        cloudRegistry = cloudData;
       }
     }
   } catch (err) {
-    console.warn('Nuvem indisponível no momento, utilizando dados locais.');
+    console.warn('Nuvem indisponível no momento para auth_registry_pmpe, utilizando dados locais.');
   }
-  return local;
+
+  // 2. Busca e integra TODOS os perfis de alunos (student_*) na nuvem KVdb
+  try {
+    const listRes = await fetchWithTimeout(`${CLOUD_API_BASE}/?prefix=student_&format=json&_t=${t}`, {
+      cache: 'no-store',
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache'
+      }
+    }, 4000);
+    if (listRes.ok) {
+      const keys: string[] = await listRes.json();
+      if (Array.isArray(keys)) {
+        await Promise.all(
+          keys.map(async (k) => {
+            try {
+              const sRes = await fetchWithTimeout(`${CLOUD_API_BASE}/${encodeURIComponent(k)}?_t=${t}`, {
+                cache: 'no-store'
+              }, 3000);
+              if (sRes.ok) {
+                const sp = await sRes.json();
+                if (sp && sp.name && !isMasterUser(sp.name)) {
+                  const sKey = normalizeUserName(sp.name);
+                  if (!cloudRegistry[sKey]) {
+                    cloudRegistry[sKey] = {
+                      name: sp.name,
+                      status: 'approved',
+                      isAdmin: false,
+                      requestedAt: sp.firstLogin || new Date().toISOString(),
+                      approvedAt: sp.firstLogin || new Date().toISOString(),
+                      hasChangedPassword: true,
+                      personalPassword: 'PMPE2026'
+                    };
+                  }
+                }
+              }
+            } catch {}
+          })
+        );
+      }
+    }
+  } catch (err) {
+    console.warn('Erro ao ler chaves student_* da nuvem:', err);
+  }
+
+  // 3. Mescla sem perdas: local + nuvem registry + perfis student_*
+  const merged: Record<string, UserAccessRecord> = { ...local, ...cloudRegistry };
+  
+  // Garante que a conta titular do Comandante Gean sempre exista
+  if (!merged['gean']) {
+    merged['gean'] = {
+      name: 'Soldado Gean',
+      status: 'approved',
+      isAdmin: true,
+      requestedAt: '2026-10-13T09:49:38.463Z',
+      approvedAt: new Date().toISOString(),
+      hasChangedPassword: true,
+      personalPassword: 'PMPE2026',
+    };
+  }
+
+  saveLocalUsersRegistry(merged);
+  return merged;
 }
 
 /**

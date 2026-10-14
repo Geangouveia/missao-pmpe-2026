@@ -29,6 +29,7 @@ import {
   resetUserToDefaultPass,
   deleteUserPermanently,
   setMasterUserPassword,
+  isMasterUser,
   type UserAccessRecord 
 } from '../utils/authManager';
 import { sound } from '../utils/sound';
@@ -192,11 +193,10 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
     }
   };
 
-  // Filtros dos Alunos (exclui a conta do Gean da listagem de alunos)
+  // Filtros dos Alunos (exclui a conta do Comandante Gean da listagem de alunos)
   const studentsOnly = useMemo(() => {
     return Object.values(users).filter((u) => {
-      const lower = u.name.toLowerCase().trim();
-      return lower !== 'gean';
+      return !isMasterUser(u.name);
     });
   }, [users]);
 
