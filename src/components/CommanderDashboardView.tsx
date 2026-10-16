@@ -38,6 +38,7 @@ import {
   registerStudentByCommander,
   unbindUserDevice,
   saveLocalUsersRegistry,
+  getLocalUsersRegistry,
   pushRegistryToCloud,
   normalizeUserName,
   isMasterUser,
@@ -54,7 +55,7 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
   onBackToApp,
   onRefreshPendingCount
 }) => {
-  const [users, setUsers] = useState<Record<string, UserAccessRecord>>({});
+  const [users, setUsers] = useState<Record<string, UserAccessRecord>>(() => getLocalUsersRegistry());
   const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState<'all' | 'approved' | 'rejected'>('all');

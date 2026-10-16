@@ -71,8 +71,9 @@ export function normalizeUserName(name: string): string {
  * Verifica se a conta é o Comandante Titular Gean
  */
 export function isMasterUser(name: string): boolean {
-  const clean = name.trim().toLowerCase();
-  return clean === 'gean' || clean === 'soldado gean' || clean === 'comandante gean' || clean.includes('gean');
+  if (!name) return false;
+  const clean = name.trim().toLowerCase().replace(/_/g, ' ');
+  return clean === 'gean' || clean === 'soldado gean' || clean === 'comandante gean';
 }
 
 export const PURGED_LEGACY_KEYS: string[] = [];
@@ -172,15 +173,28 @@ async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutM
 }
 
 /**
- * Sincroniza o registro na nuvem KVdb
+ * Sincroniza o registro na nuvem KVdb garantindo preservacao total de todos os alunos
  */
 export async function pushRegistryToCloud(registry: Record<string, UserAccessRecord>): Promise<boolean> {
   try {
+    // 1. Busca os dados atuais da nuvem para mesclar e JAMAIS perder nenhum aluno
+    let currentCloud: Record<string, UserAccessRecord> = {};
+    try {
+      const resCheck = await fetchWithTimeout(`${CLOUD_API_BASE}/${MASTER_KEY_PREFIX}?_t=${Date.now()}`, {
+        cache: 'no-store'
+      }, 3500);
+      if (resCheck.ok) {
+        currentCloud = await resCheck.json();
+      }
+    } catch {}
+
+    const consolidated = { ...currentCloud, ...registry };
+
     const res = await fetchWithTimeout(`${CLOUD_API_BASE}/${MASTER_KEY_PREFIX}?ttl=31536000`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(registry),
-    }, 4000);
+      body: JSON.stringify(consolidated),
+    }, 4500);
     return res.ok;
   } catch (err) {
     console.warn('Erro ao sincronizar registro com a nuvem:', err);
@@ -196,7 +210,7 @@ export async function fetchRegistryFromCloud(): Promise<Record<string, UserAcces
   const t = Date.now();
   let cloudRegistry: Record<string, UserAccessRecord> = {};
 
-  // 1. Busca auth_registry_pmpe com cache-busting
+  // 1. Busca auth_registry_pmpe com cache-busting (rapido e confiavel em 1 unica requisicao)
   try {
     const res = await fetchWithTimeout(`${CLOUD_API_BASE}/${MASTER_KEY_PREFIX}?_t=${t}`, {
       cache: 'no-store',
@@ -204,7 +218,7 @@ export async function fetchRegistryFromCloud(): Promise<Record<string, UserAcces
         'Cache-Control': 'no-cache, no-store, must-revalidate',
         'Pragma': 'no-cache'
       }
-    }, 4000);
+    }, 4500);
     if (res.ok) {
       const cloudData: Record<string, UserAccessRecord> = await res.json();
       if (cloudData && typeof cloudData === 'object') {
@@ -212,54 +226,59 @@ export async function fetchRegistryFromCloud(): Promise<Record<string, UserAcces
       }
     }
   } catch (err) {
-    console.warn('Nuvem indisponível no momento para auth_registry_pmpe, utilizando dados locais.');
+    console.warn('Nuvem indisponivel no momento para auth_registry_pmpe, utilizando dados locais.');
   }
 
-  // 2. Busca e integra TODOS os perfis de alunos (student_*) na nuvem KVdb
+  // 2. Busca e integra eventuais chaves student_* que ainda nao estejam em cloudRegistry
   try {
     const listRes = await fetchWithTimeout(`${CLOUD_API_BASE}/?prefix=student_&format=json&_t=${t}`, {
-      cache: 'no-store',
-      headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache'
-      }
-    }, 4000);
+      cache: 'no-store'
+    }, 3500);
     if (listRes.ok) {
       const keys: string[] = await listRes.json();
       if (Array.isArray(keys)) {
-        await Promise.all(
-          keys.map(async (k) => {
-            try {
-              const sRes = await fetchWithTimeout(`${CLOUD_API_BASE}/${encodeURIComponent(k)}?_t=${t}`, {
-                cache: 'no-store'
-              }, 3000);
-              if (sRes.ok) {
-                const sp = await sRes.json();
-                if (sp && sp.name && !isMasterUser(sp.name)) {
-                  const sKey = normalizeUserName(sp.name);
-                  if (!cloudRegistry[sKey]) {
-                    cloudRegistry[sKey] = {
-                      name: sp.name,
-                      status: 'approved',
-                      isAdmin: false,
-                      requestedAt: sp.firstLogin || new Date().toISOString(),
-                      approvedAt: sp.firstLogin || new Date().toISOString(),
-                      hasChangedPassword: true,
-                      personalPassword: 'PMPE2026'
-                    };
+        const missingKeys = keys.filter(k => {
+          const raw = k.replace(/^student_/, '');
+          return !cloudRegistry[raw] && !local[raw];
+        });
+
+        // Carrega apenas os faltantes em pequenos lotes de 4 para nao saturar as conexoes HTTP
+        for (let i = 0; i < missingKeys.length; i += 4) {
+          const batch = missingKeys.slice(i, i + 4);
+          await Promise.all(
+            batch.map(async (k) => {
+              try {
+                const sRes = await fetchWithTimeout(`${CLOUD_API_BASE}/${encodeURIComponent(k)}?_t=${t}`, {
+                  cache: 'no-store'
+                }, 3000);
+                if (sRes.ok) {
+                  const sp = await sRes.json();
+                  if (sp && sp.name && !isMasterUser(sp.name)) {
+                    const sKey = normalizeUserName(sp.name);
+                    if (!cloudRegistry[sKey]) {
+                      cloudRegistry[sKey] = {
+                        name: sp.name,
+                        status: 'approved',
+                        isAdmin: false,
+                        requestedAt: sp.firstLogin || new Date().toISOString(),
+                        approvedAt: sp.firstLogin || new Date().toISOString(),
+                        hasChangedPassword: true,
+                        personalPassword: 'PMPE2026'
+                      };
+                    }
                   }
                 }
-              }
-            } catch {}
-          })
-        );
+              } catch {}
+            })
+          );
+        }
       }
     }
   } catch (err) {
     console.warn('Erro ao ler chaves student_* da nuvem:', err);
   }
 
-  // 3. Mescla sem perdas: local + nuvem registry + perfis student_*
+  // 3. Mescla sem perdas: local + nuvem registry
   const merged: Record<string, UserAccessRecord> = { ...local, ...cloudRegistry };
   
   // Garante que a conta titular do Comandante Gean sempre exista
@@ -478,6 +497,31 @@ export async function registerStudentByCommander(
   registry[key] = newStudent;
   saveLocalUsersRegistry(registry);
   await pushRegistryToCloud(registry);
+
+  // Também registra na nuvem de pelotão (student_*) para sincronizar com o ranking e estatísticas!
+  try {
+    const studentCloudKey = `student_${encodeURIComponent(key)}`;
+    await fetch(`${CLOUD_API_BASE}/${studentCloudKey}?ttl=31536000`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: cleanName,
+        firstLogin: new Date().toISOString(),
+        lastLogin: new Date().toISOString(),
+        totalSessions: 0,
+        totalAnswered: 0,
+        totalCorrect: 0,
+        totalWrong: 0,
+        overallAccuracy: 0,
+        totalScore: 0,
+        totalXp: 0,
+        totalTimeSpentSeconds: 0,
+        averageTimePerQuestion: 0,
+        sessions: [],
+        subjectStats: {}
+      })
+    });
+  } catch {}
 
   return {
     success: true,
@@ -699,7 +743,23 @@ export async function validateLoginAttempt(
     };
   }
 
-  const user = await getOrCreateUser(cleanName);
+  const key = normalizeUserName(cleanName);
+  const registry = await fetchRegistryFromCloud();
+
+  const existingKey = Object.keys(registry).find(
+    k => k === key || k.toLowerCase() === key || (registry[k].name && registry[k].name.trim().toLowerCase() === cleanName.toLowerCase())
+  );
+
+  // Aluno não cadastrado pelo Comandante Gean
+  if (!existingKey && !isMasterUser(cleanName)) {
+    return {
+      allowed: false,
+      status: 'rejected',
+      message: `O guerreiro "${cleanName}" ainda não possui matrícula ativa. Fale com o Comandante Gean para liberar seu acesso.`
+    };
+  }
+
+  const user = existingKey ? registry[existingKey] : await getOrCreateUser(cleanName);
 
   // 1. Caso seja o Comandante Titular Gean (Acesso Total irrestrito em qualquer aparelho)
   if (user.isAdmin || isMasterUser(cleanName)) {
