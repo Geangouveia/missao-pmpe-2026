@@ -12,6 +12,44 @@ export interface UserAccessRecord {
   approvedAt?: string;
   personalPassword?: string;
   hasChangedPassword: boolean;
+  // Trava de Dispositivo Único (Single Device Lock)
+  boundDeviceId?: string;
+  boundDeviceName?: string;
+  boundAt?: string;
+}
+
+/**
+ * Obtém ou gera a impressão digital única deste dispositivo
+ */
+export function getCurrentDeviceId(): string {
+  try {
+    let devId = localStorage.getItem('pmpe_device_fingerprint_id');
+    if (!devId) {
+      devId = 'dev_' + Math.random().toString(36).substring(2, 10) + '_' + Date.now().toString(36);
+      localStorage.setItem('pmpe_device_fingerprint_id', devId);
+    }
+    return devId;
+  } catch {
+    return 'dev_generic_' + Date.now();
+  }
+}
+
+/**
+ * Identifica o nome amigável do sistema operacional do dispositivo atual
+ */
+export function getDeviceFriendlyName(): string {
+  try {
+    const ua = navigator.userAgent;
+    let os = 'Dispositivo';
+    if (/android/i.test(ua)) os = 'Celular Android';
+    else if (/iphone|ipad|ipod/i.test(ua)) os = 'iPhone / iPad (iOS)';
+    else if (/windows/i.test(ua)) os = 'Computador Windows';
+    else if (/macintosh|mac os x/i.test(ua)) os = 'Mac / MacBook';
+    else if (/linux/i.test(ua)) os = 'Linux';
+    return os;
+  } catch {
+    return 'Dispositivo Móvel / PC';
+  }
 }
 
 const LOCAL_AUTH_KEY = 'pmpe_users_auth_registry';
@@ -388,6 +426,97 @@ export async function registerNewUser(
 }
 
 /**
+ * Cadastra e matricula um novo aluno pelo Comandante Gean
+ * Cria já com status 'approved' e senha definida
+ */
+export async function registerStudentByCommander(
+  name: string,
+  pass: string
+): Promise<{ success: boolean; message: string; userRecord?: UserAccessRecord }> {
+  const cleanName = name.trim();
+  const cleanPass = pass.trim();
+
+  if (!cleanName || cleanName.length < 2) {
+    return { success: false, message: 'Informe o nome do aluno com pelo menos 2 caracteres.' };
+  }
+
+  if (!cleanPass || cleanPass.length < 4) {
+    return { success: false, message: 'A senha de acesso militar deve ter pelo menos 4 caracteres.' };
+  }
+
+  const key = normalizeUserName(cleanName);
+  const registry = await fetchRegistryFromCloud();
+
+  const existingKey = Object.keys(registry).find(
+    k => k === key || (registry[k].name && registry[k].name.trim().toLowerCase() === cleanName.toLowerCase())
+  );
+
+  if (existingKey && registry[existingKey]) {
+    // Aluno já existe, atualiza senha e garante aprovação ativa
+    registry[existingKey].status = 'approved';
+    registry[existingKey].personalPassword = cleanPass;
+    registry[existingKey].hasChangedPassword = true;
+    saveLocalUsersRegistry(registry);
+    await pushRegistryToCloud(registry);
+    return {
+      success: true,
+      message: `Aluno "${cleanName}" já existia e teve a matrícula e senha atualizadas com sucesso!`,
+      userRecord: registry[existingKey]
+    };
+  }
+
+  const newStudent: UserAccessRecord = {
+    name: cleanName,
+    status: 'approved',
+    isAdmin: isMasterUser(cleanName),
+    requestedAt: new Date().toISOString(),
+    approvedAt: new Date().toISOString(),
+    hasChangedPassword: true,
+    personalPassword: cleanPass,
+  };
+
+  registry[key] = newStudent;
+  saveLocalUsersRegistry(registry);
+  await pushRegistryToCloud(registry);
+
+  return {
+    success: true,
+    message: `Aluno "${cleanName}" matriculado com sucesso no Batalhão! Senha liberada.`,
+    userRecord: newStudent
+  };
+}
+
+/**
+ * Desvincula o aparelho do aluno para permitir conexão em um novo celular/computador
+ */
+export async function unbindUserDevice(targetKeyOrName: string): Promise<boolean> {
+  const local = getLocalUsersRegistry();
+  const localKey = findUserKey(local, targetKeyOrName);
+  if (localKey && local[localKey]) {
+    delete local[localKey].boundDeviceId;
+    delete local[localKey].boundDeviceName;
+    delete local[localKey].boundAt;
+    saveLocalUsersRegistry(local);
+  }
+
+  const registry = await fetchRegistryFromCloud();
+  const key = findUserKey(registry, targetKeyOrName) || localKey;
+
+  if (key && registry[key]) {
+    delete registry[key].boundDeviceId;
+    delete registry[key].boundDeviceName;
+    delete registry[key].boundAt;
+    saveLocalUsersRegistry(registry);
+    await pushRegistryToCloud(registry);
+    return true;
+  } else if (localKey) {
+    await pushRegistryToCloud(local);
+    return true;
+  }
+  return false;
+}
+
+/**
  * Encontra a chave exata no registro
  */
 function findUserKey(registry: Record<string, UserAccessRecord>, targetKeyOrName: string): string | null {
@@ -546,14 +675,14 @@ export async function setMasterUserPassword(newPass: string): Promise<boolean> {
 
 export interface LoginValidationResult {
   allowed: boolean;
-  status: 'approved' | 'pending' | 'rejected' | 'wrong_password' | 'needs_new_password';
+  status: 'approved' | 'pending' | 'rejected' | 'wrong_password' | 'needs_new_password' | 'device_locked';
   message: string;
   userRecord?: UserAccessRecord;
   isFirstLogin?: boolean;
 }
 
 /**
- * Validação completa de Login e Senha com a Hierarquia Militar
+ * Validação completa de Login e Senha com a Hierarquia Militar e Trava de Dispositivo Único
  */
 export async function validateLoginAttempt(
   name: string,
@@ -572,7 +701,7 @@ export async function validateLoginAttempt(
 
   const user = await getOrCreateUser(cleanName);
 
-  // 1. Caso seja o Comandante Titular Gean
+  // 1. Caso seja o Comandante Titular Gean (Acesso Total irrestrito em qualquer aparelho)
   if (user.isAdmin || isMasterUser(cleanName)) {
     const hasCustomPass = Boolean(user.personalPassword && user.personalPassword.toUpperCase() !== 'PMPE2026');
     const isMasterPassValid = hasCustomPass
@@ -597,7 +726,7 @@ export async function validateLoginAttempt(
     }
   }
 
-  // 2. Auto-aprovação Militar: Qualquer guerreiro é aprovado automaticamente sem fila!
+  // 2. Auto-aprovação Militar
   if (user.status === 'pending') {
     user.status = 'approved';
     user.approvedAt = new Date().toISOString();
@@ -620,10 +749,54 @@ export async function validateLoginAttempt(
     };
   }
 
-  // 3. Usuário APROVADO: Checagem ou Definição Imediata de Senha
+  // Helper interno para validar e vincular o dispositivo único do aluno
+  const verifyDeviceLock = async (u: UserAccessRecord): Promise<{ allowed: boolean; message?: string }> => {
+    const currentDevId = getCurrentDeviceId();
+    const currentDevName = getDeviceFriendlyName();
+
+    if (!u.boundDeviceId) {
+      // Primeiro login: vincula o aparelho atual à conta do aluno
+      u.boundDeviceId = currentDevId;
+      u.boundDeviceName = currentDevName;
+      u.boundAt = new Date().toISOString();
+
+      const registry = getLocalUsersRegistry();
+      const key = normalizeUserName(cleanName);
+      if (registry[key]) {
+        registry[key].boundDeviceId = currentDevId;
+        registry[key].boundDeviceName = currentDevName;
+        registry[key].boundAt = u.boundAt;
+        saveLocalUsersRegistry(registry);
+      }
+      await pushRegistryToCloud(registry);
+      return { allowed: true };
+    }
+
+    if (u.boundDeviceId !== currentDevId) {
+      return {
+        allowed: false,
+        message: `🚫 ACESSO BLOQUEADO: Esta conta já está vinculada a outro aparelho (${u.boundDeviceName || 'Celular/PC anterior'}). Por segurança, cada aluno pode usar somente em 1 dispositivo. Caso tenha trocado de celular, solicite ao Comandante Gean para desvincular o aparelho antigo.`
+      };
+    }
+
+    return { allowed: true };
+  };
+
+  // 3. Usuário APROVADO: Checagem de Senha e Dispositivo
   // Caso 3.1: Já cadastrou senha pessoal própria
   if (user.hasChangedPassword && user.personalPassword) {
     if (cleanPass === user.personalPassword.toUpperCase() || cleanPass === user.personalPassword) {
+      // Senha correta -> Checa a trava de dispositivo único
+      const deviceCheck = await verifyDeviceLock(user);
+      if (!deviceCheck.allowed) {
+        return {
+          allowed: false,
+          status: 'device_locked',
+          message: deviceCheck.message || 'Dispositivo não autorizado para esta conta.',
+          userRecord: user
+        };
+      }
+
       return {
         allowed: true,
         status: 'approved',
@@ -650,14 +823,25 @@ export async function validateLoginAttempt(
       isFirstLogin: true,
     };
   } else if (cleanPass.length >= 4) {
-    // Aluno digitou uma senha pessoal inédita no login: grava e libera na hora!
+    // Aluno digitou uma senha pessoal inédita no login: grava e vincula dispositivo
     await setUserPersonalPassword(cleanName, cleanPass);
     user.hasChangedPassword = true;
     user.personalPassword = cleanPass;
+
+    const deviceCheck = await verifyDeviceLock(user);
+    if (!deviceCheck.allowed) {
+      return {
+        allowed: false,
+        status: 'device_locked',
+        message: deviceCheck.message || 'Dispositivo não autorizado para esta conta.',
+        userRecord: user
+      };
+    }
+
     return {
       allowed: true,
       status: 'approved',
-      message: `Acesso Militar Liberado! Senha registrada com sucesso para ${cleanName}.`,
+      message: `Acesso Militar Liberado! Senha e aparelho registrados com sucesso para ${cleanName}.`,
       userRecord: user,
     };
   } else {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { 
   Shield, 
   ShieldCheck, 
@@ -20,7 +20,13 @@ import {
   EyeOff,
   Filter,
   DollarSign,
-  AlertTriangle
+  AlertTriangle,
+  Smartphone,
+  UserPlus,
+  Download,
+  Upload,
+  Copy,
+  Check
 } from 'lucide-react';
 import { 
   fetchRegistryFromCloud, 
@@ -29,6 +35,11 @@ import {
   resetUserToDefaultPass,
   deleteUserPermanently,
   setMasterUserPassword,
+  registerStudentByCommander,
+  unbindUserDevice,
+  saveLocalUsersRegistry,
+  pushRegistryToCloud,
+  normalizeUserName,
   isMasterUser,
   type UserAccessRecord 
 } from '../utils/authManager';
@@ -50,6 +61,15 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
   const [actionSuccessMsg, setActionSuccessMsg] = useState<string | null>(null);
   const [processingUserKey, setProcessingUserKey] = useState<string | null>(null);
   const [deleteConfirmKey, setDeleteConfirmKey] = useState<string | null>(null);
+
+  // Cadastro de Novo Aluno pelo Comandante Gean
+  const [showAddStudentSection, setShowAddStudentSection] = useState(false);
+  const [newStudentName, setNewStudentName] = useState('');
+  const [newStudentPass, setNewStudentPass] = useState('PMPE2026');
+  const [isAddingStudent, setIsAddingStudent] = useState(false);
+  const [addStudentError, setAddStudentError] = useState('');
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   // Alteração de Senha Master
   const [showMasterPassSection, setShowMasterPassSection] = useState(false);
@@ -156,6 +176,128 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
     setProcessingUserKey(null);
     showFeedback(`🗑️ Cadastro do aluno "${displayName}" removido definitivamente do sistema.`);
     onRefreshPendingCount?.();
+  };
+
+  // Cadastrar Novo Aluno pelo Comandante Gean
+  const handleRegisterStudent = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAddStudentError('');
+
+    const cleanName = newStudentName.trim();
+    const cleanPass = newStudentPass.trim();
+
+    if (!cleanName || cleanName.length < 2) {
+      sound.playError();
+      setAddStudentError('Informe o nome do aluno com pelo menos 2 caracteres.');
+      return;
+    }
+
+    if (!cleanPass || cleanPass.length < 4) {
+      sound.playError();
+      setAddStudentError('A senha de acesso deve ter no mínimo 4 caracteres.');
+      return;
+    }
+
+    setIsAddingStudent(true);
+    try {
+      const res = await registerStudentByCommander(cleanName, cleanPass);
+      if (res.success && res.userRecord) {
+        sound.playLevelUp();
+        const userKey = normalizeUserName(cleanName);
+        setUsers((prev) => ({
+          ...prev,
+          [userKey]: res.userRecord!
+        }));
+        showFeedback(`🎖️ Aluno "${cleanName}" matriculado com sucesso! Login: "${cleanName}" | Senha: "${cleanPass}"`);
+        setNewStudentName('');
+        setNewStudentPass('PMPE2026');
+        setShowAddStudentSection(false);
+        onRefreshPendingCount?.();
+      } else {
+        sound.playError();
+        setAddStudentError(res.message);
+      }
+    } catch {
+      sound.playError();
+      setAddStudentError('Falha ao cadastrar aluno na nuvem.');
+    } finally {
+      setIsAddingStudent(false);
+    }
+  };
+
+  // Desvincular Aparelho do Aluno (Permite conectar novo celular)
+  const handleUnbindDevice = async (userKey: string, displayName: string) => {
+    sound.playClick();
+    setProcessingUserKey(userKey);
+    const ok = await unbindUserDevice(userKey);
+    setProcessingUserKey(null);
+
+    if (ok) {
+      sound.playSuccess();
+      setUsers((prev) => {
+        const u = prev[userKey];
+        if (!u) return prev;
+        return {
+          ...prev,
+          [userKey]: {
+            ...u,
+            boundDeviceId: undefined,
+            boundDeviceName: undefined,
+            boundAt: undefined
+          }
+        };
+      });
+      showFeedback(`🔓 Aparelho de "${displayName}" desvinculado com sucesso! O aluno poderá conectar em seu novo celular no próximo acesso.`);
+    } else {
+      showFeedback(`❌ Não foi possível desvincular o aparelho no momento.`);
+    }
+  };
+
+  // Exportar Backup de Todos os Alunos (Arquivo JSON)
+  const handleExportBackup = () => {
+    sound.playClick();
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(users, null, 2));
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute("href", dataStr);
+    downloadAnchor.setAttribute("download", `backup_alunos_pmpe_${new Date().toISOString().split('T')[0]}.json`);
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+    showFeedback('💾 Arquivo de backup dos alunos baixado com sucesso!');
+  };
+
+  // Importar / Restaurar Backup de Alunos
+  const handleImportBackup = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = async (event) => {
+      try {
+        const parsed = JSON.parse(event.target?.result as string);
+        if (parsed && typeof parsed === 'object') {
+          sound.playLevelUp();
+          const merged = { ...users, ...parsed };
+          setUsers(merged);
+          saveLocalUsersRegistry(merged);
+          await pushRegistryToCloud(merged);
+          showFeedback('📥 Backup de alunos restaurado com sucesso no sistema e na nuvem!');
+        }
+      } catch {
+        sound.playError();
+        showFeedback('❌ Arquivo de backup inválido.');
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+  };
+
+  const handleCopyCredentials = (userName: string, pass?: string) => {
+    sound.playClick();
+    const textToCopy = `*ACESSO MILITAR PMPE 2026*\n👤 *Login:* ${userName}\n🔑 *Senha:* ${pass || 'PMPE2026'}\n🔗 *Link Oficial:* https://geangouveia.github.io/missao-pmpe-2026/`;
+    navigator.clipboard.writeText(textToCopy);
+    setCopiedKey(userName);
+    showFeedback(`📋 Credenciais do aluno "${userName}" copiadas para o WhatsApp!`);
+    setTimeout(() => setCopiedKey(null), 3000);
   };
 
   // Salvar Nova Senha Master do Gean
@@ -662,81 +804,272 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
                 Quadro de Alunos Matriculados ({studentsOnly.length})
               </h2>
               <p style={{ margin: '0.25rem 0 0', fontSize: '0.82rem', color: '#94a3b8' }}>
-                Gerencie quem tem autorização para treinar no sistema, cancele ou reative acessos instantaneamente.
+                Gerencie quem tem autorização para treinar no sistema, matricule novos guerreiros e trave o acesso por aparelho.
               </p>
             </div>
 
-            {/* Barra de Busca e Filtros */}
+            {/* Barra de Ações Rápidas (Matricular Aluno e Backup) */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
-              <div style={{ position: 'relative', minWidth: '220px' }}>
-                <Search size={16} color="#94a3b8" style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)' }} />
-                <input
-                  type="text"
-                  placeholder="Buscar por nome..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  style={{
-                    width: '100%',
-                    padding: '0.55rem 0.85rem 0.55rem 2.2rem',
-                    borderRadius: '10px',
-                    background: 'rgba(0, 0, 0, 0.5)',
-                    border: '1px solid rgba(255, 255, 255, 0.15)',
-                    color: '#ffffff',
-                    fontSize: '0.84rem',
-                    outline: 'none',
-                    boxSizing: 'border-box'
-                  }}
-                />
-              </div>
+              <button
+                onClick={() => {
+                  sound.playClick();
+                  setShowAddStudentSection(!showAddStudentSection);
+                }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  padding: '0.6rem 1.15rem',
+                  borderRadius: '10px',
+                  background: showAddStudentSection ? 'rgba(255, 255, 255, 0.1)' : 'linear-gradient(135deg, #16a34a, #15803d)',
+                  border: '1px solid #22c55e',
+                  color: '#ffffff',
+                  fontWeight: 900,
+                  fontSize: '0.86rem',
+                  cursor: 'pointer',
+                  boxShadow: showAddStudentSection ? 'none' : '0 0 16px rgba(34, 197, 94, 0.35)'
+                }}
+              >
+                <UserPlus size={16} />
+                <span>{showAddStudentSection ? 'Fechar Formulário' : '➕ Matricular Aluno'}</span>
+              </button>
 
-              {/* Botões de Filtro */}
-              <div style={{ display: 'flex', background: 'rgba(0, 0, 0, 0.4)', borderRadius: '10px', padding: '0.2rem', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
-                <button
-                  onClick={() => setFilterStatus('all')}
-                  style={{
-                    padding: '0.4rem 0.85rem',
-                    borderRadius: '8px',
-                    background: filterStatus === 'all' ? 'rgba(255, 255, 255, 0.15)' : 'none',
-                    border: 'none',
-                    color: filterStatus === 'all' ? '#ffffff' : '#94a3b8',
-                    fontWeight: 800,
-                    fontSize: '0.78rem',
-                    cursor: 'pointer'
-                  }}
-                >
-                  Todos ({studentsOnly.length})
-                </button>
-                <button
-                  onClick={() => setFilterStatus('approved')}
-                  style={{
-                    padding: '0.4rem 0.85rem',
-                    borderRadius: '8px',
-                    background: filterStatus === 'approved' ? 'rgba(34, 197, 94, 0.25)' : 'none',
-                    border: 'none',
-                    color: filterStatus === 'approved' ? '#4ade80' : '#94a3b8',
-                    fontWeight: 800,
-                    fontSize: '0.78rem',
-                    cursor: 'pointer'
-                  }}
-                >
-                  Ativos ({approvedCount})
-                </button>
-                <button
-                  onClick={() => setFilterStatus('rejected')}
-                  style={{
-                    padding: '0.4rem 0.85rem',
-                    borderRadius: '8px',
-                    background: filterStatus === 'rejected' ? 'rgba(239, 68, 68, 0.25)' : 'none',
-                    border: 'none',
-                    color: filterStatus === 'rejected' ? '#f87171' : '#94a3b8',
-                    fontWeight: 800,
-                    fontSize: '0.78rem',
-                    cursor: 'pointer'
-                  }}
-                >
-                  Bloqueados ({blockedCount})
-                </button>
+              <button
+                onClick={handleExportBackup}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  padding: '0.6rem 1rem',
+                  borderRadius: '10px',
+                  background: 'rgba(245, 158, 11, 0.15)',
+                  border: '1px solid rgba(245, 158, 11, 0.4)',
+                  color: '#fbbf24',
+                  fontWeight: 800,
+                  fontSize: '0.84rem',
+                  cursor: 'pointer'
+                }}
+                title="Baixar cópia de segurança de todos os alunos cadastrados"
+              >
+                <Download size={15} />
+                <span>Backup JSON</span>
+              </button>
+
+              <button
+                onClick={() => fileInputRef.current?.click()}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  padding: '0.6rem 1rem',
+                  borderRadius: '10px',
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  color: '#e2e8f0',
+                  fontWeight: 800,
+                  fontSize: '0.84rem',
+                  cursor: 'pointer'
+                }}
+                title="Restaurar lista de alunos a partir de um arquivo JSON anterior"
+              >
+                <Upload size={15} />
+                <span>Restaurar Backup</span>
+              </button>
+
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleImportBackup}
+                accept=".json"
+                style={{ display: 'none' }}
+              />
+            </div>
+          </div>
+
+          {/* FORMULÁRIO DE CADASTRO DE NOVO ALUNO */}
+          {showAddStudentSection && (
+            <div style={{
+              background: 'linear-gradient(135deg, rgba(20, 45, 25, 0.95) 0%, rgba(10, 25, 15, 0.98) 100%)',
+              border: '1px solid rgba(34, 197, 94, 0.5)',
+              borderRadius: '16px',
+              padding: '1.5rem',
+              marginBottom: '1.75rem',
+              boxShadow: '0 8px 25px rgba(0, 0, 0, 0.4)'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.5rem' }}>
+                <UserPlus size={22} color="#4ade80" />
+                <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 900, color: '#ffffff' }}>
+                  Matricular Novo Guerreiro / Aluno PMPE 2026
+                </h3>
               </div>
+              <p style={{ margin: '0 0 1.25rem', fontSize: '0.82rem', color: '#cbd5e1' }}>
+                O auto-cadastro público está <strong>desativado</strong>. Somente você, Comandante Gean, cadastra novos alunos aqui. O primeiro aparelho em que o aluno fizer login ficará travado automaticamente na conta dele.
+              </p>
+
+              <form onSubmit={handleRegisterStudent} style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                gap: '1rem',
+                alignItems: 'flex-end'
+              }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.78rem', color: '#86efac', fontWeight: 800, marginBottom: '0.4rem' }}>
+                    Nome de Guerra / Nome do Aluno:
+                  </label>
+                  <input
+                    type="text"
+                    value={newStudentName}
+                    onChange={(e) => setNewStudentName(e.target.value)}
+                    placeholder="Ex: Soldado Silva ou Lucas Lima"
+                    style={{
+                      width: '100%',
+                      padding: '0.7rem 0.9rem',
+                      borderRadius: '10px',
+                      background: 'rgba(0, 0, 0, 0.6)',
+                      border: '1px solid rgba(34, 197, 94, 0.4)',
+                      color: '#ffffff',
+                      fontSize: '0.9rem',
+                      outline: 'none',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.78rem', color: '#86efac', fontWeight: 800, marginBottom: '0.4rem' }}>
+                    Senha Inicial de Acesso:
+                  </label>
+                  <input
+                    type="text"
+                    value={newStudentPass}
+                    onChange={(e) => setNewStudentPass(e.target.value)}
+                    placeholder="Padrão: PMPE2026"
+                    style={{
+                      width: '100%',
+                      padding: '0.7rem 0.9rem',
+                      borderRadius: '10px',
+                      background: 'rgba(0, 0, 0, 0.6)',
+                      border: '1px solid rgba(34, 197, 94, 0.4)',
+                      color: '#ffffff',
+                      fontSize: '0.9rem',
+                      outline: 'none',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <button
+                    type="submit"
+                    disabled={isAddingStudent}
+                    style={{
+                      width: '100%',
+                      padding: '0.7rem 1.25rem',
+                      borderRadius: '10px',
+                      background: 'linear-gradient(135deg, #16a34a, #15803d)',
+                      border: '1px solid #22c55e',
+                      color: '#ffffff',
+                      fontWeight: 900,
+                      fontSize: '0.9rem',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '0.5rem',
+                      boxShadow: '0 0 16px rgba(34, 197, 94, 0.4)'
+                    }}
+                  >
+                    <CheckCircle2 size={18} />
+                    <span>{isAddingStudent ? 'Cadastrando na Nuvem...' : 'Confirmar Matrícula'}</span>
+                  </button>
+                </div>
+              </form>
+
+              {addStudentError && (
+                <div style={{ color: '#f87171', fontSize: '0.82rem', fontWeight: 800, marginTop: '0.75rem' }}>
+                  ⚠️ {addStudentError}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Barra de Filtros e Busca de Alunos */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: '0.75rem',
+            marginBottom: '1.25rem',
+            flexWrap: 'wrap'
+          }}>
+            <div style={{ position: 'relative', minWidth: '240px', flex: '1 1 240px', maxWidth: '400px' }}>
+              <Search size={16} color="#94a3b8" style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)' }} />
+              <input
+                type="text"
+                placeholder="Buscar aluno por nome..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                style={{
+                  width: '100%',
+                  padding: '0.55rem 0.85rem 0.55rem 2.2rem',
+                  borderRadius: '10px',
+                  background: 'rgba(0, 0, 0, 0.5)',
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  color: '#ffffff',
+                  fontSize: '0.84rem',
+                  outline: 'none',
+                  boxSizing: 'border-box'
+                }}
+              />
+            </div>
+
+            {/* Botões de Filtro */}
+            <div style={{ display: 'flex', background: 'rgba(0, 0, 0, 0.4)', borderRadius: '10px', padding: '0.2rem', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+              <button
+                onClick={() => setFilterStatus('all')}
+                style={{
+                  padding: '0.4rem 0.85rem',
+                  borderRadius: '8px',
+                  background: filterStatus === 'all' ? 'rgba(255, 255, 255, 0.15)' : 'none',
+                  border: 'none',
+                  color: filterStatus === 'all' ? '#ffffff' : '#94a3b8',
+                  fontWeight: 800,
+                  fontSize: '0.78rem',
+                  cursor: 'pointer'
+                }}
+              >
+                Todos ({studentsOnly.length})
+              </button>
+              <button
+                onClick={() => setFilterStatus('approved')}
+                style={{
+                  padding: '0.4rem 0.85rem',
+                  borderRadius: '8px',
+                  background: filterStatus === 'approved' ? 'rgba(34, 197, 94, 0.25)' : 'none',
+                  border: 'none',
+                  color: filterStatus === 'approved' ? '#4ade80' : '#94a3b8',
+                  fontWeight: 800,
+                  fontSize: '0.78rem',
+                  cursor: 'pointer'
+                }}
+              >
+                Ativos ({approvedCount})
+              </button>
+              <button
+                onClick={() => setFilterStatus('rejected')}
+                style={{
+                  padding: '0.4rem 0.85rem',
+                  borderRadius: '8px',
+                  background: filterStatus === 'rejected' ? 'rgba(239, 68, 68, 0.25)' : 'none',
+                  border: 'none',
+                  color: filterStatus === 'rejected' ? '#f87171' : '#94a3b8',
+                  fontWeight: 800,
+                  fontSize: '0.78rem',
+                  cursor: 'pointer'
+                }}
+              >
+                Bloqueados ({blockedCount})
+              </button>
             </div>
           </div>
 
@@ -857,7 +1190,7 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
                         <div style={{
                           display: 'flex',
                           alignItems: 'center',
-                          gap: '1rem',
+                          gap: '0.75rem',
                           marginTop: '0.35rem',
                           fontSize: '0.8rem',
                           color: '#94a3b8',
@@ -871,6 +1204,38 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
                           <span style={{ color: user.hasChangedPassword ? '#86efac' : '#f59e0b', fontWeight: 700 }}>
                             {user.hasChangedPassword ? '🔒 Senha própria cadastrada' : '🔑 Senha padrão ativa'}
                           </span>
+                          <span style={{ color: '#64748b' }}>•</span>
+                          {user.boundDeviceId ? (
+                            <span style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '0.3rem',
+                              color: '#38bdf8',
+                              background: 'rgba(56, 189, 248, 0.12)',
+                              padding: '0.15rem 0.55rem',
+                              borderRadius: '6px',
+                              border: '1px solid rgba(56, 189, 248, 0.3)',
+                              fontWeight: 700,
+                              fontSize: '0.74rem'
+                            }}>
+                              <Smartphone size={13} />
+                              {user.boundDeviceName || 'Celular Vinculado'} (Trava Ativa)
+                            </span>
+                          ) : (
+                            <span style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '0.3rem',
+                              color: '#cbd5e1',
+                              background: 'rgba(255, 255, 255, 0.06)',
+                              padding: '0.15rem 0.55rem',
+                              borderRadius: '6px',
+                              fontSize: '0.74rem'
+                            }}>
+                              <Smartphone size={13} />
+                              Aparelho livre (Vincula no 1º login)
+                            </span>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -882,6 +1247,53 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
                       gap: '0.65rem',
                       flexWrap: 'wrap'
                     }}>
+                      {/* Copiar Credenciais para WhatsApp */}
+                      <button
+                        onClick={() => handleCopyCredentials(user.name)}
+                        style={{
+                          padding: '0.6rem 0.95rem',
+                          borderRadius: '10px',
+                          background: copiedKey === user.name ? 'rgba(34, 197, 94, 0.25)' : 'rgba(255, 255, 255, 0.08)',
+                          border: copiedKey === user.name ? '1px solid #22c55e' : '1px solid rgba(255, 255, 255, 0.2)',
+                          color: copiedKey === user.name ? '#4ade80' : '#f1f5f9',
+                          fontWeight: 800,
+                          fontSize: '0.82rem',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.4rem',
+                          transition: 'all 0.2s'
+                        }}
+                        title="Copiar dados de acesso formatados para enviar no WhatsApp do aluno"
+                      >
+                        {copiedKey === user.name ? <Check size={15} /> : <Copy size={15} />}
+                        <span>{copiedKey === user.name ? 'Copiado!' : 'Copiar WhatsApp'}</span>
+                      </button>
+
+                      {/* Desvincular Celular (Liberar novo aparelho se o aluno trocar de celular) */}
+                      {user.boundDeviceId && (
+                        <button
+                          onClick={() => handleUnbindDevice(userKey, user.name)}
+                          disabled={isProcessing}
+                          style={{
+                            padding: '0.6rem 0.95rem',
+                            borderRadius: '10px',
+                            background: 'rgba(56, 189, 248, 0.15)',
+                            border: '1px solid rgba(56, 189, 248, 0.4)',
+                            color: '#38bdf8',
+                            fontWeight: 800,
+                            fontSize: '0.82rem',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.4rem'
+                          }}
+                          title="Desvincula o celular atual do aluno para permitir que ele acesse de outro aparelho"
+                        >
+                          <Smartphone size={15} />
+                          <span>Liberar Novo Celular</span>
+                        </button>
+                      )}
                       {/* Botão de Cancelar / Bloquear ou Reativar */}
                       {isBlocked ? (
                         <button
@@ -1033,13 +1445,15 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
           <AlertTriangle size={24} color="#f59e0b" style={{ flexShrink: 0, marginTop: '0.2rem' }} />
           <div style={{ fontSize: '0.84rem', color: '#cbd5e1', lineHeight: '1.5' }}>
             <strong style={{ color: '#fbbf24', display: 'block', marginBottom: '0.25rem' }}>
-              Doutrina de Operação Comercial (Como gerenciar até 20 alunos):
+              Doutrina de Operação Militar & Comercial (Gestão do Comandante Gean):
             </strong>
-            1. Novos alunos que comprarem seu acesso podem se cadastrar na tela inicial.
+            1. <strong>Cadastro Exclusivo:</strong> O auto-cadastro público foi desativado. Apenas você matricula novos alunos no botão <strong>"➕ Matricular Aluno"</strong>.
             <br />
-            2. Quando a mensalidade ou prazo do aluno expirar, basta clicar em <strong>"Cancelar / Bloquear"</strong> nesta tela. O aluno será deslogado e barrado no login com uma mensagem orientando falar com você.
+            2. <strong>Trava de Aparelho Único:</strong> Cada aluno só consegue entrar em 1 celular. Se passar a senha para outra pessoa, o acesso em outro celular é bloqueado na hora. Se o aluno trocar de aparelho, você clica em <strong>"Liberar Novo Celular"</strong>.
             <br />
-            3. Caso o aluno efetue o pagamento, com 1 clique você clica em <strong>"Reativar Acesso"</strong> e ele continua os estudos exatamente de onde parou.
+            3. <strong>Envio Fácil via WhatsApp:</strong> Clique em <strong>"Copiar WhatsApp"</strong> para mandar os dados de acesso já prontos e formatados direto no WhatsApp do aluno.
+            <br />
+            4. <strong>Backup de Segurança:</strong> Salve uma cópia de todos os seus alunos clicando em <strong>"Backup JSON"</strong> sempre que desejar.
           </div>
         </section>
       </main>

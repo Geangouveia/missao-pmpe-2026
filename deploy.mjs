@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'deploy: 50 novas questoes de legislacao pmpe (estatuto), correcao e sincronizacao imediata dos alunos cadastrados na tela do comandante';
+  const commitMsg = 'deploy: cadastro exclusivo pelo comandante, trava de dispositivo unico e backup de alunos';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;
