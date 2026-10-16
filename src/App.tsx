@@ -16,6 +16,7 @@ import { SurvivalGame } from './components/SurvivalGame';
 import { MatchGame } from './components/MatchGame';
 import { BossBattleGame } from './components/BossBattleGame';
 import { FlashcardGame } from './components/FlashcardGame';
+import { LogicMasterGame } from './components/LogicMasterGame';
 import { AchievementsModal } from './components/AchievementsModal';
 import { DeckCreatorModal } from './components/DeckCreatorModal';
 import { SummaryModal } from './components/SummaryModal';
@@ -338,10 +339,10 @@ export function App() {
 
     // 2. Filtro por Origem do Simulado / Semana
     let matchSim = true;
-    if (selectedSimulado === 'caderno_aocp_1000') matchSim = item.simuladoOrigem === 'caderno_aocp_1000';
-    else if (selectedSimulado === 'caderno_aocp_bloco1') matchSim = item.simuladoOrigem === 'caderno_aocp_1000' && item.bloco === 'bloco_1';
-    else if (selectedSimulado === 'caderno_aocp_bloco2') matchSim = item.simuladoOrigem === 'caderno_aocp_1000' && item.bloco === 'bloco_2';
-    else if (selectedSimulado === 'caderno_aocp_bloco3') matchSim = item.simuladoOrigem === 'caderno_aocp_1000' && item.bloco === 'bloco_3';
+    if (selectedSimulado === 'caderno_leg_extravagante') matchSim = item.categoryId === 'legislacao_extravagante' || (item.simuladoOrigem ? item.simuladoOrigem.includes('Extravagante') : false);
+    else if (selectedSimulado === 'caderno_rlm_probabilidade') matchSim = item.categoryId === 'raciocinio' || (item.simuladoOrigem ? item.simuladoOrigem.includes('Probabilidade') : false);
+    else if (selectedSimulado === 'caderno_const_pmpe') matchSim = item.categoryId === 'constitucional';
+    else if (selectedSimulado === 'caderno_portugues_aocp') matchSim = item.categoryId === 'portugues';
     else if (selectedSimulado === 'caderno_pmpe_estatuto') matchSim = item.categoryId === 'legislacao_pmpe' || (item.topicoEdital ? item.topicoEdital.includes('Estatuto') : false) || (item.materiaNome ? item.materiaNome.includes('PMPE') : false);
     else if (selectedSimulado === 'edital_200') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('Edital 200') : (item.id ? item.id.startsWith('ed200-') : true);
     else if (selectedSimulado === 'semana_1') matchSim = item.simuladoOrigem ? item.simuladoOrigem.includes('1ª Semana') : true;
@@ -859,6 +860,15 @@ export function App() {
           cards={filteredFlashcards.length > 0 ? filteredFlashcards : flashcards}
           onFinish={handleFlashcardFinish}
           onExit={() => setActiveMode(null)}
+        />
+      )}
+
+      {/* NOVO MODO: MESTRE DA LÓGICA RLM (TRILHA EM NÍVEIS) */}
+      {activeMode === 'logic_levels' && (
+        <LogicMasterGame
+          userName={currentUser || 'Soldado'}
+          onExit={() => setActiveMode(null)}
+          onAwardXp={addXp}
         />
       )}
 

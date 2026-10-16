@@ -64,14 +64,25 @@ export const CATEGORIES: Category[] = [
   },
   {
     id: 'humanos_leis',
-    name: 'Direitos Humanos & Extravagante',
+    name: 'Direitos Humanos',
     bloco: 'bloco_3',
     blocoNome: 'Bloco III (AOCP)',
-    description: 'DUDH, Pacto San José, Uso da Força (Lei 13.060/14), Tortura (Lei 9.455/97) e Abuso de Autoridade.',
+    description: 'DUDH, Pacto de San José da Costa Rica, princípios de Direitos Humanos aplicados à atividade policial.',
     icon: 'ShieldAlert',
     color: '#ef4444',
     accent: 'from-red-500 to-rose-600',
-    badge: 'Bloco III'
+    badge: 'Direitos Humanos'
+  },
+  {
+    id: 'legislacao_extravagante',
+    name: 'Legislação Extravagante',
+    bloco: 'bloco_3',
+    blocoNome: 'Bloco III (AOCP)',
+    description: 'Abuso de Autoridade (13.869), Drogas (11.343), Desarmamento (10.826), Hediondos (8.072), Maria da Penha (11.340), Tortura (9.455), ECA (8.069) e Trânsito (CTB).',
+    icon: 'BookOpen',
+    color: '#f97316',
+    accent: 'from-orange-500 to-amber-600',
+    badge: 'Leis Extravagantes'
   },
   {
     id: 'legislacao_pmpe',

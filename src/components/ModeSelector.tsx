@@ -1,6 +1,6 @@
 import React from 'react';
 import type { GameMode } from '../types/game';
-import { Target, Network, Swords, BookOpen, ArrowRight, Flame } from 'lucide-react';
+import { Target, Network, Swords, Brain, ArrowRight, Flame } from 'lucide-react';
 import { sound } from '../utils/sound';
 
 interface ModeSelectorProps {
@@ -43,15 +43,15 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
       shadow: 'rgba(220, 38, 38, 0.4)'
     },
     {
-      id: 'flashcards' as GameMode,
-      title: 'Cofre da Lei Seca',
-      subtitle: 'Flashcards 3D de Memorização',
-      description: 'Gire os cartões 3D para fixar incisos do Art. 5º, Art. 144, DUDH, leis de drogas, abuso de autoridade e fórmulas de RLM.',
-      icon: <BookOpen size={28} />,
-      badge: 'Lei Seca & Regras',
-      color: '#34d399',
-      accentBg: 'linear-gradient(135deg, #059669, #0d9488)',
-      shadow: 'rgba(5, 150, 105, 0.4)'
+      id: 'logic_levels' as GameMode,
+      title: 'Mestre da Lógica RLM',
+      subtitle: 'Trilha em 8 Níveis • Teoria & Passo a Passo',
+      description: 'Evolua de Recruta a Comandante Geral em 8 patentes: Proposições, Tabela-Verdade, MANÉ, De Morgan, Equivalências, Quantificadores, Combinatória e Probabilidade detalhada ao errar.',
+      icon: <Brain size={28} />,
+      badge: 'Novo Jogo em Níveis 🧠',
+      color: '#c084fc',
+      accentBg: 'linear-gradient(135deg, #9333ea, #7e22ce)',
+      shadow: 'rgba(147, 51, 234, 0.45)'
     }
   ];
 

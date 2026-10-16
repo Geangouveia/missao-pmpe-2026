@@ -11,9 +11,10 @@ import { BANCO_QUESTOES_BLOCO_2 } from './bancoQuestoesBloco2';
 import { BANCO_QUESTOES_BLOCO_3 } from './bancoQuestoesBloco3';
 import { BANCO_QUESTOES_EDITAL_200 } from './bancoQuestoesEdital200';
 
-import { CADERNO_AOCP_BLOCO_1 } from './cadernoAocpBloco1';
-import { CADERNO_AOCP_BLOCO_2 } from './cadernoAocpBloco2';
-import { CADERNO_AOCP_BLOCO_3 } from './cadernoAocpBloco3';
+import { BANCO_LEGISLACAO_EXTRAVAGANTE } from './bancoQuestoesLegislacaoExtravagante';
+import { BANCO_RACIOCINIO_PROBABILIDADE } from './bancoQuestoesRaciocinioLogicoProbabilidade';
+import { BANCO_CONSTITUCIONAL_PMPE } from './bancoQuestoesDireitoConstitucional';
+import { BANCO_PORTUGUES_AOCP } from './bancoQuestoesPortuguesAocp';
 import { LEGISLACAO_PMPE_50_QUESTIONS } from './legislacaoPmpe50';
 
 export {
@@ -28,19 +29,20 @@ export {
   BANCO_QUESTOES_BLOCO_2,
   BANCO_QUESTOES_BLOCO_3,
   BANCO_QUESTOES_EDITAL_200,
-  CADERNO_AOCP_BLOCO_1,
-  CADERNO_AOCP_BLOCO_2,
-  CADERNO_AOCP_BLOCO_3,
+  BANCO_LEGISLACAO_EXTRAVAGANTE,
+  BANCO_RACIOCINIO_PROBABILIDADE,
+  BANCO_CONSTITUCIONAL_PMPE,
+  BANCO_PORTUGUES_AOCP,
   LEGISLACAO_PMPE_50_QUESTIONS
 };
 
 export const SIMULADOS_LIST = [
-  { id: 'all', name: 'Todos os Simulados e Cadernos (Acervo Completo - 1.470 Q)', count: 1470, tag: '⭐ Acervo Completo' },
-  { id: 'caderno_aocp_1000', name: '📚 Caderno Oficial 1.000 Questões Instituto AOCP (Completo)', count: 1010, tag: '🏆 1.000 Questões' },
-  { id: 'caderno_aocp_bloco1', name: '📖 Caderno AOCP Bloco I (Português & História PE - 346 Q)', count: 346, tag: 'AOCP Bloco I' },
-  { id: 'caderno_aocp_bloco2', name: '🧮 Caderno AOCP Bloco II (RLM & Informática - 297 Q)', count: 297, tag: 'AOCP Bloco II' },
-  { id: 'caderno_aocp_bloco3', name: '⚖️ Caderno AOCP Bloco III (Direito, DH & Legislação - 367 Q)', count: 367, tag: 'AOCP Bloco III' },
-  { id: 'caderno_pmpe_estatuto', name: '🛡️ Caderno Especial: Estatuto da PMPE (Leis 6.783/74, 108/08 e 11.817/00)', count: 94, tag: 'Estatuto PMPE (94 Q)' },
+  { id: 'all', name: '⭐ Acervo Completo Soldado PMPE (1.520 Questões Comentadas)', count: 1520, tag: '⭐ Acervo Geral (1.520 Q)' },
+  { id: 'caderno_leg_extravagante', name: '🚨 Bloco Especial: Legislação Extravagante (250 Questões)', count: 250, tag: '🚨 Leis Extravagantes (250 Q)' },
+  { id: 'caderno_rlm_probabilidade', name: '🧠 Bloco Especial: RLM & Probabilidade com Passo a Passo (250 Questões)', count: 250, tag: '🧠 RLM & Probabilidade (250 Q)' },
+  { id: 'caderno_const_pmpe', name: '⚖️ Bloco Especial: Direito Constitucional & Art. 144 (160 Questões)', count: 160, tag: '⚖️ Constitucional (160 Q)' },
+  { id: 'caderno_portugues_aocp', name: '📖 Bloco Especial: Língua Portuguesa AOCP (150 Questões)', count: 150, tag: '📖 Português AOCP (150 Q)' },
+  { id: 'caderno_pmpe_estatuto', name: '🛡️ Caderno Oficial: Legislação PMPE & Estatuto (Leis 6.783/74, 108/08, 11.817/00)', count: 94, tag: 'Estatuto PMPE (94 Q)' },
   { id: 'edital_200', name: 'Caderno Oficial Edital AOCP (100 Questões)', count: 100, tag: '🔥 Edital 100Q' },
   { id: 'banco_bloco1', name: 'Super Caderno Bloco I (Português & História de PE)', count: 100, tag: 'Bloco I (100 Q)' },
   { id: 'banco_bloco2', name: 'Super Caderno Bloco II (Raciocínio Lógico & Informática)', count: 100, tag: 'Bloco II (100 Q)' },
@@ -55,10 +57,11 @@ export const SIMULADOS_LIST = [
 ];
 
 export const ALL_QUESTIONS: QuizQuestion[] = [
+  ...BANCO_LEGISLACAO_EXTRAVAGANTE,
+  ...BANCO_RACIOCINIO_PROBABILIDADE,
+  ...BANCO_CONSTITUCIONAL_PMPE,
+  ...BANCO_PORTUGUES_AOCP,
   ...LEGISLACAO_PMPE_50_QUESTIONS,
-  ...CADERNO_AOCP_BLOCO_1,
-  ...CADERNO_AOCP_BLOCO_2,
-  ...CADERNO_AOCP_BLOCO_3,
   ...BANCO_QUESTOES_BLOCO_1,
   ...BANCO_QUESTOES_BLOCO_2,
   ...BANCO_QUESTOES_BLOCO_3,

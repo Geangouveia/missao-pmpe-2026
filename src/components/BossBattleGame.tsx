@@ -249,6 +249,24 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
             })}
           </div>
 
+          {/* Explicação e Passo a Passo da Questão */}
+          {isAnswered && (
+            <div style={{ padding: '1rem', background: 'rgba(15, 23, 42, 0.75)', borderRadius: '12px', border: '1px solid rgba(56, 189, 248, 0.3)', fontSize: '0.88rem' }}>
+              <div style={{ color: selectedOption === currentQ.correctIndex ? '#34d399' : '#f87171', fontWeight: 800, marginBottom: '0.4rem' }}>
+                {selectedOption === currentQ.correctIndex ? '🎯 Golpe Certeiro!' : '⚠️ Você sofreu dano!'} Gabarito Oficial: Alternativa {['A','B','C','D','E'][currentQ.correctIndex]}
+              </div>
+              <div style={{ color: '#e2e8f0', lineHeight: 1.5 }}>{currentQ.explanation}</div>
+              {currentQ.passoAPassoConta && currentQ.passoAPassoConta.length > 0 && (
+                <div style={{ marginTop: '0.75rem', paddingTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                  <div style={{ color: '#fbbf24', fontWeight: 700, fontSize: '0.82rem', marginBottom: '0.3rem' }}>📐 Passo a Passo Matemático:</div>
+                  {currentQ.passoAPassoConta.map((step, sIdx) => (
+                    <div key={sIdx} style={{ fontSize: '0.82rem', color: '#cbd5e1', marginBottom: '0.2rem', paddingLeft: '0.5rem', borderLeft: '2px solid #fbbf24' }}>{step}</div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
           {/* Habilidades e Próximo Turno */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginTop: '0.5rem' }}>
             <button

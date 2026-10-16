@@ -1,4 +1,4 @@
-export type GameMode = 'quiz' | 'match' | 'battle' | 'flashcards' | 'survival';
+export type GameMode = 'quiz' | 'match' | 'battle' | 'flashcards' | 'survival' | 'logic_levels';
 
 export type CategoryId = 
   | 'portugues' 
@@ -8,6 +8,7 @@ export type CategoryId =
   | 'constitucional' 
   | 'humanos_leis' 
   | 'legislacao_pmpe'
+  | 'legislacao_extravagante'
   | 'simulado_geral'
   | 'custom';
 
