@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'deploy: 1520 questoes comentadas, bloco legislacao extravagante e novo jogo mestre da logica rlm';
+  const commitMsg = 'deploy: 300 questoes informatica aocp, 100 questoes portugues, fim da repeticao diaria, subida de patente acumulativa e soundboard de tiros';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;

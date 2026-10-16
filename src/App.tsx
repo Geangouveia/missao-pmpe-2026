@@ -28,6 +28,7 @@ import { CommanderDashboardView } from './components/CommanderDashboardView';
 import { getDailyMotivationalQuote, type MotivationalQuote } from './utils/motivationalQuotes';
 import { recordStudentLogin, recordQuizCompletion } from './utils/studentAnalytics';
 import { fetchRegistryFromCloud, isMasterUser } from './utils/authManager';
+import { updateAndCalculateStreak } from './utils/studentStreak';
 import { Swords, ArrowRight, ShieldCheck, Shield } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -92,10 +93,11 @@ export function App() {
             ? { ...initAch, unlocked: !!found.unlocked, unlockedAt: found.unlockedAt }
             : { ...initAch, unlocked: false, unlockedAt: undefined };
         });
+        const realStreak = userName ? updateAndCalculateStreak(userName) : 1;
         return {
           xp: typeof parsed.xp === 'number' ? parsed.xp : 0,
           level: typeof parsed.level === 'number' ? parsed.level : 1,
-          streakDays: typeof parsed.streakDays === 'number' ? parsed.streakDays : 1,
+          streakDays: typeof parsed.streakDays === 'number' ? Math.max(parsed.streakDays, realStreak) : realStreak,
           totalAnswered: typeof parsed.totalAnswered === 'number' ? parsed.totalAnswered : 0,
           correctAnswers: typeof parsed.correctAnswers === 'number' ? parsed.correctAnswers : 0,
           bossesDefeated: typeof parsed.bossesDefeated === 'number' ? parsed.bossesDefeated : 0,
@@ -189,35 +191,21 @@ export function App() {
     }
   }, [stats, currentUser, getUserStatsKey]);
 
-  // Atualizar e calcular Sequência Diária (Streak) de Estudos Militar isolada por guerreiro
+  // Atualizar e calcular Sequência Diária (Streak / Fogo Sagrado) Militar isolada por guerreiro
   useEffect(() => {
     if (!currentUser) return;
     try {
-      const today = new Date().toISOString().split('T')[0];
-      const streakUserKey = `pmpe_last_study_date_${currentUser.trim().toLowerCase()}`;
-      const lastDate = localStorage.getItem(streakUserKey);
-
-      if (!lastDate) {
-        localStorage.setItem(streakUserKey, today);
-      } else if (lastDate !== today) {
-        const last = new Date(lastDate);
-        const cur = new Date(today);
-        const diffTime = cur.getTime() - last.getTime();
-        const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
-
-        if (diffDays === 1) {
-          // Dia consecutivo: aviva a chama e incrementa streak
-          localStorage.setItem(streakUserKey, today);
-          setStats((prev) => {
-            const newStreak = (prev.streakDays || 1) + 1;
-            return { ...prev, streakDays: newStreak };
-          });
-        } else if (diffDays > 1) {
-          // Quebrou a sequência
-          localStorage.setItem(streakUserKey, today);
-          setStats((prev) => ({ ...prev, streakDays: 1 }));
+      const realStreak = updateAndCalculateStreak(currentUser);
+      setStats((prev) => {
+        if (prev.streakDays !== realStreak) {
+          return { ...prev, streakDays: realStreak };
         }
-      }
+        return prev;
+      });
+      if (realStreak >= 3) unlockAchievement('streak-3');
+      if (realStreak >= 7) unlockAchievement('streak-7');
+      if (realStreak >= 14) unlockAchievement('streak-14');
+      if (realStreak >= 30) unlockAchievement('streak-30');
     } catch {
       // fallback
     }
@@ -339,8 +327,11 @@ export function App() {
 
     // 2. Filtro por Origem do Simulado / Semana
     let matchSim = true;
-    if (selectedSimulado === 'caderno_leg_extravagante') matchSim = item.categoryId === 'legislacao_extravagante' || (item.simuladoOrigem ? item.simuladoOrigem.includes('Extravagante') : false);
+    if (selectedSimulado === 'caderno_direitos_humanos') matchSim = item.categoryId === 'humanos_leis' || (item.topicoEdital ? item.topicoEdital.includes('Direitos Humanos') || item.topicoEdital.includes('Pacto') : false);
+    else if (selectedSimulado === 'caderno_leg_extravagante') matchSim = item.categoryId === 'legislacao_extravagante' || (item.simuladoOrigem ? item.simuladoOrigem.includes('Extravagante') : false);
     else if (selectedSimulado === 'caderno_rlm_probabilidade') matchSim = item.categoryId === 'raciocinio' || (item.simuladoOrigem ? item.simuladoOrigem.includes('Probabilidade') : false);
+    else if (selectedSimulado === 'caderno_informatica') matchSim = item.categoryId === 'informatica';
+    else if (selectedSimulado === 'caderno_historia_pe') matchSim = item.categoryId === 'historia_pe';
     else if (selectedSimulado === 'caderno_const_pmpe') matchSim = item.categoryId === 'constitucional';
     else if (selectedSimulado === 'caderno_portugues_aocp') matchSim = item.categoryId === 'portugues';
     else if (selectedSimulado === 'caderno_pmpe_estatuto') matchSim = item.categoryId === 'legislacao_pmpe' || (item.topicoEdital ? item.topicoEdital.includes('Estatuto') : false) || (item.materiaNome ? item.materiaNome.includes('PMPE') : false);
@@ -448,12 +439,27 @@ export function App() {
     if (result.subjectBreakdown) {
       if ((result.subjectBreakdown['historia_pe']?.correct || 0) > 0) unlockAchievement('pe-master');
       if ((result.subjectBreakdown['constitucional']?.correct || 0) > 0) unlockAchievement('cf-guardian');
-      if ((result.subjectBreakdown['humanos_leis']?.correct || 0) > 0) unlockAchievement('dh-patriot');
-      if ((result.subjectBreakdown['raciocinio']?.correct || 0) > 0) unlockAchievement('rlm-strategist');
-      if ((result.subjectBreakdown['informatica']?.correct || 0) > 0) unlockAchievement('info-operator');
+      if ((result.subjectBreakdown['humanos_leis']?.correct || 0) > 0) {
+        unlockAchievement('dh-patriot');
+        unlockAchievement('dh-dimensoes-master');
+        unlockAchievement('pacto-san-jose');
+      }
+      if ((result.subjectBreakdown['legislacao_extravagante']?.correct || 0) > 0) {
+        unlockAchievement('planalto-specialist');
+        unlockAchievement('penal-tactical');
+      }
+      if ((result.subjectBreakdown['raciocinio']?.correct || 0) > 0) {
+        unlockAchievement('rlm-strategist');
+        unlockAchievement('sniper-calculos');
+        unlockAchievement('probabilidade-mestre');
+      }
+      if ((result.subjectBreakdown['informatica']?.correct || 0) > 0) {
+        unlockAchievement('info-operator');
+        unlockAchievement('cyber-pmpe');
+      }
       if ((result.subjectBreakdown['portugues']?.correct || 0) > 0) unlockAchievement('portugues-mestre');
       if ((result.subjectBreakdown['legislacao_pmpe']?.correct || 0) > 0) unlockAchievement('estatuto-expert');
-      if ((result.subjectBreakdown['penal']?.correct || 0) > 0 || (result.subjectBreakdown['leis_especiais']?.correct || 0) > 0) unlockAchievement('penal-tactical');
+      if (result.maxCombo >= 10) unlockAchievement('promocao-oficialato');
     }
 
     const accuracy = Math.round((result.correctCount / Math.max(1, result.totalCount)) * 100);

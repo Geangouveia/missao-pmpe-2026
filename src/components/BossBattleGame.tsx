@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import type { QuizQuestion, BossEnemy } from '../types/game';
-import { Swords, Shield, Zap, Heart, Sparkles, CheckCircle2, XCircle, ArrowLeft } from 'lucide-react';
+import { Swords, Shield, Zap, Heart, Sparkles, CheckCircle2, XCircle, ArrowLeft, Trophy, Award, Volume2, Crosshair, Flame } from 'lucide-react';
 import { sound } from '../utils/sound';
 import confetti from 'canvas-confetti';
 import { prepareGameQuestions } from '../utils/questionRandomizer';
+import { filterOutAnsweredToday, markQuestionAnsweredToday } from '../utils/dailyQuestionTracker';
 
 interface BossBattleGameProps {
   questions: QuizQuestion[];
@@ -28,7 +29,8 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
   onQuestionAnswered
 }) => {
   const [shuffledQuestions] = useState<QuizQuestion[]>(() => {
-    return prepareGameQuestions(questions);
+    const unrep = filterOutAnsweredToday(questions);
+    return prepareGameQuestions(unrep.length > 0 ? unrep : questions);
   });
 
   const [bossHp, setBossHp] = useState(boss.maxHp);
@@ -40,6 +42,7 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
   const [battleLog, setBattleLog] = useState<string[]>(['A batalha começou! Mostre o poder do seu estudo.']);
   const [isBossHurt, setIsBossHurt] = useState(false);
   const [isPlayerHurt, setIsPlayerHurt] = useState(false);
+  const [showVictoryModal, setShowVictoryModal] = useState<boolean>(false);
 
   const currentQ = shuffledQuestions[currentQIndex % shuffledQuestions.length] || questions[0];
 
@@ -48,6 +51,10 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
 
     setSelectedOption(index);
     setIsAnswered(true);
+
+    if (currentQ?.id) {
+      markQuestionAnsweredToday(undefined, currentQ.id);
+    }
 
     const isCorrect = index === currentQ.correctIndex;
 
@@ -72,21 +79,24 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
       ]);
 
       if (nextBossHp <= 0) {
-        // Vitória contra o Boss!
+        // Vitória contra o Boss! Aciona comemoração militar com rajada e modal comemorativo
         setTimeout(() => {
-          sound.playMilitaryAchievement();
+          sound.playHeavyAk47Burst();
           confetti({
-            particleCount: 120,
-            spread: 100,
+            particleCount: 160,
+            spread: 110,
             origin: { y: 0.5 }
           });
-          onFinish({
-            won: true,
-            xpEarned: 250,
-            score: 1000,
-            bossDefeatedName: boss.name
-          });
-        }, 800);
+          setTimeout(() => {
+            sound.playMilitaryAchievement();
+            confetti({
+              particleCount: 90,
+              spread: 70,
+              origin: { y: 0.3 }
+            });
+          }, 650);
+          setShowVictoryModal(true);
+        }, 450);
       }
     } else {
       // Jogador erra: Boss ataca
@@ -285,6 +295,268 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
                 <Swords size={18} />
               </button>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* MODAL COMEMORATIVO DE VITÓRIA CONTRA O CHEFÃO DA BANCA */}
+      {showVictoryModal && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0, 0, 0, 0.88)',
+            backdropFilter: 'blur(10px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+            padding: '1.25rem'
+          }}
+        >
+          <div
+            className="glass-panel"
+            style={{
+              maxWidth: '680px',
+              width: '100%',
+              borderRadius: '24px',
+              border: '2px solid rgba(34, 197, 94, 0.6)',
+              background: 'linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(5, 10, 20, 0.98))',
+              padding: '2.25rem',
+              textAlign: 'center',
+              boxShadow: '0 0 60px rgba(34, 197, 94, 0.35)',
+              position: 'relative',
+              maxHeight: '92vh',
+              overflowY: 'auto'
+            }}
+          >
+            {/* Ícone de Troféu Militar com Pulso */}
+            <div
+              style={{
+                width: '84px',
+                height: '84px',
+                borderRadius: '50%',
+                background: 'rgba(34, 197, 94, 0.2)',
+                border: '3px solid #22c55e',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 1.25rem auto',
+                boxShadow: '0 0 25px rgba(34, 197, 94, 0.5)'
+              }}
+            >
+              <Trophy size={44} color="#4ade80" />
+            </div>
+
+            <div
+              style={{
+                fontSize: '0.85rem',
+                fontWeight: 900,
+                textTransform: 'uppercase',
+                color: '#4ade80',
+                letterSpacing: '0.12em',
+                marginBottom: '0.35rem'
+              }}
+            >
+              💥 VITÓRIA MILITAR SUPREMA • OPERAÇÃO CFSD
+            </div>
+
+            <h2 style={{ fontSize: '1.85rem', fontWeight: 900, color: '#f8fafc', marginBottom: '0.4rem' }}>
+              CHEFÃO DA BANCA NEUTRALIZADO!
+            </h2>
+
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '1.25rem', lineHeight: '1.5', maxWidth: '520px', margin: '0 auto 1.25rem auto' }}>
+              Você derrotou com precisão cirúrgica o temido <strong style={{ color: '#fca5a5' }}>{boss.name}</strong> ({boss.title})! As pegadinhas da banca examinadora foram aniquiladas pela sua disciplina militar.
+            </p>
+
+            {/* Painel de Recompensas */}
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '0.75rem',
+                background: 'rgba(0, 0, 0, 0.4)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: '16px',
+                padding: '1rem',
+                marginBottom: '1.5rem'
+              }}
+            >
+              <div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Status</div>
+                <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#22c55e' }}>Vencido ⚔️</div>
+              </div>
+              <div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Recompensa XP</div>
+                <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#facc15' }}>+250 XP ⚡</div>
+              </div>
+              <div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Pontuação Tática</div>
+                <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#38bdf8' }}>1.000 pts 🎖️</div>
+              </div>
+            </div>
+
+            {/* Soundboard de Comemoração Militar de Tiros (Conforme solicitado pelo Comandante!) */}
+            <div
+              style={{
+                background: 'rgba(30, 41, 59, 0.65)',
+                border: '1px solid rgba(56, 189, 248, 0.25)',
+                borderRadius: '16px',
+                padding: '1.15rem',
+                marginBottom: '1.75rem'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.75rem', color: '#38bdf8', fontWeight: 800, fontSize: '0.9rem' }}>
+                <Volume2 size={18} />
+                <span>MESA DE DISPAROS DE HONRA (COMEMORE COM TIROS):</span>
+              </div>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', margin: '0 0 0.85rem 0' }}>
+                Clique nos botões abaixo para disparar a salva cerimonial de honra de sua preferência:
+              </p>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.6rem' }}>
+                <button
+                  onClick={() => {
+                    sound.playHeavyAk47Burst();
+                    confetti({ particleCount: 45, spread: 60, origin: { y: 0.6 } });
+                  }}
+                  className="btn btn-secondary"
+                  style={{
+                    fontSize: '0.82rem',
+                    padding: '0.6rem 0.5rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '0.3rem',
+                    background: 'rgba(239, 68, 68, 0.15)',
+                    border: '1px solid rgba(239, 68, 68, 0.4)',
+                    color: '#fca5a5'
+                  }}
+                >
+                  <span style={{ fontSize: '1.1rem' }}>💥</span>
+                  <span style={{ fontWeight: 800 }}>Rajada AK-47</span>
+                  <span style={{ fontSize: '0.68rem', opacity: 0.8 }}>Fuzil 7.62mm</span>
+                </button>
+
+                <button
+                  onClick={() => sound.playDoubleTap()}
+                  className="btn btn-secondary"
+                  style={{
+                    fontSize: '0.82rem',
+                    padding: '0.6rem 0.5rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '0.3rem',
+                    background: 'rgba(234, 179, 8, 0.15)',
+                    border: '1px solid rgba(234, 179, 8, 0.4)',
+                    color: '#fde047'
+                  }}
+                >
+                  <span style={{ fontSize: '1.1rem' }}>🔫</span>
+                  <span style={{ fontWeight: 800 }}>Tiro Duplo .38</span>
+                  <span style={{ fontSize: '0.68rem', opacity: 0.8 }}>Double Tap</span>
+                </button>
+
+                <button
+                  onClick={() => sound.playSniperShot()}
+                  className="btn btn-secondary"
+                  style={{
+                    fontSize: '0.82rem',
+                    padding: '0.6rem 0.5rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '0.3rem',
+                    background: 'rgba(56, 189, 248, 0.15)',
+                    border: '1px solid rgba(56, 189, 248, 0.4)',
+                    color: '#7dd3fc'
+                  }}
+                >
+                  <span style={{ fontSize: '1.1rem' }}>🎯</span>
+                  <span style={{ fontWeight: 800 }}>Sniper Militar</span>
+                  <span style={{ fontSize: '0.68rem', opacity: 0.8 }}>Longo Alcance</span>
+                </button>
+
+                <button
+                  onClick={() => sound.playShotgunBlast()}
+                  className="btn btn-secondary"
+                  style={{
+                    fontSize: '0.82rem',
+                    padding: '0.6rem 0.5rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '0.3rem',
+                    background: 'rgba(168, 85, 247, 0.15)',
+                    border: '1px solid rgba(168, 85, 247, 0.4)',
+                    color: '#d8b4fe'
+                  }}
+                >
+                  <span style={{ fontSize: '1.1rem' }}>💥</span>
+                  <span style={{ fontWeight: 800 }}>Calibre 12</span>
+                  <span style={{ fontSize: '0.68rem', opacity: 0.8 }}>Dispersão Pesada</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    sound.playMilitaryAchievement();
+                    confetti({ particleCount: 60, spread: 80, origin: { y: 0.5 } });
+                  }}
+                  className="btn btn-secondary"
+                  style={{
+                    fontSize: '0.82rem',
+                    padding: '0.6rem 0.5rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '0.3rem',
+                    background: 'rgba(34, 197, 94, 0.15)',
+                    border: '1px solid rgba(34, 197, 94, 0.4)',
+                    color: '#86efac'
+                  }}
+                >
+                  <span style={{ fontSize: '1.1rem' }}>🎺</span>
+                  <span style={{ fontWeight: 800 }}>Clarim & Salva</span>
+                  <span style={{ fontSize: '0.68rem', opacity: 0.8 }}>Honra Militar</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Ação Final: Resgatar Recompensas */}
+            <button
+              onClick={() => {
+                sound.playClick();
+                onFinish({
+                  won: true,
+                  xpEarned: 250,
+                  score: 1000,
+                  bossDefeatedName: boss.name
+                });
+              }}
+              style={{
+                width: '100%',
+                background: 'linear-gradient(135deg, #16a34a, #15803d)',
+                color: '#ffffff',
+                border: 'none',
+                padding: '1.1rem 1.75rem',
+                borderRadius: '16px',
+                fontSize: '1.05rem',
+                fontWeight: 900,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.75rem',
+                boxShadow: '0 4px 20px rgba(22, 163, 74, 0.45)',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-2px)')}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
+            >
+              <Award size={22} />
+              <span>Resgatar Recompensas & Finalizar Operação</span>
+            </button>
           </div>
         </div>
       )}

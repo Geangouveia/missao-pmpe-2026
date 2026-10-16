@@ -1,8 +1,23 @@
-/**
- * GESTOR DE ROTATIVIDADE DIÁRIA DE QUESTÕES (PMPE 2026)
- * Evita a repetição de questões já respondidas no mesmo dia pelo guerreiro.
- * À meia-noite (00:00), o histórico diário reseta automaticamente.
- */
+function getCanonicalUser(userName?: string): string {
+  if (userName && userName.trim()) {
+    return userName.trim().toLowerCase().replace(/\s+/g, '_');
+  }
+  try {
+    const local = localStorage.getItem('pmpe_auth_user');
+    if (local) {
+      const parsed = JSON.parse(local);
+      if (parsed?.name) return parsed.name.trim().toLowerCase().replace(/\s+/g, '_');
+    }
+    const session = sessionStorage.getItem('pmpe_auth_user');
+    if (session) {
+      const parsed = JSON.parse(session);
+      if (parsed?.name) return parsed.name.trim().toLowerCase().replace(/\s+/g, '_');
+    }
+  } catch {
+    // fallback
+  }
+  return 'combatente';
+}
 
 function getTodayKey(): string {
   const now = new Date();
@@ -12,10 +27,10 @@ function getTodayKey(): string {
   return `${year}-${month}-${day}`;
 }
 
-export function getAnsweredTodayIds(userName: string): Set<string> {
+export function getAnsweredTodayIds(userName?: string): Set<string> {
   try {
     const today = getTodayKey();
-    const userClean = (userName || 'combatente').trim().toLowerCase().replace(/\s+/g, '_');
+    const userClean = getCanonicalUser(userName);
     const storageKey = `pmpe_answered_${userClean}_${today}`;
     const raw = localStorage.getItem(storageKey);
     if (!raw) return new Set();
@@ -26,11 +41,11 @@ export function getAnsweredTodayIds(userName: string): Set<string> {
   }
 }
 
-export function markQuestionAnsweredToday(userName: string, questionId: string): void {
+export function markQuestionAnsweredToday(userName: string | undefined, questionId: string): void {
   try {
     if (!questionId) return;
     const today = getTodayKey();
-    const userClean = (userName || 'combatente').trim().toLowerCase().replace(/\s+/g, '_');
+    const userClean = getCanonicalUser(userName);
     const storageKey = `pmpe_answered_${userClean}_${today}`;
     
     // Limpar chaves antigas de outros dias para liberar espaço no navegador
@@ -49,19 +64,25 @@ export function markQuestionAnsweredToday(userName: string, questionId: string):
   }
 }
 
+export function clearAnsweredToday(userName?: string): void {
+  try {
+    const today = getTodayKey();
+    const userClean = getCanonicalUser(userName);
+    const storageKey = `pmpe_answered_${userClean}_${today}`;
+    localStorage.removeItem(storageKey);
+  } catch {
+    // fallback
+  }
+}
+
 export function filterOutAnsweredToday<T extends { id?: string }>(
   items: T[], 
-  userName: string
+  userName?: string
 ): T[] {
-  if (!items || items.length === 0) return items;
+  if (!items || items.length === 0) return [];
   const answeredToday = getAnsweredTodayIds(userName);
   if (answeredToday.size === 0) return items;
 
-  const unanswered = items.filter((item) => item.id && !answeredToday.has(item.id));
-  
-  // Se o aluno já respondeu todas as questões disponíveis hoje, permite reciclar
-  if (unanswered.length === 0) {
-    return items;
-  }
-  return unanswered;
+  // Filtra ESTRITAMENTE: se foi respondida hoje, NUNCA mais aparece hoje!
+  return items.filter((item) => item.id && !answeredToday.has(item.id));
 }

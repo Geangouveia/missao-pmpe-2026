@@ -24,7 +24,7 @@ import {
 import { sound } from '../utils/sound';
 import confetti from 'canvas-confetti';
 import { prepareGameQuestions } from '../utils/questionRandomizer';
-import { filterOutAnsweredToday, markQuestionAnsweredToday } from '../utils/dailyQuestionTracker';
+import { filterOutAnsweredToday, markQuestionAnsweredToday, clearAnsweredToday } from '../utils/dailyQuestionTracker';
 
 interface SurvivalGameProps {
   questions: QuizQuestion[];
@@ -41,16 +41,23 @@ interface SurvivalGameProps {
   onQuestionAnswered?: (isCorrect: boolean, xpGained: number) => void;
 }
 
-// Patentes Militares com Base em Questões Sobrevividas
-const MILITARY_RANKS = [
-  { min: 0, title: 'Soldado Recruta', icon: '🔰', color: '#94a3b8' },
-  { min: 3, title: 'Soldado 1ª Classe', icon: '🎖️', color: '#38bdf8' },
-  { min: 6, title: 'Cabo PMPE', icon: '⚔️', color: '#34d399' },
-  { min: 10, title: '3º Sargento', icon: '🛡️', color: '#a855f7' },
-  { min: 15, title: 'Subtenente', icon: '⭐', color: '#f59e0b' },
-  { min: 20, title: 'Aspirante a Oficial', icon: '🌟', color: '#f97316' },
-  { min: 30, title: 'Capitão da PM', icon: '🦅', color: '#ef4444' },
-  { min: 40, title: 'Coronel Comandante-Geral', icon: '👑', color: '#eab308' },
+// Patentes Militares Oficiais PMPE com Escala Completa de Carreira
+export const PMPE_MILITARY_RANKS = [
+  { level: 0, title: 'Aluno Soldado (Recruta)', icon: '🔰', color: '#94a3b8' },
+  { level: 1, title: 'Soldado Combatente', icon: '🎖️', color: '#38bdf8' },
+  { level: 2, title: 'Soldado 1ª Classe', icon: '🎖️⭐', color: '#60a5fa' },
+  { level: 3, title: 'Cabo PMPE', icon: '⚔️', color: '#34d399' },
+  { level: 4, title: '3º Sargento', icon: '🛡️', color: '#a855f7' },
+  { level: 5, title: '2º Sargento', icon: '🛡️', color: '#c084fc' },
+  { level: 6, title: '1º Sargento', icon: '🛡️', color: '#e879f9' },
+  { level: 7, title: 'Subtenente', icon: '⭐', color: '#f59e0b' },
+  { level: 8, title: 'Aspirante a Oficial', icon: '🌟', color: '#fbbf24' },
+  { level: 9, title: '2º Tenente', icon: '🔷', color: '#38bdf8' },
+  { level: 10, title: '1º Tenente', icon: '🔷🔷', color: '#0284c7' },
+  { level: 11, title: 'Capitão PMPE', icon: '🦅', color: '#f97316' },
+  { level: 12, title: 'Major PMPE', icon: '⚜️', color: '#ea580c' },
+  { level: 13, title: 'Tenente-Coronel', icon: '⭐👑', color: '#ef4444' },
+  { level: 14, title: 'Coronel Comandante-Geral', icon: '👑🏆', color: '#eab308' },
 ];
 
 export const SurvivalGame: React.FC<SurvivalGameProps> = ({
@@ -61,10 +68,10 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
   onAwardXp,
   onQuestionAnswered,
 }) => {
-  // Embaralhar as questões e filtrar não repetidas no mesmo dia (pedido pelo Comandante Gean)
+  // Embaralhar as questões e filtrar não repetidas no mesmo dia (pedido pelo Comandante Gean: NUNCA REPETIR)
   const [shuffledQuestions, setShuffledQuestions] = useState<QuizQuestion[]>(() => {
     const unrepeated = filterOutAnsweredToday(questions, userName);
-    return prepareGameQuestions(unrepeated.length > 0 ? unrepeated : questions);
+    return prepareGameQuestions(unrepeated);
   });
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -96,8 +103,13 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
 
   const currentQ = shuffledQuestions[currentIndex] || questions[0];
 
+  // Progressão Tática de Patente (Comandante Gean: 4 acertos no total do nível para subir de patente)
+  const [rankIndex, setRankIndex] = useState(0);
+  const [rankCorrectInLevel, setRankCorrectInLevel] = useState(0);
+  const [promotionAlert, setPromotionAlert] = useState<string | null>(null);
+
   // Cálculo da Patente Atual
-  const currentRank = [...MILITARY_RANKS].reverse().find(r => totalCorrect >= r.min) || MILITARY_RANKS[0];
+  const currentRank = PMPE_MILITARY_RANKS[rankIndex] || PMPE_MILITARY_RANKS[0];
 
   // Cronômetro Tático
   useEffect(() => {
@@ -129,6 +141,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     setIsAnswered(true);
     setSelectedOption(-1);
     setStreak(0);
+    // Comandante Gean: Mantém rankCorrectInLevel preservado mesmo perdendo vida
     const newLives = lives - 1;
     setLives(newLives);
 
@@ -187,6 +200,22 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
       setTotalCorrect((prev) => prev + 1);
       onAwardXp(xpGained);
 
+      // Comandante Gean: Lógica de Promoção Militar
+      // 4 acertos no total do nível para subir de patente!
+      // (O combatente pode errar e perder vida, mas quando somar 4 acertos no nível, SOBE DE PATENTE!)
+      const nextRankCorrect = rankCorrectInLevel + 1;
+
+      if (nextRankCorrect >= 4 && rankIndex < PMPE_MILITARY_RANKS.length - 1) {
+        const nextRank = PMPE_MILITARY_RANKS[rankIndex + 1];
+        setRankIndex((prev) => prev + 1);
+        setRankCorrectInLevel(0);
+        setPromotionAlert(nextRank.title);
+        sound.playLevelUp();
+        confetti({ particleCount: 110, spread: 85, origin: { y: 0.35 } });
+      } else {
+        setRankCorrectInLevel(nextRankCorrect);
+      }
+
       // Comemoração visual a cada marco de 5 acertos
       if ((totalCorrect + 1) % 5 === 0) {
         confetti({ particleCount: 60, spread: 60, origin: { y: 0.7 } });
@@ -198,6 +227,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     } else {
       sound.playError();
       setStreak(0);
+      // Comandante Gean: Errou? Perde vida, mas NÃO perde os acertos já acumulados na patente!
       const newLives = lives - 1;
       setLives(newLives);
 
@@ -218,6 +248,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     }
 
     sound.playClick();
+    setPromotionAlert(null);
     if (currentIndex + 1 < shuffledQuestions.length) {
       setCurrentIndex((prev) => prev + 1);
       setTimeLeft(QUESTION_TIME);
@@ -295,7 +326,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
   const handleRestart = () => {
     sound.playClick();
     const unrepeated = filterOutAnsweredToday(questions, userName || '');
-    setShuffledQuestions(prepareGameQuestions(unrepeated.length > 0 ? unrepeated : questions));
+    setShuffledQuestions(prepareGameQuestions(unrepeated));
     setLives(4);
     setScore(0);
     setStreak(0);
@@ -312,6 +343,9 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     setPowerupTimeCharges(2);
     setPowerupHintCharges(2);
     setPowerupTripleShotCharges(4);
+    setRankIndex(0);
+    setRankCorrectInLevel(0);
+    setPromotionAlert(null);
   };
 
   // Concluir e Voltar
@@ -329,6 +363,49 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
   // Percentual do Tempo para Barra Circular
   const timeProgress = (timeLeft / QUESTION_TIME) * 100;
   const timerColor = timeLeft > 15 ? '#38bdf8' : timeLeft > 7 ? '#fbbf24' : '#ef4444';
+
+  // Se todas as questões do bloco selecionado já foram respondidas hoje
+  if (shuffledQuestions.length === 0) {
+    return (
+      <div className="glass-panel" style={{ maxWidth: '640px', margin: '2rem auto', padding: '2.5rem', textAlign: 'center', borderRadius: '24px', border: '2px solid rgba(56, 189, 248, 0.4)' }}>
+        <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(56, 189, 248, 0.15)', border: '2px solid #38bdf8', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem auto', fontSize: '2.5rem' }}>
+          🎯
+        </div>
+        <h2 style={{ fontSize: '1.65rem', fontWeight: 900, color: '#f8fafc', marginBottom: '0.6rem' }}>
+          Missão do Dia Cumprida!
+        </h2>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: '1.6', marginBottom: '1.75rem' }}>
+          Você já respondeu todas as questões deste caderno hoje. Conforme o padrão do Comandante, para garantir estudo real, <strong>questões respondidas nunca se repetem no mesmo dia</strong>.
+        </p>
+        <div style={{ display: 'flex', gap: '0.85rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <button
+            onClick={() => {
+              sound.playClick();
+              onExit();
+            }}
+            className="btn btn-primary"
+            style={{ padding: '0.85rem 1.6rem', fontWeight: 800, background: 'linear-gradient(135deg, #0284c7, #0369a1)' }}
+          >
+            <span>Escolher Outra Matéria / Simulado</span>
+          </button>
+          <button
+            onClick={() => {
+              sound.playClick();
+              clearAnsweredToday(userName);
+              const unrep = filterOutAnsweredToday(questions, userName);
+              setShuffledQuestions(prepareGameQuestions(unrep.length > 0 ? unrep : questions));
+              handleRestart();
+            }}
+            className="btn btn-secondary"
+            style={{ padding: '0.85rem 1.2rem', fontSize: '0.84rem' }}
+          >
+            <RotateCcw size={16} />
+            <span>🔄 Forçar Revisão (Resetar Hoje)</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={{ maxWidth: '850px', margin: '0 auto', padding: '1rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -495,31 +572,86 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
               </div>
             </div>
 
-            {/* Patente & Combo */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              {streak > 1 && (
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.35rem',
-                  padding: '0.25rem 0.65rem',
-                  borderRadius: '12px',
-                  background: 'rgba(249, 115, 22, 0.2)',
-                  border: '1px solid rgba(249, 115, 22, 0.5)',
-                  color: '#fb923c',
-                  fontWeight: 900,
-                  fontSize: '0.8rem',
-                  animation: 'pulse 1s infinite'
-                }}>
-                  <Flame size={15} color="#f97316" />
-                  <span>COMBO {streak}x</span>
+            {/* Patente Militar & Barrinha Tática de Promoção (Comandante Gean) */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.35rem',
+              minWidth: '240px',
+              padding: '0.45rem 0.85rem',
+              borderRadius: '14px',
+              background: 'linear-gradient(135deg, rgba(20, 30, 24, 0.85), rgba(15, 23, 42, 0.9))',
+              border: '1.5px solid rgba(34, 197, 94, 0.3)',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.35)'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <span style={{ fontSize: '1.1rem' }}>{currentRank.icon}</span>
+                  <div>
+                    <div style={{ fontSize: '0.64rem', color: '#94a3b8', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                      Patente Atual
+                    </div>
+                    <div style={{ fontSize: '0.84rem', fontWeight: 900, color: currentRank.color }}>
+                      {currentRank.title}
+                    </div>
+                  </div>
                 </div>
-              )}
 
-              <div style={{ textAlign: 'right' }}>
-                <div style={{ fontSize: '0.7rem', color: '#94a3b8', fontWeight: 800 }}>PATENTE</div>
-                <div style={{ fontSize: '0.82rem', fontWeight: 900, color: currentRank.color }}>
-                  {currentRank.icon} {currentRank.title}
+                {streak > 1 && (
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.25rem',
+                    padding: '0.2rem 0.55rem',
+                    borderRadius: '8px',
+                    background: 'rgba(249, 115, 22, 0.25)',
+                    border: '1px solid rgba(249, 115, 22, 0.5)',
+                    color: '#fb923c',
+                    fontWeight: 900,
+                    fontSize: '0.74rem',
+                    animation: 'pulse 1s infinite'
+                  }}>
+                    <Flame size={13} color="#f97316" />
+                    <span>{streak}x</span>
+                  </div>
+                )}
+              </div>
+
+              {/* BARRINHA DE PROMOÇÃO: 4 ACERTOS NO NÍVEL (COMANDANTE GEAN) */}
+              <div style={{ marginTop: '0.2rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
+                  <span style={{ fontSize: '0.68rem', color: '#cbd5e1', fontWeight: 700 }}>
+                    {rankIndex < PMPE_MILITARY_RANKS.length - 1 
+                      ? `Rumo a: ${PMPE_MILITARY_RANKS[rankIndex + 1].title}` 
+                      : 'Patente Máxima Alcançada! 🏆'}
+                  </span>
+                  <span style={{ fontSize: '0.68rem', color: '#fbbf24', fontWeight: 800 }}>
+                    {rankCorrectInLevel}/4 acertos no nível
+                  </span>
+                </div>
+
+                {/* Os 4 bloquinhos da barrinha de progressão */}
+                <div style={{ display: 'flex', gap: '5px' }}>
+                  {[1, 2, 3, 4].map((step) => {
+                    const isFilled = rankCorrectInLevel >= step;
+                    return (
+                      <div
+                        key={step}
+                        style={{
+                          flex: 1,
+                          height: '9px',
+                          borderRadius: '5px',
+                          background: isFilled
+                            ? 'linear-gradient(90deg, #22c55e, #10b981)'
+                            : 'rgba(255, 255, 255, 0.1)',
+                          border: isFilled ? '1px solid #4ade80' : '1px solid rgba(255, 255, 255, 0.12)',
+                          boxShadow: isFilled ? '0 0 10px rgba(34, 197, 94, 0.7)' : 'none',
+                          transition: 'all 0.25s ease'
+                        }}
+                        title={`Acerto ${step}/4 para subir de patente`}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -537,6 +669,28 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
               <span>Sair da Missão</span>
             </button>
           </div>
+
+          {/* BANNER DINÂMICO DE PROMOÇÃO MILITAR (COMANDANTE GEAN) */}
+          {promotionAlert && (
+            <div style={{
+              padding: '0.85rem 1.25rem',
+              borderRadius: '14px',
+              background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(21, 128, 61, 0.35))',
+              border: '1.5px solid #22c55e',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.6rem',
+              color: '#86efac',
+              fontWeight: 800,
+              fontSize: '0.95rem',
+              animation: 'pulse 1.2s infinite',
+              boxShadow: '0 8px 25px rgba(34, 197, 94, 0.3)'
+            }}>
+              <Award size={22} color="#fbbf24" />
+              <span>🎖️ PROMOÇÃO MILITAR! Parabéns soldado, você subiu para {promotionAlert}!</span>
+            </div>
+          )}
 
           {/* BARRA DE HABILIDADES TÁTICAS (POWER-UPS) */}
           <div style={{

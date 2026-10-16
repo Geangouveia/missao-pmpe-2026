@@ -21,6 +21,7 @@ import {
 import { sound } from '../utils/sound';
 import confetti from 'canvas-confetti';
 import { prepareGameQuestions } from '../utils/questionRandomizer';
+import { filterOutAnsweredToday, markQuestionAnsweredToday } from '../utils/dailyQuestionTracker';
 
 interface QuizGameProps {
   questions: QuizQuestion[];
@@ -46,8 +47,11 @@ export const QuizGame: React.FC<QuizGameProps> = ({
   onAwardXp,
   onQuestionAnswered 
 }) => {
-  // Inicializa o lote de questões com Fisher-Yates de ordem e alternativas A-E fixas para esta sessão
-  const [activeQuestions] = useState<QuizQuestion[]>(() => prepareGameQuestions(questions));
+  // Inicializa o lote de questões filtrando as já respondidas hoje (para nunca repetir)
+  const [activeQuestions] = useState<QuizQuestion[]>(() => {
+    const unrep = filterOutAnsweredToday(questions);
+    return prepareGameQuestions(unrep.length > 0 ? unrep : questions);
+  });
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -110,6 +114,10 @@ export const QuizGame: React.FC<QuizGameProps> = ({
 
     setSelectedOption(index);
     setIsAnswered(true);
+
+    if (currentQ?.id) {
+      markQuestionAnsweredToday(undefined, currentQ.id);
+    }
 
     const timeSpent = Math.max(1, 30 - timeLeft);
     setTimeSpentTotal((prev) => prev + timeSpent);

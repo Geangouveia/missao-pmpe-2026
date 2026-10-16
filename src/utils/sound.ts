@@ -339,6 +339,96 @@ class SoundController {
     });
   }
 
+  // Rajada Pesada Contínua de Fuzil AK-47 (7 disparos em sequência rápida)
+  public playHeavyAk47Burst() {
+    if (this.isMuted) return;
+    this.initContext();
+    if (!this.ctx) return;
+
+    const shots = [0, 0.08, 0.16, 0.24, 0.32, 0.40, 0.48];
+    shots.forEach((timeOffset) => {
+      const t = this.ctx!.currentTime + timeOffset;
+
+      const noiseBuffer = this.createNoiseBuffer(0.2);
+      if (noiseBuffer) {
+        const noise = this.ctx!.createBufferSource();
+        noise.buffer = noiseBuffer;
+
+        const filter = this.ctx!.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(1600 + Math.random() * 200, t);
+        filter.Q.setValueAtTime(2.4, t);
+
+        const noiseGain = this.ctx!.createGain();
+        noiseGain.gain.setValueAtTime(0.35, t);
+        noiseGain.gain.exponentialRampToValueAtTime(0.001, t + 0.085);
+
+        noise.connect(filter);
+        filter.connect(noiseGain);
+        noiseGain.connect(this.ctx!.destination);
+
+        noise.start(t);
+        noise.stop(t + 0.09);
+      }
+
+      const osc = this.ctx!.createOscillator();
+      const oscGain = this.ctx!.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(200, t);
+      osc.frequency.exponentialRampToValueAtTime(40, t + 0.075);
+      oscGain.gain.setValueAtTime(0.3, t);
+      oscGain.gain.exponentialRampToValueAtTime(0.001, t + 0.08);
+
+      osc.connect(oscGain);
+      oscGain.connect(this.ctx!.destination);
+      osc.start(t);
+      osc.stop(t + 0.085);
+    });
+  }
+
+  // Disparo de Espingarda Calibre 12 Tática (Dispersão pesada e grave estrondoso)
+  public playShotgunBlast() {
+    if (this.isMuted) return;
+    this.initContext();
+    if (!this.ctx) return;
+
+    const t = this.ctx.currentTime;
+    const noiseBuffer = this.createNoiseBuffer(0.35);
+    if (noiseBuffer) {
+      const noise = this.ctx.createBufferSource();
+      noise.buffer = noiseBuffer;
+
+      const filter = this.ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(2400, t);
+      filter.frequency.exponentialRampToValueAtTime(140, t + 0.3);
+
+      const noiseGain = this.ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.42, t);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, t + 0.32);
+
+      noise.connect(filter);
+      filter.connect(noiseGain);
+      noiseGain.connect(this.ctx.destination);
+
+      noise.start(t);
+      noise.stop(t + 0.33);
+    }
+
+    const osc = this.ctx.createOscillator();
+    const oscGain = this.ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(120, t);
+    osc.frequency.exponentialRampToValueAtTime(30, t + 0.28);
+    oscGain.gain.setValueAtTime(0.38, t);
+    oscGain.gain.exponentialRampToValueAtTime(0.001, t + 0.29);
+
+    osc.connect(oscGain);
+    oscGain.connect(this.ctx.destination);
+    osc.start(t);
+    osc.stop(t + 0.3);
+  }
+
   // Disparo de Sniper de Precisão
   public playSniperShot() {
     if (this.isMuted) return;

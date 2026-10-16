@@ -753,7 +753,7 @@ export const MatchGame: React.FC<MatchGameProps> = ({ pairs, onFinish, onExit, o
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.75rem',
-                marginBottom: '1.75rem'
+                marginBottom: '1.25rem'
               }}
             >
               <Zap size={22} color="#facc15" />
@@ -764,6 +764,139 @@ export const MatchGame: React.FC<MatchGameProps> = ({ pairs, onFinish, onExit, o
                 <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#ffffff' }}>
                   +{currentConfig.xpReward} XP Adicionados!
                 </div>
+              </div>
+            </div>
+
+            {/* Mesa de Disparos de Honra (Comemoração com barulho de tiros escolhidos pelo aluno) */}
+            <div
+              style={{
+                background: 'rgba(15, 23, 42, 0.75)',
+                border: '1px solid rgba(56, 189, 248, 0.25)',
+                borderRadius: '16px',
+                padding: '1rem',
+                marginBottom: '1.5rem',
+                textAlign: 'center'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.45rem', color: '#38bdf8', fontWeight: 800, fontSize: '0.88rem', marginBottom: '0.4rem' }}>
+                <Volume2 size={16} />
+                <span>ESCOLHA SEU DISPARO DE HONRA MILITAR:</span>
+              </div>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', margin: '0 0 0.75rem 0' }}>
+                Comemore a conquista tocando nos botões para ouvir os efeitos realistas de tiros:
+              </p>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', gap: '0.5rem' }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    sound.playHeavyAk47Burst();
+                    confetti({ particleCount: 35, spread: 55, origin: { y: 0.6 } });
+                  }}
+                  className="btn btn-secondary"
+                  style={{
+                    fontSize: '0.8rem',
+                    padding: '0.55rem 0.4rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '0.25rem',
+                    background: 'rgba(239, 68, 68, 0.15)',
+                    border: '1px solid rgba(239, 68, 68, 0.35)',
+                    color: '#fca5a5'
+                  }}
+                >
+                  <span style={{ fontSize: '1.05rem' }}>💥</span>
+                  <span style={{ fontWeight: 800 }}>Rajada AK-47</span>
+                  <span style={{ fontSize: '0.65rem', opacity: 0.8 }}>7.62mm Full</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => sound.playDoubleTap()}
+                  className="btn btn-secondary"
+                  style={{
+                    fontSize: '0.8rem',
+                    padding: '0.55rem 0.4rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '0.25rem',
+                    background: 'rgba(234, 179, 8, 0.15)',
+                    border: '1px solid rgba(234, 179, 8, 0.35)',
+                    color: '#fde047'
+                  }}
+                >
+                  <span style={{ fontSize: '1.05rem' }}>🔫</span>
+                  <span style={{ fontWeight: 800 }}>Tiro Duplo .38</span>
+                  <span style={{ fontSize: '0.65rem', opacity: 0.8 }}>Pistola Tática</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => sound.playSniperShot()}
+                  className="btn btn-secondary"
+                  style={{
+                    fontSize: '0.8rem',
+                    padding: '0.55rem 0.4rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '0.25rem',
+                    background: 'rgba(56, 189, 248, 0.15)',
+                    border: '1px solid rgba(56, 189, 248, 0.35)',
+                    color: '#7dd3fc'
+                  }}
+                >
+                  <span style={{ fontSize: '1.05rem' }}>🎯</span>
+                  <span style={{ fontWeight: 800 }}>Sniper Elite</span>
+                  <span style={{ fontSize: '0.65rem', opacity: 0.8 }}>Longo Alcance</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => sound.playShotgunBlast()}
+                  className="btn btn-secondary"
+                  style={{
+                    fontSize: '0.8rem',
+                    padding: '0.55rem 0.4rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '0.25rem',
+                    background: 'rgba(168, 85, 247, 0.15)',
+                    border: '1px solid rgba(168, 85, 247, 0.35)',
+                    color: '#d8b4fe'
+                  }}
+                >
+                  <span style={{ fontSize: '1.05rem' }}>💥</span>
+                  <span style={{ fontWeight: 800 }}>Calibre 12</span>
+                  <span style={{ fontSize: '0.65rem', opacity: 0.8 }}>Shotgun Impact</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    sound.playMilitaryAchievement();
+                    confetti({ particleCount: 50, spread: 70, origin: { y: 0.55 } });
+                  }}
+                  className="btn btn-secondary"
+                  style={{
+                    fontSize: '0.8rem',
+                    padding: '0.55rem 0.4rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '0.25rem',
+                    background: 'rgba(34, 197, 94, 0.15)',
+                    border: '1px solid rgba(34, 197, 94, 0.35)',
+                    color: '#86efac'
+                  }}
+                >
+                  <span style={{ fontSize: '1.05rem' }}>🎺</span>
+                  <span style={{ fontWeight: 800 }}>Clarim de Gala</span>
+                  <span style={{ fontSize: '0.65rem', opacity: 0.8 }}>Salva Cerimonial</span>
+                </button>
               </div>
             </div>
 

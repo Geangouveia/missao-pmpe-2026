@@ -67,7 +67,7 @@ export const CATEGORIES: Category[] = [
     name: 'Direitos Humanos',
     bloco: 'bloco_3',
     blocoNome: 'Bloco III (AOCP)',
-    description: 'DUDH, Pacto de San José da Costa Rica, princípios de Direitos Humanos aplicados à atividade policial.',
+    description: 'Dimensões dos Direitos Humanos (1ª, 2ª, 3ª, 4ª e 5ª), Pacto de São José da Costa Rica (CADH), DUDH e Princípios Internacionais.',
     icon: 'ShieldAlert',
     color: '#ef4444',
     accent: 'from-red-500 to-rose-600',
@@ -441,6 +441,15 @@ export const INITIAL_ACHIEVEMENTS: Achievement[] = [
   { id: 'xp-cadet-1000', title: 'Cadete Operacional', description: 'Alcance a marca de 1.000 XP acumulados em treinamento militar.', icon: '🏅', unlocked: false },
   { id: 'xp-capitao-5000', title: 'Capitão Condecorado', description: 'Atinja 5.000 XP e lidere a pontuação dos aprovados na PMPE.', icon: '🎖️', unlocked: false },
   { id: 'xp-general-10000', title: 'Marechal dos Estudos', description: 'Marca de glória de 10.000 XP na jornada de preparação da PMPE.', icon: '👑', unlocked: false },
-  { id: 'creator-badge', title: 'Instrutor do Concurso', description: 'Crie sua própria questão ou flashcard no estúdio personalizado.', icon: '🛠️', unlocked: false }
+  { id: 'creator-badge', title: 'Instrutor do Concurso', description: 'Crie sua própria questão ou flashcard no estúdio personalizado.', icon: '🛠️', unlocked: false },
+
+  // 9. Conquistas Táticas de Elite (Comandante Gean)
+  { id: 'dh-dimensoes-master', title: 'Mestre das 5 Dimensões DH', description: 'Domine a teoria das cinco gerações e dimensões dos Direitos Humanos.', icon: '🕊️', unlocked: false },
+  { id: 'pacto-san-jose', title: 'Sentinela do Pacto de San José', description: 'Gabarite questões sobre o Pacto de São José da Costa Rica (CADH) e súmula 25.', icon: '⚖️', unlocked: false },
+  { id: 'planalto-specialist', title: 'Doutrina Atualizada do Planalto', description: 'Domine as legislações penais extravagantes e alterações legislativas recentes.', icon: '🏛️', unlocked: false },
+  { id: 'promocao-oficialato', title: 'Ascensão ao Oficialato', description: 'Conquiste promoções sucessivas na Operação Sobrevivência com 3 acertos seguidos.', icon: '🌟', unlocked: false },
+  { id: 'sniper-calculos', title: 'Calculista de Elite RLM', description: 'Resolva problemas numéricos de contagem, dados e porcentagem sem errar.', icon: '🧮', unlocked: false },
+  { id: 'probabilidade-mestre', title: 'Especialista em Probabilidade', description: 'Vença desafios de probabilidade sucessiva e regra de Laplace.', icon: '🎲', unlocked: false },
+  { id: 'cyber-pmpe', title: 'Muralha Cibernética', description: 'Acerte questões cruciais de segurança da informação, malware e redes.', icon: '🛡️', unlocked: false }
 ];
 

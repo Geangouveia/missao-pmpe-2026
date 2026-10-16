@@ -12,8 +12,8 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
     {
       id: 'survival' as GameMode,
       title: 'Operação Sobrevivência: Tiro Certo',
-      subtitle: 'Morte Súbita • 3 Vidas, Combos & Power-ups',
-      description: '3 vidas táticas, cronômetro de 35s e 3 habilidades especiais (50/50, +15s, Doutrina AOCP). Suba de patente militar e bata o recorde!',
+      subtitle: 'Morte Súbita • 4 Vidas, 50s & Barrinha de Patentes',
+      description: '4 vidas táticas, cronômetro de 50s, 4 disparos de pistola e barrinha de promoção militar (acerte 4 consecutivas para subir na carreira da PMPE). Questões 100% comentadas!',
       icon: <Flame size={28} />,
       badge: 'Mais Viciante 🔥',
       color: '#f59e0b',
@@ -44,14 +44,14 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
     },
     {
       id: 'logic_levels' as GameMode,
-      title: 'Mestre da Lógica RLM',
-      subtitle: 'Trilha em 8 Níveis • Teoria & Passo a Passo',
-      description: 'Evolua de Recruta a Comandante Geral em 8 patentes: Proposições, Tabela-Verdade, MANÉ, De Morgan, Equivalências, Quantificadores, Combinatória e Probabilidade detalhada ao errar.',
+      title: 'Operação Matemática & RLM',
+      subtitle: '8 Níveis Numéricos • Cálculos Práticos & Contas Passo a Passo',
+      description: 'Resolva problemas numéricos reais da banca AOCP: Dados, Urnas, Probabilidades, Porcentagens, Razão/Proporção, PFC e Combinações com deduções matemáticas passo a passo ao errar.',
       icon: <Brain size={28} />,
-      badge: 'Novo Jogo em Níveis 🧠',
-      color: '#c084fc',
-      accentBg: 'linear-gradient(135deg, #9333ea, #7e22ce)',
-      shadow: 'rgba(147, 51, 234, 0.45)'
+      badge: 'Cálculos Numéricos 🧮',
+      color: '#38bdf8',
+      accentBg: 'linear-gradient(135deg, #0284c7, #0369a1)',
+      shadow: 'rgba(2, 132, 199, 0.45)'
     }
   ];
 

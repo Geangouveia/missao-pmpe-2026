@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Category, CategoryId } from '../types/game';
-import { BookOpen, Landmark, BrainCircuit, Laptop, Scale, ShieldAlert, Shield, Layers, Sparkles } from 'lucide-react';
+import { BookOpen, Landmark, BrainCircuit, Laptop, Scale, ShieldAlert, Shield, Layers, Sparkles, Gavel } from 'lucide-react';
 import { sound } from '../utils/sound';
 
 interface CategorySelectorProps {
@@ -30,23 +30,23 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
       case 'informatica': return <Laptop size={16} />;
       case 'constitucional': return <Scale size={16} />;
       case 'humanos_leis': return <ShieldAlert size={16} />;
+      case 'legislacao_extravagante': return <Gavel size={16} />;
       case 'legislacao_pmpe': return <Shield size={16} />;
       default: return <Layers size={16} />;
     }
   };
 
   const simuladosOptions = [
-    { id: 'all', label: 'Todos os Cadernos (1.470Q Totais)' },
-    { id: 'caderno_aocp_1000', label: '🏆 Caderno 1.000 Questões Instituto AOCP (Completo)' },
-    { id: 'caderno_aocp_bloco1', label: '📖 Caderno AOCP Bloco I (Português & Hist. PE - 346Q)' },
-    { id: 'caderno_aocp_bloco2', label: '🧮 Caderno AOCP Bloco II (RLM & Informática - 297Q)' },
-    { id: 'caderno_aocp_bloco3', label: '⚖️ Caderno AOCP Bloco III (Direito, DH & Legislação - 367Q)' },
-    { id: 'caderno_pmpe_estatuto', label: '🛡️ Caderno Exclusivo: Estatuto da PMPE (94Q)' },
-    { id: 'edital_200', label: '🔥 Caderno Oficial Edital AOCP (100Q)' },
-    { id: 'banco_bloco1', label: '📚 Super Caderno Bloco I (Português & Hist. PE - 100Q)' },
-    { id: 'banco_bloco2', label: '🧮 Super Caderno Bloco II (RLM & Informática - 100Q)' },
-    { id: 'banco_bloco3', label: '⚖️ Super Caderno Bloco III (Direito, DH & PMPE - 160Q)' },
-    { id: 'aocp_elite', label: '⭐ Caderno Elite AOCP (Resoluções Passo a Passo)' },
+    { id: 'all', label: '⭐ Acervo Comentado Tintim por Tintim' },
+    { id: 'caderno_direitos_humanos', label: '🕊️ Direitos Humanos & CADH' },
+    { id: 'caderno_leg_extravagante', label: '🚨 Leis Extravagantes (250Q)' },
+    { id: 'caderno_rlm_probabilidade', label: '🧠 RLM & Probabilidade (250Q)' },
+    { id: 'caderno_const_pmpe', label: '⚖️ Constitucional & Art. 144 (160Q)' },
+    { id: 'caderno_portugues_aocp', label: '📖 Português AOCP (150Q)' },
+    { id: 'caderno_pmpe_estatuto', label: '🛡️ Estatuto PMPE (Lei 6.783/74)' },
+    { id: 'caderno_informatica', label: '💻 Informática PMPE AOCP' },
+    { id: 'caderno_historia_pe', label: '🦁 História de PE AOCP' },
+    { id: 'aocp_elite', label: '⭐ Caderno Elite AOCP' },
     { id: 'aocp_especial', label: '⚡ Foco AOCP Edital (30Q)' },
     { id: 'nuce_completo', label: 'Simulado PMPE Completo (60Q)' },
     { id: 'semana_1', label: '1ª Semana (15Q)' },
