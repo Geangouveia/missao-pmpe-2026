@@ -52,10 +52,10 @@ export function getDeviceFriendlyName(): string {
   }
 }
 
-const LOCAL_AUTH_KEY = 'pmpe_users_auth_registry';
+const LOCAL_AUTH_KEY = 'pmpe_users_auth_registry_v2';
 const CLOUD_BUCKET_ID = 'NdxEHuePZcZiBQmK9oR99o';
 const CLOUD_API_BASE = `https://kvdb.io/${CLOUD_BUCKET_ID}`;
-const MASTER_KEY_PREFIX = 'auth_registry_pmpe';
+const MASTER_KEY_PREFIX = 'auth_registry_pmpe_v2';
 
 // Senhas Padrão Militares Iniciais
 export const DEFAULT_PASSCODES = ['PMPE2026', 'AOCP2026', 'FARDADO2026', 'POLICIA2026'];
