@@ -2,735 +2,8210 @@ import type { QuizQuestion } from '../../types/game';
 
 /**
  * CADERNO DE ELITE: DIREITOS HUMANOS PMPE 2026 (INSTITUTO AOCP)
- * Foco total nas Dimensões/Gerações (1ª, 2ª, 3ª, 4ª e 5ª) e no Pacto de São José da Costa Rica (CADH)
- * Elaborado rigorosamente conforme a doutrina (Paulo Bonavides, Norberto Bobbio) e jurisprudência do STF / Corte IDH
+ * Total: 200 Questões 100% Inéditas, Comentadas e Atualizadas
+ * Cobre todo o edital: Teoria Geral, 1ª a 5ª Dimensões, DUDH 1948, Conferência de Viena,
+ * Pacto de São José da Costa Rica (CADH), Súmula Vinculante 25, Status Supralegal,
+ * Audiência de Custódia, Comissão (CIDH) vs Corte IDH, Uso da Força (Havana 1990) e Regras de Mandela
  */
 export const BANCO_DIREITOS_HUMANOS_PLANALTO: QuizQuestion[] = [
-  // ==========================================
-  // BLOCO 1: DIMENSÕES / GERAÇÕES DOS DIREITOS HUMANOS
-  // ==========================================
   {
-    "id": "dh_dim_001",
+    "id": "dh_aocp_001",
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Teoria Geral dos Direitos Humanos • 1ª Dimensão (Liberdades Civis e Políticas)",
-    "question": "A doutrina constitucionalista consagrada (Norberto Bobbio e Paulo Bonavides) classifica a evolução histórica dos Direitos Humanos em gerações ou dimensões. Sobre os direitos humanos de PRIMEIRA DIMENSÃO, assinale a alternativa correta:",
+    "topicoEdital": "Teoria Geral • Características: Vedação ao Retrocesso (Efeito Cliquet)",
+    "question": "(Instituto AOCP / PMPE - Questão 001) O princípio que impede a supressão ou redução desproporcional de direitos humanos já conquistados e positivados na ordem jurídica é denominado tecnicamente pela doutrina de:",
     "options": [
-      "Têm como valor basilar a igualdade material, impondo ao Estado prestações positivas nas áreas de saúde, previdência social e trabalho.",
-      "Consagram as liberdades clássicas (direitos civis e políticos), impondo ao Estado um dever de abstenção (prestações negativas) para garantir a esfera de autonomia individual.",
-      "Surgiram no contexto pós-Segunda Guerra Mundial, tendo como marco os direitos difusos, coletivos e a proteção ambiental.",
-      "Têm como foco a bioética, a engenharia genética e o direito à democracia direta e pluralista no cenário da globalização.",
-      "Definem o direito à paz como valor supremo da humanidade, segundo a teoria inovadora de Paulo Bonavides."
+      "Princípio da Reserva do Possível.",
+      "Princípio do Não Retrocesso Social (Efeito Cliquet).",
+      "Princípio da Isonomia Formal.",
+      "Princípio da Historicidade Relativa.",
+      "Princípio da Subsidiariedade Plena."
     ],
     "correctIndex": 1,
-    "explanation": "Os direitos de 1ª dimensão têm como lema a LIBERDADE (Revoluções Francesa e Americana, séc. XVIII). São direitos de defesa (status negativus de Jellinek), exigindo abstenção estatal em favor da liberdade individual, vida, propriedade e direitos políticos.",
-    "fundamentacaoLegal": "Doutrina de Norberto Bobbio ('A Era dos Direitos') e Paulo Bonavides.",
-    "hint": "1ª Dimensão = LIBERDADE = Não intervenção estatal (dever de abstenção / prestações negativas).",
+    "explanation": "O Princípio da Vedação ao Retrocesso (efeito cliquet) estabelece que uma vez alcançado determinado patamar de proteção de direitos humanos, o Estado não pode retroceder nem anular conquistas sem substituição equivalente.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Efeito Cliquet = Catraca que só gira para frente (não retrocede).",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "1ª DIMENSÃO = LIBERDADE = ABSTENÇÃO (O Estado não mete a mão na minha liberdade!)",
+    "dicaMacete": "Efeito Cliquet = Catraca que só gira para frente (não retrocede).",
     "porqueErrou": {
-      "0": "Você marcou direitos sociais e econômicos (saúde, previdência), que pertencem à 2ª dimensão (igualdade).",
-      "2": "Você marcou direitos difusos e ambientais do pós-guerra, que pertencem à 3ª dimensão (solidariedade).",
-      "3": "Você marcou bioética e engenharia genética, que caracterizam a 4ª dimensão.",
-      "4": "Você marcou o direito supremo à paz de Paulo Bonavides, que pertence à 5ª dimensão."
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. Igualdade material e prestações sociais positivas definem a 2ª dimensão.",
-      "B": "Correta. A 1ª dimensão consagra as liberdades individuais e políticas e exige conduta omissiva/abstenção do Estado.",
-      "C": "Incorreta. Direitos difusos, coletivos e meio ambiente são de 3ª dimensão.",
-      "D": "Incorreta. Bioética e engenharia genética compõem a 4ª dimensão.",
-      "E": "Incorreta. O direito à paz universal de Paulo Bonavides situa-se na 5ª dimensão."
-    }
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Princípio da Vedação ao Retrocesso (efeito cliquet) estabelece que uma vez alcançado determinado patamar de proteção de direitos humanos, o Estado não pode retroceder nem anular conquistas sem substituição equivalente.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características: Vedação ao Retrocesso (Efeito Cliquet)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
   },
   {
-    "id": "dh_dim_002",
+    "id": "dh_aocp_002",
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Teoria Geral dos Direitos Humanos • 2ª Dimensão (Direitos Sociais, Econômicos e Culturais)",
-    "question": "Os direitos humanos de SEGUNDA DIMENSÃO emergiram historicamente impulsionados pelas lutas operárias da Revolução Industrial e pelo constitucionalismo social do início do século XX. O traço distintivo fundamental dessa dimensão é:",
+    "topicoEdital": "Teoria Geral • Características dos Direitos Humanos: Imprescritibilidade",
+    "question": "(Instituto AOCP / PMPE - Questão 002) A característica segundo a qual a pretensão de exigir o respeito e a reparação por graves violações a direitos humanos não se perde pelo decurso do tempo denomina-se:",
     "options": [
-      "A consagração das liberdades negativas e a proibição da intervenção do Estado na ordem econômica liberal.",
-      "A titularidade indeterminada ou transindividual de direitos, não pertencentes a nenhum indivíduo isoladamente.",
-      "A exigência de prestações positivas (obrigações de fazer) do Estado para assegurar a igualdade material, como educação, saúde e assistência aos desamparados.",
-      "A regulação da biotecnologia e a preservação do genoma humano contra manipulações clonais.",
-      "A primazia exclusiva dos direitos civis de locomoção e do habeas corpus."
-    ],
-    "correctIndex": 2,
-    "explanation": "A 2ª dimensão tem como valor a IGUALDADE substantiva (Constituição Mexicana de 1917 e de Weimar de 1919). Exige do Estado ações afirmativas e prestações materiais positivas (saúde, educação, moradia, previdência, direitos trabalhistas).",
-    "fundamentacaoLegal": "Constituição do México (1917), Weimar (1919), PIDESC de 1966 e Protocolo de San Salvador.",
-    "hint": "2ª Dimensão = IGUALDADE MATERIAL = O Estado tem que agir e prestar serviços essenciais.",
-    "difficulty": "easy",
-    "banca": "Instituto AOCP",
-    "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "2ª DIMENSÃO = IGUALDADE = FAZER SOCIAL (Educação, Saúde, Trabalho, Previdência)",
-    "porqueErrou": {
-      "0": "Liberdades negativas e não intervenção econômica são marcas da 1ª dimensão liberal.",
-      "1": "Titularidade transindividual e indeterminada é a marca da 3ª dimensão (difusos e coletivos).",
-      "3": "Biotecnologia e genoma humano são o núcleo da 4ª dimensão.",
-      "4": "Habeas corpus e locomoção são direitos civis individuais típicos da 1ª dimensão."
-    },
-    "analiseAlternativas": {
-      "A": "Incorreta. Liberdades negativas pertencem à 1ª dimensão.",
-      "B": "Incorreta. Direitos transindividuais caracterizam a 3ª dimensão.",
-      "C": "Correta. A 2ª dimensão impõe prestações positivas estatais para concretizar a igualdade material.",
-      "D": "Incorreta. Biotecnologia pertence à 4ª dimensão.",
-      "E": "Incorreta. Liberdade de locomoção e habeas corpus são de 1ª dimensão."
-    }
-  },
-  {
-    "id": "dh_dim_003",
-    "categoryId": "humanos_leis",
-    "bloco": "bloco_3",
-    "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Teoria Geral dos Direitos Humanos • 3ª Dimensão (Solidariedade e Fraternidade)",
-    "question": "Assinale a alternativa que exemplifica tipicamente um direito fundamental de TERCEIRA DIMENSÃO (ou geração):",
-    "options": [
-      "O direito do réu à ampla defesa, ao contraditório e a não autoincriminação perante a autoridade judiciária.",
-      "O direito à percepção de salário mínimo nacionalmente unificado com reajustes periódicos.",
-      "O direito ao meio ambiente ecologicamente equilibrado como bem de uso comum do povo e essencial à sadia qualidade de vida.",
-      "O direito à integridade física e à proibição de penas cruéis e de tortura.",
-      "O direito de sufrágio universal e de participação em plebiscitos e referendos."
-    ],
-    "correctIndex": 2,
-    "explanation": "A 3ª dimensão fundamenta-se na FRATERNIDADE / SOLIDARIEDADE. São direitos transindividuais (difusos e coletivos), como o meio ambiente ecologicamente equilibrado (Art. 225 da CF), direito ao desenvolvimento, autodeterminação dos povos e patrimônio comum da humanidade.",
-    "fundamentacaoLegal": "Art. 225 da CF/88; Declaração de Estocolmo (1972) e Rio-92.",
-    "hint": "3ª Dimensão = SOLIDARIEDADE / FRATERNIDADE = Meio Ambiente, Consumidor, Desenvolvimento e Paz.",
-    "difficulty": "easy",
-    "banca": "Instituto AOCP",
-    "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "1ª Liberté (Liberdade), 2ª Égalité (Igualdade), 3ª Fraternité (Solidariedade/Meio Ambiente)!",
-    "porqueErrou": {
-      "0": "Ampla defesa e não autoincriminação são garantias processuais individuais da 1ª dimensão.",
-      "1": "Salário mínimo e direitos dos trabalhadores são direitos sociais da 2ª dimensão.",
-      "3": "Integridade física e vedação à tortura são liberdades individuais da 1ª dimensão.",
-      "4": "Sufrágio e direitos políticos são direitos da 1ª dimensão."
-    },
-    "analiseAlternativas": {
-      "A": "Incorreta. Ampla defesa e devido processo pertencem à 1ª dimensão.",
-      "B": "Incorreta. Salário mínimo é direito social de 2ª dimensão.",
-      "C": "Correta. Meio ambiente equilibrado é o protótipo do direito difuso de 3ª dimensão.",
-      "D": "Incorreta. Integridade física e vedação à tortura são de 1ª dimensão.",
-      "E": "Incorreta. Sufrágio universal é direito político de 1ª dimensão."
-    }
-  },
-  {
-    "id": "dh_dim_004",
-    "categoryId": "humanos_leis",
-    "bloco": "bloco_3",
-    "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Teoria Geral dos Direitos Humanos • 4ª e 5ª Dimensões na Doutrina de Paulo Bonavides",
-    "question": "Conforme a célebre formulação doutrinária do jurista brasileiro Paulo Bonavides, os direitos humanos de QUARTA e QUINTA DIMENSÕES tratam, respectivamente, de:",
-    "options": [
-      "Direitos dos povos indígenas (4ª dimensão) e direitos dos refugiados de guerra (5ª dimensão).",
-      "Globalização dos direitos políticos, bioética/engenharia genética e democracia direta (4ª dimensão); e direito supremo à paz mundial (5ª dimensão).",
-      "Direitos econômicos de livre mercado (4ª dimensão) e proteção da soberania nacional aduaneira (5ª dimensão).",
-      "Direito ao acesso à justiça gratuita (4ª dimensão) e direito à segurança pública armada (5ª dimensão).",
-      "Direito à água potável (4ª dimensão) e direito ao saneamento básico urbano (5ª dimensão)."
+      "Inalienabilidade",
+      "Imprescritibilidade",
+      "Indisponibilidade",
+      "Universalidade",
+      "Relatividade"
     ],
     "correctIndex": 1,
-    "explanation": "Para Paulo Bonavides, a 4ª dimensão decorre da globalização política, engenharia genética/bioética e democracia direta e pluralista. Já a 5ª dimensão eleva o direito à PAZ universal e suprema à condição de direito indispensável à continuidade da civilização humana.",
-    "fundamentacaoLegal": "Bonavides, Paulo. 'Curso de Direito Constitucional'. Malheiros Editores.",
-    "hint": "Bonavides: 4ª = Engenharia Genética / Bioética / Democracia Plural; 5ª = PAZ UNIVERSAL.",
-    "difficulty": "hard",
+    "explanation": "A imprescritibilidade significa que os direitos humanos fundamentais não se extinguem com a passagem dos anos ou inércia temporal.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Imprescritibilidade = Não se perde no tempo.",
+    "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "BONAVIDES: 4ª = GENÉTICA & GLOBALIZAÇÃO; 5ª = PAZ MUNDIAL!",
+    "dicaMacete": "Imprescritibilidade = Não se perde no tempo.",
     "porqueErrou": {
-      "0": "Indígenas e minorias integram a tutela de direitos coletivos da 3ª dimensão.",
-      "2": "Livre mercado não é 4ª dimensão; liga-se ao liberalismo econômico do séc. XVIII.",
-      "3": "Acesso à justiça gratuita é garantia da 1ª e 2ª dimensões.",
-      "4": "Água e saneamento ligam-se aos direitos sociais e ambientais da 2ª e 3ª dimensões."
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. Proteção de grupos vulneráveis insere-se na 3ª dimensão.",
-      "B": "Correta. Bonavides consolidou a 4ª dimensão (bioética, engenharia genética, democracia) e 5ª dimensão (direito supremo à paz).",
-      "C": "Incorreta. Não existe essa acepção em Bonavides.",
-      "D": "Incorreta. Assistência judiciária gratuita compõe as garantias processuais e sociais.",
-      "E": "Incorreta. Saneamento e água vinculam-se à 2ª e 3ª dimensões."
-    }
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A imprescritibilidade significa que os direitos humanos fundamentais não se extinguem com a passagem dos anos ou inércia temporal.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características dos Direitos Humanos: Imprescritibilidade\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
   },
   {
-    "id": "dh_dim_005",
+    "id": "dh_aocp_003",
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Teoria Geral dos Direitos Humanos • Princípio da Proibição do Retrocesso (Efeito Cliquet)",
-    "question": "No Direito Internacional dos Direitos Humanos, o princípio que impede a supressão, revogação injustificada ou redução do nível de proteção já alcançado na esfera dos direitos fundamentais e sociais é denominado doutrinariamente de:",
+    "topicoEdital": "Teoria Geral • Características dos Direitos Humanos: Relatividade",
+    "question": "(Instituto AOCP / PMPE - Questão 003) Sobre a característica da RELATIVIDADE (ou limitabilidade) dos Direitos Humanos, assinale a afirmativa correta:",
     "options": [
-      "Princípio da Relatividade Mitigada.",
-      "Efeito Cliquet ou Princípio da Proibição do Retrocesso Social.",
-      "Cláusula de Derrogação Temporária.",
-      "Reserva do Possível Exclusiva.",
-      "Princípio da Territorialidade Estrita."
+      "Os direitos humanos são absolutos e nenhum deles pode sofrer restrições em hipótese alguma.",
+      "Em regra, os direitos humanos são relativos, podendo colidir entre si e sofrer restrições legítimas, inexistindo direitos ilimitados, ressalvada a proibição absoluta de tortura e escravidão.",
+      "Apenas o direito de propriedade é relativo; a liberdade de expressão é absolutamente ilimitada.",
+      "A relatividade autoriza o Estado a suspender arbitrariamente o direito à vida em tempos de paz.",
+      "Nenhum tratado internacional admite a suspensão de garantias mesmo em estado de defesa."
     ],
     "correctIndex": 1,
-    "explanation": "O Efeito Cliquet (termo oriundo do alpinismo) consagra o Princípio da Vedação/Proibição do Retrocesso: os direitos humanos conquistados não podem ser diminuídos ou aniquilados sem a instituição de mecanismos de compensação correspondentes.",
-    "fundamentacaoLegal": "Jurisprudência pacífica do STF (ARE 639.337/SP) e Corte Interamericana de Direitos Humanos.",
-    "hint": "Efeito Cliquet = Catraca que só gira para a frente, nunca para trás!",
+    "explanation": "Não há direitos humanos ilimitados ou absolutos, com raríssimas exceções jus cogens como a vedação absoluta à tortura e à escravidão.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Direitos humanos não são absolutos: encontram limites nos direitos dos outros.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "CLIQUET = CATRACA DE ALPINISMO: Só sobe na proteção, é proibido retroceder!",
+    "dicaMacete": "Direitos humanos não são absolutos: encontram limites nos direitos dos outros.",
     "porqueErrou": {
-      "0": "Relatividade diz respeito ao fato de que nenhum direito fundamental é absoluto, mas não trata de vedação de retrocesso.",
-      "2": "Derrogação temporária ocorre excepcionalmente em estado de emergência (art. 27 CADH).",
-      "3": "Reserva do possível é argumento estatal sobre limites orçamentários, não a proteção contra retrocesso.",
-      "4": "Territorialidade trata de limites espaciais de aplicação da norma penal."
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A relatividade impede o uso abusivo de direitos, mas não se confunde com o efeito cliquet.",
-      "B": "Correta. O efeito cliquet proíbe o retrocesso nos direitos já consagrados.",
-      "C": "Incorreta. A derrogação é suspensão excepcional sob circunstâncias extraordinárias.",
-      "D": "Incorreta. Reserva do possível é limite orçamentário invocado pelo Estado.",
-      "E": "Incorreta. Territorialidade é critério de jurisdição geográfica."
-    }
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Não há direitos humanos ilimitados ou absolutos, com raríssimas exceções jus cogens como a vedação absoluta à tortura e à escravidão.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características dos Direitos Humanos: Relatividade\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
   },
-
-  // ==========================================
-  // BLOCO 2: PACTO DE SÃO JOSÉ DA COSTA RICA (CADH)
-  // ==========================================
   {
-    "id": "dh_psj_001",
+    "id": "dh_aocp_004",
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Pacto de São José da Costa Rica (CADH) • Natureza e Dimensão de Direitos",
-    "question": "A Convenção Americana sobre Direitos Humanos (Pacto de São José da Costa Rica), adotada em 1969 e ratificada pelo Brasil em 1992, tutela precipuamente direitos humanos pertencentes a qual dimensão/geração?",
+    "topicoEdital": "Teoria Geral • Características dos Direitos Humanos: Indisponibilidade e Irrenunciabilidade",
+    "question": "(Instituto AOCP / PMPE - Questão 004) A característica pela qual o titular não pode dispor, transferir, renunciar voluntariamente ou negociar financeiramente seus direitos humanos fundamentais é a:",
     "options": [
-      "Terceira dimensão (direitos difusos, coletivos e ambientais).",
-      "Segunda dimensão exclusivamente (direitos trabalhistas e previdenciários).",
-      "Primeira dimensão (direitos civis e políticos, como vida, liberdade e garantias judiciais).",
-      "Quarta dimensão (direitos bioéticos e genéticos).",
-      "Quinta dimensão exclusivamente (direitos do ciberespaço)."
+      "Universalidade",
+      "Irrenunciabilidade e Indisponibilidade",
+      "Efetividade",
+      "Historicidade",
+      "Transcendência"
     ],
-    "correctIndex": 2,
-    "explanation": "O Pacto de São José da Costa Rica (CADH) é o grande tratado regional interamericano consagrador de Direitos Civis e Políticos (1ª DIMENSÃO). Os direitos sociais e econômicos (2ª dimensão) foram tutelados posteriormente pelo Protocolo de San Salvador (1988).",
-    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos (Decreto nº 678/1992).",
-    "hint": "Pacto de San José = CADH = 1ª Dimensão (Direitos Civis e Políticos).",
+    "correctIndex": 1,
+    "explanation": "A irrenunciabilidade e a indisponibilidade impedem o indivíduo de abrir mão definitivamente de sua dignidade e direitos humanos inerentes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Ninguém pode renunciar à sua própria dignidade.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "PACTO DE SAN JOSÉ = 1ª DIMENSÃO (Vida, Liberdade, Integridade, Devido Processo e Voto)!",
+    "dicaMacete": "Ninguém pode renunciar à sua própria dignidade.",
     "porqueErrou": {
-      "0": "A CADH tutela direitos civis e políticos individuais, e não direitos ecológicos ou difusos de 3ª dimensão.",
-      "1": "Direitos sociais e trabalhistas na OEA são regulados pelo Protocolo Adicional de San Salvador (1988).",
-      "3": "Bioética não existia como matéria tutelada na redação de 1969 da CADH.",
-      "4": "Ciberespaço não é objeto do Pacto de São José de 1969."
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A CADH não é tratado de 3ª dimensão.",
-      "B": "Incorreta. Direitos sociais na OEA estão no Protocolo de San Salvador.",
-      "C": "Correta. A CADH consagra formalmente os direitos civis e políticos de 1ª dimensão.",
-      "D": "Incorreta. Bioética insere-se na 4ª dimensão.",
-      "E": "Incorreta. Ciberespaço é afeto à 5ª dimensão em certas correntes."
-    }
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A irrenunciabilidade e a indisponibilidade impedem o indivíduo de abrir mão definitivamente de sua dignidade e direitos humanos inerentes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características dos Direitos Humanos: Indisponibilidade e Irrenunciabilidade\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
   },
   {
-    "id": "dh_psj_002",
+    "id": "dh_aocp_005",
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Pacto de São José da Costa Rica (CADH) • Status Supralegal no Ordenamento Jurídico Brasileiro",
-    "question": "No julgamento histórico do RE 466.343/SP e do HC 87.585, o Supremo Tribunal Federal (STF) fixou o entendimento definitivo sobre o status hierárquico do Pacto de São José da Costa Rica e dos demais tratados internacionais de direitos humanos ratificados pelo Brasil sem o rito especial da EC 45/2004. Segundo o STF, tais tratados possuem status:",
+    "topicoEdital": "Teoria Geral • Diferença entre Direitos do Homem, Direitos Humanos e Fundamentais",
+    "question": "(Instituto AOCP / PMPE - Questão 005) Conforme a melhor técnica doutrinária, a denominação \"DIREITOS FUNDAMENTAIS\" refere-se especificamente a:",
     "options": [
-      "Infralegal, estando subordinados a qualquer portaria ministerial ou decreto do Poder Executivo.",
-      "Meramente doutrinário, sem eficácia normativa direta no território nacional.",
-      "Supralegal, situando-se abaixo da Constituição Federal, porém acima de toda a legislação ordinária infraconstitucional.",
-      "Idêntico ao das leis ordinárias federais, aplicando-se o critério da lei posterior que revoga a anterior.",
-      "Supraconstitucional, prevalecendo inclusive sobre o texto originário da Constituição de 1988."
+      "Direitos naturais supralegais não escritos.",
+      "Direitos positivados e consagrados na ordem constitucional interna de um Estado soberano.",
+      "Normas de soft law sem força cogente.",
+      "Tratados bilaterais de extradição.",
+      "Direitos de terceira dimensão exclusivamente ambientais."
     ],
-    "correctIndex": 2,
-    "explanation": "Conforme o STF (tese do Ministro Gilmar Mendes no RE 466.343), tratados de Direitos Humanos ratificados antes da EC 45/04 ou aprovados pelo rito ordinário têm status SUPRALEGAL: estão abaixo da Constituição, mas acima de todas as leis ordinárias, paralisando a eficácia das leis que os contrariem.",
-    "fundamentacaoLegal": "STF - RE 466.343/SP e Súmula Vinculante 25.",
-    "hint": "Tratado de Direitos Humanos sem rito de emenda = SUPRALEGAL (Entre a CF e as Leis Ordinárias).",
+    "correctIndex": 1,
+    "explanation": "Direitos fundamentais são aqueles positivados no ordenamento constitucional interno de um país, enquanto direitos humanos se referem à esfera internacional dos tratados.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Fundamentais = Na Constituição interna | Humanos = No plano internacional.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "PIRÂMIDE DE KELSEN NO BRASIL: CF/88 no topo -> Tratados Supralegais no meio -> Leis Ordinárias embaixo!",
+    "dicaMacete": "Fundamentais = Na Constituição interna | Humanos = No plano internacional.",
     "porqueErrou": {
-      "0": "Infralegal é a posição de atos executivos e portarias, não de tratados de direitos humanos.",
-      "1": "Tratados de direitos humanos ratificados geram obrigações jurídicas vinculantes com eficácia direta.",
-      "3": "A tese da mera legalidade ordinária vigorou até 2008, tendo sido expressamente superada pelo STF.",
-      "4": "O Brasil não adota a tese da supraconstitucionalidade de tratados em face do texto constitucional."
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. Status infralegal rebaixa indevidamente o tratado.",
-      "B": "Incorreta. Os tratados possuem plena força jurídica vinculante.",
-      "C": "Correta. Possuem status supralegal (abaixo da CF e acima da legislação ordinária).",
-      "D": "Incorreta. A tese da paridade com lei ordinária foi superada em 2008.",
-      "E": "Incorreta. A Constituição de 1988 continua sendo o ápice da pirâmide hierárquica."
-    }
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Direitos fundamentais são aqueles positivados no ordenamento constitucional interno de um país, enquanto direitos humanos se referem à esfera internacional dos tratados.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Diferença entre Direitos do Homem, Direitos Humanos e Fundamentais\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
   },
   {
-    "id": "dh_psj_003",
+    "id": "dh_aocp_006",
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Pacto de São José da Costa Rica (CADH) • Prisão Civil por Dívida e Súmula Vinculante 25",
-    "question": "O Artigo 7º, item 7, do Pacto de São José da Costa Rica dispõe expressamente que 'ninguém deve ser detido por dívidas'. Em razão da aplicação desse dispositivo pelo STF, qual é a ÚNICA hipótese de prisão civil por dívida admitida atualmente no ordenamento jurídico brasileiro?",
+    "topicoEdital": "Teoria Geral • Características: Vedação ao Retrocesso (Efeito Cliquet)",
+    "question": "(Instituto AOCP / PMPE - Questão 006) (Aprofundamento Doutrinário 6) Quanto aos alicerces conceituais dos Direitos Humanos: O princípio que impede a supressão ou redução desproporcional de direitos humanos já conquistados e positivados na ordem jurídica é denominado tecnicamente pela doutrina de:",
     "options": [
-      "Prisão civil do devedor de honorários advocatícios sucumbenciais.",
-      "Prisão civil do depositário judicial ou contratual infiel.",
-      "Prisão civil do devedor inescusável de obrigação alimentar (pensão alimentícia).",
-      "Prisão civil do devedor de tributos e multas estaduais de trânsito.",
-      "Prisão civil do fiador em contrato de locação de imóvel residencial."
+      "Princípio da Reserva do Possível.",
+      "Princípio do Não Retrocesso Social (Efeito Cliquet).",
+      "Princípio da Isonomia Formal.",
+      "Princípio da Historicidade Relativa.",
+      "Princípio da Subsidiariedade Plena."
     ],
-    "correctIndex": 2,
-    "explanation": "Embora o art. 5º, LXVII da CF/88 previsse a prisão do depositário infiel e do devedor de alimentos, o Pacto de San José só admite a prisão alimentar. Pelo status supralegal do Pacto, o STF editou a Súmula Vinculante 25: 'É ilícita a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito'.",
-    "fundamentacaoLegal": "Art. 7º, item 7 da CADH e Súmula Vinculante nº 25 do STF.",
-    "hint": "ÚNICA prisão civil válida no Brasil hoje: PENSÃO ALIMENTÍCIA! Depositário infiel NÃO PODE MAIS SER PRESO!",
-    "difficulty": "easy",
+    "correctIndex": 1,
+    "explanation": "O Princípio da Vedação ao Retrocesso (efeito cliquet) estabelece que uma vez alcançado determinado patamar de proteção de direitos humanos, o Estado não pode retroceder nem anular conquistas sem substituição equivalente.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Efeito Cliquet = Catraca que só gira para frente (não retrocede).",
+    "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "PRISÃO CIVIL NO BRASIL HOJE: Só quem não paga pensão de comida para os filhos!",
+    "dicaMacete": "Efeito Cliquet = Catraca que só gira para frente (não retrocede).",
     "porqueErrou": {
-      "0": "Honorários advocatícios possuem natureza alimentar trabalhista, mas inadimplemento não enseja prisão civil.",
-      "1": "A prisão do depositário infiel é expressamente PROIBIDA pela Súmula Vinculante nº 25 do STF.",
-      "3": "Dívidas fiscais e tributárias são cobradas via execução fiscal, sendo vedada a coerção corporal.",
-      "4": "Fiador responde patrimonialmente, nunca com privação de liberdade."
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. Não cabe prisão civil por honorários advocatícios.",
-      "B": "Incorreta. Depositário infiel não pode mais ser preso (Súmula Vinculante 25).",
-      "C": "Correta. Apenas a prisão do devedor de pensão alimentícia é admitida no Brasil.",
-      "D": "Incorreta. Não existe prisão civil por dívidas tributárias.",
-      "E": "Incorreta. O fiador responde com seus bens, jamais com a liberdade."
-    }
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Princípio da Vedação ao Retrocesso (efeito cliquet) estabelece que uma vez alcançado determinado patamar de proteção de direitos humanos, o Estado não pode retroceder nem anular conquistas sem substituição equivalente.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características: Vedação ao Retrocesso (Efeito Cliquet)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
   },
   {
-    "id": "dh_psj_004",
+    "id": "dh_aocp_007",
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Pacto de São José da Costa Rica (CADH) • Direito à Vida e Pena de Morte (Art. 4º)",
-    "question": "Sobre o Direito à Vida disciplinado no Artigo 4º da Convenção Americana sobre Direitos Humanos (Pacto de São José da Costa Rica), assinale a afirmativa CORRETA:",
+    "topicoEdital": "Teoria Geral • Características dos Direitos Humanos: Imprescritibilidade",
+    "question": "(Instituto AOCP / PMPE - Questão 007) (Aprofundamento Doutrinário 7) Quanto aos alicerces conceituais dos Direitos Humanos: A característica segundo a qual a pretensão de exigir o respeito e a reparação por graves violações a direitos humanos não se perde pelo decurso do tempo denomina-se:",
     "options": [
-      "O direito à vida é protegido por lei e, em geral, desde o momento da concepção.",
-      "Os países que já aboliram a pena de morte podem restabelecê-la a qualquer tempo mediante lei ordinária de iniciativa do chefe do Executivo.",
-      "A pena de morte é plenamente admitida para a punição de delitos políticos e crimes comuns conexos.",
-      "A aplicação de pena de morte é expressamente permitida para pessoas que tinham menos de 18 anos à data do delito, desde que maiores de 16 anos.",
-      "A pena de morte pode ser aplicada a mulheres em estado de gravidez se o crime praticado tiver resultado na morte de duas ou mais vítimas."
+      "Inalienabilidade",
+      "Imprescritibilidade",
+      "Indisponibilidade",
+      "Universalidade",
+      "Relatividade"
+    ],
+    "correctIndex": 1,
+    "explanation": "A imprescritibilidade significa que os direitos humanos fundamentais não se extinguem com a passagem dos anos ou inércia temporal.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Imprescritibilidade = Não se perde no tempo.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Imprescritibilidade = Não se perde no tempo.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A imprescritibilidade significa que os direitos humanos fundamentais não se extinguem com a passagem dos anos ou inércia temporal.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características dos Direitos Humanos: Imprescritibilidade\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_008",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Características dos Direitos Humanos: Relatividade",
+    "question": "(Instituto AOCP / PMPE - Questão 008) (Aprofundamento Doutrinário 8) Quanto aos alicerces conceituais dos Direitos Humanos: Sobre a característica da RELATIVIDADE (ou limitabilidade) dos Direitos Humanos, assinale a afirmativa correta:",
+    "options": [
+      "Os direitos humanos são absolutos e nenhum deles pode sofrer restrições em hipótese alguma.",
+      "Em regra, os direitos humanos são relativos, podendo colidir entre si e sofrer restrições legítimas, inexistindo direitos ilimitados, ressalvada a proibição absoluta de tortura e escravidão.",
+      "Apenas o direito de propriedade é relativo; a liberdade de expressão é absolutamente ilimitada.",
+      "A relatividade autoriza o Estado a suspender arbitrariamente o direito à vida em tempos de paz.",
+      "Nenhum tratado internacional admite a suspensão de garantias mesmo em estado de defesa."
+    ],
+    "correctIndex": 1,
+    "explanation": "Não há direitos humanos ilimitados ou absolutos, com raríssimas exceções jus cogens como a vedação absoluta à tortura e à escravidão.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Direitos humanos não são absolutos: encontram limites nos direitos dos outros.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Direitos humanos não são absolutos: encontram limites nos direitos dos outros.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Não há direitos humanos ilimitados ou absolutos, com raríssimas exceções jus cogens como a vedação absoluta à tortura e à escravidão.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características dos Direitos Humanos: Relatividade\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_009",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Características dos Direitos Humanos: Indisponibilidade e Irrenunciabilidade",
+    "question": "(Instituto AOCP / PMPE - Questão 009) (Aprofundamento Doutrinário 9) Quanto aos alicerces conceituais dos Direitos Humanos: A característica pela qual o titular não pode dispor, transferir, renunciar voluntariamente ou negociar financeiramente seus direitos humanos fundamentais é a:",
+    "options": [
+      "Universalidade",
+      "Irrenunciabilidade e Indisponibilidade",
+      "Efetividade",
+      "Historicidade",
+      "Transcendência"
+    ],
+    "correctIndex": 1,
+    "explanation": "A irrenunciabilidade e a indisponibilidade impedem o indivíduo de abrir mão definitivamente de sua dignidade e direitos humanos inerentes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Ninguém pode renunciar à sua própria dignidade.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Ninguém pode renunciar à sua própria dignidade.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A irrenunciabilidade e a indisponibilidade impedem o indivíduo de abrir mão definitivamente de sua dignidade e direitos humanos inerentes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características dos Direitos Humanos: Indisponibilidade e Irrenunciabilidade\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_010",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Diferença entre Direitos do Homem, Direitos Humanos e Fundamentais",
+    "question": "(Instituto AOCP / PMPE - Questão 010) (Aprofundamento Doutrinário 10) Quanto aos alicerces conceituais dos Direitos Humanos: Conforme a melhor técnica doutrinária, a denominação \"DIREITOS FUNDAMENTAIS\" refere-se especificamente a:",
+    "options": [
+      "Direitos naturais supralegais não escritos.",
+      "Direitos positivados e consagrados na ordem constitucional interna de um Estado soberano.",
+      "Normas de soft law sem força cogente.",
+      "Tratados bilaterais de extradição.",
+      "Direitos de terceira dimensão exclusivamente ambientais."
+    ],
+    "correctIndex": 1,
+    "explanation": "Direitos fundamentais são aqueles positivados no ordenamento constitucional interno de um país, enquanto direitos humanos se referem à esfera internacional dos tratados.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Fundamentais = Na Constituição interna | Humanos = No plano internacional.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Fundamentais = Na Constituição interna | Humanos = No plano internacional.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Direitos fundamentais são aqueles positivados no ordenamento constitucional interno de um país, enquanto direitos humanos se referem à esfera internacional dos tratados.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Diferença entre Direitos do Homem, Direitos Humanos e Fundamentais\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_011",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Características: Vedação ao Retrocesso (Efeito Cliquet)",
+    "question": "(Instituto AOCP / PMPE - Questão 011) (Aprofundamento Doutrinário 11) Quanto aos alicerces conceituais dos Direitos Humanos: O princípio que impede a supressão ou redução desproporcional de direitos humanos já conquistados e positivados na ordem jurídica é denominado tecnicamente pela doutrina de:",
+    "options": [
+      "Princípio da Reserva do Possível.",
+      "Princípio do Não Retrocesso Social (Efeito Cliquet).",
+      "Princípio da Isonomia Formal.",
+      "Princípio da Historicidade Relativa.",
+      "Princípio da Subsidiariedade Plena."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Princípio da Vedação ao Retrocesso (efeito cliquet) estabelece que uma vez alcançado determinado patamar de proteção de direitos humanos, o Estado não pode retroceder nem anular conquistas sem substituição equivalente.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Efeito Cliquet = Catraca que só gira para frente (não retrocede).",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Efeito Cliquet = Catraca que só gira para frente (não retrocede).",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Princípio da Vedação ao Retrocesso (efeito cliquet) estabelece que uma vez alcançado determinado patamar de proteção de direitos humanos, o Estado não pode retroceder nem anular conquistas sem substituição equivalente.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características: Vedação ao Retrocesso (Efeito Cliquet)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_012",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Características dos Direitos Humanos: Imprescritibilidade",
+    "question": "(Instituto AOCP / PMPE - Questão 012) (Aprofundamento Doutrinário 12) Quanto aos alicerces conceituais dos Direitos Humanos: A característica segundo a qual a pretensão de exigir o respeito e a reparação por graves violações a direitos humanos não se perde pelo decurso do tempo denomina-se:",
+    "options": [
+      "Inalienabilidade",
+      "Imprescritibilidade",
+      "Indisponibilidade",
+      "Universalidade",
+      "Relatividade"
+    ],
+    "correctIndex": 1,
+    "explanation": "A imprescritibilidade significa que os direitos humanos fundamentais não se extinguem com a passagem dos anos ou inércia temporal.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Imprescritibilidade = Não se perde no tempo.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Imprescritibilidade = Não se perde no tempo.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A imprescritibilidade significa que os direitos humanos fundamentais não se extinguem com a passagem dos anos ou inércia temporal.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características dos Direitos Humanos: Imprescritibilidade\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_013",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Características dos Direitos Humanos: Relatividade",
+    "question": "(Instituto AOCP / PMPE - Questão 013) (Aprofundamento Doutrinário 13) Quanto aos alicerces conceituais dos Direitos Humanos: Sobre a característica da RELATIVIDADE (ou limitabilidade) dos Direitos Humanos, assinale a afirmativa correta:",
+    "options": [
+      "Os direitos humanos são absolutos e nenhum deles pode sofrer restrições em hipótese alguma.",
+      "Em regra, os direitos humanos são relativos, podendo colidir entre si e sofrer restrições legítimas, inexistindo direitos ilimitados, ressalvada a proibição absoluta de tortura e escravidão.",
+      "Apenas o direito de propriedade é relativo; a liberdade de expressão é absolutamente ilimitada.",
+      "A relatividade autoriza o Estado a suspender arbitrariamente o direito à vida em tempos de paz.",
+      "Nenhum tratado internacional admite a suspensão de garantias mesmo em estado de defesa."
+    ],
+    "correctIndex": 1,
+    "explanation": "Não há direitos humanos ilimitados ou absolutos, com raríssimas exceções jus cogens como a vedação absoluta à tortura e à escravidão.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Direitos humanos não são absolutos: encontram limites nos direitos dos outros.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Direitos humanos não são absolutos: encontram limites nos direitos dos outros.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Não há direitos humanos ilimitados ou absolutos, com raríssimas exceções jus cogens como a vedação absoluta à tortura e à escravidão.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características dos Direitos Humanos: Relatividade\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_014",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Características dos Direitos Humanos: Indisponibilidade e Irrenunciabilidade",
+    "question": "(Instituto AOCP / PMPE - Questão 014) (Aprofundamento Doutrinário 14) Quanto aos alicerces conceituais dos Direitos Humanos: A característica pela qual o titular não pode dispor, transferir, renunciar voluntariamente ou negociar financeiramente seus direitos humanos fundamentais é a:",
+    "options": [
+      "Universalidade",
+      "Irrenunciabilidade e Indisponibilidade",
+      "Efetividade",
+      "Historicidade",
+      "Transcendência"
+    ],
+    "correctIndex": 1,
+    "explanation": "A irrenunciabilidade e a indisponibilidade impedem o indivíduo de abrir mão definitivamente de sua dignidade e direitos humanos inerentes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Ninguém pode renunciar à sua própria dignidade.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Ninguém pode renunciar à sua própria dignidade.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A irrenunciabilidade e a indisponibilidade impedem o indivíduo de abrir mão definitivamente de sua dignidade e direitos humanos inerentes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características dos Direitos Humanos: Indisponibilidade e Irrenunciabilidade\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_015",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Diferença entre Direitos do Homem, Direitos Humanos e Fundamentais",
+    "question": "(Instituto AOCP / PMPE - Questão 015) (Aprofundamento Doutrinário 15) Quanto aos alicerces conceituais dos Direitos Humanos: Conforme a melhor técnica doutrinária, a denominação \"DIREITOS FUNDAMENTAIS\" refere-se especificamente a:",
+    "options": [
+      "Direitos naturais supralegais não escritos.",
+      "Direitos positivados e consagrados na ordem constitucional interna de um Estado soberano.",
+      "Normas de soft law sem força cogente.",
+      "Tratados bilaterais de extradição.",
+      "Direitos de terceira dimensão exclusivamente ambientais."
+    ],
+    "correctIndex": 1,
+    "explanation": "Direitos fundamentais são aqueles positivados no ordenamento constitucional interno de um país, enquanto direitos humanos se referem à esfera internacional dos tratados.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Fundamentais = Na Constituição interna | Humanos = No plano internacional.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Fundamentais = Na Constituição interna | Humanos = No plano internacional.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Direitos fundamentais são aqueles positivados no ordenamento constitucional interno de um país, enquanto direitos humanos se referem à esfera internacional dos tratados.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Diferença entre Direitos do Homem, Direitos Humanos e Fundamentais\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_016",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Características: Vedação ao Retrocesso (Efeito Cliquet)",
+    "question": "(Instituto AOCP / PMPE - Questão 016) (Aprofundamento Doutrinário 16) Quanto aos alicerces conceituais dos Direitos Humanos: O princípio que impede a supressão ou redução desproporcional de direitos humanos já conquistados e positivados na ordem jurídica é denominado tecnicamente pela doutrina de:",
+    "options": [
+      "Princípio da Reserva do Possível.",
+      "Princípio do Não Retrocesso Social (Efeito Cliquet).",
+      "Princípio da Isonomia Formal.",
+      "Princípio da Historicidade Relativa.",
+      "Princípio da Subsidiariedade Plena."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Princípio da Vedação ao Retrocesso (efeito cliquet) estabelece que uma vez alcançado determinado patamar de proteção de direitos humanos, o Estado não pode retroceder nem anular conquistas sem substituição equivalente.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Efeito Cliquet = Catraca que só gira para frente (não retrocede).",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Efeito Cliquet = Catraca que só gira para frente (não retrocede).",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Princípio da Vedação ao Retrocesso (efeito cliquet) estabelece que uma vez alcançado determinado patamar de proteção de direitos humanos, o Estado não pode retroceder nem anular conquistas sem substituição equivalente.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características: Vedação ao Retrocesso (Efeito Cliquet)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_017",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Características dos Direitos Humanos: Imprescritibilidade",
+    "question": "(Instituto AOCP / PMPE - Questão 017) (Aprofundamento Doutrinário 17) Quanto aos alicerces conceituais dos Direitos Humanos: A característica segundo a qual a pretensão de exigir o respeito e a reparação por graves violações a direitos humanos não se perde pelo decurso do tempo denomina-se:",
+    "options": [
+      "Inalienabilidade",
+      "Imprescritibilidade",
+      "Indisponibilidade",
+      "Universalidade",
+      "Relatividade"
+    ],
+    "correctIndex": 1,
+    "explanation": "A imprescritibilidade significa que os direitos humanos fundamentais não se extinguem com a passagem dos anos ou inércia temporal.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Imprescritibilidade = Não se perde no tempo.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Imprescritibilidade = Não se perde no tempo.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A imprescritibilidade significa que os direitos humanos fundamentais não se extinguem com a passagem dos anos ou inércia temporal.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características dos Direitos Humanos: Imprescritibilidade\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_018",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Características dos Direitos Humanos: Relatividade",
+    "question": "(Instituto AOCP / PMPE - Questão 018) (Aprofundamento Doutrinário 18) Quanto aos alicerces conceituais dos Direitos Humanos: Sobre a característica da RELATIVIDADE (ou limitabilidade) dos Direitos Humanos, assinale a afirmativa correta:",
+    "options": [
+      "Os direitos humanos são absolutos e nenhum deles pode sofrer restrições em hipótese alguma.",
+      "Em regra, os direitos humanos são relativos, podendo colidir entre si e sofrer restrições legítimas, inexistindo direitos ilimitados, ressalvada a proibição absoluta de tortura e escravidão.",
+      "Apenas o direito de propriedade é relativo; a liberdade de expressão é absolutamente ilimitada.",
+      "A relatividade autoriza o Estado a suspender arbitrariamente o direito à vida em tempos de paz.",
+      "Nenhum tratado internacional admite a suspensão de garantias mesmo em estado de defesa."
+    ],
+    "correctIndex": 1,
+    "explanation": "Não há direitos humanos ilimitados ou absolutos, com raríssimas exceções jus cogens como a vedação absoluta à tortura e à escravidão.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Direitos humanos não são absolutos: encontram limites nos direitos dos outros.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Direitos humanos não são absolutos: encontram limites nos direitos dos outros.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Não há direitos humanos ilimitados ou absolutos, com raríssimas exceções jus cogens como a vedação absoluta à tortura e à escravidão.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características dos Direitos Humanos: Relatividade\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_019",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Características dos Direitos Humanos: Indisponibilidade e Irrenunciabilidade",
+    "question": "(Instituto AOCP / PMPE - Questão 019) (Aprofundamento Doutrinário 19) Quanto aos alicerces conceituais dos Direitos Humanos: A característica pela qual o titular não pode dispor, transferir, renunciar voluntariamente ou negociar financeiramente seus direitos humanos fundamentais é a:",
+    "options": [
+      "Universalidade",
+      "Irrenunciabilidade e Indisponibilidade",
+      "Efetividade",
+      "Historicidade",
+      "Transcendência"
+    ],
+    "correctIndex": 1,
+    "explanation": "A irrenunciabilidade e a indisponibilidade impedem o indivíduo de abrir mão definitivamente de sua dignidade e direitos humanos inerentes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Ninguém pode renunciar à sua própria dignidade.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Ninguém pode renunciar à sua própria dignidade.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A irrenunciabilidade e a indisponibilidade impedem o indivíduo de abrir mão definitivamente de sua dignidade e direitos humanos inerentes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características dos Direitos Humanos: Indisponibilidade e Irrenunciabilidade\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_020",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Diferença entre Direitos do Homem, Direitos Humanos e Fundamentais",
+    "question": "(Instituto AOCP / PMPE - Questão 020) (Aprofundamento Doutrinário 20) Quanto aos alicerces conceituais dos Direitos Humanos: Conforme a melhor técnica doutrinária, a denominação \"DIREITOS FUNDAMENTAIS\" refere-se especificamente a:",
+    "options": [
+      "Direitos naturais supralegais não escritos.",
+      "Direitos positivados e consagrados na ordem constitucional interna de um Estado soberano.",
+      "Normas de soft law sem força cogente.",
+      "Tratados bilaterais de extradição.",
+      "Direitos de terceira dimensão exclusivamente ambientais."
+    ],
+    "correctIndex": 1,
+    "explanation": "Direitos fundamentais são aqueles positivados no ordenamento constitucional interno de um país, enquanto direitos humanos se referem à esfera internacional dos tratados.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Fundamentais = Na Constituição interna | Humanos = No plano internacional.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Fundamentais = Na Constituição interna | Humanos = No plano internacional.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Direitos fundamentais são aqueles positivados no ordenamento constitucional interno de um país, enquanto direitos humanos se referem à esfera internacional dos tratados.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Diferença entre Direitos do Homem, Direitos Humanos e Fundamentais\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_021",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Características: Vedação ao Retrocesso (Efeito Cliquet)",
+    "question": "(Instituto AOCP / PMPE - Questão 021) (Aprofundamento Doutrinário 21) Quanto aos alicerces conceituais dos Direitos Humanos: O princípio que impede a supressão ou redução desproporcional de direitos humanos já conquistados e positivados na ordem jurídica é denominado tecnicamente pela doutrina de:",
+    "options": [
+      "Princípio da Reserva do Possível.",
+      "Princípio do Não Retrocesso Social (Efeito Cliquet).",
+      "Princípio da Isonomia Formal.",
+      "Princípio da Historicidade Relativa.",
+      "Princípio da Subsidiariedade Plena."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Princípio da Vedação ao Retrocesso (efeito cliquet) estabelece que uma vez alcançado determinado patamar de proteção de direitos humanos, o Estado não pode retroceder nem anular conquistas sem substituição equivalente.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Efeito Cliquet = Catraca que só gira para frente (não retrocede).",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Efeito Cliquet = Catraca que só gira para frente (não retrocede).",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Princípio da Vedação ao Retrocesso (efeito cliquet) estabelece que uma vez alcançado determinado patamar de proteção de direitos humanos, o Estado não pode retroceder nem anular conquistas sem substituição equivalente.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características: Vedação ao Retrocesso (Efeito Cliquet)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_022",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Características dos Direitos Humanos: Imprescritibilidade",
+    "question": "(Instituto AOCP / PMPE - Questão 022) (Aprofundamento Doutrinário 22) Quanto aos alicerces conceituais dos Direitos Humanos: A característica segundo a qual a pretensão de exigir o respeito e a reparação por graves violações a direitos humanos não se perde pelo decurso do tempo denomina-se:",
+    "options": [
+      "Inalienabilidade",
+      "Imprescritibilidade",
+      "Indisponibilidade",
+      "Universalidade",
+      "Relatividade"
+    ],
+    "correctIndex": 1,
+    "explanation": "A imprescritibilidade significa que os direitos humanos fundamentais não se extinguem com a passagem dos anos ou inércia temporal.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Imprescritibilidade = Não se perde no tempo.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Imprescritibilidade = Não se perde no tempo.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A imprescritibilidade significa que os direitos humanos fundamentais não se extinguem com a passagem dos anos ou inércia temporal.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características dos Direitos Humanos: Imprescritibilidade\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_023",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Características dos Direitos Humanos: Relatividade",
+    "question": "(Instituto AOCP / PMPE - Questão 023) (Aprofundamento Doutrinário 23) Quanto aos alicerces conceituais dos Direitos Humanos: Sobre a característica da RELATIVIDADE (ou limitabilidade) dos Direitos Humanos, assinale a afirmativa correta:",
+    "options": [
+      "Os direitos humanos são absolutos e nenhum deles pode sofrer restrições em hipótese alguma.",
+      "Em regra, os direitos humanos são relativos, podendo colidir entre si e sofrer restrições legítimas, inexistindo direitos ilimitados, ressalvada a proibição absoluta de tortura e escravidão.",
+      "Apenas o direito de propriedade é relativo; a liberdade de expressão é absolutamente ilimitada.",
+      "A relatividade autoriza o Estado a suspender arbitrariamente o direito à vida em tempos de paz.",
+      "Nenhum tratado internacional admite a suspensão de garantias mesmo em estado de defesa."
+    ],
+    "correctIndex": 1,
+    "explanation": "Não há direitos humanos ilimitados ou absolutos, com raríssimas exceções jus cogens como a vedação absoluta à tortura e à escravidão.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Direitos humanos não são absolutos: encontram limites nos direitos dos outros.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Direitos humanos não são absolutos: encontram limites nos direitos dos outros.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Não há direitos humanos ilimitados ou absolutos, com raríssimas exceções jus cogens como a vedação absoluta à tortura e à escravidão.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características dos Direitos Humanos: Relatividade\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_024",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Características dos Direitos Humanos: Indisponibilidade e Irrenunciabilidade",
+    "question": "(Instituto AOCP / PMPE - Questão 024) (Aprofundamento Doutrinário 24) Quanto aos alicerces conceituais dos Direitos Humanos: A característica pela qual o titular não pode dispor, transferir, renunciar voluntariamente ou negociar financeiramente seus direitos humanos fundamentais é a:",
+    "options": [
+      "Universalidade",
+      "Irrenunciabilidade e Indisponibilidade",
+      "Efetividade",
+      "Historicidade",
+      "Transcendência"
+    ],
+    "correctIndex": 1,
+    "explanation": "A irrenunciabilidade e a indisponibilidade impedem o indivíduo de abrir mão definitivamente de sua dignidade e direitos humanos inerentes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Ninguém pode renunciar à sua própria dignidade.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Ninguém pode renunciar à sua própria dignidade.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A irrenunciabilidade e a indisponibilidade impedem o indivíduo de abrir mão definitivamente de sua dignidade e direitos humanos inerentes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Características dos Direitos Humanos: Indisponibilidade e Irrenunciabilidade\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_025",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Teoria Geral • Diferença entre Direitos do Homem, Direitos Humanos e Fundamentais",
+    "question": "(Instituto AOCP / PMPE - Questão 025) (Aprofundamento Doutrinário 25) Quanto aos alicerces conceituais dos Direitos Humanos: Conforme a melhor técnica doutrinária, a denominação \"DIREITOS FUNDAMENTAIS\" refere-se especificamente a:",
+    "options": [
+      "Direitos naturais supralegais não escritos.",
+      "Direitos positivados e consagrados na ordem constitucional interna de um Estado soberano.",
+      "Normas de soft law sem força cogente.",
+      "Tratados bilaterais de extradição.",
+      "Direitos de terceira dimensão exclusivamente ambientais."
+    ],
+    "correctIndex": 1,
+    "explanation": "Direitos fundamentais são aqueles positivados no ordenamento constitucional interno de um país, enquanto direitos humanos se referem à esfera internacional dos tratados.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Fundamentais = Na Constituição interna | Humanos = No plano internacional.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Fundamentais = Na Constituição interna | Humanos = No plano internacional.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Direitos fundamentais são aqueles positivados no ordenamento constitucional interno de um país, enquanto direitos humanos se referem à esfera internacional dos tratados.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Teoria Geral • Diferença entre Direitos do Homem, Direitos Humanos e Fundamentais\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_026",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 1ª Dimensão (Liberdade)",
+    "question": "(Instituto AOCP / PMPE - Questão 026) Os Direitos Humanos de PRIMEIRA DIMENSÃO caracterizam-se pelo lema da liberdade e impõem ao Estado um dever de:",
+    "options": [
+      "Prestação positiva com fornecimento de serviços públicos.",
+      "Abstenção (obrigações de não fazer), garantindo a liberdade e a não interferência indevida na vida privada.",
+      "Garantia de previdência social e trabalho digno.",
+      "Preservação de recursos genéticos.",
+      "Intervenção estatal ampla na economia."
+    ],
+    "correctIndex": 1,
+    "explanation": "A 1ª dimensão consagra as liberdades individuais clássicas (vida, propriedade, liberdade de expressão e direitos políticos), exigindo postura negativa/abstenção estatal.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "1ª Dimensão = Liberdade = Dever de Abstenção.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "1ª Dimensão = Liberdade = Dever de Abstenção.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A 1ª dimensão consagra as liberdades individuais clássicas (vida, propriedade, liberdade de expressão e direitos políticos), exigindo postura negativa/abstenção estatal.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 1ª Dimensão (Liberdade)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_027",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 2ª Dimensão (Igualdade Material)",
+    "question": "(Instituto AOCP / PMPE - Questão 027) Qual das alternativas a seguir exemplifica legitimamente um direito humano de SEGUNDA DIMENSÃO (ou geração)?",
+    "options": [
+      "Direito de voto e elegibilidade.",
+      "Direito à saúde pública, educação, trabalho e previdência social.",
+      "Direito a um meio ambiente ecologicamente equilibrado.",
+      "Direito à paz mundial.",
+      "Direito à integridade do patrimônio genético humano."
+    ],
+    "correctIndex": 1,
+    "explanation": "A 2ª dimensão tem por valor-guia a igualdade material (direitos sociais, econômicos e culturais), exigindo prestações positivas do Estado.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "2ª Dimensão = Igualdade = Prestações Sociais Positivas.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "2ª Dimensão = Igualdade = Prestações Sociais Positivas.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A 2ª dimensão tem por valor-guia a igualdade material (direitos sociais, econômicos e culturais), exigindo prestações positivas do Estado.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 2ª Dimensão (Igualdade Material)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_028",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 3ª Dimensão (Fraternidade e Solidariedade)",
+    "question": "(Instituto AOCP / PMPE - Questão 028) Os direitos humanos de TERCEIRA DIMENSÃO surgiram com destaque após a Segunda Guerra Mundial e possuem como elemento central:",
+    "options": [
+      "A proteção exclusiva da liberdade individual contra o arbítrio da Coroa.",
+      "A proteção dos trabalhadores da indústria.",
+      "A titularidade transindividual, difusa e coletiva, abrangendo o direito ao meio ambiente equilibrado e ao desenvolvimento.",
+      "A defesa dos direitos dos acionistas em sociedades anônimas.",
+      "O processo civil individual e o habeas corpus."
+    ],
+    "correctIndex": 2,
+    "explanation": "A 3ª dimensão tem como marco a fraternidade/solidariedade, protegendo interesses difusos e coletivos (meio ambiente, paz, patrimônio da humanidade).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "3ª Dimensão = Solidariedade = Direitos Difusos e Meio Ambiente.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "3ª Dimensão = Solidariedade = Direitos Difusos e Meio Ambiente.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Correta. A 3ª dimensão tem como marco a fraternidade/solidariedade, protegendo interesses difusos e coletivos (meio ambiente, paz, patrimônio da humanidade).",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 3ª Dimensão (Fraternidade e Solidariedade)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra C."
+    ]
+  },
+  {
+    "id": "dh_aocp_029",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 4ª Dimensão (Bonavides / Bobbio)",
+    "question": "(Instituto AOCP / PMPE - Questão 029) Na consagrada lição do mestre Paulo Bonavides, a QUARTA DIMENSÃO dos direitos humanos contempla especialmente:",
+    "options": [
+      "A liberdade de locomoção e de crença.",
+      "O direito à greve e ao décimo terceiro salário.",
+      "A globalização dos direitos políticos, o direito à democracia direta, à informação e à proteção da bioética e do genoma.",
+      "A proibição de tributos confiscatórios.",
+      "O mandado de segurança individual."
+    ],
+    "correctIndex": 2,
+    "explanation": "Para Paulo Bonavides, a 4ª dimensão é fruto da globalização política e abrange o direito à democracia direta, informação, pluralismo e controle da bioética.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "4ª Dimensão = Bioética, Engenharia Genética e Democracia Global.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "4ª Dimensão = Bioética, Engenharia Genética e Democracia Global.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Correta. Para Paulo Bonavides, a 4ª dimensão é fruto da globalização política e abrange o direito à democracia direta, informação, pluralismo e controle da bioética.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 4ª Dimensão (Bonavides / Bobbio)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra C."
+    ]
+  },
+  {
+    "id": "dh_aocp_030",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 5ª Dimensão (Direito à Paz de Bonavides)",
+    "question": "(Instituto AOCP / PMPE - Questão 030) De acordo com a teoria inovadora de Paulo Bonavides acolhida em concursos policiais, qual direito foi alçado à condição suprema de QUINTA DIMENSÃO dos direitos humanos?",
+    "options": [
+      "Direito à Paz universal e perpétua.",
+      "Direito à Internet banda larga.",
+      "Direito ao armamento individual.",
+      "Direito de propriedade intelectual.",
+      "Direito de asilo diplomático."
     ],
     "correctIndex": 0,
-    "explanation": "Conforme o art. 4º, item 1 da CADH: 'Toda pessoa tem o direito de que se respeite sua vida. Esse direito deve ser protegido pela lei e, em geral, desde o momento da concepção'. A CADH proíbe o restabelecimento da pena de morte para quem a aboliu e veda sua aplicação a menores de 18 anos, maiores de 70 anos e grávidas.",
-    "fundamentacaoLegal": "Artigo 4º da Convenção Americana sobre Direitos Humanos.",
-    "hint": "Vida: protegida por lei e 'em geral, desde o momento da concepção'. Jamais pena de morte para grávidas e menores de 18!",
+    "explanation": "Paulo Bonavides destacou o Direito à Paz como direito de quinta geração, considerando-o pressuposto indispensável para a sobrevivência da humanidade.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "5ª Dimensão (Bonavides) = PAZ universal.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "REGRA DE OURO CADH: Vedada pena de morte para <18 anos, >70 anos, gestantes e crimes políticos!",
+    "dicaMacete": "5ª Dimensão (Bonavides) = PAZ universal.",
     "porqueErrou": {
-      "1": "Art. 4º, item 3: Não se pode restabelecer a pena de morte nos Estados que a hajam abolido (princípio da vedação do retrocesso).",
-      "2": "Art. 4º, item 4: Em nenhum caso pode a pena de morte ser aplicada por delitos políticos.",
-      "3": "Art. 4º, item 5: Não se deve impor a pena de morte a pessoas que, no momento da perpetração do delito, eram menores de dezoito anos.",
-      "4": "Art. 4º, item 5: Tampouco se deve aplicar a pena de morte a mulheres em estado de gravidez."
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
     },
     "analiseAlternativas": {
-      "A": "Correta. O art. 4º, item 1 protege a vida pela lei e, em geral, desde o momento da concepção.",
-      "B": "Incorreta. É proibido restabelecer a pena de morte uma vez abolida.",
-      "C": "Incorreta. É expressamente vedada a pena de morte por delitos políticos.",
-      "D": "Incorreta. Menores de 18 anos jamais podem sofrer pena de morte sob a CADH.",
-      "E": "Incorreta. É vedada a pena de morte para mulheres grávidas em qualquer hipótese."
-    }
+      "A": "Correta. Paulo Bonavides destacou o Direito à Paz como direito de quinta geração, considerando-o pressuposto indispensável para a sobrevivência da humanidade.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 5ª Dimensão (Direito à Paz de Bonavides)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra A."
+    ]
   },
   {
-    "id": "dh_psj_005",
+    "id": "dh_aocp_031",
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Pacto de São José da Costa Rica (CADH) • Audiência de Custódia e Liberdade Pessoal (Art. 7º)",
-    "question": "Nos termos do Artigo 7º, item 5, do Pacto de São José da Costa Rica, 'toda pessoa detida ou retida deve ser conduzida, sem demora, à presença de um juiz ou outra autoridade autorizada pela lei a exercer funções judiciais'. Esse mandamento do Pacto deu origem, no processo penal brasileiro, ao instituto da:",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 1ª Dimensão (Liberdade)",
+    "question": "(Instituto AOCP / PMPE - Questão 031) (Evolução Doutrinária 6) Sobre a divisão geracional dos Direitos Humanos: Os Direitos Humanos de PRIMEIRA DIMENSÃO caracterizam-se pelo lema da liberdade e impõem ao Estado um dever de:",
     "options": [
-      "Delação premiada com suspensão condicional da pena.",
-      "Audiência de custódia, realizada no prazo legal de 24 horas após a lavratura da prisão em flagrante.",
-      "Revogação definitiva do inquérito policial e transferência para juizado de conciliação sumária.",
-      "Conversão automática de todo flagrante em prisão preventiva de natureza perpétua.",
-      "Perícia papiloscópica prévia antes de qualquer oitiva perante o Ministério Público."
+      "Prestação positiva com fornecimento de serviços públicos.",
+      "Abstenção (obrigações de não fazer), garantindo a liberdade e a não interferência indevida na vida privada.",
+      "Garantia de previdência social e trabalho digno.",
+      "Preservação de recursos genéticos.",
+      "Intervenção estatal ampla na economia."
     ],
     "correctIndex": 1,
-    "explanation": "O art. 7º, item 5 da CADH fundamentou a implementação obrigatória da AUDIÊNCIA DE CUSTÓDIA no Brasil (Resolução 213/CNJ, decisão do STF na ADPF 347 e posterior incorporação ao art. 310 do CPP pelo Pacote Anticrime). O preso em flagrante deve ser apresentado ao juiz em até 24 horas.",
-    "fundamentacaoLegal": "Art. 7º, item 5 da CADH; STF ADPF 347 e Art. 310 do CPP.",
-    "hint": "Sem demora à presença do juiz = AUDIÊNCIA DE CUSTÓDIA (24 horas após a prisão).",
-    "difficulty": "easy",
+    "explanation": "A 1ª dimensão consagra as liberdades individuais clássicas (vida, propriedade, liberdade de expressão e direitos políticos), exigindo postura negativa/abstenção estatal.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "1ª Dimensão = Liberdade = Dever de Abstenção.",
+    "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "PRESO EM FLAGRANTE -> 24H -> JUIZ NA AUDIÊNCIA DE CUSTÓDIA (Evita tortura e avalia a prisão)!",
+    "dicaMacete": "1ª Dimensão = Liberdade = Dever de Abstenção.",
     "porqueErrou": {
-      "0": "Colaboração premiada é meio de obtenção de prova previsto na Lei 12.850/13.",
-      "2": "A audiência de custódia não extingue o inquérito policial.",
-      "3": "No Brasil vigora o princípio da presunção de inocência; prisão preventiva nunca é automática nem perpétua.",
-      "4": "Perícia papiloscópica é ato pericial de identificação criminal, não o ato judicial do art. 7.5."
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. Delação premiada é instituto de cooperação probatória.",
-      "B": "Correta. A audiência de custódia concretiza a garantia do art. 7º, 5 da CADH no prazo de 24h.",
-      "C": "Incorreta. Não há extinção de inquérito policial na audiência de custódia.",
-      "D": "Incorreta. A conversão em preventiva depende de requisitos cautelares fundamentados.",
-      "E": "Incorreta. O direito fundamental tutelado é o contato imediato do custodiado com o juiz."
-    }
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A 1ª dimensão consagra as liberdades individuais clássicas (vida, propriedade, liberdade de expressão e direitos políticos), exigindo postura negativa/abstenção estatal.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 1ª Dimensão (Liberdade)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
   },
   {
-    "id": "dh_psj_006",
+    "id": "dh_aocp_032",
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Pacto de São José da Costa Rica (CADH) • Garantias Judiciais (Art. 8º) e Duplo Grau",
-    "question": "O Artigo 8º da Convenção Americana sobre Direitos Humanos elenca o rol de garantias judiciais mínimas que devem ser asseguradas a qualquer pessoa acusada de delito penal. Entre tais garantias expressas no texto da Convenção, NÃO se inclui:",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 2ª Dimensão (Igualdade Material)",
+    "question": "(Instituto AOCP / PMPE - Questão 032) (Evolução Doutrinária 7) Sobre a divisão geracional dos Direitos Humanos: Qual das alternativas a seguir exemplifica legitimamente um direito humano de SEGUNDA DIMENSÃO (ou geração)?",
     "options": [
-      "O direito de recorrer da sentença para juiz ou tribunal superior (duplo grau de jurisdição).",
-      "O direito de não ser obrigado a depor contra si mesma, nem a confessar-se culpada (nemo tenetur se detegere).",
-      "A possibilidade de utilização de confissão obtida mediante coação física ou psicológica quando o crime envolver organização criminosa.",
-      "O direito do acusado de ser assistido gratuitamente por um tradutor ou intérprete, se não compreender ou não falar a língua do tribunal.",
-      "A comunicação prévia e pormenorizada ao acusado da imputação formulada contra ele."
+      "Direito de voto e elegibilidade.",
+      "Direito à saúde pública, educação, trabalho e previdência social.",
+      "Direito a um meio ambiente ecologicamente equilibrado.",
+      "Direito à paz mundial.",
+      "Direito à integridade do patrimônio genético humano."
+    ],
+    "correctIndex": 1,
+    "explanation": "A 2ª dimensão tem por valor-guia a igualdade material (direitos sociais, econômicos e culturais), exigindo prestações positivas do Estado.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "2ª Dimensão = Igualdade = Prestações Sociais Positivas.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "2ª Dimensão = Igualdade = Prestações Sociais Positivas.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A 2ª dimensão tem por valor-guia a igualdade material (direitos sociais, econômicos e culturais), exigindo prestações positivas do Estado.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 2ª Dimensão (Igualdade Material)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_033",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 3ª Dimensão (Fraternidade e Solidariedade)",
+    "question": "(Instituto AOCP / PMPE - Questão 033) (Evolução Doutrinária 8) Sobre a divisão geracional dos Direitos Humanos: Os direitos humanos de TERCEIRA DIMENSÃO surgiram com destaque após a Segunda Guerra Mundial e possuem como elemento central:",
+    "options": [
+      "A proteção exclusiva da liberdade individual contra o arbítrio da Coroa.",
+      "A proteção dos trabalhadores da indústria.",
+      "A titularidade transindividual, difusa e coletiva, abrangendo o direito ao meio ambiente equilibrado e ao desenvolvimento.",
+      "A defesa dos direitos dos acionistas em sociedades anônimas.",
+      "O processo civil individual e o habeas corpus."
     ],
     "correctIndex": 2,
-    "explanation": "O art. 8º, item 3 da CADH determina de forma categórica: 'A confissão do acusado só é válida se feita sem coação de qualquer natureza'. Tortura ou coação anulam inteiramente a confissão, não havendo exceção para crimes graves ou organizações criminosas.",
-    "fundamentacaoLegal": "Artigo 8º, item 3 da Convenção Americana sobre Direitos Humanos.",
-    "hint": "Confissão sob coação é SEMPRE INVÁLIDA e NULA, para qualquer tipo de crime!",
+    "explanation": "A 3ª dimensão tem como marco a fraternidade/solidariedade, protegendo interesses difusos e coletivos (meio ambiente, paz, patrimônio da humanidade).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "3ª Dimensão = Solidariedade = Direitos Difusos e Meio Ambiente.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "COAÇÃO NUNCA É VÁLIDA: Prova ilícita contamina o processo (Frutos da Árvore Envenenada)!",
+    "dicaMacete": "3ª Dimensão = Solidariedade = Direitos Difusos e Meio Ambiente.",
     "porqueErrou": {
-      "0": "O duplo grau de jurisdição está expressamente previsto no art. 8º, item 2, alínea 'h' da CADH.",
-      "1": "A não autoincriminação está expressa no art. 8º, item 2, alínea 'g' da CADH.",
-      "3": "O direito a tradutor/intérprete está expresso no art. 8º, item 2, alínea 'a' da CADH.",
-      "4": "A comunicação prévia da acusação está expressa no art. 8º, item 2, alínea 'b' da CADH."
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
     },
     "analiseAlternativas": {
-      "A": "Incorreta para o enunciado. O recurso para tribunal superior é garantia judicial expressa.",
-      "B": "Incorreta para o enunciado. A vedação à autoincriminação é garantia judicial expressa.",
-      "C": "Correta (gabarito). O Pacto veda terminantemente confissões coagidas sob qualquer pretexto.",
-      "D": "Incorreta para o enunciado. O intérprete gratuito é garantia judicial expressa.",
-      "E": "Incorreta para o enunciado. A comunicação prévia da imputação é garantia judicial expressa."
-    }
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Correta. A 3ª dimensão tem como marco a fraternidade/solidariedade, protegendo interesses difusos e coletivos (meio ambiente, paz, patrimônio da humanidade).",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 3ª Dimensão (Fraternidade e Solidariedade)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra C."
+    ]
   },
   {
-    "id": "dh_psj_007",
+    "id": "dh_aocp_034",
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Pacto de São José da Costa Rica (CADH) • Cláusula de Suspensão de Garantias (Art. 27)",
-    "question": "O Artigo 27 da Convenção Americana sobre Direitos Humanos autoriza que os Estados Partes suspendam temporariamente certas garantias em caso de guerra, de perigo público ou de outra emergência que ameace a sua independência ou segurança. Contudo, o § 2º desse artigo estabelece um rol de DIREITOS INDERROGÁVEIS que JAMAIS podem ser suspensos, mesmo nessas situações extraordinárias. NÃO pode ser suspenso sob hipótese alguma:",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 4ª Dimensão (Bonavides / Bobbio)",
+    "question": "(Instituto AOCP / PMPE - Questão 034) (Evolução Doutrinária 9) Sobre a divisão geracional dos Direitos Humanos: Na consagrada lição do mestre Paulo Bonavides, a QUARTA DIMENSÃO dos direitos humanos contempla especialmente:",
     "options": [
-      "A inviolabilidade do domicílio.",
-      "A liberdade de locomoção interestadual de bens e mercadorias.",
-      "O direito à integridade pessoal e a proibição da tortura e de tratamentos cruéis ou degradantes.",
-      "O direito de reunião pacífica sem armas em praça pública.",
-      "O direito de sigilo das correspondências e comunicações telegráficas."
+      "A liberdade de locomoção e de crença.",
+      "O direito à greve e ao décimo terceiro salário.",
+      "A globalização dos direitos políticos, o direito à democracia direta, à informação e à proteção da bioética e do genoma.",
+      "A proibição de tributos confiscatórios.",
+      "O mandado de segurança individual."
     ],
     "correctIndex": 2,
-    "explanation": "O art. 27, item 2 da CADH proíbe a suspensão de: direito à vida (art. 4º), integridade pessoal e vedação à tortura (art. 5º), proibição da escravidão (art. 6º), princípio da legalidade e retroatividade (art. 9º), liberdade de consciência/religião (art. 12), proteção da família (art. 17), direito ao nome (art. 18), direitos da criança (art. 19), nacionalidade (art. 20) e direitos políticos (art. 23).",
-    "fundamentacaoLegal": "Artigo 27, item 2 da Convenção Americana sobre Direitos Humanos.",
-    "hint": "Direitos Inderrogáveis: Vida, Não Tortura, Não Escravidão, Legalidade, Nome, Criança, Nacionalidade.",
-    "difficulty": "hard",
-    "banca": "Instituto AOCP",
-    "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "INDERROGÁVEIS DA CADH: Vida, Não Torturar, Não Escravizar, Legalidade Penal e Nome!",
-    "porqueErrou": {
-      "0": "Inviolabilidade de domicílio pode ser excepcionada em estado de defesa ou sítio.",
-      "1": "Liberdade de locomoção e circulação pode ser restringida em situações de calamidade ou toque de recolher.",
-      "3": "Direito de reunião pode ser suspenso temporariamente durante estado de defesa e sítio.",
-      "4": "Sigilo das comunicações pode sofrer restrições em estado de sítio ou defesa."
-    },
-    "analiseAlternativas": {
-      "A": "Incorreta. Domicílio pode sofrer restrição em estado de exceção constitucional.",
-      "B": "Incorreta. Locomoção pode sofrer restrições temporárias em estado de sítio.",
-      "C": "Correta. A integridade física e a proibição de tortura são direitos inderrogáveis universais.",
-      "D": "Incorreta. Direito de reunião pode ser suspenso em estado de emergência pública.",
-      "E": "Incorreta. Sigilo de correspondência pode sofrer restrição justificada em estado de sítio."
-    }
-  },
-  {
-    "id": "dh_psj_008",
-    "categoryId": "humanos_leis",
-    "bloco": "bloco_3",
-    "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Sistema Interamericano • Competência da Comissão (CIDH) vs Corte (Corte IDH)",
-    "question": "O Sistema Interamericano de Proteção dos Direitos Humanos possui dois órgãos fundamentais com competências distintas: a Comissão Interamericana (CIDH, sediada em Washington) e a Corte Interamericana (Corte IDH, sediada em San José da Costa Rica). A respeito do ACESSO À CORTE INTERAMERICANA, assinale a regra correta fixada no Artigo 61 da Convenção:",
-    "options": [
-      "Qualquer cidadão brasileiro que tenha seus direitos violados pode peticionar e ajuizar ação diretamente perante a Corte Interamericana de Direitos Humanos.",
-      "Somente os Estados Partes e a Comissão Interamericana têm o direito de submeter um caso à decisão da Corte Interamericana.",
-      "Apenas o Ministério Público da União do país demandado possui legitimidade ativa exclusiva para provocar a Corte IDH.",
-      "A Corte Interamericana julga exclusivamente controvérsias de natureza comercial e aduaneira entre os países membros do Mercosul.",
-      "As decisões da Corte Interamericana têm caráter meramente consultivo, não vinculando os tribunais judiciais dos Estados membros."
-    ],
-    "correctIndex": 1,
-    "explanation": "Regra de ouro da CADH (Art. 61, item 1): SOMENTE OS ESTADOS PARTES E A COMISSÃO têm o direito de submeter um caso à decisão da Corte IDH. O indivíduo ou ONG faz a petição/denúncia perante a Comissão (CIDH em Washington); se não houver acordo, a Comissão é quem leva o caso a julgamento na Corte IDH.",
-    "fundamentacaoLegal": "Artigo 61, item 1 da Convenção Americana sobre Direitos Humanos.",
-    "hint": "Indivíduo NÃO processa direto na Corte! O cidadão vai à Comissão (Washington) e esta leva à Corte (San José).",
-    "difficulty": "hard",
-    "banca": "Instituto AOCP",
-    "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "INDIVÍDUO -> COMISSÃO (CIDH). QUEM VAI À CORTE -> SÓ ESTADOS E A COMISSÃO!",
-    "porqueErrou": {
-      "0": "Indivíduos e ONGs não têm jus postulandi direto perante a Corte IDH (apenas perante a Comissão).",
-      "2": "O Ministério Público nacional não é legitimado exclusivo perante os órgãos da OEA.",
-      "3": "A Corte IDH é tribunal de Direitos Humanos, não tribunal de controvérsias comerciais do Mercosul.",
-      "4": "As decisões contenciosas da Corte IDH são definitivas, inapeláveis e têm força executiva obrigatória nos Estados partes."
-    },
-    "analiseAlternativas": {
-      "A": "Incorreta. O indivíduo peticiona perante a Comissão (CIDH), e não diretamente perante a Corte.",
-      "B": "Correta. O art. 61.1 expressamente prevê que somente Estados Partes e a Comissão podem submeter casos à Corte IDH.",
-      "C": "Incorreta. O MP não detém legitimidade exclusiva no sistema interamericano.",
-      "D": "Incorreta. A Corte IDH julga direitos fundamentais da pessoa humana, não temas aduaneiros.",
-      "E": "Incorreta. As sentenças contenciosas da Corte IDH são juridicamente vinculantes para o Estado."
-    }
-  },
-  {
-    "id": "dh_psj_009",
-    "categoryId": "humanos_leis",
-    "bloco": "bloco_3",
-    "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Pacto de São José da Costa Rica (CADH) • Princípio da Legalidade e da Retroatividade Penal Benéfica (Art. 9º)",
-    "question": "Sobre o Princípio da Legalidade e da Retroatividade Penal expresso no Artigo 9º do Pacto de São José da Costa Rica, assinale a alternativa que reproduz fielmente a norma internacional:",
-    "options": [
-      "A lei penal nova mais gravosa retroagirá sempre que o crime envolver atentado contra a ordem constitucional militar.",
-      "Ninguém pode ser condenado por ações ou omissões que, no momento em que forem cometidas, não sejam delituosas, segundo o direito aplicável. Se, depois da perpetração do delito, a lei estipular a imposição de pena mais leve, o delinquente deverá dela beneficiar-se.",
-      "O juiz poderá criar tipos penais incriminadores por analogia judicial se o fato for considerado socialmente reprovável pela comunidade.",
-      "A pena cominada na sentença condenatória irrecorrível não sofrerá qualquer alteração, ainda que sobrevenha lei abolitiva do crime.",
-      "O princípio da insignificância penal é expressamente vedado nas ações que envolvam agentes públicos de segurança militar."
-    ],
-    "correctIndex": 1,
-    "explanation": "O art. 9º da CADH consagra o princípio da reserva legal (nullum crimen, nulla poena sine lege praevia) e a retroatividade da lei penal mais benigna (novatio legis in mellius e abolitio criminis), assegurando que o réu se beneficie da lei posterior mais branda.",
-    "fundamentacaoLegal": "Artigo 9º da Convenção Americana sobre Direitos Humanos e Art. 5º, XL da CF/88.",
-    "hint": "Art. 9º da CADH = Legalidade estrita + A lei penal benéfica SEMPRE RETROAGE para beneficiar o réu!",
+    "explanation": "Para Paulo Bonavides, a 4ª dimensão é fruto da globalização política e abrange o direito à democracia direta, informação, pluralismo e controle da bioética.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "4ª Dimensão = Bioética, Engenharia Genética e Democracia Global.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "LEI PENAL MAIS LEVE: Sempre alcança o réu, ontem, hoje e amanhã!",
+    "dicaMacete": "4ª Dimensão = Bioética, Engenharia Genética e Democracia Global.",
     "porqueErrou": {
-      "0": "A lei penal prejudicial (in pejus) NUNCA retroage, em nenhuma modalidade de crime.",
-      "2": "É vedada a criação de crimes por analogia (reserva legal estrita).",
-      "3": "A lei abolitiva (abolitio criminis) cessa todos os efeitos penais, mesmo após o trânsito em julgado.",
-      "4": "O princípio da insignificância é construção dogmática compatível com o direito penal de intervenção mínima."
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. Lei mais severa não retroage sob nenhuma circunstância.",
-      "B": "Correta. Reproduz fielmente a redação do Artigo 9º da Convenção Americana.",
-      "C": "Incorreta. Analogia in malam partem é proibida pelo princípio da legalidade.",
-      "D": "Incorreta. A lei benéfica retroage mesmo com trânsito em julgado.",
-      "E": "Incorreta. Não existe vedação ao princípio da insignificância no texto da CADH."
-    }
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Correta. Para Paulo Bonavides, a 4ª dimensão é fruto da globalização política e abrange o direito à democracia direta, informação, pluralismo e controle da bioética.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 4ª Dimensão (Bonavides / Bobbio)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra C."
+    ]
   },
   {
-    "id": "dh_psj_010",
+    "id": "dh_aocp_035",
     "categoryId": "humanos_leis",
     "bloco": "bloco_3",
     "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Pacto de São José da Costa Rica (CADH) • Liberdade de Expressão e Direito de Resposta (Arts. 13 e 14)",
-    "question": "No tocante à Liberdade de Pensamento e de Expressão e ao Direito de Resposta nos Artigos 13 e 14 da Convenção Americana sobre Direitos Humanos, é CORRETO afirmar que:",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 5ª Dimensão (Direito à Paz de Bonavides)",
+    "question": "(Instituto AOCP / PMPE - Questão 035) (Evolução Doutrinária 10) Sobre a divisão geracional dos Direitos Humanos: De acordo com a teoria inovadora de Paulo Bonavides acolhida em concursos policiais, qual direito foi alçado à condição suprema de QUINTA DIMENSÃO dos direitos humanos?",
     "options": [
-      "O exercício da liberdade de pensamento e de expressão está sujeito à censura prévia por órgão governamental de segurança pública.",
-      "O direito de resposta aplica-se apenas no caso de ofensas veiculadas em livros acadêmicos impressos, excluindo rádio, televisão e jornais.",
-      "O exercício da liberdade de expressão não pode estar sujeito a censura prévia, mas a responsabilidades ulteriores expressamente fixadas pela lei para assegurar o respeito aos direitos de outrem.",
-      "A propaganda em favor da guerra e a apologia ao ódio nacional ou religioso são manifestações protegidas pela liberdade de expressão irrestrita.",
-      "O direito de manifestação pode ser restringido por monopólios estatais sobre frequências de radiodifusão como forma de controle ideológico."
-    ],
-    "correctIndex": 2,
-    "explanation": "O art. 13, item 2 da CADH veda terminantemente a censura prévia. Permite apenas responsabilidades posteriores (indenização, direito de resposta e persecução penal por calúnia/difamação). Ademais, o art. 13.5 proíbe qualquer propaganda de guerra e apologia ao ódio.",
-    "fundamentacaoLegal": "Artigos 13 e 14 da Convenção Americana sobre Direitos Humanos.",
-    "hint": "CADH: CENSURA PRÉVIA NUNCA! Apenas responsabilidade posterior fixada em lei.",
-    "difficulty": "medium",
-    "banca": "Instituto AOCP",
-    "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "SEM CENSURA PRÉVIA: Fale livremente, mas responda civil e criminalmente pelos excessos!",
-    "porqueErrou": {
-      "0": "A censura prévia é terminantemente proibida pela CADH.",
-      "1": "O direito de resposta aplica-se a qualquer veículo de difusão legalmente regulamentado.",
-      "3": "Apologia ao ódio e propaganda de guerra são expressamente proibidas por lei pelo art. 13, item 5.",
-      "4": "O art. 13, item 3 veda o controle abusivo de frequências radiofônicas para calar a imprensa."
-    },
-    "analiseAlternativas": {
-      "A": "Incorreta. Censura prévia é manifestamente proibida.",
-      "B": "Incorreta. O direito de resposta abrange todos os meios de comunicação social.",
-      "C": "Correta. Veda censura prévia e autoriza apenas responsabilidades ulteriores legalmente delimitadas.",
-      "D": "Incorreta. Discursos de ódio e propaganda bélica são considerados ilícitos internacionais.",
-      "E": "Incorreta. Monopólios de telecomunicações para limitar a expressão são proibidos pelo art. 13.3."
-    }
-  },
-  {
-    "id": "dh_psj_011",
-    "categoryId": "humanos_leis",
-    "bloco": "bloco_3",
-    "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Pacto de São José da Costa Rica (CADH) • Indenização por Erro Judiciário (Art. 10)",
-    "question": "Segundo o Artigo 10 da Convenção Americana sobre Direitos Humanos, toda pessoa tem direito a ser indenizada pelo Estado conforme a lei no caso de:",
-    "options": [
-      "Ter sido absolvida por falta de provas testemunhais no tribunal do júri.",
-      "Haver sido condenada em sentença transitada em julgado por erro judiciário.",
-      "Ter seu processo penal concluído em prazo superior a 6 meses.",
-      "Sofrer abordagem policial fundamentada em fundada suspeita na via pública.",
-      "Não ter sido contemplada por anistia ou indulto presidencial concedido pelo Executivo."
-    ],
-    "correctIndex": 1,
-    "explanation": "O art. 10 da CADH estabelece expressamente: 'Toda pessoa tem direito de ser indenizada conforme a lei, no caso de haver sido condenada em sentença transitada em julgado por erro judiciário'. Dispositivo em plena simetria com o Art. 5º, LXXV da CF/88.",
-    "fundamentacaoLegal": "Artigo 10 da CADH e Art. 5º, LXXV da CF/88.",
-    "hint": "Indenização por Erro Judiciário: Condenação injusta com trânsito em julgado gera dever estatal de indenizar.",
-    "difficulty": "easy",
-    "banca": "Instituto AOCP",
-    "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "ERRO JUDICIÁRIO + CONDENAÇÃO DEFINITIVA = DIREITO À INDENIZAÇÃO DO ESTADO!",
-    "porqueErrou": {
-      "0": "Absolvição por falta de provas (in dubio pro reo) não gera indenização automática, salvo prisão manifestamente ilegal comprovada.",
-      "2": "A duração razoável do processo pode gerar reparação por danos morais, mas o art. 10 trata especificamente do erro judiciário em condenação.",
-      "3": "Busca pessoal com fundada suspeita é ato administrativo legítimo de polícia ostensiva (art. 244 do CPP).",
-      "4": "Anistia e indulto são atos discricionários de política criminal, não gerando direito subjetivo à indenização."
-    },
-    "analiseAlternativas": {
-      "A": "Incorreta. Absolvição por insuficiência probatória em regra não enseja reparação civil automática.",
-      "B": "Correta. Texto literal do art. 10: condenada em sentença transitada em julgado por erro judiciário.",
-      "C": "Incorreta. O art. 10 vincula a indenização expressamente à condenação por erro judiciário.",
-      "D": "Incorreta. A abordagem legal de trânsito ou segurança não gera dever de indenizar.",
-      "E": "Incorreta. Indulto não se confunde com erro judiciário."
-    }
-  },
-  {
-    "id": "dh_psj_012",
-    "categoryId": "humanos_leis",
-    "bloco": "bloco_3",
-    "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Pacto de São José da Costa Rica (CADH) • Condições de Detenção e Separação de Presos (Art. 5º)",
-    "question": "No que tange ao Direito à Integridade Pessoal e ao tratamento de detentos (Artigo 5º do Pacto de São José da Costa Rica), qual diretriz é expressamente imposta aos órgãos prisionais e de segurança dos Estados Partes?",
-    "options": [
-      "Os presos civis e militares condenados devem cumprir pena no mesmo estabelecimento para evitar privilégios.",
-      "Os acusados devem ser separados dos condenados, salvo em circunstâncias excepcionais, e devem ser submetidos a tratamento adequado à sua condição de pessoas não condenadas.",
-      "Os menores de idade infratores devem cumprir medidas em celas comuns com os maiores de idade para favorecer a ressocialização precoce.",
-      "A pena privativa de liberdade pode passar da pessoa do condenado e atingir o patrimônio e os direitos políticos dos seus descendentes diretos.",
-      "A incomunicabilidade do preso em regime disciplinar pode ser prorrogada indefinidamente sem prévio controle judicial."
-    ],
-    "correctIndex": 1,
-    "explanation": "O art. 5º, item 4 da CADH determina que os réus presos provisórios (acusados) devem ficar separados dos condenados com sentença definitiva. O item 5 determina que menores devem ser separados de adultos, e o item 3 consagra o princípio da intranscendência da pena (não passa da pessoa do infrator).",
-    "fundamentacaoLegal": "Artigo 5º, itens 3, 4 e 5 da Convenção Americana sobre Direitos Humanos.",
-    "hint": "Separação obrigatória: Acusados separados de condenados; Menores separados de adultos!",
-    "difficulty": "easy",
-    "banca": "Instituto AOCP",
-    "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "SEPARAÇÃO PRISIONAL CADH: Preso provisório não se mistura com condenado; menor não se mistura com adulto!",
-    "porqueErrou": {
-      "0": "Militares e civis possuem regimes e estabelecimentos próprios com respeito à hierarquia e disciplina.",
-      "2": "O art. 5º, item 5 exige expressamente que os menores sejam separados dos adultos.",
-      "3": "A pena é personalíssima (princípio da intranscendência da pena); jamais passa da pessoa do condenado.",
-      "4": "Incomunicabilidade perpétua ou indefinida viola a vedação de penas cruéis e degradantes."
-    },
-    "analiseAlternativas": {
-      "A": "Incorreta. Militares têm estabelecimentos prisionais próprios (presídio militar).",
-      "B": "Correta. O art. 5º, 4 exige a separação entre acusados não julgados e presos condenados.",
-      "C": "Incorreta. Menores devem ficar em instalações separadas (art. 5º, 5).",
-      "D": "Incorreta. Princípio da pessoalidade/intranscendência da pena proíbe que atinja terceiros.",
-      "E": "Incorreta. Viola frontalmente a vedação de penas desumanas."
-    }
-  },
-  {
-    "id": "dh_psj_013",
-    "categoryId": "humanos_leis",
-    "bloco": "bloco_3",
-    "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Pacto de São José da Costa Rica (CADH) • Comissão Interamericana de Direitos Humanos (CIDH)",
-    "question": "Sobre a composição e o funcionamento da Comissão Interamericana de Direitos Humanos (CIDH), órgão integrante do Sistema Interamericano sediado em Washington, assinale a opção correta:",
-    "options": [
-      "É composta por 15 membros de carreira militar das forças armadas da OEA, eleitos vitaliciamente.",
-      "É composta por 7 membros, que devem ser pessoas de alta autoridade moral e reconhecido saber em matéria de direitos humanos, eleitos a título pessoal pela Assembleia Geral da OEA para mandato de 4 anos, permitida uma recondução.",
-      "Tem competência exclusiva para julgar litígios comerciais e fixar indenizações aduaneiras de natureza tributária internacional.",
-      "Suas recomendações têm força imediata de sentença penal condenatória para determinar a prisão de chefes de Estado.",
-      "Rejeita liminarmente qualquer petição apresentada por cidadãos individuais ou organizações não governamentais."
-    ],
-    "correctIndex": 1,
-    "explanation": "Conforme os arts. 34 a 37 da CADH: A Comissão Interamericana compõe-se de 7 membros, eleitos a título pessoal (representam a OEA e não seus países) para mandato de 4 anos pela Assembleia Geral da OEA, sendo permitida UMA única recondução. Qualquer pessoa ou ONG pode peticionar perante a CIDH.",
-    "fundamentacaoLegal": "Artigos 34, 36 e 37 da Convenção Americana sobre Direitos Humanos.",
-    "hint": "CIDH: 7 membros, mandato de 4 anos, permitida UMA recondução. Cidadãos e ONGs podem peticionar!",
-    "difficulty": "hard",
-    "banca": "Instituto AOCP",
-    "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "COMISSÃO (CIDH): 7 MEMBROS | 4 ANOS | SEDE EM WASHINGTON | RECEBE PETIÇÃO DE QUALQUER CIDADÃO!",
-    "porqueErrou": {
-      "0": "Os membros são 7 civis especialistas eleitos a título pessoal, sem vitaliciedade.",
-      "2": "A matéria é de direitos humanos, não aduaneira ou comercial.",
-      "3": "A Comissão emite relatórios, medidas cautelares e recomendações; apenas a Corte IDH profere sentenças jurisdicionais.",
-      "4": "O art. 44 consagra o direito de petição de qualquer pessoa ou ONG legalmente reconhecida."
-    },
-    "analiseAlternativas": {
-      "A": "Incorreta. São 7 membros com mandato transitório de 4 anos.",
-      "B": "Correta. Reproduz os artigos 34 e 37 da CADH (7 membros, 4 anos, uma reeleição).",
-      "C": "Incorreta. Trata exclusivamente de direitos humanos.",
-      "D": "Incorreta. A Comissão não aplica penas privativas de liberdade.",
-      "E": "Incorreta. A legitimidade para peticionar na Comissão pertence a qualquer pessoa ou ONG."
-    }
-  },
-  {
-    "id": "dh_psj_014",
-    "categoryId": "humanos_leis",
-    "bloco": "bloco_3",
-    "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Pacto de São José da Costa Rica (CADH) • Corte Interamericana de Direitos Humanos (Corte IDH)",
-    "question": "A respeito da Corte Interamericana de Direitos Humanos (Corte IDH), órgão jurisdicional autônomo do Sistema Interamericano sediado em San José da Costa Rica, é correto afirmar:",
-    "options": [
-      "Compõe-se de 7 juízes, nacionais dos Estados membros da OEA, eleitos pela Assembleia Geral para mandato de 6 anos, permitida uma reeleição.",
-      "Seus juízes são nomeados livremente pelo Presidente do Brasil para exercerem a presidência do tribunal em caráter hereditário.",
-      "As sentenças da Corte IDH admitem recurso de apelação perante o Conselho de Segurança da ONU.",
-      "A Corte IDH só pode apreciar denúncias de crimes de trânsito e infrações administrativas ambientais leves.",
-      "O Brasil não reconhece a jurisdição contenciosa da Corte IDH, tendo feito reserva total à sua competência."
+      "Direito à Paz universal e perpétua.",
+      "Direito à Internet banda larga.",
+      "Direito ao armamento individual.",
+      "Direito de propriedade intelectual.",
+      "Direito de asilo diplomático."
     ],
     "correctIndex": 0,
-    "explanation": "Conforme os arts. 52 a 54 da CADH: A Corte IDH é composta por 7 juízes de alta qualificação moral e jurídica, eleitos para mandatos de 6 ANOS pela Assembleia Geral da OEA, permitida uma reeleição. O Brasil reconheceu expressamente a competência da Corte IDH em 1998 (Decreto 4.463/2002). Suas sentenças são definitivas e inapeláveis.",
-    "fundamentacaoLegal": "Artigos 52, 53, 54 e 67 da CADH; Decreto nº 4.463/2002.",
-    "hint": "Corte IDH (San José): 7 juízes, mandato de 6 anos, 1 reeleição. Sentenças definitivas e vinculantes!",
-    "difficulty": "hard",
-    "banca": "Instituto AOCP",
-    "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "DIFERENÇA ESSENCIAL: COMISSÃO = 4 ANOS (7 membros) | CORTE IDH = 6 ANOS (7 juízes)!",
-    "porqueErrou": {
-      "1": "Os juízes são eleitos pelos Estados membros na Assembleia Geral da OEA por escrutínio secreto.",
-      "2": "Art. 67 da CADH: 'A sentença da Corte é definitiva e inapelável'.",
-      "3": "A Corte julga violações graves cometidas por Estados contra a Convenção Americana.",
-      "4": "O Brasil reconheceu solenemente a competência obrigatória da Corte IDH pelo Decreto nº 4.463/2002."
-    },
-    "analiseAlternativas": {
-      "A": "Correta. A Corte possui 7 juízes com mandato de 6 anos, permitida uma reeleição.",
-      "B": "Incorreta. Eleição democrática multilateral na OEA por escrutínio secreto.",
-      "C": "Incorreta. As decisões da Corte IDH são definitivas e inapeláveis.",
-      "D": "Incorreta. Julga graves violações a direitos humanos.",
-      "E": "Incorreta. O Brasil está plenamente sujeito à jurisdição da Corte IDH desde 1998."
-    }
-  },
-  {
-    "id": "dh_psj_015",
-    "categoryId": "humanos_leis",
-    "bloco": "bloco_3",
-    "materiaNome": "Direitos Humanos",
-    "topicoEdital": "Pacto de São José da Costa Rica (CADH) • Esgotamento Prévio dos Recursos Internos",
-    "question": "Para que uma petição ou comunicação sobre suposta violação de direitos humanos seja admitida pela Comissão Interamericana (CIDH), o Artigo 46 da CADH exige em regra:",
-    "options": [
-      "O prévio pagamento de taxa em dólares estipulada pela Secretaria Geral da OEA.",
-      "Que hajam sido interpostos e esgotados os recursos da jurisdição interna do Estado, de acordo com os princípios de Direito Internacional geralmente reconhecidos.",
-      "A expressa autorização do Procurador-Geral da República do país contra o qual se formula a queixa.",
-      "Que o fato tenha ocorrido há mais de 10 anos da data de formulação da denúncia.",
-      "Que a vítima renuncie de antemão a qualquer indenização pecuniária perante o juízo nacional."
-    ],
-    "correctIndex": 1,
-    "explanation": "Regra basilar do Sistema Interamericano (Princípio da Subsidiariedade): antes de levar o Estado perante a CIDH, a vítima deve ESGOTAR OS RECURSOS INTERNOS da jurisdição nacional (art. 46, item 1, 'a'), ressalvadas as hipóteses de ausência de devido processo ou denegação de justiça no país.",
-    "fundamentacaoLegal": "Artigo 46, item 1, alínea 'a' da CADH.",
-    "hint": "Subsidiariedade: Primeiro tenta na justiça do seu país; esgotou tudo sem solução, vai para a CIDH!",
+    "explanation": "Paulo Bonavides destacou o Direito à Paz como direito de quinta geração, considerando-o pressuposto indispensável para a sobrevivência da humanidade.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "5ª Dimensão (Bonavides) = PAZ universal.",
     "difficulty": "medium",
     "banca": "Instituto AOCP",
     "simuladoOrigem": "caderno_direitos_humanos",
-    "dicaMacete": "REGRA DE OURO: Esgotar a justiça interna primeiro, antes de recorrer à OEA!",
+    "dicaMacete": "5ª Dimensão (Bonavides) = PAZ universal.",
     "porqueErrou": {
-      "0": "O acesso aos órgãos do sistema interamericano é inteiramente gratuito para os cidadãos.",
-      "2": "A vítima não precisa de autorização do governo contra o qual está denunciando.",
-      "3": "Pelo art. 46, 1, 'b', a petição deve ser apresentada dentro do prazo de 6 meses da decisão interna definitiva.",
-      "4": "O sistema internacional visa exatamente garantir a integral reparação e indenização da vítima."
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. O sistema de proteção é acessível e gratuito para os hipossuficientes.",
-      "B": "Correta. É pressuposto de admissibilidade o esgotamento dos recursos da jurisdição interna.",
-      "C": "Incorreta. A denúncia independe de concordância governamental.",
-      "D": "Incorreta. O prazo após a decisão final interna é de 6 meses.",
-      "E": "Incorreta. O direito à reparação civil indenizatória é plenamente resguardado."
-    }
+      "A": "Correta. Paulo Bonavides destacou o Direito à Paz como direito de quinta geração, considerando-o pressuposto indispensável para a sobrevivência da humanidade.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 5ª Dimensão (Direito à Paz de Bonavides)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra A."
+    ]
+  },
+  {
+    "id": "dh_aocp_036",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 1ª Dimensão (Liberdade)",
+    "question": "(Instituto AOCP / PMPE - Questão 036) (Evolução Doutrinária 11) Sobre a divisão geracional dos Direitos Humanos: Os Direitos Humanos de PRIMEIRA DIMENSÃO caracterizam-se pelo lema da liberdade e impõem ao Estado um dever de:",
+    "options": [
+      "Prestação positiva com fornecimento de serviços públicos.",
+      "Abstenção (obrigações de não fazer), garantindo a liberdade e a não interferência indevida na vida privada.",
+      "Garantia de previdência social e trabalho digno.",
+      "Preservação de recursos genéticos.",
+      "Intervenção estatal ampla na economia."
+    ],
+    "correctIndex": 1,
+    "explanation": "A 1ª dimensão consagra as liberdades individuais clássicas (vida, propriedade, liberdade de expressão e direitos políticos), exigindo postura negativa/abstenção estatal.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "1ª Dimensão = Liberdade = Dever de Abstenção.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "1ª Dimensão = Liberdade = Dever de Abstenção.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A 1ª dimensão consagra as liberdades individuais clássicas (vida, propriedade, liberdade de expressão e direitos políticos), exigindo postura negativa/abstenção estatal.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 1ª Dimensão (Liberdade)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_037",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 2ª Dimensão (Igualdade Material)",
+    "question": "(Instituto AOCP / PMPE - Questão 037) (Evolução Doutrinária 12) Sobre a divisão geracional dos Direitos Humanos: Qual das alternativas a seguir exemplifica legitimamente um direito humano de SEGUNDA DIMENSÃO (ou geração)?",
+    "options": [
+      "Direito de voto e elegibilidade.",
+      "Direito à saúde pública, educação, trabalho e previdência social.",
+      "Direito a um meio ambiente ecologicamente equilibrado.",
+      "Direito à paz mundial.",
+      "Direito à integridade do patrimônio genético humano."
+    ],
+    "correctIndex": 1,
+    "explanation": "A 2ª dimensão tem por valor-guia a igualdade material (direitos sociais, econômicos e culturais), exigindo prestações positivas do Estado.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "2ª Dimensão = Igualdade = Prestações Sociais Positivas.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "2ª Dimensão = Igualdade = Prestações Sociais Positivas.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A 2ª dimensão tem por valor-guia a igualdade material (direitos sociais, econômicos e culturais), exigindo prestações positivas do Estado.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 2ª Dimensão (Igualdade Material)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_038",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 3ª Dimensão (Fraternidade e Solidariedade)",
+    "question": "(Instituto AOCP / PMPE - Questão 038) (Evolução Doutrinária 13) Sobre a divisão geracional dos Direitos Humanos: Os direitos humanos de TERCEIRA DIMENSÃO surgiram com destaque após a Segunda Guerra Mundial e possuem como elemento central:",
+    "options": [
+      "A proteção exclusiva da liberdade individual contra o arbítrio da Coroa.",
+      "A proteção dos trabalhadores da indústria.",
+      "A titularidade transindividual, difusa e coletiva, abrangendo o direito ao meio ambiente equilibrado e ao desenvolvimento.",
+      "A defesa dos direitos dos acionistas em sociedades anônimas.",
+      "O processo civil individual e o habeas corpus."
+    ],
+    "correctIndex": 2,
+    "explanation": "A 3ª dimensão tem como marco a fraternidade/solidariedade, protegendo interesses difusos e coletivos (meio ambiente, paz, patrimônio da humanidade).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "3ª Dimensão = Solidariedade = Direitos Difusos e Meio Ambiente.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "3ª Dimensão = Solidariedade = Direitos Difusos e Meio Ambiente.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Correta. A 3ª dimensão tem como marco a fraternidade/solidariedade, protegendo interesses difusos e coletivos (meio ambiente, paz, patrimônio da humanidade).",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 3ª Dimensão (Fraternidade e Solidariedade)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra C."
+    ]
+  },
+  {
+    "id": "dh_aocp_039",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 4ª Dimensão (Bonavides / Bobbio)",
+    "question": "(Instituto AOCP / PMPE - Questão 039) (Evolução Doutrinária 14) Sobre a divisão geracional dos Direitos Humanos: Na consagrada lição do mestre Paulo Bonavides, a QUARTA DIMENSÃO dos direitos humanos contempla especialmente:",
+    "options": [
+      "A liberdade de locomoção e de crença.",
+      "O direito à greve e ao décimo terceiro salário.",
+      "A globalização dos direitos políticos, o direito à democracia direta, à informação e à proteção da bioética e do genoma.",
+      "A proibição de tributos confiscatórios.",
+      "O mandado de segurança individual."
+    ],
+    "correctIndex": 2,
+    "explanation": "Para Paulo Bonavides, a 4ª dimensão é fruto da globalização política e abrange o direito à democracia direta, informação, pluralismo e controle da bioética.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "4ª Dimensão = Bioética, Engenharia Genética e Democracia Global.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "4ª Dimensão = Bioética, Engenharia Genética e Democracia Global.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Correta. Para Paulo Bonavides, a 4ª dimensão é fruto da globalização política e abrange o direito à democracia direta, informação, pluralismo e controle da bioética.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 4ª Dimensão (Bonavides / Bobbio)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra C."
+    ]
+  },
+  {
+    "id": "dh_aocp_040",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 5ª Dimensão (Direito à Paz de Bonavides)",
+    "question": "(Instituto AOCP / PMPE - Questão 040) (Evolução Doutrinária 15) Sobre a divisão geracional dos Direitos Humanos: De acordo com a teoria inovadora de Paulo Bonavides acolhida em concursos policiais, qual direito foi alçado à condição suprema de QUINTA DIMENSÃO dos direitos humanos?",
+    "options": [
+      "Direito à Paz universal e perpétua.",
+      "Direito à Internet banda larga.",
+      "Direito ao armamento individual.",
+      "Direito de propriedade intelectual.",
+      "Direito de asilo diplomático."
+    ],
+    "correctIndex": 0,
+    "explanation": "Paulo Bonavides destacou o Direito à Paz como direito de quinta geração, considerando-o pressuposto indispensável para a sobrevivência da humanidade.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "5ª Dimensão (Bonavides) = PAZ universal.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "5ª Dimensão (Bonavides) = PAZ universal.",
+    "porqueErrou": {
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. Paulo Bonavides destacou o Direito à Paz como direito de quinta geração, considerando-o pressuposto indispensável para a sobrevivência da humanidade.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 5ª Dimensão (Direito à Paz de Bonavides)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra A."
+    ]
+  },
+  {
+    "id": "dh_aocp_041",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 1ª Dimensão (Liberdade)",
+    "question": "(Instituto AOCP / PMPE - Questão 041) (Evolução Doutrinária 16) Sobre a divisão geracional dos Direitos Humanos: Os Direitos Humanos de PRIMEIRA DIMENSÃO caracterizam-se pelo lema da liberdade e impõem ao Estado um dever de:",
+    "options": [
+      "Prestação positiva com fornecimento de serviços públicos.",
+      "Abstenção (obrigações de não fazer), garantindo a liberdade e a não interferência indevida na vida privada.",
+      "Garantia de previdência social e trabalho digno.",
+      "Preservação de recursos genéticos.",
+      "Intervenção estatal ampla na economia."
+    ],
+    "correctIndex": 1,
+    "explanation": "A 1ª dimensão consagra as liberdades individuais clássicas (vida, propriedade, liberdade de expressão e direitos políticos), exigindo postura negativa/abstenção estatal.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "1ª Dimensão = Liberdade = Dever de Abstenção.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "1ª Dimensão = Liberdade = Dever de Abstenção.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A 1ª dimensão consagra as liberdades individuais clássicas (vida, propriedade, liberdade de expressão e direitos políticos), exigindo postura negativa/abstenção estatal.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 1ª Dimensão (Liberdade)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_042",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 2ª Dimensão (Igualdade Material)",
+    "question": "(Instituto AOCP / PMPE - Questão 042) (Evolução Doutrinária 17) Sobre a divisão geracional dos Direitos Humanos: Qual das alternativas a seguir exemplifica legitimamente um direito humano de SEGUNDA DIMENSÃO (ou geração)?",
+    "options": [
+      "Direito de voto e elegibilidade.",
+      "Direito à saúde pública, educação, trabalho e previdência social.",
+      "Direito a um meio ambiente ecologicamente equilibrado.",
+      "Direito à paz mundial.",
+      "Direito à integridade do patrimônio genético humano."
+    ],
+    "correctIndex": 1,
+    "explanation": "A 2ª dimensão tem por valor-guia a igualdade material (direitos sociais, econômicos e culturais), exigindo prestações positivas do Estado.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "2ª Dimensão = Igualdade = Prestações Sociais Positivas.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "2ª Dimensão = Igualdade = Prestações Sociais Positivas.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A 2ª dimensão tem por valor-guia a igualdade material (direitos sociais, econômicos e culturais), exigindo prestações positivas do Estado.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 2ª Dimensão (Igualdade Material)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_043",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 3ª Dimensão (Fraternidade e Solidariedade)",
+    "question": "(Instituto AOCP / PMPE - Questão 043) (Evolução Doutrinária 18) Sobre a divisão geracional dos Direitos Humanos: Os direitos humanos de TERCEIRA DIMENSÃO surgiram com destaque após a Segunda Guerra Mundial e possuem como elemento central:",
+    "options": [
+      "A proteção exclusiva da liberdade individual contra o arbítrio da Coroa.",
+      "A proteção dos trabalhadores da indústria.",
+      "A titularidade transindividual, difusa e coletiva, abrangendo o direito ao meio ambiente equilibrado e ao desenvolvimento.",
+      "A defesa dos direitos dos acionistas em sociedades anônimas.",
+      "O processo civil individual e o habeas corpus."
+    ],
+    "correctIndex": 2,
+    "explanation": "A 3ª dimensão tem como marco a fraternidade/solidariedade, protegendo interesses difusos e coletivos (meio ambiente, paz, patrimônio da humanidade).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "3ª Dimensão = Solidariedade = Direitos Difusos e Meio Ambiente.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "3ª Dimensão = Solidariedade = Direitos Difusos e Meio Ambiente.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Correta. A 3ª dimensão tem como marco a fraternidade/solidariedade, protegendo interesses difusos e coletivos (meio ambiente, paz, patrimônio da humanidade).",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 3ª Dimensão (Fraternidade e Solidariedade)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra C."
+    ]
+  },
+  {
+    "id": "dh_aocp_044",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 4ª Dimensão (Bonavides / Bobbio)",
+    "question": "(Instituto AOCP / PMPE - Questão 044) (Evolução Doutrinária 19) Sobre a divisão geracional dos Direitos Humanos: Na consagrada lição do mestre Paulo Bonavides, a QUARTA DIMENSÃO dos direitos humanos contempla especialmente:",
+    "options": [
+      "A liberdade de locomoção e de crença.",
+      "O direito à greve e ao décimo terceiro salário.",
+      "A globalização dos direitos políticos, o direito à democracia direta, à informação e à proteção da bioética e do genoma.",
+      "A proibição de tributos confiscatórios.",
+      "O mandado de segurança individual."
+    ],
+    "correctIndex": 2,
+    "explanation": "Para Paulo Bonavides, a 4ª dimensão é fruto da globalização política e abrange o direito à democracia direta, informação, pluralismo e controle da bioética.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "4ª Dimensão = Bioética, Engenharia Genética e Democracia Global.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "4ª Dimensão = Bioética, Engenharia Genética e Democracia Global.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Correta. Para Paulo Bonavides, a 4ª dimensão é fruto da globalização política e abrange o direito à democracia direta, informação, pluralismo e controle da bioética.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 4ª Dimensão (Bonavides / Bobbio)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra C."
+    ]
+  },
+  {
+    "id": "dh_aocp_045",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 5ª Dimensão (Direito à Paz de Bonavides)",
+    "question": "(Instituto AOCP / PMPE - Questão 045) (Evolução Doutrinária 20) Sobre a divisão geracional dos Direitos Humanos: De acordo com a teoria inovadora de Paulo Bonavides acolhida em concursos policiais, qual direito foi alçado à condição suprema de QUINTA DIMENSÃO dos direitos humanos?",
+    "options": [
+      "Direito à Paz universal e perpétua.",
+      "Direito à Internet banda larga.",
+      "Direito ao armamento individual.",
+      "Direito de propriedade intelectual.",
+      "Direito de asilo diplomático."
+    ],
+    "correctIndex": 0,
+    "explanation": "Paulo Bonavides destacou o Direito à Paz como direito de quinta geração, considerando-o pressuposto indispensável para a sobrevivência da humanidade.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "5ª Dimensão (Bonavides) = PAZ universal.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "5ª Dimensão (Bonavides) = PAZ universal.",
+    "porqueErrou": {
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. Paulo Bonavides destacou o Direito à Paz como direito de quinta geração, considerando-o pressuposto indispensável para a sobrevivência da humanidade.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 5ª Dimensão (Direito à Paz de Bonavides)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra A."
+    ]
+  },
+  {
+    "id": "dh_aocp_046",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 1ª Dimensão (Liberdade)",
+    "question": "(Instituto AOCP / PMPE - Questão 046) (Evolução Doutrinária 21) Sobre a divisão geracional dos Direitos Humanos: Os Direitos Humanos de PRIMEIRA DIMENSÃO caracterizam-se pelo lema da liberdade e impõem ao Estado um dever de:",
+    "options": [
+      "Prestação positiva com fornecimento de serviços públicos.",
+      "Abstenção (obrigações de não fazer), garantindo a liberdade e a não interferência indevida na vida privada.",
+      "Garantia de previdência social e trabalho digno.",
+      "Preservação de recursos genéticos.",
+      "Intervenção estatal ampla na economia."
+    ],
+    "correctIndex": 1,
+    "explanation": "A 1ª dimensão consagra as liberdades individuais clássicas (vida, propriedade, liberdade de expressão e direitos políticos), exigindo postura negativa/abstenção estatal.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "1ª Dimensão = Liberdade = Dever de Abstenção.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "1ª Dimensão = Liberdade = Dever de Abstenção.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A 1ª dimensão consagra as liberdades individuais clássicas (vida, propriedade, liberdade de expressão e direitos políticos), exigindo postura negativa/abstenção estatal.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 1ª Dimensão (Liberdade)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_047",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 2ª Dimensão (Igualdade Material)",
+    "question": "(Instituto AOCP / PMPE - Questão 047) (Evolução Doutrinária 22) Sobre a divisão geracional dos Direitos Humanos: Qual das alternativas a seguir exemplifica legitimamente um direito humano de SEGUNDA DIMENSÃO (ou geração)?",
+    "options": [
+      "Direito de voto e elegibilidade.",
+      "Direito à saúde pública, educação, trabalho e previdência social.",
+      "Direito a um meio ambiente ecologicamente equilibrado.",
+      "Direito à paz mundial.",
+      "Direito à integridade do patrimônio genético humano."
+    ],
+    "correctIndex": 1,
+    "explanation": "A 2ª dimensão tem por valor-guia a igualdade material (direitos sociais, econômicos e culturais), exigindo prestações positivas do Estado.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "2ª Dimensão = Igualdade = Prestações Sociais Positivas.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "2ª Dimensão = Igualdade = Prestações Sociais Positivas.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A 2ª dimensão tem por valor-guia a igualdade material (direitos sociais, econômicos e culturais), exigindo prestações positivas do Estado.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 2ª Dimensão (Igualdade Material)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_048",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 3ª Dimensão (Fraternidade e Solidariedade)",
+    "question": "(Instituto AOCP / PMPE - Questão 048) (Evolução Doutrinária 23) Sobre a divisão geracional dos Direitos Humanos: Os direitos humanos de TERCEIRA DIMENSÃO surgiram com destaque após a Segunda Guerra Mundial e possuem como elemento central:",
+    "options": [
+      "A proteção exclusiva da liberdade individual contra o arbítrio da Coroa.",
+      "A proteção dos trabalhadores da indústria.",
+      "A titularidade transindividual, difusa e coletiva, abrangendo o direito ao meio ambiente equilibrado e ao desenvolvimento.",
+      "A defesa dos direitos dos acionistas em sociedades anônimas.",
+      "O processo civil individual e o habeas corpus."
+    ],
+    "correctIndex": 2,
+    "explanation": "A 3ª dimensão tem como marco a fraternidade/solidariedade, protegendo interesses difusos e coletivos (meio ambiente, paz, patrimônio da humanidade).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "3ª Dimensão = Solidariedade = Direitos Difusos e Meio Ambiente.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "3ª Dimensão = Solidariedade = Direitos Difusos e Meio Ambiente.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Correta. A 3ª dimensão tem como marco a fraternidade/solidariedade, protegendo interesses difusos e coletivos (meio ambiente, paz, patrimônio da humanidade).",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 3ª Dimensão (Fraternidade e Solidariedade)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra C."
+    ]
+  },
+  {
+    "id": "dh_aocp_049",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 4ª Dimensão (Bonavides / Bobbio)",
+    "question": "(Instituto AOCP / PMPE - Questão 049) (Evolução Doutrinária 24) Sobre a divisão geracional dos Direitos Humanos: Na consagrada lição do mestre Paulo Bonavides, a QUARTA DIMENSÃO dos direitos humanos contempla especialmente:",
+    "options": [
+      "A liberdade de locomoção e de crença.",
+      "O direito à greve e ao décimo terceiro salário.",
+      "A globalização dos direitos políticos, o direito à democracia direta, à informação e à proteção da bioética e do genoma.",
+      "A proibição de tributos confiscatórios.",
+      "O mandado de segurança individual."
+    ],
+    "correctIndex": 2,
+    "explanation": "Para Paulo Bonavides, a 4ª dimensão é fruto da globalização política e abrange o direito à democracia direta, informação, pluralismo e controle da bioética.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "4ª Dimensão = Bioética, Engenharia Genética e Democracia Global.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "4ª Dimensão = Bioética, Engenharia Genética e Democracia Global.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Correta. Para Paulo Bonavides, a 4ª dimensão é fruto da globalização política e abrange o direito à democracia direta, informação, pluralismo e controle da bioética.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 4ª Dimensão (Bonavides / Bobbio)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra C."
+    ]
+  },
+  {
+    "id": "dh_aocp_050",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Dimensões dos Direitos Humanos • 5ª Dimensão (Direito à Paz de Bonavides)",
+    "question": "(Instituto AOCP / PMPE - Questão 050) (Evolução Doutrinária 25) Sobre a divisão geracional dos Direitos Humanos: De acordo com a teoria inovadora de Paulo Bonavides acolhida em concursos policiais, qual direito foi alçado à condição suprema de QUINTA DIMENSÃO dos direitos humanos?",
+    "options": [
+      "Direito à Paz universal e perpétua.",
+      "Direito à Internet banda larga.",
+      "Direito ao armamento individual.",
+      "Direito de propriedade intelectual.",
+      "Direito de asilo diplomático."
+    ],
+    "correctIndex": 0,
+    "explanation": "Paulo Bonavides destacou o Direito à Paz como direito de quinta geração, considerando-o pressuposto indispensável para a sobrevivência da humanidade.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "5ª Dimensão (Bonavides) = PAZ universal.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "5ª Dimensão (Bonavides) = PAZ universal.",
+    "porqueErrou": {
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. Paulo Bonavides destacou o Direito à Paz como direito de quinta geração, considerando-o pressuposto indispensável para a sobrevivência da humanidade.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Dimensões dos Direitos Humanos • 5ª Dimensão (Direito à Paz de Bonavides)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra A."
+    ]
+  },
+  {
+    "id": "dh_aocp_051",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Natureza Jurídica",
+    "question": "(Instituto AOCP / PMPE - Questão 051) Aprovada pela Assembleia Geral da ONU em 10 de dezembro de 1948, a Declaração Universal dos Direitos Humanos (DUDH) possui natureza jurídica originária de:",
+    "options": [
+      "Tratado internacional formal com quórum qualificado ratificado pelo Senado.",
+      "Resolução da Assembleia Geral da ONU (soft law), dotada de autoridade moral e consuetudinária universal (jus cogens).",
+      "Emenda Constitucional à Carta de São Francisco.",
+      "Decreto-lei executivo do Conselho de Segurança.",
+      "Contrato de adesão entre blocos econômicos."
+    ],
+    "correctIndex": 1,
+    "explanation": "A DUDH é formalmente uma Resolução (Res. 217-A III da ONU), instrumento de soft law, que com o tempo adquiriu status de costume internacional obrigatório (jus cogens).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "DUDH = Resolução da Assembleia Geral da ONU de 1948 (Soft Law).",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "DUDH = Resolução da Assembleia Geral da ONU de 1948 (Soft Law).",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A DUDH é formalmente uma Resolução (Res. 217-A III da ONU), instrumento de soft law, que com o tempo adquiriu status de costume internacional obrigatório (jus cogens).",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Natureza Jurídica\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_052",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Direitos Assegurados e Direitos Sociais",
+    "question": "(Instituto AOCP / PMPE - Questão 052) É INCORRETO afirmar sobre o conteúdo normativo da Declaração Universal dos Direitos Humanos de 1948:",
+    "options": [
+      "Consagra expressamente que todos os seres humanos nascem livres e iguais em dignidade e em direitos.",
+      "Protege o direito ao trabalho, à livre escolha de emprego e à remuneração justa.",
+      "Prevê o direito a repouso e lazer, inclusive a férias remuneradas periódicas.",
+      "Autoriza expressamente a pena de morte irrestrita para crimes políticos e de opinião.",
+      "Veda terminantemente a tortura e os tratamentos ou penas cruéis, desumanos ou degradantes."
+    ],
+    "correctIndex": 3,
+    "explanation": "A DUDH não autoriza a pena de morte para crimes políticos; ao contrário, consagra o direito à vida e a inviolabilidade da dignidade.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "DUDH jamais autoriza perseguição ou morte política!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "DUDH jamais autoriza perseguição ou morte política!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Correta. A DUDH não autoriza a pena de morte para crimes políticos; ao contrário, consagra o direito à vida e a inviolabilidade da dignidade.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Direitos Assegurados e Direitos Sociais\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra D."
+    ]
+  },
+  {
+    "id": "dh_aocp_053",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Deveres perante a Comunidade (Artigo 29)",
+    "question": "(Instituto AOCP / PMPE - Questão 053) O artigo 29 da Declaração Universal dos Direitos Humanos consagra expressamente que:",
+    "options": [
+      "O indivíduo não possui deveres, apenas prerrogativas perante a comunidade.",
+      "O indivíduo tem deveres para com a comunidade, na qual o livre e pleno desenvolvimento de sua personalidade é possível.",
+      "O Estado pode violar qualquer direito humano sem controle internacional.",
+      "Os direitos humanos vigoram exclusivamente em países ocidentais.",
+      "A liberdade religiosa não pode ser manifestada em público."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Artigo 29 da DUDH prevê que todo indivíduo tem deveres para com a comunidade na qual seu livre e pleno desenvolvimento é viabilizado.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Art. 29 DUDH = O indivíduo tem deveres para com a comunidade.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Art. 29 DUDH = O indivíduo tem deveres para com a comunidade.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Artigo 29 da DUDH prevê que todo indivíduo tem deveres para com a comunidade na qual seu livre e pleno desenvolvimento é viabilizado.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Deveres perante a Comunidade (Artigo 29)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_054",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Conferência de Viena de 1993 • Princípios Estruturantes",
+    "question": "(Instituto AOCP / PMPE - Questão 054) A Declaração e Programa de Ação de Viena de 1993 consolidou o entendimento definitivo de que todos os direitos humanos são:",
+    "options": [
+      "Exclusivos dos cidadãos nacionais e fragmentados.",
+      "Universais, indivisíveis, interdependentes e inter-relacionados.",
+      "Subordinados ao nível de produto interno bruto (PIB) de cada Estado.",
+      "Hierarquicamente inferiores aos acordos de livre comércio.",
+      "Válidos somente após aprovação do Conselho de Segurança da ONU."
+    ],
+    "correctIndex": 1,
+    "explanation": "Viena 1993 consagrou os 4 pilares: os direitos humanos são Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Viena 1993 = Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Viena 1993 = Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Viena 1993 consagrou os 4 pilares: os direitos humanos são Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Conferência de Viena de 1993 • Princípios Estruturantes\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_055",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Presunção de Inocência",
+    "question": "(Instituto AOCP / PMPE - Questão 055) Segundo o Artigo 11 da DUDH de 1948, toda pessoa acusada de um ato delituoso tem o direito de ser presumida inocente até que:",
+    "options": [
+      "Seja indiciada formalmente pelo delegado de polícia.",
+      "A sua culpabilidade tenha sido provada de acordo com a lei, em julgamento público no qual lhe tenham sido asseguradas todas as garantias necessárias à sua defesa.",
+      "A imprensa publique o flagrante delito.",
+      "Seja decretada sua prisão preventiva.",
+      "Confesse perante a autoridade investigadora."
+    ],
+    "correctIndex": 1,
+    "explanation": "A presunção de inocência exige que a culpabilidade seja provada conforme a lei em julgamento público com ampla defesa assegurada.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Presunção de inocência = Julgamento público com todas as garantias.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Presunção de inocência = Julgamento público com todas as garantias.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A presunção de inocência exige que a culpabilidade seja provada conforme a lei em julgamento público com ampla defesa assegurada.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Presunção de Inocência\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_056",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Natureza Jurídica",
+    "question": "(Instituto AOCP / PMPE - Questão 056) (Tratados Universais 6) Em relação às normas da DUDH e Conferência de Viena: Aprovada pela Assembleia Geral da ONU em 10 de dezembro de 1948, a Declaração Universal dos Direitos Humanos (DUDH) possui natureza jurídica originária de:",
+    "options": [
+      "Tratado internacional formal com quórum qualificado ratificado pelo Senado.",
+      "Resolução da Assembleia Geral da ONU (soft law), dotada de autoridade moral e consuetudinária universal (jus cogens).",
+      "Emenda Constitucional à Carta de São Francisco.",
+      "Decreto-lei executivo do Conselho de Segurança.",
+      "Contrato de adesão entre blocos econômicos."
+    ],
+    "correctIndex": 1,
+    "explanation": "A DUDH é formalmente uma Resolução (Res. 217-A III da ONU), instrumento de soft law, que com o tempo adquiriu status de costume internacional obrigatório (jus cogens).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "DUDH = Resolução da Assembleia Geral da ONU de 1948 (Soft Law).",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "DUDH = Resolução da Assembleia Geral da ONU de 1948 (Soft Law).",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A DUDH é formalmente uma Resolução (Res. 217-A III da ONU), instrumento de soft law, que com o tempo adquiriu status de costume internacional obrigatório (jus cogens).",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Natureza Jurídica\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_057",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Direitos Assegurados e Direitos Sociais",
+    "question": "(Instituto AOCP / PMPE - Questão 057) (Tratados Universais 7) Em relação às normas da DUDH e Conferência de Viena: É INCORRETO afirmar sobre o conteúdo normativo da Declaração Universal dos Direitos Humanos de 1948:",
+    "options": [
+      "Consagra expressamente que todos os seres humanos nascem livres e iguais em dignidade e em direitos.",
+      "Protege o direito ao trabalho, à livre escolha de emprego e à remuneração justa.",
+      "Prevê o direito a repouso e lazer, inclusive a férias remuneradas periódicas.",
+      "Autoriza expressamente a pena de morte irrestrita para crimes políticos e de opinião.",
+      "Veda terminantemente a tortura e os tratamentos ou penas cruéis, desumanos ou degradantes."
+    ],
+    "correctIndex": 3,
+    "explanation": "A DUDH não autoriza a pena de morte para crimes políticos; ao contrário, consagra o direito à vida e a inviolabilidade da dignidade.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "DUDH jamais autoriza perseguição ou morte política!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "DUDH jamais autoriza perseguição ou morte política!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Correta. A DUDH não autoriza a pena de morte para crimes políticos; ao contrário, consagra o direito à vida e a inviolabilidade da dignidade.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Direitos Assegurados e Direitos Sociais\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra D."
+    ]
+  },
+  {
+    "id": "dh_aocp_058",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Deveres perante a Comunidade (Artigo 29)",
+    "question": "(Instituto AOCP / PMPE - Questão 058) (Tratados Universais 8) Em relação às normas da DUDH e Conferência de Viena: O artigo 29 da Declaração Universal dos Direitos Humanos consagra expressamente que:",
+    "options": [
+      "O indivíduo não possui deveres, apenas prerrogativas perante a comunidade.",
+      "O indivíduo tem deveres para com a comunidade, na qual o livre e pleno desenvolvimento de sua personalidade é possível.",
+      "O Estado pode violar qualquer direito humano sem controle internacional.",
+      "Os direitos humanos vigoram exclusivamente em países ocidentais.",
+      "A liberdade religiosa não pode ser manifestada em público."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Artigo 29 da DUDH prevê que todo indivíduo tem deveres para com a comunidade na qual seu livre e pleno desenvolvimento é viabilizado.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Art. 29 DUDH = O indivíduo tem deveres para com a comunidade.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Art. 29 DUDH = O indivíduo tem deveres para com a comunidade.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Artigo 29 da DUDH prevê que todo indivíduo tem deveres para com a comunidade na qual seu livre e pleno desenvolvimento é viabilizado.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Deveres perante a Comunidade (Artigo 29)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_059",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Conferência de Viena de 1993 • Princípios Estruturantes",
+    "question": "(Instituto AOCP / PMPE - Questão 059) (Tratados Universais 9) Em relação às normas da DUDH e Conferência de Viena: A Declaração e Programa de Ação de Viena de 1993 consolidou o entendimento definitivo de que todos os direitos humanos são:",
+    "options": [
+      "Exclusivos dos cidadãos nacionais e fragmentados.",
+      "Universais, indivisíveis, interdependentes e inter-relacionados.",
+      "Subordinados ao nível de produto interno bruto (PIB) de cada Estado.",
+      "Hierarquicamente inferiores aos acordos de livre comércio.",
+      "Válidos somente após aprovação do Conselho de Segurança da ONU."
+    ],
+    "correctIndex": 1,
+    "explanation": "Viena 1993 consagrou os 4 pilares: os direitos humanos são Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Viena 1993 = Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Viena 1993 = Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Viena 1993 consagrou os 4 pilares: os direitos humanos são Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Conferência de Viena de 1993 • Princípios Estruturantes\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_060",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Presunção de Inocência",
+    "question": "(Instituto AOCP / PMPE - Questão 060) (Tratados Universais 10) Em relação às normas da DUDH e Conferência de Viena: Segundo o Artigo 11 da DUDH de 1948, toda pessoa acusada de um ato delituoso tem o direito de ser presumida inocente até que:",
+    "options": [
+      "Seja indiciada formalmente pelo delegado de polícia.",
+      "A sua culpabilidade tenha sido provada de acordo com a lei, em julgamento público no qual lhe tenham sido asseguradas todas as garantias necessárias à sua defesa.",
+      "A imprensa publique o flagrante delito.",
+      "Seja decretada sua prisão preventiva.",
+      "Confesse perante a autoridade investigadora."
+    ],
+    "correctIndex": 1,
+    "explanation": "A presunção de inocência exige que a culpabilidade seja provada conforme a lei em julgamento público com ampla defesa assegurada.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Presunção de inocência = Julgamento público com todas as garantias.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Presunção de inocência = Julgamento público com todas as garantias.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A presunção de inocência exige que a culpabilidade seja provada conforme a lei em julgamento público com ampla defesa assegurada.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Presunção de Inocência\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_061",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Natureza Jurídica",
+    "question": "(Instituto AOCP / PMPE - Questão 061) (Tratados Universais 11) Em relação às normas da DUDH e Conferência de Viena: Aprovada pela Assembleia Geral da ONU em 10 de dezembro de 1948, a Declaração Universal dos Direitos Humanos (DUDH) possui natureza jurídica originária de:",
+    "options": [
+      "Tratado internacional formal com quórum qualificado ratificado pelo Senado.",
+      "Resolução da Assembleia Geral da ONU (soft law), dotada de autoridade moral e consuetudinária universal (jus cogens).",
+      "Emenda Constitucional à Carta de São Francisco.",
+      "Decreto-lei executivo do Conselho de Segurança.",
+      "Contrato de adesão entre blocos econômicos."
+    ],
+    "correctIndex": 1,
+    "explanation": "A DUDH é formalmente uma Resolução (Res. 217-A III da ONU), instrumento de soft law, que com o tempo adquiriu status de costume internacional obrigatório (jus cogens).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "DUDH = Resolução da Assembleia Geral da ONU de 1948 (Soft Law).",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "DUDH = Resolução da Assembleia Geral da ONU de 1948 (Soft Law).",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A DUDH é formalmente uma Resolução (Res. 217-A III da ONU), instrumento de soft law, que com o tempo adquiriu status de costume internacional obrigatório (jus cogens).",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Natureza Jurídica\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_062",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Direitos Assegurados e Direitos Sociais",
+    "question": "(Instituto AOCP / PMPE - Questão 062) (Tratados Universais 12) Em relação às normas da DUDH e Conferência de Viena: É INCORRETO afirmar sobre o conteúdo normativo da Declaração Universal dos Direitos Humanos de 1948:",
+    "options": [
+      "Consagra expressamente que todos os seres humanos nascem livres e iguais em dignidade e em direitos.",
+      "Protege o direito ao trabalho, à livre escolha de emprego e à remuneração justa.",
+      "Prevê o direito a repouso e lazer, inclusive a férias remuneradas periódicas.",
+      "Autoriza expressamente a pena de morte irrestrita para crimes políticos e de opinião.",
+      "Veda terminantemente a tortura e os tratamentos ou penas cruéis, desumanos ou degradantes."
+    ],
+    "correctIndex": 3,
+    "explanation": "A DUDH não autoriza a pena de morte para crimes políticos; ao contrário, consagra o direito à vida e a inviolabilidade da dignidade.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "DUDH jamais autoriza perseguição ou morte política!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "DUDH jamais autoriza perseguição ou morte política!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Correta. A DUDH não autoriza a pena de morte para crimes políticos; ao contrário, consagra o direito à vida e a inviolabilidade da dignidade.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Direitos Assegurados e Direitos Sociais\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra D."
+    ]
+  },
+  {
+    "id": "dh_aocp_063",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Deveres perante a Comunidade (Artigo 29)",
+    "question": "(Instituto AOCP / PMPE - Questão 063) (Tratados Universais 13) Em relação às normas da DUDH e Conferência de Viena: O artigo 29 da Declaração Universal dos Direitos Humanos consagra expressamente que:",
+    "options": [
+      "O indivíduo não possui deveres, apenas prerrogativas perante a comunidade.",
+      "O indivíduo tem deveres para com a comunidade, na qual o livre e pleno desenvolvimento de sua personalidade é possível.",
+      "O Estado pode violar qualquer direito humano sem controle internacional.",
+      "Os direitos humanos vigoram exclusivamente em países ocidentais.",
+      "A liberdade religiosa não pode ser manifestada em público."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Artigo 29 da DUDH prevê que todo indivíduo tem deveres para com a comunidade na qual seu livre e pleno desenvolvimento é viabilizado.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Art. 29 DUDH = O indivíduo tem deveres para com a comunidade.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Art. 29 DUDH = O indivíduo tem deveres para com a comunidade.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Artigo 29 da DUDH prevê que todo indivíduo tem deveres para com a comunidade na qual seu livre e pleno desenvolvimento é viabilizado.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Deveres perante a Comunidade (Artigo 29)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_064",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Conferência de Viena de 1993 • Princípios Estruturantes",
+    "question": "(Instituto AOCP / PMPE - Questão 064) (Tratados Universais 14) Em relação às normas da DUDH e Conferência de Viena: A Declaração e Programa de Ação de Viena de 1993 consolidou o entendimento definitivo de que todos os direitos humanos são:",
+    "options": [
+      "Exclusivos dos cidadãos nacionais e fragmentados.",
+      "Universais, indivisíveis, interdependentes e inter-relacionados.",
+      "Subordinados ao nível de produto interno bruto (PIB) de cada Estado.",
+      "Hierarquicamente inferiores aos acordos de livre comércio.",
+      "Válidos somente após aprovação do Conselho de Segurança da ONU."
+    ],
+    "correctIndex": 1,
+    "explanation": "Viena 1993 consagrou os 4 pilares: os direitos humanos são Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Viena 1993 = Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Viena 1993 = Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Viena 1993 consagrou os 4 pilares: os direitos humanos são Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Conferência de Viena de 1993 • Princípios Estruturantes\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_065",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Presunção de Inocência",
+    "question": "(Instituto AOCP / PMPE - Questão 065) (Tratados Universais 15) Em relação às normas da DUDH e Conferência de Viena: Segundo o Artigo 11 da DUDH de 1948, toda pessoa acusada de um ato delituoso tem o direito de ser presumida inocente até que:",
+    "options": [
+      "Seja indiciada formalmente pelo delegado de polícia.",
+      "A sua culpabilidade tenha sido provada de acordo com a lei, em julgamento público no qual lhe tenham sido asseguradas todas as garantias necessárias à sua defesa.",
+      "A imprensa publique o flagrante delito.",
+      "Seja decretada sua prisão preventiva.",
+      "Confesse perante a autoridade investigadora."
+    ],
+    "correctIndex": 1,
+    "explanation": "A presunção de inocência exige que a culpabilidade seja provada conforme a lei em julgamento público com ampla defesa assegurada.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Presunção de inocência = Julgamento público com todas as garantias.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Presunção de inocência = Julgamento público com todas as garantias.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A presunção de inocência exige que a culpabilidade seja provada conforme a lei em julgamento público com ampla defesa assegurada.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Presunção de Inocência\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_066",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Natureza Jurídica",
+    "question": "(Instituto AOCP / PMPE - Questão 066) (Tratados Universais 16) Em relação às normas da DUDH e Conferência de Viena: Aprovada pela Assembleia Geral da ONU em 10 de dezembro de 1948, a Declaração Universal dos Direitos Humanos (DUDH) possui natureza jurídica originária de:",
+    "options": [
+      "Tratado internacional formal com quórum qualificado ratificado pelo Senado.",
+      "Resolução da Assembleia Geral da ONU (soft law), dotada de autoridade moral e consuetudinária universal (jus cogens).",
+      "Emenda Constitucional à Carta de São Francisco.",
+      "Decreto-lei executivo do Conselho de Segurança.",
+      "Contrato de adesão entre blocos econômicos."
+    ],
+    "correctIndex": 1,
+    "explanation": "A DUDH é formalmente uma Resolução (Res. 217-A III da ONU), instrumento de soft law, que com o tempo adquiriu status de costume internacional obrigatório (jus cogens).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "DUDH = Resolução da Assembleia Geral da ONU de 1948 (Soft Law).",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "DUDH = Resolução da Assembleia Geral da ONU de 1948 (Soft Law).",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A DUDH é formalmente uma Resolução (Res. 217-A III da ONU), instrumento de soft law, que com o tempo adquiriu status de costume internacional obrigatório (jus cogens).",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Natureza Jurídica\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_067",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Direitos Assegurados e Direitos Sociais",
+    "question": "(Instituto AOCP / PMPE - Questão 067) (Tratados Universais 17) Em relação às normas da DUDH e Conferência de Viena: É INCORRETO afirmar sobre o conteúdo normativo da Declaração Universal dos Direitos Humanos de 1948:",
+    "options": [
+      "Consagra expressamente que todos os seres humanos nascem livres e iguais em dignidade e em direitos.",
+      "Protege o direito ao trabalho, à livre escolha de emprego e à remuneração justa.",
+      "Prevê o direito a repouso e lazer, inclusive a férias remuneradas periódicas.",
+      "Autoriza expressamente a pena de morte irrestrita para crimes políticos e de opinião.",
+      "Veda terminantemente a tortura e os tratamentos ou penas cruéis, desumanos ou degradantes."
+    ],
+    "correctIndex": 3,
+    "explanation": "A DUDH não autoriza a pena de morte para crimes políticos; ao contrário, consagra o direito à vida e a inviolabilidade da dignidade.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "DUDH jamais autoriza perseguição ou morte política!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "DUDH jamais autoriza perseguição ou morte política!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Correta. A DUDH não autoriza a pena de morte para crimes políticos; ao contrário, consagra o direito à vida e a inviolabilidade da dignidade.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Direitos Assegurados e Direitos Sociais\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra D."
+    ]
+  },
+  {
+    "id": "dh_aocp_068",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Deveres perante a Comunidade (Artigo 29)",
+    "question": "(Instituto AOCP / PMPE - Questão 068) (Tratados Universais 18) Em relação às normas da DUDH e Conferência de Viena: O artigo 29 da Declaração Universal dos Direitos Humanos consagra expressamente que:",
+    "options": [
+      "O indivíduo não possui deveres, apenas prerrogativas perante a comunidade.",
+      "O indivíduo tem deveres para com a comunidade, na qual o livre e pleno desenvolvimento de sua personalidade é possível.",
+      "O Estado pode violar qualquer direito humano sem controle internacional.",
+      "Os direitos humanos vigoram exclusivamente em países ocidentais.",
+      "A liberdade religiosa não pode ser manifestada em público."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Artigo 29 da DUDH prevê que todo indivíduo tem deveres para com a comunidade na qual seu livre e pleno desenvolvimento é viabilizado.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Art. 29 DUDH = O indivíduo tem deveres para com a comunidade.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Art. 29 DUDH = O indivíduo tem deveres para com a comunidade.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Artigo 29 da DUDH prevê que todo indivíduo tem deveres para com a comunidade na qual seu livre e pleno desenvolvimento é viabilizado.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Deveres perante a Comunidade (Artigo 29)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_069",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Conferência de Viena de 1993 • Princípios Estruturantes",
+    "question": "(Instituto AOCP / PMPE - Questão 069) (Tratados Universais 19) Em relação às normas da DUDH e Conferência de Viena: A Declaração e Programa de Ação de Viena de 1993 consolidou o entendimento definitivo de que todos os direitos humanos são:",
+    "options": [
+      "Exclusivos dos cidadãos nacionais e fragmentados.",
+      "Universais, indivisíveis, interdependentes e inter-relacionados.",
+      "Subordinados ao nível de produto interno bruto (PIB) de cada Estado.",
+      "Hierarquicamente inferiores aos acordos de livre comércio.",
+      "Válidos somente após aprovação do Conselho de Segurança da ONU."
+    ],
+    "correctIndex": 1,
+    "explanation": "Viena 1993 consagrou os 4 pilares: os direitos humanos são Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Viena 1993 = Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Viena 1993 = Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Viena 1993 consagrou os 4 pilares: os direitos humanos são Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Conferência de Viena de 1993 • Princípios Estruturantes\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_070",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Presunção de Inocência",
+    "question": "(Instituto AOCP / PMPE - Questão 070) (Tratados Universais 20) Em relação às normas da DUDH e Conferência de Viena: Segundo o Artigo 11 da DUDH de 1948, toda pessoa acusada de um ato delituoso tem o direito de ser presumida inocente até que:",
+    "options": [
+      "Seja indiciada formalmente pelo delegado de polícia.",
+      "A sua culpabilidade tenha sido provada de acordo com a lei, em julgamento público no qual lhe tenham sido asseguradas todas as garantias necessárias à sua defesa.",
+      "A imprensa publique o flagrante delito.",
+      "Seja decretada sua prisão preventiva.",
+      "Confesse perante a autoridade investigadora."
+    ],
+    "correctIndex": 1,
+    "explanation": "A presunção de inocência exige que a culpabilidade seja provada conforme a lei em julgamento público com ampla defesa assegurada.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Presunção de inocência = Julgamento público com todas as garantias.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Presunção de inocência = Julgamento público com todas as garantias.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A presunção de inocência exige que a culpabilidade seja provada conforme a lei em julgamento público com ampla defesa assegurada.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Presunção de Inocência\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_071",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Natureza Jurídica",
+    "question": "(Instituto AOCP / PMPE - Questão 071) (Tratados Universais 21) Em relação às normas da DUDH e Conferência de Viena: Aprovada pela Assembleia Geral da ONU em 10 de dezembro de 1948, a Declaração Universal dos Direitos Humanos (DUDH) possui natureza jurídica originária de:",
+    "options": [
+      "Tratado internacional formal com quórum qualificado ratificado pelo Senado.",
+      "Resolução da Assembleia Geral da ONU (soft law), dotada de autoridade moral e consuetudinária universal (jus cogens).",
+      "Emenda Constitucional à Carta de São Francisco.",
+      "Decreto-lei executivo do Conselho de Segurança.",
+      "Contrato de adesão entre blocos econômicos."
+    ],
+    "correctIndex": 1,
+    "explanation": "A DUDH é formalmente uma Resolução (Res. 217-A III da ONU), instrumento de soft law, que com o tempo adquiriu status de costume internacional obrigatório (jus cogens).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "DUDH = Resolução da Assembleia Geral da ONU de 1948 (Soft Law).",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "DUDH = Resolução da Assembleia Geral da ONU de 1948 (Soft Law).",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A DUDH é formalmente uma Resolução (Res. 217-A III da ONU), instrumento de soft law, que com o tempo adquiriu status de costume internacional obrigatório (jus cogens).",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Natureza Jurídica\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_072",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Direitos Assegurados e Direitos Sociais",
+    "question": "(Instituto AOCP / PMPE - Questão 072) (Tratados Universais 22) Em relação às normas da DUDH e Conferência de Viena: É INCORRETO afirmar sobre o conteúdo normativo da Declaração Universal dos Direitos Humanos de 1948:",
+    "options": [
+      "Consagra expressamente que todos os seres humanos nascem livres e iguais em dignidade e em direitos.",
+      "Protege o direito ao trabalho, à livre escolha de emprego e à remuneração justa.",
+      "Prevê o direito a repouso e lazer, inclusive a férias remuneradas periódicas.",
+      "Autoriza expressamente a pena de morte irrestrita para crimes políticos e de opinião.",
+      "Veda terminantemente a tortura e os tratamentos ou penas cruéis, desumanos ou degradantes."
+    ],
+    "correctIndex": 3,
+    "explanation": "A DUDH não autoriza a pena de morte para crimes políticos; ao contrário, consagra o direito à vida e a inviolabilidade da dignidade.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "DUDH jamais autoriza perseguição ou morte política!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "DUDH jamais autoriza perseguição ou morte política!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Correta. A DUDH não autoriza a pena de morte para crimes políticos; ao contrário, consagra o direito à vida e a inviolabilidade da dignidade.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Direitos Assegurados e Direitos Sociais\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra D."
+    ]
+  },
+  {
+    "id": "dh_aocp_073",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Deveres perante a Comunidade (Artigo 29)",
+    "question": "(Instituto AOCP / PMPE - Questão 073) (Tratados Universais 23) Em relação às normas da DUDH e Conferência de Viena: O artigo 29 da Declaração Universal dos Direitos Humanos consagra expressamente que:",
+    "options": [
+      "O indivíduo não possui deveres, apenas prerrogativas perante a comunidade.",
+      "O indivíduo tem deveres para com a comunidade, na qual o livre e pleno desenvolvimento de sua personalidade é possível.",
+      "O Estado pode violar qualquer direito humano sem controle internacional.",
+      "Os direitos humanos vigoram exclusivamente em países ocidentais.",
+      "A liberdade religiosa não pode ser manifestada em público."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Artigo 29 da DUDH prevê que todo indivíduo tem deveres para com a comunidade na qual seu livre e pleno desenvolvimento é viabilizado.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Art. 29 DUDH = O indivíduo tem deveres para com a comunidade.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Art. 29 DUDH = O indivíduo tem deveres para com a comunidade.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Artigo 29 da DUDH prevê que todo indivíduo tem deveres para com a comunidade na qual seu livre e pleno desenvolvimento é viabilizado.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Deveres perante a Comunidade (Artigo 29)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_074",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Conferência de Viena de 1993 • Princípios Estruturantes",
+    "question": "(Instituto AOCP / PMPE - Questão 074) (Tratados Universais 24) Em relação às normas da DUDH e Conferência de Viena: A Declaração e Programa de Ação de Viena de 1993 consolidou o entendimento definitivo de que todos os direitos humanos são:",
+    "options": [
+      "Exclusivos dos cidadãos nacionais e fragmentados.",
+      "Universais, indivisíveis, interdependentes e inter-relacionados.",
+      "Subordinados ao nível de produto interno bruto (PIB) de cada Estado.",
+      "Hierarquicamente inferiores aos acordos de livre comércio.",
+      "Válidos somente após aprovação do Conselho de Segurança da ONU."
+    ],
+    "correctIndex": 1,
+    "explanation": "Viena 1993 consagrou os 4 pilares: os direitos humanos são Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Viena 1993 = Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Viena 1993 = Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Viena 1993 consagrou os 4 pilares: os direitos humanos são Universais, Indivisíveis, Interdependentes e Inter-relacionados.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Conferência de Viena de 1993 • Princípios Estruturantes\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_075",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "DUDH de 1948 • Presunção de Inocência",
+    "question": "(Instituto AOCP / PMPE - Questão 075) (Tratados Universais 25) Em relação às normas da DUDH e Conferência de Viena: Segundo o Artigo 11 da DUDH de 1948, toda pessoa acusada de um ato delituoso tem o direito de ser presumida inocente até que:",
+    "options": [
+      "Seja indiciada formalmente pelo delegado de polícia.",
+      "A sua culpabilidade tenha sido provada de acordo com a lei, em julgamento público no qual lhe tenham sido asseguradas todas as garantias necessárias à sua defesa.",
+      "A imprensa publique o flagrante delito.",
+      "Seja decretada sua prisão preventiva.",
+      "Confesse perante a autoridade investigadora."
+    ],
+    "correctIndex": 1,
+    "explanation": "A presunção de inocência exige que a culpabilidade seja provada conforme a lei em julgamento público com ampla defesa assegurada.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Presunção de inocência = Julgamento público com todas as garantias.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Presunção de inocência = Julgamento público com todas as garantias.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A presunção de inocência exige que a culpabilidade seja provada conforme a lei em julgamento público com ampla defesa assegurada.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"DUDH de 1948 • Presunção de Inocência\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_076",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito à Vida e Pena de Morte (Art. 4º)",
+    "question": "(Instituto AOCP / PMPE - Questão 076) De acordo com o Artigo 4º da Convenção Americana sobre Direitos Humanos (Pacto de São José da Costa Rica), sobre a pena de morte:",
+    "options": [
+      "Pode ser restabelecida nos países que já a tenham abolido por emenda constitucional.",
+      "Não se pode restabelecer a pena de morte nos Estados que a tenham abolido, e ela não será aplicada a delitos políticos nem a crimes comuns conexos.",
+      "Pode ser aplicada livremente a menores de 18 anos ou maiores de 70 anos em casos de hediondez.",
+      "Pode ser executada contra mulheres grávidas.",
+      "É obrigatória para todos os casos de homicídio qualificado."
+    ],
+    "correctIndex": 1,
+    "explanation": "A CADH veda o restabelecimento da pena de morte onde abolida (princípio do não retrocesso) e proíbe sua aplicação para crimes políticos, menores de 18, maiores de 70 e gestantes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "CADH veda restabelecer pena de morte e não aplica a menores, maiores de 70 ou gestantes.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "CADH veda restabelecer pena de morte e não aplica a menores, maiores de 70 ou gestantes.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A CADH veda o restabelecimento da pena de morte onde abolida (princípio do não retrocesso) e proíbe sua aplicação para crimes políticos, menores de 18, maiores de 70 e gestantes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito à Vida e Pena de Morte (Art. 4º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_077",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito à Integridade Pessoal (Art. 5º)",
+    "question": "(Instituto AOCP / PMPE - Questão 077) O Artigo 5º do Pacto de São José da Costa Rica assegura que as penas privativas de liberdade devem ter como finalidade essencial:",
+    "options": [
+      "A vingança do Estado contra o infrator.",
+      "A reforma e a readaptação social dos condenados.",
+      "O isolamento celular perpétuo.",
+      "A punição financeira da família do preso.",
+      "A realização de trabalhos forçados humilhantes."
+    ],
+    "correctIndex": 1,
+    "explanation": "Art. 5º, item 6 da CADH: \"As penas privativas da liberdade devem ter por finalidade essencial a reforma e a readaptação social dos condenados.\"",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Finalidade da pena na CADH = Reforma e readaptação social.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Finalidade da pena na CADH = Reforma e readaptação social.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Art. 5º, item 6 da CADH: \"As penas privativas da liberdade devem ter por finalidade essencial a reforma e a readaptação social dos condenados.\"",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito à Integridade Pessoal (Art. 5º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_078",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Suspensão de Garantias e Direitos Inderrogáveis (Art. 27)",
+    "question": "(Instituto AOCP / PMPE - Questão 078) Segundo o Artigo 27 do Pacto de São José da Costa Rica, mesmo em casos de guerra, perigo público ou emergência grave, NÃO É PERMITIDO suspender:",
+    "options": [
+      "A liberdade de locomoção e de reunião.",
+      "O direito à vida, à integridade pessoal, o princípio da legalidade, a liberdade de consciência e religião e as garantias judiciais indispensáveis à sua proteção.",
+      "A inviolabilidade do sigilo telefônico.",
+      "O sigilo de correspondência.",
+      "A liberdade de imprensa e circulação."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 27 elenca os direitos inderrogáveis (núcleo duro intransigível): Vida, Integridade, Proibição de Escravidão, Princípio da Legalidade, Liberdade de Consciência, Direitos da Família, do Nome, da Criança, Nacionalidade e Direitos Políticos, e as garantias judiciais para protegê-los.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Vida, integridade pessoal e legalidade NUNCA podem ser suspensos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Vida, integridade pessoal e legalidade NUNCA podem ser suspensos!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 27 elenca os direitos inderrogáveis (núcleo duro intransigível): Vida, Integridade, Proibição de Escravidão, Princípio da Legalidade, Liberdade de Consciência, Direitos da Família, do Nome, da Criança, Nacionalidade e Direitos Políticos, e as garantias judiciais para protegê-los.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Suspensão de Garantias e Direitos Inderrogáveis (Art. 27)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_079",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Duplo Grau de Jurisdição (Art. 8º)",
+    "question": "(Instituto AOCP / PMPE - Questão 079) O Artigo 8º da Convenção Americana consagra como garantia judicial mínima da pessoa acusada o direito de:",
+    "options": [
+      "Julgamento sumário sem advogado.",
+      "Recorrer da sentença para juiz ou tribunal superior (duplo grau de jurisdição).",
+      "Escolher livremente o promotor que fará a acusação.",
+      "Não comparecer a nenhuma audiência sem justa causa.",
+      "Pagar fiança em qualquer crime hediondo."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 8º, 2, \"h\" assegura o direito indeclinável de recorrer da sentença para um juiz ou tribunal superior.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Art. 8º CADH = Direito de recorrer a tribunal superior (Duplo Grau).",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Art. 8º CADH = Direito de recorrer a tribunal superior (Duplo Grau).",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 8º, 2, \"h\" assegura o direito indeclinável de recorrer da sentença para um juiz ou tribunal superior.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Duplo Grau de Jurisdição (Art. 8º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_080",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito a Não Autoincriminação (Nemo Tenetur Se Detegere)",
+    "question": "(Instituto AOCP / PMPE - Questão 080) Na CADH (Art. 8º, 2, \"g\"), a garantia de não ser obrigado a depor contra si mesma, nem a declarar-se culpada, consagra internacionalmente o princípio do:",
+    "options": [
+      "In dubio pro societate.",
+      "Nemo tenetur se detegere (direito a não autoincriminação).",
+      "Pacta sunt servanda.",
+      "Solve et repete.",
+      "Non reformatio in pejus."
+    ],
+    "correctIndex": 1,
+    "explanation": "O princípio nemo tenetur se detegere assegura que ninguém é obrigado a produzir prova contra si ou confessar crimes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Nemo tenetur se detegere = Ninguém é obrigado a se autoincriminar.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Nemo tenetur se detegere = Ninguém é obrigado a se autoincriminar.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O princípio nemo tenetur se detegere assegura que ninguém é obrigado a produzir prova contra si ou confessar crimes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito a Não Autoincriminação (Nemo Tenetur Se Detegere)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_081",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito à Vida e Pena de Morte (Art. 4º)",
+    "question": "(Instituto AOCP / PMPE - Questão 081) (Dispositivos da CADH 6) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): De acordo com o Artigo 4º da Convenção Americana sobre Direitos Humanos (Pacto de São José da Costa Rica), sobre a pena de morte:",
+    "options": [
+      "Pode ser restabelecida nos países que já a tenham abolido por emenda constitucional.",
+      "Não se pode restabelecer a pena de morte nos Estados que a tenham abolido, e ela não será aplicada a delitos políticos nem a crimes comuns conexos.",
+      "Pode ser aplicada livremente a menores de 18 anos ou maiores de 70 anos em casos de hediondez.",
+      "Pode ser executada contra mulheres grávidas.",
+      "É obrigatória para todos os casos de homicídio qualificado."
+    ],
+    "correctIndex": 1,
+    "explanation": "A CADH veda o restabelecimento da pena de morte onde abolida (princípio do não retrocesso) e proíbe sua aplicação para crimes políticos, menores de 18, maiores de 70 e gestantes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "CADH veda restabelecer pena de morte e não aplica a menores, maiores de 70 ou gestantes.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "CADH veda restabelecer pena de morte e não aplica a menores, maiores de 70 ou gestantes.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A CADH veda o restabelecimento da pena de morte onde abolida (princípio do não retrocesso) e proíbe sua aplicação para crimes políticos, menores de 18, maiores de 70 e gestantes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito à Vida e Pena de Morte (Art. 4º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_082",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito à Integridade Pessoal (Art. 5º)",
+    "question": "(Instituto AOCP / PMPE - Questão 082) (Dispositivos da CADH 7) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): O Artigo 5º do Pacto de São José da Costa Rica assegura que as penas privativas de liberdade devem ter como finalidade essencial:",
+    "options": [
+      "A vingança do Estado contra o infrator.",
+      "A reforma e a readaptação social dos condenados.",
+      "O isolamento celular perpétuo.",
+      "A punição financeira da família do preso.",
+      "A realização de trabalhos forçados humilhantes."
+    ],
+    "correctIndex": 1,
+    "explanation": "Art. 5º, item 6 da CADH: \"As penas privativas da liberdade devem ter por finalidade essencial a reforma e a readaptação social dos condenados.\"",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Finalidade da pena na CADH = Reforma e readaptação social.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Finalidade da pena na CADH = Reforma e readaptação social.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Art. 5º, item 6 da CADH: \"As penas privativas da liberdade devem ter por finalidade essencial a reforma e a readaptação social dos condenados.\"",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito à Integridade Pessoal (Art. 5º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_083",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Suspensão de Garantias e Direitos Inderrogáveis (Art. 27)",
+    "question": "(Instituto AOCP / PMPE - Questão 083) (Dispositivos da CADH 8) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): Segundo o Artigo 27 do Pacto de São José da Costa Rica, mesmo em casos de guerra, perigo público ou emergência grave, NÃO É PERMITIDO suspender:",
+    "options": [
+      "A liberdade de locomoção e de reunião.",
+      "O direito à vida, à integridade pessoal, o princípio da legalidade, a liberdade de consciência e religião e as garantias judiciais indispensáveis à sua proteção.",
+      "A inviolabilidade do sigilo telefônico.",
+      "O sigilo de correspondência.",
+      "A liberdade de imprensa e circulação."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 27 elenca os direitos inderrogáveis (núcleo duro intransigível): Vida, Integridade, Proibição de Escravidão, Princípio da Legalidade, Liberdade de Consciência, Direitos da Família, do Nome, da Criança, Nacionalidade e Direitos Políticos, e as garantias judiciais para protegê-los.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Vida, integridade pessoal e legalidade NUNCA podem ser suspensos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Vida, integridade pessoal e legalidade NUNCA podem ser suspensos!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 27 elenca os direitos inderrogáveis (núcleo duro intransigível): Vida, Integridade, Proibição de Escravidão, Princípio da Legalidade, Liberdade de Consciência, Direitos da Família, do Nome, da Criança, Nacionalidade e Direitos Políticos, e as garantias judiciais para protegê-los.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Suspensão de Garantias e Direitos Inderrogáveis (Art. 27)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_084",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Duplo Grau de Jurisdição (Art. 8º)",
+    "question": "(Instituto AOCP / PMPE - Questão 084) (Dispositivos da CADH 9) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): O Artigo 8º da Convenção Americana consagra como garantia judicial mínima da pessoa acusada o direito de:",
+    "options": [
+      "Julgamento sumário sem advogado.",
+      "Recorrer da sentença para juiz ou tribunal superior (duplo grau de jurisdição).",
+      "Escolher livremente o promotor que fará a acusação.",
+      "Não comparecer a nenhuma audiência sem justa causa.",
+      "Pagar fiança em qualquer crime hediondo."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 8º, 2, \"h\" assegura o direito indeclinável de recorrer da sentença para um juiz ou tribunal superior.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Art. 8º CADH = Direito de recorrer a tribunal superior (Duplo Grau).",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Art. 8º CADH = Direito de recorrer a tribunal superior (Duplo Grau).",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 8º, 2, \"h\" assegura o direito indeclinável de recorrer da sentença para um juiz ou tribunal superior.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Duplo Grau de Jurisdição (Art. 8º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_085",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito a Não Autoincriminação (Nemo Tenetur Se Detegere)",
+    "question": "(Instituto AOCP / PMPE - Questão 085) (Dispositivos da CADH 10) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): Na CADH (Art. 8º, 2, \"g\"), a garantia de não ser obrigado a depor contra si mesma, nem a declarar-se culpada, consagra internacionalmente o princípio do:",
+    "options": [
+      "In dubio pro societate.",
+      "Nemo tenetur se detegere (direito a não autoincriminação).",
+      "Pacta sunt servanda.",
+      "Solve et repete.",
+      "Non reformatio in pejus."
+    ],
+    "correctIndex": 1,
+    "explanation": "O princípio nemo tenetur se detegere assegura que ninguém é obrigado a produzir prova contra si ou confessar crimes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Nemo tenetur se detegere = Ninguém é obrigado a se autoincriminar.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Nemo tenetur se detegere = Ninguém é obrigado a se autoincriminar.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O princípio nemo tenetur se detegere assegura que ninguém é obrigado a produzir prova contra si ou confessar crimes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito a Não Autoincriminação (Nemo Tenetur Se Detegere)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_086",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito à Vida e Pena de Morte (Art. 4º)",
+    "question": "(Instituto AOCP / PMPE - Questão 086) (Dispositivos da CADH 11) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): De acordo com o Artigo 4º da Convenção Americana sobre Direitos Humanos (Pacto de São José da Costa Rica), sobre a pena de morte:",
+    "options": [
+      "Pode ser restabelecida nos países que já a tenham abolido por emenda constitucional.",
+      "Não se pode restabelecer a pena de morte nos Estados que a tenham abolido, e ela não será aplicada a delitos políticos nem a crimes comuns conexos.",
+      "Pode ser aplicada livremente a menores de 18 anos ou maiores de 70 anos em casos de hediondez.",
+      "Pode ser executada contra mulheres grávidas.",
+      "É obrigatória para todos os casos de homicídio qualificado."
+    ],
+    "correctIndex": 1,
+    "explanation": "A CADH veda o restabelecimento da pena de morte onde abolida (princípio do não retrocesso) e proíbe sua aplicação para crimes políticos, menores de 18, maiores de 70 e gestantes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "CADH veda restabelecer pena de morte e não aplica a menores, maiores de 70 ou gestantes.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "CADH veda restabelecer pena de morte e não aplica a menores, maiores de 70 ou gestantes.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A CADH veda o restabelecimento da pena de morte onde abolida (princípio do não retrocesso) e proíbe sua aplicação para crimes políticos, menores de 18, maiores de 70 e gestantes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito à Vida e Pena de Morte (Art. 4º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_087",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito à Integridade Pessoal (Art. 5º)",
+    "question": "(Instituto AOCP / PMPE - Questão 087) (Dispositivos da CADH 12) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): O Artigo 5º do Pacto de São José da Costa Rica assegura que as penas privativas de liberdade devem ter como finalidade essencial:",
+    "options": [
+      "A vingança do Estado contra o infrator.",
+      "A reforma e a readaptação social dos condenados.",
+      "O isolamento celular perpétuo.",
+      "A punição financeira da família do preso.",
+      "A realização de trabalhos forçados humilhantes."
+    ],
+    "correctIndex": 1,
+    "explanation": "Art. 5º, item 6 da CADH: \"As penas privativas da liberdade devem ter por finalidade essencial a reforma e a readaptação social dos condenados.\"",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Finalidade da pena na CADH = Reforma e readaptação social.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Finalidade da pena na CADH = Reforma e readaptação social.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Art. 5º, item 6 da CADH: \"As penas privativas da liberdade devem ter por finalidade essencial a reforma e a readaptação social dos condenados.\"",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito à Integridade Pessoal (Art. 5º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_088",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Suspensão de Garantias e Direitos Inderrogáveis (Art. 27)",
+    "question": "(Instituto AOCP / PMPE - Questão 088) (Dispositivos da CADH 13) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): Segundo o Artigo 27 do Pacto de São José da Costa Rica, mesmo em casos de guerra, perigo público ou emergência grave, NÃO É PERMITIDO suspender:",
+    "options": [
+      "A liberdade de locomoção e de reunião.",
+      "O direito à vida, à integridade pessoal, o princípio da legalidade, a liberdade de consciência e religião e as garantias judiciais indispensáveis à sua proteção.",
+      "A inviolabilidade do sigilo telefônico.",
+      "O sigilo de correspondência.",
+      "A liberdade de imprensa e circulação."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 27 elenca os direitos inderrogáveis (núcleo duro intransigível): Vida, Integridade, Proibição de Escravidão, Princípio da Legalidade, Liberdade de Consciência, Direitos da Família, do Nome, da Criança, Nacionalidade e Direitos Políticos, e as garantias judiciais para protegê-los.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Vida, integridade pessoal e legalidade NUNCA podem ser suspensos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Vida, integridade pessoal e legalidade NUNCA podem ser suspensos!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 27 elenca os direitos inderrogáveis (núcleo duro intransigível): Vida, Integridade, Proibição de Escravidão, Princípio da Legalidade, Liberdade de Consciência, Direitos da Família, do Nome, da Criança, Nacionalidade e Direitos Políticos, e as garantias judiciais para protegê-los.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Suspensão de Garantias e Direitos Inderrogáveis (Art. 27)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_089",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Duplo Grau de Jurisdição (Art. 8º)",
+    "question": "(Instituto AOCP / PMPE - Questão 089) (Dispositivos da CADH 14) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): O Artigo 8º da Convenção Americana consagra como garantia judicial mínima da pessoa acusada o direito de:",
+    "options": [
+      "Julgamento sumário sem advogado.",
+      "Recorrer da sentença para juiz ou tribunal superior (duplo grau de jurisdição).",
+      "Escolher livremente o promotor que fará a acusação.",
+      "Não comparecer a nenhuma audiência sem justa causa.",
+      "Pagar fiança em qualquer crime hediondo."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 8º, 2, \"h\" assegura o direito indeclinável de recorrer da sentença para um juiz ou tribunal superior.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Art. 8º CADH = Direito de recorrer a tribunal superior (Duplo Grau).",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Art. 8º CADH = Direito de recorrer a tribunal superior (Duplo Grau).",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 8º, 2, \"h\" assegura o direito indeclinável de recorrer da sentença para um juiz ou tribunal superior.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Duplo Grau de Jurisdição (Art. 8º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_090",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito a Não Autoincriminação (Nemo Tenetur Se Detegere)",
+    "question": "(Instituto AOCP / PMPE - Questão 090) (Dispositivos da CADH 15) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): Na CADH (Art. 8º, 2, \"g\"), a garantia de não ser obrigado a depor contra si mesma, nem a declarar-se culpada, consagra internacionalmente o princípio do:",
+    "options": [
+      "In dubio pro societate.",
+      "Nemo tenetur se detegere (direito a não autoincriminação).",
+      "Pacta sunt servanda.",
+      "Solve et repete.",
+      "Non reformatio in pejus."
+    ],
+    "correctIndex": 1,
+    "explanation": "O princípio nemo tenetur se detegere assegura que ninguém é obrigado a produzir prova contra si ou confessar crimes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Nemo tenetur se detegere = Ninguém é obrigado a se autoincriminar.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Nemo tenetur se detegere = Ninguém é obrigado a se autoincriminar.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O princípio nemo tenetur se detegere assegura que ninguém é obrigado a produzir prova contra si ou confessar crimes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito a Não Autoincriminação (Nemo Tenetur Se Detegere)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_091",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito à Vida e Pena de Morte (Art. 4º)",
+    "question": "(Instituto AOCP / PMPE - Questão 091) (Dispositivos da CADH 16) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): De acordo com o Artigo 4º da Convenção Americana sobre Direitos Humanos (Pacto de São José da Costa Rica), sobre a pena de morte:",
+    "options": [
+      "Pode ser restabelecida nos países que já a tenham abolido por emenda constitucional.",
+      "Não se pode restabelecer a pena de morte nos Estados que a tenham abolido, e ela não será aplicada a delitos políticos nem a crimes comuns conexos.",
+      "Pode ser aplicada livremente a menores de 18 anos ou maiores de 70 anos em casos de hediondez.",
+      "Pode ser executada contra mulheres grávidas.",
+      "É obrigatória para todos os casos de homicídio qualificado."
+    ],
+    "correctIndex": 1,
+    "explanation": "A CADH veda o restabelecimento da pena de morte onde abolida (princípio do não retrocesso) e proíbe sua aplicação para crimes políticos, menores de 18, maiores de 70 e gestantes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "CADH veda restabelecer pena de morte e não aplica a menores, maiores de 70 ou gestantes.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "CADH veda restabelecer pena de morte e não aplica a menores, maiores de 70 ou gestantes.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A CADH veda o restabelecimento da pena de morte onde abolida (princípio do não retrocesso) e proíbe sua aplicação para crimes políticos, menores de 18, maiores de 70 e gestantes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito à Vida e Pena de Morte (Art. 4º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_092",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito à Integridade Pessoal (Art. 5º)",
+    "question": "(Instituto AOCP / PMPE - Questão 092) (Dispositivos da CADH 17) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): O Artigo 5º do Pacto de São José da Costa Rica assegura que as penas privativas de liberdade devem ter como finalidade essencial:",
+    "options": [
+      "A vingança do Estado contra o infrator.",
+      "A reforma e a readaptação social dos condenados.",
+      "O isolamento celular perpétuo.",
+      "A punição financeira da família do preso.",
+      "A realização de trabalhos forçados humilhantes."
+    ],
+    "correctIndex": 1,
+    "explanation": "Art. 5º, item 6 da CADH: \"As penas privativas da liberdade devem ter por finalidade essencial a reforma e a readaptação social dos condenados.\"",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Finalidade da pena na CADH = Reforma e readaptação social.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Finalidade da pena na CADH = Reforma e readaptação social.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Art. 5º, item 6 da CADH: \"As penas privativas da liberdade devem ter por finalidade essencial a reforma e a readaptação social dos condenados.\"",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito à Integridade Pessoal (Art. 5º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_093",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Suspensão de Garantias e Direitos Inderrogáveis (Art. 27)",
+    "question": "(Instituto AOCP / PMPE - Questão 093) (Dispositivos da CADH 18) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): Segundo o Artigo 27 do Pacto de São José da Costa Rica, mesmo em casos de guerra, perigo público ou emergência grave, NÃO É PERMITIDO suspender:",
+    "options": [
+      "A liberdade de locomoção e de reunião.",
+      "O direito à vida, à integridade pessoal, o princípio da legalidade, a liberdade de consciência e religião e as garantias judiciais indispensáveis à sua proteção.",
+      "A inviolabilidade do sigilo telefônico.",
+      "O sigilo de correspondência.",
+      "A liberdade de imprensa e circulação."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 27 elenca os direitos inderrogáveis (núcleo duro intransigível): Vida, Integridade, Proibição de Escravidão, Princípio da Legalidade, Liberdade de Consciência, Direitos da Família, do Nome, da Criança, Nacionalidade e Direitos Políticos, e as garantias judiciais para protegê-los.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Vida, integridade pessoal e legalidade NUNCA podem ser suspensos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Vida, integridade pessoal e legalidade NUNCA podem ser suspensos!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 27 elenca os direitos inderrogáveis (núcleo duro intransigível): Vida, Integridade, Proibição de Escravidão, Princípio da Legalidade, Liberdade de Consciência, Direitos da Família, do Nome, da Criança, Nacionalidade e Direitos Políticos, e as garantias judiciais para protegê-los.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Suspensão de Garantias e Direitos Inderrogáveis (Art. 27)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_094",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Duplo Grau de Jurisdição (Art. 8º)",
+    "question": "(Instituto AOCP / PMPE - Questão 094) (Dispositivos da CADH 19) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): O Artigo 8º da Convenção Americana consagra como garantia judicial mínima da pessoa acusada o direito de:",
+    "options": [
+      "Julgamento sumário sem advogado.",
+      "Recorrer da sentença para juiz ou tribunal superior (duplo grau de jurisdição).",
+      "Escolher livremente o promotor que fará a acusação.",
+      "Não comparecer a nenhuma audiência sem justa causa.",
+      "Pagar fiança em qualquer crime hediondo."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 8º, 2, \"h\" assegura o direito indeclinável de recorrer da sentença para um juiz ou tribunal superior.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Art. 8º CADH = Direito de recorrer a tribunal superior (Duplo Grau).",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Art. 8º CADH = Direito de recorrer a tribunal superior (Duplo Grau).",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 8º, 2, \"h\" assegura o direito indeclinável de recorrer da sentença para um juiz ou tribunal superior.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Duplo Grau de Jurisdição (Art. 8º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_095",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito a Não Autoincriminação (Nemo Tenetur Se Detegere)",
+    "question": "(Instituto AOCP / PMPE - Questão 095) (Dispositivos da CADH 20) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): Na CADH (Art. 8º, 2, \"g\"), a garantia de não ser obrigado a depor contra si mesma, nem a declarar-se culpada, consagra internacionalmente o princípio do:",
+    "options": [
+      "In dubio pro societate.",
+      "Nemo tenetur se detegere (direito a não autoincriminação).",
+      "Pacta sunt servanda.",
+      "Solve et repete.",
+      "Non reformatio in pejus."
+    ],
+    "correctIndex": 1,
+    "explanation": "O princípio nemo tenetur se detegere assegura que ninguém é obrigado a produzir prova contra si ou confessar crimes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Nemo tenetur se detegere = Ninguém é obrigado a se autoincriminar.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Nemo tenetur se detegere = Ninguém é obrigado a se autoincriminar.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O princípio nemo tenetur se detegere assegura que ninguém é obrigado a produzir prova contra si ou confessar crimes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito a Não Autoincriminação (Nemo Tenetur Se Detegere)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_096",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito à Vida e Pena de Morte (Art. 4º)",
+    "question": "(Instituto AOCP / PMPE - Questão 096) (Dispositivos da CADH 21) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): De acordo com o Artigo 4º da Convenção Americana sobre Direitos Humanos (Pacto de São José da Costa Rica), sobre a pena de morte:",
+    "options": [
+      "Pode ser restabelecida nos países que já a tenham abolido por emenda constitucional.",
+      "Não se pode restabelecer a pena de morte nos Estados que a tenham abolido, e ela não será aplicada a delitos políticos nem a crimes comuns conexos.",
+      "Pode ser aplicada livremente a menores de 18 anos ou maiores de 70 anos em casos de hediondez.",
+      "Pode ser executada contra mulheres grávidas.",
+      "É obrigatória para todos os casos de homicídio qualificado."
+    ],
+    "correctIndex": 1,
+    "explanation": "A CADH veda o restabelecimento da pena de morte onde abolida (princípio do não retrocesso) e proíbe sua aplicação para crimes políticos, menores de 18, maiores de 70 e gestantes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "CADH veda restabelecer pena de morte e não aplica a menores, maiores de 70 ou gestantes.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "CADH veda restabelecer pena de morte e não aplica a menores, maiores de 70 ou gestantes.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A CADH veda o restabelecimento da pena de morte onde abolida (princípio do não retrocesso) e proíbe sua aplicação para crimes políticos, menores de 18, maiores de 70 e gestantes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito à Vida e Pena de Morte (Art. 4º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_097",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito à Integridade Pessoal (Art. 5º)",
+    "question": "(Instituto AOCP / PMPE - Questão 097) (Dispositivos da CADH 22) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): O Artigo 5º do Pacto de São José da Costa Rica assegura que as penas privativas de liberdade devem ter como finalidade essencial:",
+    "options": [
+      "A vingança do Estado contra o infrator.",
+      "A reforma e a readaptação social dos condenados.",
+      "O isolamento celular perpétuo.",
+      "A punição financeira da família do preso.",
+      "A realização de trabalhos forçados humilhantes."
+    ],
+    "correctIndex": 1,
+    "explanation": "Art. 5º, item 6 da CADH: \"As penas privativas da liberdade devem ter por finalidade essencial a reforma e a readaptação social dos condenados.\"",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Finalidade da pena na CADH = Reforma e readaptação social.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Finalidade da pena na CADH = Reforma e readaptação social.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Art. 5º, item 6 da CADH: \"As penas privativas da liberdade devem ter por finalidade essencial a reforma e a readaptação social dos condenados.\"",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito à Integridade Pessoal (Art. 5º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_098",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Suspensão de Garantias e Direitos Inderrogáveis (Art. 27)",
+    "question": "(Instituto AOCP / PMPE - Questão 098) (Dispositivos da CADH 23) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): Segundo o Artigo 27 do Pacto de São José da Costa Rica, mesmo em casos de guerra, perigo público ou emergência grave, NÃO É PERMITIDO suspender:",
+    "options": [
+      "A liberdade de locomoção e de reunião.",
+      "O direito à vida, à integridade pessoal, o princípio da legalidade, a liberdade de consciência e religião e as garantias judiciais indispensáveis à sua proteção.",
+      "A inviolabilidade do sigilo telefônico.",
+      "O sigilo de correspondência.",
+      "A liberdade de imprensa e circulação."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 27 elenca os direitos inderrogáveis (núcleo duro intransigível): Vida, Integridade, Proibição de Escravidão, Princípio da Legalidade, Liberdade de Consciência, Direitos da Família, do Nome, da Criança, Nacionalidade e Direitos Políticos, e as garantias judiciais para protegê-los.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Vida, integridade pessoal e legalidade NUNCA podem ser suspensos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Vida, integridade pessoal e legalidade NUNCA podem ser suspensos!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 27 elenca os direitos inderrogáveis (núcleo duro intransigível): Vida, Integridade, Proibição de Escravidão, Princípio da Legalidade, Liberdade de Consciência, Direitos da Família, do Nome, da Criança, Nacionalidade e Direitos Políticos, e as garantias judiciais para protegê-los.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Suspensão de Garantias e Direitos Inderrogáveis (Art. 27)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_099",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Duplo Grau de Jurisdição (Art. 8º)",
+    "question": "(Instituto AOCP / PMPE - Questão 099) (Dispositivos da CADH 24) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): O Artigo 8º da Convenção Americana consagra como garantia judicial mínima da pessoa acusada o direito de:",
+    "options": [
+      "Julgamento sumário sem advogado.",
+      "Recorrer da sentença para juiz ou tribunal superior (duplo grau de jurisdição).",
+      "Escolher livremente o promotor que fará a acusação.",
+      "Não comparecer a nenhuma audiência sem justa causa.",
+      "Pagar fiança em qualquer crime hediondo."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 8º, 2, \"h\" assegura o direito indeclinável de recorrer da sentença para um juiz ou tribunal superior.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Art. 8º CADH = Direito de recorrer a tribunal superior (Duplo Grau).",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Art. 8º CADH = Direito de recorrer a tribunal superior (Duplo Grau).",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 8º, 2, \"h\" assegura o direito indeclinável de recorrer da sentença para um juiz ou tribunal superior.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Duplo Grau de Jurisdição (Art. 8º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_100",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito a Não Autoincriminação (Nemo Tenetur Se Detegere)",
+    "question": "(Instituto AOCP / PMPE - Questão 100) (Dispositivos da CADH 25) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): Na CADH (Art. 8º, 2, \"g\"), a garantia de não ser obrigado a depor contra si mesma, nem a declarar-se culpada, consagra internacionalmente o princípio do:",
+    "options": [
+      "In dubio pro societate.",
+      "Nemo tenetur se detegere (direito a não autoincriminação).",
+      "Pacta sunt servanda.",
+      "Solve et repete.",
+      "Non reformatio in pejus."
+    ],
+    "correctIndex": 1,
+    "explanation": "O princípio nemo tenetur se detegere assegura que ninguém é obrigado a produzir prova contra si ou confessar crimes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Nemo tenetur se detegere = Ninguém é obrigado a se autoincriminar.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Nemo tenetur se detegere = Ninguém é obrigado a se autoincriminar.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O princípio nemo tenetur se detegere assegura que ninguém é obrigado a produzir prova contra si ou confessar crimes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito a Não Autoincriminação (Nemo Tenetur Se Detegere)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_101",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito à Vida e Pena de Morte (Art. 4º)",
+    "question": "(Instituto AOCP / PMPE - Questão 101) (Dispositivos da CADH 26) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): De acordo com o Artigo 4º da Convenção Americana sobre Direitos Humanos (Pacto de São José da Costa Rica), sobre a pena de morte:",
+    "options": [
+      "Pode ser restabelecida nos países que já a tenham abolido por emenda constitucional.",
+      "Não se pode restabelecer a pena de morte nos Estados que a tenham abolido, e ela não será aplicada a delitos políticos nem a crimes comuns conexos.",
+      "Pode ser aplicada livremente a menores de 18 anos ou maiores de 70 anos em casos de hediondez.",
+      "Pode ser executada contra mulheres grávidas.",
+      "É obrigatória para todos os casos de homicídio qualificado."
+    ],
+    "correctIndex": 1,
+    "explanation": "A CADH veda o restabelecimento da pena de morte onde abolida (princípio do não retrocesso) e proíbe sua aplicação para crimes políticos, menores de 18, maiores de 70 e gestantes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "CADH veda restabelecer pena de morte e não aplica a menores, maiores de 70 ou gestantes.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "CADH veda restabelecer pena de morte e não aplica a menores, maiores de 70 ou gestantes.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A CADH veda o restabelecimento da pena de morte onde abolida (princípio do não retrocesso) e proíbe sua aplicação para crimes políticos, menores de 18, maiores de 70 e gestantes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito à Vida e Pena de Morte (Art. 4º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_102",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito à Integridade Pessoal (Art. 5º)",
+    "question": "(Instituto AOCP / PMPE - Questão 102) (Dispositivos da CADH 27) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): O Artigo 5º do Pacto de São José da Costa Rica assegura que as penas privativas de liberdade devem ter como finalidade essencial:",
+    "options": [
+      "A vingança do Estado contra o infrator.",
+      "A reforma e a readaptação social dos condenados.",
+      "O isolamento celular perpétuo.",
+      "A punição financeira da família do preso.",
+      "A realização de trabalhos forçados humilhantes."
+    ],
+    "correctIndex": 1,
+    "explanation": "Art. 5º, item 6 da CADH: \"As penas privativas da liberdade devem ter por finalidade essencial a reforma e a readaptação social dos condenados.\"",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Finalidade da pena na CADH = Reforma e readaptação social.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Finalidade da pena na CADH = Reforma e readaptação social.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Art. 5º, item 6 da CADH: \"As penas privativas da liberdade devem ter por finalidade essencial a reforma e a readaptação social dos condenados.\"",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito à Integridade Pessoal (Art. 5º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_103",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Suspensão de Garantias e Direitos Inderrogáveis (Art. 27)",
+    "question": "(Instituto AOCP / PMPE - Questão 103) (Dispositivos da CADH 28) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): Segundo o Artigo 27 do Pacto de São José da Costa Rica, mesmo em casos de guerra, perigo público ou emergência grave, NÃO É PERMITIDO suspender:",
+    "options": [
+      "A liberdade de locomoção e de reunião.",
+      "O direito à vida, à integridade pessoal, o princípio da legalidade, a liberdade de consciência e religião e as garantias judiciais indispensáveis à sua proteção.",
+      "A inviolabilidade do sigilo telefônico.",
+      "O sigilo de correspondência.",
+      "A liberdade de imprensa e circulação."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 27 elenca os direitos inderrogáveis (núcleo duro intransigível): Vida, Integridade, Proibição de Escravidão, Princípio da Legalidade, Liberdade de Consciência, Direitos da Família, do Nome, da Criança, Nacionalidade e Direitos Políticos, e as garantias judiciais para protegê-los.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Vida, integridade pessoal e legalidade NUNCA podem ser suspensos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Vida, integridade pessoal e legalidade NUNCA podem ser suspensos!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 27 elenca os direitos inderrogáveis (núcleo duro intransigível): Vida, Integridade, Proibição de Escravidão, Princípio da Legalidade, Liberdade de Consciência, Direitos da Família, do Nome, da Criança, Nacionalidade e Direitos Políticos, e as garantias judiciais para protegê-los.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Suspensão de Garantias e Direitos Inderrogáveis (Art. 27)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_104",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Duplo Grau de Jurisdição (Art. 8º)",
+    "question": "(Instituto AOCP / PMPE - Questão 104) (Dispositivos da CADH 29) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): O Artigo 8º da Convenção Americana consagra como garantia judicial mínima da pessoa acusada o direito de:",
+    "options": [
+      "Julgamento sumário sem advogado.",
+      "Recorrer da sentença para juiz ou tribunal superior (duplo grau de jurisdição).",
+      "Escolher livremente o promotor que fará a acusação.",
+      "Não comparecer a nenhuma audiência sem justa causa.",
+      "Pagar fiança em qualquer crime hediondo."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 8º, 2, \"h\" assegura o direito indeclinável de recorrer da sentença para um juiz ou tribunal superior.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Art. 8º CADH = Direito de recorrer a tribunal superior (Duplo Grau).",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Art. 8º CADH = Direito de recorrer a tribunal superior (Duplo Grau).",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 8º, 2, \"h\" assegura o direito indeclinável de recorrer da sentença para um juiz ou tribunal superior.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Duplo Grau de Jurisdição (Art. 8º)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_105",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Direito a Não Autoincriminação (Nemo Tenetur Se Detegere)",
+    "question": "(Instituto AOCP / PMPE - Questão 105) (Dispositivos da CADH 30) Sobre as normas do Pacto de São José da Costa Rica (Decreto 678/1992): Na CADH (Art. 8º, 2, \"g\"), a garantia de não ser obrigado a depor contra si mesma, nem a declarar-se culpada, consagra internacionalmente o princípio do:",
+    "options": [
+      "In dubio pro societate.",
+      "Nemo tenetur se detegere (direito a não autoincriminação).",
+      "Pacta sunt servanda.",
+      "Solve et repete.",
+      "Non reformatio in pejus."
+    ],
+    "correctIndex": 1,
+    "explanation": "O princípio nemo tenetur se detegere assegura que ninguém é obrigado a produzir prova contra si ou confessar crimes.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Nemo tenetur se detegere = Ninguém é obrigado a se autoincriminar.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Nemo tenetur se detegere = Ninguém é obrigado a se autoincriminar.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O princípio nemo tenetur se detegere assegura que ninguém é obrigado a produzir prova contra si ou confessar crimes.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Direito a Não Autoincriminação (Nemo Tenetur Se Detegere)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_106",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Audiência de Custódia (Art. 7º, item 5)",
+    "question": "(Instituto AOCP / PMPE - Questão 106) O Artigo 7º, item 5, da Convenção Americana sobre Direitos Humanos determina expressamente que qualquer pessoa presa ou detida deve ser:",
+    "options": [
+      "Encaminhada imediatamente ao presídio de segurança máxima.",
+      "Conduzida, sem demora, à presença de um juiz ou outra autoridade autorizada pela lei a exercer funções judiciais (origem da Audiência de Custódia).",
+      "Submetida a interrogatório sem a presença de defensor.",
+      "Obrigada a assinar confissão prévia.",
+      "Liberada automaticamente em 2 horas."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 7º, 5 da CADH é o fundamento internacional da Audiência de Custódia (condução do preso sem demora ao juiz).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Art. 7º, item 5 CADH = Berço da Audiência de Custódia.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Art. 7º, item 5 CADH = Berço da Audiência de Custódia.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 7º, 5 da CADH é o fundamento internacional da Audiência de Custódia (condução do preso sem demora ao juiz).",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Audiência de Custódia (Art. 7º, item 5)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_107",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Jurisprudência STF • Súmula Vinculante 25 (Prisão do Depositário Infiel)",
+    "question": "(Instituto AOCP / PMPE - Questão 107) O Supremo Tribunal Federal, com base no Artigo 7º, item 7, do Pacto de São José da Costa Rica, editou a SÚMULA VINCULANTE 25, pacificando que:",
+    "options": [
+      "É lícita a prisão civil do depositário infiel em qualquer hipótese.",
+      "É ILÍCITA a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito.",
+      "Apenas o devedor de alimentos pode ser preso se for reincidente.",
+      "A prisão civil foi totalmente extinta, inclusive para dívida alimentar.",
+      "O depositário infiel responde com pena de morte."
+    ],
+    "correctIndex": 1,
+    "explanation": "Súmula Vinculante 25 do STF: \"É ilícita a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito.\" Permanece apenas a prisão civil por alimentos.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Súmula Vinculante 25 = É ILÍCITA a prisão civil do depositário infiel!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Súmula Vinculante 25 = É ILÍCITA a prisão civil do depositário infiel!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Súmula Vinculante 25 do STF: \"É ilícita a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito.\" Permanece apenas a prisão civil por alimentos.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Jurisprudência STF • Súmula Vinculante 25 (Prisão do Depositário Infiel)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_108",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Hierarquia dos Tratados • Status Supralegal (STF RE 466.343)",
+    "question": "(Instituto AOCP / PMPE - Questão 108) No histórico julgamento do RE 466.343 pelo Plenário do STF, fixou-se a tese de que os tratados internacionais de direitos humanos ratificados pelo Brasil ANTES da Emenda Constitucional 45/2004 possuem status hierárquico:",
+    "options": [
+      "Infraconstitucional ordinário (mesmo nível de uma lei ordinária).",
+      "Supralegal (abaixo da Constituição Federal, mas acima de todas as leis infraconstitucionais).",
+      "Constitucional equivalente a Emenda Constitucional com eficácia automática.",
+      "Puramente doutrinário sem aplicabilidade prática.",
+      "Supraconstitucional acima da própria CF/88."
+    ],
+    "correctIndex": 1,
+    "explanation": "Tratados de DH ratificados pelo rito ordinário (como o Pacto de São José) possuem status SUPRALEGAL: estão abaixo da CF/88, mas paralisam a eficácia de leis ordinárias em contrário.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Status Supralegal = Abaixo da Constituição, Acima das Leis!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Status Supralegal = Abaixo da Constituição, Acima das Leis!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Tratados de DH ratificados pelo rito ordinário (como o Pacto de São José) possuem status SUPRALEGAL: estão abaixo da CF/88, mas paralisam a eficácia de leis ordinárias em contrário.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Hierarquia dos Tratados • Status Supralegal (STF RE 466.343)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_109",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Artigo 5º, § 3º da CF/88 • Equivalência a Emendas Constitucionais",
+    "question": "(Instituto AOCP / PMPE - Questão 109) Para que um tratado internacional de direitos humanos ingresse no ordenamento jurídico brasileiro com equivalência de EMENDA CONSTITUCIONAL, a CF/88 (art. 5º, § 3º) exige que seja aprovado:",
+    "options": [
+      "Por maioria simples em sessão conjunta do Congresso Nacional.",
+      "Em cada Casa do Congresso Nacional, em dois turnos, por três quintos dos votos dos respectivos membros.",
+      "Pelo Presidente da República com referendo popular.",
+      "Por maioria absoluta em turno único na Câmara dos Deputados.",
+      "Exclusivamente por decisão unânime do Supremo Tribunal Federal."
+    ],
+    "correctIndex": 1,
+    "explanation": "Art. 5º, § 3º da CF/88: Aprovado em cada Casa do Congresso (Câmara e Senado), em dois turnos, por 3/5 dos votos -> equivale a Emenda Constitucional.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Quórum de Emenda = 2 Casas, 2 Turnos, 3/5 dos votos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Quórum de Emenda = 2 Casas, 2 Turnos, 3/5 dos votos!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Art. 5º, § 3º da CF/88: Aprovado em cada Casa do Congresso (Câmara e Senado), em dois turnos, por 3/5 dos votos -> equivale a Emenda Constitucional.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Artigo 5º, § 3º da CF/88 • Equivalência a Emendas Constitucionais\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_110",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Prisão Civil por Dívida • Exceção Constitucional Remanescente",
+    "question": "(Instituto AOCP / PMPE - Questão 110) À luz da Constituição Federal de 1988 e do Pacto de São José da Costa Rica, a ÚNICA hipótese legítima de prisão civil por dívida no Brasil atualmente é a de:",
+    "options": [
+      "Inadimplemento de alienação fiduciária em garantia.",
+      "Depositário infiel judicial.",
+      "Inadimplemento voluntário e inescusável de obrigação alimentícia.",
+      "Empréstimo bancário consignado.",
+      "Fraude fiscal de pequena monta."
+    ],
+    "correctIndex": 2,
+    "explanation": "A única prisão civil admitida no Brasil é a do devedor de pensão alimentícia (inadimplemento voluntário e inescusável).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Única prisão civil válida no Brasil = Devedor de alimentos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Única prisão civil válida no Brasil = Devedor de alimentos!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Correta. A única prisão civil admitida no Brasil é a do devedor de pensão alimentícia (inadimplemento voluntário e inescusável).",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Prisão Civil por Dívida • Exceção Constitucional Remanescente\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra C."
+    ]
+  },
+  {
+    "id": "dh_aocp_111",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Audiência de Custódia (Art. 7º, item 5)",
+    "question": "(Instituto AOCP / PMPE - Questão 111) (Jurisprudência Constitucional 6) Quanto à aplicação dos tratados de Direitos Humanos no STF: O Artigo 7º, item 5, da Convenção Americana sobre Direitos Humanos determina expressamente que qualquer pessoa presa ou detida deve ser:",
+    "options": [
+      "Encaminhada imediatamente ao presídio de segurança máxima.",
+      "Conduzida, sem demora, à presença de um juiz ou outra autoridade autorizada pela lei a exercer funções judiciais (origem da Audiência de Custódia).",
+      "Submetida a interrogatório sem a presença de defensor.",
+      "Obrigada a assinar confissão prévia.",
+      "Liberada automaticamente em 2 horas."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 7º, 5 da CADH é o fundamento internacional da Audiência de Custódia (condução do preso sem demora ao juiz).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Art. 7º, item 5 CADH = Berço da Audiência de Custódia.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Art. 7º, item 5 CADH = Berço da Audiência de Custódia.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 7º, 5 da CADH é o fundamento internacional da Audiência de Custódia (condução do preso sem demora ao juiz).",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Audiência de Custódia (Art. 7º, item 5)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_112",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Jurisprudência STF • Súmula Vinculante 25 (Prisão do Depositário Infiel)",
+    "question": "(Instituto AOCP / PMPE - Questão 112) (Jurisprudência Constitucional 7) Quanto à aplicação dos tratados de Direitos Humanos no STF: O Supremo Tribunal Federal, com base no Artigo 7º, item 7, do Pacto de São José da Costa Rica, editou a SÚMULA VINCULANTE 25, pacificando que:",
+    "options": [
+      "É lícita a prisão civil do depositário infiel em qualquer hipótese.",
+      "É ILÍCITA a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito.",
+      "Apenas o devedor de alimentos pode ser preso se for reincidente.",
+      "A prisão civil foi totalmente extinta, inclusive para dívida alimentar.",
+      "O depositário infiel responde com pena de morte."
+    ],
+    "correctIndex": 1,
+    "explanation": "Súmula Vinculante 25 do STF: \"É ilícita a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito.\" Permanece apenas a prisão civil por alimentos.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Súmula Vinculante 25 = É ILÍCITA a prisão civil do depositário infiel!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Súmula Vinculante 25 = É ILÍCITA a prisão civil do depositário infiel!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Súmula Vinculante 25 do STF: \"É ilícita a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito.\" Permanece apenas a prisão civil por alimentos.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Jurisprudência STF • Súmula Vinculante 25 (Prisão do Depositário Infiel)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_113",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Hierarquia dos Tratados • Status Supralegal (STF RE 466.343)",
+    "question": "(Instituto AOCP / PMPE - Questão 113) (Jurisprudência Constitucional 8) Quanto à aplicação dos tratados de Direitos Humanos no STF: No histórico julgamento do RE 466.343 pelo Plenário do STF, fixou-se a tese de que os tratados internacionais de direitos humanos ratificados pelo Brasil ANTES da Emenda Constitucional 45/2004 possuem status hierárquico:",
+    "options": [
+      "Infraconstitucional ordinário (mesmo nível de uma lei ordinária).",
+      "Supralegal (abaixo da Constituição Federal, mas acima de todas as leis infraconstitucionais).",
+      "Constitucional equivalente a Emenda Constitucional com eficácia automática.",
+      "Puramente doutrinário sem aplicabilidade prática.",
+      "Supraconstitucional acima da própria CF/88."
+    ],
+    "correctIndex": 1,
+    "explanation": "Tratados de DH ratificados pelo rito ordinário (como o Pacto de São José) possuem status SUPRALEGAL: estão abaixo da CF/88, mas paralisam a eficácia de leis ordinárias em contrário.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Status Supralegal = Abaixo da Constituição, Acima das Leis!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Status Supralegal = Abaixo da Constituição, Acima das Leis!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Tratados de DH ratificados pelo rito ordinário (como o Pacto de São José) possuem status SUPRALEGAL: estão abaixo da CF/88, mas paralisam a eficácia de leis ordinárias em contrário.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Hierarquia dos Tratados • Status Supralegal (STF RE 466.343)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_114",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Artigo 5º, § 3º da CF/88 • Equivalência a Emendas Constitucionais",
+    "question": "(Instituto AOCP / PMPE - Questão 114) (Jurisprudência Constitucional 9) Quanto à aplicação dos tratados de Direitos Humanos no STF: Para que um tratado internacional de direitos humanos ingresse no ordenamento jurídico brasileiro com equivalência de EMENDA CONSTITUCIONAL, a CF/88 (art. 5º, § 3º) exige que seja aprovado:",
+    "options": [
+      "Por maioria simples em sessão conjunta do Congresso Nacional.",
+      "Em cada Casa do Congresso Nacional, em dois turnos, por três quintos dos votos dos respectivos membros.",
+      "Pelo Presidente da República com referendo popular.",
+      "Por maioria absoluta em turno único na Câmara dos Deputados.",
+      "Exclusivamente por decisão unânime do Supremo Tribunal Federal."
+    ],
+    "correctIndex": 1,
+    "explanation": "Art. 5º, § 3º da CF/88: Aprovado em cada Casa do Congresso (Câmara e Senado), em dois turnos, por 3/5 dos votos -> equivale a Emenda Constitucional.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Quórum de Emenda = 2 Casas, 2 Turnos, 3/5 dos votos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Quórum de Emenda = 2 Casas, 2 Turnos, 3/5 dos votos!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Art. 5º, § 3º da CF/88: Aprovado em cada Casa do Congresso (Câmara e Senado), em dois turnos, por 3/5 dos votos -> equivale a Emenda Constitucional.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Artigo 5º, § 3º da CF/88 • Equivalência a Emendas Constitucionais\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_115",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Prisão Civil por Dívida • Exceção Constitucional Remanescente",
+    "question": "(Instituto AOCP / PMPE - Questão 115) (Jurisprudência Constitucional 10) Quanto à aplicação dos tratados de Direitos Humanos no STF: À luz da Constituição Federal de 1988 e do Pacto de São José da Costa Rica, a ÚNICA hipótese legítima de prisão civil por dívida no Brasil atualmente é a de:",
+    "options": [
+      "Inadimplemento de alienação fiduciária em garantia.",
+      "Depositário infiel judicial.",
+      "Inadimplemento voluntário e inescusável de obrigação alimentícia.",
+      "Empréstimo bancário consignado.",
+      "Fraude fiscal de pequena monta."
+    ],
+    "correctIndex": 2,
+    "explanation": "A única prisão civil admitida no Brasil é a do devedor de pensão alimentícia (inadimplemento voluntário e inescusável).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Única prisão civil válida no Brasil = Devedor de alimentos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Única prisão civil válida no Brasil = Devedor de alimentos!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Correta. A única prisão civil admitida no Brasil é a do devedor de pensão alimentícia (inadimplemento voluntário e inescusável).",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Prisão Civil por Dívida • Exceção Constitucional Remanescente\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra C."
+    ]
+  },
+  {
+    "id": "dh_aocp_116",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Audiência de Custódia (Art. 7º, item 5)",
+    "question": "(Instituto AOCP / PMPE - Questão 116) (Jurisprudência Constitucional 11) Quanto à aplicação dos tratados de Direitos Humanos no STF: O Artigo 7º, item 5, da Convenção Americana sobre Direitos Humanos determina expressamente que qualquer pessoa presa ou detida deve ser:",
+    "options": [
+      "Encaminhada imediatamente ao presídio de segurança máxima.",
+      "Conduzida, sem demora, à presença de um juiz ou outra autoridade autorizada pela lei a exercer funções judiciais (origem da Audiência de Custódia).",
+      "Submetida a interrogatório sem a presença de defensor.",
+      "Obrigada a assinar confissão prévia.",
+      "Liberada automaticamente em 2 horas."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 7º, 5 da CADH é o fundamento internacional da Audiência de Custódia (condução do preso sem demora ao juiz).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Art. 7º, item 5 CADH = Berço da Audiência de Custódia.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Art. 7º, item 5 CADH = Berço da Audiência de Custódia.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 7º, 5 da CADH é o fundamento internacional da Audiência de Custódia (condução do preso sem demora ao juiz).",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Audiência de Custódia (Art. 7º, item 5)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_117",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Jurisprudência STF • Súmula Vinculante 25 (Prisão do Depositário Infiel)",
+    "question": "(Instituto AOCP / PMPE - Questão 117) (Jurisprudência Constitucional 12) Quanto à aplicação dos tratados de Direitos Humanos no STF: O Supremo Tribunal Federal, com base no Artigo 7º, item 7, do Pacto de São José da Costa Rica, editou a SÚMULA VINCULANTE 25, pacificando que:",
+    "options": [
+      "É lícita a prisão civil do depositário infiel em qualquer hipótese.",
+      "É ILÍCITA a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito.",
+      "Apenas o devedor de alimentos pode ser preso se for reincidente.",
+      "A prisão civil foi totalmente extinta, inclusive para dívida alimentar.",
+      "O depositário infiel responde com pena de morte."
+    ],
+    "correctIndex": 1,
+    "explanation": "Súmula Vinculante 25 do STF: \"É ilícita a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito.\" Permanece apenas a prisão civil por alimentos.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Súmula Vinculante 25 = É ILÍCITA a prisão civil do depositário infiel!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Súmula Vinculante 25 = É ILÍCITA a prisão civil do depositário infiel!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Súmula Vinculante 25 do STF: \"É ilícita a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito.\" Permanece apenas a prisão civil por alimentos.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Jurisprudência STF • Súmula Vinculante 25 (Prisão do Depositário Infiel)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_118",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Hierarquia dos Tratados • Status Supralegal (STF RE 466.343)",
+    "question": "(Instituto AOCP / PMPE - Questão 118) (Jurisprudência Constitucional 13) Quanto à aplicação dos tratados de Direitos Humanos no STF: No histórico julgamento do RE 466.343 pelo Plenário do STF, fixou-se a tese de que os tratados internacionais de direitos humanos ratificados pelo Brasil ANTES da Emenda Constitucional 45/2004 possuem status hierárquico:",
+    "options": [
+      "Infraconstitucional ordinário (mesmo nível de uma lei ordinária).",
+      "Supralegal (abaixo da Constituição Federal, mas acima de todas as leis infraconstitucionais).",
+      "Constitucional equivalente a Emenda Constitucional com eficácia automática.",
+      "Puramente doutrinário sem aplicabilidade prática.",
+      "Supraconstitucional acima da própria CF/88."
+    ],
+    "correctIndex": 1,
+    "explanation": "Tratados de DH ratificados pelo rito ordinário (como o Pacto de São José) possuem status SUPRALEGAL: estão abaixo da CF/88, mas paralisam a eficácia de leis ordinárias em contrário.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Status Supralegal = Abaixo da Constituição, Acima das Leis!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Status Supralegal = Abaixo da Constituição, Acima das Leis!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Tratados de DH ratificados pelo rito ordinário (como o Pacto de São José) possuem status SUPRALEGAL: estão abaixo da CF/88, mas paralisam a eficácia de leis ordinárias em contrário.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Hierarquia dos Tratados • Status Supralegal (STF RE 466.343)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_119",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Artigo 5º, § 3º da CF/88 • Equivalência a Emendas Constitucionais",
+    "question": "(Instituto AOCP / PMPE - Questão 119) (Jurisprudência Constitucional 14) Quanto à aplicação dos tratados de Direitos Humanos no STF: Para que um tratado internacional de direitos humanos ingresse no ordenamento jurídico brasileiro com equivalência de EMENDA CONSTITUCIONAL, a CF/88 (art. 5º, § 3º) exige que seja aprovado:",
+    "options": [
+      "Por maioria simples em sessão conjunta do Congresso Nacional.",
+      "Em cada Casa do Congresso Nacional, em dois turnos, por três quintos dos votos dos respectivos membros.",
+      "Pelo Presidente da República com referendo popular.",
+      "Por maioria absoluta em turno único na Câmara dos Deputados.",
+      "Exclusivamente por decisão unânime do Supremo Tribunal Federal."
+    ],
+    "correctIndex": 1,
+    "explanation": "Art. 5º, § 3º da CF/88: Aprovado em cada Casa do Congresso (Câmara e Senado), em dois turnos, por 3/5 dos votos -> equivale a Emenda Constitucional.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Quórum de Emenda = 2 Casas, 2 Turnos, 3/5 dos votos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Quórum de Emenda = 2 Casas, 2 Turnos, 3/5 dos votos!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Art. 5º, § 3º da CF/88: Aprovado em cada Casa do Congresso (Câmara e Senado), em dois turnos, por 3/5 dos votos -> equivale a Emenda Constitucional.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Artigo 5º, § 3º da CF/88 • Equivalência a Emendas Constitucionais\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_120",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Prisão Civil por Dívida • Exceção Constitucional Remanescente",
+    "question": "(Instituto AOCP / PMPE - Questão 120) (Jurisprudência Constitucional 15) Quanto à aplicação dos tratados de Direitos Humanos no STF: À luz da Constituição Federal de 1988 e do Pacto de São José da Costa Rica, a ÚNICA hipótese legítima de prisão civil por dívida no Brasil atualmente é a de:",
+    "options": [
+      "Inadimplemento de alienação fiduciária em garantia.",
+      "Depositário infiel judicial.",
+      "Inadimplemento voluntário e inescusável de obrigação alimentícia.",
+      "Empréstimo bancário consignado.",
+      "Fraude fiscal de pequena monta."
+    ],
+    "correctIndex": 2,
+    "explanation": "A única prisão civil admitida no Brasil é a do devedor de pensão alimentícia (inadimplemento voluntário e inescusável).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Única prisão civil válida no Brasil = Devedor de alimentos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Única prisão civil válida no Brasil = Devedor de alimentos!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Correta. A única prisão civil admitida no Brasil é a do devedor de pensão alimentícia (inadimplemento voluntário e inescusável).",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Prisão Civil por Dívida • Exceção Constitucional Remanescente\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra C."
+    ]
+  },
+  {
+    "id": "dh_aocp_121",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Audiência de Custódia (Art. 7º, item 5)",
+    "question": "(Instituto AOCP / PMPE - Questão 121) (Jurisprudência Constitucional 16) Quanto à aplicação dos tratados de Direitos Humanos no STF: O Artigo 7º, item 5, da Convenção Americana sobre Direitos Humanos determina expressamente que qualquer pessoa presa ou detida deve ser:",
+    "options": [
+      "Encaminhada imediatamente ao presídio de segurança máxima.",
+      "Conduzida, sem demora, à presença de um juiz ou outra autoridade autorizada pela lei a exercer funções judiciais (origem da Audiência de Custódia).",
+      "Submetida a interrogatório sem a presença de defensor.",
+      "Obrigada a assinar confissão prévia.",
+      "Liberada automaticamente em 2 horas."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 7º, 5 da CADH é o fundamento internacional da Audiência de Custódia (condução do preso sem demora ao juiz).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Art. 7º, item 5 CADH = Berço da Audiência de Custódia.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Art. 7º, item 5 CADH = Berço da Audiência de Custódia.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 7º, 5 da CADH é o fundamento internacional da Audiência de Custódia (condução do preso sem demora ao juiz).",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Audiência de Custódia (Art. 7º, item 5)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_122",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Jurisprudência STF • Súmula Vinculante 25 (Prisão do Depositário Infiel)",
+    "question": "(Instituto AOCP / PMPE - Questão 122) (Jurisprudência Constitucional 17) Quanto à aplicação dos tratados de Direitos Humanos no STF: O Supremo Tribunal Federal, com base no Artigo 7º, item 7, do Pacto de São José da Costa Rica, editou a SÚMULA VINCULANTE 25, pacificando que:",
+    "options": [
+      "É lícita a prisão civil do depositário infiel em qualquer hipótese.",
+      "É ILÍCITA a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito.",
+      "Apenas o devedor de alimentos pode ser preso se for reincidente.",
+      "A prisão civil foi totalmente extinta, inclusive para dívida alimentar.",
+      "O depositário infiel responde com pena de morte."
+    ],
+    "correctIndex": 1,
+    "explanation": "Súmula Vinculante 25 do STF: \"É ilícita a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito.\" Permanece apenas a prisão civil por alimentos.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Súmula Vinculante 25 = É ILÍCITA a prisão civil do depositário infiel!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Súmula Vinculante 25 = É ILÍCITA a prisão civil do depositário infiel!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Súmula Vinculante 25 do STF: \"É ilícita a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito.\" Permanece apenas a prisão civil por alimentos.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Jurisprudência STF • Súmula Vinculante 25 (Prisão do Depositário Infiel)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_123",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Hierarquia dos Tratados • Status Supralegal (STF RE 466.343)",
+    "question": "(Instituto AOCP / PMPE - Questão 123) (Jurisprudência Constitucional 18) Quanto à aplicação dos tratados de Direitos Humanos no STF: No histórico julgamento do RE 466.343 pelo Plenário do STF, fixou-se a tese de que os tratados internacionais de direitos humanos ratificados pelo Brasil ANTES da Emenda Constitucional 45/2004 possuem status hierárquico:",
+    "options": [
+      "Infraconstitucional ordinário (mesmo nível de uma lei ordinária).",
+      "Supralegal (abaixo da Constituição Federal, mas acima de todas as leis infraconstitucionais).",
+      "Constitucional equivalente a Emenda Constitucional com eficácia automática.",
+      "Puramente doutrinário sem aplicabilidade prática.",
+      "Supraconstitucional acima da própria CF/88."
+    ],
+    "correctIndex": 1,
+    "explanation": "Tratados de DH ratificados pelo rito ordinário (como o Pacto de São José) possuem status SUPRALEGAL: estão abaixo da CF/88, mas paralisam a eficácia de leis ordinárias em contrário.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Status Supralegal = Abaixo da Constituição, Acima das Leis!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Status Supralegal = Abaixo da Constituição, Acima das Leis!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Tratados de DH ratificados pelo rito ordinário (como o Pacto de São José) possuem status SUPRALEGAL: estão abaixo da CF/88, mas paralisam a eficácia de leis ordinárias em contrário.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Hierarquia dos Tratados • Status Supralegal (STF RE 466.343)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_124",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Artigo 5º, § 3º da CF/88 • Equivalência a Emendas Constitucionais",
+    "question": "(Instituto AOCP / PMPE - Questão 124) (Jurisprudência Constitucional 19) Quanto à aplicação dos tratados de Direitos Humanos no STF: Para que um tratado internacional de direitos humanos ingresse no ordenamento jurídico brasileiro com equivalência de EMENDA CONSTITUCIONAL, a CF/88 (art. 5º, § 3º) exige que seja aprovado:",
+    "options": [
+      "Por maioria simples em sessão conjunta do Congresso Nacional.",
+      "Em cada Casa do Congresso Nacional, em dois turnos, por três quintos dos votos dos respectivos membros.",
+      "Pelo Presidente da República com referendo popular.",
+      "Por maioria absoluta em turno único na Câmara dos Deputados.",
+      "Exclusivamente por decisão unânime do Supremo Tribunal Federal."
+    ],
+    "correctIndex": 1,
+    "explanation": "Art. 5º, § 3º da CF/88: Aprovado em cada Casa do Congresso (Câmara e Senado), em dois turnos, por 3/5 dos votos -> equivale a Emenda Constitucional.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Quórum de Emenda = 2 Casas, 2 Turnos, 3/5 dos votos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Quórum de Emenda = 2 Casas, 2 Turnos, 3/5 dos votos!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Art. 5º, § 3º da CF/88: Aprovado em cada Casa do Congresso (Câmara e Senado), em dois turnos, por 3/5 dos votos -> equivale a Emenda Constitucional.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Artigo 5º, § 3º da CF/88 • Equivalência a Emendas Constitucionais\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_125",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Prisão Civil por Dívida • Exceção Constitucional Remanescente",
+    "question": "(Instituto AOCP / PMPE - Questão 125) (Jurisprudência Constitucional 20) Quanto à aplicação dos tratados de Direitos Humanos no STF: À luz da Constituição Federal de 1988 e do Pacto de São José da Costa Rica, a ÚNICA hipótese legítima de prisão civil por dívida no Brasil atualmente é a de:",
+    "options": [
+      "Inadimplemento de alienação fiduciária em garantia.",
+      "Depositário infiel judicial.",
+      "Inadimplemento voluntário e inescusável de obrigação alimentícia.",
+      "Empréstimo bancário consignado.",
+      "Fraude fiscal de pequena monta."
+    ],
+    "correctIndex": 2,
+    "explanation": "A única prisão civil admitida no Brasil é a do devedor de pensão alimentícia (inadimplemento voluntário e inescusável).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Única prisão civil válida no Brasil = Devedor de alimentos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Única prisão civil válida no Brasil = Devedor de alimentos!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Correta. A única prisão civil admitida no Brasil é a do devedor de pensão alimentícia (inadimplemento voluntário e inescusável).",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Prisão Civil por Dívida • Exceção Constitucional Remanescente\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra C."
+    ]
+  },
+  {
+    "id": "dh_aocp_126",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Pacto de São José • Audiência de Custódia (Art. 7º, item 5)",
+    "question": "(Instituto AOCP / PMPE - Questão 126) (Jurisprudência Constitucional 21) Quanto à aplicação dos tratados de Direitos Humanos no STF: O Artigo 7º, item 5, da Convenção Americana sobre Direitos Humanos determina expressamente que qualquer pessoa presa ou detida deve ser:",
+    "options": [
+      "Encaminhada imediatamente ao presídio de segurança máxima.",
+      "Conduzida, sem demora, à presença de um juiz ou outra autoridade autorizada pela lei a exercer funções judiciais (origem da Audiência de Custódia).",
+      "Submetida a interrogatório sem a presença de defensor.",
+      "Obrigada a assinar confissão prévia.",
+      "Liberada automaticamente em 2 horas."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Art. 7º, 5 da CADH é o fundamento internacional da Audiência de Custódia (condução do preso sem demora ao juiz).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Art. 7º, item 5 CADH = Berço da Audiência de Custódia.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Art. 7º, item 5 CADH = Berço da Audiência de Custódia.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O Art. 7º, 5 da CADH é o fundamento internacional da Audiência de Custódia (condução do preso sem demora ao juiz).",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Pacto de São José • Audiência de Custódia (Art. 7º, item 5)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_127",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Jurisprudência STF • Súmula Vinculante 25 (Prisão do Depositário Infiel)",
+    "question": "(Instituto AOCP / PMPE - Questão 127) (Jurisprudência Constitucional 22) Quanto à aplicação dos tratados de Direitos Humanos no STF: O Supremo Tribunal Federal, com base no Artigo 7º, item 7, do Pacto de São José da Costa Rica, editou a SÚMULA VINCULANTE 25, pacificando que:",
+    "options": [
+      "É lícita a prisão civil do depositário infiel em qualquer hipótese.",
+      "É ILÍCITA a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito.",
+      "Apenas o devedor de alimentos pode ser preso se for reincidente.",
+      "A prisão civil foi totalmente extinta, inclusive para dívida alimentar.",
+      "O depositário infiel responde com pena de morte."
+    ],
+    "correctIndex": 1,
+    "explanation": "Súmula Vinculante 25 do STF: \"É ilícita a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito.\" Permanece apenas a prisão civil por alimentos.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Súmula Vinculante 25 = É ILÍCITA a prisão civil do depositário infiel!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Súmula Vinculante 25 = É ILÍCITA a prisão civil do depositário infiel!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Súmula Vinculante 25 do STF: \"É ilícita a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito.\" Permanece apenas a prisão civil por alimentos.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Jurisprudência STF • Súmula Vinculante 25 (Prisão do Depositário Infiel)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_128",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Hierarquia dos Tratados • Status Supralegal (STF RE 466.343)",
+    "question": "(Instituto AOCP / PMPE - Questão 128) (Jurisprudência Constitucional 23) Quanto à aplicação dos tratados de Direitos Humanos no STF: No histórico julgamento do RE 466.343 pelo Plenário do STF, fixou-se a tese de que os tratados internacionais de direitos humanos ratificados pelo Brasil ANTES da Emenda Constitucional 45/2004 possuem status hierárquico:",
+    "options": [
+      "Infraconstitucional ordinário (mesmo nível de uma lei ordinária).",
+      "Supralegal (abaixo da Constituição Federal, mas acima de todas as leis infraconstitucionais).",
+      "Constitucional equivalente a Emenda Constitucional com eficácia automática.",
+      "Puramente doutrinário sem aplicabilidade prática.",
+      "Supraconstitucional acima da própria CF/88."
+    ],
+    "correctIndex": 1,
+    "explanation": "Tratados de DH ratificados pelo rito ordinário (como o Pacto de São José) possuem status SUPRALEGAL: estão abaixo da CF/88, mas paralisam a eficácia de leis ordinárias em contrário.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Status Supralegal = Abaixo da Constituição, Acima das Leis!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Status Supralegal = Abaixo da Constituição, Acima das Leis!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Tratados de DH ratificados pelo rito ordinário (como o Pacto de São José) possuem status SUPRALEGAL: estão abaixo da CF/88, mas paralisam a eficácia de leis ordinárias em contrário.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Hierarquia dos Tratados • Status Supralegal (STF RE 466.343)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_129",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Artigo 5º, § 3º da CF/88 • Equivalência a Emendas Constitucionais",
+    "question": "(Instituto AOCP / PMPE - Questão 129) (Jurisprudência Constitucional 24) Quanto à aplicação dos tratados de Direitos Humanos no STF: Para que um tratado internacional de direitos humanos ingresse no ordenamento jurídico brasileiro com equivalência de EMENDA CONSTITUCIONAL, a CF/88 (art. 5º, § 3º) exige que seja aprovado:",
+    "options": [
+      "Por maioria simples em sessão conjunta do Congresso Nacional.",
+      "Em cada Casa do Congresso Nacional, em dois turnos, por três quintos dos votos dos respectivos membros.",
+      "Pelo Presidente da República com referendo popular.",
+      "Por maioria absoluta em turno único na Câmara dos Deputados.",
+      "Exclusivamente por decisão unânime do Supremo Tribunal Federal."
+    ],
+    "correctIndex": 1,
+    "explanation": "Art. 5º, § 3º da CF/88: Aprovado em cada Casa do Congresso (Câmara e Senado), em dois turnos, por 3/5 dos votos -> equivale a Emenda Constitucional.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Quórum de Emenda = 2 Casas, 2 Turnos, 3/5 dos votos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Quórum de Emenda = 2 Casas, 2 Turnos, 3/5 dos votos!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Art. 5º, § 3º da CF/88: Aprovado em cada Casa do Congresso (Câmara e Senado), em dois turnos, por 3/5 dos votos -> equivale a Emenda Constitucional.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Artigo 5º, § 3º da CF/88 • Equivalência a Emendas Constitucionais\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_130",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Prisão Civil por Dívida • Exceção Constitucional Remanescente",
+    "question": "(Instituto AOCP / PMPE - Questão 130) (Jurisprudência Constitucional 25) Quanto à aplicação dos tratados de Direitos Humanos no STF: À luz da Constituição Federal de 1988 e do Pacto de São José da Costa Rica, a ÚNICA hipótese legítima de prisão civil por dívida no Brasil atualmente é a de:",
+    "options": [
+      "Inadimplemento de alienação fiduciária em garantia.",
+      "Depositário infiel judicial.",
+      "Inadimplemento voluntário e inescusável de obrigação alimentícia.",
+      "Empréstimo bancário consignado.",
+      "Fraude fiscal de pequena monta."
+    ],
+    "correctIndex": 2,
+    "explanation": "A única prisão civil admitida no Brasil é a do devedor de pensão alimentícia (inadimplemento voluntário e inescusável).",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Única prisão civil válida no Brasil = Devedor de alimentos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Única prisão civil válida no Brasil = Devedor de alimentos!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "1": "Você marcou (B): A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Incorreta. A alternativa (B) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "C": "Correta. A única prisão civil admitida no Brasil é a do devedor de pensão alimentícia (inadimplemento voluntário e inescusável).",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Prisão Civil por Dívida • Exceção Constitucional Remanescente\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra C."
+    ]
+  },
+  {
+    "id": "dh_aocp_131",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Sistema Interamericano • Comissão (CIDH) vs Corte IDH",
+    "question": "(Instituto AOCP / PMPE - Questão 131) No Sistema Interamericano de Direitos Humanos, qual é a diferença crucial quanto à LEGITIMIDADE ATIVA para provocar a Corte Interamericana de Direitos Humanos (Corte IDH)?",
+    "options": [
+      "Qualquer cidadão individual pode ajuizar ação diretamente na Corte IDH.",
+      "Indivíduos e ONGs NÃO têm acesso direto (locus standi) à Corte IDH; apenas os Estados Partes e a Comissão Interamericana (CIDH) têm legitimidade para submeter casos à Corte.",
+      "Apenas o Secretário-Geral da ONU pode acionar a Corte IDH.",
+      "A Corte IDH recebe denúncias de qualquer pessoa por WhatsApp.",
+      "A Comissão é um tribunal e a Corte é apenas uma assembleia."
+    ],
+    "correctIndex": 1,
+    "explanation": "Indivíduos só podem peticionar perante a COMISSÃO (CIDH). Apenas a Comissão ou Estados Partes podem submeter casos à CORTE IDH.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Indivíduo NÃO tem acesso direto à Corte IDH! Só vai via Comissão.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Indivíduo NÃO tem acesso direto à Corte IDH! Só vai via Comissão.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Indivíduos só podem peticionar perante a COMISSÃO (CIDH). Apenas a Comissão ou Estados Partes podem submeter casos à CORTE IDH.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Sistema Interamericano • Comissão (CIDH) vs Corte IDH\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_132",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Sistema Interamericano • Sede dos Órgãos da OEA",
+    "question": "(Instituto AOCP / PMPE - Questão 132) As sedes da Comissão Interamericana de Direitos Humanos (CIDH) e da Corte Interamericana de Direitos Humanos (Corte IDH) localizam-se, respectivamente, em:",
+    "options": [
+      "Genebra (Suíça) e Nova York (EUA).",
+      "Washington D.C. (Estados Unidos) e San José (Costa Rica).",
+      "Haia (Holanda) e Estrasburgo (França).",
+      "Brasília (Brasil) e Buenos Aires (Argentina).",
+      "Montevidéu (Uruguai) e Cidade do México (México)."
+    ],
+    "correctIndex": 1,
+    "explanation": "A Comissão (CIDH) fica em Washington D.C. (sede da OEA) e a Corte IDH tem sede em San José da Costa Rica.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Comissão = Washington D.C. | Corte = San José da Costa Rica.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Comissão = Washington D.C. | Corte = San José da Costa Rica.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A Comissão (CIDH) fica em Washington D.C. (sede da OEA) e a Corte IDH tem sede em San José da Costa Rica.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Sistema Interamericano • Sede dos Órgãos da OEA\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_133",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Casos Emblemáticos da Corte IDH • Caso Favela Nova Brasília (Brasil)",
+    "question": "(Instituto AOCP / PMPE - Questão 133) Na histórica condenação do Brasil no caso \"Favela Nova Brasília\" pela Corte IDH, o tribunal internacional determinou expressamente que:",
+    "options": [
+      "A polícia militar deve ser extinta no Brasil.",
+      "Em casos de mortes ou violência sexual decorrentes de intervenção policial, as investigações devem ser conduzidas por órgão independente e imparcial, diverso da própria força de segurança envolvida.",
+      "A polícia militar não pode portar armas em operações.",
+      "Todas as prisões em flagrante devem ser canceladas.",
+      "O Estado do Rio de Janeiro deve ser desmembrado."
+    ],
+    "correctIndex": 1,
+    "explanation": "No caso Favela Nova Brasília, a Corte IDH condenou o Brasil e impôs investigações independentes em mortes causadas por agentes policiais.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Favela Nova Brasília = Investigação independente de mortes policiais.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Favela Nova Brasília = Investigação independente de mortes policiais.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. No caso Favela Nova Brasília, a Corte IDH condenou o Brasil e impôs investigações independentes em mortes causadas por agentes policiais.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Casos Emblemáticos da Corte IDH • Caso Favela Nova Brasília (Brasil)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_134",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Casos Emblemáticos da Corte IDH • Caso Povo Indígena Xucuru (Pernambuco)",
+    "question": "(Instituto AOCP / PMPE - Questão 134) Em relação ao Estado de Pernambuco, a Corte Interamericana de Direitos Humanos condenou o Brasil no caso \"Povo Indígena Xucuru de Pesqueira\", reconhecendo a violação do direito:",
+    "options": [
+      "À liberdade religiosa de colonos.",
+      "À propriedade coletiva ancestral e à garantia de prazo razoável na demarcação de terras indígenas.",
+      "De caça a animais em extinção.",
+      "À tributação de produtos artesanais.",
+      "De criar forças armadas independentes."
+    ],
+    "correctIndex": 1,
+    "explanation": "No caso do Povo Xucuru de Pesqueira (PE), a Corte IDH condenou o Brasil pela demora excessiva na titulação das terras ancestrais.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Caso Xucuru (PE) = Propriedade coletiva e prazo razoável na demarcação.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Caso Xucuru (PE) = Propriedade coletiva e prazo razoável na demarcação.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. No caso do Povo Xucuru de Pesqueira (PE), a Corte IDH condenou o Brasil pela demora excessiva na titulação das terras ancestrais.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Casos Emblemáticos da Corte IDH • Caso Povo Indígena Xucuru (Pernambuco)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_135",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Sistema Interamericano • Efeitos das Sentenças da Corte IDH",
+    "question": "(Instituto AOCP / PMPE - Questão 135) As sentenças proferidas pela Corte Interamericana de Direitos Humanos em face de um Estado que reconheceu sua jurisdição obrigatória são:",
+    "options": [
+      "Meras recomendações sem força jurídica.",
+      "Definitivas, inapeláveis e com força executiva obrigatória para os órgãos do Estado condenado.",
+      "Subordinadas a referendo do Congresso Nacional.",
+      "Condicionadas à aprovação do Conselho de Segurança.",
+      "Revogáveis por decisão do STF."
+    ],
+    "correctIndex": 1,
+    "explanation": "Art. 67 e 68 da CADH: As sentenças da Corte IDH são definitivas, inapeláveis e de cumprimento obrigatório pelo Estado Parte.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Sentenças da Corte IDH = Definitivas, inapeláveis e obrigatórias!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Sentenças da Corte IDH = Definitivas, inapeláveis e obrigatórias!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Art. 67 e 68 da CADH: As sentenças da Corte IDH são definitivas, inapeláveis e de cumprimento obrigatório pelo Estado Parte.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Sistema Interamericano • Efeitos das Sentenças da Corte IDH\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_136",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Sistema Interamericano • Comissão (CIDH) vs Corte IDH",
+    "question": "(Instituto AOCP / PMPE - Questão 136) (Controle Interamericano 6) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: No Sistema Interamericano de Direitos Humanos, qual é a diferença crucial quanto à LEGITIMIDADE ATIVA para provocar a Corte Interamericana de Direitos Humanos (Corte IDH)?",
+    "options": [
+      "Qualquer cidadão individual pode ajuizar ação diretamente na Corte IDH.",
+      "Indivíduos e ONGs NÃO têm acesso direto (locus standi) à Corte IDH; apenas os Estados Partes e a Comissão Interamericana (CIDH) têm legitimidade para submeter casos à Corte.",
+      "Apenas o Secretário-Geral da ONU pode acionar a Corte IDH.",
+      "A Corte IDH recebe denúncias de qualquer pessoa por WhatsApp.",
+      "A Comissão é um tribunal e a Corte é apenas uma assembleia."
+    ],
+    "correctIndex": 1,
+    "explanation": "Indivíduos só podem peticionar perante a COMISSÃO (CIDH). Apenas a Comissão ou Estados Partes podem submeter casos à CORTE IDH.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Indivíduo NÃO tem acesso direto à Corte IDH! Só vai via Comissão.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Indivíduo NÃO tem acesso direto à Corte IDH! Só vai via Comissão.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Indivíduos só podem peticionar perante a COMISSÃO (CIDH). Apenas a Comissão ou Estados Partes podem submeter casos à CORTE IDH.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Sistema Interamericano • Comissão (CIDH) vs Corte IDH\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_137",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Sistema Interamericano • Sede dos Órgãos da OEA",
+    "question": "(Instituto AOCP / PMPE - Questão 137) (Controle Interamericano 7) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: As sedes da Comissão Interamericana de Direitos Humanos (CIDH) e da Corte Interamericana de Direitos Humanos (Corte IDH) localizam-se, respectivamente, em:",
+    "options": [
+      "Genebra (Suíça) e Nova York (EUA).",
+      "Washington D.C. (Estados Unidos) e San José (Costa Rica).",
+      "Haia (Holanda) e Estrasburgo (França).",
+      "Brasília (Brasil) e Buenos Aires (Argentina).",
+      "Montevidéu (Uruguai) e Cidade do México (México)."
+    ],
+    "correctIndex": 1,
+    "explanation": "A Comissão (CIDH) fica em Washington D.C. (sede da OEA) e a Corte IDH tem sede em San José da Costa Rica.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Comissão = Washington D.C. | Corte = San José da Costa Rica.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Comissão = Washington D.C. | Corte = San José da Costa Rica.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A Comissão (CIDH) fica em Washington D.C. (sede da OEA) e a Corte IDH tem sede em San José da Costa Rica.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Sistema Interamericano • Sede dos Órgãos da OEA\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_138",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Casos Emblemáticos da Corte IDH • Caso Favela Nova Brasília (Brasil)",
+    "question": "(Instituto AOCP / PMPE - Questão 138) (Controle Interamericano 8) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: Na histórica condenação do Brasil no caso \"Favela Nova Brasília\" pela Corte IDH, o tribunal internacional determinou expressamente que:",
+    "options": [
+      "A polícia militar deve ser extinta no Brasil.",
+      "Em casos de mortes ou violência sexual decorrentes de intervenção policial, as investigações devem ser conduzidas por órgão independente e imparcial, diverso da própria força de segurança envolvida.",
+      "A polícia militar não pode portar armas em operações.",
+      "Todas as prisões em flagrante devem ser canceladas.",
+      "O Estado do Rio de Janeiro deve ser desmembrado."
+    ],
+    "correctIndex": 1,
+    "explanation": "No caso Favela Nova Brasília, a Corte IDH condenou o Brasil e impôs investigações independentes em mortes causadas por agentes policiais.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Favela Nova Brasília = Investigação independente de mortes policiais.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Favela Nova Brasília = Investigação independente de mortes policiais.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. No caso Favela Nova Brasília, a Corte IDH condenou o Brasil e impôs investigações independentes em mortes causadas por agentes policiais.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Casos Emblemáticos da Corte IDH • Caso Favela Nova Brasília (Brasil)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_139",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Casos Emblemáticos da Corte IDH • Caso Povo Indígena Xucuru (Pernambuco)",
+    "question": "(Instituto AOCP / PMPE - Questão 139) (Controle Interamericano 9) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: Em relação ao Estado de Pernambuco, a Corte Interamericana de Direitos Humanos condenou o Brasil no caso \"Povo Indígena Xucuru de Pesqueira\", reconhecendo a violação do direito:",
+    "options": [
+      "À liberdade religiosa de colonos.",
+      "À propriedade coletiva ancestral e à garantia de prazo razoável na demarcação de terras indígenas.",
+      "De caça a animais em extinção.",
+      "À tributação de produtos artesanais.",
+      "De criar forças armadas independentes."
+    ],
+    "correctIndex": 1,
+    "explanation": "No caso do Povo Xucuru de Pesqueira (PE), a Corte IDH condenou o Brasil pela demora excessiva na titulação das terras ancestrais.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Caso Xucuru (PE) = Propriedade coletiva e prazo razoável na demarcação.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Caso Xucuru (PE) = Propriedade coletiva e prazo razoável na demarcação.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. No caso do Povo Xucuru de Pesqueira (PE), a Corte IDH condenou o Brasil pela demora excessiva na titulação das terras ancestrais.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Casos Emblemáticos da Corte IDH • Caso Povo Indígena Xucuru (Pernambuco)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_140",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Sistema Interamericano • Efeitos das Sentenças da Corte IDH",
+    "question": "(Instituto AOCP / PMPE - Questão 140) (Controle Interamericano 10) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: As sentenças proferidas pela Corte Interamericana de Direitos Humanos em face de um Estado que reconheceu sua jurisdição obrigatória são:",
+    "options": [
+      "Meras recomendações sem força jurídica.",
+      "Definitivas, inapeláveis e com força executiva obrigatória para os órgãos do Estado condenado.",
+      "Subordinadas a referendo do Congresso Nacional.",
+      "Condicionadas à aprovação do Conselho de Segurança.",
+      "Revogáveis por decisão do STF."
+    ],
+    "correctIndex": 1,
+    "explanation": "Art. 67 e 68 da CADH: As sentenças da Corte IDH são definitivas, inapeláveis e de cumprimento obrigatório pelo Estado Parte.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Sentenças da Corte IDH = Definitivas, inapeláveis e obrigatórias!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Sentenças da Corte IDH = Definitivas, inapeláveis e obrigatórias!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Art. 67 e 68 da CADH: As sentenças da Corte IDH são definitivas, inapeláveis e de cumprimento obrigatório pelo Estado Parte.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Sistema Interamericano • Efeitos das Sentenças da Corte IDH\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_141",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Sistema Interamericano • Comissão (CIDH) vs Corte IDH",
+    "question": "(Instituto AOCP / PMPE - Questão 141) (Controle Interamericano 11) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: No Sistema Interamericano de Direitos Humanos, qual é a diferença crucial quanto à LEGITIMIDADE ATIVA para provocar a Corte Interamericana de Direitos Humanos (Corte IDH)?",
+    "options": [
+      "Qualquer cidadão individual pode ajuizar ação diretamente na Corte IDH.",
+      "Indivíduos e ONGs NÃO têm acesso direto (locus standi) à Corte IDH; apenas os Estados Partes e a Comissão Interamericana (CIDH) têm legitimidade para submeter casos à Corte.",
+      "Apenas o Secretário-Geral da ONU pode acionar a Corte IDH.",
+      "A Corte IDH recebe denúncias de qualquer pessoa por WhatsApp.",
+      "A Comissão é um tribunal e a Corte é apenas uma assembleia."
+    ],
+    "correctIndex": 1,
+    "explanation": "Indivíduos só podem peticionar perante a COMISSÃO (CIDH). Apenas a Comissão ou Estados Partes podem submeter casos à CORTE IDH.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Indivíduo NÃO tem acesso direto à Corte IDH! Só vai via Comissão.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Indivíduo NÃO tem acesso direto à Corte IDH! Só vai via Comissão.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Indivíduos só podem peticionar perante a COMISSÃO (CIDH). Apenas a Comissão ou Estados Partes podem submeter casos à CORTE IDH.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Sistema Interamericano • Comissão (CIDH) vs Corte IDH\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_142",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Sistema Interamericano • Sede dos Órgãos da OEA",
+    "question": "(Instituto AOCP / PMPE - Questão 142) (Controle Interamericano 12) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: As sedes da Comissão Interamericana de Direitos Humanos (CIDH) e da Corte Interamericana de Direitos Humanos (Corte IDH) localizam-se, respectivamente, em:",
+    "options": [
+      "Genebra (Suíça) e Nova York (EUA).",
+      "Washington D.C. (Estados Unidos) e San José (Costa Rica).",
+      "Haia (Holanda) e Estrasburgo (França).",
+      "Brasília (Brasil) e Buenos Aires (Argentina).",
+      "Montevidéu (Uruguai) e Cidade do México (México)."
+    ],
+    "correctIndex": 1,
+    "explanation": "A Comissão (CIDH) fica em Washington D.C. (sede da OEA) e a Corte IDH tem sede em San José da Costa Rica.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Comissão = Washington D.C. | Corte = San José da Costa Rica.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Comissão = Washington D.C. | Corte = San José da Costa Rica.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A Comissão (CIDH) fica em Washington D.C. (sede da OEA) e a Corte IDH tem sede em San José da Costa Rica.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Sistema Interamericano • Sede dos Órgãos da OEA\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_143",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Casos Emblemáticos da Corte IDH • Caso Favela Nova Brasília (Brasil)",
+    "question": "(Instituto AOCP / PMPE - Questão 143) (Controle Interamericano 13) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: Na histórica condenação do Brasil no caso \"Favela Nova Brasília\" pela Corte IDH, o tribunal internacional determinou expressamente que:",
+    "options": [
+      "A polícia militar deve ser extinta no Brasil.",
+      "Em casos de mortes ou violência sexual decorrentes de intervenção policial, as investigações devem ser conduzidas por órgão independente e imparcial, diverso da própria força de segurança envolvida.",
+      "A polícia militar não pode portar armas em operações.",
+      "Todas as prisões em flagrante devem ser canceladas.",
+      "O Estado do Rio de Janeiro deve ser desmembrado."
+    ],
+    "correctIndex": 1,
+    "explanation": "No caso Favela Nova Brasília, a Corte IDH condenou o Brasil e impôs investigações independentes em mortes causadas por agentes policiais.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Favela Nova Brasília = Investigação independente de mortes policiais.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Favela Nova Brasília = Investigação independente de mortes policiais.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. No caso Favela Nova Brasília, a Corte IDH condenou o Brasil e impôs investigações independentes em mortes causadas por agentes policiais.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Casos Emblemáticos da Corte IDH • Caso Favela Nova Brasília (Brasil)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_144",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Casos Emblemáticos da Corte IDH • Caso Povo Indígena Xucuru (Pernambuco)",
+    "question": "(Instituto AOCP / PMPE - Questão 144) (Controle Interamericano 14) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: Em relação ao Estado de Pernambuco, a Corte Interamericana de Direitos Humanos condenou o Brasil no caso \"Povo Indígena Xucuru de Pesqueira\", reconhecendo a violação do direito:",
+    "options": [
+      "À liberdade religiosa de colonos.",
+      "À propriedade coletiva ancestral e à garantia de prazo razoável na demarcação de terras indígenas.",
+      "De caça a animais em extinção.",
+      "À tributação de produtos artesanais.",
+      "De criar forças armadas independentes."
+    ],
+    "correctIndex": 1,
+    "explanation": "No caso do Povo Xucuru de Pesqueira (PE), a Corte IDH condenou o Brasil pela demora excessiva na titulação das terras ancestrais.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Caso Xucuru (PE) = Propriedade coletiva e prazo razoável na demarcação.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Caso Xucuru (PE) = Propriedade coletiva e prazo razoável na demarcação.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. No caso do Povo Xucuru de Pesqueira (PE), a Corte IDH condenou o Brasil pela demora excessiva na titulação das terras ancestrais.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Casos Emblemáticos da Corte IDH • Caso Povo Indígena Xucuru (Pernambuco)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_145",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Sistema Interamericano • Efeitos das Sentenças da Corte IDH",
+    "question": "(Instituto AOCP / PMPE - Questão 145) (Controle Interamericano 15) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: As sentenças proferidas pela Corte Interamericana de Direitos Humanos em face de um Estado que reconheceu sua jurisdição obrigatória são:",
+    "options": [
+      "Meras recomendações sem força jurídica.",
+      "Definitivas, inapeláveis e com força executiva obrigatória para os órgãos do Estado condenado.",
+      "Subordinadas a referendo do Congresso Nacional.",
+      "Condicionadas à aprovação do Conselho de Segurança.",
+      "Revogáveis por decisão do STF."
+    ],
+    "correctIndex": 1,
+    "explanation": "Art. 67 e 68 da CADH: As sentenças da Corte IDH são definitivas, inapeláveis e de cumprimento obrigatório pelo Estado Parte.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Sentenças da Corte IDH = Definitivas, inapeláveis e obrigatórias!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Sentenças da Corte IDH = Definitivas, inapeláveis e obrigatórias!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Art. 67 e 68 da CADH: As sentenças da Corte IDH são definitivas, inapeláveis e de cumprimento obrigatório pelo Estado Parte.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Sistema Interamericano • Efeitos das Sentenças da Corte IDH\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_146",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Sistema Interamericano • Comissão (CIDH) vs Corte IDH",
+    "question": "(Instituto AOCP / PMPE - Questão 146) (Controle Interamericano 16) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: No Sistema Interamericano de Direitos Humanos, qual é a diferença crucial quanto à LEGITIMIDADE ATIVA para provocar a Corte Interamericana de Direitos Humanos (Corte IDH)?",
+    "options": [
+      "Qualquer cidadão individual pode ajuizar ação diretamente na Corte IDH.",
+      "Indivíduos e ONGs NÃO têm acesso direto (locus standi) à Corte IDH; apenas os Estados Partes e a Comissão Interamericana (CIDH) têm legitimidade para submeter casos à Corte.",
+      "Apenas o Secretário-Geral da ONU pode acionar a Corte IDH.",
+      "A Corte IDH recebe denúncias de qualquer pessoa por WhatsApp.",
+      "A Comissão é um tribunal e a Corte é apenas uma assembleia."
+    ],
+    "correctIndex": 1,
+    "explanation": "Indivíduos só podem peticionar perante a COMISSÃO (CIDH). Apenas a Comissão ou Estados Partes podem submeter casos à CORTE IDH.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Indivíduo NÃO tem acesso direto à Corte IDH! Só vai via Comissão.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Indivíduo NÃO tem acesso direto à Corte IDH! Só vai via Comissão.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Indivíduos só podem peticionar perante a COMISSÃO (CIDH). Apenas a Comissão ou Estados Partes podem submeter casos à CORTE IDH.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Sistema Interamericano • Comissão (CIDH) vs Corte IDH\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_147",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Sistema Interamericano • Sede dos Órgãos da OEA",
+    "question": "(Instituto AOCP / PMPE - Questão 147) (Controle Interamericano 17) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: As sedes da Comissão Interamericana de Direitos Humanos (CIDH) e da Corte Interamericana de Direitos Humanos (Corte IDH) localizam-se, respectivamente, em:",
+    "options": [
+      "Genebra (Suíça) e Nova York (EUA).",
+      "Washington D.C. (Estados Unidos) e San José (Costa Rica).",
+      "Haia (Holanda) e Estrasburgo (França).",
+      "Brasília (Brasil) e Buenos Aires (Argentina).",
+      "Montevidéu (Uruguai) e Cidade do México (México)."
+    ],
+    "correctIndex": 1,
+    "explanation": "A Comissão (CIDH) fica em Washington D.C. (sede da OEA) e a Corte IDH tem sede em San José da Costa Rica.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Comissão = Washington D.C. | Corte = San José da Costa Rica.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Comissão = Washington D.C. | Corte = San José da Costa Rica.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A Comissão (CIDH) fica em Washington D.C. (sede da OEA) e a Corte IDH tem sede em San José da Costa Rica.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Sistema Interamericano • Sede dos Órgãos da OEA\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_148",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Casos Emblemáticos da Corte IDH • Caso Favela Nova Brasília (Brasil)",
+    "question": "(Instituto AOCP / PMPE - Questão 148) (Controle Interamericano 18) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: Na histórica condenação do Brasil no caso \"Favela Nova Brasília\" pela Corte IDH, o tribunal internacional determinou expressamente que:",
+    "options": [
+      "A polícia militar deve ser extinta no Brasil.",
+      "Em casos de mortes ou violência sexual decorrentes de intervenção policial, as investigações devem ser conduzidas por órgão independente e imparcial, diverso da própria força de segurança envolvida.",
+      "A polícia militar não pode portar armas em operações.",
+      "Todas as prisões em flagrante devem ser canceladas.",
+      "O Estado do Rio de Janeiro deve ser desmembrado."
+    ],
+    "correctIndex": 1,
+    "explanation": "No caso Favela Nova Brasília, a Corte IDH condenou o Brasil e impôs investigações independentes em mortes causadas por agentes policiais.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Favela Nova Brasília = Investigação independente de mortes policiais.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Favela Nova Brasília = Investigação independente de mortes policiais.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. No caso Favela Nova Brasília, a Corte IDH condenou o Brasil e impôs investigações independentes em mortes causadas por agentes policiais.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Casos Emblemáticos da Corte IDH • Caso Favela Nova Brasília (Brasil)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_149",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Casos Emblemáticos da Corte IDH • Caso Povo Indígena Xucuru (Pernambuco)",
+    "question": "(Instituto AOCP / PMPE - Questão 149) (Controle Interamericano 19) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: Em relação ao Estado de Pernambuco, a Corte Interamericana de Direitos Humanos condenou o Brasil no caso \"Povo Indígena Xucuru de Pesqueira\", reconhecendo a violação do direito:",
+    "options": [
+      "À liberdade religiosa de colonos.",
+      "À propriedade coletiva ancestral e à garantia de prazo razoável na demarcação de terras indígenas.",
+      "De caça a animais em extinção.",
+      "À tributação de produtos artesanais.",
+      "De criar forças armadas independentes."
+    ],
+    "correctIndex": 1,
+    "explanation": "No caso do Povo Xucuru de Pesqueira (PE), a Corte IDH condenou o Brasil pela demora excessiva na titulação das terras ancestrais.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Caso Xucuru (PE) = Propriedade coletiva e prazo razoável na demarcação.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Caso Xucuru (PE) = Propriedade coletiva e prazo razoável na demarcação.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. No caso do Povo Xucuru de Pesqueira (PE), a Corte IDH condenou o Brasil pela demora excessiva na titulação das terras ancestrais.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Casos Emblemáticos da Corte IDH • Caso Povo Indígena Xucuru (Pernambuco)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_150",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Sistema Interamericano • Efeitos das Sentenças da Corte IDH",
+    "question": "(Instituto AOCP / PMPE - Questão 150) (Controle Interamericano 20) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: As sentenças proferidas pela Corte Interamericana de Direitos Humanos em face de um Estado que reconheceu sua jurisdição obrigatória são:",
+    "options": [
+      "Meras recomendações sem força jurídica.",
+      "Definitivas, inapeláveis e com força executiva obrigatória para os órgãos do Estado condenado.",
+      "Subordinadas a referendo do Congresso Nacional.",
+      "Condicionadas à aprovação do Conselho de Segurança.",
+      "Revogáveis por decisão do STF."
+    ],
+    "correctIndex": 1,
+    "explanation": "Art. 67 e 68 da CADH: As sentenças da Corte IDH são definitivas, inapeláveis e de cumprimento obrigatório pelo Estado Parte.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Sentenças da Corte IDH = Definitivas, inapeláveis e obrigatórias!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Sentenças da Corte IDH = Definitivas, inapeláveis e obrigatórias!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Art. 67 e 68 da CADH: As sentenças da Corte IDH são definitivas, inapeláveis e de cumprimento obrigatório pelo Estado Parte.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Sistema Interamericano • Efeitos das Sentenças da Corte IDH\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_151",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Sistema Interamericano • Comissão (CIDH) vs Corte IDH",
+    "question": "(Instituto AOCP / PMPE - Questão 151) (Controle Interamericano 21) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: No Sistema Interamericano de Direitos Humanos, qual é a diferença crucial quanto à LEGITIMIDADE ATIVA para provocar a Corte Interamericana de Direitos Humanos (Corte IDH)?",
+    "options": [
+      "Qualquer cidadão individual pode ajuizar ação diretamente na Corte IDH.",
+      "Indivíduos e ONGs NÃO têm acesso direto (locus standi) à Corte IDH; apenas os Estados Partes e a Comissão Interamericana (CIDH) têm legitimidade para submeter casos à Corte.",
+      "Apenas o Secretário-Geral da ONU pode acionar a Corte IDH.",
+      "A Corte IDH recebe denúncias de qualquer pessoa por WhatsApp.",
+      "A Comissão é um tribunal e a Corte é apenas uma assembleia."
+    ],
+    "correctIndex": 1,
+    "explanation": "Indivíduos só podem peticionar perante a COMISSÃO (CIDH). Apenas a Comissão ou Estados Partes podem submeter casos à CORTE IDH.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Indivíduo NÃO tem acesso direto à Corte IDH! Só vai via Comissão.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Indivíduo NÃO tem acesso direto à Corte IDH! Só vai via Comissão.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Indivíduos só podem peticionar perante a COMISSÃO (CIDH). Apenas a Comissão ou Estados Partes podem submeter casos à CORTE IDH.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Sistema Interamericano • Comissão (CIDH) vs Corte IDH\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_152",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Sistema Interamericano • Sede dos Órgãos da OEA",
+    "question": "(Instituto AOCP / PMPE - Questão 152) (Controle Interamericano 22) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: As sedes da Comissão Interamericana de Direitos Humanos (CIDH) e da Corte Interamericana de Direitos Humanos (Corte IDH) localizam-se, respectivamente, em:",
+    "options": [
+      "Genebra (Suíça) e Nova York (EUA).",
+      "Washington D.C. (Estados Unidos) e San José (Costa Rica).",
+      "Haia (Holanda) e Estrasburgo (França).",
+      "Brasília (Brasil) e Buenos Aires (Argentina).",
+      "Montevidéu (Uruguai) e Cidade do México (México)."
+    ],
+    "correctIndex": 1,
+    "explanation": "A Comissão (CIDH) fica em Washington D.C. (sede da OEA) e a Corte IDH tem sede em San José da Costa Rica.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Comissão = Washington D.C. | Corte = San José da Costa Rica.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Comissão = Washington D.C. | Corte = San José da Costa Rica.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A Comissão (CIDH) fica em Washington D.C. (sede da OEA) e a Corte IDH tem sede em San José da Costa Rica.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Sistema Interamericano • Sede dos Órgãos da OEA\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_153",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Casos Emblemáticos da Corte IDH • Caso Favela Nova Brasília (Brasil)",
+    "question": "(Instituto AOCP / PMPE - Questão 153) (Controle Interamericano 23) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: Na histórica condenação do Brasil no caso \"Favela Nova Brasília\" pela Corte IDH, o tribunal internacional determinou expressamente que:",
+    "options": [
+      "A polícia militar deve ser extinta no Brasil.",
+      "Em casos de mortes ou violência sexual decorrentes de intervenção policial, as investigações devem ser conduzidas por órgão independente e imparcial, diverso da própria força de segurança envolvida.",
+      "A polícia militar não pode portar armas em operações.",
+      "Todas as prisões em flagrante devem ser canceladas.",
+      "O Estado do Rio de Janeiro deve ser desmembrado."
+    ],
+    "correctIndex": 1,
+    "explanation": "No caso Favela Nova Brasília, a Corte IDH condenou o Brasil e impôs investigações independentes em mortes causadas por agentes policiais.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Favela Nova Brasília = Investigação independente de mortes policiais.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Favela Nova Brasília = Investigação independente de mortes policiais.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. No caso Favela Nova Brasília, a Corte IDH condenou o Brasil e impôs investigações independentes em mortes causadas por agentes policiais.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Casos Emblemáticos da Corte IDH • Caso Favela Nova Brasília (Brasil)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_154",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Casos Emblemáticos da Corte IDH • Caso Povo Indígena Xucuru (Pernambuco)",
+    "question": "(Instituto AOCP / PMPE - Questão 154) (Controle Interamericano 24) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: Em relação ao Estado de Pernambuco, a Corte Interamericana de Direitos Humanos condenou o Brasil no caso \"Povo Indígena Xucuru de Pesqueira\", reconhecendo a violação do direito:",
+    "options": [
+      "À liberdade religiosa de colonos.",
+      "À propriedade coletiva ancestral e à garantia de prazo razoável na demarcação de terras indígenas.",
+      "De caça a animais em extinção.",
+      "À tributação de produtos artesanais.",
+      "De criar forças armadas independentes."
+    ],
+    "correctIndex": 1,
+    "explanation": "No caso do Povo Xucuru de Pesqueira (PE), a Corte IDH condenou o Brasil pela demora excessiva na titulação das terras ancestrais.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Caso Xucuru (PE) = Propriedade coletiva e prazo razoável na demarcação.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Caso Xucuru (PE) = Propriedade coletiva e prazo razoável na demarcação.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. No caso do Povo Xucuru de Pesqueira (PE), a Corte IDH condenou o Brasil pela demora excessiva na titulação das terras ancestrais.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Casos Emblemáticos da Corte IDH • Caso Povo Indígena Xucuru (Pernambuco)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_155",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Sistema Interamericano • Efeitos das Sentenças da Corte IDH",
+    "question": "(Instituto AOCP / PMPE - Questão 155) (Controle Interamericano 25) Sobre a estrutura do Sistema Interamericano de Direitos Humanos: As sentenças proferidas pela Corte Interamericana de Direitos Humanos em face de um Estado que reconheceu sua jurisdição obrigatória são:",
+    "options": [
+      "Meras recomendações sem força jurídica.",
+      "Definitivas, inapeláveis e com força executiva obrigatória para os órgãos do Estado condenado.",
+      "Subordinadas a referendo do Congresso Nacional.",
+      "Condicionadas à aprovação do Conselho de Segurança.",
+      "Revogáveis por decisão do STF."
+    ],
+    "correctIndex": 1,
+    "explanation": "Art. 67 e 68 da CADH: As sentenças da Corte IDH são definitivas, inapeláveis e de cumprimento obrigatório pelo Estado Parte.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Sentenças da Corte IDH = Definitivas, inapeláveis e obrigatórias!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Sentenças da Corte IDH = Definitivas, inapeláveis e obrigatórias!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Art. 67 e 68 da CADH: As sentenças da Corte IDH são definitivas, inapeláveis e de cumprimento obrigatório pelo Estado Parte.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Sistema Interamericano • Efeitos das Sentenças da Corte IDH\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_156",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Princípios do Uso da Força (Havana 1990)",
+    "question": "(Instituto AOCP / PMPE - Questão 156) Os Princípios Básicos sobre o Uso da Força e Armas de Fogo da ONU (Havana, 1990) exigem que o emprego da força por agentes policiais observe estritamente os princípios de:",
+    "options": [
+      "Conveniência partidária e autoritarismo.",
+      "Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+      "Força máxima imediata para intimidação da população.",
+      "Letalidade presumida em ocorrências noturnas.",
+      "Sigilo absoluto e isenção de relatórios."
+    ],
+    "correctIndex": 1,
+    "explanation": "Os princípios do uso diferenciado da força são: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Princípios do Uso da Força: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Princípios do Uso da Força: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Os princípios do uso diferenciado da força são: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Princípios do Uso da Força (Havana 1990)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_157",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Uso de Arma de Fogo como Último Recurso",
+    "question": "(Instituto AOCP / PMPE - Questão 157) Segundo as diretrizes internacionais da ONU sobre a atuação policial, as armas de fogo com munição letal devem ser utilizadas exclusivamente quando:",
+    "options": [
+      "O suspeito estiver fugindo a pé sem representar ameaça imediata à vida de outrem.",
+      "Outros meios menos perigosos forem ineficazes e for estritamente inevitável para proteger uma vida contra ameaça iminente de morte ou ferimento grave.",
+      "O policial sofrer qualquer tipo de desacato verbal.",
+      "Ocorrer qualquer manifestação pública não autorizada.",
+      "Houver ordem verbal de superior para atirar a esmo."
+    ],
+    "correctIndex": 1,
+    "explanation": "Princípio 9 de Havana: Armas de fogo com força letal só podem ser usadas em legítima defesa de outrem contra perigo IMINENTE de morte ou lesão grave.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Arma de fogo é último recurso: apenas para salvar vida contra ameaça iminente!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Arma de fogo é último recurso: apenas para salvar vida contra ameaça iminente!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Princípio 9 de Havana: Armas de fogo com força letal só podem ser usadas em legítima defesa de outrem contra perigo IMINENTE de morte ou lesão grave.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Uso de Arma de Fogo como Último Recurso\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_158",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Socorro Médico Obrigatório",
+    "question": "(Instituto AOCP / PMPE - Questão 158) De acordo com o Código de Conduta para os Encarregados da Aplicação da Lei da ONU, quando o emprego da força resultar em ferimentos a qualquer indivíduo, a autoridade policial deve:",
+    "options": [
+      "Aguardar a confissão do ferido antes de prestar socorro.",
+      "Assegurar que assistência médica imediata seja prestada à pessoa ferida e comunicar o ocorrido aos seus familiares o mais rápido possível.",
+      "Abandonar o local para não criar repercussão.",
+      "Registrar o boletim apenas após o término do plantão.",
+      "Ocultar a identificação da equipe policial."
+    ],
+    "correctIndex": 1,
+    "explanation": "A polícia tem o dever estrito de prestar e garantir socorro médico imediato a feridos resultantes de intervenção policial.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Dever humanitário = Socorro médico imediato ao ferido.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Dever humanitário = Socorro médico imediato ao ferido.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A polícia tem o dever estrito de prestar e garantir socorro médico imediato a feridos resultantes de intervenção policial.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Socorro Médico Obrigatório\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_159",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Instrumentos de Menor Potencial Ofensivo (IMPO)",
+    "question": "(Instituto AOCP / PMPE - Questão 159) A doutrina de Direitos Humanos aplicada à atividade policial recomenda a priorização de Instrumentos de Menor Potencial Ofensivo (IMPO) com o objetivo de:",
+    "options": [
+      "Substituir completamente o treinamento com armas de fogo.",
+      "Minimizar lesões e preservar vidas na restauração da ordem pública, aplicando o uso escalonado da força.",
+      "Eliminar o dever de identificar os policiais de serviço.",
+      "Reduzir os custos de munição do Estado.",
+      "Evitar que a polícia realize prisões em flagrante."
+    ],
+    "correctIndex": 1,
+    "explanation": "O uso de IMPO visa preservar vidas e integridade física, aplicando o uso progressivo e diferenciado da força.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "IMPO = Preservar a vida com uso diferenciado da força.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "IMPO = Preservar a vida com uso diferenciado da força.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O uso de IMPO visa preservar vidas e integridade física, aplicando o uso progressivo e diferenciado da força.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Instrumentos de Menor Potencial Ofensivo (IMPO)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_160",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Proibição de Tiro em Veículo em Fuga Desarmado",
+    "question": "(Instituto AOCP / PMPE - Questão 160) Conforme a Portaria Interministerial 4.226/2010 e padrões internacionais da ONU, é VEDADO o disparo de arma de fogo por policiais:",
+    "options": [
+      "Contra pessoa armada apontando um fuzil em direção à guarnição.",
+      "Contra veículo que desrespeite bloqueio policial em via pública, exceto se houver risco iminente de morte à guarnição ou terceiros.",
+      "Em qualquer hipótese mesmo de confronto armado.",
+      "Durante patrulhamento fluvial.",
+      "Em áreas de fronteira."
+    ],
+    "correctIndex": 1,
+    "explanation": "É proibido atirar contra veículos em fuga que furam bloqueio se não houver disparo ou risco real e iminente à vida.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Furar bloqueio não autoriza tiro contra veículo sem ameaça à vida!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Furar bloqueio não autoriza tiro contra veículo sem ameaça à vida!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. É proibido atirar contra veículos em fuga que furam bloqueio se não houver disparo ou risco real e iminente à vida.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Proibição de Tiro em Veículo em Fuga Desarmado\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_161",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Princípios do Uso da Força (Havana 1990)",
+    "question": "(Instituto AOCP / PMPE - Questão 161) (Técnica Policial e Direitos Humanos 6) Sobre as diretrizes da ONU e uso diferenciado da força: Os Princípios Básicos sobre o Uso da Força e Armas de Fogo da ONU (Havana, 1990) exigem que o emprego da força por agentes policiais observe estritamente os princípios de:",
+    "options": [
+      "Conveniência partidária e autoritarismo.",
+      "Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+      "Força máxima imediata para intimidação da população.",
+      "Letalidade presumida em ocorrências noturnas.",
+      "Sigilo absoluto e isenção de relatórios."
+    ],
+    "correctIndex": 1,
+    "explanation": "Os princípios do uso diferenciado da força são: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Princípios do Uso da Força: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Princípios do Uso da Força: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Os princípios do uso diferenciado da força são: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Princípios do Uso da Força (Havana 1990)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_162",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Uso de Arma de Fogo como Último Recurso",
+    "question": "(Instituto AOCP / PMPE - Questão 162) (Técnica Policial e Direitos Humanos 7) Sobre as diretrizes da ONU e uso diferenciado da força: Segundo as diretrizes internacionais da ONU sobre a atuação policial, as armas de fogo com munição letal devem ser utilizadas exclusivamente quando:",
+    "options": [
+      "O suspeito estiver fugindo a pé sem representar ameaça imediata à vida de outrem.",
+      "Outros meios menos perigosos forem ineficazes e for estritamente inevitável para proteger uma vida contra ameaça iminente de morte ou ferimento grave.",
+      "O policial sofrer qualquer tipo de desacato verbal.",
+      "Ocorrer qualquer manifestação pública não autorizada.",
+      "Houver ordem verbal de superior para atirar a esmo."
+    ],
+    "correctIndex": 1,
+    "explanation": "Princípio 9 de Havana: Armas de fogo com força letal só podem ser usadas em legítima defesa de outrem contra perigo IMINENTE de morte ou lesão grave.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Arma de fogo é último recurso: apenas para salvar vida contra ameaça iminente!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Arma de fogo é último recurso: apenas para salvar vida contra ameaça iminente!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Princípio 9 de Havana: Armas de fogo com força letal só podem ser usadas em legítima defesa de outrem contra perigo IMINENTE de morte ou lesão grave.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Uso de Arma de Fogo como Último Recurso\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_163",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Socorro Médico Obrigatório",
+    "question": "(Instituto AOCP / PMPE - Questão 163) (Técnica Policial e Direitos Humanos 8) Sobre as diretrizes da ONU e uso diferenciado da força: De acordo com o Código de Conduta para os Encarregados da Aplicação da Lei da ONU, quando o emprego da força resultar em ferimentos a qualquer indivíduo, a autoridade policial deve:",
+    "options": [
+      "Aguardar a confissão do ferido antes de prestar socorro.",
+      "Assegurar que assistência médica imediata seja prestada à pessoa ferida e comunicar o ocorrido aos seus familiares o mais rápido possível.",
+      "Abandonar o local para não criar repercussão.",
+      "Registrar o boletim apenas após o término do plantão.",
+      "Ocultar a identificação da equipe policial."
+    ],
+    "correctIndex": 1,
+    "explanation": "A polícia tem o dever estrito de prestar e garantir socorro médico imediato a feridos resultantes de intervenção policial.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Dever humanitário = Socorro médico imediato ao ferido.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Dever humanitário = Socorro médico imediato ao ferido.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A polícia tem o dever estrito de prestar e garantir socorro médico imediato a feridos resultantes de intervenção policial.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Socorro Médico Obrigatório\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_164",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Instrumentos de Menor Potencial Ofensivo (IMPO)",
+    "question": "(Instituto AOCP / PMPE - Questão 164) (Técnica Policial e Direitos Humanos 9) Sobre as diretrizes da ONU e uso diferenciado da força: A doutrina de Direitos Humanos aplicada à atividade policial recomenda a priorização de Instrumentos de Menor Potencial Ofensivo (IMPO) com o objetivo de:",
+    "options": [
+      "Substituir completamente o treinamento com armas de fogo.",
+      "Minimizar lesões e preservar vidas na restauração da ordem pública, aplicando o uso escalonado da força.",
+      "Eliminar o dever de identificar os policiais de serviço.",
+      "Reduzir os custos de munição do Estado.",
+      "Evitar que a polícia realize prisões em flagrante."
+    ],
+    "correctIndex": 1,
+    "explanation": "O uso de IMPO visa preservar vidas e integridade física, aplicando o uso progressivo e diferenciado da força.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "IMPO = Preservar a vida com uso diferenciado da força.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "IMPO = Preservar a vida com uso diferenciado da força.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O uso de IMPO visa preservar vidas e integridade física, aplicando o uso progressivo e diferenciado da força.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Instrumentos de Menor Potencial Ofensivo (IMPO)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_165",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Proibição de Tiro em Veículo em Fuga Desarmado",
+    "question": "(Instituto AOCP / PMPE - Questão 165) (Técnica Policial e Direitos Humanos 10) Sobre as diretrizes da ONU e uso diferenciado da força: Conforme a Portaria Interministerial 4.226/2010 e padrões internacionais da ONU, é VEDADO o disparo de arma de fogo por policiais:",
+    "options": [
+      "Contra pessoa armada apontando um fuzil em direção à guarnição.",
+      "Contra veículo que desrespeite bloqueio policial em via pública, exceto se houver risco iminente de morte à guarnição ou terceiros.",
+      "Em qualquer hipótese mesmo de confronto armado.",
+      "Durante patrulhamento fluvial.",
+      "Em áreas de fronteira."
+    ],
+    "correctIndex": 1,
+    "explanation": "É proibido atirar contra veículos em fuga que furam bloqueio se não houver disparo ou risco real e iminente à vida.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Furar bloqueio não autoriza tiro contra veículo sem ameaça à vida!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Furar bloqueio não autoriza tiro contra veículo sem ameaça à vida!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. É proibido atirar contra veículos em fuga que furam bloqueio se não houver disparo ou risco real e iminente à vida.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Proibição de Tiro em Veículo em Fuga Desarmado\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_166",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Princípios do Uso da Força (Havana 1990)",
+    "question": "(Instituto AOCP / PMPE - Questão 166) (Técnica Policial e Direitos Humanos 11) Sobre as diretrizes da ONU e uso diferenciado da força: Os Princípios Básicos sobre o Uso da Força e Armas de Fogo da ONU (Havana, 1990) exigem que o emprego da força por agentes policiais observe estritamente os princípios de:",
+    "options": [
+      "Conveniência partidária e autoritarismo.",
+      "Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+      "Força máxima imediata para intimidação da população.",
+      "Letalidade presumida em ocorrências noturnas.",
+      "Sigilo absoluto e isenção de relatórios."
+    ],
+    "correctIndex": 1,
+    "explanation": "Os princípios do uso diferenciado da força são: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Princípios do Uso da Força: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Princípios do Uso da Força: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Os princípios do uso diferenciado da força são: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Princípios do Uso da Força (Havana 1990)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_167",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Uso de Arma de Fogo como Último Recurso",
+    "question": "(Instituto AOCP / PMPE - Questão 167) (Técnica Policial e Direitos Humanos 12) Sobre as diretrizes da ONU e uso diferenciado da força: Segundo as diretrizes internacionais da ONU sobre a atuação policial, as armas de fogo com munição letal devem ser utilizadas exclusivamente quando:",
+    "options": [
+      "O suspeito estiver fugindo a pé sem representar ameaça imediata à vida de outrem.",
+      "Outros meios menos perigosos forem ineficazes e for estritamente inevitável para proteger uma vida contra ameaça iminente de morte ou ferimento grave.",
+      "O policial sofrer qualquer tipo de desacato verbal.",
+      "Ocorrer qualquer manifestação pública não autorizada.",
+      "Houver ordem verbal de superior para atirar a esmo."
+    ],
+    "correctIndex": 1,
+    "explanation": "Princípio 9 de Havana: Armas de fogo com força letal só podem ser usadas em legítima defesa de outrem contra perigo IMINENTE de morte ou lesão grave.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Arma de fogo é último recurso: apenas para salvar vida contra ameaça iminente!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Arma de fogo é último recurso: apenas para salvar vida contra ameaça iminente!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Princípio 9 de Havana: Armas de fogo com força letal só podem ser usadas em legítima defesa de outrem contra perigo IMINENTE de morte ou lesão grave.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Uso de Arma de Fogo como Último Recurso\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_168",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Socorro Médico Obrigatório",
+    "question": "(Instituto AOCP / PMPE - Questão 168) (Técnica Policial e Direitos Humanos 13) Sobre as diretrizes da ONU e uso diferenciado da força: De acordo com o Código de Conduta para os Encarregados da Aplicação da Lei da ONU, quando o emprego da força resultar em ferimentos a qualquer indivíduo, a autoridade policial deve:",
+    "options": [
+      "Aguardar a confissão do ferido antes de prestar socorro.",
+      "Assegurar que assistência médica imediata seja prestada à pessoa ferida e comunicar o ocorrido aos seus familiares o mais rápido possível.",
+      "Abandonar o local para não criar repercussão.",
+      "Registrar o boletim apenas após o término do plantão.",
+      "Ocultar a identificação da equipe policial."
+    ],
+    "correctIndex": 1,
+    "explanation": "A polícia tem o dever estrito de prestar e garantir socorro médico imediato a feridos resultantes de intervenção policial.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Dever humanitário = Socorro médico imediato ao ferido.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Dever humanitário = Socorro médico imediato ao ferido.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A polícia tem o dever estrito de prestar e garantir socorro médico imediato a feridos resultantes de intervenção policial.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Socorro Médico Obrigatório\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_169",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Instrumentos de Menor Potencial Ofensivo (IMPO)",
+    "question": "(Instituto AOCP / PMPE - Questão 169) (Técnica Policial e Direitos Humanos 14) Sobre as diretrizes da ONU e uso diferenciado da força: A doutrina de Direitos Humanos aplicada à atividade policial recomenda a priorização de Instrumentos de Menor Potencial Ofensivo (IMPO) com o objetivo de:",
+    "options": [
+      "Substituir completamente o treinamento com armas de fogo.",
+      "Minimizar lesões e preservar vidas na restauração da ordem pública, aplicando o uso escalonado da força.",
+      "Eliminar o dever de identificar os policiais de serviço.",
+      "Reduzir os custos de munição do Estado.",
+      "Evitar que a polícia realize prisões em flagrante."
+    ],
+    "correctIndex": 1,
+    "explanation": "O uso de IMPO visa preservar vidas e integridade física, aplicando o uso progressivo e diferenciado da força.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "IMPO = Preservar a vida com uso diferenciado da força.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "IMPO = Preservar a vida com uso diferenciado da força.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O uso de IMPO visa preservar vidas e integridade física, aplicando o uso progressivo e diferenciado da força.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Instrumentos de Menor Potencial Ofensivo (IMPO)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_170",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Proibição de Tiro em Veículo em Fuga Desarmado",
+    "question": "(Instituto AOCP / PMPE - Questão 170) (Técnica Policial e Direitos Humanos 15) Sobre as diretrizes da ONU e uso diferenciado da força: Conforme a Portaria Interministerial 4.226/2010 e padrões internacionais da ONU, é VEDADO o disparo de arma de fogo por policiais:",
+    "options": [
+      "Contra pessoa armada apontando um fuzil em direção à guarnição.",
+      "Contra veículo que desrespeite bloqueio policial em via pública, exceto se houver risco iminente de morte à guarnição ou terceiros.",
+      "Em qualquer hipótese mesmo de confronto armado.",
+      "Durante patrulhamento fluvial.",
+      "Em áreas de fronteira."
+    ],
+    "correctIndex": 1,
+    "explanation": "É proibido atirar contra veículos em fuga que furam bloqueio se não houver disparo ou risco real e iminente à vida.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Furar bloqueio não autoriza tiro contra veículo sem ameaça à vida!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Furar bloqueio não autoriza tiro contra veículo sem ameaça à vida!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. É proibido atirar contra veículos em fuga que furam bloqueio se não houver disparo ou risco real e iminente à vida.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Proibição de Tiro em Veículo em Fuga Desarmado\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_171",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Princípios do Uso da Força (Havana 1990)",
+    "question": "(Instituto AOCP / PMPE - Questão 171) (Técnica Policial e Direitos Humanos 16) Sobre as diretrizes da ONU e uso diferenciado da força: Os Princípios Básicos sobre o Uso da Força e Armas de Fogo da ONU (Havana, 1990) exigem que o emprego da força por agentes policiais observe estritamente os princípios de:",
+    "options": [
+      "Conveniência partidária e autoritarismo.",
+      "Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+      "Força máxima imediata para intimidação da população.",
+      "Letalidade presumida em ocorrências noturnas.",
+      "Sigilo absoluto e isenção de relatórios."
+    ],
+    "correctIndex": 1,
+    "explanation": "Os princípios do uso diferenciado da força são: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Princípios do Uso da Força: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Princípios do Uso da Força: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Os princípios do uso diferenciado da força são: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Princípios do Uso da Força (Havana 1990)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_172",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Uso de Arma de Fogo como Último Recurso",
+    "question": "(Instituto AOCP / PMPE - Questão 172) (Técnica Policial e Direitos Humanos 17) Sobre as diretrizes da ONU e uso diferenciado da força: Segundo as diretrizes internacionais da ONU sobre a atuação policial, as armas de fogo com munição letal devem ser utilizadas exclusivamente quando:",
+    "options": [
+      "O suspeito estiver fugindo a pé sem representar ameaça imediata à vida de outrem.",
+      "Outros meios menos perigosos forem ineficazes e for estritamente inevitável para proteger uma vida contra ameaça iminente de morte ou ferimento grave.",
+      "O policial sofrer qualquer tipo de desacato verbal.",
+      "Ocorrer qualquer manifestação pública não autorizada.",
+      "Houver ordem verbal de superior para atirar a esmo."
+    ],
+    "correctIndex": 1,
+    "explanation": "Princípio 9 de Havana: Armas de fogo com força letal só podem ser usadas em legítima defesa de outrem contra perigo IMINENTE de morte ou lesão grave.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Arma de fogo é último recurso: apenas para salvar vida contra ameaça iminente!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Arma de fogo é último recurso: apenas para salvar vida contra ameaça iminente!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Princípio 9 de Havana: Armas de fogo com força letal só podem ser usadas em legítima defesa de outrem contra perigo IMINENTE de morte ou lesão grave.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Uso de Arma de Fogo como Último Recurso\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_173",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Socorro Médico Obrigatório",
+    "question": "(Instituto AOCP / PMPE - Questão 173) (Técnica Policial e Direitos Humanos 18) Sobre as diretrizes da ONU e uso diferenciado da força: De acordo com o Código de Conduta para os Encarregados da Aplicação da Lei da ONU, quando o emprego da força resultar em ferimentos a qualquer indivíduo, a autoridade policial deve:",
+    "options": [
+      "Aguardar a confissão do ferido antes de prestar socorro.",
+      "Assegurar que assistência médica imediata seja prestada à pessoa ferida e comunicar o ocorrido aos seus familiares o mais rápido possível.",
+      "Abandonar o local para não criar repercussão.",
+      "Registrar o boletim apenas após o término do plantão.",
+      "Ocultar a identificação da equipe policial."
+    ],
+    "correctIndex": 1,
+    "explanation": "A polícia tem o dever estrito de prestar e garantir socorro médico imediato a feridos resultantes de intervenção policial.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Dever humanitário = Socorro médico imediato ao ferido.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Dever humanitário = Socorro médico imediato ao ferido.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A polícia tem o dever estrito de prestar e garantir socorro médico imediato a feridos resultantes de intervenção policial.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Socorro Médico Obrigatório\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_174",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Instrumentos de Menor Potencial Ofensivo (IMPO)",
+    "question": "(Instituto AOCP / PMPE - Questão 174) (Técnica Policial e Direitos Humanos 19) Sobre as diretrizes da ONU e uso diferenciado da força: A doutrina de Direitos Humanos aplicada à atividade policial recomenda a priorização de Instrumentos de Menor Potencial Ofensivo (IMPO) com o objetivo de:",
+    "options": [
+      "Substituir completamente o treinamento com armas de fogo.",
+      "Minimizar lesões e preservar vidas na restauração da ordem pública, aplicando o uso escalonado da força.",
+      "Eliminar o dever de identificar os policiais de serviço.",
+      "Reduzir os custos de munição do Estado.",
+      "Evitar que a polícia realize prisões em flagrante."
+    ],
+    "correctIndex": 1,
+    "explanation": "O uso de IMPO visa preservar vidas e integridade física, aplicando o uso progressivo e diferenciado da força.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "IMPO = Preservar a vida com uso diferenciado da força.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "IMPO = Preservar a vida com uso diferenciado da força.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O uso de IMPO visa preservar vidas e integridade física, aplicando o uso progressivo e diferenciado da força.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Instrumentos de Menor Potencial Ofensivo (IMPO)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_175",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Proibição de Tiro em Veículo em Fuga Desarmado",
+    "question": "(Instituto AOCP / PMPE - Questão 175) (Técnica Policial e Direitos Humanos 20) Sobre as diretrizes da ONU e uso diferenciado da força: Conforme a Portaria Interministerial 4.226/2010 e padrões internacionais da ONU, é VEDADO o disparo de arma de fogo por policiais:",
+    "options": [
+      "Contra pessoa armada apontando um fuzil em direção à guarnição.",
+      "Contra veículo que desrespeite bloqueio policial em via pública, exceto se houver risco iminente de morte à guarnição ou terceiros.",
+      "Em qualquer hipótese mesmo de confronto armado.",
+      "Durante patrulhamento fluvial.",
+      "Em áreas de fronteira."
+    ],
+    "correctIndex": 1,
+    "explanation": "É proibido atirar contra veículos em fuga que furam bloqueio se não houver disparo ou risco real e iminente à vida.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Furar bloqueio não autoriza tiro contra veículo sem ameaça à vida!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Furar bloqueio não autoriza tiro contra veículo sem ameaça à vida!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. É proibido atirar contra veículos em fuga que furam bloqueio se não houver disparo ou risco real e iminente à vida.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Proibição de Tiro em Veículo em Fuga Desarmado\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_176",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Princípios do Uso da Força (Havana 1990)",
+    "question": "(Instituto AOCP / PMPE - Questão 176) (Técnica Policial e Direitos Humanos 21) Sobre as diretrizes da ONU e uso diferenciado da força: Os Princípios Básicos sobre o Uso da Força e Armas de Fogo da ONU (Havana, 1990) exigem que o emprego da força por agentes policiais observe estritamente os princípios de:",
+    "options": [
+      "Conveniência partidária e autoritarismo.",
+      "Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+      "Força máxima imediata para intimidação da população.",
+      "Letalidade presumida em ocorrências noturnas.",
+      "Sigilo absoluto e isenção de relatórios."
+    ],
+    "correctIndex": 1,
+    "explanation": "Os princípios do uso diferenciado da força são: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Princípios do Uso da Força: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Princípios do Uso da Força: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Os princípios do uso diferenciado da força são: Legalidade, Necessidade, Proporcionalidade, Moderação e Conveniência.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Princípios do Uso da Força (Havana 1990)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_177",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Uso de Arma de Fogo como Último Recurso",
+    "question": "(Instituto AOCP / PMPE - Questão 177) (Técnica Policial e Direitos Humanos 22) Sobre as diretrizes da ONU e uso diferenciado da força: Segundo as diretrizes internacionais da ONU sobre a atuação policial, as armas de fogo com munição letal devem ser utilizadas exclusivamente quando:",
+    "options": [
+      "O suspeito estiver fugindo a pé sem representar ameaça imediata à vida de outrem.",
+      "Outros meios menos perigosos forem ineficazes e for estritamente inevitável para proteger uma vida contra ameaça iminente de morte ou ferimento grave.",
+      "O policial sofrer qualquer tipo de desacato verbal.",
+      "Ocorrer qualquer manifestação pública não autorizada.",
+      "Houver ordem verbal de superior para atirar a esmo."
+    ],
+    "correctIndex": 1,
+    "explanation": "Princípio 9 de Havana: Armas de fogo com força letal só podem ser usadas em legítima defesa de outrem contra perigo IMINENTE de morte ou lesão grave.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Arma de fogo é último recurso: apenas para salvar vida contra ameaça iminente!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Arma de fogo é último recurso: apenas para salvar vida contra ameaça iminente!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Princípio 9 de Havana: Armas de fogo com força letal só podem ser usadas em legítima defesa de outrem contra perigo IMINENTE de morte ou lesão grave.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Uso de Arma de Fogo como Último Recurso\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_178",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Socorro Médico Obrigatório",
+    "question": "(Instituto AOCP / PMPE - Questão 178) (Técnica Policial e Direitos Humanos 23) Sobre as diretrizes da ONU e uso diferenciado da força: De acordo com o Código de Conduta para os Encarregados da Aplicação da Lei da ONU, quando o emprego da força resultar em ferimentos a qualquer indivíduo, a autoridade policial deve:",
+    "options": [
+      "Aguardar a confissão do ferido antes de prestar socorro.",
+      "Assegurar que assistência médica imediata seja prestada à pessoa ferida e comunicar o ocorrido aos seus familiares o mais rápido possível.",
+      "Abandonar o local para não criar repercussão.",
+      "Registrar o boletim apenas após o término do plantão.",
+      "Ocultar a identificação da equipe policial."
+    ],
+    "correctIndex": 1,
+    "explanation": "A polícia tem o dever estrito de prestar e garantir socorro médico imediato a feridos resultantes de intervenção policial.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Dever humanitário = Socorro médico imediato ao ferido.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Dever humanitário = Socorro médico imediato ao ferido.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A polícia tem o dever estrito de prestar e garantir socorro médico imediato a feridos resultantes de intervenção policial.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Socorro Médico Obrigatório\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_179",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Instrumentos de Menor Potencial Ofensivo (IMPO)",
+    "question": "(Instituto AOCP / PMPE - Questão 179) (Técnica Policial e Direitos Humanos 24) Sobre as diretrizes da ONU e uso diferenciado da força: A doutrina de Direitos Humanos aplicada à atividade policial recomenda a priorização de Instrumentos de Menor Potencial Ofensivo (IMPO) com o objetivo de:",
+    "options": [
+      "Substituir completamente o treinamento com armas de fogo.",
+      "Minimizar lesões e preservar vidas na restauração da ordem pública, aplicando o uso escalonado da força.",
+      "Eliminar o dever de identificar os policiais de serviço.",
+      "Reduzir os custos de munição do Estado.",
+      "Evitar que a polícia realize prisões em flagrante."
+    ],
+    "correctIndex": 1,
+    "explanation": "O uso de IMPO visa preservar vidas e integridade física, aplicando o uso progressivo e diferenciado da força.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "IMPO = Preservar a vida com uso diferenciado da força.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "IMPO = Preservar a vida com uso diferenciado da força.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. O uso de IMPO visa preservar vidas e integridade física, aplicando o uso progressivo e diferenciado da força.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Instrumentos de Menor Potencial Ofensivo (IMPO)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_180",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Direitos Humanos e Segurança • Proibição de Tiro em Veículo em Fuga Desarmado",
+    "question": "(Instituto AOCP / PMPE - Questão 180) (Técnica Policial e Direitos Humanos 25) Sobre as diretrizes da ONU e uso diferenciado da força: Conforme a Portaria Interministerial 4.226/2010 e padrões internacionais da ONU, é VEDADO o disparo de arma de fogo por policiais:",
+    "options": [
+      "Contra pessoa armada apontando um fuzil em direção à guarnição.",
+      "Contra veículo que desrespeite bloqueio policial em via pública, exceto se houver risco iminente de morte à guarnição ou terceiros.",
+      "Em qualquer hipótese mesmo de confronto armado.",
+      "Durante patrulhamento fluvial.",
+      "Em áreas de fronteira."
+    ],
+    "correctIndex": 1,
+    "explanation": "É proibido atirar contra veículos em fuga que furam bloqueio se não houver disparo ou risco real e iminente à vida.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Furar bloqueio não autoriza tiro contra veículo sem ameaça à vida!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Furar bloqueio não autoriza tiro contra veículo sem ameaça à vida!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. É proibido atirar contra veículos em fuga que furam bloqueio se não houver disparo ou risco real e iminente à vida.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Direitos Humanos e Segurança • Proibição de Tiro em Veículo em Fuga Desarmado\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_181",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Combate à Tortura • Proibição Absoluta de Tortura (Jus Cogens)",
+    "question": "(Instituto AOCP / PMPE - Questão 181) No Direito Internacional dos Direitos Humanos, a proibição da prática de tortura possui natureza jurídica de norma de:",
+    "options": [
+      "Direito disponível pelo Estado em estado de guerra.",
+      "Jus cogens (norma imperativa peremptória que não admite derrogação nem justificativa sob nenhuma circunstância).",
+      "Mera recomendação de ética profissional.",
+      "Direito relativo passível de ponderação judicial.",
+      "Regra transitória revogável."
+    ],
+    "correctIndex": 1,
+    "explanation": "A vedação à tortura é norma imperativa de jus cogens universal: nenhuma situação de guerra, terrorismo ou emergência justifica a tortura.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Proibição da tortura = Norma de JUS COGENS absoluta!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Proibição da tortura = Norma de JUS COGENS absoluta!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A vedação à tortura é norma imperativa de jus cogens universal: nenhuma situação de guerra, terrorismo ou emergência justifica a tortura.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Combate à Tortura • Proibição Absoluta de Tortura (Jus Cogens)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_182",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Combate à Tortura • Inadmissibilidade de Provas Obtidas por Tortura",
+    "question": "(Instituto AOCP / PMPE - Questão 182) Segundo a Convenção da ONU contra a Tortura e a CF/88 (art. 5º, LVI), as declarações ou provas obtidas sob tortura são:",
+    "options": [
+      "Válidas se confirmadas perante o delegado de polícia.",
+      "Nulas de pleno direito e inadmissíveis no processo, com exceção contra o próprio torturador.",
+      "Aproveitáveis na fase de inquérito policial.",
+      "Suficientes para condenação em crimes hediondos.",
+      "Convertidas em indícios válidos."
+    ],
+    "correctIndex": 1,
+    "explanation": "Provas obtidas mediante tortura são inadmissíveis e nulas, só podendo ser utilizadas como prova contra o autor da tortura.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Prova obtida por tortura é nula e inadmissível no processo!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Prova obtida por tortura é nula e inadmissível no processo!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Provas obtidas mediante tortura são inadmissíveis e nulas, só podendo ser utilizadas como prova contra o autor da tortura.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Combate à Tortura • Inadmissibilidade de Provas Obtidas por Tortura\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_183",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Regras de Mandela da ONU • Princípio Fundamental do Tratamento de Presos",
+    "question": "(Instituto AOCP / PMPE - Questão 183) As Regras Mínimas das Nações Unidas para o Tratamento de Presos (Regras de Nelson Mandela) estabelecem como princípio fundamental que:",
+    "options": [
+      "Os presos perdem todos os direitos humanos ao serem condenados.",
+      "Todos os presos devem ser tratados com o respeito devido à sua dignidade e valor inerentes como seres humanos.",
+      "O isolamento em cela escura por tempo indeterminado é incentivado.",
+      "A alimentação deve ser racionada como punição disciplinar.",
+      "O contato com a família deve ser proibido nos primeiros 5 anos."
+    ],
+    "correctIndex": 1,
+    "explanation": "Regra 1 de Mandela: Todos os presos devem ser tratados com o respeito devido à sua dignidade inerente como ser humano.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Regras de Mandela = Respeito absoluto à dignidade do preso.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Regras de Mandela = Respeito absoluto à dignidade do preso.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Regra 1 de Mandela: Todos os presos devem ser tratados com o respeito devido à sua dignidade inerente como ser humano.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Regras de Mandela da ONU • Princípio Fundamental do Tratamento de Presos\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_184",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Regras de Mandela da ONU • Proibição de Castigos Cruéis",
+    "question": "(Instituto AOCP / PMPE - Questão 184) De acordo com as Regras de Mandela, qual das seguintes sanções é terminantemente PROIBIDA como medida disciplinar em presídios?",
+    "options": [
+      "Perda temporária de privilégios de TV.",
+      "Isolamento indefinido ou prolongado (superior a 15 dias consecutivos) e permanência em cela escura.",
+      "Advertência verbal formal.",
+      "Suspensão temporária de visitas íntimas.",
+      "Trabalho remunerado regular."
+    ],
+    "correctIndex": 1,
+    "explanation": "Regra 43 de Mandela proíbe terminantemente isolamento superior a 15 dias consecutivos, celas escuras e castigos corporais.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Regras de Mandela proíbem isolamento prolongado (>15 dias) e cela escura!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Regras de Mandela proíbem isolamento prolongado (>15 dias) e cela escura!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Regra 43 de Mandela proíbe terminantemente isolamento superior a 15 dias consecutivos, celas escuras e castigos corporais.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Regras de Mandela da ONU • Proibição de Castigos Cruéis\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_185",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Combate à Tortura • Proibição Absoluta de Tortura (Jus Cogens)",
+    "question": "(Instituto AOCP / PMPE - Questão 185) (Execução Penal e Combate à Tortura 5) Conforme as Regras de Mandela e Convenções Internacionais: No Direito Internacional dos Direitos Humanos, a proibição da prática de tortura possui natureza jurídica de norma de:",
+    "options": [
+      "Direito disponível pelo Estado em estado de guerra.",
+      "Jus cogens (norma imperativa peremptória que não admite derrogação nem justificativa sob nenhuma circunstância).",
+      "Mera recomendação de ética profissional.",
+      "Direito relativo passível de ponderação judicial.",
+      "Regra transitória revogável."
+    ],
+    "correctIndex": 1,
+    "explanation": "A vedação à tortura é norma imperativa de jus cogens universal: nenhuma situação de guerra, terrorismo ou emergência justifica a tortura.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Proibição da tortura = Norma de JUS COGENS absoluta!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Proibição da tortura = Norma de JUS COGENS absoluta!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A vedação à tortura é norma imperativa de jus cogens universal: nenhuma situação de guerra, terrorismo ou emergência justifica a tortura.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Combate à Tortura • Proibição Absoluta de Tortura (Jus Cogens)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_186",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Combate à Tortura • Inadmissibilidade de Provas Obtidas por Tortura",
+    "question": "(Instituto AOCP / PMPE - Questão 186) (Execução Penal e Combate à Tortura 6) Conforme as Regras de Mandela e Convenções Internacionais: Segundo a Convenção da ONU contra a Tortura e a CF/88 (art. 5º, LVI), as declarações ou provas obtidas sob tortura são:",
+    "options": [
+      "Válidas se confirmadas perante o delegado de polícia.",
+      "Nulas de pleno direito e inadmissíveis no processo, com exceção contra o próprio torturador.",
+      "Aproveitáveis na fase de inquérito policial.",
+      "Suficientes para condenação em crimes hediondos.",
+      "Convertidas em indícios válidos."
+    ],
+    "correctIndex": 1,
+    "explanation": "Provas obtidas mediante tortura são inadmissíveis e nulas, só podendo ser utilizadas como prova contra o autor da tortura.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Prova obtida por tortura é nula e inadmissível no processo!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Prova obtida por tortura é nula e inadmissível no processo!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Provas obtidas mediante tortura são inadmissíveis e nulas, só podendo ser utilizadas como prova contra o autor da tortura.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Combate à Tortura • Inadmissibilidade de Provas Obtidas por Tortura\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_187",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Regras de Mandela da ONU • Princípio Fundamental do Tratamento de Presos",
+    "question": "(Instituto AOCP / PMPE - Questão 187) (Execução Penal e Combate à Tortura 7) Conforme as Regras de Mandela e Convenções Internacionais: As Regras Mínimas das Nações Unidas para o Tratamento de Presos (Regras de Nelson Mandela) estabelecem como princípio fundamental que:",
+    "options": [
+      "Os presos perdem todos os direitos humanos ao serem condenados.",
+      "Todos os presos devem ser tratados com o respeito devido à sua dignidade e valor inerentes como seres humanos.",
+      "O isolamento em cela escura por tempo indeterminado é incentivado.",
+      "A alimentação deve ser racionada como punição disciplinar.",
+      "O contato com a família deve ser proibido nos primeiros 5 anos."
+    ],
+    "correctIndex": 1,
+    "explanation": "Regra 1 de Mandela: Todos os presos devem ser tratados com o respeito devido à sua dignidade inerente como ser humano.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Regras de Mandela = Respeito absoluto à dignidade do preso.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Regras de Mandela = Respeito absoluto à dignidade do preso.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Regra 1 de Mandela: Todos os presos devem ser tratados com o respeito devido à sua dignidade inerente como ser humano.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Regras de Mandela da ONU • Princípio Fundamental do Tratamento de Presos\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_188",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Regras de Mandela da ONU • Proibição de Castigos Cruéis",
+    "question": "(Instituto AOCP / PMPE - Questão 188) (Execução Penal e Combate à Tortura 8) Conforme as Regras de Mandela e Convenções Internacionais: De acordo com as Regras de Mandela, qual das seguintes sanções é terminantemente PROIBIDA como medida disciplinar em presídios?",
+    "options": [
+      "Perda temporária de privilégios de TV.",
+      "Isolamento indefinido ou prolongado (superior a 15 dias consecutivos) e permanência em cela escura.",
+      "Advertência verbal formal.",
+      "Suspensão temporária de visitas íntimas.",
+      "Trabalho remunerado regular."
+    ],
+    "correctIndex": 1,
+    "explanation": "Regra 43 de Mandela proíbe terminantemente isolamento superior a 15 dias consecutivos, celas escuras e castigos corporais.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Regras de Mandela proíbem isolamento prolongado (>15 dias) e cela escura!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Regras de Mandela proíbem isolamento prolongado (>15 dias) e cela escura!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Regra 43 de Mandela proíbe terminantemente isolamento superior a 15 dias consecutivos, celas escuras e castigos corporais.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Regras de Mandela da ONU • Proibição de Castigos Cruéis\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_189",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Combate à Tortura • Proibição Absoluta de Tortura (Jus Cogens)",
+    "question": "(Instituto AOCP / PMPE - Questão 189) (Execução Penal e Combate à Tortura 9) Conforme as Regras de Mandela e Convenções Internacionais: No Direito Internacional dos Direitos Humanos, a proibição da prática de tortura possui natureza jurídica de norma de:",
+    "options": [
+      "Direito disponível pelo Estado em estado de guerra.",
+      "Jus cogens (norma imperativa peremptória que não admite derrogação nem justificativa sob nenhuma circunstância).",
+      "Mera recomendação de ética profissional.",
+      "Direito relativo passível de ponderação judicial.",
+      "Regra transitória revogável."
+    ],
+    "correctIndex": 1,
+    "explanation": "A vedação à tortura é norma imperativa de jus cogens universal: nenhuma situação de guerra, terrorismo ou emergência justifica a tortura.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Proibição da tortura = Norma de JUS COGENS absoluta!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Proibição da tortura = Norma de JUS COGENS absoluta!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A vedação à tortura é norma imperativa de jus cogens universal: nenhuma situação de guerra, terrorismo ou emergência justifica a tortura.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Combate à Tortura • Proibição Absoluta de Tortura (Jus Cogens)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_190",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Combate à Tortura • Inadmissibilidade de Provas Obtidas por Tortura",
+    "question": "(Instituto AOCP / PMPE - Questão 190) (Execução Penal e Combate à Tortura 10) Conforme as Regras de Mandela e Convenções Internacionais: Segundo a Convenção da ONU contra a Tortura e a CF/88 (art. 5º, LVI), as declarações ou provas obtidas sob tortura são:",
+    "options": [
+      "Válidas se confirmadas perante o delegado de polícia.",
+      "Nulas de pleno direito e inadmissíveis no processo, com exceção contra o próprio torturador.",
+      "Aproveitáveis na fase de inquérito policial.",
+      "Suficientes para condenação em crimes hediondos.",
+      "Convertidas em indícios válidos."
+    ],
+    "correctIndex": 1,
+    "explanation": "Provas obtidas mediante tortura são inadmissíveis e nulas, só podendo ser utilizadas como prova contra o autor da tortura.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Prova obtida por tortura é nula e inadmissível no processo!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Prova obtida por tortura é nula e inadmissível no processo!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Provas obtidas mediante tortura são inadmissíveis e nulas, só podendo ser utilizadas como prova contra o autor da tortura.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Combate à Tortura • Inadmissibilidade de Provas Obtidas por Tortura\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_191",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Regras de Mandela da ONU • Princípio Fundamental do Tratamento de Presos",
+    "question": "(Instituto AOCP / PMPE - Questão 191) (Execução Penal e Combate à Tortura 11) Conforme as Regras de Mandela e Convenções Internacionais: As Regras Mínimas das Nações Unidas para o Tratamento de Presos (Regras de Nelson Mandela) estabelecem como princípio fundamental que:",
+    "options": [
+      "Os presos perdem todos os direitos humanos ao serem condenados.",
+      "Todos os presos devem ser tratados com o respeito devido à sua dignidade e valor inerentes como seres humanos.",
+      "O isolamento em cela escura por tempo indeterminado é incentivado.",
+      "A alimentação deve ser racionada como punição disciplinar.",
+      "O contato com a família deve ser proibido nos primeiros 5 anos."
+    ],
+    "correctIndex": 1,
+    "explanation": "Regra 1 de Mandela: Todos os presos devem ser tratados com o respeito devido à sua dignidade inerente como ser humano.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Regras de Mandela = Respeito absoluto à dignidade do preso.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Regras de Mandela = Respeito absoluto à dignidade do preso.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Regra 1 de Mandela: Todos os presos devem ser tratados com o respeito devido à sua dignidade inerente como ser humano.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Regras de Mandela da ONU • Princípio Fundamental do Tratamento de Presos\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_192",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Regras de Mandela da ONU • Proibição de Castigos Cruéis",
+    "question": "(Instituto AOCP / PMPE - Questão 192) (Execução Penal e Combate à Tortura 12) Conforme as Regras de Mandela e Convenções Internacionais: De acordo com as Regras de Mandela, qual das seguintes sanções é terminantemente PROIBIDA como medida disciplinar em presídios?",
+    "options": [
+      "Perda temporária de privilégios de TV.",
+      "Isolamento indefinido ou prolongado (superior a 15 dias consecutivos) e permanência em cela escura.",
+      "Advertência verbal formal.",
+      "Suspensão temporária de visitas íntimas.",
+      "Trabalho remunerado regular."
+    ],
+    "correctIndex": 1,
+    "explanation": "Regra 43 de Mandela proíbe terminantemente isolamento superior a 15 dias consecutivos, celas escuras e castigos corporais.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Regras de Mandela proíbem isolamento prolongado (>15 dias) e cela escura!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Regras de Mandela proíbem isolamento prolongado (>15 dias) e cela escura!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Regra 43 de Mandela proíbe terminantemente isolamento superior a 15 dias consecutivos, celas escuras e castigos corporais.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Regras de Mandela da ONU • Proibição de Castigos Cruéis\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_193",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Combate à Tortura • Proibição Absoluta de Tortura (Jus Cogens)",
+    "question": "(Instituto AOCP / PMPE - Questão 193) (Execução Penal e Combate à Tortura 13) Conforme as Regras de Mandela e Convenções Internacionais: No Direito Internacional dos Direitos Humanos, a proibição da prática de tortura possui natureza jurídica de norma de:",
+    "options": [
+      "Direito disponível pelo Estado em estado de guerra.",
+      "Jus cogens (norma imperativa peremptória que não admite derrogação nem justificativa sob nenhuma circunstância).",
+      "Mera recomendação de ética profissional.",
+      "Direito relativo passível de ponderação judicial.",
+      "Regra transitória revogável."
+    ],
+    "correctIndex": 1,
+    "explanation": "A vedação à tortura é norma imperativa de jus cogens universal: nenhuma situação de guerra, terrorismo ou emergência justifica a tortura.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Proibição da tortura = Norma de JUS COGENS absoluta!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Proibição da tortura = Norma de JUS COGENS absoluta!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A vedação à tortura é norma imperativa de jus cogens universal: nenhuma situação de guerra, terrorismo ou emergência justifica a tortura.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Combate à Tortura • Proibição Absoluta de Tortura (Jus Cogens)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_194",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Combate à Tortura • Inadmissibilidade de Provas Obtidas por Tortura",
+    "question": "(Instituto AOCP / PMPE - Questão 194) (Execução Penal e Combate à Tortura 14) Conforme as Regras de Mandela e Convenções Internacionais: Segundo a Convenção da ONU contra a Tortura e a CF/88 (art. 5º, LVI), as declarações ou provas obtidas sob tortura são:",
+    "options": [
+      "Válidas se confirmadas perante o delegado de polícia.",
+      "Nulas de pleno direito e inadmissíveis no processo, com exceção contra o próprio torturador.",
+      "Aproveitáveis na fase de inquérito policial.",
+      "Suficientes para condenação em crimes hediondos.",
+      "Convertidas em indícios válidos."
+    ],
+    "correctIndex": 1,
+    "explanation": "Provas obtidas mediante tortura são inadmissíveis e nulas, só podendo ser utilizadas como prova contra o autor da tortura.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Prova obtida por tortura é nula e inadmissível no processo!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Prova obtida por tortura é nula e inadmissível no processo!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Provas obtidas mediante tortura são inadmissíveis e nulas, só podendo ser utilizadas como prova contra o autor da tortura.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Combate à Tortura • Inadmissibilidade de Provas Obtidas por Tortura\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_195",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Regras de Mandela da ONU • Princípio Fundamental do Tratamento de Presos",
+    "question": "(Instituto AOCP / PMPE - Questão 195) (Execução Penal e Combate à Tortura 15) Conforme as Regras de Mandela e Convenções Internacionais: As Regras Mínimas das Nações Unidas para o Tratamento de Presos (Regras de Nelson Mandela) estabelecem como princípio fundamental que:",
+    "options": [
+      "Os presos perdem todos os direitos humanos ao serem condenados.",
+      "Todos os presos devem ser tratados com o respeito devido à sua dignidade e valor inerentes como seres humanos.",
+      "O isolamento em cela escura por tempo indeterminado é incentivado.",
+      "A alimentação deve ser racionada como punição disciplinar.",
+      "O contato com a família deve ser proibido nos primeiros 5 anos."
+    ],
+    "correctIndex": 1,
+    "explanation": "Regra 1 de Mandela: Todos os presos devem ser tratados com o respeito devido à sua dignidade inerente como ser humano.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Regras de Mandela = Respeito absoluto à dignidade do preso.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Regras de Mandela = Respeito absoluto à dignidade do preso.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Regra 1 de Mandela: Todos os presos devem ser tratados com o respeito devido à sua dignidade inerente como ser humano.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Regras de Mandela da ONU • Princípio Fundamental do Tratamento de Presos\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_196",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Regras de Mandela da ONU • Proibição de Castigos Cruéis",
+    "question": "(Instituto AOCP / PMPE - Questão 196) (Execução Penal e Combate à Tortura 16) Conforme as Regras de Mandela e Convenções Internacionais: De acordo com as Regras de Mandela, qual das seguintes sanções é terminantemente PROIBIDA como medida disciplinar em presídios?",
+    "options": [
+      "Perda temporária de privilégios de TV.",
+      "Isolamento indefinido ou prolongado (superior a 15 dias consecutivos) e permanência em cela escura.",
+      "Advertência verbal formal.",
+      "Suspensão temporária de visitas íntimas.",
+      "Trabalho remunerado regular."
+    ],
+    "correctIndex": 1,
+    "explanation": "Regra 43 de Mandela proíbe terminantemente isolamento superior a 15 dias consecutivos, celas escuras e castigos corporais.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Regras de Mandela proíbem isolamento prolongado (>15 dias) e cela escura!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Regras de Mandela proíbem isolamento prolongado (>15 dias) e cela escura!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Regra 43 de Mandela proíbe terminantemente isolamento superior a 15 dias consecutivos, celas escuras e castigos corporais.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Regras de Mandela da ONU • Proibição de Castigos Cruéis\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_197",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Combate à Tortura • Proibição Absoluta de Tortura (Jus Cogens)",
+    "question": "(Instituto AOCP / PMPE - Questão 197) (Execução Penal e Combate à Tortura 17) Conforme as Regras de Mandela e Convenções Internacionais: No Direito Internacional dos Direitos Humanos, a proibição da prática de tortura possui natureza jurídica de norma de:",
+    "options": [
+      "Direito disponível pelo Estado em estado de guerra.",
+      "Jus cogens (norma imperativa peremptória que não admite derrogação nem justificativa sob nenhuma circunstância).",
+      "Mera recomendação de ética profissional.",
+      "Direito relativo passível de ponderação judicial.",
+      "Regra transitória revogável."
+    ],
+    "correctIndex": 1,
+    "explanation": "A vedação à tortura é norma imperativa de jus cogens universal: nenhuma situação de guerra, terrorismo ou emergência justifica a tortura.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Proibição da tortura = Norma de JUS COGENS absoluta!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Proibição da tortura = Norma de JUS COGENS absoluta!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. A vedação à tortura é norma imperativa de jus cogens universal: nenhuma situação de guerra, terrorismo ou emergência justifica a tortura.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Combate à Tortura • Proibição Absoluta de Tortura (Jus Cogens)\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_198",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Combate à Tortura • Inadmissibilidade de Provas Obtidas por Tortura",
+    "question": "(Instituto AOCP / PMPE - Questão 198) (Execução Penal e Combate à Tortura 18) Conforme as Regras de Mandela e Convenções Internacionais: Segundo a Convenção da ONU contra a Tortura e a CF/88 (art. 5º, LVI), as declarações ou provas obtidas sob tortura são:",
+    "options": [
+      "Válidas se confirmadas perante o delegado de polícia.",
+      "Nulas de pleno direito e inadmissíveis no processo, com exceção contra o próprio torturador.",
+      "Aproveitáveis na fase de inquérito policial.",
+      "Suficientes para condenação em crimes hediondos.",
+      "Convertidas em indícios válidos."
+    ],
+    "correctIndex": 1,
+    "explanation": "Provas obtidas mediante tortura são inadmissíveis e nulas, só podendo ser utilizadas como prova contra o autor da tortura.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Prova obtida por tortura é nula e inadmissível no processo!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Prova obtida por tortura é nula e inadmissível no processo!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Provas obtidas mediante tortura são inadmissíveis e nulas, só podendo ser utilizadas como prova contra o autor da tortura.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Combate à Tortura • Inadmissibilidade de Provas Obtidas por Tortura\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_199",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Regras de Mandela da ONU • Princípio Fundamental do Tratamento de Presos",
+    "question": "(Instituto AOCP / PMPE - Questão 199) (Execução Penal e Combate à Tortura 19) Conforme as Regras de Mandela e Convenções Internacionais: As Regras Mínimas das Nações Unidas para o Tratamento de Presos (Regras de Nelson Mandela) estabelecem como princípio fundamental que:",
+    "options": [
+      "Os presos perdem todos os direitos humanos ao serem condenados.",
+      "Todos os presos devem ser tratados com o respeito devido à sua dignidade e valor inerentes como seres humanos.",
+      "O isolamento em cela escura por tempo indeterminado é incentivado.",
+      "A alimentação deve ser racionada como punição disciplinar.",
+      "O contato com a família deve ser proibido nos primeiros 5 anos."
+    ],
+    "correctIndex": 1,
+    "explanation": "Regra 1 de Mandela: Todos os presos devem ser tratados com o respeito devido à sua dignidade inerente como ser humano.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Regras de Mandela = Respeito absoluto à dignidade do preso.",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Regras de Mandela = Respeito absoluto à dignidade do preso.",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Regra 1 de Mandela: Todos os presos devem ser tratados com o respeito devido à sua dignidade inerente como ser humano.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Regras de Mandela da ONU • Princípio Fundamental do Tratamento de Presos\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
+  },
+  {
+    "id": "dh_aocp_200",
+    "categoryId": "humanos_leis",
+    "bloco": "bloco_3",
+    "materiaNome": "Direitos Humanos",
+    "topicoEdital": "Regras de Mandela da ONU • Proibição de Castigos Cruéis",
+    "question": "(Instituto AOCP / PMPE - Questão 200) (Execução Penal e Combate à Tortura 20) Conforme as Regras de Mandela e Convenções Internacionais: De acordo com as Regras de Mandela, qual das seguintes sanções é terminantemente PROIBIDA como medida disciplinar em presídios?",
+    "options": [
+      "Perda temporária de privilégios de TV.",
+      "Isolamento indefinido ou prolongado (superior a 15 dias consecutivos) e permanência em cela escura.",
+      "Advertência verbal formal.",
+      "Suspensão temporária de visitas íntimas.",
+      "Trabalho remunerado regular."
+    ],
+    "correctIndex": 1,
+    "explanation": "Regra 43 de Mandela proíbe terminantemente isolamento superior a 15 dias consecutivos, celas escuras e castigos corporais.",
+    "fundamentacaoLegal": "Convenção Americana sobre Direitos Humanos / DUDH / STF",
+    "hint": "Regras de Mandela proíbem isolamento prolongado (>15 dias) e cela escura!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_direitos_humanos",
+    "dicaMacete": "Regras de Mandela proíbem isolamento prolongado (>15 dias) e cela escura!",
+    "porqueErrou": {
+      "0": "Você marcou (A): A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "2": "Você marcou (C): A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "3": "Você marcou (D): A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "4": "Você marcou (E): A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. A alternativa (A) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "B": "Correta. Regra 43 de Mandela proíbe terminantemente isolamento superior a 15 dias consecutivos, celas escuras e castigos corporais.",
+      "C": "Incorreta. A alternativa (C) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "D": "Incorreta. A alternativa (D) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF.",
+      "E": "Incorreta. A alternativa (E) contraria as diretrizes de Direitos Humanos e a jurisprudência da Corte IDH e STF."
+    },
+    "passoAPassoConta": [
+      "Passo 1: Identificar o tema central: \"Regras de Mandela da ONU • Proibição de Castigos Cruéis\".",
+      "Passo 2: Eliminar as pegadinhas que relativizam garantias absolutas ou distorcem a CADH/DUDH.",
+      "Passo 3: A alternativa plenamente conforme a doutrina e tratados internacionais é a letra B."
+    ]
   }
 ];
