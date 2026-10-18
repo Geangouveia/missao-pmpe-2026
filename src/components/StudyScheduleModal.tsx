@@ -536,7 +536,7 @@ export const StudyScheduleModal: React.FC<StudyScheduleModalProps> = ({
                 {/* BOTÃO WHATSAPP COMANDANTE GEAN */}
                 <div style={{ marginTop: '1.25rem', textAlign: 'center' }}>
                   <a
-                    href="https://wa.me/5581997327341?text=Comandante%20Gean,%20quero%20liberar%20meu%20Cronograma%20Inteligente%20de%20Estudos%20PMPE%20(R$%204,00)"
+                    href="https://wa.me/5581987960927?text=Comandante%20Gean,%20quero%20liberar%20meu%20Cronograma%20Inteligente%20de%20Estudos%20PMPE%20(R$%204,00)"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{

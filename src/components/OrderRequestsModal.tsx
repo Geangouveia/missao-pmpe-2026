@@ -194,7 +194,7 @@ export const OrderRequestsModal: React.FC<OrderRequestsModalProps> = ({
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', maxWidth: '380px', margin: '0 auto' }}>
                 <a
-                  href={`https://wa.me/5581997327341?text=${encodeURIComponent(
+                  href={`https://wa.me/5581987960927?text=${encodeURIComponent(
                     `Olá, Comandante Gean! Sou o aluno ${userName || 'da plataforma'} e enviei o seguinte pedido: ${message}`
                   )}`}
                   target="_blank"
