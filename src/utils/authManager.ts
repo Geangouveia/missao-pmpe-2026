@@ -21,6 +21,15 @@ export interface UserAccessRecord {
   // Sessão Ativa & Anti-Fraude
   activeSessionToken?: string;
   lastSessionHeartbeat?: string;
+  // Telemetria & Monitoramento Operacional pelo Comandante Gean
+  phoneNumber?: string;
+  email?: string;
+  studyAlertTime?: string;
+  lastActiveTime?: string;
+  lastLocationCity?: string;
+  questionsTodayCount?: number;
+  questionsTotalCount?: number;
+  overallAccuracy?: number;
 }
 
 /**
@@ -1317,5 +1326,101 @@ export async function updateSupportRequestStatus(id: string, status: 'pending' |
   } catch {}
   return true;
 }
+
+/**
+ * Detecta a localização/imediação aproximada do aluno (Cidade, Estado) por IP ou fuso
+ */
+export async function detectApproximateLocation(): Promise<string> {
+  try {
+    const res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(2800) });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.city && data.region_code) {
+        return `${data.city}, ${data.region_code}`;
+      }
+    }
+  } catch {}
+
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (tz.includes('Recife')) return 'Recife, PE';
+    if (tz.includes('Fortaleza')) return 'Nordeste, BR';
+    if (tz.includes('Sao_Paulo')) return 'São Paulo, SP';
+    return 'Pernambuco, BR';
+  } catch {
+    return 'Região de Acesso Conectada';
+  }
+}
+
+/**
+ * Atualiza os dados de telemetria e progresso do aluno no registro local e na nuvem
+ */
+export async function updateStudentTelemetry(
+  userName: string,
+  data: {
+    locationCity?: string;
+    questionsTodayCount?: number;
+    questionsTotalCount?: number;
+    overallAccuracy?: number;
+  }
+): Promise<void> {
+  if (!userName || isMasterUser(userName)) return;
+  const key = normalizeUserName(userName);
+
+  try {
+    const registry = getLocalUsersRegistry();
+    if (registry[key]) {
+      registry[key].lastActiveTime = new Date().toISOString();
+      if (data.locationCity) registry[key].lastLocationCity = data.locationCity;
+      if (typeof data.questionsTodayCount === 'number') registry[key].questionsTodayCount = data.questionsTodayCount;
+      if (typeof data.questionsTotalCount === 'number') registry[key].questionsTotalCount = data.questionsTotalCount;
+      if (typeof data.overallAccuracy === 'number') registry[key].overallAccuracy = data.overallAccuracy;
+
+      saveLocalUsersRegistry(registry);
+      pushRegistryToCloud(registry).catch(() => {});
+    }
+  } catch {}
+}
+
+/**
+ * Salva o telefone, e-mail do aluno e horário de estudos configurado no cronograma
+ */
+export async function saveStudentPhoneAndScheduleTime(
+  userName: string,
+  phoneNumber: string,
+  studyAlertTime: string,
+  email?: string
+): Promise<boolean> {
+  if (!userName) return false;
+  const key = normalizeUserName(userName);
+
+  try {
+    const registry = getLocalUsersRegistry();
+    if (!registry[key]) {
+      registry[key] = {
+        name: userName.trim(),
+        status: 'approved',
+        isAdmin: false,
+        requestedAt: new Date().toISOString(),
+        hasChangedPassword: false
+      };
+    }
+
+    registry[key].phoneNumber = phoneNumber.trim();
+    registry[key].studyAlertTime = studyAlertTime.trim();
+    if (email && email.trim()) {
+      registry[key].email = email.trim();
+    }
+    registry[key].lastActiveTime = new Date().toISOString();
+
+    saveLocalUsersRegistry(registry);
+    await pushRegistryToCloud(registry);
+    return true;
+  } catch (err) {
+    console.error('Erro ao salvar dados de contato do aluno:', err);
+    return false;
+  }
+}
+
 
 

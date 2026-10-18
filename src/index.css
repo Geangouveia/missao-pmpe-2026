@@ -1,6 +1,7 @@
 /* ==========================================================================
    MISSÃO PMPE 2026: SISTEMA DE DESIGN MILITAR TÁTICO & TOKENS VISUAIS
-   Design Estético Militar: Camuflagem Carbono, Verde Tático, Ouro PMPE & Kevlar
+   Design Estético Militar: BOPE (Batalhão de Operações Policiais Especiais)
+   Cores: Preto Tático Carbono, Cinza Aço Balístico, Ouro Militar & Faca na Caveira
    ========================================================================== */
 
 :root {
@@ -8,50 +9,50 @@
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Cores Base Militares Operacionais (Polícia Militar de Pernambuco - BPChoque / BOPE) */
-  --bg-space: #070c08; /* Camuflagem Escura de Operações Noturnas */
-  --bg-deep: #0c140e;  /* Blindagem Kevlar e Aço Balístico */
-  --bg-card: rgba(13, 22, 16, 0.94); /* Painel Militar Verde Oliva Profundo */
-  --bg-card-hover: rgba(18, 30, 22, 0.98);
-  --bg-glass: rgba(255, 255, 255, 0.03);
-  --bg-glass-active: rgba(34, 197, 94, 0.16);
+  /* Cores Base Militares Operacionais (BOPE - Operações Especiais) */
+  --bg-space: #060907; /* Preto Tático Absoluto BOPE */
+  --bg-deep: #0a0e0c;  /* Carbono e Blindagem de Operações Noturnas */
+  --bg-card: rgba(13, 17, 15, 0.96); /* Painel Militar Aço Carbono */
+  --bg-card-hover: rgba(19, 25, 22, 0.98);
+  --bg-glass: rgba(255, 255, 255, 0.025);
+  --bg-glass-active: rgba(245, 158, 11, 0.14);
 
-  /* Bordas e Contornos Táticos Militares */
-  --border-subtle: rgba(45, 82, 56, 0.45);
-  --border-glow: rgba(34, 197, 94, 0.5);
-  --border-cyan: rgba(34, 197, 94, 0.4);
+  /* Bordas e Contornos Táticos Militares (Ouro Operacional & Aço Balístico) */
+  --border-subtle: rgba(217, 119, 6, 0.28);
+  --border-glow: rgba(245, 158, 11, 0.5);
+  --border-cyan: rgba(245, 158, 11, 0.45);
 
-  /* Paleta Tática Militar Oficial PMPE */
-  --military-green-dark: #0f3d1f;
-  --military-green: #15803d;
-  --military-green-bright: #22c55e;
-  --military-gold: #d4af37;
-  --military-gold-bright: #e5c158;
-  --military-khaki: #c8b999;
+  /* Paleta Tática Militar Oficial BOPE */
+  --military-green-dark: #09170f;
+  --military-green: #14532d;
+  --military-green-bright: #16a34a;
+  --military-gold: #f59e0b;
+  --military-gold-bright: #fbbf24;
+  --military-khaki: #b49b78;
   --military-red: #dc2626;
-  --military-blue: #0369a1;
+  --military-blue: #0284c7;
 
-  /* Acentos Operacionais Táticos (sem cores clichês de IA) */
-  --neon-cyan: #22c55e;
-  --neon-purple: #15803d;
-  --neon-violet: #d4af37;
+  /* Acentos Operacionais Táticos */
+  --neon-cyan: #f59e0b;
+  --neon-purple: #b45309;
+  --neon-violet: #f59e0b;
   --neon-pink: #dc2626;
-  --neon-emerald: #22c55e;
-  --neon-amber: #d4af37;
+  --neon-emerald: #16a34a;
+  --neon-amber: #f59e0b;
   --neon-red: #dc2626;
 
   /* Texto */
-  --text-main: #f3f6f4;
-  --text-muted: #9ca3af;
-  --text-dim: #6b7280;
-  --text-glow: #fef08a;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --text-glow: #fef3c7;
 
   /* Sombras e Brilho Tático Militar */
-  --glow-cyan: 0 0 20px rgba(34, 197, 94, 0.3);
-  --glow-purple: 0 0 20px rgba(21, 128, 61, 0.3);
-  --glow-gold: 0 0 20px rgba(212, 175, 55, 0.35);
-  --shadow-card: 0 14px 40px -10px rgba(0, 0, 0, 0.85), 0 0 0 1px var(--border-subtle);
-  --shadow-popup: 0 25px 60px -15px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(34, 197, 94, 0.3);
+  --glow-cyan: 0 0 20px rgba(245, 158, 11, 0.25);
+  --glow-purple: 0 0 20px rgba(180, 83, 9, 0.25);
+  --glow-gold: 0 0 25px rgba(245, 158, 11, 0.35);
+  --shadow-card: 0 16px 45px -10px rgba(0, 0, 0, 0.92), 0 0 0 1px var(--border-subtle);
+  --shadow-popup: 0 25px 65px -15px rgba(0, 0, 0, 0.98), 0 0 0 1px rgba(245, 158, 11, 0.35);
 
   /* Transições Suaves */
   --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
@@ -79,17 +80,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Fundo Dinâmico Militar: Malha Tática, Iluminação de Operação e Grid Militar */
+/* Fundo Dinâmico Militar BOPE: Preto Tático com Grid de Armamento e Iluminação de Patrulha */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background-image: 
-    radial-gradient(circle at 15% 15%, rgba(34, 197, 94, 0.10) 0%, transparent 45%),
-    radial-gradient(circle at 85% 25%, rgba(245, 158, 11, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 50% 90%, rgba(20, 83, 45, 0.15) 0%, transparent 55%),
-    linear-gradient(rgba(34, 197, 94, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 197, 94, 0.035) 1px, transparent 1px);
+    radial-gradient(circle at 20% 15%, rgba(245, 158, 11, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 80% 25%, rgba(220, 38, 38, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(20, 26, 22, 0.35) 0%, transparent 60%),
+    linear-gradient(rgba(245, 158, 11, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 158, 11, 0.02) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
   background-position: 0 0, 0 0, 0 0, center center, center center;
   pointer-events: none;
@@ -1520,6 +1521,63 @@ button:focus-visible {
 .radar-sweep-anim {
   animation: radarScannerSweep 4s linear infinite;
 }
+
+/* Ejeção de Cápsula de Bala Militar */
+@keyframes shellCasingEject {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  50% { transform: translate(-14px, -22px) rotate(180deg); opacity: 1; }
+  100% { transform: translate(-26px, 12px) rotate(360deg); opacity: 0; }
+}
+
+.shell-casing-ejecting {
+  position: absolute;
+  width: 5px;
+  height: 9px;
+  background: linear-gradient(135deg, #fef08a, #ca8a04);
+  border-radius: 1px;
+  box-shadow: 0 0 6px #facc15;
+  z-index: 15;
+  animation: shellCasingEject 0.4s ease-out forwards;
+}
+
+/* Mira Laser Vermelha do Bandido */
+@keyframes laserSightJitter {
+  0%, 100% { opacity: 0.85; transform: scaleY(1); }
+  50% { opacity: 0.6; transform: scaleY(1.3); }
+}
+
+.tactical-laser-sight {
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  left: 65px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent 0%, rgba(239, 68, 68, 0.4) 20%, rgba(239, 68, 68, 0.9) 80%, #f87171 100%);
+  box-shadow: 0 0 8px #ef4444;
+  pointer-events: none;
+  z-index: 6;
+  animation: laserSightJitter 1.2s infinite ease-in-out;
+}
+
+/* Modo Visão Noturna NVG (Night Vision Goggles) */
+.nvg-mode-active {
+  filter: brightness(1.15) contrast(1.25) sepia(1) hue-rotate(85deg) saturate(3) !important;
+  box-shadow: inset 0 0 80px rgba(34, 197, 94, 0.4) !important;
+}
+
+/* Balão de Provocação Tática do Bandido */
+@keyframes speechBubbleAnim {
+  0% { opacity: 0; transform: scale(0.7) translateY(10px); }
+  15% { opacity: 1; transform: scale(1.05) translateY(-5px); }
+  30% { transform: scale(1) translateY(0); }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+.speech-bubble-pop {
+  animation: speechBubbleAnim 2.8s ease-out forwards;
+}
+
 
 
 

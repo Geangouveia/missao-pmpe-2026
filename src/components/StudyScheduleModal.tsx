@@ -19,9 +19,13 @@ import {
   BellRing,
   Smartphone,
   AlarmClock,
-  Download
+  Download,
+  Mail,
+  Volume2,
+  Send,
+  ExternalLink
 } from 'lucide-react';
-import { isMasterUser, grantScheduleAccess, isScheduleUnlocked } from '../utils/authManager';
+import { isMasterUser, grantScheduleAccess, isScheduleUnlocked, saveStudentPhoneAndScheduleTime } from '../utils/authManager';
 import { sound } from '../utils/sound';
 
 interface StudyScheduleModalProps {
@@ -70,10 +74,27 @@ export const StudyScheduleModal: React.FC<StudyScheduleModalProps> = ({
   const [scheduleData, setScheduleData] = useState<DayPlan[]>([]);
   const [activeTabDay, setActiveTabDay] = useState<number>(0);
 
-  // Estados do Alarme & Notificações de Estudos
+  // Estados do Alarme & Notificações de Estudos (100% Grátis - Comandante Gean)
   const [studyAlertTime, setStudyAlertTime] = useState<string>('07:00');
+  const [studentPhone, setStudentPhone] = useState<string>('');
+  const [studentEmail, setStudentEmail] = useState<string>('');
   const [isBrowserAlertActive, setIsBrowserAlertActive] = useState(false);
   const [alertFeedback, setAlertFeedback] = useState<string | null>(null);
+
+  // Teste de Voz e Áudio Falado do Alarme
+  const playVoiceStudyAlert = () => {
+    sound.playLevelUp();
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(
+        `Atenção soldado! São ${studyAlertTime} em ponto. Chegou o seu horário de estudar para o concurso da PMPE! Foco na farda!`
+      );
+      utterance.lang = 'pt-BR';
+      utterance.rate = 1.05;
+      utterance.pitch = 1.0;
+      window.speechSynthesis.speak(utterance);
+    }
+  };
 
   // Verifica desbloqueio ao abrir
   useEffect(() => {
@@ -97,6 +118,18 @@ export const StudyScheduleModal: React.FC<StudyScheduleModalProps> = ({
     const savedAlert = localStorage.getItem(`pmpe_alert_time_${userName}`);
     if (savedAlert) {
       setStudyAlertTime(savedAlert);
+    }
+
+    // Carrega telefone salvo
+    const savedPhone = localStorage.getItem(`pmpe_student_phone_${userName}`);
+    if (savedPhone) {
+      setStudentPhone(savedPhone);
+    }
+
+    // Carrega e-mail salvo
+    const savedEmail = localStorage.getItem(`pmpe_student_email_${userName}`);
+    if (savedEmail) {
+      setStudentEmail(savedEmail);
     }
   }, [userName, isOpen]);
 
@@ -1113,8 +1146,122 @@ export const StudyScheduleModal: React.FC<StudyScheduleModalProps> = ({
                       ))}
                     </div>
 
-                    {/* Grade de 3 Ações de Notificação */}
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.85rem' }}>
+                    {/* CADASTRO DE WHATSAPP E E-MAIL DO ALUNO PARA AUTOMAÇÃO DE DISPARO */}
+                    <div style={{
+                      background: 'rgba(0, 0, 0, 0.45)',
+                      border: '1.5px solid rgba(245, 158, 11, 0.35)',
+                      borderRadius: '12px',
+                      padding: '0.85rem 1rem',
+                      marginBottom: '1.15rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.65rem'
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem' }}>
+                        <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.82rem', fontWeight: 800, color: '#fef3c7' }}>
+                          <Smartphone size={16} color="#f59e0b" />
+                          <span>Canais para Receber seus Avisos de Estudo (100% Gratuitos):</span>
+                        </label>
+                        <span style={{ fontSize: '0.68rem', color: '#4ade80', fontWeight: 800, background: 'rgba(34,197,94,0.15)', padding: '0.15rem 0.45rem', borderRadius: '4px' }}>
+                          GRÁTIS • SEM MENSALIDADE
+                        </span>
+                      </div>
+
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.6rem' }}>
+                        <div>
+                          <label style={{ fontSize: '0.72rem', color: '#cbd5e1', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>
+                            WhatsApp / Celular (com DDD):
+                          </label>
+                          <input
+                            type="tel"
+                            placeholder="Ex: (81) 98765-4321"
+                            value={studentPhone}
+                            onChange={(e) => setStudentPhone(e.target.value)}
+                            style={{
+                              width: '100%',
+                              boxSizing: 'border-box',
+                              background: '#090d0b',
+                              border: '1px solid #4ade80',
+                              borderRadius: '8px',
+                              padding: '0.5rem 0.75rem',
+                              color: '#ffffff',
+                              fontSize: '0.88rem',
+                              fontWeight: 700,
+                              outline: 'none'
+                            }}
+                          />
+                        </div>
+
+                        <div>
+                          <label style={{ fontSize: '0.72rem', color: '#cbd5e1', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>
+                            Seu E-mail para Lembretes:
+                          </label>
+                          <input
+                            type="email"
+                            placeholder="Ex: aluno.pmpe@gmail.com"
+                            value={studentEmail}
+                            onChange={(e) => setStudentEmail(e.target.value)}
+                            style={{
+                              width: '100%',
+                              boxSizing: 'border-box',
+                              background: '#090d0b',
+                              border: '1px solid rgba(56, 189, 248, 0.6)',
+                              borderRadius: '8px',
+                              padding: '0.5rem 0.75rem',
+                              color: '#ffffff',
+                              fontSize: '0.88rem',
+                              fontWeight: 700,
+                              outline: 'none'
+                            }}
+                          />
+                        </div>
+                      </div>
+
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.2rem' }}>
+                        <button
+                          type="button"
+                          onClick={async () => {
+                            sound.playClick();
+                            if (!studentPhone.trim() && !studentEmail.trim()) {
+                              sound.playError();
+                              setAlertFeedback('⚠️ Preencha seu WhatsApp ou E-mail para salvar os contatos.');
+                              return;
+                            }
+                            if (userName) {
+                              if (studentPhone.trim()) {
+                                localStorage.setItem(`pmpe_student_phone_${userName}`, studentPhone.trim());
+                              }
+                              if (studentEmail.trim()) {
+                                localStorage.setItem(`pmpe_student_email_${userName}`, studentEmail.trim());
+                              }
+                              localStorage.setItem(`pmpe_alert_time_${userName}`, studyAlertTime);
+                              await saveStudentPhoneAndScheduleTime(userName, studentPhone.trim(), studyAlertTime, studentEmail.trim());
+                              sound.playLevelUp();
+                              setAlertFeedback(`✅ Dados salvos com sucesso! Alertas programados para às ${studyAlertTime}h.`);
+                            }
+                          }}
+                          style={{
+                            padding: '0.5rem 1.15rem',
+                            borderRadius: '8px',
+                            background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+                            color: '#090d0b',
+                            fontWeight: 900,
+                            fontSize: '0.82rem',
+                            border: 'none',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.4rem'
+                          }}
+                        >
+                          <Send size={15} />
+                          Salvar Dados de Contato e Horário
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Grade de 6 Ações de Notificação e Lembrete 100% Grátis */}
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.75rem' }}>
                       {/* Opção 1: Notificação Push no Navegador */}
                       <button
                         type="button"
@@ -1129,7 +1276,7 @@ export const StudyScheduleModal: React.FC<StudyScheduleModalProps> = ({
                             if (permission === 'granted') {
                               sound.playLevelUp();
                               setIsBrowserAlertActive(true);
-                              setAlertFeedback(`✅ Alarme diário programado para às ${studyAlertTime}! O aplicativo notificará você na tela do aparelho.`);
+                              setAlertFeedback(`✅ Alarme diário ativado para às ${studyAlertTime}! O navegador notificará você.`);
                               new Notification('🚨 Missão PMPE: Alarme Tático Ativado!', {
                                 body: `Soldado, seu alarme de estudos foi programado para às ${studyAlertTime}. Foco na farda da PMPE!`,
                                 icon: '/favicon.ico'
@@ -1138,37 +1285,110 @@ export const StudyScheduleModal: React.FC<StudyScheduleModalProps> = ({
                                 localStorage.setItem(`pmpe_alert_time_${userName}`, studyAlertTime);
                               }
                             } else {
-                              setAlertFeedback('⚠️ Permissão de notificação negada. Utilize a opção de Alarme do Calendário (.ICS) abaixo.');
+                              setAlertFeedback('⚠️ Permissão negada. Utilize a opção do Google Calendar ou .ICS abaixo.');
                             }
                           } catch {
-                            setAlertFeedback('⚠️ Erro ao ativar notificação. Utilize a opção de Calendário (.ICS) abaixo.');
+                            setAlertFeedback('⚠️ Erro ao ativar notificação. Utilize a opção do Google Calendar ou .ICS abaixo.');
                           }
                         }}
                         style={{
                           display: 'flex',
                           alignItems: 'center',
                           gap: '0.65rem',
-                          padding: '0.85rem 1rem',
+                          padding: '0.75rem 0.9rem',
                           borderRadius: '12px',
                           background: isBrowserAlertActive ? 'rgba(34, 197, 94, 0.25)' : 'rgba(255, 255, 255, 0.05)',
                           border: isBrowserAlertActive ? '1.5px solid #22c55e' : '1px solid rgba(255, 255, 255, 0.15)',
                           color: '#ffffff',
                           fontWeight: 800,
-                          fontSize: '0.82rem',
+                          fontSize: '0.8rem',
                           cursor: 'pointer',
                           textAlign: 'left'
                         }}
                       >
-                        <Bell size={20} color="#4ade80" style={{ flexShrink: 0 }} />
+                        <Bell size={18} color="#4ade80" style={{ flexShrink: 0 }} />
                         <div>
-                          <div>{isBrowserAlertActive ? '🟢 Alarme Ativo na Tela' : '🔔 Ativar Notificação Push'}</div>
+                          <div>{isBrowserAlertActive ? '🟢 Alarme Ativo na Tela' : '🔔 Notificação no Celular'}</div>
                           <div style={{ fontSize: '0.68rem', color: '#94a3b8', fontWeight: 500 }}>
-                            Avisa direto na tela do celular
+                            Avisa direto na tela do aparelho
                           </div>
                         </div>
                       </button>
 
-                      {/* Opção 2: Adicionar ao Despertador / Calendário (.ICS) */}
+                      {/* Opção 2: Testar Alarme em Voz Alta */}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          playVoiceStudyAlert();
+                          setAlertFeedback(`🔊 Alarme falado disparado para às ${studyAlertTime}h! Síntese de voz testada com sucesso.`);
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.65rem',
+                          padding: '0.75rem 0.9rem',
+                          borderRadius: '12px',
+                          background: 'rgba(234, 179, 8, 0.12)',
+                          border: '1px solid rgba(234, 179, 8, 0.35)',
+                          color: '#fef08a',
+                          fontWeight: 800,
+                          fontSize: '0.8rem',
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <Volume2 size={18} color="#facc15" style={{ flexShrink: 0 }} />
+                        <div>
+                          <div>🔊 Testar Voz do Alarme</div>
+                          <div style={{ fontSize: '0.68rem', color: '#fef9c3', fontWeight: 500 }}>
+                            Comando sonoro falado gratuito
+                          </div>
+                        </div>
+                      </button>
+
+                      {/* Opção 3: Sincronizar Google Calendar (1 Clique com Alarme Diário) */}
+                      <a
+                        href={(() => {
+                          const now = new Date();
+                          const pad = (n: number) => String(n).padStart(2, '0');
+                          const [hours, minutes] = studyAlertTime.split(':').map(Number);
+                          const gcalStart = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}T${pad(hours)}${pad(minutes)}00`;
+                          const endHour = (hours + 1) % 24;
+                          const gcalEnd = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}T${pad(endHour)}${pad(minutes)}00`;
+                          return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('🚨 [MISSÃO PMPE 2026] HORA DE ESTUDAR! FOCO NA FARDA')}&dates=${gcalStart}/${gcalEnd}&details=${encodeURIComponent('Comandante Gean convoca você para sua sessão tática diária de estudos! Acesse o app para bater sua meta de questões do Edital PMPE.')}&location=${encodeURIComponent('Missão PMPE 2026')}&recur=RRULE:FREQ=DAILY`;
+                        })()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => {
+                          sound.playClick();
+                          setAlertFeedback(`📅 Abrindo Google Agenda com alarme diário para às ${studyAlertTime}h!`);
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.65rem',
+                          padding: '0.75rem 0.9rem',
+                          borderRadius: '12px',
+                          background: 'rgba(59, 130, 246, 0.12)',
+                          border: '1px solid rgba(59, 130, 246, 0.35)',
+                          color: '#ffffff',
+                          fontWeight: 800,
+                          fontSize: '0.8rem',
+                          cursor: 'pointer',
+                          textDecoration: 'none',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <ExternalLink size={18} color="#60a5fa" style={{ flexShrink: 0 }} />
+                        <div>
+                          <div>📅 Google Agenda (Diário)</div>
+                          <div style={{ fontSize: '0.68rem', color: '#bfdbfe', fontWeight: 500 }}>
+                            Despertador no Android / Google
+                          </div>
+                        </div>
+                      </a>
+
+                      {/* Opção 4: Adicionar ao Despertador / Calendário (.ICS) */}
                       <button
                         type="button"
                         onClick={() => {
@@ -1211,35 +1431,35 @@ export const StudyScheduleModal: React.FC<StudyScheduleModalProps> = ({
                           URL.revokeObjectURL(url);
 
                           sound.playLevelUp();
-                          setAlertFeedback(`📅 Alarme baixado! Toque no arquivo baixado para programar o despertador diário no seu celular.`);
+                          setAlertFeedback(`📅 Arquivo de alarme baixado! Toque nele para programar o despertador diário do celular.`);
                         }}
                         style={{
                           display: 'flex',
                           alignItems: 'center',
                           gap: '0.65rem',
-                          padding: '0.85rem 1rem',
+                          padding: '0.75rem 0.9rem',
                           borderRadius: '12px',
                           background: 'rgba(56, 189, 248, 0.1)',
                           border: '1px solid rgba(56, 189, 248, 0.3)',
                           color: '#ffffff',
                           fontWeight: 800,
-                          fontSize: '0.82rem',
+                          fontSize: '0.8rem',
                           cursor: 'pointer',
                           textAlign: 'left'
                         }}
                       >
-                        <Download size={20} color="#38bdf8" style={{ flexShrink: 0 }} />
+                        <Download size={18} color="#38bdf8" style={{ flexShrink: 0 }} />
                         <div>
-                          <div>📅 Alarme no Celular (.ICS)</div>
+                          <div>⏰ Arquivo Despertador (.ICS)</div>
                           <div style={{ fontSize: '0.68rem', color: '#94a3b8', fontWeight: 500 }}>
-                            Toca o alarme diário do celular
+                            Para iPhone, Samsung e Xiaomi
                           </div>
                         </div>
                       </button>
 
-                      {/* Opção 3: Alerta no WhatsApp */}
+                      {/* Opção 5: Alerta no WhatsApp */}
                       <a
-                        href={`https://wa.me/5581987960927?text=Comandante%20Gean,%20configurei%20meu%20cronograma%20para%20estudar%20às%20*${studyAlertTime}*.%20Solicito%20o%20registro%20do%20meu%20número%20para%20envio%20de%20alertas%20de%20estudos%20no%20WhatsApp!`}
+                        href={`https://wa.me/5581987960927?text=Comandante%20Gean,%20configurei%20meu%20cronograma%20para%20estudar%20às%20*${studyAlertTime}*.%20Solicito%20o%20registro%20do%20meu%20número%20(${studentPhone || 'cadastrado'})%20para%20envio%20de%20alertas%20de%20estudos%20no%20WhatsApp!`}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => sound.playClick()}
@@ -1247,23 +1467,54 @@ export const StudyScheduleModal: React.FC<StudyScheduleModalProps> = ({
                           display: 'flex',
                           alignItems: 'center',
                           gap: '0.65rem',
-                          padding: '0.85rem 1rem',
+                          padding: '0.75rem 0.9rem',
                           borderRadius: '12px',
                           background: 'linear-gradient(135deg, #15803d, #16a34a)',
                           border: '1px solid #22c55e',
                           color: '#ffffff',
                           fontWeight: 800,
-                          fontSize: '0.82rem',
+                          fontSize: '0.8rem',
                           textDecoration: 'none',
                           textAlign: 'left',
                           boxShadow: '0 4px 15px rgba(34, 197, 94, 0.35)'
                         }}
                       >
-                        <MessageCircle size={20} color="#ffffff" style={{ flexShrink: 0 }} />
+                        <MessageCircle size={18} color="#ffffff" style={{ flexShrink: 0 }} />
                         <div>
                           <div>📲 Alerta no WhatsApp</div>
                           <div style={{ fontSize: '0.68rem', color: '#dcfce7', fontWeight: 500 }}>
                             Registrar com Comandante Gean
+                          </div>
+                        </div>
+                      </a>
+
+                      {/* Opção 6: Enviar Lembrete por E-mail (Gratuito via Mailto) */}
+                      <a
+                        href={`mailto:${studentEmail || ''}?subject=${encodeURIComponent('🚨 [MISSÃO PMPE 2026] HORA DE ESTUDAR! FOCO NA FARDA')}&body=${encodeURIComponent(`Soldado ${userName || ''},\n\nSeu cronograma tático programou sua sessão de estudos para às ${studyAlertTime}!\n\nNão desista da sua vaga. Cada questão resolvida é um passo mais perto da sua farda na PMPE 2026!\n\nAcesse a plataforma agora e vá para o combate!\n\n-- Comandante Gean Gouveia`)}`}
+                        onClick={() => {
+                          sound.playClick();
+                          setAlertFeedback(`✉️ Abrindo seu aplicativo de e-mail para registrar o lembrete de estudos!`);
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.65rem',
+                          padding: '0.75rem 0.9rem',
+                          borderRadius: '12px',
+                          background: 'rgba(168, 85, 247, 0.12)',
+                          border: '1px solid rgba(168, 85, 247, 0.35)',
+                          color: '#ffffff',
+                          fontWeight: 800,
+                          fontSize: '0.8rem',
+                          textDecoration: 'none',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <Mail size={18} color="#c084fc" style={{ flexShrink: 0 }} />
+                        <div>
+                          <div>✉️ Lembrete por E-mail</div>
+                          <div style={{ fontSize: '0.68rem', color: '#e9d5ff', fontWeight: 500 }}>
+                            Disparo direto sem custo
                           </div>
                         </div>
                       </a>

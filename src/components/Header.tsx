@@ -75,8 +75,20 @@ export const Header: React.FC<HeaderProps> = ({
                 SOLDADO 2026
               </span>
             </div>
-            <div style={{ fontSize: '0.78rem', color: '#93c5fd' }}>
-              Preparatório Oficial • Instituto AOCP
+            <div style={{ fontSize: '0.78rem', color: '#93c5fd', display: 'flex', alignItems: 'center', gap: '0.45rem', flexWrap: 'wrap' }}>
+              <span>Preparatório Oficial • Instituto AOCP</span>
+              <span style={{ color: 'rgba(255, 255, 255, 0.25)' }}>•</span>
+              <span style={{ fontSize: '0.68rem', color: '#cbd5e1' }}>Powered by</span>
+              <span style={{
+                fontFamily: '"Caveat", "Dancing Script", cursive',
+                fontSize: '1.05rem',
+                fontWeight: 900,
+                color: '#fbbf24',
+                textShadow: '0 0 8px rgba(245, 158, 11, 0.5)',
+                lineHeight: 1
+              }}>
+                GEAN
+              </span>
             </div>
           </div>
         </div>

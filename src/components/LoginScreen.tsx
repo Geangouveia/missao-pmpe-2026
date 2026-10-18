@@ -226,6 +226,48 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
           zIndex: 10
         }}
       >
+        {/* SELO DISCRETO NO TOPO: POWERED BY GEAN COM ASSINATURA DIFERENCIADA */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '0.5rem',
+          padding: '0.25rem 0.95rem',
+          borderRadius: '20px',
+          background: 'rgba(245, 158, 11, 0.08)',
+          border: '1px solid rgba(245, 158, 11, 0.25)',
+          width: 'fit-content',
+          margin: '0 auto 1.15rem auto',
+          backdropFilter: 'blur(8px)',
+          boxShadow: '0 2px 10px rgba(0, 0, 0, 0.3)'
+        }}>
+          <span style={{
+            fontSize: '0.7rem',
+            color: '#94a3b8',
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            fontWeight: 800
+          }}>
+            Powered by
+          </span>
+          <span style={{
+            fontFamily: '"Caveat", "Dancing Script", cursive',
+            fontSize: '1.45rem',
+            fontWeight: 900,
+            background: 'linear-gradient(135deg, #fef08a 0%, #fbbf24 50%, #f59e0b 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            letterSpacing: '0.04em',
+            filter: 'drop-shadow(0 0 10px rgba(245, 158, 11, 0.7))',
+            transform: 'rotate(-2.5deg)',
+            display: 'inline-block',
+            lineHeight: 1
+          }}>
+            GEAN
+          </span>
+          <span style={{ fontSize: '0.65rem', color: '#fbbf24', opacity: 0.9 }}>✦</span>
+        </div>
+
         {/* Brasão Oficial da PMPE no Topo */}
         <div style={{ textAlign: 'center', marginBottom: '1.35rem', position: 'relative' }}>
           <div style={{
@@ -588,6 +630,131 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
             Matrículas e senhas são geradas exclusivamente pelo <strong>Comandante Gean</strong>.<br />
             Por segurança operacional, cada conta possui autorização em <strong>apenas 1 dispositivo</strong>.
           </p>
+        </div>
+
+        {/* ASSINATURA OFICIAL DE AUTENTICIDADE DO CRIADOR (COMANDANTE GEAN) */}
+        <div style={{
+          marginTop: '1.25rem',
+          padding: '1rem 1.25rem',
+          borderRadius: '16px',
+          background: 'radial-gradient(ellipse at 50% 0%, rgba(35, 26, 10, 0.95) 0%, rgba(15, 12, 6, 0.98) 100%)',
+          border: '1.5px solid rgba(245, 158, 11, 0.55)',
+          boxShadow: '0 8px 25px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(245, 158, 11, 0.12)',
+          position: 'relative',
+          overflow: 'hidden'
+        }}>
+          {/* Cabeçalho da Chancela */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            borderBottom: '1px solid rgba(245, 158, 11, 0.25)',
+            paddingBottom: '0.45rem',
+            marginBottom: '0.65rem'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              fontSize: '0.64rem',
+              fontWeight: 900,
+              color: '#f59e0b',
+              textTransform: 'uppercase',
+              letterSpacing: '0.12em'
+            }}>
+              <span>✦ CHANCELA OFICIAL DE AUTORIA ✦</span>
+            </div>
+            <span style={{
+              fontSize: '0.62rem',
+              color: '#fbbf24',
+              background: 'rgba(245, 158, 11, 0.15)',
+              padding: '0.15rem 0.45rem',
+              borderRadius: '6px',
+              border: '1px solid rgba(245, 158, 11, 0.3)',
+              fontWeight: 800
+            }}>
+              PATENTE PMPE 2026
+            </span>
+          </div>
+
+          {/* Área da Assinatura Manuscrita com Selo Dourado */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '1rem'
+          }}>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: '0.68rem', color: '#94a3b8', fontWeight: 600, letterSpacing: '0.04em' }}>
+                Idealizador & Desenvolvedor:
+              </div>
+
+              {/* Assinatura Manuscrita Estilizada com SVG e Tipografia Cursiva */}
+              <div style={{ position: 'relative', display: 'inline-block', marginTop: '0.15rem' }}>
+                <div style={{
+                  fontFamily: '"Caveat", "Dancing Script", cursive',
+                  fontSize: '2.1rem',
+                  fontWeight: 700,
+                  color: '#fbbf24',
+                  lineHeight: 1.1,
+                  letterSpacing: '0.04em',
+                  textShadow: '0 0 12px rgba(245, 158, 11, 0.6), 0 2px 4px rgba(0, 0, 0, 0.8)',
+                  transform: 'rotate(-2deg)'
+                }}>
+                  Gean Gouveia
+                </div>
+
+                {/* Traço Fluido de Caneta-Tinteiro com SVG (Florão da Assinatura) */}
+                <svg width="190" height="18" viewBox="0 0 190 18" fill="none" style={{ display: 'block', marginTop: '-4px' }}>
+                  <path
+                    d="M 5 8 Q 45 15, 95 6 T 175 9 Q 185 10, 188 4"
+                    stroke="url(#sigGoldGrad)"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                  <defs>
+                    <linearGradient id="sigGoldGrad" x1="0" y1="0" x2="190" y2="0" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#f59e0b" />
+                      <stop offset="0.5" stopColor="#fef08a" />
+                      <stop offset="1" stopColor="#d97706" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+
+              <div style={{ fontSize: '0.68rem', color: '#86efac', fontWeight: 700, marginTop: '0.2rem' }}>
+                Assinatura Oficial do Autor da Plataforma
+              </div>
+            </div>
+
+            {/* Selo Tático Dourado de Autenticidade */}
+            <div style={{
+              width: '54px',
+              height: '54px',
+              borderRadius: '50%',
+              background: 'radial-gradient(circle, #f59e0b 0%, #b45309 70%, #78350f 100%)',
+              border: '2px solid #fef08a',
+              boxShadow: '0 0 20px rgba(245, 158, 11, 0.65), inset 0 2px 4px rgba(255, 255, 255, 0.4)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+              textAlign: 'center'
+            }}>
+              <span style={{ fontSize: '1rem', lineHeight: 1 }}>⭐</span>
+              <span style={{
+                fontSize: '0.55rem',
+                fontWeight: 900,
+                color: '#ffffff',
+                textShadow: '0 1px 2px rgba(0,0,0,0.8)',
+                letterSpacing: '0.06em'
+              }}>
+                GEAN
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 

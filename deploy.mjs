@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'deploy: caderno de leis secas edital pmpe, labirinto tatico animado com tiros, despertador no cronograma e header mobile';
+  const commitMsg = 'deploy: powered by gean assinatura, 400 novas questoes edital aocp, labirinto tatica jogavel e alarmes gratuitos de estudo';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;

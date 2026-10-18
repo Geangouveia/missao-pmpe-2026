@@ -28,7 +28,12 @@ import {
   Copy,
   Check,
   Calendar,
-  MessageSquare
+  MessageSquare,
+  MapPin,
+  Activity,
+  FileText,
+  Send,
+  PhoneCall
 } from 'lucide-react';
 import { 
   fetchRegistryFromCloud, 
@@ -70,6 +75,7 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
   const [actionSuccessMsg, setActionSuccessMsg] = useState<string | null>(null);
   const [processingUserKey, setProcessingUserKey] = useState<string | null>(null);
   const [deleteConfirmKey, setDeleteConfirmKey] = useState<string | null>(null);
+  const [selectedReportUser, setSelectedReportUser] = useState<UserAccessRecord | null>(null);
 
   // Cadastro de Novo Aluno pelo Comandante Gean
   const [showAddStudentSection, setShowAddStudentSection] = useState(false);
@@ -1315,16 +1321,92 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
                         <div style={{
                           display: 'flex',
                           alignItems: 'center',
-                          gap: '0.75rem',
-                          marginTop: '0.35rem',
-                          fontSize: '0.8rem',
-                          color: '#94a3b8',
+                          gap: '0.65rem',
+                          marginTop: '0.45rem',
+                          fontSize: '0.78rem',
+                          color: '#cbd5e1',
                           flexWrap: 'wrap'
                         }}>
-                          <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                            <Clock size={13} color="#94a3b8" />
-                            Cadastrado em {formattedDate}
+                          {/* Localização / Imediação */}
+                          <span style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.35rem',
+                            background: 'rgba(245, 158, 11, 0.15)',
+                            padding: '0.15rem 0.55rem',
+                            borderRadius: '6px',
+                            border: '1px solid rgba(245, 158, 11, 0.4)',
+                            color: '#fbbf24',
+                            fontWeight: 800,
+                            fontSize: '0.74rem'
+                          }}>
+                            <MapPin size={12} color="#f59e0b" />
+                            {user.lastLocationCity ? `📍 ${user.lastLocationCity}` : '📍 Pernambuco, BR'}
                           </span>
+
+                          {/* Último Acesso em Tempo Real */}
+                          <span style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.35rem',
+                            color: user.lastActiveTime ? '#4ade80' : '#94a3b8',
+                            fontWeight: 700,
+                            fontSize: '0.74rem'
+                          }}>
+                            <Activity size={12} color={user.lastActiveTime ? '#4ade80' : '#94a3b8'} />
+                            {user.lastActiveTime 
+                              ? `Último acesso: ${new Date(user.lastActiveTime).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}`
+                              : `Cadastrado em ${formattedDate}`}
+                          </span>
+
+                          {/* Questões Feitas Hoje */}
+                          <span style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.35rem',
+                            background: 'rgba(34, 197, 94, 0.15)',
+                            padding: '0.15rem 0.55rem',
+                            borderRadius: '6px',
+                            border: '1px solid rgba(34, 197, 94, 0.35)',
+                            color: '#86efac',
+                            fontWeight: 800,
+                            fontSize: '0.74rem'
+                          }}>
+                            🎯 {user.questionsTodayCount || 0} questões hoje
+                          </span>
+
+                          {/* Telefone / WhatsApp */}
+                          {user.phoneNumber && (
+                            <span style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '0.35rem',
+                              background: 'rgba(37, 211, 102, 0.15)',
+                              padding: '0.15rem 0.55rem',
+                              borderRadius: '6px',
+                              border: '1px solid rgba(37, 211, 102, 0.4)',
+                              color: '#4ade80',
+                              fontWeight: 800,
+                              fontSize: '0.74rem'
+                            }}>
+                              📱 {user.phoneNumber}
+                            </span>
+                          )}
+
+                          {/* Alarme Agendado */}
+                          {user.studyAlertTime && (
+                            <span style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '0.3rem',
+                              color: '#fbbf24',
+                              fontSize: '0.74rem',
+                              fontWeight: 800
+                            }}>
+                              ⏰ Alarme: {user.studyAlertTime}
+                            </span>
+                          )}
+
                           <span style={{ color: '#64748b' }}>•</span>
                           <span style={{ color: user.hasChangedPassword ? '#86efac' : '#f59e0b', fontWeight: 700 }}>
                             {user.hasChangedPassword ? '🔒 Senha própria cadastrada' : '🔑 Senha padrão ativa'}
@@ -1389,6 +1471,33 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
                       gap: '0.65rem',
                       flexWrap: 'wrap'
                     }}>
+                      {/* Botão Laudo Tático do Aluno */}
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setSelectedReportUser(user);
+                        }}
+                        style={{
+                          padding: '0.6rem 0.95rem',
+                          borderRadius: '10px',
+                          background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(180, 83, 9, 0.35))',
+                          border: '1px solid #f59e0b',
+                          color: '#fbbf24',
+                          fontWeight: 900,
+                          fontSize: '0.82rem',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.4rem',
+                          transition: 'all 0.2s',
+                          boxShadow: '0 0 12px rgba(245, 158, 11, 0.3)'
+                        }}
+                        title="Ver o Laudo Tático Completo (Localização, Horário de Alerta, Questões Feitas Hoje)"
+                      >
+                        <FileText size={15} />
+                        <span>Laudo Tático</span>
+                      </button>
+
                       {/* Liberar / Revogar Cronograma VIP (R$ 4,00) */}
                       <button
                         onClick={() => handleToggleScheduleAccess(userKey, user.name, !user.hasScheduleAccess)}
@@ -1816,6 +1925,185 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
           </div>
         </section>
       </main>
+
+      {/* MODAL DE LAUDO TÁTICO COMPLETO DO ALUNO */}
+      {selectedReportUser && (
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          background: 'rgba(0, 0, 0, 0.85)',
+          backdropFilter: 'blur(8px)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 100,
+          padding: '1rem'
+        }}>
+          <div style={{
+            maxWidth: '560px',
+            width: '100%',
+            background: 'linear-gradient(135deg, #0d1712 0%, #060b08 100%)',
+            border: '2px solid #f59e0b',
+            borderRadius: '20px',
+            padding: '1.75rem',
+            boxShadow: '0 0 45px rgba(245, 158, 11, 0.4)',
+            position: 'relative',
+            color: '#ffffff'
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                <div style={{
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #b45309, #f59e0b)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 0 15px rgba(245, 158, 11, 0.5)'
+                }}>
+                  <FileText size={24} color="#090d0b" />
+                </div>
+                <div>
+                  <span style={{ fontSize: '0.68rem', fontWeight: 900, color: '#f59e0b', letterSpacing: '0.1em' }}>
+                    QG DO COMANDANTE GEAN • LAUDO OFICIAL
+                  </span>
+                  <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 900, color: '#ffffff' }}>
+                    Laudo Tático: {selectedReportUser.name}
+                  </h3>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setSelectedReportUser(null)}
+                style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  border: 'none',
+                  color: '#cbd5e1',
+                  borderRadius: '8px',
+                  width: '32px',
+                  height: '32px',
+                  cursor: 'pointer',
+                  fontSize: '1.1rem'
+                }}
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Conteúdo do Laudo */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem' }}>
+              <div style={{ background: 'rgba(255, 255, 255, 0.04)', padding: '0.85rem 1rem', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>📍 Localização / Imediação Estimada</div>
+                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#fbbf24', marginTop: '0.15rem' }}>
+                  {selectedReportUser.lastLocationCity ? `📍 ${selectedReportUser.lastLocationCity}` : '📍 Pernambuco, BR (Detectado por IP)'}
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                <div style={{ background: 'rgba(255, 255, 255, 0.04)', padding: '0.85rem 1rem', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                  <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>⚡ Último Acesso</div>
+                  <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#4ade80', marginTop: '0.15rem' }}>
+                    {selectedReportUser.lastActiveTime 
+                      ? new Date(selectedReportUser.lastActiveTime).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })
+                      : 'Recente'}
+                  </div>
+                </div>
+
+                <div style={{ background: 'rgba(255, 255, 255, 0.04)', padding: '0.85rem 1rem', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                  <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>🎯 Questões Hoje</div>
+                  <div style={{ fontSize: '1.15rem', fontWeight: 900, color: '#38bdf8', marginTop: '0.15rem' }}>
+                    {selectedReportUser.questionsTodayCount || 0} resolvidas
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                <div style={{ background: 'rgba(255, 255, 255, 0.04)', padding: '0.85rem 1rem', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                  <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>📱 WhatsApp do Aluno</div>
+                  <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#f8fafc', marginTop: '0.15rem' }}>
+                    {selectedReportUser.phoneNumber || 'Não cadastrado'}
+                  </div>
+                </div>
+
+                <div style={{ background: 'rgba(255, 255, 255, 0.04)', padding: '0.85rem 1rem', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                  <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>⏰ Alarme de Estudo</div>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#fbbf24', marginTop: '0.15rem' }}>
+                    {selectedReportUser.studyAlertTime ? `${selectedReportUser.studyAlertTime} (Programado)` : 'Não agendado'}
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ background: 'rgba(255, 255, 255, 0.04)', padding: '0.85rem 1rem', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>🛡️ Aparelho e Trava de Segurança</div>
+                <div style={{ fontSize: '0.82rem', color: '#cbd5e1', marginTop: '0.2rem' }}>
+                  {selectedReportUser.boundDeviceId 
+                    ? `Aparelho Único Vinculado (${selectedReportUser.boundDeviceName || 'Mobile'}). Impede rateio e login compartilhado.`
+                    : 'Aparelho livre para o primeiro acesso do aluno.'}
+                </div>
+              </div>
+            </div>
+
+            {/* Ações do Laudo */}
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <button
+                onClick={() => {
+                  sound.playClick();
+                  const text = `📋 *[LAUDO TÁTICO MILITAR - PMPE 2026]*\n👤 *Aluno:* ${selectedReportUser.name}\n📍 *Imediação:* ${selectedReportUser.lastLocationCity || 'Pernambuco, BR'}\n⚡ *Último Acesso:* ${selectedReportUser.lastActiveTime ? new Date(selectedReportUser.lastActiveTime).toLocaleString('pt-BR') : 'Hoje'}\n🎯 *Questões Resolvidas Hoje:* ${selectedReportUser.questionsTodayCount || 0}\n⏰ *Alarme Agendado:* ${selectedReportUser.studyAlertTime || 'Não agendado'}\n🛡️ *Status de Acesso:* ${selectedReportUser.status === 'approved' ? 'ATIVO (Liberado)' : 'BLOQUEADO'}\n\n*Assinado:* Comandante Gean Gouveia`;
+                  navigator.clipboard.writeText(text);
+                  showFeedback('📋 Laudo Tático copiado com sucesso para a área de transferência!');
+                }}
+                style={{
+                  flex: 1,
+                  padding: '0.85rem',
+                  borderRadius: '12px',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  color: '#ffffff',
+                  fontWeight: 800,
+                  fontSize: '0.86rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.45rem'
+                }}
+              >
+                <Copy size={16} />
+                <span>Copiar Laudo</span>
+              </button>
+
+              {selectedReportUser.phoneNumber && (
+                <a
+                  href={`https://wa.me/55${selectedReportUser.phoneNumber.replace(/[^0-9]/g, '')}?text=Olá%20${encodeURIComponent(selectedReportUser.name)},%20aqui%20é%20o%20Comandante%20Gean!%20Identifiquei%20sua%20atividade%20no%20app%20Missão%20PMPE%20(${selectedReportUser.questionsTodayCount || 0}%20questões%20feitas%20hoje).%20Mantenha%20o%20foco%20rumo%20à%20aprovação!`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => sound.playClick()}
+                  style={{
+                    flex: 1,
+                    padding: '0.85rem',
+                    borderRadius: '12px',
+                    background: 'linear-gradient(135deg, #16a34a, #15803d)',
+                    border: 'none',
+                    color: '#ffffff',
+                    fontWeight: 900,
+                    fontSize: '0.86rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.45rem',
+                    textDecoration: 'none'
+                  }}
+                >
+                  <Send size={16} />
+                  <span>Notificar no WhatsApp</span>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

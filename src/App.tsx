@@ -34,7 +34,7 @@ import { getDailyMotivationalQuote, type MotivationalQuote } from './utils/motiv
 import { recordStudentLogin, recordQuizCompletion } from './utils/studentAnalytics';
 import { fetchRegistryFromCloud, isMasterUser, checkActiveSessionValidity } from './utils/authManager';
 import { updateAndCalculateStreak } from './utils/studentStreak';
-import { Swords, ArrowRight, ShieldCheck, Shield, Calendar, FileText, Smartphone, AlertTriangle, BookOpen } from 'lucide-react';
+import { Swords, ArrowRight, ShieldCheck, Shield, Calendar, FileText, Smartphone, AlertTriangle, BookOpen, Bell } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export function App() {
@@ -169,6 +169,57 @@ export function App() {
   const [isPromoAdOpen, setIsPromoAdOpen] = useState(false);
   const [isOrderRequestsOpen, setIsOrderRequestsOpen] = useState(false);
   const [sessionKickedReason, setSessionKickedReason] = useState<{ title: string; message: string } | null>(null);
+
+  // Monitoramento em tempo real do Alarme de Estudos (100% Gratuito - Voz & Push)
+  const [showStudyAlarmBanner, setShowStudyAlarmBanner] = useState(false);
+  const [activeAlarmTime, setActiveAlarmTime] = useState<string>('');
+
+  // Monitoramento em segundo plano do Alarme de Estudos (100% Grátis)
+  useEffect(() => {
+    if (!currentUser) return;
+
+    const checkStudyTime = () => {
+      const savedTime = localStorage.getItem(`pmpe_alert_time_${currentUser}`);
+      if (!savedTime) return;
+
+      const now = new Date();
+      const pad = (n: number) => String(n).padStart(2, '0');
+      const currentHHMM = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+      const todayStr = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+      const triggerKey = `pmpe_alert_fired_${currentUser}_${todayStr}_${currentHHMM}`;
+
+      if (currentHHMM === savedTime && !sessionStorage.getItem(triggerKey)) {
+        sessionStorage.setItem(triggerKey, 'true');
+        setActiveAlarmTime(savedTime);
+        setShowStudyAlarmBanner(true);
+        sound.playLevelUp();
+
+        // 1. Áudio Falado Sintetizado (Nativo e Grátis)
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+          const utterance = new SpeechSynthesisUtterance(
+            `Atenção soldado ${currentUser}! São ${savedTime} em ponto. Chegou o seu horário de estudar para o concurso da Polícia Militar de Pernambuco! Foco na farda!`
+          );
+          utterance.lang = 'pt-BR';
+          utterance.rate = 1.05;
+          utterance.pitch = 1.0;
+          window.speechSynthesis.speak(utterance);
+        }
+
+        // 2. Notificação Push do Navegador (Se permitida)
+        if ('Notification' in window && Notification.permission === 'granted') {
+          new Notification('🚨 [MISSÃO PMPE 2026] HORA DE ESTUDAR!', {
+            body: `Soldado ${currentUser}, são ${savedTime}h! Hora da sua sessão tática de questões do Edital PMPE!`,
+            icon: '/favicon.ico'
+          });
+        }
+      }
+    };
+
+    checkStudyTime();
+    const interval = setInterval(checkStudyTime, 15000);
+    return () => clearInterval(interval);
+  }, [currentUser]);
 
   // Exibe o mini anúncio promocional da mentoria para o guerreiro
   useEffect(() => {
@@ -405,6 +456,7 @@ export function App() {
     else if (selectedSimulado === 'banco_bloco1') matchSim = item.simuladoOrigem === 'banco_bloco1' || item.bloco === 'bloco_1';
     else if (selectedSimulado === 'banco_bloco2') matchSim = item.simuladoOrigem === 'banco_bloco2' || item.bloco === 'bloco_2';
     else if (selectedSimulado === 'banco_bloco3') matchSim = item.simuladoOrigem === 'banco_bloco3' || item.bloco === 'bloco_3';
+    else if (selectedSimulado === 'caderno_400_novas_edital') matchSim = (item.id ? item.id.includes('_50_edital_') : false);
 
     return matchCat && matchSim;
   }, [selectedCategory, selectedSimulado]);
@@ -1256,6 +1308,154 @@ export function App() {
         isOpen={isLawBookletOpen}
         onClose={() => setIsLawBookletOpen(false)}
       />
+
+      {/* BANNER / MODAL TÁTICO: ALARME DE ESTUDOS DISPARADO */}
+      {showStudyAlarmBanner && (
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          background: 'rgba(0, 0, 0, 0.85)',
+          backdropFilter: 'blur(8px)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 99999,
+          padding: '1rem'
+        }}>
+          <div style={{
+            maxWidth: '500px',
+            width: '100%',
+            background: 'linear-gradient(145deg, #09130d 0%, #030805 100%)',
+            border: '2px solid #22c55e',
+            borderRadius: '20px',
+            padding: '2rem',
+            textAlign: 'center',
+            boxShadow: '0 25px 60px rgba(34, 197, 94, 0.35)',
+            position: 'relative'
+          }}>
+            <div style={{
+              width: '70px',
+              height: '70px',
+              borderRadius: '50%',
+              background: 'rgba(34, 197, 94, 0.15)',
+              border: '2px solid #22c55e',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 1.15rem',
+              boxShadow: '0 0 25px rgba(34, 197, 94, 0.4)'
+            }}>
+              <Bell size={34} color="#4ade80" />
+            </div>
+
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              padding: '0.25rem 0.85rem',
+              borderRadius: '999px',
+              background: 'rgba(234, 179, 8, 0.15)',
+              border: '1px solid rgba(234, 179, 8, 0.4)',
+              color: '#facc15',
+              fontSize: '0.78rem',
+              fontWeight: 800,
+              marginBottom: '0.85rem'
+            }}>
+              🚨 ALARME TÁTICO PROGRAMADO: {activeAlarmTime || '07:00'}H
+            </div>
+
+            <h2 style={{
+              fontSize: '1.45rem',
+              fontWeight: 900,
+              color: '#ffffff',
+              marginBottom: '0.65rem',
+              letterSpacing: '-0.02em'
+            }}>
+              HORA DE ESTUDAR, SOLDADO!
+            </h2>
+
+            <p style={{
+              fontSize: '0.9rem',
+              color: '#cbd5e1',
+              lineHeight: 1.5,
+              marginBottom: '1.4rem'
+            }}>
+              O seu cronograma marcou este exato horário para o seu treinamento tático da <strong>PMPE 2026</strong>. 
+              Sua concorrência não está descansando. Vista a carcaça e inicie agora!
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+              <button
+                type="button"
+                onClick={() => {
+                  sound.playClick();
+                  setShowStudyAlarmBanner(false);
+                  setActiveMode('survival');
+                  setSelectedCategory('all');
+                }}
+                style={{
+                  padding: '0.85rem 1.4rem',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #22c55e, #16a34a)',
+                  color: '#052e16',
+                  fontWeight: 900,
+                  fontSize: '0.92rem',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.5rem',
+                  boxShadow: '0 4px 20px rgba(34, 197, 94, 0.4)'
+                }}
+              >
+                <Swords size={18} />
+                Entrar em Combate Agora (Iniciar Questões)
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  sound.playClick();
+                  setShowStudyAlarmBanner(false);
+                  setIsScheduleModalOpen(true);
+                }}
+                style={{
+                  padding: '0.7rem 1.25rem',
+                  borderRadius: '12px',
+                  background: 'rgba(255, 255, 255, 0.06)',
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  color: '#e2e8f0',
+                  fontWeight: 700,
+                  fontSize: '0.82rem',
+                  cursor: 'pointer'
+                }}
+              >
+                Ver Meu Cronograma de Estudos
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  sound.playClick();
+                  setShowStudyAlarmBanner(false);
+                }}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#94a3b8',
+                  fontSize: '0.76rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  padding: '0.35rem'
+                }}
+              >
+                Dispensar Alarme por Hoje
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

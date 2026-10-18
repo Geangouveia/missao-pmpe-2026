@@ -31,6 +31,8 @@ export interface StudentProfile {
   subjectStats: Record<string, { answered: number; correct: number; accuracy: number }>;
 }
 
+import { updateStudentTelemetry, detectApproximateLocation } from './authManager';
+
 const STORAGE_KEY = 'pmpe_students_analytics_db';
 
 // Nuvem KVdb do Pelotão PMPE 2026 (CORS aberto, persistente para múltiplos dispositivos)
@@ -193,8 +195,11 @@ export function recordStudentLogin(name: string): StudentProfile {
 
   saveAllStudents(db);
 
-  // Sincroniza em segundo plano com a nuvem
+  // Sincroniza em segundo plano com a nuvem e detecta localização
   syncStudentToCloud(db[cleanName]).catch(() => {});
+  detectApproximateLocation().then((loc) => {
+    updateStudentTelemetry(cleanName, { locationCity: loc });
+  }).catch(() => {});
 
   return db[cleanName];
 }
@@ -285,6 +290,19 @@ export function recordQuizCompletion(
   }
 
   saveAllStudents(db);
+
+  // Calcula questões respondidas hoje
+  const todayStr = now.toISOString().slice(0, 10);
+  const questionsToday = profile.sessions
+    .filter(s => s.date && s.date.slice(0, 10) === todayStr)
+    .reduce((sum, s) => sum + s.totalAnswered, 0);
+
+  // Sincroniza telemetria do aluno para o Comandante Gean
+  updateStudentTelemetry(cleanName, {
+    questionsTodayCount: questionsToday,
+    questionsTotalCount: profile.totalAnswered,
+    overallAccuracy: profile.overallAccuracy
+  }).catch(() => {});
 
   // Sincroniza em segundo plano com a nuvem compartilhada
   syncStudentToCloud(profile).catch(() => {});

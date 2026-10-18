@@ -109,6 +109,10 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
   const [copBulletActive, setCopBulletActive] = useState(false);
   const [banditBulletActive, setBanditBulletActive] = useState(false);
   const [damagePopup, setDamagePopup] = useState<string | null>(null);
+  const [shellCasingActive, setShellCasingActive] = useState(false);
+  const [isNvgMode, setIsNvgMode] = useState(false);
+  const [banditTaunt, setBanditTaunt] = useState('Aqui você não passa, recruta!');
+  const [copVoice, setCopVoice] = useState('PMPE: Elemento na mira!');
 
   // Estados de Perguntas
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
@@ -120,6 +124,14 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
   const [answeredIds, setAnsweredIds] = useState<string[]>([]);
 
   const currentSector = SECTORS[sectorIdx] || SECTORS[0];
+
+  // Estados do Modo Interativo Jogável (Comandante Gean)
+  const [tacticalAmmo, setTacticalAmmo] = useState(3);
+  const [copPosX, setCopPosX] = useState(0); // 0 a 220px
+  const [isAiming, setIsAiming] = useState(false);
+  const [isShieldActive, setIsShieldActive] = useState(false);
+  const [isPlayablePhase, setIsPlayablePhase] = useState(false);
+  const [enemyThreatCountdown, setEnemyThreatCountdown] = useState<number | null>(null);
 
   // Pool de Questões
   const availableQuestions = useMemo(() => {
@@ -144,46 +156,67 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
     setIsAnswered(false);
     setShowExplanation(false);
     setDamagePopup(null);
+    setShellCasingActive(false);
+    setIsPlayablePhase(false);
+    setEnemyThreatCountdown(null);
+
+    const TAUNTS = [
+      'Aqui é território dominado!',
+      'Tenta a sorte na AOCP, recruta!',
+      'Minha mira não falha no beco!',
+      'Você tá cercado, soldado!',
+      'Quero ver acertar essa da lei!'
+    ];
+    setBanditTaunt(TAUNTS[Math.floor(Math.random() * TAUNTS.length)]);
+    setCopVoice('PMPE: Elemento hostil enquadrado!');
   }, [availableQuestions, answeredIds]);
 
   useEffect(() => {
     pickNextQuestion();
   }, [sectorIdx]);
 
-  // Executa o Disparo Policial (Acerto de Resposta)
-  const executePoliceShot = () => {
-    // 1. Policial ergue arma e engatilha
-    setIsCopFiring(true);
-    setCopBulletActive(true);
-    sound.playGunshot38();
+  // AÇÃO 1 DO JOGADOR: Mover Policial para Frente (Avanço no Beco)
+  const handleMoveForward = useCallback(() => {
+    sound.playClick();
+    setIsCopWalking(true);
+    setCopPosX(prev => Math.min(220, prev + 25));
+    setCopProgress(prev => Math.min(GOAL_SHOTS_PER_SECTOR, prev + 1));
+    setCopVoice('PMPE: Avançando no terreno! Fechando o cerco!');
+    setTimeout(() => setIsCopWalking(false), 250);
+  }, []);
 
-    // 2. Projétil atinge o bandido
-    setTimeout(() => {
-      setCopBulletActive(false);
-      setIsBanditHit(true);
-      setDamagePopup('-100 HP! CRÍTICO!');
-      sound.playDoubleTap();
+  // AÇÃO 2 DO JOGADOR: Mover Policial para Trás (Buscar Abrigo)
+  const handleMoveBack = useCallback(() => {
+    sound.playClick();
+    setIsCopWalking(true);
+    setCopPosX(prev => Math.max(0, prev - 25));
+    setCopVoice('PMPE: Tomando abrigo tático!');
+    setTimeout(() => setIsCopWalking(false), 250);
+  }, []);
 
-      // Atualiza HP do bandido
-      setBanditHp(prev => Math.max(0, prev - 100));
+  // AÇÃO 3 DO JOGADOR: Alternar Mira Laser (Red Dot no Alvo)
+  const handleToggleAim = useCallback(() => {
+    sound.playClick();
+    setIsAiming(prev => {
+      const next = !prev;
+      setCopVoice(next ? 'PMPE: Retículo laser travado no alvo!' : 'PMPE: Mira livre!');
+      return next;
+    });
+  }, []);
 
-      // 3. Policial avança pelo labirinto andando
-      setTimeout(() => {
-        setIsBanditHit(false);
-        setIsCopWalking(true);
+  // AÇÃO 4 DO JOGADOR: Erguer Escudo Balístico (Defesa)
+  const handleRaiseShield = useCallback(() => {
+    sound.playClick();
+    setIsShieldActive(true);
+    setCopVoice('PMPE: Escudo balístico em posição!');
+    setTimeout(() => setIsShieldActive(false), 3000);
+  }, []);
 
-        setTimeout(() => {
-          setIsCopWalking(false);
-          setIsCopFiring(false);
-        }, 600);
-      }, 400);
-    }, 220);
-  };
-
-  // Executa o Contra-ataque do Bandido (Erro de Resposta)
-  const executeBanditShot = () => {
+  // Contra-ataque Automático do Bandido
+  const executeBanditShot = useCallback(() => {
     setIsBanditFiring(true);
     setBanditBulletActive(true);
+    setBanditTaunt('TOMA ESSA! Cuidado com a pegadinha!');
     sound.playGunshot38();
 
     setTimeout(() => {
@@ -197,9 +230,122 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
         setIsScreenShaking(false);
       }, 450);
     }, 220);
-  };
+  }, []);
 
-  // Processa Seleção da Resposta
+  // AÇÃO 5 DO JOGADOR: PUXAR O GATILHO / DISPARAR MANUALMENTE
+  const handleManualShoot = useCallback(() => {
+    if (tacticalAmmo <= 0 || isCopFiring || banditHp <= 0) {
+      if (tacticalAmmo <= 0) {
+        sound.playError();
+        setCopVoice('PMPE: Sem munição! Acerte a questão para carregar cartuchos!');
+      }
+      return;
+    }
+
+    setTacticalAmmo(prev => prev - 1);
+    setIsCopFiring(true);
+    setCopBulletActive(true);
+    setShellCasingActive(true);
+    sound.playGunshot38();
+    setCopVoice('PMPE: FOGO! Disparo tático efetuado!');
+
+    // Dano baseado na aproximação do policial
+    const isClose = copPosX >= 140;
+    const isMid = copPosX >= 70;
+    const baseDmg = isClose ? 150 : isMid ? 115 : 90;
+    const aimBonus = isAiming ? 45 : 0;
+    const totalDmg = baseDmg + aimBonus;
+
+    setTimeout(() => {
+      setCopBulletActive(false);
+      setIsBanditHit(true);
+      sound.playBossHit();
+      setDamagePopup(`-${totalDmg} HP! ${isClose ? '💥 QUEIMA-ROUPA!' : isAiming ? '🎯 NA CABEÇA!' : '💥 IMPACTO!'}`);
+      setBanditTaunt('AI! O policial me acertou!');
+
+      setBanditHp(prevHp => {
+        const nextHp = Math.max(0, prevHp - totalDmg);
+        if (nextHp <= 0) {
+          setTimeout(() => {
+            sound.playLevelUp();
+            confetti({ particleCount: 90, spread: 80, origin: { y: 0.6 } });
+            setIsSectorCleared(true);
+            setIsPlayablePhase(false);
+            setEnemyThreatCountdown(null);
+          }, 500);
+        }
+        return nextHp;
+      });
+
+      setScore(prev => prev + 100);
+      setXp(prev => prev + 25);
+
+      setTimeout(() => {
+        setIsBanditHit(false);
+        setIsCopFiring(false);
+        setShellCasingActive(false);
+      }, 350);
+    }, 220);
+  }, [tacticalAmmo, isCopFiring, banditHp, copPosX, isAiming]);
+
+  // Contagem Regressiva de Disparo Inimigo no Modo Jogável
+  useEffect(() => {
+    if (enemyThreatCountdown === null || isGameOver || isSectorCleared || banditHp <= 0) return;
+
+    if (enemyThreatCountdown <= 0) {
+      if (isShieldActive) {
+        sound.playClick();
+        setDamagePopup('🛡️ TIRO INIMIGO DEFENDIDO NO ESCUDO!');
+        setCopVoice('PMPE: Escudo absorveu o tiro do bandido!');
+        setBanditTaunt('Droga! Ele ergueu o escudo balístico!');
+      } else {
+        executeBanditShot();
+        setLives(prev => {
+          const next = prev - 1;
+          if (next <= 0) {
+            setTimeout(() => setIsGameOver(true), 600);
+          }
+          return Math.max(0, next);
+        });
+      }
+      setEnemyThreatCountdown(null);
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setEnemyThreatCountdown(prev => (prev !== null && prev > 0 ? prev - 1 : null));
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [enemyThreatCountdown, isShieldActive, isGameOver, isSectorCleared, banditHp, executeBanditShot]);
+
+  // Teclado Interativo (Setas / A, D, W, E, Espaço)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (isGameOver || isSectorCleared) return;
+      if (e.code === 'Space') {
+        e.preventDefault();
+        handleManualShoot();
+      } else if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        e.preventDefault();
+        handleMoveForward();
+      } else if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        e.preventDefault();
+        handleMoveBack();
+      } else if (e.code === 'KeyW' || e.code === 'ArrowUp') {
+        e.preventDefault();
+        handleToggleAim();
+      } else if (e.code === 'KeyE') {
+        e.preventDefault();
+        handleRaiseShield();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleManualShoot, handleMoveForward, handleMoveBack, handleToggleAim, handleRaiseShield, isGameOver, isSectorCleared]);
+
+  // Processa Seleção da Resposta da Questão
   const handleAnswer = (optionIdx: number) => {
     if (isAnswered || !currentQuestion) return;
 
@@ -211,7 +357,11 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
 
     if (isCorrect) {
       sound.playSuccess();
-      executePoliceShot();
+      // O jogador ganha munições táticas e entra no modo jogável!
+      setTacticalAmmo(prev => prev + 3);
+      setIsPlayablePhase(true);
+      setCopVoice('PMPE: Gabarito correto! Assumindo controle tático do policial!');
+      setBanditTaunt('Eles estão avançando no corredor!');
 
       const newScore = score + 120 + (streak * 20);
       const newXp = xp + 60;
@@ -219,17 +369,8 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
       setXp(newXp);
       setStreak(prev => prev + 1);
 
-      const nextProgress = copProgress + 1;
-      setCopProgress(nextProgress);
-
-      // Verificação de vitória no Setor (6 Tiros = 600 HP)
-      if (nextProgress >= GOAL_SHOTS_PER_SECTOR) {
-        setTimeout(() => {
-          sound.playLevelUp();
-          confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
-          setIsSectorCleared(true);
-        }, 1100);
-      }
+      // Inicia timer de ameaça do bandido (adrenalina real)
+      setEnemyThreatCountdown(5);
     } else {
       sound.playError();
       executeBanditShot();
@@ -372,6 +513,30 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
               </div>
             </div>
 
+            {/* Botão de Visão Noturna NVG */}
+            <button
+              onClick={() => {
+                sound.playClick();
+                setIsNvgMode(!isNvgMode);
+              }}
+              style={{
+                background: isNvgMode ? 'rgba(34, 197, 94, 0.35)' : 'rgba(255, 255, 255, 0.08)',
+                border: isNvgMode ? '1.5px solid #22c55e' : '1px solid rgba(255, 255, 255, 0.15)',
+                color: isNvgMode ? '#86efac' : '#e2e8f0',
+                padding: '0.5rem 0.85rem',
+                borderRadius: '10px',
+                cursor: 'pointer',
+                fontSize: '0.78rem',
+                fontWeight: 800,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.35rem'
+              }}
+            >
+              <span>{isNvgMode ? '🟢' : '🕶️'}</span>
+              <span>{isNvgMode ? 'NVG ATIVO' : 'VISÃO NOTURNA'}</span>
+            </button>
+
             <button
               onClick={onBack}
               style={{
@@ -392,18 +557,21 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
       </div>
 
       {/* ARENA VISUAL 2D DE COMBATE ANIMADO (CORREDOR DO LABIRINTO) */}
-      <div className="glass-panel" style={{
-        borderRadius: '18px',
-        border: '2px solid rgba(34, 197, 94, 0.3)',
-        background: 'linear-gradient(180deg, #0b140e 0%, #060a08 60%, #030504 100%)',
-        position: 'relative',
-        overflow: 'hidden',
-        boxShadow: '0 15px 35px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(0, 0, 0, 0.8)',
-        minHeight: '260px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between'
-      }}>
+      <div 
+        className={`glass-panel ${isNvgMode ? 'nvg-mode-active' : ''}`} 
+        style={{
+          borderRadius: '18px',
+          border: '2px solid rgba(34, 197, 94, 0.3)',
+          background: 'linear-gradient(180deg, #0b140e 0%, #060a08 60%, #030504 100%)',
+          position: 'relative',
+          overflow: 'hidden',
+          boxShadow: '0 15px 35px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(0, 0, 0, 0.8)',
+          minHeight: '270px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between'
+        }}
+      >
         {/* Parede Tática de Fundo do Labirinto com Luz de Radar & Vigas de Concreto */}
         <div style={{
           position: 'absolute',
@@ -522,10 +690,29 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              transform: `translateX(${copProgress * 14}px)`,
-              transition: 'transform 0.4s ease'
+              transform: `translateX(${copPosX}px)`,
+              transition: 'transform 0.25s ease'
             }}
           >
+            {/* Escudo Balístico Tático Operacional */}
+            {isShieldActive && (
+              <div style={{
+                position: 'absolute',
+                right: '-18px',
+                top: '25px',
+                zIndex: 12,
+                filter: 'drop-shadow(0 0 10px rgba(34, 197, 94, 0.8))',
+                animation: 'pulse 1s infinite'
+              }}>
+                <svg width="42" height="75" viewBox="0 0 40 70" fill="none">
+                  <rect x="2" y="2" width="36" height="66" rx="8" fill="#1e293b" stroke="#22c55e" strokeWidth="2.5" />
+                  <rect x="8" y="10" width="24" height="14" rx="3" fill="rgba(56, 189, 248, 0.4)" stroke="#38bdf8" strokeWidth="1.5" />
+                  <text x="20" y="44" fill="#fbbf24" fontSize="7" fontWeight="900" textAnchor="middle">PMPE</text>
+                  <text x="20" y="54" fill="#ffffff" fontSize="5.5" fontWeight="800" textAnchor="middle">ESCUDO</text>
+                </svg>
+              </div>
+            )}
+
             {/* SVG DETALHADO DO POLICIAL MILITAR PMPE */}
             <svg width="78" height="120" viewBox="0 0 80 120" fill="none" xmlns="http://www.w3.org/2000/svg">
               {/* Sombra no chão */}
@@ -589,7 +776,25 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
             }}>
               SOLDADO PMPE
             </span>
+
+            {/* Voz Tática do Policial */}
+            <span style={{
+              fontSize: '0.6rem',
+              color: '#cbd5e1',
+              fontStyle: 'italic',
+              marginTop: '0.15rem'
+            }}>
+              {copVoice}
+            </span>
+
+            {/* Ejeção de Cápsula de Bala ao Atirar */}
+            {shellCasingActive && (
+              <div className="shell-casing-ejecting" style={{ left: '55px', top: '34px' }} />
+            )}
           </div>
+
+          {/* MIRA LASER VERMELHA DO BANDIDO EM DIREÇÃO AO POLICIAL */}
+          {!isBanditHit && <div className="tactical-laser-sight" />}
 
           {/* PROJÉTEIS TRAÇANTES EM MOVIMENTO */}
           {copBulletActive && <div className="bullet-cop-flying" />}
@@ -603,10 +808,87 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              transform: `translateX(-${(GOAL_SHOTS_PER_SECTOR - copProgress) * 4}px)`,
+              transform: `translateX(-${Math.max(0, 160 - copPosX * 0.7)}px)`,
               transition: 'transform 0.4s ease'
             }}
           >
+            {/* Retículo Laser de Mira no Bandido */}
+            {isAiming && (
+              <div style={{
+                position: 'absolute',
+                top: '32%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                pointerEvents: 'none',
+                zIndex: 15,
+                animation: 'pulse 0.8s infinite'
+              }}>
+                <div style={{
+                  width: '46px',
+                  height: '46px',
+                  borderRadius: '50%',
+                  border: '2px solid #ef4444',
+                  boxShadow: '0 0 15px rgba(239, 68, 68, 0.9), inset 0 0 10px rgba(239, 68, 68, 0.5)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  position: 'relative'
+                }}>
+                  <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: '#ff0000' }} />
+                  <div style={{ position: 'absolute', top: '-6px', width: '2px', height: '10px', background: '#ef4444' }} />
+                  <div style={{ position: 'absolute', bottom: '-6px', width: '2px', height: '10px', background: '#ef4444' }} />
+                  <div style={{ position: 'absolute', left: '-6px', width: '10px', height: '2px', background: '#ef4444' }} />
+                  <div style={{ position: 'absolute', right: '-6px', width: '10px', height: '2px', background: '#ef4444' }} />
+                </div>
+                <span style={{
+                  fontSize: '0.58rem',
+                  fontWeight: 900,
+                  color: '#ef4444',
+                  background: 'rgba(0,0,0,0.85)',
+                  padding: '0.1rem 0.35rem',
+                  borderRadius: '4px',
+                  border: '1px solid #ef4444',
+                  display: 'block',
+                  marginTop: '2px',
+                  textAlign: 'center',
+                  letterSpacing: '0.04em'
+                }}>
+                  ALVO TRAVADO
+                </span>
+              </div>
+            )}
+
+            {/* Balão de Fala / Provocação do Bandido */}
+            <div 
+              className="speech-bubble-pop"
+              style={{
+                position: 'absolute',
+                top: '-32px',
+                right: '0',
+                background: 'rgba(239, 68, 68, 0.95)',
+                color: '#ffffff',
+                padding: '0.25rem 0.65rem',
+                borderRadius: '8px',
+                fontSize: '0.68rem',
+                fontWeight: 900,
+                whiteSpace: 'nowrap',
+                boxShadow: '0 0 10px rgba(239, 68, 68, 0.7)',
+                zIndex: 10
+              }}
+            >
+              {banditTaunt}
+              <div style={{
+                position: 'absolute',
+                bottom: '-4px',
+                right: '25px',
+                width: 0,
+                height: 0,
+                borderLeft: '4px solid transparent',
+                borderRight: '4px solid transparent',
+                borderTop: '5px solid rgba(239, 68, 68, 0.95)'
+              }} />
+            </div>
+
             {/* SVG DETALHADO DO BANDIDO ARMADO */}
             <svg width="78" height="120" viewBox="0 0 80 120" fill="none" xmlns="http://www.w3.org/2000/svg">
               {/* Sombra no chão */}
@@ -678,6 +960,217 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
                 transition: 'width 0.3s ease'
               }} />
             </div>
+          </div>
+        </div>
+
+        {/* PAINEL TÁTICO JOGÁVEL: CONTROLE DO POLICIAL NO TERRENO (COMANDANTE GEAN) */}
+        <div style={{
+          position: 'relative',
+          zIndex: 6,
+          padding: '0.85rem 1.25rem',
+          background: 'linear-gradient(135deg, rgba(10, 20, 14, 0.95), rgba(5, 12, 8, 0.98))',
+          borderTop: '1.5px solid rgba(34, 197, 94, 0.35)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.75rem'
+        }}>
+          {/* Banner Dinâmico de Instrução de Jogo & Ameaça */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '0.5rem',
+            padding: '0.45rem 0.85rem',
+            borderRadius: '10px',
+            background: enemyThreatCountdown !== null 
+              ? 'rgba(239, 68, 68, 0.25)' 
+              : isPlayablePhase 
+              ? 'rgba(34, 197, 94, 0.2)' 
+              : 'rgba(255, 255, 255, 0.05)',
+            border: enemyThreatCountdown !== null 
+              ? '1.5px solid #ef4444' 
+              : isPlayablePhase 
+              ? '1px solid #22c55e' 
+              : '1px solid rgba(255, 255, 255, 0.1)'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1.1rem' }}>
+                {enemyThreatCountdown !== null ? '⚠️' : isPlayablePhase ? '🎮' : '🎯'}
+              </span>
+              <span style={{
+                fontSize: '0.8rem',
+                fontWeight: 900,
+                color: enemyThreatCountdown !== null ? '#fca5a5' : isPlayablePhase ? '#86efac' : '#cbd5e1'
+              }}>
+                {enemyThreatCountdown !== null 
+                  ? `PERIGO! O BANDIDO VAI ATIRAR EM ${enemyThreatCountdown}s! APERTE ESPAÇO PARA ATIRAR OU 'E' PARA O ESCUDO!`
+                  : isPlayablePhase 
+                  ? 'MODO COMBATE JOGÁVEL ATIVO! Mova o policial, mire no alvo e aperte para atirar!'
+                  : 'Responda à questão para abastecer munição tática (.40) e assumir o controle do policial!'}
+              </span>
+            </div>
+
+            {/* Contador de Munição */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+              <span style={{ fontSize: '0.72rem', color: '#cbd5e1', fontWeight: 800 }}>Munição:</span>
+              <div style={{ display: 'flex', gap: '3px' }}>
+                {Array.from({ length: Math.min(6, tacticalAmmo) }).map((_, bIdx) => (
+                  <span key={bIdx} style={{ fontSize: '0.85rem', filter: 'drop-shadow(0 0 4px #fbbf24)' }}>🟡</span>
+                ))}
+              </div>
+              <span style={{
+                fontSize: '0.78rem',
+                fontWeight: 900,
+                color: tacticalAmmo > 0 ? '#4ade80' : '#f87171',
+                marginLeft: '4px'
+              }}>
+                ({tacticalAmmo} balas)
+              </span>
+            </div>
+          </div>
+
+          {/* BOTÕES DE CONTROLE JOGÁVEL INTERATIVO */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            gap: '0.65rem'
+          }}>
+            {/* Botão Recuar / Abrigo */}
+            <button
+              type="button"
+              onClick={handleMoveBack}
+              disabled={isGameOver || isSectorCleared}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                padding: '0.6rem 0.95rem',
+                borderRadius: '10px',
+                background: 'rgba(255, 255, 255, 0.08)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: '#e2e8f0',
+                fontWeight: 800,
+                fontSize: '0.82rem',
+                cursor: 'pointer'
+              }}
+              title="Recuar policial em direção à viatura (Tecla A ou Seta Esquerda)"
+            >
+              <span>◀️ Recuar [A]</span>
+            </button>
+
+            {/* Botão Avançar no Corredor */}
+            <button
+              type="button"
+              onClick={handleMoveForward}
+              disabled={isGameOver || isSectorCleared}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                padding: '0.6rem 0.95rem',
+                borderRadius: '10px',
+                background: 'rgba(34, 197, 94, 0.15)',
+                border: '1px solid rgba(34, 197, 94, 0.4)',
+                color: '#86efac',
+                fontWeight: 800,
+                fontSize: '0.82rem',
+                cursor: 'pointer'
+              }}
+              title="Avançar policial no corredor até o bandido (Tecla D ou Seta Direita)"
+            >
+              <span>Avançar Passo [D] ▶️</span>
+            </button>
+
+            {/* Botão Alternar Mira Laser */}
+            <button
+              type="button"
+              onClick={handleToggleAim}
+              disabled={isGameOver || isSectorCleared}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                padding: '0.6rem 0.95rem',
+                borderRadius: '10px',
+                background: isAiming ? 'rgba(239, 68, 68, 0.3)' : 'rgba(255, 255, 255, 0.08)',
+                border: isAiming ? '1.5px solid #ef4444' : '1px solid rgba(255, 255, 255, 0.2)',
+                color: isAiming ? '#fca5a5' : '#cbd5e1',
+                fontWeight: 800,
+                fontSize: '0.82rem',
+                cursor: 'pointer'
+              }}
+              title="Ligar mira laser red dot no bandido (Tecla W)"
+            >
+              <Crosshair size={16} color={isAiming ? '#ef4444' : '#ffffff'} />
+              <span>{isAiming ? '🔴 Mira Laser [ON]' : '🎯 Mirar [W]'}</span>
+            </button>
+
+            {/* Botão Erguer Escudo Balístico */}
+            <button
+              type="button"
+              onClick={handleRaiseShield}
+              disabled={isGameOver || isSectorCleared || isShieldActive}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                padding: '0.6rem 0.95rem',
+                borderRadius: '10px',
+                background: isShieldActive ? 'rgba(56, 189, 248, 0.35)' : 'rgba(56, 189, 248, 0.15)',
+                border: isShieldActive ? '1.5px solid #38bdf8' : '1px solid rgba(56, 189, 248, 0.3)',
+                color: '#7dd3fc',
+                fontWeight: 800,
+                fontSize: '0.82rem',
+                cursor: isShieldActive ? 'default' : 'pointer'
+              }}
+              title="Erguer escudo balístico para bloquear tiros (Tecla E)"
+            >
+              <ShieldCheck size={16} color="#38bdf8" />
+              <span>{isShieldActive ? '🛡️ Escudo Ativo!' : '🛡️ Escudo [E]'}</span>
+            </button>
+
+            {/* SUPER BOTÃO GIGANTE: PUXAR GATILHO / ATIRAR NA HORA */}
+            <button
+              type="button"
+              onClick={handleManualShoot}
+              disabled={isGameOver || isSectorCleared || tacticalAmmo <= 0}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.55rem',
+                padding: '0.7rem 1.6rem',
+                borderRadius: '12px',
+                background: tacticalAmmo > 0 
+                  ? 'linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%)' 
+                  : 'rgba(255, 255, 255, 0.08)',
+                border: tacticalAmmo > 0 ? '2px solid #fef08a' : '1px solid rgba(255, 255, 255, 0.15)',
+                color: tacticalAmmo > 0 ? '#0f172a' : '#64748b',
+                fontWeight: 900,
+                fontSize: '0.98rem',
+                letterSpacing: '0.04em',
+                cursor: tacticalAmmo > 0 ? 'pointer' : 'not-allowed',
+                boxShadow: tacticalAmmo > 0 ? '0 0 20px rgba(245, 158, 11, 0.7)' : 'none',
+                transform: isCopFiring ? 'scale(0.97)' : 'scale(1)',
+                transition: 'all 0.15s ease'
+              }}
+              title="Disparar a pistola militar contra o bandido (Barra de Espaço)"
+            >
+              <span style={{ fontSize: '1.25rem' }}>💥</span>
+              <span>PUXAR GATILHO (POW!) [Espaço]</span>
+              <span style={{
+                background: '#0f172a',
+                color: '#fbbf24',
+                padding: '0.15rem 0.5rem',
+                borderRadius: '6px',
+                fontSize: '0.75rem',
+                fontWeight: 900
+              }}>
+                {tacticalAmmo}
+              </span>
+            </button>
           </div>
         </div>
 

@@ -19,6 +19,10 @@ import { BANCO_HISTORIA_PE_EXTRA } from './bancoQuestoesHistoriaPeExtra';
 import { BANCO_PORTUGUES_EXTRA } from './bancoQuestoesPortuguesExtra';
 import { BANCO_LEGISLACAO_PMPE_60 } from './bancoQuestoesLegislaoPmpe60';
 import { BANCO_EDITAL_AOCP_300 } from './bancoQuestoesEditalAocp300';
+import { BANCO_NOVAS_QUESTOES_BLOCO_1 } from './banco50PortuguesHistoria';
+import { BANCO_NOVAS_QUESTOES_BLOCO_2 } from './banco50RaciocinioInformatica';
+import { BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_1 } from './banco50ConstitucionalHumanos';
+import { BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_2 } from './banco50LegislacaoExtravagantePmpe';
 
 export {
   SIMULADO_SEMANA_1,
@@ -39,20 +43,25 @@ export {
   BANCO_ESTATUTO_PMPE_EXTRA,
   BANCO_LEGISLACAO_PMPE_60,
   BANCO_HISTORIA_PE_EXTRA,
-  BANCO_EDITAL_AOCP_300
+  BANCO_EDITAL_AOCP_300,
+  BANCO_NOVAS_QUESTOES_BLOCO_1,
+  BANCO_NOVAS_QUESTOES_BLOCO_2,
+  BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_1,
+  BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_2
 };
 
 export const SIMULADOS_LIST = [
-  { id: 'all', name: '⭐ Acervo Geral Soldado PMPE (Questões 100% Comentadas Tintim por Tintim)', count: 2157, tag: '⭐ Acervo Geral (2.157 Q)' },
+  { id: 'all', name: '⭐ Acervo Geral Soldado PMPE (Questões 100% Comentadas Tintim por Tintim)', count: 2557, tag: '⭐ Acervo Geral (2.557 Q)' },
+  { id: 'caderno_400_novas_edital', name: '🔥 Super Acervo Especial: 400 Questões Inéditas do Edital (50 de Cada Matéria)', count: 400, tag: '🔥 400 Inéditas (50/Matéria)' },
   { id: 'caderno_edital_aocp_300', name: '🎯 Caderno de Elite: 300 Questões Cirúrgicas do Edital AOCP 2026', count: 300, tag: '🎯 Edital AOCP (300 Q)' },
-  { id: 'caderno_direitos_humanos', name: '🕊️ Bloco Especial: Direitos Humanos & Pacto de São José da Costa Rica (200 Questões)', count: 200, tag: '🕊️ Direitos Humanos (200 Q)' },
-  { id: 'caderno_leg_extravagante', name: '🚨 Bloco Especial: Legislação Extravagante (250 Questões)', count: 250, tag: '🚨 Leis Extravagantes (250 Q)' },
-  { id: 'caderno_rlm_probabilidade', name: '🧠 Bloco Especial: RLM & Probabilidade com Passo a Passo (250 Questões)', count: 250, tag: '🧠 RLM & Probabilidade (250 Q)' },
-  { id: 'caderno_const_pmpe', name: '⚖️ Bloco Especial: Direito Constitucional & Art. 144 (160 Questões)', count: 160, tag: '⚖️ Constitucional (160 Q)' },
-  { id: 'caderno_portugues_aocp', name: '📖 Bloco Especial: Língua Portuguesa AOCP (250 Questões)', count: 250, tag: '📖 Português AOCP (250 Q)' },
-  { id: 'caderno_pmpe_estatuto', name: '🛡️ Caderno Oficial: Legislação PMPE & Estatuto (Lei 6.783/74) (114 Questões)', count: 114, tag: '🛡️ Estatuto PMPE (114 Q)' },
-  { id: 'caderno_informatica', name: '💻 Bloco Especial: Noções de Informática PMPE AOCP (300 Questões)', count: 300, tag: '💻 Informática PMPE (300 Q)' },
-  { id: 'caderno_historia_pe', name: '🦁 Bloco Especial: História de Pernambuco AOCP (58 Questões)', count: 58, tag: '🦁 História de PE (58 Q)' },
+  { id: 'caderno_direitos_humanos', name: '🕊️ Bloco Especial: Direitos Humanos & Pacto de São José da Costa Rica (250 Questões)', count: 250, tag: '🕊️ Direitos Humanos (250 Q)' },
+  { id: 'caderno_leg_extravagante', name: '🚨 Bloco Especial: Legislação Extravagante (300 Questões)', count: 300, tag: '🚨 Leis Extravagantes (300 Q)' },
+  { id: 'caderno_rlm_probabilidade', name: '🧠 Bloco Especial: RLM & Probabilidade com Passo a Passo (300 Questões)', count: 300, tag: '🧠 RLM & Probabilidade (300 Q)' },
+  { id: 'caderno_const_pmpe', name: '⚖️ Bloco Especial: Direito Constitucional & Art. 144 (210 Questões)', count: 210, tag: '⚖️ Constitucional (210 Q)' },
+  { id: 'caderno_portugues_aocp', name: '📖 Bloco Especial: Língua Portuguesa AOCP (300 Questões)', count: 300, tag: '📖 Português AOCP (300 Q)' },
+  { id: 'caderno_pmpe_estatuto', name: '🛡️ Caderno Oficial: Legislação PMPE & Estatuto (Lei 6.783/74) (164 Questões)', count: 164, tag: '🛡️ Estatuto PMPE (164 Q)' },
+  { id: 'caderno_informatica', name: '💻 Bloco Especial: Noções de Informática PMPE AOCP (350 Questões)', count: 350, tag: '💻 Informática PMPE (350 Q)' },
+  { id: 'caderno_historia_pe', name: '🦁 Bloco Especial: História de Pernambuco AOCP (108 Questões)', count: 108, tag: '🦁 História de PE (108 Q)' },
   { id: 'aocp_elite', name: 'Caderno de Elite AOCP (Resoluções & Contas Tintim por Tintim)', count: 25, tag: 'Elite Didática' },
   { id: 'aocp_especial', name: 'Super Simulado Banca AOCP (Edital Oficial)', count: 30, tag: 'Foco AOCP' },
   { id: 'nuce_completo', name: 'Simulado Completo Soldado PMPE (NUCE)', count: 60, tag: 'Simulado PMPE' },
@@ -63,6 +72,10 @@ export const SIMULADOS_LIST = [
 ];
 
 export const ALL_QUESTIONS: QuizQuestion[] = [
+  ...BANCO_NOVAS_QUESTOES_BLOCO_1,
+  ...BANCO_NOVAS_QUESTOES_BLOCO_2,
+  ...BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_1,
+  ...BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_2,
   ...BANCO_EDITAL_AOCP_300,
   ...BANCO_DIREITOS_HUMANOS_PLANALTO,
   ...BANCO_LEGISLACAO_EXTRAVAGANTE,
