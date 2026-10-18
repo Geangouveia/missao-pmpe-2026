@@ -116,7 +116,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({
     setIsAnswered(true);
 
     if (currentQ?.id) {
-      markQuestionAnsweredToday(undefined, currentQ.id);
+      markQuestionAnsweredToday(undefined, currentQ.id, currentQ.question);
     }
 
     const timeSpent = Math.max(1, 30 - timeLeft);

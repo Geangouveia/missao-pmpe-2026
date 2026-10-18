@@ -146,7 +146,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     setLives(newLives);
 
     if (currentQ?.id) {
-      markQuestionAnsweredToday(userName, currentQ.id);
+      markQuestionAnsweredToday(userName, currentQ.id, currentQ.question);
     }
 
     if (onQuestionAnswered) {
@@ -166,7 +166,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     setIsAnswered(true);
 
     if (currentQ?.id) {
-      markQuestionAnsweredToday(userName, currentQ.id);
+      markQuestionAnsweredToday(userName, currentQ.id, currentQ.question);
     }
     setIsAnswered(true);
 

@@ -271,7 +271,7 @@ export function App() {
     };
 
     checkSession();
-    const interval = setInterval(checkSession, 12000);
+    const interval = setInterval(checkSession, 6000);
 
     const handleVisibility = () => {
       if (document.visibilityState === 'visible') {
@@ -279,10 +279,12 @@ export function App() {
       }
     };
     document.addEventListener('visibilitychange', handleVisibility);
+    window.addEventListener('focus', handleVisibility);
 
     return () => {
       clearInterval(interval);
       document.removeEventListener('visibilitychange', handleVisibility);
+      window.removeEventListener('focus', handleVisibility);
     };
   }, [currentUser]);
 
@@ -1034,25 +1036,25 @@ export function App() {
                 width: '46px',
                 height: '46px',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #15803d, #16a34a)',
+                background: 'linear-gradient(135deg, #1d4ed8, #2563eb)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 15px rgba(34, 197, 94, 0.4)',
+                boxShadow: '0 0 15px rgba(37, 99, 235, 0.4)',
                 flexShrink: 0
               }}>
                 <BookOpen size={24} color="#ffffff" />
               </div>
               <div style={{ flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#f0fdf4' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#f8fafc' }}>
                     Caderno de Leis Secas
                   </span>
-                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(34, 197, 94, 0.2)', color: '#4ade80', fontWeight: 900 }}>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(37, 99, 235, 0.25)', color: '#93c5fd', fontWeight: 900 }}>
                     EDITAL PMPE
                   </span>
                 </div>
-                <div style={{ fontSize: '0.78rem', color: '#86efac', marginTop: '0.2rem' }}>
+                <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem' }}>
                   Crimes Hediondos, Direitos Humanos, Estatuto PMPE e CF/88 com macetes AOCP
                 </div>
               </div>
@@ -1080,9 +1082,9 @@ export function App() {
               cursor: 'pointer',
               padding: '1.15rem 1.4rem',
               borderRadius: '16px',
-              background: 'linear-gradient(135deg, rgba(20, 36, 24, 0.95) 0%, rgba(12, 22, 14, 0.98) 100%)',
-              border: '2px solid #f59e0b',
-              boxShadow: '0 0 25px rgba(245, 158, 11, 0.25)',
+              background: 'linear-gradient(135deg, rgba(14, 26, 52, 0.95) 0%, rgba(9, 16, 34, 0.98) 100%)',
+              border: '2px solid rgba(59, 130, 246, 0.45)',
+              boxShadow: '0 0 25px rgba(37, 99, 235, 0.25)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
@@ -1093,11 +1095,11 @@ export function App() {
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 0 35px rgba(245, 158, 11, 0.45)';
+              e.currentTarget.style.boxShadow = '0 0 35px rgba(37, 99, 235, 0.45)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 0 25px rgba(245, 158, 11, 0.25)';
+              e.currentTarget.style.boxShadow = '0 0 25px rgba(37, 99, 235, 0.25)';
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem' }}>

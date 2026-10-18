@@ -27,6 +27,11 @@ function getTodayKey(): string {
   return `${year}-${month}-${day}`;
 }
 
+function normalizeQuestionKey(text?: string): string {
+  if (!text) return '';
+  return text.toLowerCase().replace(/[^a-z0-9\u00C0-\u017F]/g, '').slice(0, 90);
+}
+
 export function getAnsweredTodayIds(userName?: string): Set<string> {
   try {
     const today = getTodayKey();
@@ -41,9 +46,13 @@ export function getAnsweredTodayIds(userName?: string): Set<string> {
   }
 }
 
-export function markQuestionAnsweredToday(userName: string | undefined, questionId: string): void {
+export function markQuestionAnsweredToday(
+  userName: string | undefined, 
+  questionId: string, 
+  questionText?: string
+): void {
   try {
-    if (!questionId) return;
+    if (!questionId && !questionText) return;
     const today = getTodayKey();
     const userClean = getCanonicalUser(userName);
     const storageKey = `pmpe_answered_${userClean}_${today}`;
@@ -57,7 +66,11 @@ export function markQuestionAnsweredToday(userName: string | undefined, question
     }
 
     const currentSet = getAnsweredTodayIds(userName);
-    currentSet.add(questionId);
+    if (questionId) currentSet.add(questionId);
+    if (questionText) {
+      const textHash = normalizeQuestionKey(questionText);
+      if (textHash) currentSet.add(`txt_${textHash}`);
+    }
     localStorage.setItem(storageKey, JSON.stringify(Array.from(currentSet)));
   } catch {
     // fallback
@@ -75,7 +88,7 @@ export function clearAnsweredToday(userName?: string): void {
   }
 }
 
-export function filterOutAnsweredToday<T extends { id?: string }>(
+export function filterOutAnsweredToday<T extends { id?: string; question?: string }>(
   items: T[], 
   userName?: string
 ): T[] {
@@ -83,6 +96,13 @@ export function filterOutAnsweredToday<T extends { id?: string }>(
   const answeredToday = getAnsweredTodayIds(userName);
   if (answeredToday.size === 0) return items;
 
-  // Filtra ESTRITAMENTE: se foi respondida hoje, NUNCA mais aparece hoje!
-  return items.filter((item) => item.id && !answeredToday.has(item.id));
+  // Filtra ESTRITAMENTE: se foi respondida hoje (por id ou por texto), NUNCA mais aparece hoje!
+  return items.filter((item) => {
+    if (item.id && answeredToday.has(item.id)) return false;
+    if (item.question) {
+      const textKey = `txt_${normalizeQuestionKey(item.question)}`;
+      if (answeredToday.has(textKey)) return false;
+    }
+    return true;
+  });
 }

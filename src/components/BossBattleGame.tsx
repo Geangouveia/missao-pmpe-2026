@@ -53,7 +53,7 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
     setIsAnswered(true);
 
     if (currentQ?.id) {
-      markQuestionAnsweredToday(undefined, currentQ.id);
+      markQuestionAnsweredToday(undefined, currentQ.id, currentQ.question);
     }
 
     const isCorrect = index === currentQ.correctIndex;

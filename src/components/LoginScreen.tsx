@@ -87,7 +87,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
 
       if (res.allowed) {
         sound.playLevelUp();
-        createAndRecordSession(trimmedName);
+        await createAndRecordSession(trimmedName);
         const userData = {
           name: trimmedName,
           authenticatedAt: new Date().toISOString(),
@@ -154,7 +154,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
 
       await setUserPersonalPassword(trimmedName, trimmedNew);
       sound.playLevelUp();
-      createAndRecordSession(trimmedName);
+      await createAndRecordSession(trimmedName);
 
       const userData = {
         name: trimmedName,
@@ -184,11 +184,11 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
       alignItems: 'center',
       justifyContent: 'center',
       padding: '2rem 1.25rem',
-      background: 'radial-gradient(circle at 50% 12%, #18231c 0%, #0d1410 50%, #060907 100%)',
+      background: 'radial-gradient(circle at 50% 12%, #0e1b38 0%, #070d1e 55%, #040812 100%)',
       position: 'relative',
       overflow: 'hidden'
     }}>
-      {/* Iluminação Tática Militar (Verde Oliva & Dourado PMPE) */}
+      {/* Iluminação Tática Militar (Azul Ferrete & Dourado Heráldico PMPE) */}
       <div style={{
         position: 'absolute',
         top: '2%',
@@ -196,7 +196,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
         transform: 'translateX(-50%)',
         width: '680px',
         height: '680px',
-        background: 'radial-gradient(circle, rgba(34, 197, 94, 0.12) 0%, rgba(245, 158, 11, 0.08) 40%, transparent 75%)',
+        background: 'radial-gradient(circle, rgba(37, 99, 235, 0.18) 0%, rgba(212, 175, 55, 0.08) 45%, transparent 75%)',
         borderRadius: '50%',
         filter: 'blur(75px)',
         pointerEvents: 'none'
@@ -206,7 +206,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
       <div style={{
         position: 'absolute',
         inset: 0,
-        backgroundImage: 'linear-gradient(rgba(34, 197, 94, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 197, 94, 0.03) 1px, transparent 1px)',
+        backgroundImage: 'linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px)',
         backgroundSize: '36px 36px',
         pointerEvents: 'none'
       }} />
@@ -216,12 +216,12 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
         style={{
           width: '100%',
           maxWidth: '500px',
-          background: 'rgba(17, 24, 19, 0.95)',
+          background: 'rgba(11, 20, 40, 0.96)',
           backdropFilter: 'blur(24px)',
-          border: '1.5px solid rgba(34, 197, 94, 0.35)',
+          border: '1.5px solid rgba(59, 130, 246, 0.35)',
           borderRadius: '24px',
           padding: '2.25rem 2rem',
-          boxShadow: '0 25px 60px -10px rgba(0, 0, 0, 0.9), 0 0 35px rgba(34, 197, 94, 0.15)',
+          boxShadow: '0 25px 60px -10px rgba(0, 0, 0, 0.9), 0 0 35px rgba(37, 99, 235, 0.2)',
           position: 'relative',
           zIndex: 10
         }}
@@ -311,7 +311,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
 
           <p style={{
             fontSize: '0.84rem',
-            color: '#86efac',
+            color: '#93c5fd',
             fontWeight: 600,
             margin: 0,
             letterSpacing: '0.04em'
@@ -322,13 +322,13 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
 
         {/* Card Motivacional Militar */}
         <div style={{
-          background: 'linear-gradient(135deg, rgba(24, 34, 27, 0.9) 0%, rgba(14, 20, 16, 0.95) 100%)',
-          border: '1px solid rgba(245, 158, 11, 0.35)',
+          background: 'linear-gradient(135deg, rgba(14, 25, 50, 0.92) 0%, rgba(9, 16, 34, 0.96) 100%)',
+          border: '1px solid rgba(59, 130, 246, 0.35)',
           borderRadius: '14px',
           padding: '0.85rem 1rem',
           marginBottom: '1.25rem',
           position: 'relative',
-          boxShadow: '0 6px 16px rgba(0, 0, 0, 0.4)'
+          boxShadow: '0 6px 16px rgba(0, 0, 0, 0.5)'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
@@ -486,7 +486,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                 style={{
                   width: '100%',
                   padding: '0.85rem 1rem 0.85rem 2.8rem',
-                  background: 'rgba(24, 34, 27, 0.85)',
+                  background: 'rgba(13, 23, 44, 0.85)',
                   border: '1px solid rgba(71, 85, 105, 0.55)',
                   borderRadius: '12px',
                   color: '#ffffff',
@@ -494,7 +494,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                   outline: 'none',
                   boxSizing: 'border-box'
                 }}
-                onFocus={(e) => e.target.style.borderColor = '#22c55e'}
+                onFocus={(e) => e.target.style.borderColor = '#2563eb'}
                 onBlur={(e) => e.target.style.borderColor = 'rgba(71, 85, 105, 0.55)'}
                 required
               />
@@ -524,7 +524,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                 style={{
                   width: '100%',
                   padding: '0.85rem 3rem 0.85rem 2.8rem',
-                  background: 'rgba(24, 34, 27, 0.85)',
+                  background: 'rgba(13, 23, 44, 0.85)',
                   border: '1px solid rgba(71, 85, 105, 0.55)',
                   borderRadius: '12px',
                   color: '#ffffff',
@@ -532,7 +532,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                   outline: 'none',
                   boxSizing: 'border-box'
                 }}
-                onFocus={(e) => e.target.style.borderColor = '#22c55e'}
+                onFocus={(e) => e.target.style.borderColor = '#2563eb'}
                 onBlur={(e) => e.target.style.borderColor = 'rgba(71, 85, 105, 0.55)'}
                 required
               />
@@ -562,7 +562,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                style={{ accentColor: '#22c55e', width: '16px', height: '16px' }}
+                style={{ accentColor: '#2563eb', width: '16px', height: '16px' }}
               />
               <span>Manter conectado neste dispositivo</span>
             </label>
@@ -575,7 +575,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
               padding: '0.95rem',
               borderRadius: '14px',
               border: 'none',
-              background: 'linear-gradient(135deg, #15803d 0%, #16a34a 50%, #22c55e 100%)',
+              background: 'linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%)',
               color: '#ffffff',
               fontWeight: 900,
               fontSize: '1.02rem',
@@ -585,7 +585,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
               alignItems: 'center',
               justifyContent: 'center',
               gap: '0.65rem',
-              boxShadow: '0 8px 24px rgba(22, 163, 74, 0.45)',
+              boxShadow: '0 8px 24px rgba(37, 99, 235, 0.45)',
               transition: 'all 0.15s ease',
               opacity: isSubmitting ? 0.8 : 1,
               marginTop: '0.35rem'

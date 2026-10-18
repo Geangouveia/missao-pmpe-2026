@@ -1,7 +1,7 @@
 /* ==========================================================================
-   MISSÃO PMPE 2026: SISTEMA DE DESIGN MILITAR TÁTICO & TOKENS VISUAIS
-   Design Estético Militar: BOPE (Batalhão de Operações Policiais Especiais)
-   Cores: Preto Tático Carbono, Cinza Aço Balístico, Ouro Militar & Faca na Caveira
+   MISSÃO PMPE 2026: SISTEMA DE DESIGN OFICIAL POLÍCIA MILITAR DE PERNAMBUCO
+   Identidade Visual: Azul Ferrete Operacional, Azul Noturno Tático, Cinza Aço & Dourado Heráldico
+   Padrão: Fardamento Operacional da PMPE e Brasão Oficial do Estado de Pernambuco
    ========================================================================== */
 
 :root {
@@ -9,50 +9,53 @@
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Cores Base Militares Operacionais (BOPE - Operações Especiais) */
-  --bg-space: #060907; /* Preto Tático Absoluto BOPE */
-  --bg-deep: #0a0e0c;  /* Carbono e Blindagem de Operações Noturnas */
-  --bg-card: rgba(13, 17, 15, 0.96); /* Painel Militar Aço Carbono */
-  --bg-card-hover: rgba(19, 25, 22, 0.98);
-  --bg-glass: rgba(255, 255, 255, 0.025);
-  --bg-glass-active: rgba(245, 158, 11, 0.14);
+  /* Cores Base Militares Operacionais (Polícia Militar de Pernambuco - PMPE) */
+  --bg-space: #060b17; /* Azul Noturno Profundo PMPE */
+  --bg-deep: #0a1324;  /* Azul Ferrete Tático Operacional */
+  --bg-card: rgba(11, 20, 38, 0.96); /* Painel Blindado Azul Petróleo PMPE */
+  --bg-card-hover: rgba(17, 30, 58, 0.98);
+  --bg-glass: rgba(59, 130, 246, 0.035);
+  --bg-glass-active: rgba(37, 99, 235, 0.16);
 
-  /* Bordas e Contornos Táticos Militares (Ouro Operacional & Aço Balístico) */
-  --border-subtle: rgba(217, 119, 6, 0.28);
-  --border-glow: rgba(245, 158, 11, 0.5);
-  --border-cyan: rgba(245, 158, 11, 0.45);
+  /* Bordas e Contornos Táticos Militares (Azul Viatura & Aço Tático) */
+  --border-subtle: rgba(59, 130, 246, 0.25);
+  --border-glow: rgba(37, 99, 235, 0.55);
+  --border-cyan: rgba(56, 189, 248, 0.45);
 
-  /* Paleta Tática Militar Oficial BOPE */
-  --military-green-dark: #09170f;
-  --military-green: #14532d;
-  --military-green-bright: #16a34a;
-  --military-gold: #f59e0b;
-  --military-gold-bright: #fbbf24;
-  --military-khaki: #b49b78;
-  --military-red: #dc2626;
-  --military-blue: #0284c7;
+  /* Paleta Tática Militar Oficial PMPE */
+  --pmpe-blue: #1d4ed8;
+  --pmpe-blue-bright: #2563eb;
+  --pmpe-blue-light: #60a5fa;
+  --military-green-dark: #091326;
+  --military-green: #1d4ed8;
+  --military-green-bright: #3b82f6;
+  --military-gold: #d4af37; /* Ouro Nobre do Brasão de Pernambuco e Divisas */
+  --military-gold-bright: #eab308;
+  --military-khaki: #94a3b8;
+  --military-red: #ef4444; /* Vermelho Heráldico da Bandeira de Pernambuco */
+  --military-blue: #1d4ed8;
 
   /* Acentos Operacionais Táticos */
-  --neon-cyan: #f59e0b;
-  --neon-purple: #b45309;
-  --neon-violet: #f59e0b;
-  --neon-pink: #dc2626;
-  --neon-emerald: #16a34a;
-  --neon-amber: #f59e0b;
-  --neon-red: #dc2626;
+  --neon-cyan: #38bdf8;
+  --neon-purple: #2563eb;
+  --neon-violet: #1d4ed8;
+  --neon-pink: #ef4444;
+  --neon-emerald: #38bdf8;
+  --neon-amber: #eab308;
+  --neon-red: #ef4444;
 
   /* Texto */
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
-  --text-glow: #fef3c7;
+  --text-glow: #e0f2fe;
 
   /* Sombras e Brilho Tático Militar */
-  --glow-cyan: 0 0 20px rgba(245, 158, 11, 0.25);
-  --glow-purple: 0 0 20px rgba(180, 83, 9, 0.25);
-  --glow-gold: 0 0 25px rgba(245, 158, 11, 0.35);
+  --glow-cyan: 0 0 20px rgba(37, 99, 235, 0.3);
+  --glow-purple: 0 0 20px rgba(29, 78, 216, 0.3);
+  --glow-gold: 0 0 25px rgba(212, 175, 55, 0.35);
   --shadow-card: 0 16px 45px -10px rgba(0, 0, 0, 0.92), 0 0 0 1px var(--border-subtle);
-  --shadow-popup: 0 25px 65px -15px rgba(0, 0, 0, 0.98), 0 0 0 1px rgba(245, 158, 11, 0.35);
+  --shadow-popup: 0 25px 65px -15px rgba(0, 0, 0, 0.98), 0 0 0 1px rgba(37, 99, 235, 0.45);
 
   /* Transições Suaves */
   --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
@@ -80,17 +83,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Fundo Dinâmico Militar BOPE: Preto Tático com Grid de Armamento e Iluminação de Patrulha */
+/* Fundo Dinâmico Militar PMPE: Azul Ferrete & Noturno Tático com Grid Operacional */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background-image: 
-    radial-gradient(circle at 20% 15%, rgba(245, 158, 11, 0.07) 0%, transparent 45%),
-    radial-gradient(circle at 80% 25%, rgba(220, 38, 38, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 50% 90%, rgba(20, 26, 22, 0.35) 0%, transparent 60%),
-    linear-gradient(rgba(245, 158, 11, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245, 158, 11, 0.02) 1px, transparent 1px);
+    radial-gradient(circle at 20% 15%, rgba(37, 99, 235, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 80% 25%, rgba(29, 78, 216, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(10, 19, 36, 0.55) 0%, transparent 60%),
+    linear-gradient(rgba(59, 130, 246, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.035) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
   background-position: 0 0, 0 0, 0 0, center center, center center;
   pointer-events: none;
@@ -138,12 +141,12 @@ button:focus-visible {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(34, 197, 94, 0.4);
+  background: rgba(59, 130, 246, 0.45);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(34, 197, 94, 0.7);
+  background: rgba(59, 130, 246, 0.75);
 }
 
 /* Utilitários de Layout */
@@ -171,7 +174,7 @@ button:focus-visible {
 }
 
 .glass-panel:hover {
-  border-color: rgba(34, 197, 94, 0.45);
+  border-color: rgba(59, 130, 246, 0.55);
 }
 
 /* Utilitários de Botões Globais */

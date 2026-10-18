@@ -810,8 +810,15 @@ export async function verifyDeviceLock(cleanName: string, u?: UserAccessRecord):
   const key = normalizeUserName(cleanName);
   const devlockKey = `devlock_${encodeURIComponent(key)}`;
 
+  // 1. Garante que o registro do usuário está carregado se não foi passado
+  if (!u) {
+    const registry = await fetchRegistryFromCloud();
+    const foundKey = findUserKey(registry, cleanName);
+    if (foundKey) u = registry[foundKey];
+  }
+
   try {
-    // 1. Checagem Atômica Direta na Nuvem KVdb (Prioridade Máxima e Imediata)
+    // 2. Checagem Atômica Direta na Nuvem KVdb (Prioridade Máxima e Imediata)
     const res = await fetchWithTimeout(`${CLOUD_API_BASE}/${devlockKey}?_t=${Date.now()}`, {
       cache: 'no-store'
     }, 3800);
@@ -822,7 +829,7 @@ export async function verifyDeviceLock(cleanName: string, u?: UserAccessRecord):
         if (cloudLock.deviceId !== currentDevId) {
           return {
             allowed: false,
-            message: `🚫 ACESSO BLOQUEADO: Esta conta militar já está vinculada ao aparelho "${cloudLock.deviceName || 'Celular/PC cadastrado'}". Por norma de segurança do Pelotão, cada aluno só pode acessar de 1 único dispositivo. Caso tenha trocado de aparelho, fale com o Comandante Gean para desvincular seu celular antigo.`
+            message: `🚫 ACESSO RECUSADO: Esta conta militar já está vinculada ao aparelho "${cloudLock.deviceName || 'Celular Autorizado'}". Por norma de segurança do Pelotão, cada aluno só pode acessar de 1 único dispositivo. Caso tenha trocado de aparelho, fale com o Comandante Gean para desvincular seu celular antigo.`
           };
         } else {
           // É o mesmo dispositivo autorizado!
@@ -834,15 +841,19 @@ export async function verifyDeviceLock(cleanName: string, u?: UserAccessRecord):
     console.warn('Verificação atômica de devlock em nuvem temporariamente indisponível:', e);
   }
 
-  // 2. Se a chave devlock ainda não existia na nuvem, checa se havia no registro
-  if (u && u.boundDeviceId && u.boundDeviceId !== currentDevId) {
-    return {
-      allowed: false,
-      message: `🚫 ACESSO BLOQUEADO: Esta conta militar já está vinculada ao aparelho "${u.boundDeviceName || 'outro celular'}". Por segurança, cada recruta só pode usar em 1 único aparelho. Caso tenha trocado de celular, solicite ao Comandante Gean para desvincular o aparelho antigo.`
-    };
+  // 3. Checagem no Registro Geral Militar (u.boundDeviceId)
+  if (u && u.boundDeviceId) {
+    if (u.boundDeviceId !== currentDevId) {
+      return {
+        allowed: false,
+        message: `🚫 ACESSO RECUSADO: Esta conta militar já está vinculada ao aparelho "${u.boundDeviceName || 'outro celular'}". Por segurança, cada recruta só pode usar em 1 único aparelho. Caso tenha trocado de celular, solicite ao Comandante Gean para desvincular o aparelho antigo.`
+      };
+    } else {
+      return { allowed: true };
+    }
   }
 
-  // 3. Primeiro login: vincula o aparelho atual imediatamente na nuvem atômica
+  // 4. Primeiro login: vincula o aparelho atual imediatamente na nuvem atômica
   try {
     await fetchWithTimeout(`${CLOUD_API_BASE}/${devlockKey}?ttl=31536000`, {
       method: 'POST',
@@ -864,12 +875,13 @@ export async function verifyDeviceLock(cleanName: string, u?: UserAccessRecord):
   }
 
   const registry = getLocalUsersRegistry();
-  if (registry[key]) {
-    registry[key].boundDeviceId = currentDevId;
-    registry[key].boundDeviceName = currentDevName;
-    registry[key].boundAt = new Date().toISOString();
+  const regKey = findUserKey(registry, cleanName) || key;
+  if (registry[regKey]) {
+    registry[regKey].boundDeviceId = currentDevId;
+    registry[regKey].boundDeviceName = currentDevName;
+    registry[regKey].boundAt = new Date().toISOString();
     saveLocalUsersRegistry(registry);
-    pushRegistryToCloud(registry);
+    await pushRegistryToCloud(registry);
   }
 
   return { allowed: true };
@@ -1033,7 +1045,7 @@ export async function validateLoginAttempt(
 /**
  * Cria e grava uma nova sessão ativa para o usuário (Garante sessão única em 1 aparelho)
  */
-export function createAndRecordSession(userName: string): string {
+export async function createAndRecordSession(userName: string): Promise<string> {
   const sessionToken = 'sess_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2, 9);
   const currentDevId = getCurrentDeviceId();
   const currentDevName = getDeviceFriendlyName();
@@ -1054,11 +1066,13 @@ export function createAndRecordSession(userName: string): string {
     updatedAt: new Date().toISOString()
   };
 
-  fetch(`${CLOUD_API_BASE}/session_${encodeURIComponent(userKey)}?ttl=2592000`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(sessionPayload)
-  }).catch(() => {});
+  try {
+    await fetchWithTimeout(`${CLOUD_API_BASE}/session_${encodeURIComponent(userKey)}?ttl=2592000`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(sessionPayload)
+    }, 4000);
+  } catch {}
 
   return sessionToken;
 }
@@ -1078,9 +1092,27 @@ export async function checkActiveSessionValidity(
   const userKey = normalizeUserName(userName);
 
   try {
+    // 1. Checa a trava de dispositivo atômica (devlock)
+    const devlockRes = await fetchWithTimeout(`${CLOUD_API_BASE}/devlock_${encodeURIComponent(userKey)}?_t=${Date.now()}`, {
+      cache: 'no-store'
+    }, 3000);
+
+    if (devlockRes.ok) {
+      const lockData = await devlockRes.json();
+      if (lockData && lockData.deviceId && lockData.deviceId !== localDevId) {
+        return {
+          valid: false,
+          reason: 'device_mismatch',
+          deviceName: lockData.deviceName || 'Outro Aparelho',
+          loginTime: lockData.boundAt
+        };
+      }
+    }
+
+    // 2. Checa a sessão ativa em tempo real (sessionToken)
     const res = await fetchWithTimeout(`${CLOUD_API_BASE}/session_${encodeURIComponent(userKey)}?_t=${Date.now()}`, {
       cache: 'no-store'
-    }, 2800);
+    }, 3000);
 
     if (res.ok) {
       const remoteSession = await res.json();

@@ -28,8 +28,21 @@ export function randomizeQuestionOptions(question: QuizQuestion): QuizQuestion {
 export function prepareGameQuestions(questions: QuizQuestion[], limit?: number): QuizQuestion[] {
   if (!questions || questions.length === 0) return [];
 
+  // Deduplicação estrita militar: Garante que NENHUMA questão com o mesmo enunciado seja repetida na sessão
+  const seenTexts = new Set<string>();
+  const uniqueQuestions: QuizQuestion[] = [];
+
+  for (const q of questions) {
+    if (!q || !q.question) continue;
+    const norm = q.question.toLowerCase().replace(/[^a-z0-9\u00C0-\u017F]/g, '').trim();
+    if (!seenTexts.has(norm)) {
+      seenTexts.add(norm);
+      uniqueQuestions.push(q);
+    }
+  }
+
   // Fisher-Yates Shuffle para a ordem de exibição das perguntas
-  const shuffled = [...questions];
+  const shuffled = [...uniqueQuestions];
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];

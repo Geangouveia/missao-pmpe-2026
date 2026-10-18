@@ -23,6 +23,7 @@ import { BANCO_NOVAS_QUESTOES_BLOCO_1 } from './banco50PortuguesHistoria';
 import { BANCO_NOVAS_QUESTOES_BLOCO_2 } from './banco50RaciocinioInformatica';
 import { BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_1 } from './banco50ConstitucionalHumanos';
 import { BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_2 } from './banco50LegislacaoExtravagantePmpe';
+import { BANCO_QUESTOES_ELITE_DIFICIL } from './bancoQuestoesEliteDificil';
 
 export {
   SIMULADO_SEMANA_1,
@@ -47,13 +48,15 @@ export {
   BANCO_NOVAS_QUESTOES_BLOCO_1,
   BANCO_NOVAS_QUESTOES_BLOCO_2,
   BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_1,
-  BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_2
+  BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_2,
+  BANCO_QUESTOES_ELITE_DIFICIL
 };
 
 export const SIMULADOS_LIST = [
-  { id: 'all', name: '⭐ Acervo Geral Soldado PMPE (Questões 100% Comentadas Tintim por Tintim)', count: 2557, tag: '⭐ Acervo Geral (2.557 Q)' },
+  { id: 'all', name: '⭐ Acervo Geral Soldado PMPE (Questões 100% Comentadas Tintim por Tintim)', count: 2370, tag: '⭐ Acervo Geral (2.370 Q)' },
+  { id: 'caderno_elite_dificil', name: '🔥 Desafio de Elite: 160 Questões Avançadas (Nível Difícil • Edital AOCP)', count: 160, tag: '🔥 160 Elite (Nível Difícil)' },
   { id: 'caderno_400_novas_edital', name: '🔥 Super Acervo Especial: 400 Questões Inéditas do Edital (50 de Cada Matéria)', count: 400, tag: '🔥 400 Inéditas (50/Matéria)' },
-  { id: 'caderno_edital_aocp_300', name: '🎯 Caderno de Elite: 300 Questões Cirúrgicas do Edital AOCP 2026', count: 300, tag: '🎯 Edital AOCP (300 Q)' },
+  { id: 'caderno_edital_aocp_300', name: '🎯 Caderno de Elite: Questões Cirúrgicas do Edital AOCP 2026', count: 70, tag: '🎯 Edital AOCP (70 Q)' },
   { id: 'caderno_direitos_humanos', name: '🕊️ Bloco Especial: Direitos Humanos & Pacto de São José da Costa Rica (250 Questões)', count: 250, tag: '🕊️ Direitos Humanos (250 Q)' },
   { id: 'caderno_leg_extravagante', name: '🚨 Bloco Especial: Legislação Extravagante (300 Questões)', count: 300, tag: '🚨 Leis Extravagantes (300 Q)' },
   { id: 'caderno_rlm_probabilidade', name: '🧠 Bloco Especial: RLM & Probabilidade com Passo a Passo (300 Questões)', count: 300, tag: '🧠 RLM & Probabilidade (300 Q)' },
@@ -72,6 +75,7 @@ export const SIMULADOS_LIST = [
 ];
 
 export const ALL_QUESTIONS: QuizQuestion[] = [
+  ...BANCO_QUESTOES_ELITE_DIFICIL,
   ...BANCO_NOVAS_QUESTOES_BLOCO_1,
   ...BANCO_NOVAS_QUESTOES_BLOCO_2,
   ...BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_1,

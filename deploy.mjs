@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'deploy: powered by gean assinatura, 400 novas questoes edital aocp, labirinto tatica jogavel e alarmes gratuitos de estudo';
+  const commitMsg = 'deploy: identidade visual oficial PMPE azul-ferrete, trava de aparelho unico, fim de repeticoes e 160 questoes ineditas nivel dificil';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;
