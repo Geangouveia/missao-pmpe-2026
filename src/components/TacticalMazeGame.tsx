@@ -1,21 +1,21 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import type { QuizQuestion, CategoryId } from '../types/game';
 import { 
-  Shield, 
   ShieldAlert, 
   ShieldCheck, 
-  Compass, 
-  MapPin, 
-  Flag, 
   ArrowRight, 
   RotateCcw, 
   Award, 
   AlertTriangle, 
-  Skull, 
   Crosshair, 
-  HelpCircle,
   Sparkles,
-  Zap
+  Flame,
+  Volume2,
+  CheckCircle2,
+  XCircle,
+  HelpCircle,
+  Footprints,
+  Skull
 } from 'lucide-react';
 import { sound } from '../utils/sound';
 import confetti from 'canvas-confetti';
@@ -32,52 +32,52 @@ interface TacticalMazeGameProps {
   }) => void;
 }
 
-interface MazeStageConfig {
-  stageNum: number;
-  title: string;
-  codename: string;
-  location: string;
-  difficulty: 'easy' | 'medium' | 'hard';
+interface MazeSectorConfig {
+  sectorNum: number;
+  name: string;
+  code: string;
+  theme: string;
+  banditName: string;
+  ambientColor: string;
   description: string;
-  themeColor: string;
 }
 
-const STAGES: MazeStageConfig[] = [
+const SECTORS: MazeSectorConfig[] = [
   {
-    stageNum: 1,
-    title: 'Fase 1: Beco da Periferia',
-    codename: 'OPERAÇÃO SENTINELA',
-    location: 'Comunidade Segura • Nível Inicial',
-    difficulty: 'easy',
-    description: 'Navegue pelo primeiro perímetro tático. 6 acertos para alcançar o Ponto de Encontro Bravo.',
-    themeColor: '#22c55e'
+    sectorNum: 1,
+    name: 'Beco da Periferia',
+    code: 'SETOR ALPHA-01',
+    theme: 'Perímetro Externo',
+    banditName: 'Sentinela Armado',
+    ambientColor: '#22c55e',
+    description: 'Incursão inicial no perímetro. Neutralize a sentinela armada para abrir o portão tático.'
   },
   {
-    stageNum: 2,
-    title: 'Fase 2: Galpões do Porto',
-    codename: 'OPERAÇÃO AÇO FRIO',
-    location: 'Complexo Logístico do Recife • Nível Intermediário',
-    difficulty: 'medium',
-    description: 'Corredores estreitos entre contêineres. O bandido conhece os atalhos. Mantenha a vigilância!',
-    themeColor: '#38bdf8'
+    sectorNum: 2,
+    name: 'Corredores do Galpão',
+    code: 'SETOR BRAVO-02',
+    theme: 'Complexo Logístico',
+    banditName: 'Guarda do Depósito',
+    ambientColor: '#38bdf8',
+    description: 'Labirinto entre contêineres e máquinas industriais. Cuidado com disparos nos ângulos mortos.'
   },
   {
-    stageNum: 3,
-    title: 'Fase 3: Labirinto da Colina',
-    codename: 'OPERAÇÃO ESCUDO DE FERRO',
-    location: 'Beco dos Militares • Nível Avançado',
-    difficulty: 'hard',
-    description: 'Terreno acidentado e visibilidade reduzida. Apenas conhecimentos cirúrgicos garantirão a rota segura.',
-    themeColor: '#f59e0b'
+    sectorNum: 3,
+    name: 'Túnel Subterrâneo',
+    code: 'SETOR CHARLIE-03',
+    theme: 'Subsolo Tático',
+    banditName: 'Tirador de Elite do Tráfico',
+    ambientColor: '#f59e0b',
+    description: 'Visibilidade reduzida e eco de disparos. Avance com lanterna e escudo tático em prontidão.'
   },
   {
-    stageNum: 4,
-    title: 'Fase 4: QG Fortificado do Inimigo',
-    codename: 'OPERAÇÃO CAVEIRA PMPE',
-    location: 'Bunker Central • Nível de Elite da Banca',
-    difficulty: 'hard',
-    description: 'A incursão final. Infiltre-se no coração do labirinto e neutralize a liderança criminosa.',
-    themeColor: '#ef4444'
+    sectorNum: 4,
+    name: 'Bunker Central do Inimigo',
+    code: 'SETOR FOXTROT-04',
+    theme: 'QG Fortificado',
+    banditName: 'Líder da Facção Criminosa',
+    ambientColor: '#ef4444',
+    description: 'A incursão final. Neutralize o comandante inimigo para retomar o controle do labirinto.'
   }
 ];
 
@@ -87,27 +87,41 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
   onBack,
   onFinishGame
 }) => {
-  // Configurações de Gameplay (conforme ordem do Comandante Gean)
   const MAX_LIVES = 4;
-  const GOAL_STEPS = 6; // 6 acertos por fase
+  const GOAL_SHOTS_PER_SECTOR = 6;
+  const BANDIT_MAX_HP = 600;
 
-  const [currentStageIdx, setCurrentStageIdx] = useState(0);
-  const [copPosition, setCopPosition] = useState(0); // 0 a 6
-  const [banditDistance, setBanditDistance] = useState(4); // 4 passos de distância inicial
+  // Estado do Jogo
+  const [sectorIdx, setSectorIdx] = useState(0);
+  const [copProgress, setCopProgress] = useState(0); // 0 a 6
+  const [banditHp, setBanditHp] = useState(BANDIT_MAX_HP);
   const [lives, setLives] = useState(MAX_LIVES);
   const [score, setScore] = useState(0);
   const [xp, setXp] = useState(0);
+  const [streak, setStreak] = useState(0);
+
+  // Animações de Ação e Combate
+  const [isCopFiring, setIsCopFiring] = useState(false);
+  const [isCopWalking, setIsCopWalking] = useState(false);
+  const [isBanditFiring, setIsBanditFiring] = useState(false);
+  const [isBanditHit, setIsBanditHit] = useState(false);
+  const [isScreenShaking, setIsScreenShaking] = useState(false);
+  const [copBulletActive, setCopBulletActive] = useState(false);
+  const [banditBulletActive, setBanditBulletActive] = useState(false);
+  const [damagePopup, setDamagePopup] = useState<string | null>(null);
+
+  // Estados de Perguntas
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
+  const [isSectorCleared, setIsSectorCleared] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
-  const [isStageCleared, setIsStageCleared] = useState(false);
   const [isGameCompleted, setIsGameCompleted] = useState(false);
-  const [answeredQuestionIds, setAnsweredQuestionIds] = useState<string[]>([]);
+  const [answeredIds, setAnsweredIds] = useState<string[]>([]);
 
-  const currentStage = STAGES[currentStageIdx] || STAGES[0];
+  const currentSector = SECTORS[sectorIdx] || SECTORS[0];
 
-  // Filtra perguntas conforme a categoria selecionada e nível da fase
+  // Pool de Questões
   const availableQuestions = useMemo(() => {
     let pool = questions.filter(q => {
       if (selectedCategory === 'all') return true;
@@ -116,211 +130,219 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
       if (selectedCategory === 'bloco_3') return q.bloco === 'bloco_3';
       return q.categoryId === selectedCategory;
     });
+    return pool.length > 0 ? pool : questions;
+  }, [questions, selectedCategory]);
 
-    if (pool.length === 0) pool = questions;
-
-    // Prioriza dificuldade da fase se houver perguntas suficientes
-    const diffPool = pool.filter(q => q.difficulty === currentStage.difficulty);
-    return diffPool.length >= 10 ? diffPool : pool;
-  }, [questions, selectedCategory, currentStage]);
-
-  // Pergunta atual
   const [currentQuestion, setCurrentQuestion] = useState<QuizQuestion | null>(null);
 
-  // Sorteia nova pergunta não repetida
   const pickNextQuestion = useCallback(() => {
-    const unasked = availableQuestions.filter(q => !answeredQuestionIds.includes(q.id));
+    const unasked = availableQuestions.filter(q => !answeredIds.includes(q.id));
     const pool = unasked.length > 0 ? unasked : availableQuestions;
     const random = pool[Math.floor(Math.random() * pool.length)];
     setCurrentQuestion(random);
     setSelectedOption(null);
     setIsAnswered(false);
     setShowExplanation(false);
-  }, [availableQuestions, answeredQuestionIds]);
+    setDamagePopup(null);
+  }, [availableQuestions, answeredIds]);
 
-  // Inicializa primeira pergunta
   useEffect(() => {
     pickNextQuestion();
-  }, [currentStageIdx]);
+  }, [sectorIdx]);
 
-  // Processa resposta do recruta
+  // Executa o Disparo Policial (Acerto de Resposta)
+  const executePoliceShot = () => {
+    // 1. Policial ergue arma e engatilha
+    setIsCopFiring(true);
+    setCopBulletActive(true);
+    sound.playGunshot38();
+
+    // 2. Projétil atinge o bandido
+    setTimeout(() => {
+      setCopBulletActive(false);
+      setIsBanditHit(true);
+      setDamagePopup('-100 HP! CRÍTICO!');
+      sound.playDoubleTap();
+
+      // Atualiza HP do bandido
+      setBanditHp(prev => Math.max(0, prev - 100));
+
+      // 3. Policial avança pelo labirinto andando
+      setTimeout(() => {
+        setIsBanditHit(false);
+        setIsCopWalking(true);
+
+        setTimeout(() => {
+          setIsCopWalking(false);
+          setIsCopFiring(false);
+        }, 600);
+      }, 400);
+    }, 220);
+  };
+
+  // Executa o Contra-ataque do Bandido (Erro de Resposta)
+  const executeBanditShot = () => {
+    setIsBanditFiring(true);
+    setBanditBulletActive(true);
+    sound.playGunshot38();
+
+    setTimeout(() => {
+      setBanditBulletActive(false);
+      setIsScreenShaking(true);
+      setDamagePopup('⚠️ COLETE ROMPIDO!');
+      sound.playBossHit();
+
+      setTimeout(() => {
+        setIsBanditFiring(false);
+        setIsScreenShaking(false);
+      }, 450);
+    }, 220);
+  };
+
+  // Processa Seleção da Resposta
   const handleAnswer = (optionIdx: number) => {
     if (isAnswered || !currentQuestion) return;
 
     setSelectedOption(optionIdx);
     setIsAnswered(true);
+    setAnsweredIds(prev => [...prev, currentQuestion.id]);
 
     const isCorrect = optionIdx === currentQuestion.correctIndex;
-    setAnsweredQuestionIds(prev => [...prev, currentQuestion.id]);
 
     if (isCorrect) {
       sound.playSuccess();
-      sound.playGunshot38();
-      const newScore = score + 100;
-      const newXp = xp + 50;
+      executePoliceShot();
+
+      const newScore = score + 120 + (streak * 20);
+      const newXp = xp + 60;
       setScore(newScore);
       setXp(newXp);
+      setStreak(prev => prev + 1);
 
-      const nextCopPos = copPosition + 1;
-      setCopPosition(nextCopPos);
+      const nextProgress = copProgress + 1;
+      setCopProgress(nextProgress);
 
-      // Verificação de conclusão de fase (6 acertos!)
-      if (nextCopPos >= GOAL_STEPS) {
-        sound.playLevelUp();
-        confetti({ particleCount: 70, spread: 60, origin: { y: 0.6 } });
-        setIsStageCleared(true);
+      // Verificação de vitória no Setor (6 Tiros = 600 HP)
+      if (nextProgress >= GOAL_SHOTS_PER_SECTOR) {
+        setTimeout(() => {
+          sound.playLevelUp();
+          confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+          setIsSectorCleared(true);
+        }, 1100);
       }
     } else {
       sound.playError();
-      sound.playBossHit();
+      executeBanditShot();
+      setStreak(0);
 
       const nextLives = lives - 1;
-      const nextBanditDist = banditDistance - 1;
       setLives(nextLives);
-      setBanditDistance(nextBanditDist);
 
-      // 4 Erros = Emboscada fatal pelo bandido!
-      if (nextLives <= 0 || nextBanditDist <= 0) {
-        setIsGameOver(true);
+      if (nextLives <= 0) {
+        setTimeout(() => {
+          setIsGameOver(true);
+          sound.playError();
+        }, 900);
       }
     }
   };
 
-  // Avançar para próxima pergunta dentro da mesma fase
-  const handleNextStep = () => {
-    pickNextQuestion();
-  };
-
-  // Avançar para próxima fase
-  const handleNextStage = () => {
-    if (currentStageIdx + 1 < STAGES.length) {
-      setCurrentStageIdx(prev => prev + 1);
-      setCopPosition(0);
-      setBanditDistance(4);
-      setIsStageCleared(false);
+  // Próxima fase do Labirinto
+  const handleNextSector = () => {
+    if (sectorIdx + 1 < SECTORS.length) {
+      setSectorIdx(prev => prev + 1);
+      setCopProgress(0);
+      setBanditHp(BANDIT_MAX_HP);
+      setIsSectorCleared(false);
       setLives(MAX_LIVES);
     } else {
-      // Zerou todas as fases do Labirinto!
       setIsGameCompleted(true);
       sound.playMilitaryAchievement();
-      confetti({ particleCount: 150, spread: 100, origin: { y: 0.5 } });
+      confetti({ particleCount: 160, spread: 100, origin: { y: 0.5 } });
     }
   };
 
-  // Reiniciar fase atual ou o jogo
+  // Reiniciar Labirinto
   const handleRestart = () => {
-    setCopPosition(0);
-    setBanditDistance(4);
+    setCopProgress(0);
+    setBanditHp(BANDIT_MAX_HP);
     setLives(MAX_LIVES);
     setIsGameOver(false);
-    setIsStageCleared(false);
+    setIsSectorCleared(false);
     setIsGameCompleted(false);
+    setStreak(0);
     pickNextQuestion();
   };
 
-  // Finalizar e reportar ao Quartel
-  const handleCompleteAndReport = () => {
-    onFinishGame({
-      title: 'Labirinto Tático Policial',
-      score,
-      xpEarned: xp,
-      statsDetail: [
-        { label: 'Fase Alcançada', value: `${currentStage.title}` },
-        { label: 'Acertos no Labirinto', value: `${copPosition} / ${GOAL_STEPS}` },
-        { label: 'Vidas Restantes', value: `${lives} / ${MAX_LIVES}` },
-        { label: 'Distância do Inimigo', value: `${banditDistance * 10} metros` }
-      ]
-    });
-  };
-
-  // Mensagem tática de radar conforme a distância do bandido
-  const getRadarWarning = () => {
-    if (banditDistance >= 4) {
-      return { text: 'Radar: Inimigo a 40 metros. Rota aberta para o policial.', color: '#22c55e', bg: 'rgba(34, 197, 94, 0.12)' };
-    }
-    if (banditDistance === 3) {
-      return { text: 'Alerta: Bandido detectado a 30 metros! O inimigo está se aproximando.', color: '#38bdf8', bg: 'rgba(56, 189, 248, 0.12)' };
-    }
-    if (banditDistance === 2) {
-      return { text: 'CUIDADO: Ameaça a 20 metros! O bandido está nos seus calcanhares!', color: '#f59e0b', bg: 'rgba(245, 158, 11, 0.16)' };
-    }
-    return { text: '🚨 PERIGO CRÍTICO: Bandido a 10 metros! Próximo erro causará emboscada fatal!', color: '#ef4444', bg: 'rgba(239, 68, 68, 0.22)' };
-  };
-
-  const radar = getRadarWarning();
-
   return (
-    <div style={{
-      maxWidth: '1000px',
-      margin: '0 auto',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '1.25rem',
-      paddingBottom: '3rem'
-    }}>
-      {/* CABEÇALHO TÁTICO MILITAR DO MODO LABIRINTO */}
+    <div 
+      className={isScreenShaking ? 'tactical-screen-shake' : ''}
+      style={{
+        maxWidth: '1020px',
+        margin: '0 auto',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1.25rem',
+        paddingBottom: '3rem',
+        transition: 'transform 0.1s ease'
+      }}
+    >
+      {/* HUD MILITAR SUPERIOR */}
       <div className="glass-panel" style={{
-        padding: '1.25rem 1.5rem',
-        borderRadius: '12px',
-        border: '1px solid rgba(34, 197, 94, 0.35)',
-        background: 'linear-gradient(135deg, rgba(14, 25, 18, 0.95), rgba(7, 14, 10, 0.98))',
-        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(34, 197, 94, 0.08)',
+        padding: '1.1rem 1.4rem',
+        borderRadius: '16px',
+        background: 'linear-gradient(135deg, rgba(14, 25, 18, 0.98), rgba(8, 16, 11, 0.98))',
+        border: '1.5px solid rgba(34, 197, 94, 0.35)',
+        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(34, 197, 94, 0.08)',
         position: 'relative'
       }}>
-        {/* Marcadores de cantos táticos (estilo HUD militar) */}
-        <div style={{ position: 'absolute', top: 6, left: 6, fontSize: '0.65rem', color: '#22c55e', fontFamily: 'monospace' }}>┌ PMPE-HUD ┐</div>
-        <div style={{ position: 'absolute', top: 6, right: 6, fontSize: '0.65rem', color: '#f59e0b', fontFamily: 'monospace' }}>┌ RADAR-ON ┐</div>
-
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.2rem' }}>
               <span style={{
                 background: 'rgba(34, 197, 94, 0.2)',
-                color: '#22c55e',
+                color: '#4ade80',
                 fontSize: '0.72rem',
-                fontWeight: 800,
+                fontWeight: 900,
                 padding: '0.2rem 0.6rem',
-                borderRadius: '4px',
+                borderRadius: '6px',
                 border: '1px solid rgba(34, 197, 94, 0.4)',
                 letterSpacing: '0.05em'
               }}>
-                {currentStage.codename}
+                {currentSector.code}
               </span>
-              <span style={{ color: '#9ca3af', fontSize: '0.85rem' }}>• {currentStage.location}</span>
+              <span style={{ color: '#94a3b8', fontSize: '0.82rem' }}>• {currentSector.name}</span>
             </div>
-            <h1 style={{ fontSize: '1.5rem', fontWeight: 900, color: '#f3f4f6', letterSpacing: '-0.02em' }}>
-              🧭 Labirinto Tático: {currentStage.title}
+            <h1 style={{ fontSize: '1.45rem', fontWeight: 900, color: '#f8fafc', margin: 0, letterSpacing: '-0.02em' }}>
+              🎯 Labirinto Tático: Incursão Policial
             </h1>
           </div>
 
-          {/* Vidas Táticas & Pontuação */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
-            {/* Vidas (4 Vidas) */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.1rem', flexWrap: 'wrap' }}>
+            {/* 4 Coletes Táticos de Vida */}
             <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              background: 'rgba(0,0,0,0.4)',
-              padding: '0.4rem 0.75rem',
-              borderRadius: '8px',
-              border: '1px solid rgba(255,255,255,0.08)'
+              background: 'rgba(0, 0, 0, 0.45)',
+              padding: '0.45rem 0.85rem',
+              borderRadius: '10px',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              textAlign: 'center'
             }}>
-              <span style={{ fontSize: '0.68rem', color: '#9ca3af', textTransform: 'uppercase', fontWeight: 700 }}>
+              <div style={{ fontSize: '0.65rem', color: '#94a3b8', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.2rem' }}>
                 Coletes Táticos
-              </span>
-              <div style={{ display: 'flex', gap: '0.35rem', marginTop: '0.25rem' }}>
+              </div>
+              <div style={{ display: 'flex', gap: '0.4rem' }}>
                 {Array.from({ length: MAX_LIVES }).map((_, i) => {
                   const active = i < lives;
                   return (
-                    <div
-                      key={i}
-                      title={active ? `Vida ${i + 1} Ativa` : `Colete Rompido`}
-                      style={{
+                    <div 
+                      key={i} 
+                      style={{ 
                         color: active ? '#22c55e' : '#ef4444',
                         filter: active ? 'drop-shadow(0 0 6px rgba(34, 197, 94, 0.6))' : 'none',
-                        opacity: active ? 1 : 0.35,
+                        opacity: active ? 1 : 0.25,
                         transition: 'all 0.3s ease'
                       }}
+                      title={active ? `Colete ${i + 1} Intacto` : `Colete Rompido`}
                     >
                       {active ? <ShieldCheck size={20} /> : <ShieldAlert size={20} />}
                     </div>
@@ -329,38 +351,38 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
               </div>
             </div>
 
-            {/* XP e Pontos */}
+            {/* Pontos & XP */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '0.75rem',
+              gap: '0.85rem',
               background: 'rgba(245, 158, 11, 0.12)',
-              border: '1px solid rgba(245, 158, 11, 0.3)',
-              padding: '0.4rem 0.85rem',
-              borderRadius: '8px'
+              border: '1px solid rgba(245, 158, 11, 0.35)',
+              padding: '0.45rem 0.95rem',
+              borderRadius: '10px'
             }}>
               <div>
-                <div style={{ fontSize: '0.65rem', color: '#f59e0b', textTransform: 'uppercase', fontWeight: 800 }}>Pontos</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 900, color: '#fbbf24' }}>{score}</div>
+                <div style={{ fontSize: '0.62rem', color: '#f59e0b', fontWeight: 800, textTransform: 'uppercase' }}>Pontuação</div>
+                <div style={{ fontSize: '1.15rem', fontWeight: 900, color: '#fbbf24' }}>{score}</div>
               </div>
               <div style={{ width: '1px', height: '24px', background: 'rgba(245, 158, 11, 0.25)' }} />
               <div>
-                <div style={{ fontSize: '0.65rem', color: '#22c55e', textTransform: 'uppercase', fontWeight: 800 }}>XP Ganho</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 900, color: '#4ade80' }}>+{xp}</div>
+                <div style={{ fontSize: '0.62rem', color: '#22c55e', fontWeight: 800, textTransform: 'uppercase' }}>XP Ganho</div>
+                <div style={{ fontSize: '1.15rem', fontWeight: 900, color: '#4ade80' }}>+{xp}</div>
               </div>
             </div>
 
             <button
               onClick={onBack}
               style={{
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.15)',
-                color: '#e5e7eb',
-                padding: '0.5rem 0.85rem',
-                borderRadius: '8px',
+                background: 'rgba(255, 255, 255, 0.08)',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                color: '#e2e8f0',
+                padding: '0.55rem 0.95rem',
+                borderRadius: '10px',
                 cursor: 'pointer',
-                fontSize: '0.85rem',
-                fontWeight: 700
+                fontSize: '0.82rem',
+                fontWeight: 800
               }}
             >
               Voltar
@@ -369,317 +391,646 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
         </div>
       </div>
 
-      {/* O LABIRINTO TÁTICO: MAPA VISUAL COM O POLICIAL, O DESTINO E O BANDIDO */}
+      {/* ARENA VISUAL 2D DE COMBATE ANIMADO (CORREDOR DO LABIRINTO) */}
       <div className="glass-panel" style={{
-        padding: '1.5rem',
-        borderRadius: '12px',
-        border: '1px solid rgba(34, 197, 94, 0.25)',
-        background: 'radial-gradient(ellipse at 50% 20%, #152219 0%, #0c140f 60%, #060a08 100%)',
+        borderRadius: '18px',
+        border: '2px solid rgba(34, 197, 94, 0.3)',
+        background: 'linear-gradient(180deg, #0b140e 0%, #060a08 60%, #030504 100%)',
         position: 'relative',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        boxShadow: '0 15px 35px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(0, 0, 0, 0.8)',
+        minHeight: '260px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between'
       }}>
-        {/* Grid Militar de Fundo (Malha Tática) */}
+        {/* Parede Tática de Fundo do Labirinto com Luz de Radar & Vigas de Concreto */}
         <div style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'linear-gradient(rgba(34, 197, 94, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 197, 94, 0.04) 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
+          backgroundImage: 'linear-gradient(rgba(34, 197, 94, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 197, 94, 0.05) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
           pointerEvents: 'none'
         }} />
 
-        {/* Barra de Status do Radar */}
+        {/* Holofote Tático Superior */}
         <div style={{
+          position: 'absolute',
+          top: 0,
+          left: '30%',
+          right: '30%',
+          height: '140px',
+          background: 'radial-gradient(ellipse at 50% 0%, rgba(34, 197, 94, 0.15) 0%, transparent 70%)',
+          pointerEvents: 'none'
+        }} />
+
+        {/* Linha de Chão Militar com Faixa Amarela Tática */}
+        <div style={{
+          position: 'absolute',
+          bottom: '22px',
+          left: 0,
+          right: 0,
+          height: '4px',
+          background: 'repeating-linear-gradient(90deg, #f59e0b 0, #f59e0b 16px, #1e293b 16px, #1e293b 32px)',
+          opacity: 0.75,
+          zIndex: 1
+        }} />
+
+        {/* CABEÇALHO DA ARENA: STATUS DE HP E DISTÂNCIA */}
+        <div style={{
+          position: 'relative',
+          zIndex: 5,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '0.85rem 1.25rem',
+          background: 'rgba(0, 0, 0, 0.55)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+        }}>
+          {/* Lado Policial Militar */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+            <span style={{ fontSize: '1.25rem' }}>👮‍♂️</span>
+            <div>
+              <div style={{ fontSize: '0.78rem', fontWeight: 900, color: '#4ade80', textTransform: 'uppercase' }}>
+                Policial Militar PMPE
+              </div>
+              <div style={{ fontSize: '0.68rem', color: '#94a3b8' }}>
+                Posição no Corredor: {copProgress} / {GOAL_SHOTS_PER_SECTOR} passos
+              </div>
+            </div>
+          </div>
+
+          {/* Medidor Central de Incursão Tática */}
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '0.2rem'
+          }}>
+            <span style={{ fontSize: '0.68rem', color: '#f59e0b', fontWeight: 900, letterSpacing: '0.08em' }}>
+              DISTÂNCIA DE ENGAGEMENT: {(GOAL_SHOTS_PER_SECTOR - copProgress) * 6}M
+            </span>
+            {damagePopup && (
+              <span className="damage-float-badge" style={{
+                position: 'absolute',
+                top: '55px',
+                fontWeight: 900,
+                fontSize: '1rem',
+                color: damagePopup.includes('HP') ? '#4ade80' : '#ef4444',
+                background: 'rgba(0, 0, 0, 0.85)',
+                padding: '0.3rem 0.85rem',
+                borderRadius: '8px',
+                border: damagePopup.includes('HP') ? '1.5px solid #22c55e' : '1.5px solid #ef4444',
+                boxShadow: damagePopup.includes('HP') ? '0 0 15px rgba(34, 197, 94, 0.8)' : '0 0 15px rgba(239, 68, 68, 0.8)',
+                zIndex: 25
+              }}>
+                {damagePopup}
+              </span>
+            )}
+          </div>
+
+          {/* Lado Bandido Armado */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', textAlign: 'right' }}>
+            <div>
+              <div style={{ fontSize: '0.78rem', fontWeight: 900, color: '#f87171', textTransform: 'uppercase' }}>
+                {currentSector.banditName}
+              </div>
+              <div style={{ fontSize: '0.68rem', color: '#fca5a5', fontWeight: 700 }}>
+                HP: {banditHp} / {BANDIT_MAX_HP}
+              </div>
+            </div>
+            <span style={{ fontSize: '1.25rem' }}>🥷</span>
+          </div>
+        </div>
+
+        {/* CENÁRIO DE COMBATE: POLICIAL, PROJÉTEIS E BANDIDO */}
+        <div style={{
+          position: 'relative',
+          flex: 1,
+          minHeight: '170px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          background: radar.bg,
-          border: `1px solid ${radar.color}40`,
-          borderRadius: '8px',
-          padding: '0.5rem 1rem',
-          marginBottom: '1.25rem',
-          position: 'relative',
-          zIndex: 1
+          padding: '0 2.5rem',
+          zIndex: 4
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-            <div style={{
-              width: '10px',
-              height: '10px',
-              borderRadius: '50%',
-              background: radar.color,
-              boxShadow: `0 0 10px ${radar.color}`,
-              animation: 'pulse 1.5s infinite'
-            }} />
-            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: radar.color }}>
-              {radar.text}
+          {/* BONECO DO POLICIAL MILITAR PMPE (LADO ESQUERDO) */}
+          <div 
+            className={`${isCopWalking ? 'cop-walking' : ''} ${isCopFiring ? 'cop-fire-recoil' : ''}`}
+            style={{
+              position: 'relative',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              transform: `translateX(${copProgress * 14}px)`,
+              transition: 'transform 0.4s ease'
+            }}
+          >
+            {/* SVG DETALHADO DO POLICIAL MILITAR PMPE */}
+            <svg width="78" height="120" viewBox="0 0 80 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Sombra no chão */}
+              <ellipse cx="40" cy="116" rx="26" ry="4" fill="rgba(0,0,0,0.6)" />
+
+              {/* Pernas do Policial (Calça Militar Operacional Cinza) */}
+              <rect x="26" y="74" width="10" height="38" rx="4" fill="#334155" />
+              <rect x="44" y="74" width="10" height="38" rx="4" fill="#334155" />
+              {/* Coturnos Pretos */}
+              <rect x="24" y="106" width="13" height="8" rx="3" fill="#0f172a" />
+              <rect x="43" y="106" width="13" height="8" rx="3" fill="#0f172a" />
+
+              {/* Tronco / Colete Tático PMPE */}
+              <rect x="22" y="34" width="36" height="42" rx="6" fill="#1e293b" stroke="#334155" strokeWidth="2" />
+              <rect x="26" y="38" width="28" height="20" rx="3" fill="#0f172a" />
+              {/* Distintivo / Letreiro PMPE */}
+              <rect x="29" y="44" width="22" height="7" rx="2" fill="#22c55e" />
+              <text x="40" y="50" fill="#ffffff" fontSize="5.5" fontWeight="900" textAnchor="middle">PMPE</text>
+
+              {/* Braço Esquerdo de Apoio */}
+              <rect x="15" y="38" width="8" height="24" rx="4" fill="#334155" />
+
+              {/* Cabeça e Boina Militar */}
+              <circle cx="40" cy="24" r="10" fill="#fbcfe8" /> {/* Rosto */}
+              {/* Boina Militar Preta / Verde Escura com Brasão Dourado */}
+              <path d="M26 21 C26 12, 54 12, 55 21 Z" fill="#0f172a" />
+              <circle cx="34" cy="18" r="2.5" fill="#f59e0b" /> {/* Brasão da Boina */}
+              {/* Óculos Escuros Táticos */}
+              <rect x="34" y="22" width="14" height="4" rx="1.5" fill="#0f172a" />
+
+              {/* Braço Direito em Riste Segurando a Pistola */}
+              <g transform={isCopFiring ? 'rotate(-6 48 42)' : 'none'}>
+                {/* Braço */}
+                <rect x="42" y="38" width="20" height="8" rx="3" fill="#334155" />
+                {/* Mão */}
+                <circle cx="62" cy="42" r="3.5" fill="#fbcfe8" />
+                {/* Pistola Tática Preta */}
+                <rect x="62" y="37" width="14" height="6" rx="1" fill="#0f172a" stroke="#475569" strokeWidth="0.8" />
+                <rect x="63" y="41" width="5" height="6" rx="1" fill="#1e293b" />
+              </g>
+
+              {/* Muzzle Flash do Disparo do Policial */}
+              {copBulletActive && (
+                <g className="muzzle-flash-active" transform="translate(77, 36)">
+                  <polygon points="0,4 12,0 8,4 18,3 9,6 14,9 0,5" fill="#f59e0b" />
+                  <polygon points="0,4 8,2 5,4 12,3 6,5 9,7 0,5" fill="#fef08a" />
+                </g>
+              )}
+            </svg>
+
+            {/* Crachá do Policial */}
+            <span style={{
+              fontSize: '0.68rem',
+              fontWeight: 900,
+              color: '#86efac',
+              background: 'rgba(20, 83, 45, 0.85)',
+              padding: '0.15rem 0.5rem',
+              borderRadius: '6px',
+              border: '1px solid #22c55e',
+              marginTop: '0.2rem'
+            }}>
+              SOLDADO PMPE
             </span>
           </div>
 
-          <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#9ca3af', fontFamily: 'monospace' }}>
-            PROGRESSO: {copPosition} / {GOAL_STEPS} ACERTOS
-          </span>
-        </div>
+          {/* PROJÉTEIS TRAÇANTES EM MOVIMENTO */}
+          {copBulletActive && <div className="bullet-cop-flying" />}
+          {banditBulletActive && <div className="bullet-bandit-flying" />}
 
-        {/* TRILHA EM CORREDOR DO LABIRINTO (7 NÓS: 0 a 6) */}
-        <div style={{ position: 'relative', zIndex: 1, margin: '1.5rem 0 1rem' }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            position: 'relative'
-          }}>
-            {/* Linha de Conexão Tática dos Corredores */}
+          {/* BONECO DO BANDIDO ARMADO (LADO DIREITO) */}
+          <div 
+            className={`${isBanditHit ? 'bandit-recoil' : ''}`}
+            style={{
+              position: 'relative',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              transform: `translateX(-${(GOAL_SHOTS_PER_SECTOR - copProgress) * 4}px)`,
+              transition: 'transform 0.4s ease'
+            }}
+          >
+            {/* SVG DETALHADO DO BANDIDO ARMADO */}
+            <svg width="78" height="120" viewBox="0 0 80 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Sombra no chão */}
+              <ellipse cx="40" cy="116" rx="26" ry="4" fill="rgba(0,0,0,0.6)" />
+
+              {/* Pernas do Bandido (Calça Preta / Jeans Escuro) */}
+              <rect x="26" y="74" width="10" height="38" rx="4" fill="#0f172a" />
+              <rect x="44" y="74" width="10" height="38" rx="4" fill="#0f172a" />
+              {/* Tênis Vermelho/Preto */}
+              <rect x="23" y="106" width="13" height="8" rx="3" fill="#b91c1c" />
+              <rect x="43" y="106" width="13" height="8" rx="3" fill="#b91c1c" />
+
+              {/* Jaqueta Escura / Camiseta */}
+              <rect x="22" y="34" width="36" height="42" rx="6" fill="#18181b" stroke="#3f3f46" strokeWidth="2" />
+              <path d="M30 36 L40 50 L50 36" stroke="#ef4444" strokeWidth="2" fill="none" />
+
+              {/* Braço Direito */}
+              <rect x="57" y="38" width="8" height="24" rx="4" fill="#18181b" />
+
+              {/* Cabeça com Balaclava / Máscara Preta */}
+              <circle cx="40" cy="24" r="10" fill="#09090b" />
+              {/* Abertura dos Olhos na Balaclava */}
+              <rect x="32" y="21" width="16" height="5" rx="2" fill="#fed7aa" />
+              <circle cx="36" cy="23.5" r="1.5" fill="#ef4444" /> {/* Olho ameaçador */}
+              <circle cx="44" cy="23.5" r="1.5" fill="#ef4444" />
+
+              {/* Braço Esquerdo Apontando a Arma em Direção ao Policial */}
+              <g transform={isBanditFiring ? 'rotate(5 32 42)' : 'none'}>
+                {/* Braço virado para a esquerda */}
+                <rect x="18" y="38" width="20" height="8" rx="3" fill="#18181b" />
+                {/* Mão */}
+                <circle cx="17" cy="42" r="3.5" fill="#fed7aa" />
+                {/* Pistola do Bandido Virada para o Policial */}
+                <rect x="4" y="37" width="14" height="6" rx="1" fill="#27272a" stroke="#71717a" strokeWidth="0.8" />
+                <rect x="12" y="41" width="5" height="6" rx="1" fill="#3f3f46" />
+              </g>
+
+              {/* Muzzle Flash do Disparo do Bandido */}
+              {banditBulletActive && (
+                <g className="muzzle-flash-active" transform="translate(0, 36) scale(-1, 1)">
+                  <polygon points="0,4 12,0 8,4 18,3 9,6 14,9 0,5" fill="#ef4444" />
+                  <polygon points="0,4 8,2 5,4 12,3 6,5 9,7 0,5" fill="#fca5a5" />
+                </g>
+              )}
+
+              {/* Efeito de Impacto quando Atingido */}
+              {isBanditHit && (
+                <g transform="translate(30, 40)">
+                  <circle cx="10" cy="10" r="14" fill="rgba(239, 68, 68, 0.6)" />
+                  <polygon points="10,0 13,7 20,5 15,12 18,19 11,15 5,19 8,12 2,6 9,7" fill="#facc15" />
+                </g>
+              )}
+            </svg>
+
+            {/* Barra de Vida do Bandido */}
             <div style={{
-              position: 'absolute',
-              top: '50%',
-              left: '4%',
-              right: '4%',
-              height: '6px',
-              background: 'rgba(255, 255, 255, 0.08)',
-              borderRadius: '3px',
-              transform: 'translateY(-50%)',
-              zIndex: 0
+              width: '80px',
+              height: '8px',
+              background: 'rgba(0, 0, 0, 0.7)',
+              borderRadius: '4px',
+              border: '1px solid rgba(239, 68, 68, 0.4)',
+              overflow: 'hidden',
+              marginTop: '0.2rem'
             }}>
-              {/* Progresso do policial na linha */}
               <div style={{
                 height: '100%',
-                background: 'linear-gradient(90deg, #15803d, #22c55e)',
-                width: `${(copPosition / GOAL_STEPS) * 100}%`,
-                borderRadius: '3px',
-                transition: 'width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                boxShadow: '0 0 12px rgba(34, 197, 94, 0.8)'
+                background: 'linear-gradient(90deg, #ef4444, #dc2626)',
+                width: `${(banditHp / BANDIT_MAX_HP) * 100}%`,
+                transition: 'width 0.3s ease'
               }} />
             </div>
+          </div>
+        </div>
 
-            {/* Os 7 Pontos do Labirinto */}
-            {Array.from({ length: GOAL_STEPS + 1 }).map((_, idx) => {
-              const isCopHere = copPosition === idx;
-              const isPassed = copPosition > idx;
-              const isDestination = idx === GOAL_STEPS;
-              const isStart = idx === 0;
+        {/* MINIMAPA DOS 4 SETORES DO LABIRINTO */}
+        <div style={{
+          position: 'relative',
+          zIndex: 5,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '0.6rem 1.25rem',
+          background: 'rgba(5, 10, 7, 0.9)',
+          borderTop: '1px solid rgba(255, 255, 255, 0.08)'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
+            {SECTORS.map((sec, idx) => {
+              const isCurrent = sectorIdx === idx;
+              const isCleared = sectorIdx > idx;
 
               return (
                 <div
-                  key={idx}
+                  key={sec.code}
                   style={{
                     display: 'flex',
-                    flexDirection: 'column',
                     alignItems: 'center',
-                    position: 'relative',
-                    zIndex: 2
+                    gap: '0.35rem',
+                    padding: '0.3rem 0.65rem',
+                    borderRadius: '8px',
+                    background: isCurrent 
+                      ? 'rgba(34, 197, 94, 0.25)' 
+                      : isCleared 
+                      ? 'rgba(21, 128, 61, 0.2)' 
+                      : 'rgba(255, 255, 255, 0.04)',
+                    border: isCurrent 
+                      ? '1.5px solid #22c55e' 
+                      : isCleared 
+                      ? '1px solid #16a34a' 
+                      : '1px solid rgba(255, 255, 255, 0.08)',
+                    fontSize: '0.72rem',
+                    fontWeight: 800,
+                    color: isCurrent ? '#4ade80' : isCleared ? '#86efac' : '#94a3b8'
                   }}
                 >
-                  {/* Bonequinho / Ícone do Policial se estiver nesta posição */}
-                  {isCopHere && (
-                    <div style={{
-                      position: 'absolute',
-                      top: '-46px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      animation: 'bounce 1s infinite alternate'
-                    }}>
-                      <div style={{
-                        background: 'linear-gradient(135deg, #16a34a, #14532d)',
-                        color: '#fff',
-                        padding: '0.35rem 0.6rem',
-                        borderRadius: '20px',
-                        border: '2px solid #4ade80',
-                        boxShadow: '0 0 18px rgba(34, 197, 94, 0.85)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.3rem',
-                        fontSize: '0.78rem',
-                        fontWeight: 900
-                      }}>
-                        <span>👮‍♂️</span>
-                        <span>POLICIAL</span>
-                      </div>
-                      <div style={{
-                        width: '0',
-                        height: '0',
-                        borderLeft: '5px solid transparent',
-                        borderRight: '5px solid transparent',
-                        borderTop: '6px solid #4ade80',
-                        marginTop: '-1px'
-                      }} />
-                    </div>
-                  )}
-
-                  {/* Nó do Labirinto */}
-                  <div style={{
-                    width: isDestination ? '50px' : '40px',
-                    height: isDestination ? '50px' : '40px',
-                    borderRadius: '50%',
-                    background: isDestination
-                      ? 'linear-gradient(135deg, #d97706, #b45309)'
-                      : isPassed
-                      ? 'linear-gradient(135deg, #15803d, #14532d)'
-                      : isCopHere
-                      ? 'linear-gradient(135deg, #22c55e, #16a34a)'
-                      : 'rgba(20, 30, 24, 0.9)',
-                    border: isDestination
-                      ? '2px solid #fbbf24'
-                      : isCopHere
-                      ? '3px solid #86efac'
-                      : isPassed
-                      ? '2px solid #22c55e'
-                      : '2px solid rgba(255, 255, 255, 0.15)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#fff',
-                    fontWeight: 900,
-                    fontSize: isDestination ? '1.2rem' : '0.85rem',
-                    boxShadow: isCopHere
-                      ? '0 0 20px rgba(34, 197, 94, 0.8)'
-                      : isDestination
-                      ? '0 0 20px rgba(245, 158, 11, 0.6)'
-                      : 'none',
-                    transition: 'all 0.4s ease'
-                  }}>
-                    {isDestination ? '🏁' : isStart ? '🚩' : idx}
-                  </div>
-
-                  {/* Legenda do Ponto */}
-                  <span style={{
-                    fontSize: '0.68rem',
-                    fontWeight: 700,
-                    color: isCopHere ? '#4ade80' : isDestination ? '#f59e0b' : '#9ca3af',
-                    marginTop: '0.4rem',
-                    fontFamily: 'monospace'
-                  }}>
-                    {isDestination ? 'DESTINO' : isStart ? 'ENTRADA' : `POSTO ${idx}`}
-                  </span>
+                  <span>{isCleared ? '✅' : isCurrent ? '🔫' : '🔒'}</span>
+                  <span>{sec.name}</span>
                 </div>
               );
             })}
           </div>
 
-          {/* INDICADOR VISUAL DO BANDIDO QUE ESTÁ PERSEGUINDO */}
-          <div style={{
-            marginTop: '2rem',
-            padding: '0.75rem 1.25rem',
-            borderRadius: '8px',
-            background: 'linear-gradient(90deg, rgba(239, 68, 68, 0.15), rgba(15, 20, 16, 0.8))',
-            border: '1px solid rgba(239, 68, 68, 0.35)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-              <div style={{
-                background: 'rgba(239, 68, 68, 0.25)',
-                border: '1px solid #ef4444',
-                color: '#ef4444',
-                borderRadius: '50%',
-                width: '36px',
-                height: '36px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.2rem'
-              }}>
-                🥷
-              </div>
-              <div>
-                <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#fca5a5' }}>
-                  Ameaça em Perseguição: Bandido do Beco
-                </div>
-                <div style={{ fontSize: '0.75rem', color: '#9ca3af' }}>
-                  Distância de perigo: <strong style={{ color: banditDistance <= 1 ? '#ef4444' : '#fbbf24' }}>{banditDistance * 10} metros</strong> ({banditDistance} erros permitidos antes da emboscada)
-                </div>
-              </div>
-            </div>
-
-            {/* Medidor de Proximidade (Barrinhas de Perigo) */}
-            <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
-              {Array.from({ length: 4 }).map((_, i) => {
-                const dangerLevel = i < (4 - banditDistance);
-                return (
-                  <div
-                    key={i}
-                    style={{
-                      width: '16px',
-                      height: '24px',
-                      borderRadius: '3px',
-                      background: dangerLevel ? '#ef4444' : 'rgba(255, 255, 255, 0.1)',
-                      border: dangerLevel ? '1px solid #f87171' : '1px solid rgba(255, 255, 255, 0.05)',
-                      boxShadow: dangerLevel ? '0 0 8px rgba(239, 68, 68, 0.6)' : 'none',
-                      transition: 'all 0.3s'
-                    }}
-                  />
-                );
-              })}
-            </div>
+          <div style={{ fontSize: '0.74rem', color: '#fbbf24', fontWeight: 800 }}>
+            🔥 Combo: {streak}x Tiros Certeiros
           </div>
         </div>
       </div>
 
-      {/* CASO: EMBOSCADA FATAL (GAME OVER) */}
-      {isGameOver ? (
+      {/* CONTEÚDO PRINCIPAL: PERGUNTA TÁTICA DA BANCA AOCP */}
+      {currentQuestion && !isSectorCleared && !isGameOver && !isGameCompleted && (
         <div className="glass-panel" style={{
-          padding: '2.5rem 1.5rem',
-          borderRadius: '12px',
-          border: '2px solid #ef4444',
-          background: 'radial-gradient(circle at 50% 20%, rgba(239, 68, 68, 0.2) 0%, rgba(10, 15, 12, 0.98) 75%)',
-          textAlign: 'center',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '1rem'
+          padding: '1.5rem',
+          borderRadius: '16px',
+          background: 'linear-gradient(135deg, rgba(16, 26, 20, 0.98), rgba(10, 18, 13, 0.98))',
+          border: '1.5px solid rgba(34, 197, 94, 0.35)',
+          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)'
         }}>
-          <div style={{
-            width: '72px',
-            height: '72px',
-            borderRadius: '50%',
-            background: 'rgba(239, 68, 68, 0.25)',
-            border: '2px solid #ef4444',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#ef4444'
-          }}>
-            <Skull size={40} />
+          {/* Header da Pergunta */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.85rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{
+                background: 'rgba(245, 158, 11, 0.2)',
+                color: '#fbbf24',
+                fontSize: '0.72rem',
+                fontWeight: 900,
+                padding: '0.2rem 0.6rem',
+                borderRadius: '6px',
+                border: '1px solid rgba(245, 158, 11, 0.35)'
+              }}>
+                BANCA INSTITUTO AOCP
+              </span>
+              <span style={{
+                background: 'rgba(34, 197, 94, 0.15)',
+                color: '#4ade80',
+                fontSize: '0.72rem',
+                fontWeight: 800,
+                padding: '0.2rem 0.6rem',
+                borderRadius: '6px'
+              }}>
+                {currentQuestion.topicoEdital || currentQuestion.materiaNome || 'Conhecimentos do Edital PMPE'}
+              </span>
+            </div>
+
+            <div style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
+              Alvo: Tiro {copProgress + 1} de {GOAL_SHOTS_PER_SECTOR}
+            </div>
           </div>
 
-          <h2 style={{ fontSize: '1.8rem', fontWeight: 900, color: '#fca5a5', textTransform: 'uppercase' }}>
-            ☠️ Emboscada Fatal! Policial Neutralizado
+          {/* Enunciado */}
+          <h2 style={{
+            fontSize: '1.08rem',
+            lineHeight: 1.6,
+            color: '#f8fafc',
+            fontWeight: 800,
+            margin: '0 0 1.25rem'
+          }}>
+            {currentQuestion.question}
           </h2>
 
-          <p style={{ maxWidth: '540px', color: '#d1d5db', fontSize: '0.95rem', lineHeight: '1.6' }}>
-            Você acumulou <strong>4 erros</strong> no labirinto e o bandido alcançou o policial antes do destino final. 
-            No concurso da PMPE, a precisão e a doutrina salvam vidas!
+          {/* Alternativas de Resposta */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+            {currentQuestion.options.map((opt, idx) => {
+              const letter = ['A', 'B', 'C', 'D', 'E'][idx] || `${idx + 1}`;
+              const isChosen = selectedOption === idx;
+              const isCorrect = isAnswered && idx === currentQuestion.correctIndex;
+              const isWrong = isAnswered && isChosen && !isCorrect;
+
+              let btnBg = 'rgba(255, 255, 255, 0.04)';
+              let border = '1px solid rgba(255, 255, 255, 0.12)';
+              let textColor = '#e2e8f0';
+
+              if (isCorrect) {
+                btnBg = 'rgba(34, 197, 94, 0.25)';
+                border = '2px solid #22c55e';
+                textColor = '#86efac';
+              } else if (isWrong) {
+                btnBg = 'rgba(239, 68, 68, 0.25)';
+                border = '2px solid #ef4444';
+                textColor = '#fca5a5';
+              }
+
+              return (
+                <button
+                  key={idx}
+                  type="button"
+                  disabled={isAnswered}
+                  onClick={() => handleAnswer(idx)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.85rem',
+                    padding: '0.9rem 1.15rem',
+                    borderRadius: '12px',
+                    background: btnBg,
+                    border: border,
+                    color: textColor,
+                    cursor: isAnswered ? 'default' : 'pointer',
+                    textAlign: 'left',
+                    fontSize: '0.92rem',
+                    fontWeight: 700,
+                    transition: 'all 0.2s ease',
+                    boxShadow: isCorrect ? '0 0 15px rgba(34, 197, 94, 0.35)' : 'none'
+                  }}
+                >
+                  <div style={{
+                    width: '32px',
+                    height: '32px',
+                    borderRadius: '8px',
+                    background: isCorrect 
+                      ? '#22c55e' 
+                      : isWrong 
+                      ? '#ef4444' 
+                      : 'rgba(255, 255, 255, 0.08)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#ffffff',
+                    fontWeight: 900,
+                    fontSize: '0.85rem',
+                    flexShrink: 0
+                  }}>
+                    {letter}
+                  </div>
+                  <span style={{ flex: 1 }}>{opt}</span>
+                  {isCorrect && <CheckCircle2 size={20} color="#22c55e" />}
+                  {isWrong && <XCircle size={20} color="#ef4444" />}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* JUSTIFICATIVA PEDAGÓGICA & BOTÃO DE AVANÇO */}
+          {isAnswered && (
+            <div style={{
+              marginTop: '1.25rem',
+              padding: '1.15rem 1.35rem',
+              borderRadius: '12px',
+              background: selectedOption === currentQuestion.correctIndex 
+                ? 'rgba(34, 197, 94, 0.12)' 
+                : 'rgba(239, 68, 68, 0.12)',
+              border: selectedOption === currentQuestion.correctIndex 
+                ? '1.5px solid rgba(34, 197, 94, 0.4)' 
+                : '1.5px solid rgba(239, 68, 68, 0.4)'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem' }}>
+                <Crosshair size={18} color={selectedOption === currentQuestion.correctIndex ? '#4ade80' : '#f87171'} />
+                <span style={{
+                  fontWeight: 900,
+                  fontSize: '0.88rem',
+                  color: selectedOption === currentQuestion.correctIndex ? '#4ade80' : '#f87171'
+                }}>
+                  {selectedOption === currentQuestion.correctIndex 
+                    ? '🎯 TIRO CERTO! INIMIGO ATINGIDO!' 
+                    : '🚨 ALERTA: FOGO INIMIGO ABSORVIDO PELO COLETE!'}
+                </span>
+              </div>
+
+              <p style={{ margin: 0, fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.55 }}>
+                {currentQuestion.explanation || 'Mantenha a atenção à pegadinha literal da banca Instituto AOCP.'}
+              </p>
+
+              <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'flex-end' }}>
+                <button
+                  type="button"
+                  onClick={pickNextQuestion}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.7rem 1.4rem',
+                    borderRadius: '10px',
+                    background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+                    color: '#ffffff',
+                    fontWeight: 900,
+                    fontSize: '0.88rem',
+                    border: 'none',
+                    cursor: 'pointer',
+                    boxShadow: '0 6px 15px rgba(34, 197, 94, 0.35)'
+                  }}
+                >
+                  <span>Avançar no Corredor</span>
+                  <ArrowRight size={16} />
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* TELA DE SETOR LIBERADO (VITÓRIA NO SETOR) */}
+      {isSectorCleared && (
+        <div className="glass-panel" style={{
+          textAlign: 'center',
+          padding: '2.5rem 1.5rem',
+          borderRadius: '20px',
+          background: 'linear-gradient(135deg, rgba(20, 83, 45, 0.95), rgba(10, 40, 22, 0.98))',
+          border: '2px solid #22c55e',
+          boxShadow: '0 0 35px rgba(34, 197, 94, 0.4)'
+        }}>
+          <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🚪🔓</div>
+          <span style={{
+            background: 'rgba(34, 197, 94, 0.25)',
+            color: '#4ade80',
+            fontWeight: 900,
+            fontSize: '0.78rem',
+            padding: '0.25rem 0.75rem',
+            borderRadius: '20px',
+            border: '1px solid #22c55e',
+            textTransform: 'uppercase'
+          }}>
+            SETOR NEUTRALIZADO COM SUCESSO!
+          </span>
+          <h2 style={{ fontSize: '1.8rem', fontWeight: 900, color: '#ffffff', margin: '0.8rem 0 0.35rem' }}>
+            Portão Aberto: {currentSector.name} Limpo!
+          </h2>
+          <p style={{ color: '#86efac', fontSize: '0.92rem', maxWidth: '520px', margin: '0 auto 1.5rem' }}>
+            Excelente disparo, recruta! O bandido deste perímetro foi contido e o caminho está seguro para invadir a próxima ala do labirinto.
           </p>
 
-          <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+          <button
+            type="button"
+            onClick={handleNextSector}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.6rem',
+              padding: '0.95rem 2rem',
+              borderRadius: '12px',
+              background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+              color: '#0f172a',
+              fontWeight: 900,
+              fontSize: '1rem',
+              border: 'none',
+              cursor: 'pointer',
+              boxShadow: '0 8px 25px rgba(245, 158, 11, 0.4)'
+            }}
+          >
+            <span>Invadir Próximo Setor</span>
+            <ArrowRight size={18} />
+          </button>
+        </div>
+      )}
+
+      {/* TELA DE GAME OVER (4 COLETES ROMPIDOS) */}
+      {isGameOver && (
+        <div className="glass-panel" style={{
+          textAlign: 'center',
+          padding: '2.5rem 1.5rem',
+          borderRadius: '20px',
+          background: 'linear-gradient(135deg, rgba(80, 15, 15, 0.95), rgba(40, 8, 8, 0.98))',
+          border: '2px solid #ef4444',
+          boxShadow: '0 0 35px rgba(239, 68, 68, 0.4)'
+        }}>
+          <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🚨🛡️</div>
+          <span style={{
+            background: 'rgba(239, 68, 68, 0.25)',
+            color: '#f87171',
+            fontWeight: 900,
+            fontSize: '0.78rem',
+            padding: '0.25rem 0.75rem',
+            borderRadius: '20px',
+            border: '1px solid #ef4444',
+            textTransform: 'uppercase'
+          }}>
+            EMBOSCADA NO LABIRINTO!
+          </span>
+          <h2 style={{ fontSize: '1.8rem', fontWeight: 900, color: '#ffffff', margin: '0.8rem 0 0.35rem' }}>
+            Todos os 4 Coletes Foram Rompidos
+          </h2>
+          <p style={{ color: '#fca5a5', fontSize: '0.92rem', maxWidth: '520px', margin: '0 auto 1.5rem' }}>
+            O fogo inimigo superou suas defesas táticas. Reorganize seus conhecimentos das disciplinas do edital e tente a incursão novamente!
+          </p>
+
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.85rem' }}>
             <button
+              type="button"
               onClick={handleRestart}
               style={{
-                background: 'linear-gradient(135deg, #dc2626, #b91c1c)',
-                color: '#fff',
-                padding: '0.85rem 1.75rem',
-                borderRadius: '8px',
-                border: 'none',
-                fontWeight: 800,
-                cursor: 'pointer',
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                boxShadow: '0 4px 15px rgba(220, 38, 38, 0.4)'
+                padding: '0.85rem 1.6rem',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+                color: '#ffffff',
+                fontWeight: 900,
+                fontSize: '0.92rem',
+                border: 'none',
+                cursor: 'pointer'
               }}
             >
-              <RotateCcw size={18} />
-              Reiniciar Incursão
+              <RotateCcw size={16} />
+              <span>Tentar Incursão Novamente</span>
             </button>
             <button
-              onClick={handleCompleteAndReport}
+              type="button"
+              onClick={onBack}
               style={{
-                background: 'rgba(255, 255, 255, 0.08)',
-                color: '#e5e7eb',
-                padding: '0.85rem 1.5rem',
-                borderRadius: '8px',
+                padding: '0.85rem 1.4rem',
+                borderRadius: '12px',
+                background: 'rgba(255, 255, 255, 0.1)',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
-                fontWeight: 700,
+                color: '#ffffff',
+                fontWeight: 800,
+                fontSize: '0.92rem',
                 cursor: 'pointer'
               }}
             >
@@ -687,280 +1038,68 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
             </button>
           </div>
         </div>
-      ) : isStageCleared ? (
-        /* CASO: FASE CONCLUÍDA (POLICIAL CHEGOU AO DESTINO COM 6 ACERTOS!) */
+      )}
+
+      {/* TELA DE LABIRINTO COMPLETO (VITÓRIA TOTAL) */}
+      {isGameCompleted && (
         <div className="glass-panel" style={{
-          padding: '2.5rem 1.5rem',
-          borderRadius: '12px',
-          border: '2px solid #22c55e',
-          background: 'radial-gradient(circle at 50% 20%, rgba(34, 197, 94, 0.2) 0%, rgba(10, 15, 12, 0.98) 75%)',
           textAlign: 'center',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '1rem'
+          padding: '2.8rem 1.5rem',
+          borderRadius: '20px',
+          background: 'linear-gradient(135deg, rgba(20, 83, 45, 0.98), rgba(10, 40, 22, 0.98))',
+          border: '2px solid #f59e0b',
+          boxShadow: '0 0 45px rgba(245, 158, 11, 0.5)'
         }}>
-          <div style={{
-            width: '72px',
-            height: '72px',
-            borderRadius: '50%',
-            background: 'rgba(34, 197, 94, 0.25)',
-            border: '2px solid #22c55e',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#22c55e'
+          <div style={{ fontSize: '3.5rem', marginBottom: '0.5rem' }}>🏆👮‍♂️</div>
+          <span style={{
+            background: 'rgba(245, 158, 11, 0.25)',
+            color: '#fbbf24',
+            fontWeight: 900,
+            fontSize: '0.82rem',
+            padding: '0.25rem 0.85rem',
+            borderRadius: '20px',
+            border: '1px solid #f59e0b',
+            textTransform: 'uppercase'
           }}>
-            <Award size={40} />
-          </div>
-
-          <h2 style={{ fontSize: '1.8rem', fontWeight: 900, color: '#86efac', textTransform: 'uppercase' }}>
-            🎉 Destino Alcançado! {currentStage.title} Concluída!
+            MISSÃO CUMPRIDA • LABIRINTO DOMINADO!
+          </span>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#ffffff', margin: '0.8rem 0 0.35rem' }}>
+            Todas as Fases Foram Conquistadas!
           </h2>
-
-          <p style={{ maxWidth: '540px', color: '#d1d5db', fontSize: '0.95rem', lineHeight: '1.6' }}>
-            Excelente atuação tática! O policial avançou pelos 6 postos do labirinto sem ser capturado pelo inimigo.
-            Você garantiu <strong>+250 XP de Bônus Tático</strong> para seu histórico militar.
+          <p style={{ color: '#cbd5e1', fontSize: '0.95rem', maxWidth: '540px', margin: '0 auto 1.5rem' }}>
+            Você cruzou todos os 4 setores do labirinto tático, neutralizou os alvos armados e demonstrou pontaria afiada no conteúdo da banca AOCP!
           </p>
 
-          <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
-            {currentStageIdx + 1 < STAGES.length ? (
-              <button
-                onClick={handleNextStage}
-                style={{
-                  background: 'linear-gradient(135deg, #16a34a, #15803d)',
-                  color: '#fff',
-                  padding: '0.85rem 1.75rem',
-                  borderRadius: '8px',
-                  border: 'none',
-                  fontWeight: 800,
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  boxShadow: '0 4px 15px rgba(34, 197, 94, 0.4)'
-                }}
-              >
-                Avançar para a {STAGES[currentStageIdx + 1].title}
-                <ArrowRight size={18} />
-              </button>
-            ) : (
-              <button
-                onClick={handleCompleteAndReport}
-                style={{
-                  background: 'linear-gradient(135deg, #d97706, #b45309)',
-                  color: '#fff',
-                  padding: '0.85rem 1.75rem',
-                  borderRadius: '8px',
-                  border: 'none',
-                  fontWeight: 800,
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem'
-                }}
-              >
-                Missão Cumprida: Relatório Final
-              </button>
-            )}
-          </div>
+          <button
+            type="button"
+            onClick={() => {
+              onFinishGame({
+                title: 'Labirinto Tático Policial',
+                score,
+                xpEarned: xp,
+                statsDetail: [
+                  { label: 'Setores Conquistados', value: '4 / 4 Setores' },
+                  { label: 'Pontuação Tática', value: score },
+                  { label: 'XP Conquistado', value: `+${xp} XP` },
+                  { label: 'Coletes Restantes', value: `${lives} / ${MAX_LIVES}` }
+                ]
+              });
+            }}
+            style={{
+              padding: '0.95rem 2.2rem',
+              borderRadius: '12px',
+              background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+              color: '#0f172a',
+              fontWeight: 900,
+              fontSize: '1rem',
+              border: 'none',
+              cursor: 'pointer',
+              boxShadow: '0 8px 25px rgba(245, 158, 11, 0.4)'
+            }}
+          >
+            Registrar Conquista e Voltar ao Quartel
+          </button>
         </div>
-      ) : (
-        /* PAINEL DA QUESTÃO MILITAR ATIVA NO LABIRINTO */
-        currentQuestion && (
-          <div className="glass-panel" style={{
-            padding: '1.5rem',
-            borderRadius: '12px',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            background: 'linear-gradient(180deg, rgba(16, 24, 19, 0.95) 0%, rgba(9, 14, 11, 0.98) 100%)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1.25rem'
-          }}>
-            {/* Topo da Questão */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{
-                  background: 'rgba(255, 255, 255, 0.08)',
-                  color: '#9ca3af',
-                  fontSize: '0.72rem',
-                  fontWeight: 800,
-                  padding: '0.2rem 0.55rem',
-                  borderRadius: '4px',
-                  textTransform: 'uppercase'
-                }}>
-                  {currentQuestion.materiaNome}
-                </span>
-                {currentQuestion.topicoEdital && (
-                  <span style={{ color: '#6b7280', fontSize: '0.75rem' }}>
-                    • {currentQuestion.topicoEdital}
-                  </span>
-                )}
-              </div>
-
-              <span style={{
-                fontSize: '0.72rem',
-                fontWeight: 700,
-                color: '#f59e0b',
-                background: 'rgba(245, 158, 11, 0.1)',
-                padding: '0.2rem 0.5rem',
-                borderRadius: '4px',
-                border: '1px solid rgba(245, 158, 11, 0.25)'
-              }}>
-                Posto Atual: Passo {copPosition + 1} de {GOAL_STEPS}
-              </span>
-            </div>
-
-            {/* Enunciado */}
-            <div style={{
-              fontSize: '1.05rem',
-              fontWeight: 600,
-              color: '#f3f4f6',
-              lineHeight: '1.65',
-              padding: '0.75rem',
-              background: 'rgba(0, 0, 0, 0.25)',
-              borderRadius: '8px',
-              borderLeft: '4px solid #22c55e'
-            }}>
-              {currentQuestion.question}
-            </div>
-
-            {/* Alternativas A, B, C, D, E */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-              {currentQuestion.options.map((opt, idx) => {
-                const letters = ['A', 'B', 'C', 'D', 'E'];
-                const isSelected = selectedOption === idx;
-                const isCorrect = idx === currentQuestion.correctIndex;
-
-                let btnBg = 'rgba(255, 255, 255, 0.04)';
-                let btnBorder = 'rgba(255, 255, 255, 0.1)';
-                let btnColor = '#e5e7eb';
-
-                if (isAnswered) {
-                  if (isCorrect) {
-                    btnBg = 'rgba(34, 197, 94, 0.22)';
-                    btnBorder = '#22c55e';
-                    btnColor = '#86efac';
-                  } else if (isSelected) {
-                    btnBg = 'rgba(239, 68, 68, 0.25)';
-                    btnBorder = '#ef4444';
-                    btnColor = '#fca5a5';
-                  } else {
-                    btnBg = 'rgba(0, 0, 0, 0.2)';
-                    btnColor = '#6b7280';
-                  }
-                }
-
-                return (
-                  <button
-                    key={idx}
-                    disabled={isAnswered}
-                    onClick={() => handleAnswer(idx)}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.85rem',
-                      padding: '0.85rem 1.1rem',
-                      borderRadius: '8px',
-                      background: btnBg,
-                      border: `1px solid ${btnBorder}`,
-                      color: btnColor,
-                      fontSize: '0.92rem',
-                      textAlign: 'left',
-                      cursor: isAnswered ? 'default' : 'pointer',
-                      transition: 'all 0.2s ease'
-                    }}
-                  >
-                    <span style={{
-                      width: '28px',
-                      height: '28px',
-                      borderRadius: '6px',
-                      background: isAnswered && isCorrect
-                        ? '#22c55e'
-                        : isAnswered && isSelected
-                        ? '#ef4444'
-                        : 'rgba(255, 255, 255, 0.08)',
-                      color: isAnswered && (isCorrect || isSelected) ? '#fff' : '#9ca3af',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontWeight: 800,
-                      fontSize: '0.82rem',
-                      flexShrink: 0
-                    }}>
-                      {letters[idx]}
-                    </span>
-                    <span style={{ flex: 1, lineHeight: '1.45' }}>{opt}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* FEEDBACK PEDAGÓGICO & COMENTÁRIO TÁTICO APÓS RESPOSTA */}
-            {isAnswered && (
-              <div style={{
-                marginTop: '0.5rem',
-                padding: '1.25rem',
-                borderRadius: '8px',
-                background: selectedOption === currentQuestion.correctIndex
-                  ? 'rgba(34, 197, 94, 0.12)'
-                  : 'rgba(239, 68, 68, 0.12)',
-                border: `1px solid ${selectedOption === currentQuestion.correctIndex ? '#22c55e' : '#ef4444'}`,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.75rem'
-              }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div style={{
-                    fontSize: '1rem',
-                    fontWeight: 800,
-                    color: selectedOption === currentQuestion.correctIndex ? '#86efac' : '#fca5a5',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem'
-                  }}>
-                    {selectedOption === currentQuestion.correctIndex
-                      ? '🎯 TIRO CERTEIRO! O Policial avançou 1 passo em direção ao destino!'
-                      : '❌ DISPARO FALHO! O bandido se aproximou 1 passo pelo labirinto!'}
-                  </div>
-
-                  <button
-                    onClick={handleNextStep}
-                    style={{
-                      background: selectedOption === currentQuestion.correctIndex
-                        ? 'linear-gradient(135deg, #16a34a, #15803d)'
-                        : 'linear-gradient(135deg, #dc2626, #b91c1c)',
-                      color: '#fff',
-                      padding: '0.55rem 1.25rem',
-                      borderRadius: '6px',
-                      border: 'none',
-                      fontWeight: 800,
-                      fontSize: '0.85rem',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.4rem',
-                      boxShadow: '0 2px 10px rgba(0, 0, 0, 0.3)'
-                    }}
-                  >
-                    Próxima Questão
-                    <ArrowRight size={16} />
-                  </button>
-                </div>
-
-                <div style={{ color: '#e5e7eb', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                  <strong>Fundamentação da Banca AOCP:</strong> {currentQuestion.explanation}
-                </div>
-
-                {currentQuestion.fundamentacaoLegal && (
-                  <div style={{ color: '#9ca3af', fontSize: '0.8rem', fontStyle: 'italic' }}>
-                    ⚖️ {currentQuestion.fundamentacaoLegal}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        )
       )}
     </div>
   );

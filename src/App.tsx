@@ -29,11 +29,12 @@ import { StudyScheduleModal } from './components/StudyScheduleModal';
 import { QuestionPdfModal } from './components/QuestionPdfModal';
 import { PromotionalAdModal } from './components/PromotionalAdModal';
 import { OrderRequestsModal } from './components/OrderRequestsModal';
+import { MilitaryLawBookletModal } from './components/MilitaryLawBookletModal';
 import { getDailyMotivationalQuote, type MotivationalQuote } from './utils/motivationalQuotes';
 import { recordStudentLogin, recordQuizCompletion } from './utils/studentAnalytics';
 import { fetchRegistryFromCloud, isMasterUser, checkActiveSessionValidity } from './utils/authManager';
 import { updateAndCalculateStreak } from './utils/studentStreak';
-import { Swords, ArrowRight, ShieldCheck, Shield, Calendar, FileText, Smartphone, AlertTriangle } from 'lucide-react';
+import { Swords, ArrowRight, ShieldCheck, Shield, Calendar, FileText, Smartphone, AlertTriangle, BookOpen } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export function App() {
@@ -164,6 +165,7 @@ export function App() {
   // Novos Recursos: Cronograma VIP, PDF de Questões, Anúncio e Canal de Pedidos
   const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false);
   const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
+  const [isLawBookletOpen, setIsLawBookletOpen] = useState(false);
   const [isPromoAdOpen, setIsPromoAdOpen] = useState(false);
   const [isOrderRequestsOpen, setIsOrderRequestsOpen] = useState(false);
   const [sessionKickedReason, setSessionKickedReason] = useState<{ title: string; message: string } | null>(null);
@@ -772,6 +774,7 @@ export function App() {
         pendingUsersCount={pendingUsersCount}
         onOpenSchedule={() => setIsScheduleModalOpen(true)}
         onOpenPdfExport={() => setIsPdfModalOpen(true)}
+        onOpenLawBooklet={() => setIsLawBookletOpen(true)}
         onOpenOrders={() => setIsOrderRequestsOpen(true)}
       />
 
@@ -952,6 +955,53 @@ export function App() {
                 </div>
                 <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem' }}>
                   Gere listas de questões prontas para imprimir com folha de respostas
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3: Caderno de Leis Secas do Edital PMPE (Vade Mecum Tático) */}
+            <div
+              onClick={() => {
+                sound.playClick();
+                setIsLawBookletOpen(true);
+              }}
+              style={{
+                cursor: 'pointer',
+                padding: '1.1rem 1.25rem',
+                borderRadius: '16px',
+                background: 'linear-gradient(135deg, rgba(20, 36, 24, 0.95) 0%, rgba(10, 20, 14, 0.98) 100%)',
+                border: '1.5px solid rgba(34, 197, 94, 0.45)',
+                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(34, 197, 94, 0.2)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                transition: 'transform 0.2s, box-shadow 0.2s'
+              }}
+            >
+              <div style={{
+                width: '46px',
+                height: '46px',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #15803d, #16a34a)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 0 15px rgba(34, 197, 94, 0.4)',
+                flexShrink: 0
+              }}>
+                <BookOpen size={24} color="#ffffff" />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#f0fdf4' }}>
+                    Caderno de Leis Secas
+                  </span>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(34, 197, 94, 0.2)', color: '#4ade80', fontWeight: 900 }}>
+                    EDITAL PMPE
+                  </span>
+                </div>
+                <div style={{ fontSize: '0.78rem', color: '#86efac', marginTop: '0.2rem' }}>
+                  Crimes Hediondos, Direitos Humanos, Estatuto PMPE e CF/88 com macetes AOCP
                 </div>
               </div>
             </div>
@@ -1199,6 +1249,12 @@ export function App() {
         isOpen={isOrderRequestsOpen}
         onClose={() => setIsOrderRequestsOpen(false)}
         userName={currentUser}
+      />
+
+      {/* MODAL: CADERNO DE LEIS SECAS DO EDITAL PMPE (VADE MECUM) */}
+      <MilitaryLawBookletModal
+        isOpen={isLawBookletOpen}
+        onClose={() => setIsLawBookletOpen(false)}
       />
     </div>
   );

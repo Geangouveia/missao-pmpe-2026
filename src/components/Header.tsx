@@ -1,5 +1,5 @@
 import React from 'react';
-import { Volume2, VolumeX, Trophy, PlusCircle, Flame, Sparkles, LogOut, UserCheck, BarChart3, ShieldCheck, Calendar, FileText, MessageSquare } from 'lucide-react';
+import { Volume2, VolumeX, Trophy, PlusCircle, Flame, Sparkles, LogOut, UserCheck, BarChart3, ShieldCheck, Calendar, FileText, MessageSquare, BookOpen } from 'lucide-react';
 import type { PlayerStats } from '../types/game';
 import { sound } from '../utils/sound';
 import { StreakFlame } from './StreakFlame';
@@ -22,6 +22,7 @@ interface HeaderProps {
   onOpenSchedule?: () => void;
   onOpenPdfExport?: () => void;
   onOpenOrders?: () => void;
+  onOpenLawBooklet?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -40,6 +41,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenSchedule,
   onOpenPdfExport,
   onOpenOrders,
+  onOpenLawBooklet,
 }) => {
   // Cálculo de XP para o próximo nível (100 XP por nível com escala suave)
   const xpCurrentLevel = stats.xp % 100;
@@ -245,6 +247,30 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <FileText size={16} color="#38bdf8" />
               <span>📄 Baixar PDF</span>
+            </button>
+          )}
+
+          {onOpenLawBooklet && (
+            <button
+              className="btn-secondary"
+              style={{
+                padding: '0.5rem 0.95rem',
+                fontSize: '0.84rem',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(20, 83, 45, 0.35), rgba(5, 46, 22, 0.45))',
+                borderColor: 'rgba(34, 197, 94, 0.5)',
+                color: '#86efac',
+                fontWeight: 800,
+                boxShadow: '0 0 10px rgba(34, 197, 94, 0.2)'
+              }}
+              onClick={() => {
+                sound.playClick();
+                onOpenLawBooklet();
+              }}
+              title="Caderno de Legislação Seca do Edital PMPE (Crimes Hediondos, Estatuto, Direitos Humanos, etc.)"
+            >
+              <BookOpen size={16} color="#86efac" />
+              <span>📜 Leis do Edital</span>
             </button>
           )}
 

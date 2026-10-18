@@ -14,7 +14,12 @@ import {
   MessageCircle, 
   Flame, 
   AlertCircle,
-  HelpCircle
+  HelpCircle,
+  Bell,
+  BellRing,
+  Smartphone,
+  AlarmClock,
+  Download
 } from 'lucide-react';
 import { isMasterUser, grantScheduleAccess, isScheduleUnlocked } from '../utils/authManager';
 import { sound } from '../utils/sound';
@@ -65,6 +70,11 @@ export const StudyScheduleModal: React.FC<StudyScheduleModalProps> = ({
   const [scheduleData, setScheduleData] = useState<DayPlan[]>([]);
   const [activeTabDay, setActiveTabDay] = useState<number>(0);
 
+  // Estados do Alarme & Notificações de Estudos
+  const [studyAlertTime, setStudyAlertTime] = useState<string>('07:00');
+  const [isBrowserAlertActive, setIsBrowserAlertActive] = useState(false);
+  const [alertFeedback, setAlertFeedback] = useState<string | null>(null);
+
   // Verifica desbloqueio ao abrir
   useEffect(() => {
     if (!userName) return;
@@ -81,6 +91,12 @@ export const StudyScheduleModal: React.FC<StudyScheduleModalProps> = ({
           setHasGenerated(true);
         }
       } catch {}
+    }
+
+    // Carrega horário de alerta salvo
+    const savedAlert = localStorage.getItem(`pmpe_alert_time_${userName}`);
+    if (savedAlert) {
+      setStudyAlertTime(savedAlert);
     }
   }, [userName, isOpen]);
 
@@ -1001,6 +1017,273 @@ export const StudyScheduleModal: React.FC<StudyScheduleModalProps> = ({
                       faça uma pausa de 10 minutos (Técnica Pomodoro). Durante a pausa, beba água e não mexa em redes
                       sociais para permitir a consolidação sináptica na memória de longo prazo.
                     </p>
+                  </div>
+
+                  {/* CENTRAL DE ALARMES & DISPARO DE ALERTAS NO CELULAR E WHATSAPP */}
+                  <div
+                    style={{
+                      marginTop: '1.5rem',
+                      background: 'linear-gradient(135deg, rgba(20, 36, 24, 0.95), rgba(12, 22, 15, 0.98))',
+                      border: '1.5px solid rgba(34, 197, 94, 0.45)',
+                      borderRadius: '16px',
+                      padding: '1.35rem 1.5rem',
+                      boxShadow: '0 8px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(34, 197, 94, 0.15)'
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1rem' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                        <div style={{
+                          width: '40px',
+                          height: '40px',
+                          borderRadius: '10px',
+                          background: 'linear-gradient(135deg, #22c55e, #15803d)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          boxShadow: '0 0 15px rgba(34, 197, 94, 0.5)'
+                        }}>
+                          <BellRing size={22} color="#ffffff" />
+                        </div>
+                        <div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                            <h4 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 900, color: '#f8fafc' }}>
+                              🚨 Despertador Tático & Alertas de Estudos no Celular
+                            </h4>
+                            <span style={{ fontSize: '0.65rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: '#22c55e', color: '#052e16', fontWeight: 900 }}>
+                              AUTOMAÇÃO
+                            </span>
+                          </div>
+                          <p style={{ margin: '0.2rem 0 0', fontSize: '0.76rem', color: '#86efac' }}>
+                            Receba alertas sonoros no celular e no WhatsApp para nunca perder o horário de estudar!
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Seletor de Horário */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <AlarmClock size={18} color="#fbbf24" />
+                        <span style={{ fontSize: '0.82rem', color: '#cbd5e1', fontWeight: 700 }}>Horário:</span>
+                        <input
+                          type="time"
+                          value={studyAlertTime}
+                          onChange={(e) => {
+                            setStudyAlertTime(e.target.value);
+                            setAlertFeedback(null);
+                          }}
+                          style={{
+                            background: '#0f172a',
+                            border: '1.5px solid #22c55e',
+                            borderRadius: '8px',
+                            padding: '0.4rem 0.65rem',
+                            color: '#ffffff',
+                            fontWeight: 900,
+                            fontSize: '0.95rem',
+                            outline: 'none'
+                          }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Botões Rápidos de Horário */}
+                    <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '1.15rem' }}>
+                      <span style={{ fontSize: '0.75rem', color: '#94a3b8', alignSelf: 'center', marginRight: '0.25rem' }}>
+                        Atalhos:
+                      </span>
+                      {['06:00', '07:00', '12:30', '19:00', '21:00'].map((h) => (
+                        <button
+                          key={h}
+                          type="button"
+                          onClick={() => {
+                            sound.playClick();
+                            setStudyAlertTime(h);
+                          }}
+                          style={{
+                            padding: '0.25rem 0.6rem',
+                            borderRadius: '6px',
+                            background: studyAlertTime === h ? '#22c55e' : 'rgba(255, 255, 255, 0.06)',
+                            border: studyAlertTime === h ? '1px solid #4ade80' : '1px solid rgba(255, 255, 255, 0.12)',
+                            color: studyAlertTime === h ? '#052e16' : '#cbd5e1',
+                            fontSize: '0.75rem',
+                            fontWeight: 800,
+                            cursor: 'pointer'
+                          }}
+                        >
+                          {h}
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Grade de 3 Ações de Notificação */}
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.85rem' }}>
+                      {/* Opção 1: Notificação Push no Navegador */}
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          sound.playClick();
+                          if (!('Notification' in window)) {
+                            setAlertFeedback('⚠️ Notificações push não são suportadas neste navegador.');
+                            return;
+                          }
+                          try {
+                            const permission = await Notification.requestPermission();
+                            if (permission === 'granted') {
+                              sound.playLevelUp();
+                              setIsBrowserAlertActive(true);
+                              setAlertFeedback(`✅ Alarme diário programado para às ${studyAlertTime}! O aplicativo notificará você na tela do aparelho.`);
+                              new Notification('🚨 Missão PMPE: Alarme Tático Ativado!', {
+                                body: `Soldado, seu alarme de estudos foi programado para às ${studyAlertTime}. Foco na farda da PMPE!`,
+                                icon: '/favicon.ico'
+                              });
+                              if (userName) {
+                                localStorage.setItem(`pmpe_alert_time_${userName}`, studyAlertTime);
+                              }
+                            } else {
+                              setAlertFeedback('⚠️ Permissão de notificação negada. Utilize a opção de Alarme do Calendário (.ICS) abaixo.');
+                            }
+                          } catch {
+                            setAlertFeedback('⚠️ Erro ao ativar notificação. Utilize a opção de Calendário (.ICS) abaixo.');
+                          }
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.65rem',
+                          padding: '0.85rem 1rem',
+                          borderRadius: '12px',
+                          background: isBrowserAlertActive ? 'rgba(34, 197, 94, 0.25)' : 'rgba(255, 255, 255, 0.05)',
+                          border: isBrowserAlertActive ? '1.5px solid #22c55e' : '1px solid rgba(255, 255, 255, 0.15)',
+                          color: '#ffffff',
+                          fontWeight: 800,
+                          fontSize: '0.82rem',
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <Bell size={20} color="#4ade80" style={{ flexShrink: 0 }} />
+                        <div>
+                          <div>{isBrowserAlertActive ? '🟢 Alarme Ativo na Tela' : '🔔 Ativar Notificação Push'}</div>
+                          <div style={{ fontSize: '0.68rem', color: '#94a3b8', fontWeight: 500 }}>
+                            Avisa direto na tela do celular
+                          </div>
+                        </div>
+                      </button>
+
+                      {/* Opção 2: Adicionar ao Despertador / Calendário (.ICS) */}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          sound.playClick();
+                          const [hours, minutes] = studyAlertTime.split(':').map(Number);
+                          const now = new Date();
+                          const pad = (n: number) => String(n).padStart(2, '0');
+                          const dtstart = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}T${pad(hours)}${pad(minutes)}00`;
+                          
+                          const icsContent = [
+                            'BEGIN:VCALENDAR',
+                            'VERSION:2.0',
+                            'PRODID:-//Missao PMPE 2026//Cronograma de Estudos//PT',
+                            'CALSCALE:GREGORIAN',
+                            'METHOD:PUBLISH',
+                            'BEGIN:VEVENT',
+                            `DTSTART;TZID=America/Sao_Paulo:${dtstart}`,
+                            `DTEND;TZID=America/Sao_Paulo:${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}T${pad((hours + 1) % 24)}${pad(minutes)}00`,
+                            'RRULE:FREQ=DAILY',
+                            'SUMMARY:🚨 [MISSÃO PMPE 2026] HORA DE ESTUDAR! FOCO NA FARDA',
+                            'DESCRIPTION:Comandante Gean convoca você para sua sessão tática diária de estudos! Acesse o app para bater sua meta de questões do Edital PMPE.',
+                            'STATUS:CONFIRMED',
+                            'BEGIN:VALARM',
+                            'TRIGGER:-PT0M',
+                            'ACTION:AUDIO',
+                            'DESCRIPTION:Alarme de Estudos Missão PMPE',
+                            'END:VALARM',
+                            'END:VEVENT',
+                            'END:VCALENDAR'
+                          ].join('\r\n');
+
+                          const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+                          const url = URL.createObjectURL(blob);
+                          const a = document.createElement('a');
+                          a.href = url;
+                          a.download = `alarme_estudo_pmpe_${studyAlertTime.replace(':', 'h')}.ics`;
+                          document.body.appendChild(a);
+                          a.click();
+                          document.body.removeChild(a);
+                          URL.revokeObjectURL(url);
+
+                          sound.playLevelUp();
+                          setAlertFeedback(`📅 Alarme baixado! Toque no arquivo baixado para programar o despertador diário no seu celular.`);
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.65rem',
+                          padding: '0.85rem 1rem',
+                          borderRadius: '12px',
+                          background: 'rgba(56, 189, 248, 0.1)',
+                          border: '1px solid rgba(56, 189, 248, 0.3)',
+                          color: '#ffffff',
+                          fontWeight: 800,
+                          fontSize: '0.82rem',
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <Download size={20} color="#38bdf8" style={{ flexShrink: 0 }} />
+                        <div>
+                          <div>📅 Alarme no Celular (.ICS)</div>
+                          <div style={{ fontSize: '0.68rem', color: '#94a3b8', fontWeight: 500 }}>
+                            Toca o alarme diário do celular
+                          </div>
+                        </div>
+                      </button>
+
+                      {/* Opção 3: Alerta no WhatsApp */}
+                      <a
+                        href={`https://wa.me/5581987960927?text=Comandante%20Gean,%20configurei%20meu%20cronograma%20para%20estudar%20às%20*${studyAlertTime}*.%20Solicito%20o%20registro%20do%20meu%20número%20para%20envio%20de%20alertas%20de%20estudos%20no%20WhatsApp!`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => sound.playClick()}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.65rem',
+                          padding: '0.85rem 1rem',
+                          borderRadius: '12px',
+                          background: 'linear-gradient(135deg, #15803d, #16a34a)',
+                          border: '1px solid #22c55e',
+                          color: '#ffffff',
+                          fontWeight: 800,
+                          fontSize: '0.82rem',
+                          textDecoration: 'none',
+                          textAlign: 'left',
+                          boxShadow: '0 4px 15px rgba(34, 197, 94, 0.35)'
+                        }}
+                      >
+                        <MessageCircle size={20} color="#ffffff" style={{ flexShrink: 0 }} />
+                        <div>
+                          <div>📲 Alerta no WhatsApp</div>
+                          <div style={{ fontSize: '0.68rem', color: '#dcfce7', fontWeight: 500 }}>
+                            Registrar com Comandante Gean
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+
+                    {/* Mensagem de Feedback */}
+                    {alertFeedback && (
+                      <div style={{
+                        marginTop: '0.85rem',
+                        padding: '0.6rem 0.95rem',
+                        borderRadius: '8px',
+                        background: 'rgba(34, 197, 94, 0.15)',
+                        border: '1px solid rgba(34, 197, 94, 0.35)',
+                        fontSize: '0.8rem',
+                        fontWeight: 700,
+                        color: '#86efac'
+                      }}>
+                        {alertFeedback}
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
