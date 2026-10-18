@@ -1,6 +1,6 @@
 import React from 'react';
 import type { GameMode } from '../types/game';
-import { Target, Network, Swords, Brain, ArrowRight, Flame } from 'lucide-react';
+import { Target, Network, Swords, Compass, ArrowRight, Flame } from 'lucide-react';
 import { sound } from '../utils/sound';
 
 interface ModeSelectorProps {
@@ -19,6 +19,17 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
       color: '#f59e0b',
       accentBg: 'linear-gradient(135deg, #d97706, #b45309)',
       shadow: 'rgba(245, 158, 11, 0.45)'
+    },
+    {
+      id: 'maze' as GameMode,
+      title: 'Labirinto Tático: Caçada Policial',
+      subtitle: 'Incursão Tática • 4 Vidas • 6 Questões por Nível',
+      description: 'Guie o policial pelo labirinto tático até o destino. A cada acerto, o policial avança pelos corredores; a cada erro, o bandido se aproxima no escuro! 4 vidas antes da emboscada final.',
+      icon: <Compass size={28} />,
+      badge: 'Novo Modo Tático 🧭',
+      color: '#22c55e',
+      accentBg: 'linear-gradient(135deg, #16a34a, #14532d)',
+      shadow: 'rgba(34, 197, 94, 0.45)'
     },
     {
       id: 'match' as GameMode,
@@ -41,17 +52,6 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
       color: '#f87171',
       accentBg: 'linear-gradient(135deg, #dc2626, #ea580c)',
       shadow: 'rgba(220, 38, 38, 0.4)'
-    },
-    {
-      id: 'logic_levels' as GameMode,
-      title: 'Operação Matemática & RLM',
-      subtitle: '8 Níveis Numéricos • Cálculos Práticos & Contas Passo a Passo',
-      description: 'Resolva problemas numéricos reais da banca AOCP: Dados, Urnas, Probabilidades, Porcentagens, Razão/Proporção, PFC e Combinações com deduções matemáticas passo a passo ao errar.',
-      icon: <Brain size={28} />,
-      badge: 'Cálculos Numéricos 🧮',
-      color: '#38bdf8',
-      accentBg: 'linear-gradient(135deg, #0284c7, #0369a1)',
-      shadow: 'rgba(2, 132, 199, 0.45)'
     }
   ];
 

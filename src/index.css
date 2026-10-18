@@ -8,37 +8,37 @@
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Cores Base Militares (Polícia Militar de Pernambuco) */
-  --bg-space: #0a0e0c; /* Carbono Tático Escuro com fundo verde-oliva profundo */
-  --bg-deep: #0f1511;  /* Aço Balístico / Kevlar */
-  --bg-card: rgba(18, 25, 20, 0.88); /* Blindagem tática verde oliva militar */
-  --bg-card-hover: rgba(26, 38, 30, 0.95);
-  --bg-glass: rgba(255, 255, 255, 0.04);
-  --bg-glass-active: rgba(34, 197, 94, 0.15);
+  /* Cores Base Militares Operacionais (Polícia Militar de Pernambuco - BPChoque / BOPE) */
+  --bg-space: #070c08; /* Camuflagem Escura de Operações Noturnas */
+  --bg-deep: #0c140e;  /* Blindagem Kevlar e Aço Balístico */
+  --bg-card: rgba(13, 22, 16, 0.94); /* Painel Militar Verde Oliva Profundo */
+  --bg-card-hover: rgba(18, 30, 22, 0.98);
+  --bg-glass: rgba(255, 255, 255, 0.03);
+  --bg-glass-active: rgba(34, 197, 94, 0.16);
 
   /* Bordas e Contornos Táticos Militares */
-  --border-subtle: rgba(74, 222, 128, 0.14);
-  --border-glow: rgba(34, 197, 94, 0.45);
+  --border-subtle: rgba(45, 82, 56, 0.45);
+  --border-glow: rgba(34, 197, 94, 0.5);
   --border-cyan: rgba(34, 197, 94, 0.4);
 
-  /* Paleta Tática Militar Oficial */
-  --military-green-dark: #14532d;
-  --military-green: #16a34a;
+  /* Paleta Tática Militar Oficial PMPE */
+  --military-green-dark: #0f3d1f;
+  --military-green: #15803d;
   --military-green-bright: #22c55e;
-  --military-gold: #f59e0b;
-  --military-gold-bright: #fbbf24;
-  --military-khaki: #d4c5a9;
-  --military-red: #ef4444;
-  --military-blue: #0284c7;
+  --military-gold: #d4af37;
+  --military-gold-bright: #e5c158;
+  --military-khaki: #c8b999;
+  --military-red: #dc2626;
+  --military-blue: #0369a1;
 
-  /* Acentos Substitutos (sem padrão IA neon roxo/rosa) */
+  /* Acentos Operacionais Táticos (sem cores clichês de IA) */
   --neon-cyan: #22c55e;
-  --neon-purple: #16a34a;
-  --neon-violet: #f59e0b;
-  --neon-pink: #ef4444;
+  --neon-purple: #15803d;
+  --neon-violet: #d4af37;
+  --neon-pink: #dc2626;
   --neon-emerald: #22c55e;
-  --neon-amber: #f59e0b;
-  --neon-red: #ef4444;
+  --neon-amber: #d4af37;
+  --neon-red: #dc2626;
 
   /* Texto */
   --text-main: #f3f6f4;
@@ -47,11 +47,11 @@
   --text-glow: #fef08a;
 
   /* Sombras e Brilho Tático Militar */
-  --glow-cyan: 0 0 24px rgba(34, 197, 94, 0.35);
-  --glow-purple: 0 0 24px rgba(22, 163, 74, 0.35);
-  --glow-gold: 0 0 24px rgba(245, 158, 11, 0.35);
-  --shadow-card: 0 14px 40px -10px rgba(0, 0, 0, 0.75), 0 0 0 1px var(--border-subtle);
-  --shadow-popup: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(34, 197, 94, 0.25);
+  --glow-cyan: 0 0 20px rgba(34, 197, 94, 0.3);
+  --glow-purple: 0 0 20px rgba(21, 128, 61, 0.3);
+  --glow-gold: 0 0 20px rgba(212, 175, 55, 0.35);
+  --shadow-card: 0 14px 40px -10px rgba(0, 0, 0, 0.85), 0 0 0 1px var(--border-subtle);
+  --shadow-popup: 0 25px 60px -15px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(34, 197, 94, 0.3);
 
   /* Transições Suaves */
   --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
@@ -162,14 +162,15 @@ button:focus-visible {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-subtle);
-  border-radius: 20px;
+  border-radius: 12px;
   box-shadow: var(--shadow-card);
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
   overflow: hidden;
+  position: relative;
 }
 
 .glass-panel:hover {
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(34, 197, 94, 0.45);
 }
 
 /* Utilitários de Botões Globais */
@@ -261,11 +262,11 @@ button:focus-visible {
   flex-wrap: wrap;
   gap: 1.25rem;
   padding: 1rem 1.5rem;
-  border-radius: 20px;
-  background: rgba(15, 23, 42, 0.85);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(14, 24, 18, 0.95), rgba(7, 13, 9, 0.98));
   backdrop-filter: blur(24px);
-  border: 1px solid var(--border-subtle);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(45, 82, 56, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(34, 197, 94, 0.04);
 }
 
 .brand-section {
@@ -406,15 +407,18 @@ button:focus-visible {
 }
 
 .mode-card {
-  padding: 1.75rem;
+  padding: 1.6rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 1.25rem;
   text-align: left;
-  border-radius: 22px;
+  border-radius: 12px;
   cursor: pointer;
   position: relative;
+  background: linear-gradient(145deg, rgba(14, 25, 18, 0.96), rgba(8, 14, 10, 0.98));
+  border: 1px solid rgba(45, 82, 56, 0.55);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
   transition: all var(--transition-bounce);
 }
 
@@ -422,17 +426,17 @@ button:focus-visible {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 22px;
-  background: radial-gradient(circle at 100% 0%, var(--card-glow, rgba(139, 92, 246, 0.25)) 0%, transparent 60%);
+  border-radius: 12px;
+  background: radial-gradient(circle at 100% 0%, var(--card-glow, rgba(34, 197, 94, 0.2)) 0%, transparent 60%);
   opacity: 0.6;
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
 
 .mode-card:hover {
-  transform: translateY(-6px) scale(1.01);
+  transform: translateY(-5px) scale(1.01);
   border-color: var(--card-border, var(--neon-cyan));
-  box-shadow: 0 16px 40px -10px var(--card-shadow, rgba(6, 182, 212, 0.3));
+  box-shadow: 0 16px 40px -10px var(--card-shadow, rgba(34, 197, 94, 0.35)), inset 0 0 20px rgba(34, 197, 94, 0.08);
 }
 
 .mode-card:hover::before {

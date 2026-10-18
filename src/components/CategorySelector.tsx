@@ -37,15 +37,16 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
   };
 
   const simuladosOptions = [
-    { id: 'all', label: '⭐ Acervo Comentado Tintim por Tintim' },
+    { id: 'all', label: '⭐ Acervo Geral Soldado (2.157Q Comentadas)' },
+    { id: 'caderno_edital_aocp_300', label: '🎯 300Q Cirúrgicas Edital AOCP 2026' },
     { id: 'caderno_direitos_humanos', label: '🕊️ Direitos Humanos & CADH (200Q)' },
     { id: 'caderno_leg_extravagante', label: '🚨 Leis Extravagantes (250Q)' },
     { id: 'caderno_rlm_probabilidade', label: '🧠 RLM & Probabilidade (250Q)' },
     { id: 'caderno_const_pmpe', label: '⚖️ Constitucional & Art. 144 (160Q)' },
     { id: 'caderno_portugues_aocp', label: '📖 Português AOCP (250Q)' },
     { id: 'caderno_pmpe_estatuto', label: '🛡️ Estatuto PMPE (114Q)' },
-    { id: 'caderno_informatica', label: '💻 Informática PMPE AOCP' },
-    { id: 'caderno_historia_pe', label: '🦁 História de PE AOCP' },
+    { id: 'caderno_informatica', label: '💻 Informática PMPE AOCP (350Q)' },
+    { id: 'caderno_historia_pe', label: '🦁 História de PE AOCP (58Q)' },
     { id: 'aocp_elite', label: '⭐ Caderno Elite AOCP' },
     { id: 'aocp_especial', label: '⚡ Foco AOCP Edital (30Q)' },
     { id: 'nuce_completo', label: 'Simulado PMPE Completo (60Q)' },

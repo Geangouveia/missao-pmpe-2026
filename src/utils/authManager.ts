@@ -24,14 +24,48 @@ export interface UserAccessRecord {
 }
 
 /**
- * Obtém ou gera a impressão digital única deste dispositivo
+ * Obtém ou gera a impressão digital de hardware única deste dispositivo
+ * Combina GPU WebGL, proporções de tela/retina, núcleos de processador, touchpoints e token criptográfico persistente
  */
 export function getCurrentDeviceId(): string {
   try {
-    let devId = localStorage.getItem('pmpe_device_fingerprint_id');
+    let devId = localStorage.getItem('pmpe_device_fingerprint_id') || sessionStorage.getItem('pmpe_device_fingerprint_id');
     if (!devId) {
-      devId = 'dev_' + Math.random().toString(36).substring(2, 10) + '_' + Date.now().toString(36);
+      // Coleta características físicas e de hardware do dispositivo
+      let gpuInfo = '';
+      try {
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        if (gl) {
+          const debugInfo = (gl as any).getExtension('WEBGL_debug_renderer_info');
+          if (debugInfo) {
+            gpuInfo = String((gl as any).getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) || '');
+          }
+        }
+      } catch {}
+
+      const screenMetrics = typeof window !== 'undefined' && window.screen 
+        ? `${window.screen.width}x${window.screen.height}_${window.screen.colorDepth}_${window.devicePixelRatio || 1}`
+        : 'scr_std';
+
+      const hwCores = typeof navigator !== 'undefined' ? (navigator.hardwareConcurrency || 4) : 4;
+      const touchPts = typeof navigator !== 'undefined' ? (navigator.maxTouchPoints || 0) : 0;
+      const platform = typeof navigator !== 'undefined' ? (navigator.platform || '') : '';
+      const uaSnippet = typeof navigator !== 'undefined' ? navigator.userAgent.substring(0, 45) : '';
+
+      // Gera assinatura física combinada
+      const rawSeed = `${screenMetrics}__${gpuInfo}__c${hwCores}__t${touchPts}__${platform}__${uaSnippet}`;
+      let hash = 0;
+      for (let i = 0; i < rawSeed.length; i++) {
+        hash = ((hash << 5) - hash) + rawSeed.charCodeAt(i);
+        hash |= 0;
+      }
+      const hexHash = Math.abs(hash).toString(16).padStart(8, '0');
+      const randomSalt = Math.random().toString(36).substring(2, 8);
+
+      devId = `dev_hw_${hexHash}_${randomSalt}`;
       localStorage.setItem('pmpe_device_fingerprint_id', devId);
+      sessionStorage.setItem('pmpe_device_fingerprint_id', devId);
     }
     return devId;
   } catch {
@@ -40,17 +74,22 @@ export function getCurrentDeviceId(): string {
 }
 
 /**
- * Identifica o nome amigável do sistema operacional do dispositivo atual
+ * Identifica o nome amigável e especificações do dispositivo atual
  */
 export function getDeviceFriendlyName(): string {
   try {
     const ua = navigator.userAgent;
+    const width = window.screen?.width || 0;
+    const height = window.screen?.height || 0;
+    const res = width > 0 ? ` (${width}x${height})` : '';
+
     let os = 'Dispositivo';
-    if (/android/i.test(ua)) os = 'Celular Android';
-    else if (/iphone|ipad|ipod/i.test(ua)) os = 'iPhone / iPad (iOS)';
-    else if (/windows/i.test(ua)) os = 'Computador Windows';
-    else if (/macintosh|mac os x/i.test(ua)) os = 'Mac / MacBook';
-    else if (/linux/i.test(ua)) os = 'Linux';
+    if (/iphone/i.test(ua)) os = `iPhone / iOS${res}`;
+    else if (/ipad/i.test(ua)) os = `iPad / iPadOS${res}`;
+    else if (/android/i.test(ua)) os = `Celular Android${res}`;
+    else if (/windows/i.test(ua)) os = `PC Windows${res}`;
+    else if (/macintosh|mac os x/i.test(ua)) os = `Mac / Apple${res}`;
+    else if (/linux/i.test(ua)) os = `Linux${res}`;
     return os;
   } catch {
     return 'Dispositivo Móvel / PC';
@@ -544,8 +583,20 @@ export async function registerStudentByCommander(
  * Desvincula o aparelho do aluno para permitir conexão em um novo celular/computador
  */
 export async function unbindUserDevice(targetKeyOrName: string): Promise<boolean> {
+  const normKey = normalizeUserName(targetKeyOrName);
+  const devlockKey = `devlock_${encodeURIComponent(normKey)}`;
+
+  // 1. Apaga a trava atômica direta na nuvem!
+  try {
+    await fetch(`${CLOUD_API_BASE}/${devlockKey}`, { method: 'DELETE' });
+  } catch {}
+
+  // 2. Apaga também o token de sessão ativa
+  clearActiveSession(normKey);
+
+  // 3. Limpa no registro local
   const local = getLocalUsersRegistry();
-  const localKey = findUserKey(local, targetKeyOrName);
+  const localKey = findUserKey(local, targetKeyOrName) || normKey;
   if (localKey && local[localKey]) {
     delete local[localKey].boundDeviceId;
     delete local[localKey].boundDeviceName;
@@ -553,6 +604,7 @@ export async function unbindUserDevice(targetKeyOrName: string): Promise<boolean
     saveLocalUsersRegistry(local);
   }
 
+  // 4. Limpa no registro da nuvem
   const registry = await fetchRegistryFromCloud();
   const key = findUserKey(registry, targetKeyOrName) || localKey;
 
@@ -736,6 +788,85 @@ export interface LoginValidationResult {
 }
 
 /**
+ * Validação e Vinculação Atômica de Dispositivo Único em Nuvem
+ */
+export async function verifyDeviceLock(cleanName: string, u?: UserAccessRecord): Promise<{ allowed: boolean; message?: string }> {
+  // Comandante Gean tem livre acesso em qualquer dispositivo
+  if (isMasterUser(cleanName)) {
+    return { allowed: true };
+  }
+
+  const currentDevId = getCurrentDeviceId();
+  const currentDevName = getDeviceFriendlyName();
+  const key = normalizeUserName(cleanName);
+  const devlockKey = `devlock_${encodeURIComponent(key)}`;
+
+  try {
+    // 1. Checagem Atômica Direta na Nuvem KVdb (Prioridade Máxima e Imediata)
+    const res = await fetchWithTimeout(`${CLOUD_API_BASE}/${devlockKey}?_t=${Date.now()}`, {
+      cache: 'no-store'
+    }, 3800);
+
+    if (res.ok) {
+      const cloudLock = await res.json();
+      if (cloudLock && cloudLock.deviceId) {
+        if (cloudLock.deviceId !== currentDevId) {
+          return {
+            allowed: false,
+            message: `🚫 ACESSO BLOQUEADO: Esta conta militar já está vinculada ao aparelho "${cloudLock.deviceName || 'Celular/PC cadastrado'}". Por norma de segurança do Pelotão, cada aluno só pode acessar de 1 único dispositivo. Caso tenha trocado de aparelho, fale com o Comandante Gean para desvincular seu celular antigo.`
+          };
+        } else {
+          // É o mesmo dispositivo autorizado!
+          return { allowed: true };
+        }
+      }
+    }
+  } catch (e) {
+    console.warn('Verificação atômica de devlock em nuvem temporariamente indisponível:', e);
+  }
+
+  // 2. Se a chave devlock ainda não existia na nuvem, checa se havia no registro
+  if (u && u.boundDeviceId && u.boundDeviceId !== currentDevId) {
+    return {
+      allowed: false,
+      message: `🚫 ACESSO BLOQUEADO: Esta conta militar já está vinculada ao aparelho "${u.boundDeviceName || 'outro celular'}". Por segurança, cada recruta só pode usar em 1 único aparelho. Caso tenha trocado de celular, solicite ao Comandante Gean para desvincular o aparelho antigo.`
+    };
+  }
+
+  // 3. Primeiro login: vincula o aparelho atual imediatamente na nuvem atômica
+  try {
+    await fetchWithTimeout(`${CLOUD_API_BASE}/${devlockKey}?ttl=31536000`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        deviceId: currentDevId,
+        deviceName: currentDevName,
+        userName: cleanName,
+        boundAt: new Date().toISOString()
+      })
+    }, 4000);
+  } catch {}
+
+  // Grava também no registro local e de nuvem
+  if (u) {
+    u.boundDeviceId = currentDevId;
+    u.boundDeviceName = currentDevName;
+    u.boundAt = new Date().toISOString();
+  }
+
+  const registry = getLocalUsersRegistry();
+  if (registry[key]) {
+    registry[key].boundDeviceId = currentDevId;
+    registry[key].boundDeviceName = currentDevName;
+    registry[key].boundAt = new Date().toISOString();
+    saveLocalUsersRegistry(registry);
+    pushRegistryToCloud(registry);
+  }
+
+  return { allowed: true };
+}
+
+/**
  * Validação completa de Login e Senha com a Hierarquia Militar e Trava de Dispositivo Único
  */
 export async function validateLoginAttempt(
@@ -819,45 +950,12 @@ export async function validateLoginAttempt(
     };
   }
 
-  // Helper interno para validar e vincular o dispositivo único do aluno
-  const verifyDeviceLock = async (u: UserAccessRecord): Promise<{ allowed: boolean; message?: string }> => {
-    const currentDevId = getCurrentDeviceId();
-    const currentDevName = getDeviceFriendlyName();
-
-    if (!u.boundDeviceId) {
-      // Primeiro login: vincula o aparelho atual à conta do aluno
-      u.boundDeviceId = currentDevId;
-      u.boundDeviceName = currentDevName;
-      u.boundAt = new Date().toISOString();
-
-      const registry = getLocalUsersRegistry();
-      const key = normalizeUserName(cleanName);
-      if (registry[key]) {
-        registry[key].boundDeviceId = currentDevId;
-        registry[key].boundDeviceName = currentDevName;
-        registry[key].boundAt = u.boundAt;
-        saveLocalUsersRegistry(registry);
-      }
-      await pushRegistryToCloud(registry);
-      return { allowed: true };
-    }
-
-    if (u.boundDeviceId !== currentDevId) {
-      return {
-        allowed: false,
-        message: `🚫 ACESSO BLOQUEADO: Esta conta já está vinculada a outro aparelho (${u.boundDeviceName || 'Celular/PC anterior'}). Por segurança, cada aluno pode usar somente em 1 dispositivo. Caso tenha trocado de celular, solicite ao Comandante Gean para desvincular o aparelho antigo.`
-      };
-    }
-
-    return { allowed: true };
-  };
-
   // 3. Usuário APROVADO: Checagem de Senha e Dispositivo
   // Caso 3.1: Já cadastrou senha pessoal própria
   if (user.hasChangedPassword && user.personalPassword) {
     if (cleanPass === user.personalPassword.toUpperCase() || cleanPass === user.personalPassword) {
       // Senha correta -> Checa a trava de dispositivo único
-      const deviceCheck = await verifyDeviceLock(user);
+      const deviceCheck = await verifyDeviceLock(cleanName, user);
       if (!deviceCheck.allowed) {
         return {
           allowed: false,
@@ -898,7 +996,7 @@ export async function validateLoginAttempt(
     user.hasChangedPassword = true;
     user.personalPassword = cleanPass;
 
-    const deviceCheck = await verifyDeviceLock(user);
+    const deviceCheck = await verifyDeviceLock(cleanName, user);
     if (!deviceCheck.allowed) {
       return {
         allowed: false,

@@ -16,7 +16,7 @@ import { SurvivalGame } from './components/SurvivalGame';
 import { MatchGame } from './components/MatchGame';
 import { BossBattleGame } from './components/BossBattleGame';
 import { FlashcardGame } from './components/FlashcardGame';
-import { LogicMasterGame } from './components/LogicMasterGame';
+import { TacticalMazeGame } from './components/TacticalMazeGame';
 import { AchievementsModal } from './components/AchievementsModal';
 import { DeckCreatorModal } from './components/DeckCreatorModal';
 import { SummaryModal } from './components/SummaryModal';
@@ -653,11 +653,17 @@ export function App() {
     setStats(userStats);
     setDailyQuote(getDailyMotivationalQuote());
     setIsMotivationModalOpen(true);
+
+    // Exibe sempre o anúncio promocional VIP para o guerreiro recém-logado
+    setTimeout(() => {
+      setIsPromoAdOpen(true);
+    }, 700);
   };
 
   const handleLogout = () => {
     localStorage.removeItem('pmpe_auth_user');
     sessionStorage.removeItem('pmpe_auth_user');
+    sessionStorage.removeItem('pmpe_promo_ad_shown');
     setCurrentUser(null);
     setActiveMode(null);
     // Reseta estado para 100% limpo ao desconectar
@@ -1095,12 +1101,17 @@ export function App() {
         />
       )}
 
-      {/* NOVO MODO: MESTRE DA LÓGICA RLM (TRILHA EM NÍVEIS) */}
-      {activeMode === 'logic_levels' && (
-        <LogicMasterGame
-          userName={currentUser || 'Soldado'}
-          onExit={() => setActiveMode(null)}
-          onAwardXp={addXp}
+      {/* NOVO MODO: LABIRINTO TÁTICO POLICIAL */}
+      {activeMode === 'maze' && (
+        <TacticalMazeGame
+          key={`maze-${selectedCategory}-${gameSessionNonce}`}
+          questions={questions}
+          selectedCategory={selectedCategory}
+          onBack={() => setActiveMode(null)}
+          onFinishGame={(summary) => {
+            setSummaryData(summary);
+            if (summary.xpEarned) addXp(summary.xpEarned);
+          }}
         />
       )}
 

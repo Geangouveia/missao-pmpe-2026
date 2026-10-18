@@ -20,7 +20,8 @@ import {
   validateLoginAttempt, 
   setUserPersonalPassword, 
   isMasterUser,
-  createAndRecordSession
+  createAndRecordSession,
+  verifyDeviceLock
 } from '../utils/authManager';
 import { sound } from '../utils/sound';
 
@@ -141,6 +142,16 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
 
     try {
       const trimmedName = name.trim();
+
+      // Valida Trava Atômica de Dispositivo Único na Nuvem
+      const devCheck = await verifyDeviceLock(trimmedName);
+      if (!devCheck.allowed) {
+        sound.playError();
+        setPasswordModalError(devCheck.message || 'Dispositivo não autorizado para esta conta militar.');
+        setIsSubmittingPassword(false);
+        return;
+      }
+
       await setUserPersonalPassword(trimmedName, trimmedNew);
       sound.playLevelUp();
       createAndRecordSession(trimmedName);

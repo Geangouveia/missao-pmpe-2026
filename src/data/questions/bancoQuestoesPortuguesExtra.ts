@@ -6,7 +6,7 @@ import type { QuizQuestion } from '../../types/game';
  * Cobre: Crase, Concordância Verbal/Nominal, Regência, Pontuação, Orações, Conectivos, "Que"/"Se" e Novo Acordo
  */
 export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
-  {
+{
     "id": "port_aocp_151",
     "categoryId": "portugues",
     "bloco": "bloco_1",
@@ -14,13 +14,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 151) Assinale a frase em que o uso do acento indicativo de crase está INCORRETO:",
     "options": [
-      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "O comandante começou à redigir o relatório da ocorrência.",
+      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "Os policiais foram à delegacia prestar depoimento.",
       "Entregou a farda àquele soldado recém-formado.",
       "Chegamos à cidade antes do anoitecer."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Crase antes de verbo é proibida!",
@@ -29,14 +29,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "Crase antes de verbo é proibida!",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "A": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -44,7 +44,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -97,12 +97,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 153) No sentido de \"presenciar / ver\", o verbo assistir é transitivo indireto (exige a preposição \"a\"). Assinale a frase com regência correta:",
     "options": [
       "A tropa assistiu o treinamento tático com atenção.",
-      "A tropa assistiu ao treinamento tático com atenção.",
       "O comandante assistiu os flagrantes de longe.",
+      "A tropa assistiu ao treinamento tático com atenção.",
       "Todos assistiram o desfile de 7 de setembro.",
       "Ninguém assistiu o jogo da final."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Assistir (ver) = Assistir A alguma coisa.",
@@ -112,21 +112,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Assistir (ver) = Assistir A alguma coisa.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Assistir • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -138,12 +138,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 154) Assinale a alternativa em que a pontuação está plenamente correta segundo o padrão culto:",
     "options": [
       "O policial militar de serviço, prendeu o suspeito em flagrante.",
-      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
-      "Eles sabiam que, o reforço chegaria a tempo.",
       "O cabo disse, que a viatura estava abastecida.",
+      "Eles sabiam que, o reforço chegaria a tempo.",
+      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
       "Chegaram na unidade, os novos equipamentos de rádio."
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "\"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Nunca separe sujeito de verbo com vírgula!",
@@ -153,21 +153,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Nunca separe sujeito de verbo com vírgula!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
+      "B": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Pontuação e Uso da Vírgula • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -179,12 +179,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 155) Na oração \"Conquanto estivesse exausto, o soldado concluiu a patrulha\", o conectivo \"conquanto\" expressa sentido de:",
     "options": [
       "Causa",
-      "Concessão",
+      "Tempo",
       "Consequência",
       "Condição",
-      "Tempo"
+      "Concessão"
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "\"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Conquanto = Embora (Concessão).",
@@ -194,21 +194,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Conquanto = Embora (Concessão).",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Conjunções Subordinativas Concessivas • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -219,13 +219,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 156) Em \"Apuraram-se os fatos da ocorrência\", a palavra \"se\" funciona sintaticamente como:",
     "options": [
-      "Pronome reflexivo.",
       "Partícula apassivadora (pronome apassivador).",
+      "Pronome reflexivo.",
       "Índice de indeterminação do sujeito.",
       "Conjunção subordinativa integrante.",
       "Conjunção condicional."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
@@ -234,14 +234,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "A": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -249,7 +249,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -302,12 +302,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 158) No sentido de \"ter por objetivo / almejar\", o verbo visar rege preposição \"a\". Assinale a frase correta:",
     "options": [
       "A operação policial visa o combate ao tráfico de drogas.",
-      "A operação policial visa ao combate ao tráfico de drogas.",
       "O soldado visou o alvo com precisão.",
+      "A operação policial visa ao combate ao tráfico de drogas.",
       "A nova lei visa proteger os animais.",
       "Eles visam o cargo mais alto."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Visar (almejar) = Exige preposição A.",
@@ -317,21 +317,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Visar (almejar) = Exige preposição A.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Visar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -344,11 +344,11 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "options": [
       "Idéia",
       "Jibóia",
-      "Heroico",
       "Assembléia",
+      "Heroico",
       "Coréia"
     ],
-    "correctIndex": 2,
+    "correctIndex": 3,
     "explanation": "Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Ditongos abertos em paroxítonas NÃO têm acento!",
@@ -359,20 +359,20 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "1": "Você marcou (B): A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "2": "Você marcou (C): A alternativa (C) está incorreta segundo o gabarito oficial.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "B": "Incorreta. A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "C": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Acentuação Gráfica (Novo Acordo) • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -384,12 +384,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 160) O verbo implicar no sentido de \"acarretar / ter como consequência\" é transitivo direto (não rege preposição \"em\"). Assinale a alternativa correta:",
     "options": [
       "A falta injustificada implica em punição disciplinar severa.",
-      "A falta injustificada implica punição disciplinar severa.",
+      "A promoção implica em mais responsabilidade.",
       "O desacato implica na prisão em flagrante.",
       "A disciplina militar implica de sacrifício.",
-      "A promoção implica em mais responsabilidade."
+      "A falta injustificada implica punição disciplinar severa."
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Implicar (acarretar) NÃO admite preposição \"em\"!",
@@ -399,21 +399,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Implicar (acarretar) NÃO admite preposição \"em\"!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Implicar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -424,13 +424,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 161) (Simulação Tática PMPE 11) Conforme a norma-padrão da Língua Portuguesa: Assinale a frase em que o uso do acento indicativo de crase está INCORRETO:",
     "options": [
-      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "O comandante começou à redigir o relatório da ocorrência.",
+      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "Os policiais foram à delegacia prestar depoimento.",
       "Entregou a farda àquele soldado recém-formado.",
       "Chegamos à cidade antes do anoitecer."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Crase antes de verbo é proibida!",
@@ -439,14 +439,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "Crase antes de verbo é proibida!",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "A": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -454,7 +454,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -507,12 +507,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 163) (Simulação Tática PMPE 13) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"presenciar / ver\", o verbo assistir é transitivo indireto (exige a preposição \"a\"). Assinale a frase com regência correta:",
     "options": [
       "A tropa assistiu o treinamento tático com atenção.",
-      "A tropa assistiu ao treinamento tático com atenção.",
       "O comandante assistiu os flagrantes de longe.",
+      "A tropa assistiu ao treinamento tático com atenção.",
       "Todos assistiram o desfile de 7 de setembro.",
       "Ninguém assistiu o jogo da final."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Assistir (ver) = Assistir A alguma coisa.",
@@ -522,21 +522,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Assistir (ver) = Assistir A alguma coisa.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Assistir • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -548,12 +548,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 164) (Simulação Tática PMPE 14) Conforme a norma-padrão da Língua Portuguesa: Assinale a alternativa em que a pontuação está plenamente correta segundo o padrão culto:",
     "options": [
       "O policial militar de serviço, prendeu o suspeito em flagrante.",
-      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
-      "Eles sabiam que, o reforço chegaria a tempo.",
       "O cabo disse, que a viatura estava abastecida.",
+      "Eles sabiam que, o reforço chegaria a tempo.",
+      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
       "Chegaram na unidade, os novos equipamentos de rádio."
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "\"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Nunca separe sujeito de verbo com vírgula!",
@@ -563,21 +563,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Nunca separe sujeito de verbo com vírgula!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
+      "B": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Pontuação e Uso da Vírgula • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -589,12 +589,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 165) (Simulação Tática PMPE 15) Conforme a norma-padrão da Língua Portuguesa: Na oração \"Conquanto estivesse exausto, o soldado concluiu a patrulha\", o conectivo \"conquanto\" expressa sentido de:",
     "options": [
       "Causa",
-      "Concessão",
+      "Tempo",
       "Consequência",
       "Condição",
-      "Tempo"
+      "Concessão"
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "\"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Conquanto = Embora (Concessão).",
@@ -604,21 +604,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Conquanto = Embora (Concessão).",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Conjunções Subordinativas Concessivas • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -629,13 +629,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 166) (Simulação Tática PMPE 16) Conforme a norma-padrão da Língua Portuguesa: Em \"Apuraram-se os fatos da ocorrência\", a palavra \"se\" funciona sintaticamente como:",
     "options": [
-      "Pronome reflexivo.",
       "Partícula apassivadora (pronome apassivador).",
+      "Pronome reflexivo.",
       "Índice de indeterminação do sujeito.",
       "Conjunção subordinativa integrante.",
       "Conjunção condicional."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
@@ -644,14 +644,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "A": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -659,7 +659,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -712,12 +712,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 168) (Simulação Tática PMPE 18) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"ter por objetivo / almejar\", o verbo visar rege preposição \"a\". Assinale a frase correta:",
     "options": [
       "A operação policial visa o combate ao tráfico de drogas.",
-      "A operação policial visa ao combate ao tráfico de drogas.",
       "O soldado visou o alvo com precisão.",
+      "A operação policial visa ao combate ao tráfico de drogas.",
       "A nova lei visa proteger os animais.",
       "Eles visam o cargo mais alto."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Visar (almejar) = Exige preposição A.",
@@ -727,21 +727,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Visar (almejar) = Exige preposição A.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Visar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -754,11 +754,11 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "options": [
       "Idéia",
       "Jibóia",
-      "Heroico",
       "Assembléia",
+      "Heroico",
       "Coréia"
     ],
-    "correctIndex": 2,
+    "correctIndex": 3,
     "explanation": "Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Ditongos abertos em paroxítonas NÃO têm acento!",
@@ -769,20 +769,20 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "1": "Você marcou (B): A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "2": "Você marcou (C): A alternativa (C) está incorreta segundo o gabarito oficial.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "B": "Incorreta. A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "C": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Acentuação Gráfica (Novo Acordo) • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -794,12 +794,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 170) (Simulação Tática PMPE 20) Conforme a norma-padrão da Língua Portuguesa: O verbo implicar no sentido de \"acarretar / ter como consequência\" é transitivo direto (não rege preposição \"em\"). Assinale a alternativa correta:",
     "options": [
       "A falta injustificada implica em punição disciplinar severa.",
-      "A falta injustificada implica punição disciplinar severa.",
+      "A promoção implica em mais responsabilidade.",
       "O desacato implica na prisão em flagrante.",
       "A disciplina militar implica de sacrifício.",
-      "A promoção implica em mais responsabilidade."
+      "A falta injustificada implica punição disciplinar severa."
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Implicar (acarretar) NÃO admite preposição \"em\"!",
@@ -809,21 +809,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Implicar (acarretar) NÃO admite preposição \"em\"!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Implicar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -834,13 +834,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 171) (Simulação Tática PMPE 21) Conforme a norma-padrão da Língua Portuguesa: Assinale a frase em que o uso do acento indicativo de crase está INCORRETO:",
     "options": [
-      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "O comandante começou à redigir o relatório da ocorrência.",
+      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "Os policiais foram à delegacia prestar depoimento.",
       "Entregou a farda àquele soldado recém-formado.",
       "Chegamos à cidade antes do anoitecer."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Crase antes de verbo é proibida!",
@@ -849,14 +849,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "Crase antes de verbo é proibida!",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "A": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -864,7 +864,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -917,12 +917,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 173) (Simulação Tática PMPE 23) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"presenciar / ver\", o verbo assistir é transitivo indireto (exige a preposição \"a\"). Assinale a frase com regência correta:",
     "options": [
       "A tropa assistiu o treinamento tático com atenção.",
-      "A tropa assistiu ao treinamento tático com atenção.",
       "O comandante assistiu os flagrantes de longe.",
+      "A tropa assistiu ao treinamento tático com atenção.",
       "Todos assistiram o desfile de 7 de setembro.",
       "Ninguém assistiu o jogo da final."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Assistir (ver) = Assistir A alguma coisa.",
@@ -932,21 +932,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Assistir (ver) = Assistir A alguma coisa.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Assistir • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -958,12 +958,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 174) (Simulação Tática PMPE 24) Conforme a norma-padrão da Língua Portuguesa: Assinale a alternativa em que a pontuação está plenamente correta segundo o padrão culto:",
     "options": [
       "O policial militar de serviço, prendeu o suspeito em flagrante.",
-      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
-      "Eles sabiam que, o reforço chegaria a tempo.",
       "O cabo disse, que a viatura estava abastecida.",
+      "Eles sabiam que, o reforço chegaria a tempo.",
+      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
       "Chegaram na unidade, os novos equipamentos de rádio."
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "\"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Nunca separe sujeito de verbo com vírgula!",
@@ -973,21 +973,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Nunca separe sujeito de verbo com vírgula!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
+      "B": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Pontuação e Uso da Vírgula • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -999,12 +999,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 175) (Simulação Tática PMPE 25) Conforme a norma-padrão da Língua Portuguesa: Na oração \"Conquanto estivesse exausto, o soldado concluiu a patrulha\", o conectivo \"conquanto\" expressa sentido de:",
     "options": [
       "Causa",
-      "Concessão",
+      "Tempo",
       "Consequência",
       "Condição",
-      "Tempo"
+      "Concessão"
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "\"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Conquanto = Embora (Concessão).",
@@ -1014,21 +1014,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Conquanto = Embora (Concessão).",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Conjunções Subordinativas Concessivas • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -1039,13 +1039,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 176) (Simulação Tática PMPE 26) Conforme a norma-padrão da Língua Portuguesa: Em \"Apuraram-se os fatos da ocorrência\", a palavra \"se\" funciona sintaticamente como:",
     "options": [
-      "Pronome reflexivo.",
       "Partícula apassivadora (pronome apassivador).",
+      "Pronome reflexivo.",
       "Índice de indeterminação do sujeito.",
       "Conjunção subordinativa integrante.",
       "Conjunção condicional."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
@@ -1054,14 +1054,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "A": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -1069,7 +1069,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -1122,12 +1122,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 178) (Simulação Tática PMPE 28) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"ter por objetivo / almejar\", o verbo visar rege preposição \"a\". Assinale a frase correta:",
     "options": [
       "A operação policial visa o combate ao tráfico de drogas.",
-      "A operação policial visa ao combate ao tráfico de drogas.",
       "O soldado visou o alvo com precisão.",
+      "A operação policial visa ao combate ao tráfico de drogas.",
       "A nova lei visa proteger os animais.",
       "Eles visam o cargo mais alto."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Visar (almejar) = Exige preposição A.",
@@ -1137,21 +1137,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Visar (almejar) = Exige preposição A.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Visar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -1164,11 +1164,11 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "options": [
       "Idéia",
       "Jibóia",
-      "Heroico",
       "Assembléia",
+      "Heroico",
       "Coréia"
     ],
-    "correctIndex": 2,
+    "correctIndex": 3,
     "explanation": "Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Ditongos abertos em paroxítonas NÃO têm acento!",
@@ -1179,20 +1179,20 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "1": "Você marcou (B): A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "2": "Você marcou (C): A alternativa (C) está incorreta segundo o gabarito oficial.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "B": "Incorreta. A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "C": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Acentuação Gráfica (Novo Acordo) • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -1204,12 +1204,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 180) (Simulação Tática PMPE 30) Conforme a norma-padrão da Língua Portuguesa: O verbo implicar no sentido de \"acarretar / ter como consequência\" é transitivo direto (não rege preposição \"em\"). Assinale a alternativa correta:",
     "options": [
       "A falta injustificada implica em punição disciplinar severa.",
-      "A falta injustificada implica punição disciplinar severa.",
+      "A promoção implica em mais responsabilidade.",
       "O desacato implica na prisão em flagrante.",
       "A disciplina militar implica de sacrifício.",
-      "A promoção implica em mais responsabilidade."
+      "A falta injustificada implica punição disciplinar severa."
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Implicar (acarretar) NÃO admite preposição \"em\"!",
@@ -1219,21 +1219,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Implicar (acarretar) NÃO admite preposição \"em\"!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Implicar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -1244,13 +1244,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 181) (Simulação Tática PMPE 31) Conforme a norma-padrão da Língua Portuguesa: Assinale a frase em que o uso do acento indicativo de crase está INCORRETO:",
     "options": [
-      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "O comandante começou à redigir o relatório da ocorrência.",
+      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "Os policiais foram à delegacia prestar depoimento.",
       "Entregou a farda àquele soldado recém-formado.",
       "Chegamos à cidade antes do anoitecer."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Crase antes de verbo é proibida!",
@@ -1259,14 +1259,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "Crase antes de verbo é proibida!",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "A": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -1274,7 +1274,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -1327,12 +1327,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 183) (Simulação Tática PMPE 33) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"presenciar / ver\", o verbo assistir é transitivo indireto (exige a preposição \"a\"). Assinale a frase com regência correta:",
     "options": [
       "A tropa assistiu o treinamento tático com atenção.",
-      "A tropa assistiu ao treinamento tático com atenção.",
       "O comandante assistiu os flagrantes de longe.",
+      "A tropa assistiu ao treinamento tático com atenção.",
       "Todos assistiram o desfile de 7 de setembro.",
       "Ninguém assistiu o jogo da final."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Assistir (ver) = Assistir A alguma coisa.",
@@ -1342,21 +1342,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Assistir (ver) = Assistir A alguma coisa.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Assistir • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -1368,12 +1368,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 184) (Simulação Tática PMPE 34) Conforme a norma-padrão da Língua Portuguesa: Assinale a alternativa em que a pontuação está plenamente correta segundo o padrão culto:",
     "options": [
       "O policial militar de serviço, prendeu o suspeito em flagrante.",
-      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
-      "Eles sabiam que, o reforço chegaria a tempo.",
       "O cabo disse, que a viatura estava abastecida.",
+      "Eles sabiam que, o reforço chegaria a tempo.",
+      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
       "Chegaram na unidade, os novos equipamentos de rádio."
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "\"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Nunca separe sujeito de verbo com vírgula!",
@@ -1383,21 +1383,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Nunca separe sujeito de verbo com vírgula!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
+      "B": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Pontuação e Uso da Vírgula • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -1409,12 +1409,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 185) (Simulação Tática PMPE 35) Conforme a norma-padrão da Língua Portuguesa: Na oração \"Conquanto estivesse exausto, o soldado concluiu a patrulha\", o conectivo \"conquanto\" expressa sentido de:",
     "options": [
       "Causa",
-      "Concessão",
+      "Tempo",
       "Consequência",
       "Condição",
-      "Tempo"
+      "Concessão"
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "\"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Conquanto = Embora (Concessão).",
@@ -1424,21 +1424,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Conquanto = Embora (Concessão).",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Conjunções Subordinativas Concessivas • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -1449,13 +1449,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 186) (Simulação Tática PMPE 36) Conforme a norma-padrão da Língua Portuguesa: Em \"Apuraram-se os fatos da ocorrência\", a palavra \"se\" funciona sintaticamente como:",
     "options": [
-      "Pronome reflexivo.",
       "Partícula apassivadora (pronome apassivador).",
+      "Pronome reflexivo.",
       "Índice de indeterminação do sujeito.",
       "Conjunção subordinativa integrante.",
       "Conjunção condicional."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
@@ -1464,14 +1464,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "A": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -1479,7 +1479,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -1532,12 +1532,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 188) (Simulação Tática PMPE 38) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"ter por objetivo / almejar\", o verbo visar rege preposição \"a\". Assinale a frase correta:",
     "options": [
       "A operação policial visa o combate ao tráfico de drogas.",
-      "A operação policial visa ao combate ao tráfico de drogas.",
       "O soldado visou o alvo com precisão.",
+      "A operação policial visa ao combate ao tráfico de drogas.",
       "A nova lei visa proteger os animais.",
       "Eles visam o cargo mais alto."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Visar (almejar) = Exige preposição A.",
@@ -1547,21 +1547,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Visar (almejar) = Exige preposição A.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Visar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -1574,11 +1574,11 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "options": [
       "Idéia",
       "Jibóia",
-      "Heroico",
       "Assembléia",
+      "Heroico",
       "Coréia"
     ],
-    "correctIndex": 2,
+    "correctIndex": 3,
     "explanation": "Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Ditongos abertos em paroxítonas NÃO têm acento!",
@@ -1589,20 +1589,20 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "1": "Você marcou (B): A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "2": "Você marcou (C): A alternativa (C) está incorreta segundo o gabarito oficial.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "B": "Incorreta. A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "C": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Acentuação Gráfica (Novo Acordo) • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -1614,12 +1614,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 190) (Simulação Tática PMPE 40) Conforme a norma-padrão da Língua Portuguesa: O verbo implicar no sentido de \"acarretar / ter como consequência\" é transitivo direto (não rege preposição \"em\"). Assinale a alternativa correta:",
     "options": [
       "A falta injustificada implica em punição disciplinar severa.",
-      "A falta injustificada implica punição disciplinar severa.",
+      "A promoção implica em mais responsabilidade.",
       "O desacato implica na prisão em flagrante.",
       "A disciplina militar implica de sacrifício.",
-      "A promoção implica em mais responsabilidade."
+      "A falta injustificada implica punição disciplinar severa."
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Implicar (acarretar) NÃO admite preposição \"em\"!",
@@ -1629,21 +1629,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Implicar (acarretar) NÃO admite preposição \"em\"!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Implicar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -1654,13 +1654,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 191) (Simulação Tática PMPE 41) Conforme a norma-padrão da Língua Portuguesa: Assinale a frase em que o uso do acento indicativo de crase está INCORRETO:",
     "options": [
-      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "O comandante começou à redigir o relatório da ocorrência.",
+      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "Os policiais foram à delegacia prestar depoimento.",
       "Entregou a farda àquele soldado recém-formado.",
       "Chegamos à cidade antes do anoitecer."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Crase antes de verbo é proibida!",
@@ -1669,14 +1669,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "Crase antes de verbo é proibida!",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "A": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -1684,7 +1684,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -1737,12 +1737,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 193) (Simulação Tática PMPE 43) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"presenciar / ver\", o verbo assistir é transitivo indireto (exige a preposição \"a\"). Assinale a frase com regência correta:",
     "options": [
       "A tropa assistiu o treinamento tático com atenção.",
-      "A tropa assistiu ao treinamento tático com atenção.",
       "O comandante assistiu os flagrantes de longe.",
+      "A tropa assistiu ao treinamento tático com atenção.",
       "Todos assistiram o desfile de 7 de setembro.",
       "Ninguém assistiu o jogo da final."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Assistir (ver) = Assistir A alguma coisa.",
@@ -1752,21 +1752,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Assistir (ver) = Assistir A alguma coisa.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Assistir • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -1778,12 +1778,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 194) (Simulação Tática PMPE 44) Conforme a norma-padrão da Língua Portuguesa: Assinale a alternativa em que a pontuação está plenamente correta segundo o padrão culto:",
     "options": [
       "O policial militar de serviço, prendeu o suspeito em flagrante.",
-      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
-      "Eles sabiam que, o reforço chegaria a tempo.",
       "O cabo disse, que a viatura estava abastecida.",
+      "Eles sabiam que, o reforço chegaria a tempo.",
+      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
       "Chegaram na unidade, os novos equipamentos de rádio."
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "\"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Nunca separe sujeito de verbo com vírgula!",
@@ -1793,21 +1793,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Nunca separe sujeito de verbo com vírgula!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
+      "B": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Pontuação e Uso da Vírgula • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -1819,12 +1819,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 195) (Simulação Tática PMPE 45) Conforme a norma-padrão da Língua Portuguesa: Na oração \"Conquanto estivesse exausto, o soldado concluiu a patrulha\", o conectivo \"conquanto\" expressa sentido de:",
     "options": [
       "Causa",
-      "Concessão",
+      "Tempo",
       "Consequência",
       "Condição",
-      "Tempo"
+      "Concessão"
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "\"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Conquanto = Embora (Concessão).",
@@ -1834,21 +1834,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Conquanto = Embora (Concessão).",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Conjunções Subordinativas Concessivas • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -1859,13 +1859,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 196) (Simulação Tática PMPE 46) Conforme a norma-padrão da Língua Portuguesa: Em \"Apuraram-se os fatos da ocorrência\", a palavra \"se\" funciona sintaticamente como:",
     "options": [
-      "Pronome reflexivo.",
       "Partícula apassivadora (pronome apassivador).",
+      "Pronome reflexivo.",
       "Índice de indeterminação do sujeito.",
       "Conjunção subordinativa integrante.",
       "Conjunção condicional."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
@@ -1874,14 +1874,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "A": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -1889,7 +1889,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -1942,12 +1942,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 198) (Simulação Tática PMPE 48) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"ter por objetivo / almejar\", o verbo visar rege preposição \"a\". Assinale a frase correta:",
     "options": [
       "A operação policial visa o combate ao tráfico de drogas.",
-      "A operação policial visa ao combate ao tráfico de drogas.",
       "O soldado visou o alvo com precisão.",
+      "A operação policial visa ao combate ao tráfico de drogas.",
       "A nova lei visa proteger os animais.",
       "Eles visam o cargo mais alto."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Visar (almejar) = Exige preposição A.",
@@ -1957,21 +1957,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Visar (almejar) = Exige preposição A.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Visar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -1984,11 +1984,11 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "options": [
       "Idéia",
       "Jibóia",
-      "Heroico",
       "Assembléia",
+      "Heroico",
       "Coréia"
     ],
-    "correctIndex": 2,
+    "correctIndex": 3,
     "explanation": "Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Ditongos abertos em paroxítonas NÃO têm acento!",
@@ -1999,20 +1999,20 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "1": "Você marcou (B): A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "2": "Você marcou (C): A alternativa (C) está incorreta segundo o gabarito oficial.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "B": "Incorreta. A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "C": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Acentuação Gráfica (Novo Acordo) • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -2024,12 +2024,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 200) (Simulação Tática PMPE 50) Conforme a norma-padrão da Língua Portuguesa: O verbo implicar no sentido de \"acarretar / ter como consequência\" é transitivo direto (não rege preposição \"em\"). Assinale a alternativa correta:",
     "options": [
       "A falta injustificada implica em punição disciplinar severa.",
-      "A falta injustificada implica punição disciplinar severa.",
+      "A promoção implica em mais responsabilidade.",
       "O desacato implica na prisão em flagrante.",
       "A disciplina militar implica de sacrifício.",
-      "A promoção implica em mais responsabilidade."
+      "A falta injustificada implica punição disciplinar severa."
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Implicar (acarretar) NÃO admite preposição \"em\"!",
@@ -2039,21 +2039,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Implicar (acarretar) NÃO admite preposição \"em\"!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Implicar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -2064,13 +2064,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 201) (Simulação Tática PMPE 51) Conforme a norma-padrão da Língua Portuguesa: Assinale a frase em que o uso do acento indicativo de crase está INCORRETO:",
     "options": [
-      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "O comandante começou à redigir o relatório da ocorrência.",
+      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "Os policiais foram à delegacia prestar depoimento.",
       "Entregou a farda àquele soldado recém-formado.",
       "Chegamos à cidade antes do anoitecer."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Crase antes de verbo é proibida!",
@@ -2079,14 +2079,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "Crase antes de verbo é proibida!",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "A": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -2094,7 +2094,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -2147,12 +2147,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 203) (Simulação Tática PMPE 53) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"presenciar / ver\", o verbo assistir é transitivo indireto (exige a preposição \"a\"). Assinale a frase com regência correta:",
     "options": [
       "A tropa assistiu o treinamento tático com atenção.",
-      "A tropa assistiu ao treinamento tático com atenção.",
       "O comandante assistiu os flagrantes de longe.",
+      "A tropa assistiu ao treinamento tático com atenção.",
       "Todos assistiram o desfile de 7 de setembro.",
       "Ninguém assistiu o jogo da final."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Assistir (ver) = Assistir A alguma coisa.",
@@ -2162,21 +2162,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Assistir (ver) = Assistir A alguma coisa.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Assistir • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -2188,12 +2188,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 204) (Simulação Tática PMPE 54) Conforme a norma-padrão da Língua Portuguesa: Assinale a alternativa em que a pontuação está plenamente correta segundo o padrão culto:",
     "options": [
       "O policial militar de serviço, prendeu o suspeito em flagrante.",
-      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
-      "Eles sabiam que, o reforço chegaria a tempo.",
       "O cabo disse, que a viatura estava abastecida.",
+      "Eles sabiam que, o reforço chegaria a tempo.",
+      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
       "Chegaram na unidade, os novos equipamentos de rádio."
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "\"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Nunca separe sujeito de verbo com vírgula!",
@@ -2203,21 +2203,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Nunca separe sujeito de verbo com vírgula!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
+      "B": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Pontuação e Uso da Vírgula • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -2229,12 +2229,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 205) (Simulação Tática PMPE 55) Conforme a norma-padrão da Língua Portuguesa: Na oração \"Conquanto estivesse exausto, o soldado concluiu a patrulha\", o conectivo \"conquanto\" expressa sentido de:",
     "options": [
       "Causa",
-      "Concessão",
+      "Tempo",
       "Consequência",
       "Condição",
-      "Tempo"
+      "Concessão"
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "\"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Conquanto = Embora (Concessão).",
@@ -2244,21 +2244,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Conquanto = Embora (Concessão).",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Conjunções Subordinativas Concessivas • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -2269,13 +2269,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 206) (Simulação Tática PMPE 56) Conforme a norma-padrão da Língua Portuguesa: Em \"Apuraram-se os fatos da ocorrência\", a palavra \"se\" funciona sintaticamente como:",
     "options": [
-      "Pronome reflexivo.",
       "Partícula apassivadora (pronome apassivador).",
+      "Pronome reflexivo.",
       "Índice de indeterminação do sujeito.",
       "Conjunção subordinativa integrante.",
       "Conjunção condicional."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
@@ -2284,14 +2284,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "A": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -2299,7 +2299,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -2352,12 +2352,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 208) (Simulação Tática PMPE 58) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"ter por objetivo / almejar\", o verbo visar rege preposição \"a\". Assinale a frase correta:",
     "options": [
       "A operação policial visa o combate ao tráfico de drogas.",
-      "A operação policial visa ao combate ao tráfico de drogas.",
       "O soldado visou o alvo com precisão.",
+      "A operação policial visa ao combate ao tráfico de drogas.",
       "A nova lei visa proteger os animais.",
       "Eles visam o cargo mais alto."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Visar (almejar) = Exige preposição A.",
@@ -2367,21 +2367,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Visar (almejar) = Exige preposição A.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Visar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -2394,11 +2394,11 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "options": [
       "Idéia",
       "Jibóia",
-      "Heroico",
       "Assembléia",
+      "Heroico",
       "Coréia"
     ],
-    "correctIndex": 2,
+    "correctIndex": 3,
     "explanation": "Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Ditongos abertos em paroxítonas NÃO têm acento!",
@@ -2409,20 +2409,20 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "1": "Você marcou (B): A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "2": "Você marcou (C): A alternativa (C) está incorreta segundo o gabarito oficial.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "B": "Incorreta. A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "C": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Acentuação Gráfica (Novo Acordo) • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -2434,12 +2434,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 210) (Simulação Tática PMPE 60) Conforme a norma-padrão da Língua Portuguesa: O verbo implicar no sentido de \"acarretar / ter como consequência\" é transitivo direto (não rege preposição \"em\"). Assinale a alternativa correta:",
     "options": [
       "A falta injustificada implica em punição disciplinar severa.",
-      "A falta injustificada implica punição disciplinar severa.",
+      "A promoção implica em mais responsabilidade.",
       "O desacato implica na prisão em flagrante.",
       "A disciplina militar implica de sacrifício.",
-      "A promoção implica em mais responsabilidade."
+      "A falta injustificada implica punição disciplinar severa."
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Implicar (acarretar) NÃO admite preposição \"em\"!",
@@ -2449,21 +2449,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Implicar (acarretar) NÃO admite preposição \"em\"!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Implicar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -2474,13 +2474,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 211) (Simulação Tática PMPE 61) Conforme a norma-padrão da Língua Portuguesa: Assinale a frase em que o uso do acento indicativo de crase está INCORRETO:",
     "options": [
-      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "O comandante começou à redigir o relatório da ocorrência.",
+      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "Os policiais foram à delegacia prestar depoimento.",
       "Entregou a farda àquele soldado recém-formado.",
       "Chegamos à cidade antes do anoitecer."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Crase antes de verbo é proibida!",
@@ -2489,14 +2489,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "Crase antes de verbo é proibida!",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "A": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -2504,7 +2504,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -2557,12 +2557,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 213) (Simulação Tática PMPE 63) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"presenciar / ver\", o verbo assistir é transitivo indireto (exige a preposição \"a\"). Assinale a frase com regência correta:",
     "options": [
       "A tropa assistiu o treinamento tático com atenção.",
-      "A tropa assistiu ao treinamento tático com atenção.",
       "O comandante assistiu os flagrantes de longe.",
+      "A tropa assistiu ao treinamento tático com atenção.",
       "Todos assistiram o desfile de 7 de setembro.",
       "Ninguém assistiu o jogo da final."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Assistir (ver) = Assistir A alguma coisa.",
@@ -2572,21 +2572,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Assistir (ver) = Assistir A alguma coisa.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Assistir • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -2598,12 +2598,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 214) (Simulação Tática PMPE 64) Conforme a norma-padrão da Língua Portuguesa: Assinale a alternativa em que a pontuação está plenamente correta segundo o padrão culto:",
     "options": [
       "O policial militar de serviço, prendeu o suspeito em flagrante.",
-      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
-      "Eles sabiam que, o reforço chegaria a tempo.",
       "O cabo disse, que a viatura estava abastecida.",
+      "Eles sabiam que, o reforço chegaria a tempo.",
+      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
       "Chegaram na unidade, os novos equipamentos de rádio."
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "\"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Nunca separe sujeito de verbo com vírgula!",
@@ -2613,21 +2613,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Nunca separe sujeito de verbo com vírgula!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
+      "B": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Pontuação e Uso da Vírgula • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -2639,12 +2639,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 215) (Simulação Tática PMPE 65) Conforme a norma-padrão da Língua Portuguesa: Na oração \"Conquanto estivesse exausto, o soldado concluiu a patrulha\", o conectivo \"conquanto\" expressa sentido de:",
     "options": [
       "Causa",
-      "Concessão",
+      "Tempo",
       "Consequência",
       "Condição",
-      "Tempo"
+      "Concessão"
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "\"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Conquanto = Embora (Concessão).",
@@ -2654,21 +2654,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Conquanto = Embora (Concessão).",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Conjunções Subordinativas Concessivas • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -2679,13 +2679,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 216) (Simulação Tática PMPE 66) Conforme a norma-padrão da Língua Portuguesa: Em \"Apuraram-se os fatos da ocorrência\", a palavra \"se\" funciona sintaticamente como:",
     "options": [
-      "Pronome reflexivo.",
       "Partícula apassivadora (pronome apassivador).",
+      "Pronome reflexivo.",
       "Índice de indeterminação do sujeito.",
       "Conjunção subordinativa integrante.",
       "Conjunção condicional."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
@@ -2694,14 +2694,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "A": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -2709,7 +2709,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -2762,12 +2762,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 218) (Simulação Tática PMPE 68) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"ter por objetivo / almejar\", o verbo visar rege preposição \"a\". Assinale a frase correta:",
     "options": [
       "A operação policial visa o combate ao tráfico de drogas.",
-      "A operação policial visa ao combate ao tráfico de drogas.",
       "O soldado visou o alvo com precisão.",
+      "A operação policial visa ao combate ao tráfico de drogas.",
       "A nova lei visa proteger os animais.",
       "Eles visam o cargo mais alto."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Visar (almejar) = Exige preposição A.",
@@ -2777,21 +2777,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Visar (almejar) = Exige preposição A.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Visar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -2804,11 +2804,11 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "options": [
       "Idéia",
       "Jibóia",
-      "Heroico",
       "Assembléia",
+      "Heroico",
       "Coréia"
     ],
-    "correctIndex": 2,
+    "correctIndex": 3,
     "explanation": "Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Ditongos abertos em paroxítonas NÃO têm acento!",
@@ -2819,20 +2819,20 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "1": "Você marcou (B): A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "2": "Você marcou (C): A alternativa (C) está incorreta segundo o gabarito oficial.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "B": "Incorreta. A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "C": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Acentuação Gráfica (Novo Acordo) • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -2844,12 +2844,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 220) (Simulação Tática PMPE 70) Conforme a norma-padrão da Língua Portuguesa: O verbo implicar no sentido de \"acarretar / ter como consequência\" é transitivo direto (não rege preposição \"em\"). Assinale a alternativa correta:",
     "options": [
       "A falta injustificada implica em punição disciplinar severa.",
-      "A falta injustificada implica punição disciplinar severa.",
+      "A promoção implica em mais responsabilidade.",
       "O desacato implica na prisão em flagrante.",
       "A disciplina militar implica de sacrifício.",
-      "A promoção implica em mais responsabilidade."
+      "A falta injustificada implica punição disciplinar severa."
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Implicar (acarretar) NÃO admite preposição \"em\"!",
@@ -2859,21 +2859,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Implicar (acarretar) NÃO admite preposição \"em\"!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Implicar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -2884,13 +2884,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 221) (Simulação Tática PMPE 71) Conforme a norma-padrão da Língua Portuguesa: Assinale a frase em que o uso do acento indicativo de crase está INCORRETO:",
     "options": [
-      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "O comandante começou à redigir o relatório da ocorrência.",
+      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "Os policiais foram à delegacia prestar depoimento.",
       "Entregou a farda àquele soldado recém-formado.",
       "Chegamos à cidade antes do anoitecer."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Crase antes de verbo é proibida!",
@@ -2899,14 +2899,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "Crase antes de verbo é proibida!",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "A": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -2914,7 +2914,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -2967,12 +2967,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 223) (Simulação Tática PMPE 73) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"presenciar / ver\", o verbo assistir é transitivo indireto (exige a preposição \"a\"). Assinale a frase com regência correta:",
     "options": [
       "A tropa assistiu o treinamento tático com atenção.",
-      "A tropa assistiu ao treinamento tático com atenção.",
       "O comandante assistiu os flagrantes de longe.",
+      "A tropa assistiu ao treinamento tático com atenção.",
       "Todos assistiram o desfile de 7 de setembro.",
       "Ninguém assistiu o jogo da final."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Assistir (ver) = Assistir A alguma coisa.",
@@ -2982,21 +2982,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Assistir (ver) = Assistir A alguma coisa.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Assistir • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -3008,12 +3008,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 224) (Simulação Tática PMPE 74) Conforme a norma-padrão da Língua Portuguesa: Assinale a alternativa em que a pontuação está plenamente correta segundo o padrão culto:",
     "options": [
       "O policial militar de serviço, prendeu o suspeito em flagrante.",
-      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
-      "Eles sabiam que, o reforço chegaria a tempo.",
       "O cabo disse, que a viatura estava abastecida.",
+      "Eles sabiam que, o reforço chegaria a tempo.",
+      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
       "Chegaram na unidade, os novos equipamentos de rádio."
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "\"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Nunca separe sujeito de verbo com vírgula!",
@@ -3023,21 +3023,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Nunca separe sujeito de verbo com vírgula!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
+      "B": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Pontuação e Uso da Vírgula • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -3049,12 +3049,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 225) (Simulação Tática PMPE 75) Conforme a norma-padrão da Língua Portuguesa: Na oração \"Conquanto estivesse exausto, o soldado concluiu a patrulha\", o conectivo \"conquanto\" expressa sentido de:",
     "options": [
       "Causa",
-      "Concessão",
+      "Tempo",
       "Consequência",
       "Condição",
-      "Tempo"
+      "Concessão"
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "\"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Conquanto = Embora (Concessão).",
@@ -3064,21 +3064,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Conquanto = Embora (Concessão).",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Conjunções Subordinativas Concessivas • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -3089,13 +3089,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 226) (Simulação Tática PMPE 76) Conforme a norma-padrão da Língua Portuguesa: Em \"Apuraram-se os fatos da ocorrência\", a palavra \"se\" funciona sintaticamente como:",
     "options": [
-      "Pronome reflexivo.",
       "Partícula apassivadora (pronome apassivador).",
+      "Pronome reflexivo.",
       "Índice de indeterminação do sujeito.",
       "Conjunção subordinativa integrante.",
       "Conjunção condicional."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
@@ -3104,14 +3104,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "A": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -3119,7 +3119,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -3172,12 +3172,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 228) (Simulação Tática PMPE 78) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"ter por objetivo / almejar\", o verbo visar rege preposição \"a\". Assinale a frase correta:",
     "options": [
       "A operação policial visa o combate ao tráfico de drogas.",
-      "A operação policial visa ao combate ao tráfico de drogas.",
       "O soldado visou o alvo com precisão.",
+      "A operação policial visa ao combate ao tráfico de drogas.",
       "A nova lei visa proteger os animais.",
       "Eles visam o cargo mais alto."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Visar (almejar) = Exige preposição A.",
@@ -3187,21 +3187,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Visar (almejar) = Exige preposição A.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Visar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -3214,11 +3214,11 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "options": [
       "Idéia",
       "Jibóia",
-      "Heroico",
       "Assembléia",
+      "Heroico",
       "Coréia"
     ],
-    "correctIndex": 2,
+    "correctIndex": 3,
     "explanation": "Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Ditongos abertos em paroxítonas NÃO têm acento!",
@@ -3229,20 +3229,20 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "1": "Você marcou (B): A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "2": "Você marcou (C): A alternativa (C) está incorreta segundo o gabarito oficial.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "B": "Incorreta. A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "C": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Acentuação Gráfica (Novo Acordo) • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -3254,12 +3254,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 230) (Simulação Tática PMPE 80) Conforme a norma-padrão da Língua Portuguesa: O verbo implicar no sentido de \"acarretar / ter como consequência\" é transitivo direto (não rege preposição \"em\"). Assinale a alternativa correta:",
     "options": [
       "A falta injustificada implica em punição disciplinar severa.",
-      "A falta injustificada implica punição disciplinar severa.",
+      "A promoção implica em mais responsabilidade.",
       "O desacato implica na prisão em flagrante.",
       "A disciplina militar implica de sacrifício.",
-      "A promoção implica em mais responsabilidade."
+      "A falta injustificada implica punição disciplinar severa."
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Implicar (acarretar) NÃO admite preposição \"em\"!",
@@ -3269,21 +3269,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Implicar (acarretar) NÃO admite preposição \"em\"!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Implicar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -3294,13 +3294,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 231) (Simulação Tática PMPE 81) Conforme a norma-padrão da Língua Portuguesa: Assinale a frase em que o uso do acento indicativo de crase está INCORRETO:",
     "options": [
-      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "O comandante começou à redigir o relatório da ocorrência.",
+      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "Os policiais foram à delegacia prestar depoimento.",
       "Entregou a farda àquele soldado recém-formado.",
       "Chegamos à cidade antes do anoitecer."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Crase antes de verbo é proibida!",
@@ -3309,14 +3309,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "Crase antes de verbo é proibida!",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "A": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -3324,7 +3324,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -3377,12 +3377,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 233) (Simulação Tática PMPE 83) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"presenciar / ver\", o verbo assistir é transitivo indireto (exige a preposição \"a\"). Assinale a frase com regência correta:",
     "options": [
       "A tropa assistiu o treinamento tático com atenção.",
-      "A tropa assistiu ao treinamento tático com atenção.",
       "O comandante assistiu os flagrantes de longe.",
+      "A tropa assistiu ao treinamento tático com atenção.",
       "Todos assistiram o desfile de 7 de setembro.",
       "Ninguém assistiu o jogo da final."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Assistir (ver) = Assistir A alguma coisa.",
@@ -3392,21 +3392,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Assistir (ver) = Assistir A alguma coisa.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Assistir • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -3418,12 +3418,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 234) (Simulação Tática PMPE 84) Conforme a norma-padrão da Língua Portuguesa: Assinale a alternativa em que a pontuação está plenamente correta segundo o padrão culto:",
     "options": [
       "O policial militar de serviço, prendeu o suspeito em flagrante.",
-      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
-      "Eles sabiam que, o reforço chegaria a tempo.",
       "O cabo disse, que a viatura estava abastecida.",
+      "Eles sabiam que, o reforço chegaria a tempo.",
+      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
       "Chegaram na unidade, os novos equipamentos de rádio."
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "\"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Nunca separe sujeito de verbo com vírgula!",
@@ -3433,21 +3433,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Nunca separe sujeito de verbo com vírgula!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
+      "B": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Pontuação e Uso da Vírgula • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -3459,12 +3459,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 235) (Simulação Tática PMPE 85) Conforme a norma-padrão da Língua Portuguesa: Na oração \"Conquanto estivesse exausto, o soldado concluiu a patrulha\", o conectivo \"conquanto\" expressa sentido de:",
     "options": [
       "Causa",
-      "Concessão",
+      "Tempo",
       "Consequência",
       "Condição",
-      "Tempo"
+      "Concessão"
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "\"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Conquanto = Embora (Concessão).",
@@ -3474,21 +3474,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Conquanto = Embora (Concessão).",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Conjunções Subordinativas Concessivas • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -3499,13 +3499,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 236) (Simulação Tática PMPE 86) Conforme a norma-padrão da Língua Portuguesa: Em \"Apuraram-se os fatos da ocorrência\", a palavra \"se\" funciona sintaticamente como:",
     "options": [
-      "Pronome reflexivo.",
       "Partícula apassivadora (pronome apassivador).",
+      "Pronome reflexivo.",
       "Índice de indeterminação do sujeito.",
       "Conjunção subordinativa integrante.",
       "Conjunção condicional."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
@@ -3514,14 +3514,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "A": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -3529,7 +3529,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -3582,12 +3582,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 238) (Simulação Tática PMPE 88) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"ter por objetivo / almejar\", o verbo visar rege preposição \"a\". Assinale a frase correta:",
     "options": [
       "A operação policial visa o combate ao tráfico de drogas.",
-      "A operação policial visa ao combate ao tráfico de drogas.",
       "O soldado visou o alvo com precisão.",
+      "A operação policial visa ao combate ao tráfico de drogas.",
       "A nova lei visa proteger os animais.",
       "Eles visam o cargo mais alto."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Visar (almejar) = Exige preposição A.",
@@ -3597,21 +3597,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Visar (almejar) = Exige preposição A.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Visar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -3624,11 +3624,11 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "options": [
       "Idéia",
       "Jibóia",
-      "Heroico",
       "Assembléia",
+      "Heroico",
       "Coréia"
     ],
-    "correctIndex": 2,
+    "correctIndex": 3,
     "explanation": "Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Ditongos abertos em paroxítonas NÃO têm acento!",
@@ -3639,20 +3639,20 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "1": "Você marcou (B): A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "2": "Você marcou (C): A alternativa (C) está incorreta segundo o gabarito oficial.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "B": "Incorreta. A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "C": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Acentuação Gráfica (Novo Acordo) • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -3664,12 +3664,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 240) (Simulação Tática PMPE 90) Conforme a norma-padrão da Língua Portuguesa: O verbo implicar no sentido de \"acarretar / ter como consequência\" é transitivo direto (não rege preposição \"em\"). Assinale a alternativa correta:",
     "options": [
       "A falta injustificada implica em punição disciplinar severa.",
-      "A falta injustificada implica punição disciplinar severa.",
+      "A promoção implica em mais responsabilidade.",
       "O desacato implica na prisão em flagrante.",
       "A disciplina militar implica de sacrifício.",
-      "A promoção implica em mais responsabilidade."
+      "A falta injustificada implica punição disciplinar severa."
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Implicar (acarretar) NÃO admite preposição \"em\"!",
@@ -3679,21 +3679,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Implicar (acarretar) NÃO admite preposição \"em\"!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Implicar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -3704,13 +3704,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 241) (Simulação Tática PMPE 91) Conforme a norma-padrão da Língua Portuguesa: Assinale a frase em que o uso do acento indicativo de crase está INCORRETO:",
     "options": [
-      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "O comandante começou à redigir o relatório da ocorrência.",
+      "A guarnição começou a patrulhar o bairro no início da madrugada.",
       "Os policiais foram à delegacia prestar depoimento.",
       "Entregou a farda àquele soldado recém-formado.",
       "Chegamos à cidade antes do anoitecer."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Crase antes de verbo é proibida!",
@@ -3719,14 +3719,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "Crase antes de verbo é proibida!",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "A": "Correta. É estritamente proibido o uso de crase antes de verbo no infinitivo (\"começou à redigir\").",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -3734,7 +3734,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Crase Proibida antes de Verbo • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -3787,12 +3787,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 243) (Simulação Tática PMPE 93) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"presenciar / ver\", o verbo assistir é transitivo indireto (exige a preposição \"a\"). Assinale a frase com regência correta:",
     "options": [
       "A tropa assistiu o treinamento tático com atenção.",
-      "A tropa assistiu ao treinamento tático com atenção.",
       "O comandante assistiu os flagrantes de longe.",
+      "A tropa assistiu ao treinamento tático com atenção.",
       "Todos assistiram o desfile de 7 de setembro.",
       "Ninguém assistiu o jogo da final."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Assistir (ver) = Assistir A alguma coisa.",
@@ -3802,21 +3802,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Assistir (ver) = Assistir A alguma coisa.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Assistir no sentido de ver/presenciar exige preposição \"a\": assistir AO treinamento.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Assistir • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -3828,12 +3828,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 244) (Simulação Tática PMPE 94) Conforme a norma-padrão da Língua Portuguesa: Assinale a alternativa em que a pontuação está plenamente correta segundo o padrão culto:",
     "options": [
       "O policial militar de serviço, prendeu o suspeito em flagrante.",
-      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
-      "Eles sabiam que, o reforço chegaria a tempo.",
       "O cabo disse, que a viatura estava abastecida.",
+      "Eles sabiam que, o reforço chegaria a tempo.",
+      "Durante a madrugada fria, os soldados mantiveram a vigilância.",
       "Chegaram na unidade, os novos equipamentos de rádio."
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "\"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Nunca separe sujeito de verbo com vírgula!",
@@ -3843,21 +3843,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Nunca separe sujeito de verbo com vírgula!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
+      "B": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. \"Durante a madrugada fria\" é um adjunto adverbial de tempo deslocado de longa extensão, exigindo a vírgula.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Pontuação e Uso da Vírgula • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -3869,12 +3869,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 245) (Simulação Tática PMPE 95) Conforme a norma-padrão da Língua Portuguesa: Na oração \"Conquanto estivesse exausto, o soldado concluiu a patrulha\", o conectivo \"conquanto\" expressa sentido de:",
     "options": [
       "Causa",
-      "Concessão",
+      "Tempo",
       "Consequência",
       "Condição",
-      "Tempo"
+      "Concessão"
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "\"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Conquanto = Embora (Concessão).",
@@ -3884,21 +3884,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Conquanto = Embora (Concessão).",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. \"Conquanto\" é conjunção subordinativa concessiva (equivale a \"embora\", \"ainda que\", \"mesmo que\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Conjunções Subordinativas Concessivas • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   },
   {
@@ -3909,13 +3909,13 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "topicoEdital": "Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP",
     "question": "(Instituto AOCP / PMPE - Questão 246) (Simulação Tática PMPE 96) Conforme a norma-padrão da Língua Portuguesa: Em \"Apuraram-se os fatos da ocorrência\", a palavra \"se\" funciona sintaticamente como:",
     "options": [
-      "Pronome reflexivo.",
       "Partícula apassivadora (pronome apassivador).",
+      "Pronome reflexivo.",
       "Índice de indeterminação do sujeito.",
       "Conjunção subordinativa integrante.",
       "Conjunção condicional."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
@@ -3924,14 +3924,14 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "simuladoOrigem": "caderno_portugues_aocp",
     "dicaMacete": "VTD + SE = Partícula Apassivadora (Os fatos foram apurados).",
     "porqueErrou": {
-      "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
-      "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "A": "Correta. O verbo é transitivo direto (apurar algo) associado ao sujeito paciente \"os fatos da ocorrência\". O \"se\" é partícula apassivadora.",
+      "B": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
@@ -3939,7 +3939,7 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Partícula Apassivadora vs Índice de Indeterminação • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra A."
     ]
   },
   {
@@ -3992,12 +3992,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 248) (Simulação Tática PMPE 98) Conforme a norma-padrão da Língua Portuguesa: No sentido de \"ter por objetivo / almejar\", o verbo visar rege preposição \"a\". Assinale a frase correta:",
     "options": [
       "A operação policial visa o combate ao tráfico de drogas.",
-      "A operação policial visa ao combate ao tráfico de drogas.",
       "O soldado visou o alvo com precisão.",
+      "A operação policial visa ao combate ao tráfico de drogas.",
       "A nova lei visa proteger os animais.",
       "Eles visam o cargo mais alto."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Visar (almejar) = Exige preposição A.",
@@ -4007,21 +4007,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Visar (almejar) = Exige preposição A.",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
-      "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "B": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Correta. Visar no sentido de almejar/pretender rege preposição \"a\": visa AO combate.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Visar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
     ]
   },
   {
@@ -4034,11 +4034,11 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "options": [
       "Idéia",
       "Jibóia",
-      "Heroico",
       "Assembléia",
+      "Heroico",
       "Coréia"
     ],
-    "correctIndex": 2,
+    "correctIndex": 3,
     "explanation": "Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Ditongos abertos em paroxítonas NÃO têm acento!",
@@ -4049,20 +4049,20 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "1": "Você marcou (B): A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "2": "Você marcou (C): A alternativa (C) está incorreta segundo o gabarito oficial.",
       "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "B": "Incorreta. A alternativa (B) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "C": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
-      "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "C": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "D": "Correta. Os ditongos abertos \"ei\" e \"oi\" em palavras paroxítonas perderam o acento gráfico (heroico, ideia, jiboia, assembleia, Coreia).",
       "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Acentuação Gráfica (Novo Acordo) • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra C."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra D."
     ]
   },
   {
@@ -4074,12 +4074,12 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "question": "(Instituto AOCP / PMPE - Questão 250) (Simulação Tática PMPE 100) Conforme a norma-padrão da Língua Portuguesa: O verbo implicar no sentido de \"acarretar / ter como consequência\" é transitivo direto (não rege preposição \"em\"). Assinale a alternativa correta:",
     "options": [
       "A falta injustificada implica em punição disciplinar severa.",
-      "A falta injustificada implica punição disciplinar severa.",
+      "A promoção implica em mais responsabilidade.",
       "O desacato implica na prisão em flagrante.",
       "A disciplina militar implica de sacrifício.",
-      "A promoção implica em mais responsabilidade."
+      "A falta injustificada implica punição disciplinar severa."
     ],
-    "correctIndex": 1,
+    "correctIndex": 4,
     "explanation": "Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
     "fundamentacaoLegal": "Gramática Normativa da Língua Portuguesa • Instituto AOCP",
     "hint": "Implicar (acarretar) NÃO admite preposição \"em\"!",
@@ -4089,21 +4089,21 @@ export const BANCO_PORTUGUES_EXTRA: QuizQuestion[] = [
     "dicaMacete": "Implicar (acarretar) NÃO admite preposição \"em\"!",
     "porqueErrou": {
       "0": "Você marcou (A): A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
+      "1": "Você marcou (B): A alternativa (B) está incorreta segundo o gabarito oficial.",
       "2": "Você marcou (C): A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "4": "Você marcou (E): A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "3": "Você marcou (D): A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
     },
     "analiseAlternativas": {
       "A": "Incorreta. A alternativa (A) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "B": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\").",
+      "B": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "C": "Incorreta. A alternativa (C) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
       "D": "Incorreta. A alternativa (D) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP.",
-      "E": "Incorreta. A alternativa (E) apresenta desvio gramatical em relação à norma-padrão exigida pela banca AOCP."
+      "E": "Correta. Implicar (no sentido de acarretar) é VTD: implica punição disciplinar (sem \"em\")."
     },
     "passoAPassoConta": [
       "Passo 1: Identificar a regra gramatical cobrada em \"Língua Portuguesa • Regência do Verbo Implicar • Padrão AOCP\".",
       "Passo 2: Analisar termo a termo a estrutura sintática de cada frase.",
-      "Passo 3: A alternativa plenamente conforme a norma culta é a letra B."
+      "Passo 3: A alternativa plenamente conforme a norma culta é a letra E."
     ]
   }
 ];
