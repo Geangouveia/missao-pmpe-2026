@@ -26,7 +26,9 @@ import {
   Download,
   Upload,
   Copy,
-  Check
+  Check,
+  Calendar,
+  MessageSquare
 } from 'lucide-react';
 import { 
   fetchRegistryFromCloud, 
@@ -42,7 +44,13 @@ import {
   pushRegistryToCloud,
   normalizeUserName,
   isMasterUser,
-  type UserAccessRecord 
+  grantScheduleAccess,
+  revokeScheduleAccess,
+  clearActiveSession,
+  fetchSupportRequests,
+  updateSupportRequestStatus,
+  type UserAccessRecord,
+  type StudentSupportRequest
 } from '../utils/authManager';
 import { sound } from '../utils/sound';
 
@@ -72,6 +80,11 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
+  // Aba ativa: Gestão do Efetivo ou Caixa de Pedidos dos Alunos
+  const [activeViewTab, setActiveViewTab] = useState<'efetivo' | 'pedidos'>('efetivo');
+  const [supportRequests, setSupportRequests] = useState<StudentSupportRequest[]>([]);
+  const [isLoadingRequests, setIsLoadingRequests] = useState(false);
+
   // Alteração de Senha Master
   const [showMasterPassSection, setShowMasterPassSection] = useState(false);
   const [newMasterPass, setNewMasterPass] = useState('');
@@ -86,6 +99,17 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
     setUsers(registry);
     setIsLoading(false);
     onRefreshPendingCount?.();
+    loadSupportRequests();
+  };
+
+  const loadSupportRequests = async () => {
+    setIsLoadingRequests(true);
+    try {
+      const list = await fetchSupportRequests();
+      setSupportRequests(list);
+    } catch {} finally {
+      setIsLoadingRequests(false);
+    }
   };
 
   useEffect(() => {
@@ -235,6 +259,7 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
 
     if (ok) {
       sound.playSuccess();
+      await clearActiveSession(displayName);
       setUsers((prev) => {
         const u = prev[userKey];
         if (!u) return prev;
@@ -252,6 +277,43 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
     } else {
       showFeedback(`❌ Não foi possível desvincular o aparelho no momento.`);
     }
+  };
+
+  // Liberar / Revogar Cronograma VIP (R$ 4,00)
+  const handleToggleScheduleAccess = async (userKey: string, displayName: string, grant: boolean) => {
+    sound.playClick();
+    setProcessingUserKey(userKey);
+    setUsers((prev) => {
+      const u = prev[userKey];
+      if (!u) return prev;
+      return {
+        ...prev,
+        [userKey]: {
+          ...u,
+          hasScheduleAccess: grant
+        }
+      };
+    });
+
+    if (grant) {
+      sound.playLevelUp();
+      showFeedback(`🎉 Cronograma de Estudos VIP liberado para "${displayName}"!`);
+      await grantScheduleAccess(userKey);
+    } else {
+      showFeedback(`🔒 Acesso ao Cronograma VIP revogado para "${displayName}".`);
+      await revokeScheduleAccess(userKey);
+    }
+    setProcessingUserKey(null);
+  };
+
+  // Atualizar Status do Pedido no Canal de Suporte
+  const handleUpdateSupportStatus = async (id: string, newStatus: 'pending' | 'resolved') => {
+    sound.playClick();
+    setSupportRequests((prev) =>
+      prev.map((r) => (r.id === id ? { ...r, status: newStatus } : r))
+    );
+    await updateSupportRequestStatus(id, newStatus);
+    showFeedback(newStatus === 'resolved' ? '✅ Pedido marcado como atendido!' : '⏳ Pedido marcado como pendente.');
   };
 
   // Exportar Backup de Todos os Alunos (Arquivo JSON)
@@ -772,7 +834,69 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
           )}
         </section>
 
-        {/* ÁREA DE GESTÃO DO EFETIVO DE ALUNOS */}
+        {/* NAVEGAÇÃO DE ABAS DO COMANDANTE */}
+        <div style={{
+          display: 'flex',
+          gap: '0.75rem',
+          marginBottom: '1.5rem',
+          flexWrap: 'wrap'
+        }}>
+          <button
+            onClick={() => {
+              sound.playClick();
+              setActiveViewTab('efetivo');
+            }}
+            style={{
+              padding: '0.85rem 1.5rem',
+              borderRadius: '14px',
+              background: activeViewTab === 'efetivo' 
+                ? 'linear-gradient(135deg, #16a34a, #15803d)' 
+                : 'rgba(255, 255, 255, 0.05)',
+              border: activeViewTab === 'efetivo' ? '1px solid #22c55e' : '1px solid rgba(255, 255, 255, 0.12)',
+              color: '#ffffff',
+              fontWeight: 900,
+              fontSize: '0.92rem',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              boxShadow: activeViewTab === 'efetivo' ? '0 0 20px rgba(34, 197, 94, 0.35)' : 'none'
+            }}
+          >
+            <Users size={18} />
+            <span>Gestão do Efetivo ({studentsOnly.length})</span>
+          </button>
+
+          <button
+            onClick={() => {
+              sound.playClick();
+              setActiveViewTab('pedidos');
+              loadSupportRequests();
+            }}
+            style={{
+              padding: '0.85rem 1.5rem',
+              borderRadius: '14px',
+              background: activeViewTab === 'pedidos' 
+                ? 'linear-gradient(135deg, #0284c7, #0369a1)' 
+                : 'rgba(255, 255, 255, 0.05)',
+              border: activeViewTab === 'pedidos' ? '1px solid #38bdf8' : '1px solid rgba(255, 255, 255, 0.12)',
+              color: '#ffffff',
+              fontWeight: 900,
+              fontSize: '0.92rem',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              boxShadow: activeViewTab === 'pedidos' ? '0 0 20px rgba(56, 189, 248, 0.35)' : 'none'
+            }}
+          >
+            <MessageSquare size={18} />
+            <span>Caixa de Pedidos & Dúvidas ({supportRequests.length})</span>
+          </button>
+        </div>
+
+        {activeViewTab === 'efetivo' ? (
+        /* ÁREA DE GESTÃO DO EFETIVO DE ALUNOS */
         <section style={{
           background: 'linear-gradient(135deg, rgba(15, 25, 18, 0.95) 0%, rgba(9, 16, 11, 0.98) 100%)',
           borderRadius: '20px',
@@ -1237,6 +1361,23 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
                               Aparelho livre (Vincula no 1º login)
                             </span>
                           )}
+                          {user.hasScheduleAccess && (
+                            <span style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '0.3rem',
+                              color: '#fbbf24',
+                              background: 'rgba(234, 179, 8, 0.15)',
+                              padding: '0.15rem 0.55rem',
+                              borderRadius: '6px',
+                              border: '1px solid rgba(234, 179, 8, 0.4)',
+                              fontWeight: 800,
+                              fontSize: '0.74rem'
+                            }}>
+                              <Sparkles size={12} color="#fbbf24" />
+                              CRONOGRAMA VIP ATIVO
+                            </span>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -1248,6 +1389,30 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
                       gap: '0.65rem',
                       flexWrap: 'wrap'
                     }}>
+                      {/* Liberar / Revogar Cronograma VIP (R$ 4,00) */}
+                      <button
+                        onClick={() => handleToggleScheduleAccess(userKey, user.name, !user.hasScheduleAccess)}
+                        disabled={isProcessing}
+                        style={{
+                          padding: '0.6rem 0.95rem',
+                          borderRadius: '10px',
+                          background: user.hasScheduleAccess ? 'rgba(234, 179, 8, 0.2)' : 'rgba(255, 255, 255, 0.08)',
+                          border: user.hasScheduleAccess ? '1px solid #eab308' : '1px solid rgba(255, 255, 255, 0.2)',
+                          color: user.hasScheduleAccess ? '#fbbf24' : '#e2e8f0',
+                          fontWeight: 800,
+                          fontSize: '0.82rem',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.4rem',
+                          transition: 'all 0.2s'
+                        }}
+                        title={user.hasScheduleAccess ? 'Revogar acesso ao Cronograma VIP' : 'Liberar Cronograma VIP (R$ 4,00)'}
+                      >
+                        <Calendar size={15} color={user.hasScheduleAccess ? '#fbbf24' : '#cbd5e1'} />
+                        <span>{user.hasScheduleAccess ? 'Cronograma VIP (Ativo)' : 'Liberar Cronograma VIP'}</span>
+                      </button>
+
                       {/* Copiar Credenciais para WhatsApp */}
                       <button
                         onClick={() => handleCopyCredentials(user.name)}
@@ -1431,6 +1596,199 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
             </div>
           )}
         </section>
+        ) : (
+        /* ÁREA DA CAIXA DE PEDIDOS & DÚVIDAS DOS ALUNOS */
+        <section style={{
+          background: 'linear-gradient(135deg, rgba(15, 25, 18, 0.95) 0%, rgba(9, 16, 11, 0.98) 100%)',
+          borderRadius: '20px',
+          border: '1px solid rgba(56, 189, 248, 0.3)',
+          padding: '1.75rem',
+          boxShadow: '0 8px 30px rgba(0, 0, 0, 0.5)'
+        }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '1.5rem',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+            paddingBottom: '1.25rem'
+          }}>
+            <div>
+              <h2 style={{
+                margin: 0,
+                fontSize: '1.25rem',
+                fontWeight: 900,
+                color: '#ffffff',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}>
+                <MessageSquare size={22} color="#38bdf8" />
+                Caixa de Mensagens & Pedidos dos Alunos ({supportRequests.length})
+              </h2>
+              <p style={{ margin: '0.25rem 0 0', fontSize: '0.82rem', color: '#94a3b8' }}>
+                Pedidos de liberação de cronograma, dúvidas sobre matérias e sugestões enviadas pelos guerreiros.
+              </p>
+            </div>
+
+            <button
+              onClick={loadSupportRequests}
+              disabled={isLoadingRequests}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                padding: '0.6rem 1rem',
+                borderRadius: '10px',
+                background: 'rgba(56, 189, 248, 0.15)',
+                border: '1px solid rgba(56, 189, 248, 0.35)',
+                color: '#38bdf8',
+                fontWeight: 800,
+                fontSize: '0.82rem',
+                cursor: 'pointer'
+              }}
+            >
+              <RefreshCw size={15} className={isLoadingRequests ? 'spin' : ''} />
+              <span>Atualizar Mensagens</span>
+            </button>
+          </div>
+
+          {supportRequests.length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '3rem 1rem', color: '#94a3b8' }}>
+              <MessageSquare size={42} style={{ opacity: 0.3, marginBottom: '0.75rem' }} />
+              <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#f1f5f9' }}>Nenhum pedido pendente no momento.</div>
+              <div style={{ fontSize: '0.85rem', marginTop: '0.25rem' }}>As solicitações dos alunos enviadas pelo Canal de Pedidos aparecerão aqui.</div>
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              {supportRequests.map((req) => (
+                <div
+                  key={req.id}
+                  style={{
+                    padding: '1.25rem',
+                    borderRadius: '16px',
+                    background: req.status === 'resolved' ? 'rgba(255, 255, 255, 0.03)' : 'rgba(24, 34, 27, 0.85)',
+                    border: req.status === 'resolved' ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid rgba(56, 189, 248, 0.3)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.75rem'
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                      <span style={{
+                        padding: '0.2rem 0.6rem',
+                        borderRadius: '6px',
+                        background: req.type === 'cronograma_vip' ? 'rgba(234, 179, 8, 0.2)' : 'rgba(56, 189, 248, 0.2)',
+                        border: req.type === 'cronograma_vip' ? '1px solid #eab308' : '1px solid #38bdf8',
+                        color: req.type === 'cronograma_vip' ? '#fbbf24' : '#38bdf8',
+                        fontSize: '0.74rem',
+                        fontWeight: 900
+                      }}>
+                        {req.type === 'cronograma_vip' ? '🛡️ PEDIDO CRONOGRAMA VIP (R$ 4,00)' : '💬 DÚVIDA / SUGESTÃO'}
+                      </span>
+                      <strong style={{ fontSize: '0.96rem', color: '#f8fafc' }}>{req.userName}</strong>
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.78rem', color: '#94a3b8' }}>
+                      <Clock size={13} />
+                      <span>{new Date(req.createdAt).toLocaleString('pt-BR')}</span>
+                    </div>
+                  </div>
+
+                  <div style={{
+                    fontSize: '0.9rem',
+                    color: '#e2e8f0',
+                    lineHeight: 1.5,
+                    background: 'rgba(0, 0, 0, 0.3)',
+                    padding: '0.85rem 1rem',
+                    borderRadius: '10px'
+                  }}>
+                    "{req.message}"
+                  </div>
+
+                  {/* Ações para o Pedido */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.65rem' }}>
+                    <div style={{ fontSize: '0.82rem', color: '#94a3b8' }}>
+                      {req.whatsappContact && (
+                        <span>📱 WhatsApp informado: <strong style={{ color: '#4ade80' }}>{req.whatsappContact}</strong></span>
+                      )}
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      {/* Se for pedido de cronograma VIP, botão direto para liberar */}
+                      {req.type === 'cronograma_vip' && (
+                        <button
+                          onClick={() => handleToggleScheduleAccess(normalizeUserName(req.userName), req.userName, true)}
+                          style={{
+                            padding: '0.55rem 0.95rem',
+                            borderRadius: '8px',
+                            background: 'linear-gradient(135deg, #eab308, #ca8a04)',
+                            border: 'none',
+                            color: '#0f172a',
+                            fontWeight: 900,
+                            fontSize: '0.8rem',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.35rem'
+                          }}
+                        >
+                          <Sparkles size={14} />
+                          <span>Liberar Cronograma VIP</span>
+                        </button>
+                      )}
+
+                      {/* Abrir WhatsApp do Aluno se informado */}
+                      {req.whatsappContact && (
+                        <a
+                          href={`https://wa.me/55${req.whatsappContact.replace(/\D/g, '')}?text=${encodeURIComponent(
+                            `Olá, ${req.userName}! Aqui é o Comandante Gean da Missão PMPE. Recebi seu pedido na plataforma sobre: "${req.message}"`
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            padding: '0.55rem 0.95rem',
+                            borderRadius: '8px',
+                            background: 'rgba(34, 197, 94, 0.2)',
+                            border: '1px solid #22c55e',
+                            color: '#4ade80',
+                            fontWeight: 800,
+                            fontSize: '0.8rem',
+                            textDecoration: 'none',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.35rem'
+                          }}
+                        >
+                          <span>Responder no WhatsApp</span>
+                        </a>
+                      )}
+
+                      {/* Alternar Status Atendido / Pendente */}
+                      <button
+                        onClick={() => handleUpdateSupportStatus(req.id, req.status === 'resolved' ? 'pending' : 'resolved')}
+                        style={{
+                          padding: '0.55rem 0.85rem',
+                          borderRadius: '8px',
+                          background: req.status === 'resolved' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(34, 197, 94, 0.25)',
+                          border: req.status === 'resolved' ? '1px solid rgba(255, 255, 255, 0.15)' : '1px solid #22c55e',
+                          color: req.status === 'resolved' ? '#94a3b8' : '#4ade80',
+                          fontWeight: 800,
+                          fontSize: '0.8rem',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        {req.status === 'resolved' ? 'Marcar como Pendente' : 'Marcar como Atendido'}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+        )}
 
         {/* ORIENTAÇÕES DE MONETIZAÇÃO & CONTROLE PARA O COMANDANTE GEAN */}
         <section style={{

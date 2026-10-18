@@ -25,11 +25,15 @@ import { DailyMotivationModal } from './components/DailyMotivationModal';
 import { StudentAnalyticsModal } from './components/StudentAnalyticsModal';
 import { CommanderAccessModal } from './components/CommanderAccessModal';
 import { CommanderDashboardView } from './components/CommanderDashboardView';
+import { StudyScheduleModal } from './components/StudyScheduleModal';
+import { QuestionPdfModal } from './components/QuestionPdfModal';
+import { PromotionalAdModal } from './components/PromotionalAdModal';
+import { OrderRequestsModal } from './components/OrderRequestsModal';
 import { getDailyMotivationalQuote, type MotivationalQuote } from './utils/motivationalQuotes';
 import { recordStudentLogin, recordQuizCompletion } from './utils/studentAnalytics';
-import { fetchRegistryFromCloud, isMasterUser } from './utils/authManager';
+import { fetchRegistryFromCloud, isMasterUser, checkActiveSessionValidity } from './utils/authManager';
 import { updateAndCalculateStreak } from './utils/studentStreak';
-import { Swords, ArrowRight, ShieldCheck, Shield } from 'lucide-react';
+import { Swords, ArrowRight, ShieldCheck, Shield, Calendar, FileText, Smartphone, AlertTriangle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export function App() {
@@ -157,6 +161,27 @@ export function App() {
     statsDetail: { label: string; value: string | number }[];
   } | null>(null);
 
+  // Novos Recursos: Cronograma VIP, PDF de Questões, Anúncio e Canal de Pedidos
+  const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false);
+  const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
+  const [isPromoAdOpen, setIsPromoAdOpen] = useState(false);
+  const [isOrderRequestsOpen, setIsOrderRequestsOpen] = useState(false);
+  const [sessionKickedReason, setSessionKickedReason] = useState<{ title: string; message: string } | null>(null);
+
+  // Exibe o mini anúncio promocional da mentoria para o guerreiro
+  useEffect(() => {
+    if (currentUser) {
+      const shown = sessionStorage.getItem('pmpe_promo_ad_shown');
+      if (!shown) {
+        const timer = setTimeout(() => {
+          setIsPromoAdOpen(true);
+          sessionStorage.setItem('pmpe_promo_ad_shown', 'true');
+        }, 1000);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [currentUser]);
+
   // Monitorar solicitações pendentes de acesso para a conta Titular do Comandante Gean
   const checkPendingUsers = async () => {
     try {
@@ -174,6 +199,38 @@ export function App() {
       const interval = setInterval(checkPendingUsers, 12000);
       return () => clearInterval(interval);
     }
+  }, [currentUser]);
+
+  // Trava de Dispositivo Único & Sessão Ativa (Anti-Fraude e Anti-Compartilhamento)
+  useEffect(() => {
+    if (!currentUser || isMasterUser(currentUser)) return;
+
+    const checkSession = async () => {
+      const check = await checkActiveSessionValidity(currentUser);
+      if (!check.valid) {
+        sound.playError();
+        handleLogout();
+        setSessionKickedReason({
+          title: '🚫 SESSÃO ENCERRADA: OUTRO DISPOSITIVO CONECTADO',
+          message: `Sua conta foi acessada em outro aparelho (${check.deviceName || 'Celular/Computador'}). Por motivo de segurança e combate a fraudes (compartilhamento indevido de conta), o acesso neste aparelho foi encerrado. Cada aluno pode utilizar apenas 1 dispositivo ativo por vez.`
+        });
+      }
+    };
+
+    checkSession();
+    const interval = setInterval(checkSession, 12000);
+
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        checkSession();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
   }, [currentUser]);
 
   // Registrar login inicial do aluno se já autenticado
@@ -609,7 +666,71 @@ export function App() {
 
   // Se o guerreiro ainda não autenticou, exibe a tela de login tático
   if (!currentUser) {
-    return <LoginScreen onLoginSuccess={handleLoginSuccess} />;
+    return (
+      <>
+        {sessionKickedReason && (
+          <div style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 99999,
+            background: 'rgba(0, 0, 0, 0.94)',
+            backdropFilter: 'blur(16px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '1.5rem'
+          }}>
+            <div style={{
+              maxWidth: '520px',
+              width: '100%',
+              background: 'linear-gradient(135deg, rgba(38, 14, 14, 0.98), rgba(18, 6, 6, 0.98))',
+              border: '2px solid #ef4444',
+              borderRadius: '24px',
+              padding: '2.25rem 2rem',
+              textAlign: 'center',
+              boxShadow: '0 0 50px rgba(239, 68, 68, 0.4)'
+            }}>
+              <div style={{
+                width: '64px',
+                height: '64px',
+                borderRadius: '50%',
+                background: 'rgba(239, 68, 68, 0.2)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1rem',
+                border: '1.5px solid #ef4444'
+              }}>
+                <Smartphone size={32} color="#f87171" />
+              </div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#ffffff', margin: '0 0 0.75rem', textTransform: 'uppercase' }}>
+                {sessionKickedReason.title}
+              </h3>
+              <p style={{ fontSize: '0.88rem', color: '#fca5a5', lineHeight: 1.55, margin: '0 0 1.5rem' }}>
+                {sessionKickedReason.message}
+              </p>
+              <button
+                onClick={() => setSessionKickedReason(null)}
+                style={{
+                  padding: '0.85rem 2rem',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #ef4444, #dc2626)',
+                  border: 'none',
+                  color: '#ffffff',
+                  fontWeight: 900,
+                  fontSize: '0.92rem',
+                  cursor: 'pointer',
+                  boxShadow: '0 8px 20px rgba(239, 68, 68, 0.4)'
+                }}
+              >
+                Entendido • Fazer Novo Login
+              </button>
+            </div>
+          </div>
+        )}
+        <LoginScreen onLoginSuccess={handleLoginSuccess} />
+      </>
+    );
   }
 
   const hasCustomDecks = questions.some((q) => q.categoryId === 'custom');
@@ -643,6 +764,9 @@ export function App() {
         onOpenMotivation={() => setIsMotivationModalOpen(true)}
         onOpenCommanderAccess={() => setIsCommanderScreenOpen(true)}
         pendingUsersCount={pendingUsersCount}
+        onOpenSchedule={() => setIsScheduleModalOpen(true)}
+        onOpenPdfExport={() => setIsPdfModalOpen(true)}
+        onOpenOrders={() => setIsOrderRequestsOpen(true)}
       />
 
       {/* Roteamento de Telas */}
@@ -724,6 +848,108 @@ export function App() {
               </button>
             </div>
           )}
+
+          {/* CARDS DE AÇÃO RÁPIDA: CRONOGRAMA INTELIGENTE & BAIXAR CADERNO PDF */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1rem',
+            marginBottom: '1rem'
+          }}>
+            {/* Card 1: Cronograma Inteligente */}
+            <div
+              onClick={() => {
+                sound.playClick();
+                setIsScheduleModalOpen(true);
+              }}
+              style={{
+                cursor: 'pointer',
+                padding: '1.1rem 1.25rem',
+                borderRadius: '16px',
+                background: 'linear-gradient(135deg, rgba(30, 24, 10, 0.95) 0%, rgba(18, 14, 5, 0.98) 100%)',
+                border: '1.5px solid rgba(234, 179, 8, 0.5)',
+                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(234, 179, 8, 0.2)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                transition: 'transform 0.2s, box-shadow 0.2s'
+              }}
+            >
+              <div style={{
+                width: '46px',
+                height: '46px',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #eab308, #ca8a04)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 0 15px rgba(234, 179, 8, 0.4)',
+                flexShrink: 0
+              }}>
+                <Calendar size={24} color="#0f172a" />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#fef3c7' }}>
+                    Cronograma de Estudos
+                  </span>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(234, 179, 8, 0.2)', color: '#fbbf24', fontWeight: 900 }}>
+                    VIP
+                  </span>
+                </div>
+                <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+                  Metodologia neurocientífica de alta retenção adaptada à sua rotina (AOCP)
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2: Baixar Caderno em PDF */}
+            <div
+              onClick={() => {
+                sound.playClick();
+                setIsPdfModalOpen(true);
+              }}
+              style={{
+                cursor: 'pointer',
+                padding: '1.1rem 1.25rem',
+                borderRadius: '16px',
+                background: 'linear-gradient(135deg, rgba(14, 28, 38, 0.95) 0%, rgba(8, 16, 22, 0.98) 100%)',
+                border: '1.5px solid rgba(56, 189, 248, 0.4)',
+                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(56, 189, 248, 0.2)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                transition: 'transform 0.2s, box-shadow 0.2s'
+              }}
+            >
+              <div style={{
+                width: '46px',
+                height: '46px',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #0284c7, #0369a1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 0 15px rgba(2, 132, 199, 0.4)',
+                flexShrink: 0
+              }}>
+                <FileText size={24} color="#ffffff" />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#f0f9ff' }}>
+                    Baixar Caderno em PDF
+                  </span>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8', fontWeight: 900 }}>
+                    IMPRIMIR
+                  </span>
+                </div>
+                <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+                  Gere listas de questões prontas para imprimir com folha de respostas
+                </div>
+              </div>
+            </div>
+          </div>
 
           {/* Seletor de Categoria, Semanas e Blocos PMPE */}
           <CategorySelector
@@ -932,6 +1158,37 @@ export function App() {
           onClose={() => setIsAnalyticsModalOpen(false)}
         />
       )}
+
+      {/* MODAL: CRONOGRAMA INTELIGENTE DE ESTUDOS VIP */}
+      <StudyScheduleModal
+        isOpen={isScheduleModalOpen}
+        onClose={() => setIsScheduleModalOpen(false)}
+        userName={currentUser}
+      />
+
+      {/* MODAL: GERADOR & DOWNLOAD DE CADERNO EM PDF */}
+      <QuestionPdfModal
+        isOpen={isPdfModalOpen}
+        onClose={() => setIsPdfModalOpen(false)}
+        questions={questions}
+        initialSimuladoId={selectedSimulado}
+        userName={currentUser}
+      />
+
+      {/* MODAL: MINI ANÚNCIO DE ENTRADA & MONETIZAÇÃO */}
+      <PromotionalAdModal
+        isOpen={isPromoAdOpen}
+        onClose={() => setIsPromoAdOpen(false)}
+        onOpenSchedule={() => setIsScheduleModalOpen(true)}
+        onOpenOrders={() => setIsOrderRequestsOpen(true)}
+      />
+
+      {/* MODAL: CANAL DE PEDIDOS & DÚVIDAS */}
+      <OrderRequestsModal
+        isOpen={isOrderRequestsOpen}
+        onClose={() => setIsOrderRequestsOpen(false)}
+        userName={currentUser}
+      />
     </div>
   );
 }

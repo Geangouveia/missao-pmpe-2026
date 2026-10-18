@@ -19,7 +19,8 @@ import { getDailyMotivationalQuote, MOTIVATIONAL_QUOTES } from '../utils/motivat
 import { 
   validateLoginAttempt, 
   setUserPersonalPassword, 
-  isMasterUser 
+  isMasterUser,
+  createAndRecordSession
 } from '../utils/authManager';
 import { sound } from '../utils/sound';
 
@@ -85,6 +86,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
 
       if (res.allowed) {
         sound.playLevelUp();
+        createAndRecordSession(trimmedName);
         const userData = {
           name: trimmedName,
           authenticatedAt: new Date().toISOString(),
@@ -141,6 +143,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
       const trimmedName = name.trim();
       await setUserPersonalPassword(trimmedName, trimmedNew);
       sound.playLevelUp();
+      createAndRecordSession(trimmedName);
 
       const userData = {
         name: trimmedName,

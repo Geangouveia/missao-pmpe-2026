@@ -43,7 +43,7 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
     { id: 'caderno_rlm_probabilidade', label: '🧠 RLM & Probabilidade (250Q)' },
     { id: 'caderno_const_pmpe', label: '⚖️ Constitucional & Art. 144 (160Q)' },
     { id: 'caderno_portugues_aocp', label: '📖 Português AOCP (250Q)' },
-    { id: 'caderno_pmpe_estatuto', label: '🛡️ Estatuto PMPE (Lei 6.783/74)' },
+    { id: 'caderno_pmpe_estatuto', label: '🛡️ Estatuto PMPE (114Q)' },
     { id: 'caderno_informatica', label: '💻 Informática PMPE AOCP' },
     { id: 'caderno_historia_pe', label: '🦁 História de PE AOCP' },
     { id: 'aocp_elite', label: '⭐ Caderno Elite AOCP' },

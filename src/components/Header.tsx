@@ -1,5 +1,5 @@
 import React from 'react';
-import { Volume2, VolumeX, Trophy, PlusCircle, Flame, Sparkles, LogOut, UserCheck, BarChart3, ShieldCheck } from 'lucide-react';
+import { Volume2, VolumeX, Trophy, PlusCircle, Flame, Sparkles, LogOut, UserCheck, BarChart3, ShieldCheck, Calendar, FileText, MessageSquare } from 'lucide-react';
 import type { PlayerStats } from '../types/game';
 import { sound } from '../utils/sound';
 import { StreakFlame } from './StreakFlame';
@@ -19,6 +19,9 @@ interface HeaderProps {
   onOpenMotivation?: () => void;
   onOpenCommanderAccess?: () => void;
   pendingUsersCount?: number;
+  onOpenSchedule?: () => void;
+  onOpenPdfExport?: () => void;
+  onOpenOrders?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -34,6 +37,9 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenMotivation,
   onOpenCommanderAccess,
   pendingUsersCount,
+  onOpenSchedule,
+  onOpenPdfExport,
+  onOpenOrders,
 }) => {
   // Cálculo de XP para o próximo nível (100 XP por nível com escala suave)
   const xpCurrentLevel = stats.xp % 100;
@@ -192,6 +198,71 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <BarChart3 size={16} color="#fbbf24" />
               <span>⚔️ Duelo & Pelotão</span>
+            </button>
+          )}
+
+          {onOpenSchedule && (
+            <button
+              className="btn-secondary"
+              style={{
+                padding: '0.5rem 0.95rem',
+                fontSize: '0.84rem',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(234, 179, 8, 0.2), rgba(180, 83, 9, 0.25))',
+                borderColor: 'rgba(234, 179, 8, 0.5)',
+                color: '#fbbf24',
+                fontWeight: 800,
+                boxShadow: '0 0 12px rgba(234, 179, 8, 0.25)'
+              }}
+              onClick={() => {
+                sound.playClick();
+                onOpenSchedule();
+              }}
+              title="Cronograma Inteligente de Estudos PMPE 2026 (Exclusivo Comandante Gean VIP)"
+            >
+              <Calendar size={16} color="#fbbf24" />
+              <span>📅 Cronograma VIP</span>
+            </button>
+          )}
+
+          {onOpenPdfExport && (
+            <button
+              className="btn-secondary"
+              style={{
+                padding: '0.5rem 0.9rem',
+                fontSize: '0.84rem',
+                borderRadius: '12px',
+                background: 'rgba(56, 189, 248, 0.12)',
+                borderColor: 'rgba(56, 189, 248, 0.4)',
+                color: '#38bdf8',
+                fontWeight: 800
+              }}
+              onClick={() => {
+                sound.playClick();
+                onOpenPdfExport();
+              }}
+              title="Gerar e Baixar Caderno em PDF para Imprimir ou Responder"
+            >
+              <FileText size={16} color="#38bdf8" />
+              <span>📄 Baixar PDF</span>
+            </button>
+          )}
+
+          {onOpenOrders && (
+            <button
+              className="icon-btn"
+              style={{
+                background: 'rgba(16, 185, 129, 0.12)',
+                borderColor: 'rgba(16, 185, 129, 0.4)',
+                color: '#34d399'
+              }}
+              onClick={() => {
+                sound.playClick();
+                onOpenOrders();
+              }}
+              title="Canal de Pedidos & Dúvidas com o Comandante Gean"
+            >
+              <MessageSquare size={17} color="#34d399" />
             </button>
           )}
 

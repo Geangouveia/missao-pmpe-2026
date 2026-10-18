@@ -16,6 +16,11 @@ export interface UserAccessRecord {
   boundDeviceId?: string;
   boundDeviceName?: string;
   boundAt?: string;
+  // Liberação VIP de Recursos pelo Comandante Gean (R$ 4,00)
+  hasScheduleAccess?: boolean;
+  // Sessão Ativa & Anti-Fraude
+  activeSessionToken?: string;
+  lastSessionHeartbeat?: string;
 }
 
 /**
@@ -263,7 +268,12 @@ export async function fetchRegistryFromCloud(): Promise<Record<string, UserAcces
                         requestedAt: sp.firstLogin || new Date().toISOString(),
                         approvedAt: sp.firstLogin || new Date().toISOString(),
                         hasChangedPassword: true,
-                        personalPassword: 'PMPE2026'
+                        personalPassword: sp.personalPassword || 'PMPE2026',
+                        boundDeviceId: sp.boundDeviceId,
+                        boundDeviceName: sp.boundDeviceName,
+                        boundAt: sp.boundAt,
+                        hasScheduleAccess: sp.hasScheduleAccess,
+                        activeSessionToken: sp.activeSessionToken
                       };
                     }
                   }
@@ -912,4 +922,302 @@ export async function validateLoginAttempt(
     };
   }
 }
+
+/**
+ * Cria e grava uma nova sessão ativa para o usuário (Garante sessão única em 1 aparelho)
+ */
+export function createAndRecordSession(userName: string): string {
+  const sessionToken = 'sess_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2, 9);
+  const currentDevId = getCurrentDeviceId();
+  const currentDevName = getDeviceFriendlyName();
+  try {
+    localStorage.setItem('pmpe_session_token', sessionToken);
+    localStorage.setItem('pmpe_session_user', userName);
+    localStorage.setItem('pmpe_session_created', new Date().toISOString());
+  } catch {}
+
+  // Sincroniza chave leve dedicada na nuvem: session_{key}
+  const userKey = normalizeUserName(userName);
+  const sessionPayload = {
+    sessionToken,
+    deviceId: currentDevId,
+    deviceName: currentDevName,
+    userName,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  };
+
+  fetch(`${CLOUD_API_BASE}/session_${encodeURIComponent(userKey)}?ttl=2592000`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(sessionPayload)
+  }).catch(() => {});
+
+  return sessionToken;
+}
+
+/**
+ * Checa a validade da sessão ativa atual contra a nuvem (Anti-Fraude e Anti-Compartilhamento)
+ */
+export async function checkActiveSessionValidity(
+  userName: string
+): Promise<{ valid: boolean; reason?: 'other_device_logged_in' | 'device_mismatch' | 'revoked'; deviceName?: string; loginTime?: string }> {
+  if (!userName || isMasterUser(userName)) {
+    return { valid: true };
+  }
+
+  const localToken = localStorage.getItem('pmpe_session_token');
+  const localDevId = getCurrentDeviceId();
+  const userKey = normalizeUserName(userName);
+
+  try {
+    const res = await fetchWithTimeout(`${CLOUD_API_BASE}/session_${encodeURIComponent(userKey)}?_t=${Date.now()}`, {
+      cache: 'no-store'
+    }, 2800);
+
+    if (res.ok) {
+      const remoteSession = await res.json();
+      if (remoteSession && remoteSession.sessionToken) {
+        // Se há uma sessão remota diferente gravada na nuvem
+        if (localToken && remoteSession.sessionToken !== localToken) {
+          return {
+            valid: false,
+            reason: 'other_device_logged_in',
+            deviceName: remoteSession.deviceName || 'Outro Celular/Computador',
+            loginTime: remoteSession.createdAt
+          };
+        }
+        // Se o deviceId na nuvem for diferente do atual
+        if (remoteSession.deviceId && remoteSession.deviceId !== localDevId) {
+          return {
+            valid: false,
+            reason: 'device_mismatch',
+            deviceName: remoteSession.deviceName || 'Outro Aparelho',
+            loginTime: remoteSession.createdAt
+          };
+        }
+      }
+    }
+  } catch {
+    // Falha temporária de conexão com o servidor: preserva a sessão local
+  }
+
+  return { valid: true };
+}
+
+/**
+ * Encerra e limpa a sessão local e na nuvem
+ */
+export async function clearActiveSession(userName: string): Promise<void> {
+  try {
+    localStorage.removeItem('pmpe_session_token');
+    localStorage.removeItem('pmpe_session_user');
+  } catch {}
+
+  if (userName && !isMasterUser(userName)) {
+    const userKey = normalizeUserName(userName);
+    try {
+      await fetch(`${CLOUD_API_BASE}/session_${encodeURIComponent(userKey)}`, { method: 'DELETE' });
+    } catch {}
+  }
+}
+
+/**
+ * Verifica se o aluno tem o Cronograma de Estudos VIP liberado
+ */
+export function isScheduleUnlocked(userName: string, userRecord?: UserAccessRecord): boolean {
+  if (!userName) return false;
+  if (isMasterUser(userName)) return true;
+  const key = normalizeUserName(userName);
+  // Checagem local imediata
+  if (localStorage.getItem(`pmpe_vip_schedule_${key}`) === 'true') return true;
+  if (userRecord && userRecord.hasScheduleAccess) return true;
+  const local = getLocalUsersRegistry();
+  if (local[key] && local[key].hasScheduleAccess) return true;
+  return false;
+}
+
+/**
+ * Libera o Cronograma VIP para o aluno (pelo Comandante Gean ou via chave de ativação)
+ */
+export async function grantScheduleAccess(targetKeyOrName: string): Promise<boolean> {
+  const local = getLocalUsersRegistry();
+  const localKey = findUserKey(local, targetKeyOrName) || normalizeUserName(targetKeyOrName);
+  if (local[localKey]) {
+    local[localKey].hasScheduleAccess = true;
+    saveLocalUsersRegistry(local);
+  }
+  localStorage.setItem(`pmpe_vip_schedule_${localKey}`, 'true');
+
+  const registry = await fetchRegistryFromCloud();
+  const key = findUserKey(registry, targetKeyOrName) || localKey;
+  if (registry[key]) {
+    registry[key].hasScheduleAccess = true;
+    saveLocalUsersRegistry(registry);
+    await pushRegistryToCloud(registry);
+  }
+
+  // Também grava na chave individual do estudante
+  try {
+    const studentCloudKey = `student_${encodeURIComponent(key)}`;
+    const curRes = await fetchWithTimeout(`${CLOUD_API_BASE}/${studentCloudKey}`, {}, 3000);
+    if (curRes.ok) {
+      const data = await curRes.json();
+      data.hasScheduleAccess = true;
+      await fetch(`${CLOUD_API_BASE}/${studentCloudKey}?ttl=31536000`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    }
+  } catch {}
+
+  return true;
+}
+
+/**
+ * Revoga o Cronograma VIP do aluno
+ */
+export async function revokeScheduleAccess(targetKeyOrName: string): Promise<boolean> {
+  const local = getLocalUsersRegistry();
+  const localKey = findUserKey(local, targetKeyOrName) || normalizeUserName(targetKeyOrName);
+  if (local[localKey]) {
+    local[localKey].hasScheduleAccess = false;
+    saveLocalUsersRegistry(local);
+  }
+  localStorage.removeItem(`pmpe_vip_schedule_${localKey}`);
+
+  const registry = await fetchRegistryFromCloud();
+  const key = findUserKey(registry, targetKeyOrName) || localKey;
+  if (registry[key]) {
+    registry[key].hasScheduleAccess = false;
+    saveLocalUsersRegistry(registry);
+    await pushRegistryToCloud(registry);
+  }
+  return true;
+}
+
+/**
+ * Estrutura para mensagens do Canal de Pedidos & Dúvidas
+ */
+export interface StudentSupportRequest {
+  id: string;
+  userName: string;
+  type: 'cronograma_vip' | 'sugestao' | 'duvida' | 'report_erro' | 'outro';
+  message: string;
+  whatsappContact?: string;
+  createdAt: string;
+  status: 'pending' | 'resolved';
+}
+
+/**
+ * Registra novo pedido do aluno no Canal de Pedidos
+ */
+export async function submitSupportRequest(
+  userName: string,
+  type: StudentSupportRequest['type'],
+  message: string,
+  whatsappContact?: string
+): Promise<boolean> {
+  const req: StudentSupportRequest = {
+    id: 'req_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2, 6),
+    userName,
+    type,
+    message: message.trim(),
+    whatsappContact: (whatsappContact || '').trim(),
+    createdAt: new Date().toISOString(),
+    status: 'pending'
+  };
+
+  try {
+    const raw = localStorage.getItem('pmpe_support_requests');
+    const list: StudentSupportRequest[] = raw ? JSON.parse(raw) : [];
+    list.unshift(req);
+    localStorage.setItem('pmpe_support_requests', JSON.stringify(list.slice(0, 50)));
+  } catch {}
+
+  try {
+    await fetch(`${CLOUD_API_BASE}/support_req_${encodeURIComponent(req.id)}?ttl=2592000`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req)
+    });
+    return true;
+  } catch {
+    return true;
+  }
+}
+
+/**
+ * Busca todos os pedidos recebidos para exibição no painel do Comandante Gean
+ */
+export async function fetchSupportRequests(): Promise<StudentSupportRequest[]> {
+  const local: StudentSupportRequest[] = (() => {
+    try {
+      return JSON.parse(localStorage.getItem('pmpe_support_requests') || '[]');
+    } catch {
+      return [];
+    }
+  })();
+
+  try {
+    const listRes = await fetchWithTimeout(`${CLOUD_API_BASE}/?prefix=support_req_&format=json&_t=${Date.now()}`, {}, 3500);
+    if (listRes.ok) {
+      const keys: string[] = await listRes.json();
+      if (Array.isArray(keys)) {
+        const fetched = await Promise.all(
+          keys.slice(0, 30).map(async (k) => {
+            try {
+              const r = await fetchWithTimeout(`${CLOUD_API_BASE}/${encodeURIComponent(k)}`, {}, 3000);
+              if (r.ok) return await r.json();
+            } catch {}
+            return null;
+          })
+        );
+        const valid = fetched.filter(Boolean) as StudentSupportRequest[];
+        const map = new Map<string, StudentSupportRequest>();
+        valid.forEach((v) => map.set(v.id, v));
+        local.forEach((l) => map.set(l.id, l));
+        return Array.from(map.values()).sort(
+          (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+      }
+    }
+  } catch {}
+
+  return local;
+}
+
+/**
+ * Marca um pedido como resolvido/atendido
+ */
+export async function updateSupportRequestStatus(id: string, status: 'pending' | 'resolved'): Promise<boolean> {
+  try {
+    const raw = localStorage.getItem('pmpe_support_requests');
+    if (raw) {
+      const list: StudentSupportRequest[] = JSON.parse(raw);
+      const found = list.find((r) => r.id === id);
+      if (found) {
+        found.status = status;
+        localStorage.setItem('pmpe_support_requests', JSON.stringify(list));
+      }
+    }
+  } catch {}
+
+  try {
+    const r = await fetchWithTimeout(`${CLOUD_API_BASE}/support_req_${encodeURIComponent(id)}`, {}, 3000);
+    if (r.ok) {
+      const req: StudentSupportRequest = await r.json();
+      req.status = status;
+      await fetch(`${CLOUD_API_BASE}/support_req_${encodeURIComponent(id)}?ttl=2592000`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(req)
+      });
+      return true;
+    }
+  } catch {}
+  return true;
+}
+
 
