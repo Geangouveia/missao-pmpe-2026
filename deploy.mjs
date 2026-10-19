@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'feat: Rolamento de Esquiva Tático (Dodge Roll com i-frames), drops de munição e áudio procedural';
+  const commitMsg = 'feat: Metal Slug 2 arsenal (HMG, Rocket, Shotgun), locutor arcade, granadas e resgate de refens (P.O.W.)';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;

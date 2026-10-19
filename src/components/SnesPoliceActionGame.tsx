@@ -7,14 +7,17 @@ import {
   Pause,
   Zap,
   Flame,
-  Gamepad2,
-  Crosshair
+  Bomb,
+  Trophy
 } from 'lucide-react';
 import { sound } from '../utils/sound';
 
 interface SnesPoliceActionGameProps {
   onBackToApp: () => void;
 }
+
+// Tipos de Armas Oficiais Metal Slug 2
+export type WeaponType = 'PISTOL' | 'HMG' | 'ROCKET' | 'SHOTGUN';
 
 // Tipos do Jogo
 interface Bullet {
@@ -25,6 +28,36 @@ interface Bullet {
   isPlayer: boolean;
   damage: number;
   color: string;
+  isHoming?: boolean;
+  isRocket?: boolean;
+}
+
+interface Grenade {
+  x: number;
+  y: number;
+  groundY: number;
+  vx: number;
+  vy: number;
+  gravity: number;
+  timer: number;
+}
+
+interface Explosion {
+  x: number;
+  y: number;
+  radius: number;
+  maxRadius: number;
+  life: number;
+}
+
+interface Pow {
+  id: number;
+  x: number;
+  y: number;
+  freed: boolean;
+  thanked: boolean;
+  itemDropped: boolean;
+  waveAnim: number;
 }
 
 interface Particle {
@@ -41,8 +74,9 @@ interface AmmoPickup {
   id: number;
   x: number;
   y: number;
-  weapon: 'rifle' | 'shotgun';
+  weapon: WeaponType;
   amount: number;
+  isGunDrop?: boolean;
 }
 
 interface Enemy {
@@ -80,11 +114,15 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
   const [isPaused, setIsPaused] = useState(false);
   const [playerHp, setPlayerHp] = useState(100);
   const [playerArmor, setPlayerArmor] = useState(100);
-  const [currentWeapon, setCurrentWeapon] = useState<'pistol' | 'rifle' | 'shotgun'>('pistol');
-  const [ammoRifle, setAmmoRifle] = useState(60);
+  
+  // Arsenal Metal Slug 2
+  const [currentWeapon, setCurrentWeapon] = useState<WeaponType>('PISTOL');
+  const [ammoHmg, setAmmoHmg] = useState(150);
+  const [ammoRocket, setAmmoRocket] = useState(20);
   const [ammoShotgun, setAmmoShotgun] = useState(15);
+  const [grenadesCount, setGrenadesCount] = useState(10);
+  const [isSuperSoldier, setIsSuperSoldier] = useState(false);
   const [rollReady, setRollReady] = useState(true);
-  const [combo, setCombo] = useState(0);
 
   // Referências mutáveis para loop de alta performance a 60 FPS
   const gameStateRef = useRef({
@@ -102,9 +140,14 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
       attackCooldown: 0,
       hp: 100,
       armor: 100,
-      ammoRifle: 60,
+      weapon: 'PISTOL' as WeaponType,
+      ammoHmg: 150,
+      ammoRocket: 20,
       ammoShotgun: 15,
-      weapon: 'pistol' as 'pistol' | 'rifle' | 'shotgun',
+      grenades: 10,
+      grenadeCooldown: 0,
+      isSuperSoldier: false,
+      superSoldierTimer: 0,
       invulnerableTimer: 0,
       muzzleFlash: 0,
       // Rolamento de Esquiva Tático (Dodge Roll)
@@ -116,6 +159,9 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
       rollSpeed: 7.2
     },
     bullets: [] as Bullet[],
+    grenades: [] as Grenade[],
+    explosions: [] as Explosion[],
+    pows: [] as Pow[],
     particles: [] as Particle[],
     enemies: [] as Enemy[],
     ammoPickups: [] as AmmoPickup[],
@@ -126,7 +172,7 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
       down: false,
       shoot: false,
       melee: false,
-      roll: false
+      grenade: false
     },
     level: 1,
     kills: 0,
@@ -152,15 +198,42 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
     }
   }, []);
 
+  // Lançamento de Granadas de Mão estilo Metal Slug 2 [G]
+  const triggerGrenade = useCallback(() => {
+    const s = gameStateRef.current;
+    const p = s.player;
+    if (p.grenades > 0 && p.grenadeCooldown <= 0) {
+      p.grenades--;
+      p.grenadeCooldown = 25;
+      setGrenadesCount(p.grenades);
+      sound.playClick();
+
+      s.grenades.push({
+        x: p.x + (p.facing === 1 ? p.width + 4 : -4),
+        y: p.y + 16,
+        groundY: s.groundY - 10,
+        vx: p.facing * 4.6,
+        vy: -5.2, // Arco parabólico para cima
+        gravity: 0.35,
+        timer: 45
+      });
+    }
+  }, []);
+
   // Alternar Arma
   const cycleWeapon = useCallback(() => {
     const p = gameStateRef.current.player;
-    const weapons: ('pistol' | 'rifle' | 'shotgun')[] = ['pistol', 'rifle', 'shotgun'];
+    const weapons: WeaponType[] = ['PISTOL', 'HMG', 'ROCKET', 'SHOTGUN'];
     const currentIdx = weapons.indexOf(p.weapon);
     const nextW = weapons[(currentIdx + 1) % weapons.length];
     p.weapon = nextW;
     setCurrentWeapon(nextW);
-    sound.playClick();
+
+    // Locutor Arcade anuncia a arma
+    if (nextW === 'HMG') sound.voiceAnnounce('HEAVY MACHINE GUN!');
+    else if (nextW === 'ROCKET') sound.voiceAnnounce('ROCKET LAUNCHER!');
+    else if (nextW === 'SHOTGUN') sound.voiceAnnounce('SHOTGUN!');
+    else sound.playClick();
   }, []);
 
   // Inicializar / Resetar Partida
@@ -172,15 +245,22 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
     s.player.vy = 0;
     s.player.hp = 100;
     s.player.armor = 100;
-    s.player.ammoRifle = 60;
+    s.player.weapon = 'PISTOL';
+    s.player.ammoHmg = 150;
+    s.player.ammoRocket = 20;
     s.player.ammoShotgun = 15;
-    s.player.weapon = 'pistol';
+    s.player.grenades = 10;
+    s.player.grenadeCooldown = 0;
+    s.player.isSuperSoldier = false;
+    s.player.superSoldierTimer = 0;
     s.player.facing = 1;
     s.player.isRolling = false;
     s.player.rollTimer = 0;
     s.player.rollCooldown = 0;
     s.player.muzzleFlash = 0;
     s.bullets = [];
+    s.grenades = [];
+    s.explosions = [];
     s.particles = [];
     s.enemies = [];
     s.ammoPickups = [];
@@ -190,17 +270,29 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
     s.bossSpawned = false;
     s.spawnTimer = 0;
 
+    // Coloca os Prisioneiros de Guerra (P.O.W.) no cenário
+    s.pows = [
+      { id: 1, x: 550, y: s.groundY, freed: false, thanked: false, itemDropped: false, waveAnim: 0 },
+      { id: 2, x: 1250, y: s.groundY, freed: false, thanked: false, itemDropped: false, waveAnim: 0 },
+      { id: 3, x: 1950, y: s.groundY, freed: false, thanked: false, itemDropped: false, waveAnim: 0 }
+    ];
+
     setPlayerHp(100);
     setPlayerArmor(100);
-    setAmmoRifle(60);
+    setAmmoHmg(150);
+    setAmmoRocket(20);
     setAmmoShotgun(15);
-    setCurrentWeapon('pistol');
+    setGrenadesCount(10);
+    setCurrentWeapon('PISTOL');
+    setIsSuperSoldier(false);
     setRollReady(true);
     setCurrentLevel(levelToStart);
     setIsGameOver(false);
     setIsVictory(false);
     setIsPaused(false);
-    setCombo(0);
+
+    // Anúncio oficial de voz arcade estilo Metal Slug
+    sound.voiceAnnounce(`MISSION ${levelToStart} START!`);
 
     // Spawna primeiros inimigos
     for (let i = 0; i < 4; i++) {
@@ -249,28 +341,40 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
         e.preventDefault();
       }
 
-      // ESQUIVA / ROLAMENTO TÁTICO: TECLA C OU SHIFT
+      // Esquiva / Rolamento: Tecla C ou Shift
       if (e.code === 'KeyC' || e.code === 'ShiftLeft') {
         triggerDodgeRoll();
         e.preventDefault();
       }
 
-      // Seleção Rápida de Armas: 1, 2, 3
+      // Granadas de Mão estilo Metal Slug: Tecla G
+      if (e.code === 'KeyG') {
+        triggerGrenade();
+        e.preventDefault();
+      }
+
+      // Teclas de Armas Metal Slug (H, R, S) ou 1, 2, 3, 4
       if (e.code === 'Digit1') {
-        p.weapon = 'pistol';
-        setCurrentWeapon('pistol');
+        p.weapon = 'PISTOL';
+        setCurrentWeapon('PISTOL');
         sound.playClick();
       }
-      if (e.code === 'Digit2') {
-        p.weapon = 'rifle';
-        setCurrentWeapon('rifle');
-        sound.playClick();
+      if (e.code === 'KeyH' || e.code === 'Digit2') {
+        p.weapon = 'HMG';
+        setCurrentWeapon('HMG');
+        sound.voiceAnnounce('HEAVY MACHINE GUN!');
       }
-      if (e.code === 'Digit3') {
-        p.weapon = 'shotgun';
-        setCurrentWeapon('shotgun');
-        sound.playClick();
+      if (e.code === 'KeyR' || e.code === 'Digit3') {
+        p.weapon = 'ROCKET';
+        setCurrentWeapon('ROCKET');
+        sound.voiceAnnounce('ROCKET LAUNCHER!');
       }
+      if (e.code === 'KeyS' || e.code === 'Digit4') {
+        p.weapon = 'SHOTGUN';
+        setCurrentWeapon('SHOTGUN');
+        sound.voiceAnnounce('SHOTGUN!');
+      }
+
       // Alternar armas com Q
       if (e.code === 'KeyQ') {
         cycleWeapon();
@@ -298,7 +402,7 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
     };
-  }, [triggerDodgeRoll, cycleWeapon]);
+  }, [triggerDodgeRoll, triggerGrenade, cycleWeapon]);
 
   // Loop Principal de Física e Renderização 60 FPS
   useEffect(() => {
@@ -310,10 +414,31 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
 
     const gameLoop = () => {
       const state = gameStateRef.current;
-      const { player, keys, bullets, particles, enemies, ammoPickups } = state;
+      const { player, keys, bullets, grenades, explosions, pows, particles, enemies, ammoPickups } = state;
 
       if (!isPaused && !isGameOver && !isVictory) {
         // ================= ATUALIZAÇÃO DO JOGADOR =================
+        // Transformação Super Soldado PMPE (Modo Fúria Tática)
+        if (player.isSuperSoldier) {
+          player.superSoldierTimer--;
+          if (player.superSoldierTimer <= 0) {
+            player.isSuperSoldier = false;
+            setIsSuperSoldier(false);
+          }
+          // Partículas de aura dourada
+          if (Math.random() < 0.4) {
+            particles.push({
+              x: player.x + Math.random() * player.width,
+              y: player.y + Math.random() * player.height,
+              vx: (Math.random() - 0.5) * 1.5,
+              vy: -Math.random() * 2.5,
+              alpha: 0.9,
+              color: '#fde047',
+              size: 3
+            });
+          }
+        }
+
         // Se estiver rolando (Dodge Roll Tático com i-frames)
         if (player.isRolling) {
           player.vx = player.facing * player.rollSpeed;
@@ -338,11 +463,12 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
           }
         } else {
           // Movimento Horizontal Normal
+          const moveSpeed = player.isSuperSoldier ? 5.5 : 4.2;
           if (keys.left) {
-            player.vx = -4.2;
+            player.vx = -moveSpeed;
             player.facing = -1;
           } else if (keys.right) {
-            player.vx = 4.2;
+            player.vx = moveSpeed;
             player.facing = 1;
           } else {
             player.vx *= 0.75;
@@ -370,13 +496,12 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
           }
         }
 
-        // Decrementa Cooldown da Esquiva
+        // Decrementa Cooldown da Esquiva e Granada
         if (player.rollCooldown > 0) {
           player.rollCooldown--;
-          if (player.rollCooldown === 0) {
-            setRollReady(true);
-          }
+          if (player.rollCooldown === 0) setRollReady(true);
         }
+        if (player.grenadeCooldown > 0) player.grenadeCooldown--;
 
         // Limites do Mundo
         player.x = Math.max(20, Math.min(state.worldWidth - player.width - 20, player.x));
@@ -390,115 +515,177 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
         if (player.attackCooldown > 0) player.attackCooldown--;
         if (player.muzzleFlash > 0) player.muzzleFlash--;
 
-        // ================= DISPAROS DO POLICIAL =================
+        // ================= DISPAROS DO ARSENAL METAL SLUG 2 =================
         if (keys.shoot && player.attackCooldown <= 0 && !player.isRolling) {
-          if (player.weapon === 'pistol') {
+          const spawnX = player.facing === 1 ? player.x + player.width + 4 : player.x - 4;
+          const spawnY = player.isCrouching ? player.y + 38 : player.y + 22;
+
+          if (player.weapon === 'PISTOL') {
             player.attackCooldown = 15;
             player.muzzleFlash = 3;
             sound.playGunshot38();
             bullets.push({
-              x: player.facing === 1 ? player.x + player.width + 4 : player.x - 4,
-              y: player.isCrouching ? player.y + 40 : player.y + 24,
+              x: spawnX,
+              y: spawnY,
               vx: player.facing * 14,
               vy: 0,
               isPlayer: true,
-              damage: 25,
+              damage: player.isSuperSoldier ? 35 : 20,
               color: '#fde047'
             });
-          } else if (player.weapon === 'rifle') {
-            if (player.ammoRifle > 0) {
-              player.ammoRifle--;
-              setAmmoRifle(player.ammoRifle);
-              player.attackCooldown = 8;
+          } else if (player.weapon === 'HMG') {
+            // H - Heavy Machine Gun (Cadência ultrarrápida contínua)
+            if (player.ammoHmg > 0) {
+              player.ammoHmg--;
+              setAmmoHmg(player.ammoHmg);
+              player.attackCooldown = 5; // muito rápida!
               player.muzzleFlash = 3;
               sound.playHeavyAk47Burst();
               bullets.push({
-                x: player.facing === 1 ? player.x + player.width + 4 : player.x - 4,
-                y: player.isCrouching ? player.y + 38 : player.y + 22,
+                x: spawnX,
+                y: spawnY + (Math.random() - 0.5) * 4,
                 vx: player.facing * 16,
-                vy: (Math.random() - 0.5) * 1.2,
+                vy: (Math.random() - 0.5) * 0.8,
                 isPlayer: true,
-                damage: 32,
-                color: '#38bdf8'
+                damage: player.isSuperSoldier ? 28 : 18,
+                color: '#ffcc00'
               });
             } else {
-              // Sem munição do fuzil: volta para pistola
-              player.weapon = 'pistol';
-              setCurrentWeapon('pistol');
+              player.weapon = 'PISTOL';
+              setCurrentWeapon('PISTOL');
               sound.playClick();
             }
-          } else if (player.weapon === 'shotgun') {
+          } else if (player.weapon === 'ROCKET') {
+            // R - Rocket Launcher (Mísseis Teleguiados com Fumaça)
+            if (player.ammoRocket > 0) {
+              player.ammoRocket--;
+              setAmmoRocket(player.ammoRocket);
+              player.attackCooldown = 26;
+              player.muzzleFlash = 4;
+              sound.playRocket();
+              bullets.push({
+                x: spawnX,
+                y: spawnY,
+                vx: player.facing * 7.5,
+                vy: 0,
+                isPlayer: true,
+                damage: player.isSuperSoldier ? 85 : 55,
+                color: '#ef4444',
+                isHoming: true,
+                isRocket: true
+              });
+            } else {
+              player.weapon = 'PISTOL';
+              setCurrentWeapon('PISTOL');
+              sound.playClick();
+            }
+          } else if (player.weapon === 'SHOTGUN') {
+            // S - Shotgun (Nuvem de Estilhaços Devastadora)
             if (player.ammoShotgun > 0) {
               player.ammoShotgun--;
               setAmmoShotgun(player.ammoShotgun);
-              player.attackCooldown = 28;
-              player.muzzleFlash = 4;
+              player.attackCooldown = 32;
+              player.muzzleFlash = 5;
               sound.playShotgunBlast();
-              for (let i = -2; i <= 2; i++) {
+              for (let i = -3; i <= 3; i++) {
                 bullets.push({
-                  x: player.facing === 1 ? player.x + player.width + 4 : player.x - 4,
-                  y: player.isCrouching ? player.y + 38 : player.y + 24,
-                  vx: player.facing * (13 + Math.random() * 3),
-                  vy: i * 1.5,
+                  x: spawnX,
+                  y: spawnY,
+                  vx: player.facing * (13 + Math.random() * 4),
+                  vy: i * 1.6,
                   isPlayer: true,
-                  damage: 20,
-                  color: '#fb923c'
+                  damage: player.isSuperSoldier ? 22 : 15,
+                  color: '#ffffff'
                 });
               }
             } else {
-              // Sem munição da escopeta: volta para pistola
-              player.weapon = 'pistol';
-              setCurrentWeapon('pistol');
+              player.weapon = 'PISTOL';
+              setCurrentWeapon('PISTOL');
               sound.playClick();
             }
           }
         }
 
-        // ================= CORONHADA / GOLPE CORPO A CORPO =================
-        if (keys.melee && player.attackCooldown <= 0 && !player.isRolling) {
-          player.attackCooldown = 20;
-          sound.playHit();
-          // Área de acerto da coronhada na frente do policial
-          const hitBox = {
-            x: player.facing === 1 ? player.x + player.width : player.x - 45,
-            y: player.y,
-            width: 45,
-            height: player.height
-          };
+        // ================= FÍSICA DAS GRANADAS DE MÃO [G] =================
+        for (let i = grenades.length - 1; i >= 0; i--) {
+          const g = grenades[i];
+          g.x += g.vx;
+          g.y += g.vy;
+          g.vy += g.gravity;
 
-          enemies.forEach((enemy) => {
-            if (
-              enemy.hp > 0 &&
-              hitBox.x < enemy.x + enemy.width &&
-              hitBox.x + hitBox.width > enemy.x &&
-              hitBox.y < enemy.y + enemy.height &&
-              hitBox.y + hitBox.height > enemy.y
-            ) {
-              enemy.hp -= 40;
-              enemy.vx = player.facing * 8; // empurrão tático
-              enemy.state = 'hurt';
-              enemy.hitFlash = 5;
-              // Partículas de impacto
-              for (let p = 0; p < 8; p++) {
-                particles.push({
-                  x: enemy.x + enemy.width / 2,
-                  y: enemy.y + enemy.height / 2,
-                  vx: (Math.random() - 0.5) * 6,
-                  vy: (Math.random() - 0.5) * 6,
-                  alpha: 1,
-                  color: '#ffffff',
-                  size: 3
-                });
+          // Quica no chão
+          if (g.y >= g.groundY) {
+            g.y = g.groundY;
+            g.vy = -g.vy * 0.45;
+            g.vx *= 0.72;
+          }
+
+          // Fumaça sutil na granada
+          if (Math.random() < 0.3) {
+            particles.push({
+              x: g.x,
+              y: g.y,
+              vx: (Math.random() - 0.5) * 1,
+              vy: -Math.random() * 1.5,
+              alpha: 0.7,
+              color: '#94a3b8',
+              size: 2.5
+            });
+          }
+
+          g.timer--;
+          if (g.timer <= 0) {
+            // Explosão em Área (Splash Damage)
+            explosions.push({
+              x: g.x,
+              y: g.groundY,
+              radius: 36,
+              maxRadius: 36,
+              life: 14
+            });
+            sound.playExplosion();
+
+            // Dano massivo a todos os inimigos no raio da explosão
+            enemies.forEach((enemy) => {
+              const dist = Math.hypot(enemy.x + enemy.width / 2 - g.x, enemy.y + enemy.height / 2 - g.groundY);
+              if (dist < 48 && enemy.hp > 0) {
+                enemy.hp -= 85;
+                enemy.hitFlash = 6;
+                enemy.vx = Math.sign(enemy.x - g.x) * 12;
               }
-            }
-          });
+            });
+
+            grenades.splice(i, 1);
+          }
         }
 
-        // ================= ATUALIZAÇÃO DOS PROJÉTEIS =================
+        // ================= ATUALIZAÇÃO DOS PROJÉTEIS E FOGUETES =================
         for (let i = bullets.length - 1; i >= 0; i--) {
           const b = bullets[i];
           b.x += b.vx;
           b.y += b.vy;
+
+          // Foguetes Teleguiados (Homing) & Fumaça
+          if (b.isRocket) {
+            particles.push({
+              x: b.x - b.vx * 0.6,
+              y: b.y + (Math.random() - 0.5) * 3,
+              vx: -b.vx * 0.15,
+              vy: (Math.random() - 0.5) * 1.2,
+              alpha: 0.8,
+              color: '#cbd5e1',
+              size: 3
+            });
+
+            if (b.isHoming) {
+              const target = enemies.find(e => e.hp > 0 && Math.abs(e.x - b.x) < 450);
+              if (target) {
+                const targetCenterY = target.y + target.height / 2;
+                if (targetCenterY > b.y) b.y += 1.0;
+                if (targetCenterY < b.y) b.y -= 1.0;
+              }
+            }
+          }
 
           // Se saiu do campo de visão da câmera
           if (b.x < state.cameraX - 100 || b.x > state.cameraX + 900) {
@@ -522,6 +709,18 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
                 enemy.hitFlash = 4;
                 hit = true;
 
+                // Se era foguete, causa explosão no impacto
+                if (b.isRocket) {
+                  explosions.push({
+                    x: b.x,
+                    y: b.y,
+                    radius: 28,
+                    maxRadius: 28,
+                    life: 12
+                  });
+                  sound.playExplosion();
+                }
+
                 // Partículas de faísca / impacto
                 for (let p = 0; p < 5; p++) {
                   particles.push({
@@ -543,11 +742,8 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
             }
           } else {
             // Tiro do Inimigo tentando acertar o Policial
-            // PILAR 1: FRAMES DE INVULNERABILIDADE (I-FRAMES)
-            // SE O POLICIAL ESTIVER EM ROLAMENTO DE ESQUIVA, NENHUM TIRO ACERTA!
-            if (player.isRolling) {
-              continue;
-            }
+            // FRAMES DE INVULNERABILIDADE (I-FRAMES DO ROLAMENTO)
+            if (player.isRolling) continue;
 
             if (
               player.invulnerableTimer <= 0 &&
@@ -557,9 +753,8 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
               b.y < player.y + player.height
             ) {
               sound.playError();
-              player.invulnerableTimer = 35; // 35 frames de invulnerabilidade
+              player.invulnerableTimer = 35;
 
-              // Dano no Colete primeiro, depois no HP
               if (player.armor > 0) {
                 player.armor = Math.max(0, player.armor - b.damage);
                 setPlayerArmor(player.armor);
@@ -568,9 +763,7 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
                 setPlayerHp(player.hp);
               }
 
-              if (player.hp <= 0) {
-                setIsGameOver(true);
-              }
+              if (player.hp <= 0) setIsGameOver(true);
 
               bullets.splice(i, 1);
               continue;
@@ -578,21 +771,78 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
           }
         }
 
-        // ================= COLETA DE MUNIÇÃO NO ASFALTO =================
+        // ================= RESGATE DE PRISIONEIROS (P.O.W.) =================
+        pows.forEach((pow) => {
+          if (!pow.freed) {
+            // Resgate ao encostar nele ou atingi-lo
+            const dist = Math.abs(player.x + player.width / 2 - pow.x);
+            if (dist < 34) {
+              pow.freed = true;
+              pow.thanked = true;
+              sound.voiceAnnounce('THANK YOU!');
+              state.score += 500;
+              setScore(state.score);
+
+              // Prisioneiro joga uma arma do Metal Slug 2 no chão!
+              const weaponOptions: WeaponType[] = ['HMG', 'ROCKET', 'SHOTGUN'];
+              const chosen = weaponOptions[Math.floor(Math.random() * weaponOptions.length)];
+              
+              ammoPickups.push({
+                id: Math.random(),
+                x: pow.x + (player.facing === 1 ? 25 : -25),
+                y: state.groundY - 14,
+                weapon: chosen,
+                amount: chosen === 'HMG' ? 120 : chosen === 'ROCKET' ? 15 : 12,
+                isGunDrop: true
+              });
+            }
+          } else {
+            // Prisioneiro resgatado corre para fora da tela agradecendo
+            pow.x -= 1.8;
+          }
+        });
+
+        // ================= COLETA DE ARMAS E MUNIÇÃO =================
         for (let i = ammoPickups.length - 1; i >= 0; i--) {
           const item = ammoPickups[i];
-          const dist = Math.abs((player.x + player.width / 2) - item.x);
+          const dist = Math.abs(player.x + player.width / 2 - item.x);
           if (dist < 32 && player.y + player.height >= state.groundY - 20) {
-            if (item.weapon === 'rifle') {
-              player.ammoRifle = Math.min(150, player.ammoRifle + item.amount);
-              setAmmoRifle(player.ammoRifle);
-            } else {
-              player.ammoShotgun = Math.min(40, player.ammoShotgun + item.amount);
-              setAmmoShotgun(player.ammoShotgun);
-            }
-            sound.playPickup();
+            if (item.isGunDrop) {
+              // Caixa de Arma Especial do P.O.W.
+              player.weapon = item.weapon;
+              setCurrentWeapon(item.weapon);
 
-            // Partículas de coleta
+              if (item.weapon === 'HMG') {
+                player.ammoHmg = Math.min(300, player.ammoHmg + item.amount);
+                setAmmoHmg(player.ammoHmg);
+                sound.voiceAnnounce('HEAVY MACHINE GUN!');
+              } else if (item.weapon === 'ROCKET') {
+                player.ammoRocket = Math.min(40, player.ammoRocket + item.amount);
+                setAmmoRocket(player.ammoRocket);
+                sound.voiceAnnounce('ROCKET LAUNCHER!');
+              } else if (item.weapon === 'SHOTGUN') {
+                player.ammoShotgun = Math.min(30, player.ammoShotgun + item.amount);
+                setAmmoShotgun(player.ammoShotgun);
+                sound.voiceAnnounce('SHOTGUN!');
+              }
+            } else {
+              // Caixa de Munição Comum / Granadas
+              player.grenades = Math.min(20, player.grenades + 4);
+              setGrenadesCount(player.grenades);
+              if (item.weapon === 'HMG') {
+                player.ammoHmg = Math.min(300, player.ammoHmg + item.amount);
+                setAmmoHmg(player.ammoHmg);
+              } else if (item.weapon === 'ROCKET') {
+                player.ammoRocket = Math.min(40, player.ammoRocket + item.amount);
+                setAmmoRocket(player.ammoRocket);
+              } else {
+                player.ammoShotgun = Math.min(30, player.ammoShotgun + item.amount);
+                setAmmoShotgun(player.ammoShotgun);
+              }
+              sound.playPickup();
+            }
+
+            // Partículas verdes de coleta
             for (let p = 0; p < 8; p++) {
               particles.push({
                 x: item.x,
@@ -600,7 +850,7 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
                 vx: (Math.random() - 0.5) * 4,
                 vy: -Math.random() * 4,
                 alpha: 1,
-                color: item.weapon === 'rifle' ? '#38bdf8' : '#fb923c',
+                color: '#22c55e',
                 size: 2.5
               });
             }
@@ -640,6 +890,7 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
         if (state.kills >= 12 && !state.bossSpawned) {
           state.bossSpawned = true;
           sound.playMilitaryAchievement();
+          sound.voiceAnnounce('WARNING! BOSS INCOMING!');
           enemies.push({
             id: state.enemyIdCounter++,
             type: 'boss',
@@ -648,8 +899,8 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
             vx: 0,
             width: 52,
             height: 76,
-            hp: 250,
-            maxHp: 250,
+            hp: 280,
+            maxHp: 280,
             shootCooldown: 40,
             state: 'walk',
             facing: -1,
@@ -663,23 +914,21 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
           if (enemy.hitFlash > 0) enemy.hitFlash--;
 
           if (enemy.hp <= 0) {
-            // Morte do inimigo
             state.kills++;
             setKillsCount(state.kills);
             const gainedScore = enemy.type === 'boss' ? 500 : 50;
             state.score += gainedScore;
             setScore(state.score);
-            setCombo(prev => prev + 1);
 
-            // Chance de dropar caixa de munição no chão (55% de chance)
+            // Chance de dropar munição / granadas
             if (Math.random() < 0.55) {
-              const dropType: 'rifle' | 'shotgun' = Math.random() < 0.65 ? 'rifle' : 'shotgun';
+              const dropType: WeaponType = Math.random() < 0.5 ? 'HMG' : Math.random() < 0.75 ? 'ROCKET' : 'SHOTGUN';
               ammoPickups.push({
                 id: Math.random(),
                 x: enemy.x + enemy.width / 2,
                 y: state.groundY - 14,
                 weapon: dropType,
-                amount: dropType === 'rifle' ? 25 : 8
+                amount: dropType === 'HMG' ? 30 : dropType === 'ROCKET' ? 4 : 3
               });
             }
 
@@ -692,25 +941,21 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
             if (enemy.type === 'boss') {
               setIsVictory(true);
               sound.playMilitaryAchievement();
+              sound.voiceAnnounce('MISSION COMPLETE!');
             }
 
-            // Remove inimigo derrotado
             enemies.splice(i, 1);
             continue;
           }
 
-          // Olha na direção do policial
           enemy.facing = enemy.x < player.x ? 1 : -1;
           const distToPlayer = Math.abs(enemy.x - player.x);
 
           if (enemy.type === 'knife') {
-            // Inimigo corpo a corpo: corre na direção do policial
             enemy.vx = enemy.facing * 2.8;
             enemy.x += enemy.vx;
 
-            // Ataca se encostar
             if (distToPlayer < 40 && player.invulnerableTimer <= 0) {
-              // SE O POLICIAL ESTIVER ROLANDO (I-FRAMES), NÃO TOMA DANO!
               if (!player.isRolling) {
                 player.invulnerableTimer = 30;
                 if (player.armor > 0) player.armor = Math.max(0, player.armor - 15);
@@ -722,12 +967,11 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
               }
             }
           } else {
-            // Inimigos com armas de fogo (pistol, rifle, boss)
             if (distToPlayer > 260) {
               enemy.vx = enemy.facing * 1.8;
               enemy.x += enemy.vx;
             } else if (distToPlayer < 120) {
-              enemy.vx = -enemy.facing * 1.5; // recua um pouco
+              enemy.vx = -enemy.facing * 1.5;
               enemy.x += enemy.vx;
             }
 
@@ -748,6 +992,13 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
           }
         }
 
+        // Atualiza Explosões de Fogo
+        for (let i = explosions.length - 1; i >= 0; i--) {
+          const exp = explosions[i];
+          exp.life--;
+          if (exp.life <= 0) explosions.splice(i, 1);
+        }
+
         // Atualiza Partículas
         for (let i = particles.length - 1; i >= 0; i--) {
           const p = particles[i];
@@ -761,7 +1012,7 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
       // ================= RENDERIZAÇÃO ESTILO 16-BIT SNES =================
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // 1. Céu Urbano Noturno / Recife Antigo (Gradiente 16-bit)
+      // 1. Céu Urbano Noturno / Recife Antigo
       const skyGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
       skyGrad.addColorStop(0, '#020617');
       skyGrad.addColorStop(0.5, '#0f172a');
@@ -776,7 +1027,6 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
         const bh = 140 + (b % 4) * 45;
         ctx.fillRect(bx, state.groundY - bh, 110, bh);
 
-        // Janelas amarelas acesas
         ctx.fillStyle = '#fef08a';
         for (let w = 0; w < 4; w++) {
           if ((b + w) % 3 === 0) {
@@ -786,11 +1036,10 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
         ctx.fillStyle = '#090d16';
       }
 
-      // 3. Asfalto / Chão da Rua com Faixa Branca
+      // 3. Asfalto / Chão da Rua
       ctx.fillStyle = '#1e293b';
       ctx.fillRect(0, state.groundY, canvas.width, canvas.height - state.groundY);
 
-      // Meio-fio
       ctx.fillStyle = '#475569';
       ctx.fillRect(0, state.groundY, canvas.width, 6);
 
@@ -801,27 +1050,90 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
         ctx.fillRect(fx, state.groundY + 28, 48, 8);
       }
 
-      // 4. Caixas de Munição no Asfalto (Ammo Pickups)
-      ammoPickups.forEach((item) => {
-        const ix = item.x - state.cameraX;
-        const bounce = Math.sin(Date.now() / 160) * 3;
-        
-        // Caixa de munição estilo militar
-        ctx.fillStyle = item.weapon === 'rifle' ? '#0284c7' : '#ea580c';
-        ctx.fillRect(ix - 12, state.groundY - 14 + bounce, 24, 14);
+      // 4. Prisioneiros de Guerra (P.O.W. - Metal Slug Style)
+      pows.forEach((pow) => {
+        const powScreenX = pow.x - state.cameraX;
+        if (powScreenX < -60 || powScreenX > canvas.width + 60) return;
 
-        // Faixa de identificação
-        ctx.fillStyle = '#f8fafc';
-        ctx.fillRect(ix - 3, state.groundY - 12 + bounce, 6, 10);
-        ctx.fillRect(ix - 8, state.groundY - 9 + bounce, 16, 4);
+        // Sombra
+        ctx.fillStyle = 'rgba(0,0,0,0.45)';
+        ctx.beginPath();
+        ctx.ellipse(powScreenX + 12, state.groundY + 2, 14, 5, 0, 0, Math.PI * 2);
+        ctx.fill();
 
-        // Tag de texto acima
-        ctx.font = '9px monospace';
-        ctx.fillStyle = '#ffffff';
-        ctx.fillText(item.weapon === 'rifle' ? 'FUZIL' : 'CAL.12', ix - 14, state.groundY - 18 + bounce);
+        if (!pow.freed) {
+          // Amarrado: Shorts amarelo, tronco nu, barba e cabelos longos
+          ctx.fillStyle = '#eab308'; // Shorts amarelo
+          ctx.fillRect(powScreenX + 4, state.groundY - 20, 16, 18);
+
+          ctx.fillStyle = '#fed7aa'; // Tronco
+          ctx.fillRect(powScreenX + 6, state.groundY - 36, 12, 16);
+
+          // Cordas amarrando os braços
+          ctx.fillStyle = '#78350f';
+          ctx.fillRect(powScreenX + 4, state.groundY - 28, 16, 4);
+
+          // Rosto com barba e cabelo comprido castanho
+          ctx.fillStyle = '#fed7aa';
+          ctx.fillRect(powScreenX + 8, state.groundY - 48, 12, 12);
+          ctx.fillStyle = '#854d0e'; // Barba comprida
+          ctx.fillRect(powScreenX + 6, state.groundY - 40, 16, 10);
+          ctx.fillRect(powScreenX + 4, state.groundY - 52, 18, 8); // Cabelos longos
+
+          // Letreiro piscante "HELP!"
+          if (Math.floor(Date.now() / 400) % 2 === 0) {
+            ctx.fillStyle = '#ef4444';
+            ctx.font = 'bold 9px monospace';
+            ctx.fillText('HELP!', powScreenX + 2, state.groundY - 56);
+          }
+        } else {
+          // Resgatado: Acenando e correndo com letreiro "THANK YOU!"
+          ctx.fillStyle = '#eab308';
+          ctx.fillRect(powScreenX + 4, state.groundY - 24, 14, 22);
+          ctx.fillStyle = '#fed7aa';
+          ctx.fillRect(powScreenX + 6, state.groundY - 38, 10, 14);
+          ctx.fillStyle = '#854d0e';
+          ctx.fillRect(powScreenX + 6, state.groundY - 48, 14, 12);
+
+          // Balão "THANK YOU!"
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 10px monospace';
+          ctx.fillText('THANK YOU!', powScreenX - 16, state.groundY - 54);
+        }
       });
 
-      // ================= RENDERIZAÇÃO DO POLICIAL (16-BIT PIXEL STYLE) =================
+      // 5. Caixas de Armas & Munição no Asfalto (Metal Slug Drops)
+      ammoPickups.forEach((item) => {
+        const ix = item.x - state.cameraX;
+        const bounce = Math.sin(Date.now() / 150) * 3;
+        
+        ctx.fillStyle = item.weapon === 'HMG' ? '#eab308' : item.weapon === 'ROCKET' ? '#ef4444' : '#0284c7';
+        ctx.fillRect(ix - 14, state.groundY - 16 + bounce, 28, 16);
+
+        ctx.fillStyle = '#020617';
+        ctx.font = 'bold 9px monospace';
+        const label = item.weapon === 'HMG' ? '[H]' : item.weapon === 'ROCKET' ? '[R]' : '[S]';
+        ctx.fillText(label, ix - 8, state.groundY - 4 + bounce);
+
+        // Letreiro luminoso flutuante da arma
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 8px monospace';
+        ctx.fillText(item.weapon, ix - 16, state.groundY - 20 + bounce);
+      });
+
+      // 6. Granadas de Mão em Movimento Parabólico
+      grenades.forEach((g) => {
+        const gx = g.x - state.cameraX;
+        ctx.fillStyle = '#22c55e'; // Granada verde oliva redonda
+        ctx.beginPath();
+        ctx.arc(gx, g.y, 5, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = '#eab308'; // Pino dourado
+        ctx.fillRect(gx - 2, g.y - 7, 4, 3);
+      });
+
+      // ================= RENDERIZAÇÃO DO POLICIAL =================
       const p = player;
       const screenPx = p.x - state.cameraX;
 
@@ -837,15 +1149,13 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
       ctx.ellipse(screenPx + p.width / 2, state.groundY + 2, shadowW, 6, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // PILAR 2: ANIMAÇÃO DE ESQUIVA / ROLAMENTO TÁTICO
+      // ANIMAÇÃO DE ESQUIVA TÁTICA (DODGE ROLL)
       if (p.isRolling) {
-        // Corpo esférico com rotação tática e motion blur
         ctx.save();
         ctx.translate(screenPx + p.width / 2, state.groundY - 18);
         const rotAngle = (Date.now() / 35) * p.facing;
         ctx.rotate(rotAngle);
 
-        // Silhueta com i-frames em azul neon e ciano tático
         ctx.fillStyle = '#38bdf8';
         ctx.beginPath();
         ctx.arc(0, 0, 16, 0, Math.PI * 2);
@@ -857,19 +1167,17 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
         ctx.fill();
 
         ctx.fillStyle = '#fbbf24';
-        ctx.fillRect(-4, -4, 8, 8); // emblema girando
+        ctx.fillRect(-4, -4, 8, 8);
         ctx.restore();
 
-        // Rastro de velocidade / Motion Blur
         ctx.fillStyle = 'rgba(56, 189, 248, 0.3)';
         const trailOffset = -p.facing * 18;
         ctx.fillRect(screenPx + trailOffset, state.groundY - 24, p.width, 18);
       } else {
-        // Modo Normal em Pé / Agachado
         const bodyH = p.isCrouching ? p.height * 0.6 : p.height;
         const bodyY = p.isCrouching ? p.y + p.height * 0.4 : p.y;
 
-        // Pernas / Calça Tática Azul PMPE
+        // Calça Tática Azul PMPE
         ctx.fillStyle = '#1e3a8a';
         ctx.fillRect(screenPx + 6, bodyY + 36, 10, bodyH - 36);
         ctx.fillRect(screenPx + p.width - 16, bodyY + 36, 10, bodyH - 36);
@@ -880,50 +1188,62 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
         ctx.fillRect(screenPx + (p.facing === 1 ? p.width - 16 : p.width - 18), bodyY + bodyH - 8, 14, 8);
 
         // Tronco / Colete Balístico Tático PMPE
-        ctx.fillStyle = '#0f172a';
+        ctx.fillStyle = p.isSuperSoldier ? '#d97706' : '#0f172a';
         ctx.fillRect(screenPx + 4, bodyY + 14, p.width - 8, 24);
 
-        // Brasão / Detalhe Amarelo PMPE no Peito
+        // Brasão PMPE
         ctx.fillStyle = '#fbbf24';
         ctx.fillRect(screenPx + (p.facing === 1 ? 16 : 8), bodyY + 18, 6, 6);
 
-        // Cabeça / Rosto
+        // Rosto
         ctx.fillStyle = '#fbcfe8';
         ctx.fillRect(screenPx + 10, bodyY + 2, 18, 14);
 
-        // Boina Militar PMPE Azul e Dourado
+        // Boina Militar PMPE
         ctx.fillStyle = '#1e3a8a';
         ctx.fillRect(screenPx + 6, bodyY - 4, 26, 8);
         ctx.fillStyle = '#d97706';
-        ctx.fillRect(screenPx + (p.facing === 1 ? 22 : 6), bodyY + 1, 8, 3); // Emblema da Boina
+        ctx.fillRect(screenPx + (p.facing === 1 ? 22 : 6), bodyY + 1, 8, 3);
 
-        // Arma em punho
+        // Arma em punho de acordo com o arsenal Metal Slug
         ctx.fillStyle = '#020617';
-        const gunX = p.facing === 1 ? screenPx + p.width - 2 : screenPx - 14;
+        const gunX = p.facing === 1 ? screenPx + p.width - 2 : screenPx - 16;
         const gunY = bodyY + 20;
 
-        if (p.weapon === 'pistol') {
+        if (p.weapon === 'PISTOL') {
           ctx.fillRect(gunX, gunY, 14, 6);
           ctx.fillRect(p.facing === 1 ? gunX + 2 : gunX + 8, gunY + 4, 5, 8);
-        } else if (p.weapon === 'rifle') {
-          ctx.fillRect(p.facing === 1 ? gunX - 8 : gunX - 6, gunY - 2, 26, 8);
-          ctx.fillStyle = '#78350f';
-          ctx.fillRect(p.facing === 1 ? gunX - 12 : gunX + 16, gunY, 8, 6);
+        } else if (p.weapon === 'HMG') {
+          // HMG: Fuzil pesado dourado/metálico com tambor
+          ctx.fillStyle = '#ca8a04';
+          ctx.fillRect(p.facing === 1 ? gunX - 6 : gunX - 4, gunY - 2, 28, 9);
+          ctx.fillStyle = '#1e293b';
+          ctx.fillRect(p.facing === 1 ? gunX + 4 : gunX + 8, gunY + 6, 10, 8); // tambor de balas
+        } else if (p.weapon === 'ROCKET') {
+          // Rocket Launcher com tubo grosso
+          ctx.fillStyle = '#15803d';
+          ctx.fillRect(p.facing === 1 ? gunX - 10 : gunX - 8, gunY - 6, 34, 14);
+          ctx.fillStyle = '#ef4444'; // ogiva vermelha
+          ctx.fillRect(p.facing === 1 ? gunX + 24 : gunX - 12, gunY - 4, 6, 10);
         } else {
-          ctx.fillRect(p.facing === 1 ? gunX - 6 : gunX - 4, gunY, 24, 7);
+          // Shotgun com cano duplo prateado
+          ctx.fillStyle = '#94a3b8';
+          ctx.fillRect(p.facing === 1 ? gunX - 6 : gunX - 4, gunY, 26, 8);
+          ctx.fillStyle = '#78350f';
+          ctx.fillRect(p.facing === 1 ? gunX - 12 : gunX + 16, gunY + 2, 8, 6);
         }
 
-        // Muzzle Flash no cano da arma
+        // Muzzle Flash
         if (p.muzzleFlash > 0) {
           ctx.fillStyle = '#fffb00';
-          const flashX = p.facing === 1 ? gunX + (p.weapon === 'rifle' ? 26 : 14) : gunX - 8;
-          ctx.fillRect(flashX, gunY - 3, 8, 10);
+          const flashX = p.facing === 1 ? gunX + 26 : gunX - 12;
+          ctx.fillRect(flashX, gunY - 4, 12, 14);
         }
       }
 
       ctx.restore();
 
-      // ================= RENDERIZAÇÃO DOS INIMIGOS (BANDIDOS) =================
+      // ================= RENDERIZAÇÃO DOS INIMIGOS =================
       enemies.forEach((enemy) => {
         const ex = enemy.x - state.cameraX;
 
@@ -933,79 +1253,98 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
         ctx.ellipse(ex + enemy.width / 2, state.groundY + 2, enemy.width * 0.7, 6, 0, 0, Math.PI * 2);
         ctx.fill();
 
-        // Barra de Vida sobre a cabeça
+        // Barra de Vida
         ctx.fillStyle = 'rgba(0,0,0,0.6)';
         ctx.fillRect(ex, enemy.y - 14, enemy.width, 5);
         ctx.fillStyle = enemy.type === 'boss' ? '#f59e0b' : '#ef4444';
         const hpPct = Math.max(0, enemy.hp / enemy.maxHp);
         ctx.fillRect(ex, enemy.y - 14, enemy.width * hpPct, 5);
 
-        // Se estiver em hitFlash (acabou de tomar dano), pisca em branco
+        // Flash de dano
         if (enemy.hitFlash > 0) {
           ctx.fillStyle = '#ffffff';
           ctx.fillRect(ex + 4, enemy.y + 4, enemy.width - 8, enemy.height - 8);
           return;
         }
 
-        // Visual do Bandido dependendo do tipo
         if (enemy.type === 'boss') {
           // CHEFÃO "O SOMBRA"
-          ctx.fillStyle = '#450a0a'; // Sobretudo vermelho escuro
+          ctx.fillStyle = '#450a0a';
           ctx.fillRect(ex + 4, enemy.y + 12, enemy.width - 8, enemy.height - 24);
           ctx.fillStyle = '#020617';
           ctx.fillRect(ex + 8, enemy.y + enemy.height - 12, 14, 12);
           ctx.fillRect(ex + enemy.width - 22, enemy.y + enemy.height - 12, 14, 12);
 
-          // Rosto sombrio com máscara
           ctx.fillStyle = '#1e293b';
           ctx.fillRect(ex + 14, enemy.y + 2, 24, 14);
-          ctx.fillStyle = '#ef4444'; // Olhos vermelhos
+          ctx.fillStyle = '#ef4444';
           ctx.fillRect(enemy.facing === 1 ? ex + 28 : ex + 18, enemy.y + 6, 4, 3);
 
-          // Fuzil duplo do Boss
           ctx.fillStyle = '#020617';
           ctx.fillRect(enemy.facing === 1 ? ex + enemy.width - 4 : ex - 18, enemy.y + 24, 24, 9);
         } else {
-          // BANDIDO COMUM
           ctx.fillStyle = enemy.type === 'knife' ? '#ca8a04' : enemy.type === 'rifle' ? '#15803d' : '#b91c1c';
           ctx.fillRect(ex + 6, enemy.y + 14, enemy.width - 12, enemy.height - 28);
 
-          // Calça jeans
           ctx.fillStyle = '#1e3a8a';
           ctx.fillRect(ex + 8, enemy.y + enemy.height - 14, 8, 14);
           ctx.fillRect(ex + enemy.width - 16, enemy.y + enemy.height - 14, 8, 14);
 
-          // Rosto com boné virado
           ctx.fillStyle = '#fed7aa';
           ctx.fillRect(ex + 10, enemy.y + 2, 16, 12);
-          ctx.fillStyle = '#020617'; // Boné
+          ctx.fillStyle = '#020617';
           ctx.fillRect(ex + 6, enemy.y - 2, 24, 6);
 
-          // Arma branca ou de fogo
           if (enemy.type === 'knife') {
-            ctx.fillStyle = '#e2e8f0'; // Faca brilhante
+            ctx.fillStyle = '#e2e8f0';
             ctx.fillRect(enemy.facing === 1 ? ex + enemy.width - 2 : ex - 8, enemy.y + 22, 10, 4);
           } else {
-            ctx.fillStyle = '#020617'; // Revólver
+            ctx.fillStyle = '#020617';
             ctx.fillRect(enemy.facing === 1 ? ex + enemy.width - 2 : ex - 10, enemy.y + 20, 12, 5);
           }
         }
       });
 
-      // ================= RENDERIZAÇÃO DOS DISPAROS E PARTÍCULAS =================
+      // ================= PROJÉTEIS E FOGUETES =================
       bullets.forEach((b) => {
         const bx = b.x - state.cameraX;
-        ctx.fillStyle = b.color;
+
+        if (b.isRocket) {
+          // Desenho do Míssil do Rocket Launcher
+          ctx.fillStyle = '#ef4444';
+          ctx.fillRect(bx - (b.vx > 0 ? 12 : -2), b.y - 4, 14, 8);
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(bx - (b.vx > 0 ? 6 : -4), b.y - 2, 4, 4);
+        } else {
+          ctx.fillStyle = b.color;
+          ctx.beginPath();
+          ctx.arc(bx, b.y, b.isPlayer ? 3.5 : 3, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.strokeStyle = b.color;
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(bx, b.y);
+          ctx.lineTo(bx - b.vx * 1.5, b.y);
+          ctx.stroke();
+        }
+      });
+
+      // ================= EXPLOSÕES DE FOGO EXPANSIVAS =================
+      explosions.forEach((exp) => {
+        const ex = exp.x - state.cameraX;
+        const progress = 1 - exp.life / 14;
+        const curRadius = exp.radius * progress;
+
+        ctx.fillStyle = exp.life > 7 ? '#fef08a' : '#ef4444';
         ctx.beginPath();
-        ctx.arc(bx, b.y, b.isPlayer ? 3.5 : 3, 0, Math.PI * 2);
+        ctx.arc(ex, exp.y - 12, curRadius, 0, Math.PI * 2);
         ctx.fill();
 
-        // Rastro de luz
-        ctx.strokeStyle = b.color;
-        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 3;
         ctx.beginPath();
-        ctx.moveTo(bx, b.y);
-        ctx.lineTo(bx - b.vx * 1.5, b.y);
+        ctx.arc(ex, exp.y - 12, curRadius * 1.2, 0, Math.PI * 2);
         ctx.stroke();
       });
 
@@ -1017,7 +1356,7 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
         ctx.globalAlpha = 1;
       });
 
-      // Efeito de Scanlines Retrô Estilo SNES
+      // Scanlines CRT Retrô
       ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
       for (let y = 0; y < canvas.height; y += 4) {
         ctx.fillRect(0, y, canvas.width, 1.5);
@@ -1030,7 +1369,7 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
     return () => cancelAnimationFrame(animId);
   }, [isPaused, isGameOver, isVictory, highScore]);
 
-  // Controles Virtuais Touch para Celular / Tablet
+  // Controles Virtuais Touch
   const handleTouchStart = (action: 'left' | 'right' | 'up' | 'down' | 'shoot' | 'melee') => {
     gameStateRef.current.keys[action] = true;
   };
@@ -1102,37 +1441,36 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
                 boxShadow: '0 0 15px rgba(239, 68, 68, 0.5)'
               }}
             >
-              🎮
+              🎖️
             </div>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <h1 style={{ margin: 0, fontSize: '1.15rem', fontWeight: 900, letterSpacing: '0.04em' }}>
-                  OPERAÇÃO RUA • 16-BIT ACTION (SNES)
+                  MISSÃO METAL SLUG PMPE • ARCADE ACTION
                 </h1>
                 <span
                   style={{
-                    background: '#dc2626',
-                    color: '#ffffff',
+                    background: '#eab308',
+                    color: '#020617',
                     fontSize: '0.68rem',
                     fontWeight: 900,
                     padding: '0.15rem 0.5rem',
                     borderRadius: '4px'
                   }}
                 >
-                  ESTILO THE SHADOW
+                  ESTILO METAL SLUG 2
                 </span>
               </div>
               <div style={{ fontSize: '0.76rem', color: '#94a3b8' }}>
-                100% Ação & Diversão • Sem perguntas • Patrulhe as ruas com Esquiva Tática e elimine os criminosos
+                Arsenal Clássico (HMG, Rocket, Shotgun) • Granadas de Mão • Resgate de Reféns (P.O.W.)
               </div>
             </div>
           </div>
         </div>
 
-        {/* HUD de Status (Pontos, Recorde, Pausa) */}
+        {/* HUD de Status */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-            {/* Pontuação */}
             <div style={{ textAlign: 'right' }}>
               <div style={{ fontSize: '0.68rem', color: '#94a3b8', fontWeight: 800 }}>PONTUAÇÃO</div>
               <div style={{ fontSize: '1.15rem', fontWeight: 900, color: '#fbbf24' }}>
@@ -1140,7 +1478,6 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
               </div>
             </div>
 
-            {/* Recorde */}
             <div style={{ textAlign: 'right', borderLeft: '1px solid rgba(255,255,255,0.1)', paddingLeft: '0.8rem' }}>
               <div style={{ fontSize: '0.68rem', color: '#94a3b8', fontWeight: 800 }}>RECORDE</div>
               <div style={{ fontSize: '1.15rem', fontWeight: 900, color: '#38bdf8' }}>
@@ -1185,7 +1522,7 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
           width: '100%'
         }}
       >
-        {/* HUD DO POLICIAL (VIDA, COLETE, ESQUIVA, ARMA E MUNIÇÃO) */}
+        {/* HUD DO ARSENAL METAL SLUG 2 (VIDA, COLETE, GRANADAS, ARMAS) */}
         <div
           style={{
             width: '100%',
@@ -1206,37 +1543,39 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
           {/* Vida e Colete */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
             <div>
-              <div style={{ fontSize: '0.72rem', fontWeight: 900, color: '#f87171', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                <span>❤️ VIDA</span>
-                <span>{playerHp}%</span>
+              <div style={{ fontSize: '0.72rem', fontWeight: 900, color: '#f87171' }}>
+                ❤️ VIDA: {playerHp}%
               </div>
-              <div style={{ width: '110px', height: '9px', background: '#334155', borderRadius: '5px', overflow: 'hidden', marginTop: '0.2rem' }}>
+              <div style={{ width: '100px', height: '8px', background: '#334155', borderRadius: '4px', overflow: 'hidden', marginTop: '0.2rem' }}>
                 <div style={{ width: `${playerHp}%`, height: '100%', background: '#ef4444', transition: 'width 0.2s' }} />
               </div>
             </div>
 
             <div>
-              <div style={{ fontSize: '0.72rem', fontWeight: 900, color: '#38bdf8', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                <Shield size={12} />
-                <span>COLETE</span>
-                <span>{playerArmor}%</span>
+              <div style={{ fontSize: '0.72rem', fontWeight: 900, color: '#38bdf8' }}>
+                🛡️ COLETE: {playerArmor}%
               </div>
-              <div style={{ width: '110px', height: '9px', background: '#334155', borderRadius: '5px', overflow: 'hidden', marginTop: '0.2rem' }}>
+              <div style={{ width: '100px', height: '8px', background: '#334155', borderRadius: '4px', overflow: 'hidden', marginTop: '0.2rem' }}>
                 <div style={{ width: `${playerArmor}%`, height: '100%', background: '#0284c7', transition: 'width 0.2s' }} />
+              </div>
+            </div>
+
+            {/* Granadas de Mão */}
+            <div>
+              <div style={{ fontSize: '0.72rem', fontWeight: 900, color: '#4ade80' }}>
+                💣 BOMBAS [G]
+              </div>
+              <div style={{ fontSize: '0.92rem', fontWeight: 900, color: '#86efac' }}>
+                {grenadesCount}x
               </div>
             </div>
 
             {/* Status da Esquiva Tática */}
             <div>
-              <div style={{ fontSize: '0.72rem', fontWeight: 900, color: rollReady ? '#a855f7' : '#94a3b8' }}>
+              <div style={{ fontSize: '0.72rem', fontWeight: 900, color: rollReady ? '#c084fc' : '#64748b' }}>
                 🌀 ESQUIVA [C]
               </div>
-              <div style={{ 
-                fontSize: '0.75rem', 
-                fontWeight: 900, 
-                color: rollReady ? '#c084fc' : '#64748b',
-                marginTop: '0.15rem'
-              }}>
+              <div style={{ fontSize: '0.8rem', fontWeight: 900, color: rollReady ? '#a855f7' : '#475569' }}>
                 {rollReady ? 'PRONTA' : 'RECARREGANDO'}
               </div>
             </div>
@@ -1246,12 +1585,13 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
             <div style={{ textAlign: 'right' }}>
               <div style={{ fontSize: '0.72rem', color: '#94a3b8', fontWeight: 800 }}>
-                ARMA [1 / 2 / 3 / Q]
+                ARSENAL [H / R / S / Q]
               </div>
-              <div style={{ fontSize: '0.94rem', fontWeight: 900, color: '#4ade80' }}>
-                {currentWeapon === 'pistol' && '🔫 Pistola Taurus .40 (ILIMITADA)'}
-                {currentWeapon === 'rifle' && `⚡ Fuzil IA2 (${ammoRifle} balas)`}
-                {currentWeapon === 'shotgun' && `💥 Escopeta 12 (${ammoShotgun} cartuchos)`}
+              <div style={{ fontSize: '0.98rem', fontWeight: 900, color: '#fde047' }}>
+                {currentWeapon === 'PISTOL' && '🔫 HANDGUN (.40 ILIMITADA)'}
+                {currentWeapon === 'HMG' && `⚡ [H] HEAVY MACHINE GUN (${ammoHmg})`}
+                {currentWeapon === 'ROCKET' && `🚀 [R] ROCKET LAUNCHER (${ammoRocket})`}
+                {currentWeapon === 'SHOTGUN' && `💥 [S] SHOTGUN (${ammoShotgun})`}
               </div>
             </div>
 
@@ -1312,13 +1652,13 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
             >
               <div style={{ fontSize: '3.5rem' }}>💀</div>
               <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#ef4444', margin: 0, letterSpacing: '0.04em' }}>
-                POLICIAL ABATIDO EM COMBATE!
+                MISSION FAILED!
               </h2>
               <p style={{ color: '#cbd5e1', fontSize: '0.95rem', maxWidth: '450px', margin: 0 }}>
-                Os criminosos prevaleceram nesta rodada. Mas a farda da PMPE não desiste nunca!
+                Os criminosos prevaleceram. O comando militar aguarda seu retorno!
               </p>
               <div style={{ fontSize: '1.25rem', fontWeight: 900, color: '#fbbf24' }}>
-                Pontuação Final: {score} pontos ({killsCount} criminosos neutralizados)
+                Pontuação Final: {score} pontos
               </div>
               <button
                 onClick={() => initGame(1)}
@@ -1339,7 +1679,7 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
                 }}
               >
                 <RotateCcw size={18} />
-                <span>Reiniciar Operação</span>
+                <span>Tentar Novamente</span>
               </button>
             </div>
           )}
@@ -1363,10 +1703,10 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
             >
               <div style={{ fontSize: '3.5rem' }}>🎖️</div>
               <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#4ade80', margin: 0, letterSpacing: '0.04em' }}>
-                MISSÃO CUMPRIDA • CIDADE PACIFICADA!
+                MISSION COMPLETE!
               </h2>
               <p style={{ color: '#cbd5e1', fontSize: '0.95rem', maxWidth: '450px', margin: 0 }}>
-                Você neutralizou o Chefão "O Sombra" e honrou a briosa Polícia Militar de Pernambuco com extrema coragem!
+                Você neutralizou as forças inimigas, resgatou os prisioneiros e concluiu a missão com honra!
               </p>
               <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#fbbf24' }}>
                 Pontuação Total: {score} PONTOS!
@@ -1390,7 +1730,7 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
                 }}
               >
                 <Play size={18} />
-                <span>Próxima Operação de Patrulha</span>
+                <span>Avançar para Missão {currentLevel + 1}</span>
               </button>
             </div>
           )}
@@ -1426,13 +1766,16 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
               <strong style={{ color: '#c084fc' }}>Esquiva (i-frames):</strong> Tecla C / Shift
             </div>
             <div>
+              <strong style={{ color: '#4ade80' }}>Granada:</strong> Tecla G
+            </div>
+            <div>
               <strong style={{ color: '#fde047' }}>Atirar:</strong> Barra de Espaço / Z
             </div>
             <div>
               <strong style={{ color: '#f87171' }}>Coronhada:</strong> Tecla X
             </div>
             <div>
-              <strong style={{ color: '#38bdf8' }}>Arsenal:</strong> [1] .40 | [2] IA2 | [3] Cal.12 | [Q] Trocar
+              <strong style={{ color: '#38bdf8' }}>Arsenal:</strong> [H] Machine Gun | [R] Rocket | [S] Shotgun | [Q] Trocar
             </div>
           </div>
 
@@ -1491,11 +1834,11 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
               Direita ▶
             </button>
 
-            {/* BOTÃO DE ESQUIVA TÁTICA (DODGE ROLL) */}
+            {/* ESQUIVA TÁTICA (C) */}
             <button
               onClick={triggerDodgeRoll}
               style={{
-                padding: '0.65rem 1.15rem',
+                padding: '0.65rem 1rem',
                 borderRadius: '8px',
                 background: rollReady
                   ? 'linear-gradient(135deg, #7c3aed, #9333ea)'
@@ -1507,7 +1850,25 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
                 boxShadow: rollReady ? '0 0 15px rgba(147, 51, 234, 0.45)' : 'none'
               }}
             >
-              🌀 ESQUIVAR (C)
+              🌀 ESQUIVA (C)
+            </button>
+
+            {/* LANÇAR GRANADA [G] */}
+            <button
+              onClick={triggerGrenade}
+              style={{
+                padding: '0.65rem 1rem',
+                borderRadius: '8px',
+                background: grenadesCount > 0
+                  ? 'linear-gradient(135deg, #15803d, #16a34a)'
+                  : 'rgba(100, 116, 139, 0.4)',
+                border: '1.5px solid #4ade80',
+                color: '#ffffff',
+                fontWeight: 900,
+                cursor: grenadesCount > 0 ? 'pointer' : 'not-allowed'
+              }}
+            >
+              💣 GRANADA ({grenadesCount})
             </button>
 
             {/* Coronhada */}
@@ -1517,7 +1878,7 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
               onTouchStart={() => handleTouchStart('melee')}
               onTouchEnd={() => handleTouchEnd('melee')}
               style={{
-                padding: '0.65rem 1rem',
+                padding: '0.65rem 0.9rem',
                 borderRadius: '8px',
                 background: 'rgba(239, 68, 68, 0.2)',
                 border: '1px solid #ef4444',
@@ -1526,7 +1887,7 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
                 cursor: 'pointer'
               }}
             >
-              👊 CORONHADA (X)
+              👊 CORONHADA
             </button>
 
             {/* Alternar Arma */}
@@ -1542,7 +1903,7 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
                 cursor: 'pointer'
               }}
             >
-              🔄 ARMA (Q)
+              🔄 ARMA ({currentWeapon})
             </button>
 
             {/* Disparo */}

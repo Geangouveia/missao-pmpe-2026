@@ -619,6 +619,102 @@ class SoundController {
     osc.start(t);
     osc.stop(t + 0.19);
   }
+
+  // Locutor Arcade Estilo Metal Slug 2 (Síntese de Voz Nativa dos Anos 90)
+  public voiceAnnounce(text: string) {
+    if (this.isMuted) return;
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      try {
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.rate = 1.15;
+        utter.pitch = 0.85;
+        utter.volume = 0.95;
+        utter.lang = 'en-US';
+        window.speechSynthesis.speak(utter);
+      } catch {
+        // Fallback silencioso
+      }
+    }
+  }
+
+  // Disparo de Míssil / Rocket Launcher
+  public playRocket() {
+    if (this.isMuted) return;
+    this.initContext();
+    if (!this.ctx) return;
+
+    const t = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(190, t);
+    osc.frequency.exponentialRampToValueAtTime(50, t + 0.25);
+
+    gain.gain.setValueAtTime(0.3, t);
+    gain.gain.exponentialRampToValueAtTime(0.01, t + 0.25);
+
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start(t);
+    osc.stop(t + 0.25);
+
+    const noiseBuffer = this.createNoiseBuffer(0.2);
+    if (noiseBuffer) {
+      const noise = this.ctx.createBufferSource();
+      noise.buffer = noiseBuffer;
+      const filter = this.ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(900, t);
+      const noiseGain = this.ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.25, t);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, t + 0.2);
+      noise.connect(filter);
+      filter.connect(noiseGain);
+      noiseGain.connect(this.ctx.destination);
+      noise.start(t);
+      noise.stop(t + 0.2);
+    }
+  }
+
+  // Explosão em área de granadas e mísseis
+  public playExplosion() {
+    if (this.isMuted) return;
+    this.initContext();
+    if (!this.ctx) return;
+
+    const t = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(120, t);
+    osc.frequency.exponentialRampToValueAtTime(30, t + 0.4);
+    gain.gain.setValueAtTime(0.4, t);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.4);
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start(t);
+    osc.stop(t + 0.4);
+
+    const noiseBuffer = this.createNoiseBuffer(0.45);
+    if (noiseBuffer) {
+      const noise = this.ctx.createBufferSource();
+      noise.buffer = noiseBuffer;
+      const filter = this.ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(650, t);
+      filter.frequency.exponentialRampToValueAtTime(80, t + 0.45);
+      const noiseGain = this.ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.4, t);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, t + 0.45);
+      noise.connect(filter);
+      filter.connect(noiseGain);
+      noiseGain.connect(this.ctx.destination);
+      noise.start(t);
+      noise.stop(t + 0.45);
+    }
+  }
 }
 
 export const sound = new SoundController();
