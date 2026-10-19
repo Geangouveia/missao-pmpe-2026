@@ -24,8 +24,21 @@ export interface MilitaryWeekInfo {
   startDateFormatted: string; // "12/10/2026 (Segunda)"
   endDateFormatted: string; // "17/10/2026 (Sábado)"
   isSunday: boolean; // Verdadeiro no Domingo (Dia de Descanso/Reunião)
+  isRondaNoturna: boolean; // Verdadeiro das 21:00 às 23:59 (Pontos em Dobro!)
   statusLabel: string;
   daysRemaining: number;
+}
+
+export interface PastWeekChampion {
+  id: string;
+  weekId: string;
+  weekLabel: string; // Ex: "Semana de 12/10 a 17/10/2026"
+  winnerName: string;
+  score: number;
+  totalAnswered: number;
+  accuracy: number;
+  prizeText: string;
+  awardedAt: string;
 }
 
 export interface CompetitionConfig {
@@ -117,17 +130,111 @@ export function getMilitaryWeekInfo(referenceDate = new Date()): MilitaryWeekInf
   const startStr = `${pad(monday.getDate())}/${pad(monday.getMonth() + 1)}/${monday.getFullYear()} (Segunda)`;
   const endStr = `${pad(saturday.getDate())}/${pad(saturday.getMonth() + 1)}/${saturday.getFullYear()} (Sábado)`;
 
+  const isRondaNoturna = !isSunday && new Date().getHours() >= 21 && new Date().getHours() <= 23;
+
   return {
     weekId,
     year: monday.getFullYear(),
     startDateFormatted: startStr,
     endDateFormatted: endStr,
     isSunday,
+    isRondaNoturna,
     statusLabel: isSunday
       ? '🏖️ DOMINGO: DESCANSO / REUNIÃO DO PELOTÃO'
+      : isRondaNoturna
+      ? '🚨 RONDA NOTURNA ATIVA: 2X PONTOS!'
       : `⚔️ DISPUTA ATIVA (Faltam ${daysRemaining} ${daysRemaining === 1 ? 'dia' : 'dias'})`,
     daysRemaining,
   };
+}
+
+/**
+ * Verifica se a Ronda Noturna do Pelotão está ativa (21h às 23h59)
+ * Durante esse horário de prontidão tática, cada acerto vale 2 PONTOS na competição!
+ */
+export function isRondaNoturnaActive(): boolean {
+  const d = new Date();
+  if (d.getDay() === 0) return false; // Domingo não pontua
+  const hour = d.getHours();
+  return hour >= 21 && hour <= 23;
+}
+
+const CLOUD_HALL_OF_FAME_KEY = 'comp_hall_of_fame_pmpe';
+const LOCAL_HALL_OF_FAME_KEY = 'pmpe_comp_hall_of_fame';
+
+export async function fetchHallOfFame(): Promise<PastWeekChampion[]> {
+  try {
+    const res = await fetch(`${CLOUD_API_BASE}/${CLOUD_HALL_OF_FAME_KEY}?_t=${Date.now()}`);
+    if (res.ok) {
+      const list = await res.json();
+      if (Array.isArray(list)) {
+        localStorage.setItem(LOCAL_HALL_OF_FAME_KEY, JSON.stringify(list));
+        return list;
+      }
+    }
+  } catch {}
+
+  try {
+    const raw = localStorage.getItem(LOCAL_HALL_OF_FAME_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch {}
+
+  return [
+    {
+      id: 'champ-pmpe-initial',
+      weekId: 'week_2026-10-05',
+      weekLabel: 'Semana de 05/10 a 10/10/2026',
+      winnerName: 'Thiago',
+      score: 165,
+      totalAnswered: 190,
+      accuracy: 87,
+      prizeText: 'R$ 20,00',
+      awardedAt: '2026-10-10T23:59:00.000Z'
+    }
+  ];
+}
+
+export async function archivePastChampion(
+  championOrName: PastWeekChampion | string,
+  weekId?: string,
+  weekLabel?: string,
+  score?: number,
+  accuracy?: number,
+  prizeText?: string,
+  _notes?: string
+): Promise<boolean> {
+  let champion: PastWeekChampion;
+  if (typeof championOrName === 'object') {
+    champion = championOrName;
+  } else {
+    champion = {
+      id: `champ_${Date.now()}`,
+      weekId: weekId || `week_${Date.now()}`,
+      weekLabel: weekLabel || 'Semana Encerrada',
+      winnerName: championOrName,
+      score: score || 0,
+      totalAnswered: score || 0,
+      accuracy: accuracy || 100,
+      prizeText: prizeText || 'R$ 20,00',
+      awardedAt: new Date().toISOString()
+    };
+  }
+
+  const current = await fetchHallOfFame();
+  const filtered = current.filter((c) => c.weekId !== champion.weekId);
+  const updated = [champion, ...filtered];
+
+  try {
+    localStorage.setItem(LOCAL_HALL_OF_FAME_KEY, JSON.stringify(updated));
+    const res = await fetch(`${CLOUD_API_BASE}/${CLOUD_HALL_OF_FAME_KEY}?ttl=31536000`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updated),
+    });
+    return res.ok;
+  } catch {
+    return true;
+  }
 }
 
 /**
@@ -373,8 +480,9 @@ export function recordLiveQuestionAnswer(
   if (!weekInfo.isSunday) {
     score.weekTotalAnswered = (score.weekTotalAnswered || 0) + 1;
     if (isCorrect) {
-      // 1 acerto = 1 ponto na competição semanal!
-      score.weekScore = (score.weekScore || 0) + 1;
+      // 1 acerto = 1 ponto (ou 2 PONTOS se estiver em Ronda Noturna das 21h às 23h59!)
+      const points = isRondaNoturnaActive() ? 2 : 1;
+      score.weekScore = (score.weekScore || 0) + points;
     } else {
       score.weekWrongAnswers = (score.weekWrongAnswers || 0) + 1;
     }

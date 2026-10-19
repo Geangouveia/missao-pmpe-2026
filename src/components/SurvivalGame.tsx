@@ -38,7 +38,7 @@ interface SurvivalGameProps {
   }) => void;
   onExit: () => void;
   onAwardXp: (xp: number) => void;
-  onQuestionAnswered?: (isCorrect: boolean, xpGained: number) => void;
+  onQuestionAnswered?: (isCorrect: boolean, xpGained: number, questionId?: string) => void;
 }
 
 // Patentes Militares Oficiais PMPE com Escala Completa de Carreira
@@ -150,7 +150,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     }
 
     if (onQuestionAnswered) {
-      onQuestionAnswered(false, 0);
+      onQuestionAnswered(false, 0, currentQ?.id);
     }
 
     // Comandante Gean pediu: se perdeu todas as vidas, NÃO fechar a tela automaticamente!
@@ -222,7 +222,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
       }
 
       if (onQuestionAnswered) {
-        onQuestionAnswered(true, xpGained);
+        onQuestionAnswered(true, xpGained, currentQ?.id);
       }
     } else {
       sound.playError();
@@ -232,7 +232,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
       setLives(newLives);
 
       if (onQuestionAnswered) {
-        onQuestionAnswered(false, 0);
+        onQuestionAnswered(false, 0, currentQ?.id);
       }
 
       // Comandante Gean: NÃO fechar a tela automaticamente se zerar as vidas!

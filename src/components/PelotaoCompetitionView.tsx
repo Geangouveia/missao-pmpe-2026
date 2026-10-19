@@ -17,16 +17,22 @@ import {
   ShieldCheck,
   Activity,
   Info,
-  Clock
+  Clock,
+  Award,
+  Flame,
+  Moon
 } from 'lucide-react';
 import {
   fetchWeeklyLeaderboard,
   saveCompetitionConfig,
   toggleSoldierEnrollment,
   getMilitaryWeekInfo,
+  fetchHallOfFame,
+  archivePastChampion,
   type LeaderboardEntry,
   type CompetitionConfig,
-  type MilitaryWeekInfo
+  type MilitaryWeekInfo,
+  type PastWeekChampion
 } from '../utils/competitionManager';
 import { fetchRegistryFromCloud, isMasterUser, type UserAccessRecord } from '../utils/authManager';
 import { sound } from '../utils/sound';
@@ -51,8 +57,9 @@ export const PelotaoCompetitionView: React.FC<PelotaoCompetitionViewProps> = ({
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [actionSuccessMsg, setActionSuccessMsg] = useState<string | null>(null);
 
-  // Aba ativa para o Comandante: 'ranking' ou 'gestao'
-  const [activeTab, setActiveTab] = useState<'ranking' | 'gestao'>('ranking');
+  // Aba ativa: 'ranking' | 'gestao' | 'halldafama'
+  const [activeTab, setActiveTab] = useState<'ranking' | 'gestao' | 'halldafama'>('ranking');
+  const [hallOfFame, setHallOfFame] = useState<PastWeekChampion[]>([]);
 
   // Estados de edição de premiação pelo Comandante
   const [prizeText, setPrizeText] = useState('R$ 20,00');
@@ -65,15 +72,17 @@ export const PelotaoCompetitionView: React.FC<PelotaoCompetitionViewProps> = ({
     else setIsRefreshing(true);
 
     try {
-      const [boardData, registry] = await Promise.all([
+      const [boardData, registry, hall] = await Promise.all([
         fetchWeeklyLeaderboard(),
-        fetchRegistryFromCloud()
+        fetchRegistryFromCloud(),
+        fetchHallOfFame()
       ]);
 
       setLeaderboard(boardData.entries);
       setConfig(boardData.config);
       setWeekInfo(boardData.weekInfo);
       setRegisteredUsers(registry);
+      setHallOfFame(hall);
 
       if (boardData.config) {
         setPrizeText(boardData.config.prizeText || 'R$ 20,00');
@@ -173,6 +182,28 @@ export const PelotaoCompetitionView: React.FC<PelotaoCompetitionViewProps> = ({
 
   const enrolledCount = config?.enrolledSoldiers?.length || 0;
   const currentLeader = leaderboard.length > 0 ? leaderboard[0] : null;
+
+  // Imortalizar Campeão no Hall da Fama (Ação do Comandante)
+  const handleArchiveChampion = async () => {
+    if (!isCommander || !currentLeader) return;
+    sound.playMilitaryAchievement();
+    const ok = await archivePastChampion(
+      currentLeader.displayName,
+      weekInfo.weekId,
+      `${weekInfo.startDateFormatted} - ${weekInfo.endDateFormatted}`,
+      currentLeader.weekScore,
+      currentLeader.weekAccuracy,
+      config?.prizeText || 'R$ 20,00',
+      'PIX transferido pelo Comandante Gean com honras militares'
+    );
+    if (ok) {
+      confetti({ particleCount: 150, spread: 80, origin: { y: 0.3 } });
+      showToast(`🏛️ Campeão ${currentLeader.displayName} imortalizado no Hall da Fama!`);
+      loadData(true);
+    } else {
+      showToast('❌ Erro ao arquivar campeão.');
+    }
+  };
 
   return (
     <div
@@ -543,48 +574,161 @@ export const PelotaoCompetitionView: React.FC<PelotaoCompetitionViewProps> = ({
           </div>
         )}
 
-        {/* ================= ABAS PARA O COMANDANTE ================= */}
-        {isCommander && (
-          <div
-            style={{
-              display: 'flex',
-              gap: '0.75rem',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-              paddingBottom: '0.5rem'
-            }}
-          >
-            <button
-              onClick={() => {
-                sound.playClick();
-                setActiveTab('ranking');
-              }}
+        {/* ================= BANNER OPERACIONAL: RONDA NOTURNA (2X PONTOS) ================= */}
+        <div
+          style={{
+            padding: '1rem 1.4rem',
+            borderRadius: '16px',
+            background: weekInfo.isRondaNoturna
+              ? 'linear-gradient(135deg, rgba(220, 38, 38, 0.28) 0%, rgba(147, 51, 234, 0.28) 50%, rgba(15, 23, 42, 0.95) 100%)'
+              : 'linear-gradient(135deg, rgba(30, 58, 138, 0.2) 0%, rgba(15, 23, 42, 0.75) 100%)',
+            border: weekInfo.isRondaNoturna
+              ? '2px solid #ef4444'
+              : '1px solid rgba(147, 197, 253, 0.2)',
+            boxShadow: weekInfo.isRondaNoturna ? '0 0 30px rgba(239, 68, 68, 0.35)' : 'none',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '1rem',
+            flexWrap: 'wrap'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+            <div
               style={{
-                padding: '0.75rem 1.5rem',
-                fontSize: '0.92rem',
-                fontWeight: 900,
-                color: activeTab === 'ranking' ? '#fbbf24' : '#94a3b8',
-                background: activeTab === 'ranking' ? 'rgba(245, 158, 11, 0.15)' : 'transparent',
-                border: 'none',
-                borderBottom: activeTab === 'ranking' ? '3px solid #f59e0b' : '3px solid transparent',
-                borderRadius: '10px 10px 0 0',
-                cursor: 'pointer',
+                width: '44px',
+                height: '44px',
+                borderRadius: '12px',
+                background: weekInfo.isRondaNoturna
+                  ? 'linear-gradient(135deg, #dc2626, #9333ea)'
+                  : 'rgba(255, 255, 255, 0.08)',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.5rem',
-                transition: 'all 0.2s'
+                justifyContent: 'center',
+                fontSize: '1.4rem',
+                flexShrink: 0
               }}
             >
-              <Trophy size={18} />
-              <span>Ranking ao Vivo (Segunda a Sábado)</span>
-            </button>
+              {weekInfo.isRondaNoturna ? '🚨' : '🌙'}
+            </div>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', flexWrap: 'wrap' }}>
+                <span
+                  style={{
+                    fontWeight: 900,
+                    color: weekInfo.isRondaNoturna ? '#f87171' : '#93c5fd',
+                    fontSize: '0.92rem',
+                    letterSpacing: '0.04em'
+                  }}
+                >
+                  {weekInfo.isRondaNoturna ? '🚨 RONDA NOTURNA EM ANDAMENTO' : '🌙 RONDA NOTURNA OPERACIONAL'}
+                </span>
+                <span
+                  style={{
+                    background: weekInfo.isRondaNoturna ? '#dc2626' : 'rgba(59, 130, 246, 0.25)',
+                    border: weekInfo.isRondaNoturna ? '1px solid #f87171' : '1px solid rgba(59, 130, 246, 0.4)',
+                    color: '#ffffff',
+                    padding: '0.15rem 0.55rem',
+                    borderRadius: '6px',
+                    fontSize: '0.72rem',
+                    fontWeight: 900
+                  }}
+                >
+                  2X PONTOS
+                </span>
+              </div>
+              <div style={{ fontSize: '0.82rem', color: '#cbd5e1', marginTop: '0.2rem' }}>
+                {weekInfo.isRondaNoturna
+                  ? 'Todas as questões corretas agora valem o DOBRO de pontos (2 pts) na competição semanal! Encerra às 23:59.'
+                  : 'De Segunda a Sábado, das 21:00 às 23:59, todas as questões acertadas contam pontos EM DOBRO (2x) no ranking!'}
+              </div>
+            </div>
+          </div>
+          <div
+            style={{
+              fontSize: '0.8rem',
+              color: weekInfo.isRondaNoturna ? '#fca5a5' : '#94a3b8',
+              fontWeight: 800,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.35rem'
+            }}
+          >
+            <Clock size={15} />
+            <span>Janela tática: 21:00 às 23:59</span>
+          </div>
+        </div>
 
+        {/* ================= ABAS UNIVERSAIS DE NAVEGAÇÃO ================= */}
+        <div
+          style={{
+            display: 'flex',
+            gap: '0.75rem',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+            paddingBottom: '0.5rem',
+            overflowX: 'auto'
+          }}
+        >
+          <button
+            onClick={() => {
+              sound.playClick();
+              setActiveTab('ranking');
+            }}
+            style={{
+              padding: '0.75rem 1.4rem',
+              fontSize: '0.92rem',
+              fontWeight: 900,
+              color: activeTab === 'ranking' ? '#fbbf24' : '#94a3b8',
+              background: activeTab === 'ranking' ? 'rgba(245, 158, 11, 0.15)' : 'transparent',
+              border: 'none',
+              borderBottom: activeTab === 'ranking' ? '3px solid #f59e0b' : '3px solid transparent',
+              borderRadius: '10px 10px 0 0',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              transition: 'all 0.2s',
+              whiteSpace: 'nowrap'
+            }}
+          >
+            <Trophy size={18} />
+            <span>Ranking ao Vivo (Segunda a Sábado)</span>
+          </button>
+
+          <button
+            onClick={() => {
+              sound.playClick();
+              setActiveTab('halldafama');
+            }}
+            style={{
+              padding: '0.75rem 1.4rem',
+              fontSize: '0.92rem',
+              fontWeight: 900,
+              color: activeTab === 'halldafama' ? '#fbbf24' : '#94a3b8',
+              background: activeTab === 'halldafama' ? 'rgba(245, 158, 11, 0.15)' : 'transparent',
+              border: 'none',
+              borderBottom: activeTab === 'halldafama' ? '3px solid #f59e0b' : '3px solid transparent',
+              borderRadius: '10px 10px 0 0',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              transition: 'all 0.2s',
+              whiteSpace: 'nowrap'
+            }}
+          >
+            <Award size={18} />
+            <span>Hall da Fama ({hallOfFame.length})</span>
+          </button>
+
+          {isCommander && (
             <button
               onClick={() => {
                 sound.playClick();
                 setActiveTab('gestao');
               }}
               style={{
-                padding: '0.75rem 1.5rem',
+                padding: '0.75rem 1.4rem',
                 fontSize: '0.92rem',
                 fontWeight: 900,
                 color: activeTab === 'gestao' ? '#fbbf24' : '#94a3b8',
@@ -596,14 +740,15 @@ export const PelotaoCompetitionView: React.FC<PelotaoCompetitionViewProps> = ({
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                transition: 'all 0.2s'
+                transition: 'all 0.2s',
+                whiteSpace: 'nowrap'
               }}
             >
               <ShieldCheck size={18} />
               <span>Gestão de Participantes & Premiação</span>
             </button>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* ================= ABA 1: RANKING AO VIVO (TELA ESPAÇOSA) ================= */}
         {activeTab === 'ranking' && (
@@ -1135,6 +1280,231 @@ export const PelotaoCompetitionView: React.FC<PelotaoCompetitionViewProps> = ({
                   })}
               </div>
             </div>
+          </div>
+        )}
+
+        {/* ================= ABA 3: HALL DA FAMA & GALERIA DOS CAMPEÕES ================= */}
+        {activeTab === 'halldafama' && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            {/* Banner de Honra */}
+            <div
+              style={{
+                padding: '1.5rem',
+                borderRadius: '20px',
+                background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(30, 58, 138, 0.25) 100%)',
+                border: '1px solid rgba(245, 158, 11, 0.4)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1.25rem',
+                flexWrap: 'wrap'
+              }}
+            >
+              <div
+                style={{
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '16px',
+                  background: 'linear-gradient(135deg, #d97706, #fbbf24)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#060b17',
+                  boxShadow: '0 0 20px rgba(251, 191, 36, 0.5)',
+                  flexShrink: 0
+                }}
+              >
+                <Crown size={32} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <h2 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 900, color: '#fef08a' }}>
+                  GALERIA DE HONRA & CAMPEÕES SEMANAIS
+                </h2>
+                <p style={{ margin: '0.35rem 0 0', fontSize: '0.88rem', color: '#cbd5e1', lineHeight: 1.5 }}>
+                  O mural permanente dos soldados de elite que alcançaram o topo do pelotão, receberam o prêmio oficial
+                  do Comandante Gean e gravaram seus nomes na história militar da Missão PMPE 2026.
+                </p>
+              </div>
+            </div>
+
+            {/* Painel de Arquivamento pelo Comandante */}
+            {isCommander && currentLeader && currentLeader.weekScore > 0 && (
+              <div
+                style={{
+                  padding: '1.25rem 1.5rem',
+                  borderRadius: '16px',
+                  background: 'rgba(30, 58, 138, 0.25)',
+                  border: '1px solid rgba(59, 130, 246, 0.4)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: '1rem',
+                  flexWrap: 'wrap'
+                }}
+              >
+                <div>
+                  <div style={{ fontSize: '0.75rem', fontWeight: 900, color: '#93c5fd', textTransform: 'uppercase' }}>
+                    Comando Central • Ação de Condecoração
+                  </div>
+                  <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#ffffff', marginTop: '0.2rem' }}>
+                    Líder Atual:{' '}
+                    <strong style={{ color: '#fbbf24' }}>{currentLeader.displayName}</strong> ({currentLeader.weekScore} pts • {currentLeader.weekAccuracy}%)
+                  </div>
+                  <div style={{ fontSize: '0.82rem', color: '#94a3b8', marginTop: '0.15rem' }}>
+                    Premiação configurada: {config?.prizeText || 'R$ 20,00'}
+                  </div>
+                </div>
+
+                <button
+                  onClick={handleArchiveChampion}
+                  style={{
+                    background: 'linear-gradient(135deg, #d97706, #f59e0b)',
+                    color: '#060b17',
+                    border: 'none',
+                    padding: '0.75rem 1.4rem',
+                    borderRadius: '12px',
+                    fontWeight: 900,
+                    fontSize: '0.88rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    boxShadow: '0 4px 15px rgba(245, 158, 11, 0.4)',
+                    transition: 'all 0.2s'
+                  }}
+                >
+                  <Award size={18} />
+                  <span>Imortalizar no Hall da Fama</span>
+                </button>
+              </div>
+            )}
+
+            {/* Lista dos Campeões */}
+            {hallOfFame.length === 0 ? (
+              <div
+                style={{
+                  textAlign: 'center',
+                  padding: '4rem 2rem',
+                  background: 'rgba(255, 255, 255, 0.02)',
+                  borderRadius: '20px',
+                  border: '1px dashed rgba(255, 255, 255, 0.15)'
+                }}
+              >
+                <Award size={48} style={{ color: '#f59e0b', margin: '0 auto 1.25rem', opacity: 0.8 }} />
+                <h3 style={{ color: '#ffffff', margin: 0, fontSize: '1.25rem' }}>
+                  A Galeria de Honra aguarda o primeiro campeão
+                </h3>
+                <p style={{ color: '#94a3b8', fontSize: '0.9rem', maxWidth: '520px', margin: '0.75rem auto 0', lineHeight: 1.5 }}>
+                  Ao final de cada ciclo semanal no Sábado às 23:59, o soldado em 1º lugar no ranking receberá o prêmio oficial
+                  e será registrado aqui permanentemente com honras militares!
+                </p>
+              </div>
+            ) : (
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+                  gap: '1.25rem'
+                }}
+              >
+                {hallOfFame.map((champ, index) => (
+                  <div
+                    key={champ.id || `${champ.weekId}-${index}`}
+                    style={{
+                      padding: '1.4rem',
+                      borderRadius: '18px',
+                      background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%)',
+                      border: '1px solid rgba(245, 158, 11, 0.4)',
+                      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.85rem',
+                      position: 'relative',
+                      overflow: 'hidden'
+                    }}
+                  >
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '-15px',
+                        right: '-15px',
+                        width: '70px',
+                        height: '70px',
+                        background: 'radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, transparent 70%)',
+                        pointerEvents: 'none'
+                      }}
+                    />
+
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <span
+                        style={{
+                          fontSize: '0.72rem',
+                          fontWeight: 900,
+                          padding: '0.2rem 0.6rem',
+                          borderRadius: '6px',
+                          background: 'rgba(245, 158, 11, 0.2)',
+                          color: '#fbbf24',
+                          border: '1px solid rgba(245, 158, 11, 0.4)',
+                          letterSpacing: '0.04em'
+                        }}
+                      >
+                        🏆 CAMPEÃO SEMANAL
+                      </span>
+                      <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>
+                        📅 {champ.weekLabel || champ.weekId}
+                      </span>
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                      <div
+                        style={{
+                          width: '46px',
+                          height: '46px',
+                          borderRadius: '14px',
+                          background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '1.5rem',
+                          color: '#060b17',
+                          fontWeight: 900
+                        }}
+                      >
+                        🥇
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '1.2rem', fontWeight: 900, color: '#f8fafc' }}>
+                          {champ.winnerName}
+                        </div>
+                        <div style={{ fontSize: '0.82rem', color: '#4ade80', fontWeight: 800 }}>
+                          🎯 {champ.score} pontos ({champ.accuracy}%)
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      style={{
+                        padding: '0.75rem',
+                        borderRadius: '12px',
+                        background: 'rgba(6, 11, 23, 0.6)',
+                        border: '1px solid rgba(255, 255, 255, 0.05)',
+                        fontSize: '0.82rem',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '0.35rem'
+                      }}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <span style={{ color: '#94a3b8' }}>Premiação Concedida:</span>
+                        <strong style={{ color: '#fef08a' }}>{champ.prizeText}</strong>
+                      </div>
+                      <div style={{ color: '#cbd5e1', fontSize: '0.78rem', fontStyle: 'italic' }}>
+                        "PIX transferido pelo Comandante Gean com honras militares"
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         )}
 

@@ -24,6 +24,10 @@ interface HeaderProps {
   onOpenOrders?: () => void;
   onOpenLawBooklet?: () => void;
   onOpenCompetition?: () => void;
+  onOpenMistakes?: () => void;
+  mistakesCount?: number;
+  onOpenSundaySimulado?: () => void;
+  isRondaNoturnaActive?: boolean;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -44,6 +48,10 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenOrders,
   onOpenLawBooklet,
   onOpenCompetition,
+  onOpenMistakes,
+  mistakesCount = 0,
+  onOpenSundaySimulado,
+  isRondaNoturnaActive = false,
 }) => {
   // Cálculo de XP para o próximo nível (100 XP por nível com escala suave)
   const xpCurrentLevel = stats.xp % 100;
@@ -183,6 +191,81 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Trophy size={16} color="#fbbf24" />
               <span>🏆 Competição</span>
+            </button>
+          )}
+
+          {isRondaNoturnaActive && (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                padding: '0.4rem 0.8rem',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.35) 0%, rgba(147, 51, 234, 0.35) 100%)',
+                border: '1.5px solid #ef4444',
+                color: '#ffffff',
+                fontSize: '0.76rem',
+                fontWeight: 900,
+                boxShadow: '0 0 15px rgba(239, 68, 68, 0.45)',
+                animation: 'pulse 2s infinite'
+              }}
+              title="Ronda Noturna Operacional ativa até 23:59: Pontos em dobro (2x)!"
+            >
+              <span>🚨 2X PONTOS</span>
+            </div>
+          )}
+
+          {onOpenMistakes && (
+            <button
+              className="btn-secondary"
+              style={{
+                padding: '0.45rem 0.85rem',
+                fontSize: '0.82rem',
+                borderRadius: '12px',
+                background: (mistakesCount && mistakesCount > 0)
+                  ? 'linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(185, 28, 28, 0.3) 100%)'
+                  : 'rgba(239, 68, 68, 0.1)',
+                borderColor: (mistakesCount && mistakesCount > 0) ? '#f87171' : 'rgba(239, 68, 68, 0.4)',
+                color: '#fca5a5',
+                fontWeight: 800,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                boxShadow: (mistakesCount && mistakesCount > 0) ? '0 0 12px rgba(239, 68, 68, 0.35)' : 'none'
+              }}
+              onClick={() => {
+                sound.playClick();
+                onOpenMistakes();
+              }}
+              title="Caderno de Erros Inteligente AOCP • Retreinamento focado nas falhas"
+            >
+              <span>🎯 Erros {mistakesCount && mistakesCount > 0 ? `(${mistakesCount})` : ''}</span>
+            </button>
+          )}
+
+          {onOpenSundaySimulado && (
+            <button
+              className="btn-secondary"
+              style={{
+                padding: '0.45rem 0.85rem',
+                fontSize: '0.82rem',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(2, 132, 199, 0.25) 100%)',
+                borderColor: 'rgba(56, 189, 248, 0.45)',
+                color: '#7dd3fc',
+                fontWeight: 800,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem'
+              }}
+              onClick={() => {
+                sound.playClick();
+                onOpenSundaySimulado();
+              }}
+              title="Simulado Geral Oficial de Domingo (60 Questões Espelho AOCP com cronômetro de 4h)"
+            >
+              <span>📋 Simulado 60Q</span>
             </button>
           )}
 

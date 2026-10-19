@@ -30,7 +30,7 @@ interface TacticalMazeGameProps {
     xpEarned: number;
     statsDetail: { label: string; value: string | number }[];
   }) => void;
-  onQuestionAnswered?: (isCorrect: boolean, xpGained: number) => void;
+  onQuestionAnswered?: (isCorrect: boolean, xpGained: number, questionId?: string) => void;
 }
 
 interface MazeSectorConfig {
@@ -356,7 +356,7 @@ export const TacticalMazeGame: React.FC<TacticalMazeGameProps> = ({
     setAnsweredIds(prev => [...prev, currentQuestion.id]);
 
     const isCorrect = optionIdx === currentQuestion.correctIndex;
-    onQuestionAnswered?.(isCorrect, isCorrect ? 60 : 0);
+    onQuestionAnswered?.(isCorrect, isCorrect ? 60 : 0, currentQuestion?.id);
 
     if (isCorrect) {
       sound.playSuccess();

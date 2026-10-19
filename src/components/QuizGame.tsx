@@ -37,7 +37,7 @@ interface QuizGameProps {
   }) => void;
   onExit: () => void;
   onAwardXp?: (amount: number) => void;
-  onQuestionAnswered?: (isCorrect: boolean, xpGained: number) => void;
+  onQuestionAnswered?: (isCorrect: boolean, xpGained: number, questionId?: string) => void;
 }
 
 export const QuizGame: React.FC<QuizGameProps> = ({ 
@@ -97,7 +97,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({
     sound.playError();
     setCombo(0);
     setTimeSpentTotal((prev) => prev + 30);
-    onQuestionAnswered?.(false, 0);
+    onQuestionAnswered?.(false, 0, currentQ?.id);
     const subj = currentQ?.materiaNome || currentQ?.categoryId || 'Geral';
     setSubjectBreakdown((prev) => {
       const current = prev[subj] || { total: 0, correct: 0 };
@@ -151,7 +151,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({
       setTimeout(() => setJustEarnedXp(null), 2500);
 
       onAwardXp?.(gainedXp);
-      onQuestionAnswered?.(true, gainedXp);
+      onQuestionAnswered?.(true, gainedXp, currentQ?.id);
 
       if (nextCombo >= 3) {
         sound.playCombo(nextCombo);
@@ -167,7 +167,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({
     } else {
       sound.playError();
       setCombo(0);
-      onQuestionAnswered?.(false, 0);
+      onQuestionAnswered?.(false, 0, currentQ?.id);
     }
   };
 

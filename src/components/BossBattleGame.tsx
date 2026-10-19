@@ -17,7 +17,7 @@ interface BossBattleGameProps {
   }) => void;
   onExit: () => void;
   onAwardXp?: (amount: number) => void;
-  onQuestionAnswered?: (isCorrect: boolean, xpGained: number) => void;
+  onQuestionAnswered?: (isCorrect: boolean, xpGained: number, questionId?: string) => void;
 }
 
 export const BossBattleGame: React.FC<BossBattleGameProps> = ({
@@ -64,7 +64,7 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
       const nextBossHp = Math.max(0, bossHp - damage);
 
       onAwardXp?.(30);
-      onQuestionAnswered?.(true, 30);
+      onQuestionAnswered?.(true, 30, currentQ?.id);
 
       sound.playGunshot38();
       sound.playBossHit();
@@ -100,7 +100,7 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
       }
     } else {
       // Jogador erra: Boss ataca
-      onQuestionAnswered?.(false, 0);
+      onQuestionAnswered?.(false, 0, currentQ?.id);
       const damage = boss.attackPower;
       const nextPlayerHp = Math.max(0, playerHp - damage);
 

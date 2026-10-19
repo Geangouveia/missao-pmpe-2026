@@ -31,12 +31,16 @@ import { PromotionalAdModal } from './components/PromotionalAdModal';
 import { OrderRequestsModal } from './components/OrderRequestsModal';
 import { MilitaryLawBookletModal } from './components/MilitaryLawBookletModal';
 import { PelotaoCompetitionView } from './components/PelotaoCompetitionView';
+import { MistakeNotebookModal } from './components/MistakeNotebookModal';
+import { SundaySimuladoModal } from './components/SundaySimuladoModal';
+import { PlatoonDuelModal } from './components/PlatoonDuelModal';
 import { getDailyMotivationalQuote, type MotivationalQuote } from './utils/motivationalQuotes';
 import { recordStudentLogin, recordQuizCompletion } from './utils/studentAnalytics';
 import { fetchRegistryFromCloud, isMasterUser, checkActiveSessionValidity } from './utils/authManager';
 import { updateAndCalculateStreak } from './utils/studentStreak';
-import { recordLiveQuestionAnswer } from './utils/competitionManager';
-import { Swords, ArrowRight, ShieldCheck, Shield, Calendar, FileText, Smartphone, AlertTriangle, BookOpen, Bell, Trophy } from 'lucide-react';
+import { recordLiveQuestionAnswer, isRondaNoturnaActive } from './utils/competitionManager';
+import { recordMistake, getPendingMistakesCount } from './utils/errorNotebookManager';
+import { Swords, ArrowRight, ShieldCheck, Shield, Calendar, FileText, Smartphone, AlertTriangle, BookOpen, Bell, Trophy, Target, Award, Flame } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export function App() {
@@ -171,7 +175,25 @@ export function App() {
   const [isPromoAdOpen, setIsPromoAdOpen] = useState(false);
   const [isOrderRequestsOpen, setIsOrderRequestsOpen] = useState(false);
   const [isCompetitionModalOpen, setIsCompetitionModalOpen] = useState(false);
+  const [isMistakeNotebookOpen, setIsMistakeNotebookOpen] = useState(false);
+  const [isSundaySimuladoOpen, setIsSundaySimuladoOpen] = useState(false);
+  const [isPlatoonDuelOpen, setIsPlatoonDuelOpen] = useState(false);
+  const [pendingMistakesCount, setPendingMistakesCount] = useState<number>(0);
+  const [isRondaNoturna, setIsRondaNoturna] = useState<boolean>(() => isRondaNoturnaActive());
   const [sessionKickedReason, setSessionKickedReason] = useState<{ title: string; message: string } | null>(null);
+
+  // Monitora prontuário de erros e status da Ronda Noturna
+  useEffect(() => {
+    if (currentUser) {
+      setPendingMistakesCount(getPendingMistakesCount(currentUser));
+    }
+    const updateRonda = () => {
+      setIsRondaNoturna(isRondaNoturnaActive());
+    };
+    updateRonda();
+    const interval = setInterval(updateRonda, 15000);
+    return () => clearInterval(interval);
+  }, [currentUser]);
 
   // Monitoramento em tempo real do Alarme de Estudos (100% Gratuito - Voz & Push)
   const [showStudyAlarmBanner, setShowStudyAlarmBanner] = useState(false);
@@ -352,10 +374,15 @@ export function App() {
   }, []);
 
   // Elevação de nível e registro em tempo real a cada resposta dada
-  const handleQuestionAnswered = useCallback((isCorrect: boolean, xpGained: number) => {
+  const handleQuestionAnswered = useCallback((isCorrect: boolean, xpGained: number, questionId?: string) => {
     // 1. TELEMETRIA EM TEMPO REAL: Registra a resposta imediatamente na nuvem KVdb e na competição semanal
     if (currentUser) {
       recordLiveQuestionAnswer(currentUser, isCorrect);
+      // Registra automaticamente no Caderno de Erros se errar a questão
+      if (!isCorrect && questionId) {
+        recordMistake(currentUser, questionId);
+        setPendingMistakesCount(getPendingMistakesCount(currentUser));
+      }
     }
 
     setStats((prev) => {
@@ -849,6 +876,10 @@ export function App() {
         onOpenLawBooklet={() => setIsLawBookletOpen(true)}
         onOpenOrders={() => setIsOrderRequestsOpen(true)}
         onOpenCompetition={() => setIsCompetitionModalOpen(true)}
+        onOpenMistakes={() => setIsMistakeNotebookOpen(true)}
+        mistakesCount={pendingMistakesCount}
+        onOpenSundaySimulado={() => setIsSundaySimuladoOpen(true)}
+        isRondaNoturnaActive={isRondaNoturna}
       />
 
       {/* Roteamento de Telas */}
@@ -1011,7 +1042,68 @@ export function App() {
             </button>
           </div>
 
-          {/* CARDS DE AÇÃO RÁPIDA: CRONOGRAMA INTELIGENTE & BAIXAR CADERNO PDF */}
+          {/* BANNER DINÂMICO: RONDA NOTURNA (2X PONTOS ATIVOS) */}
+          {isRondaNoturna && (
+            <div
+              onClick={() => {
+                sound.playClick();
+                setIsCompetitionModalOpen(true);
+              }}
+              style={{
+                cursor: 'pointer',
+                padding: '0.95rem 1.35rem',
+                borderRadius: '16px',
+                background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.28) 0%, rgba(147, 51, 234, 0.28) 100%)',
+                border: '2px solid #ef4444',
+                boxShadow: '0 0 25px rgba(239, 68, 68, 0.35)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '1rem',
+                marginBottom: '1rem',
+                animation: 'pulse 2s infinite'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                <div
+                  style={{
+                    width: '42px',
+                    height: '42px',
+                    borderRadius: '12px',
+                    background: 'linear-gradient(135deg, #dc2626, #9333ea)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '1.4rem',
+                    flexShrink: 0
+                  }}
+                >
+                  🚨
+                </div>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: '1rem', fontWeight: 900, color: '#fca5a5' }}>
+                      RONDA NOTURNA OPERACIONAL EM ANDAMENTO
+                    </span>
+                    <span style={{ fontSize: '0.7rem', padding: '0.15rem 0.55rem', borderRadius: '6px', background: '#dc2626', color: '#ffffff', fontWeight: 900 }}>
+                      2X PONTOS ATIVOS
+                    </span>
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: '#e2e8f0', marginTop: '0.15rem' }}>
+                    De 21:00 às 23:59, todas as questões certas contam o DOBRO de pontos na competição semanal!
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#fca5a5', fontWeight: 900, fontSize: '0.84rem' }}>
+                <span>Ver Placar ao Vivo</span>
+                <ArrowRight size={15} />
+              </div>
+            </div>
+          )}
+
+          {/* CARDS DE AÇÃO RÁPIDA: CRONOGRAMA, PDF, LEIS, ERROS & SIMULADO DOMINGO */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
@@ -1158,6 +1250,109 @@ export function App() {
                 </div>
               </div>
             </div>
+
+            {/* Card 4: Caderno de Erros Inteligente (Prontuário de Falhas AOCP) */}
+            <div
+              onClick={() => {
+                sound.playClick();
+                setIsMistakeNotebookOpen(true);
+              }}
+              style={{
+                cursor: 'pointer',
+                padding: '1.1rem 1.25rem',
+                borderRadius: '16px',
+                background: 'linear-gradient(135deg, rgba(38, 14, 14, 0.95) 0%, rgba(20, 8, 8, 0.98) 100%)',
+                border: pendingMistakesCount > 0 ? '1.5px solid rgba(239, 68, 68, 0.65)' : '1.5px solid rgba(239, 68, 68, 0.35)',
+                boxShadow: pendingMistakesCount > 0
+                  ? '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(239, 68, 68, 0.25)'
+                  : '0 8px 20px rgba(0, 0, 0, 0.4)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                transition: 'transform 0.2s, box-shadow 0.2s'
+              }}
+            >
+              <div style={{
+                width: '46px',
+                height: '46px',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #dc2626, #b91c1c)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 0 15px rgba(220, 38, 38, 0.4)',
+                flexShrink: 0
+              }}>
+                <Target size={24} color="#ffffff" />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#fecaca' }}>
+                    Caderno de Erros Inteligente
+                  </span>
+                  <span style={{
+                    fontSize: '0.68rem',
+                    padding: '0.15rem 0.45rem',
+                    borderRadius: '4px',
+                    background: pendingMistakesCount > 0 ? '#dc2626' : 'rgba(34, 197, 94, 0.25)',
+                    color: '#ffffff',
+                    fontWeight: 900
+                  }}>
+                    {pendingMistakesCount > 0 ? `${pendingMistakesCount} FALHAS` : '0 FALHAS'}
+                  </span>
+                </div>
+                <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+                  Retreine taticamente apenas as questões que errou até alcançar 100% de domínio
+                </div>
+              </div>
+            </div>
+
+            {/* Card 5: Simulado Oficial de Domingo (60 Questões Espelho AOCP) */}
+            <div
+              onClick={() => {
+                sound.playClick();
+                setIsSundaySimuladoOpen(true);
+              }}
+              style={{
+                cursor: 'pointer',
+                padding: '1.1rem 1.25rem',
+                borderRadius: '16px',
+                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.98) 100%)',
+                border: '1.5px solid rgba(56, 189, 248, 0.55)',
+                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(56, 189, 248, 0.25)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                transition: 'transform 0.2s, box-shadow 0.2s'
+              }}
+            >
+              <div style={{
+                width: '46px',
+                height: '46px',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #0284c7, #06b6d4)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 0 15px rgba(6, 182, 212, 0.4)',
+                flexShrink: 0
+              }}>
+                <Award size={24} color="#060b17" />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#e0f2fe' }}>
+                    Simulado Oficial de Domingo
+                  </span>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8', fontWeight: 900 }}>
+                    60Q AOCP
+                  </span>
+                </div>
+                <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+                  Espelho fiel da prova: 6 matérias balanceadas, 4h de prova e boletim militar
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Seletor de Categoria, Semanas e Blocos PMPE */}
@@ -1171,19 +1366,19 @@ export function App() {
             totalFilteredQuestions={filteredQuestions.length}
           />
 
-          {/* BANNER MILITAR: DISPUTA DE PELOTÃO & DUELO AMIGÁVEL (6 VAGAS) */}
+          {/* BANNER MILITAR: DISPUTA DE PELOTÃO • DUELO 1 VS 1 TÁTICO */}
           <div 
             onClick={() => {
               sound.playGunshot38();
-              setIsAnalyticsModalOpen(true);
+              setIsPlatoonDuelOpen(true);
             }}
             style={{
               cursor: 'pointer',
               padding: '1.15rem 1.4rem',
               borderRadius: '16px',
               background: 'linear-gradient(135deg, rgba(14, 26, 52, 0.95) 0%, rgba(9, 16, 34, 0.98) 100%)',
-              border: '2px solid rgba(59, 130, 246, 0.45)',
-              boxShadow: '0 0 25px rgba(37, 99, 235, 0.25)',
+              border: '2px solid rgba(245, 158, 11, 0.55)',
+              boxShadow: '0 0 25px rgba(245, 158, 11, 0.25)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
@@ -1194,11 +1389,11 @@ export function App() {
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 0 35px rgba(37, 99, 235, 0.45)';
+              e.currentTarget.style.boxShadow = '0 0 35px rgba(245, 158, 11, 0.45)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 0 25px rgba(37, 99, 235, 0.25)';
+              e.currentTarget.style.boxShadow = '0 0 25px rgba(245, 158, 11, 0.25)';
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem' }}>
@@ -1218,32 +1413,55 @@ export function App() {
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
                   <span style={{ fontSize: '1.05rem', fontWeight: 900, color: '#ffffff', textTransform: 'uppercase', letterSpacing: '0.02em' }}>
-                    ⚔️ DISPUTA DE PELOTÃO • DUELO 1 VS 1 (6 VAGAS)
+                    ⚔️ DUELO 1 VS 1 DO PELOTÃO (5 TIROS TÁTICOS)
                   </span>
                   <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.5rem', borderRadius: '4px', background: '#22c55e', color: '#052e16', fontWeight: 900 }}>
-                    AO VIVO EM NUVEM
+                    DISPUTA DIRETA
                   </span>
                 </div>
                 <div style={{ fontSize: '0.82rem', color: '#cbd5e1', marginTop: '0.2rem' }}>
-                  Compare seu aproveitamento (% de acerto e disparos) lado a lado com os colegas para evoluir até a farda da PMPE!
+                  Desafie qualquer colega do pelotão em um tiroteio rápido de 5 questões AOCP e veja quem é mais rápido e certeiro!
                 </div>
               </div>
             </div>
 
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.45rem',
-              padding: '0.55rem 1.15rem',
-              borderRadius: '10px',
-              background: 'linear-gradient(135deg, #d97706, #b45309)',
-              color: '#ffffff',
-              fontWeight: 900,
-              fontSize: '0.84rem',
-              boxShadow: '0 0 15px rgba(217, 119, 6, 0.5)'
-            }}>
-              <span>Abrir Duelo do Pelotão</span>
-              <ArrowRight size={15} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  sound.playClick();
+                  setIsAnalyticsModalOpen(true);
+                }}
+                style={{
+                  padding: '0.55rem 0.95rem',
+                  borderRadius: '10px',
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  color: '#93c5fd',
+                  fontWeight: 800,
+                  fontSize: '0.82rem',
+                  cursor: 'pointer'
+                }}
+              >
+                📊 Telemetria do Pelotão
+              </button>
+
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                padding: '0.55rem 1.15rem',
+                borderRadius: '10px',
+                background: 'linear-gradient(135deg, #d97706, #b45309)',
+                color: '#ffffff',
+                fontWeight: 900,
+                fontSize: '0.84rem',
+                boxShadow: '0 0 15px rgba(217, 119, 6, 0.5)'
+              }}>
+                <span>Iniciar Duelo 1 vs 1</span>
+                <ArrowRight size={15} />
+              </div>
             </div>
           </div>
 
@@ -1557,6 +1775,41 @@ export function App() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* MODAL: CADERNO DE ERROS INTELIGENTE (PRONTUÁRIO DE FALHAS AOCP) */}
+      {isMistakeNotebookOpen && (
+        <MistakeNotebookModal
+          onClose={() => {
+            setIsMistakeNotebookOpen(false);
+            if (currentUser) {
+              setPendingMistakesCount(getPendingMistakesCount(currentUser));
+            }
+          }}
+          allQuestions={questions}
+          userName={currentUser || 'Soldado'}
+          onQuestionAnswered={handleQuestionAnswered}
+        />
+      )}
+
+      {/* MODAL: SIMULADO GERAL OFICIAL DE DOMINGO (60 QUESTÕES ESPELHO AOCP) */}
+      {isSundaySimuladoOpen && (
+        <SundaySimuladoModal
+          onClose={() => setIsSundaySimuladoOpen(false)}
+          allQuestions={questions}
+          userName={currentUser || 'Soldado'}
+          onQuestionAnswered={handleQuestionAnswered}
+        />
+      )}
+
+      {/* MODAL: DUELO 1 VS 1 DO PELOTÃO */}
+      {isPlatoonDuelOpen && (
+        <PlatoonDuelModal
+          onClose={() => setIsPlatoonDuelOpen(false)}
+          allQuestions={questions}
+          userName={currentUser || 'Soldado'}
+          onQuestionAnswered={handleQuestionAnswered}
+        />
       )}
     </div>
   );
