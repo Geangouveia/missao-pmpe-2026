@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'deploy: identidade visual oficial PMPE azul-ferrete, trava de aparelho unico, fim de repeticoes e 160 questoes ineditas nivel dificil';
+  const commitMsg = 'deploy: telemetria em tempo real dos soldados e painel de competicao semanal (seg a sab) com premiacao do comandante gean';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;

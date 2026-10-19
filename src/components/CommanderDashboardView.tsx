@@ -33,8 +33,10 @@ import {
   Activity,
   FileText,
   Send,
-  PhoneCall
+  PhoneCall,
+  Trophy
 } from 'lucide-react';
+import { PelotaoCompetitionModal } from './PelotaoCompetitionModal';
 import { 
   fetchRegistryFromCloud, 
   approveUserAccess, 
@@ -98,6 +100,7 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
   const [showPassText, setShowPassText] = useState(false);
   const [masterPassError, setMasterPassError] = useState('');
   const [isSavingMasterPass, setIsSavingMasterPass] = useState(false);
+  const [isCompetitionOpen, setIsCompetitionOpen] = useState(false);
 
   const loadData = async () => {
     setIsLoading(true);
@@ -516,6 +519,31 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
 
           {/* Lado Direito: Ações */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+            <button
+              onClick={() => {
+                sound.playLevelUp();
+                setIsCompetitionOpen(true);
+              }}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                padding: '0.6rem 1.15rem',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.3) 0%, rgba(217, 119, 6, 0.35) 100%)',
+                border: '1px solid #f59e0b',
+                color: '#fbbf24',
+                fontWeight: 900,
+                fontSize: '0.86rem',
+                cursor: 'pointer',
+                boxShadow: '0 0 15px rgba(245, 158, 11, 0.3)'
+              }}
+              title="Abrir Painel Oficial de Competição do Pelotão e Premiação"
+            >
+              <Trophy size={16} color="#fbbf24" />
+              <span>🏆 Competição & Premiação</span>
+            </button>
+
             <button
               onClick={() => {
                 sound.playClick();
@@ -1344,35 +1372,68 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
                             {user.lastLocationCity ? `📍 ${user.lastLocationCity}` : '📍 Pernambuco, BR'}
                           </span>
 
-                          {/* Último Acesso em Tempo Real */}
-                          <span style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '0.35rem',
-                            color: user.lastActiveTime ? '#4ade80' : '#94a3b8',
-                            fontWeight: 700,
-                            fontSize: '0.74rem'
-                          }}>
-                            <Activity size={12} color={user.lastActiveTime ? '#4ade80' : '#94a3b8'} />
-                            {user.lastActiveTime 
-                              ? `Último acesso: ${new Date(user.lastActiveTime).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}`
-                              : `Cadastrado em ${formattedDate}`}
-                          </span>
+                          {/* Indicador de Acesso Hoje em Tempo Real */}
+                          {(() => {
+                            const todayStr = new Date().toISOString().slice(0, 10);
+                            const lastDate = user.lastActiveTime ? user.lastActiveTime.slice(0, 10) : '';
+                            const accessedToday = (lastDate === todayStr) || (typeof user.questionsTodayCount === 'number' && user.questionsTodayCount > 0);
 
-                          {/* Questões Feitas Hoje */}
+                            return accessedToday ? (
+                              <span style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '0.35rem',
+                                background: 'rgba(34, 197, 94, 0.25)',
+                                padding: '0.2rem 0.65rem',
+                                borderRadius: '8px',
+                                border: '1px solid rgba(34, 197, 94, 0.6)',
+                                color: '#4ade80',
+                                fontWeight: 900,
+                                fontSize: '0.76rem',
+                                boxShadow: '0 0 10px rgba(34, 197, 94, 0.3)'
+                              }}>
+                                <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 8px #22c55e' }} />
+                                ACESSOU HOJE!
+                              </span>
+                            ) : (
+                              <span style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '0.35rem',
+                                background: 'rgba(148, 163, 184, 0.1)',
+                                padding: '0.15rem 0.55rem',
+                                borderRadius: '6px',
+                                border: '1px solid rgba(148, 163, 184, 0.2)',
+                                color: '#94a3b8',
+                                fontWeight: 700,
+                                fontSize: '0.74rem'
+                              }}>
+                                Sem acesso hoje
+                              </span>
+                            );
+                          })()}
+
+                          {/* Questões Feitas Hoje (Destaque Principal em Tempo Real) */}
                           <span style={{
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: '0.35rem',
-                            background: 'rgba(34, 197, 94, 0.15)',
-                            padding: '0.15rem 0.55rem',
-                            borderRadius: '6px',
-                            border: '1px solid rgba(34, 197, 94, 0.35)',
-                            color: '#86efac',
-                            fontWeight: 800,
-                            fontSize: '0.74rem'
+                            background: (user.questionsTodayCount && user.questionsTodayCount > 0)
+                              ? 'linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(14, 116, 144, 0.3))'
+                              : 'rgba(255, 255, 255, 0.05)',
+                            padding: '0.2rem 0.7rem',
+                            borderRadius: '8px',
+                            border: (user.questionsTodayCount && user.questionsTodayCount > 0)
+                              ? '1px solid rgba(6, 182, 212, 0.55)'
+                              : '1px solid rgba(255, 255, 255, 0.1)',
+                            color: (user.questionsTodayCount && user.questionsTodayCount > 0) ? '#67e8f9' : '#94a3b8',
+                            fontWeight: 900,
+                            fontSize: '0.78rem',
+                            boxShadow: (user.questionsTodayCount && user.questionsTodayCount > 0)
+                              ? '0 0 12px rgba(6, 182, 212, 0.25)'
+                              : 'none'
                           }}>
-                            🎯 {user.questionsTodayCount || 0} questões hoje
+                            🎯 {user.questionsTodayCount || 0} respondidas hoje
                           </span>
 
                           {/* Telefone / WhatsApp */}
@@ -2103,6 +2164,17 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
             </div>
           </div>
         </div>
+      )}
+
+      {/* MODAL DE COMPETIÇÃO & PREMIAÇÃO DO PELOTÃO */}
+      {isCompetitionOpen && (
+        <PelotaoCompetitionModal
+          onClose={() => {
+            setIsCompetitionOpen(false);
+            loadData();
+          }}
+          currentUser="Soldado Gean"
+        />
       )}
     </div>
   );

@@ -30,11 +30,13 @@ import { QuestionPdfModal } from './components/QuestionPdfModal';
 import { PromotionalAdModal } from './components/PromotionalAdModal';
 import { OrderRequestsModal } from './components/OrderRequestsModal';
 import { MilitaryLawBookletModal } from './components/MilitaryLawBookletModal';
+import { PelotaoCompetitionModal } from './components/PelotaoCompetitionModal';
 import { getDailyMotivationalQuote, type MotivationalQuote } from './utils/motivationalQuotes';
 import { recordStudentLogin, recordQuizCompletion } from './utils/studentAnalytics';
 import { fetchRegistryFromCloud, isMasterUser, checkActiveSessionValidity } from './utils/authManager';
 import { updateAndCalculateStreak } from './utils/studentStreak';
-import { Swords, ArrowRight, ShieldCheck, Shield, Calendar, FileText, Smartphone, AlertTriangle, BookOpen, Bell } from 'lucide-react';
+import { recordLiveQuestionAnswer } from './utils/competitionManager';
+import { Swords, ArrowRight, ShieldCheck, Shield, Calendar, FileText, Smartphone, AlertTriangle, BookOpen, Bell, Trophy } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export function App() {
@@ -168,6 +170,7 @@ export function App() {
   const [isLawBookletOpen, setIsLawBookletOpen] = useState(false);
   const [isPromoAdOpen, setIsPromoAdOpen] = useState(false);
   const [isOrderRequestsOpen, setIsOrderRequestsOpen] = useState(false);
+  const [isCompetitionModalOpen, setIsCompetitionModalOpen] = useState(false);
   const [sessionKickedReason, setSessionKickedReason] = useState<{ title: string; message: string } | null>(null);
 
   // Monitoramento em tempo real do Alarme de Estudos (100% Gratuito - Voz & Push)
@@ -350,6 +353,11 @@ export function App() {
 
   // Elevação de nível e registro em tempo real a cada resposta dada
   const handleQuestionAnswered = useCallback((isCorrect: boolean, xpGained: number) => {
+    // 1. TELEMETRIA EM TEMPO REAL: Registra a resposta imediatamente na nuvem KVdb e na competição semanal
+    if (currentUser) {
+      recordLiveQuestionAnswer(currentUser, isCorrect);
+    }
+
     setStats((prev) => {
       const newXp = prev.xp + xpGained;
       const newLevel = Math.floor(newXp / 100) + 1;
@@ -411,7 +419,7 @@ export function App() {
         achievements: updatedAch,
       };
     });
-  }, []);
+  }, [currentUser]);
 
   // Desbloquear Conquista
   const unlockAchievement = (id: string) => {
@@ -830,6 +838,7 @@ export function App() {
         onOpenPdfExport={() => setIsPdfModalOpen(true)}
         onOpenLawBooklet={() => setIsLawBookletOpen(true)}
         onOpenOrders={() => setIsOrderRequestsOpen(true)}
+        onOpenCompetition={() => setIsCompetitionModalOpen(true)}
       />
 
       {/* Roteamento de Telas */}
@@ -911,6 +920,86 @@ export function App() {
               </button>
             </div>
           )}
+
+          {/* BANNER OFICIAL: COMPETIÇÃO SEMANAL DO PELOTÃO */}
+          <div 
+            onClick={() => {
+              sound.playLevelUp();
+              setIsCompetitionModalOpen(true);
+            }}
+            style={{
+              cursor: 'pointer',
+              padding: '1rem 1.4rem',
+              borderRadius: '16px',
+              background: 'linear-gradient(135deg, rgba(29, 78, 216, 0.35) 0%, rgba(245, 158, 11, 0.22) 100%)',
+              border: '2px solid rgba(245, 158, 11, 0.65)',
+              boxShadow: '0 0 30px rgba(245, 158, 11, 0.25)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '1rem',
+              marginBottom: '1.25rem',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 0 35px rgba(245, 158, 11, 0.45)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 0 30px rgba(245, 158, 11, 0.25)';
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+              <div style={{
+                width: '46px',
+                height: '46px',
+                borderRadius: '14px',
+                background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 0 18px rgba(245, 158, 11, 0.5)',
+                color: '#ffffff'
+              }}>
+                <Trophy size={24} />
+              </div>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '1.08rem', fontWeight: 900, color: '#fef08a' }}>
+                    🏆 Competição Semanal do Pelotão PMPE 2026
+                  </span>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.55rem', borderRadius: '4px', background: 'rgba(34, 197, 94, 0.25)', border: '1px solid #22c55e', color: '#4ade80', fontWeight: 900 }}>
+                    DISPUTA OFICIAL
+                  </span>
+                </div>
+                <div style={{ fontSize: '0.82rem', color: '#cbd5e1', marginTop: '0.2rem' }}>
+                  Premiação Oficial estipulada pelo Comandante Gean para o 1º Colocado no fechamento de Sábado!
+                </div>
+              </div>
+            </div>
+
+            <button 
+              className="btn-primary" 
+              style={{
+                padding: '0.55rem 1.25rem',
+                fontSize: '0.86rem',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+                border: 'none',
+                color: '#060b17',
+                fontWeight: 900,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                boxShadow: '0 0 15px rgba(245, 158, 11, 0.4)'
+              }}
+            >
+              <span>Ver Ranking & Premiação</span>
+              <ArrowRight size={16} />
+            </button>
+          </div>
 
           {/* CARDS DE AÇÃO RÁPIDA: CRONOGRAMA INTELIGENTE & BAIXAR CADERNO PDF */}
           <div style={{
@@ -1216,6 +1305,7 @@ export function App() {
             setSummaryData(summary);
             if (summary.xpEarned) addXp(summary.xpEarned);
           }}
+          onQuestionAnswered={handleQuestionAnswered}
         />
       )}
 
@@ -1457,6 +1547,14 @@ export function App() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* MODAL: COMPETIÇÃO SEMANAL DO PELOTÃO */}
+      {isCompetitionModalOpen && (
+        <PelotaoCompetitionModal
+          onClose={() => setIsCompetitionModalOpen(false)}
+          currentUser={currentUser || ''}
+        />
       )}
     </div>
   );

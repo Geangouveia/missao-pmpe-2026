@@ -23,6 +23,7 @@ interface HeaderProps {
   onOpenPdfExport?: () => void;
   onOpenOrders?: () => void;
   onOpenLawBooklet?: () => void;
+  onOpenCompetition?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -42,6 +43,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenPdfExport,
   onOpenOrders,
   onOpenLawBooklet,
+  onOpenCompetition,
 }) => {
   // Cálculo de XP para o próximo nível (100 XP por nível com escala suave)
   const xpCurrentLevel = stats.xp % 100;
@@ -155,6 +157,35 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Ações Rápidas */}
         <div className="hud-actions">
+          {/* Botão de Competição Semanal com Premiação Oficial */}
+          {onOpenCompetition && (
+            <button 
+              className="btn-secondary"
+              style={{
+                padding: '0.45rem 0.95rem',
+                fontSize: '0.84rem',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.28) 0%, rgba(180, 83, 9, 0.35) 100%)',
+                borderColor: '#f59e0b',
+                color: '#fbbf24',
+                fontWeight: 900,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                boxShadow: '0 0 15px rgba(245, 158, 11, 0.35)',
+                cursor: 'pointer'
+              }}
+              onClick={() => {
+                sound.playLevelUp();
+                onOpenCompetition();
+              }}
+              title="Competição Semanal do Pelotão PMPE (Segunda a Sábado com Premiação)"
+            >
+              <Trophy size={16} color="#fbbf24" />
+              <span>🏆 Competição</span>
+            </button>
+          )}
+
           {isMasterUser(userName || '') && onOpenCommanderAccess && (
             <button 
               className="btn-secondary"
