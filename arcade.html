@@ -67,25 +67,75 @@
     </div>
   </div>
 
-  <!-- Painel de Controles Virtuais Touch (Mobile) -->
-  <div class="w-full max-w-[768px] mt-2 flex flex-wrap items-center justify-between gap-2 px-2 sm:hidden">
-    <!-- D-pad -->
-    <div class="grid grid-cols-3 gap-1 w-36">
-      <div></div>
-      <button id="btn-up" class="p-2 bg-slate-800 border border-slate-600 rounded text-center text-sm font-bold active:bg-slate-700">▲</button>
-      <div></div>
-      <button id="btn-left" class="p-2 bg-slate-800 border border-slate-600 rounded text-center text-sm font-bold active:bg-slate-700">◀</button>
-      <button id="btn-down" class="p-2 bg-slate-800 border border-slate-600 rounded text-center text-sm font-bold active:bg-slate-700">▼</button>
-      <button id="btn-right" class="p-2 bg-slate-800 border border-slate-600 rounded text-center text-sm font-bold active:bg-slate-700">▶</button>
+  <!-- Painel de Controles Virtuais Touch (Arcade Cockpit Pro) -->
+  <div id="arcade-cockpit" class="w-full max-w-[1020px] mt-2 p-3 bg-gradient-to-b from-slate-900 via-slate-950 to-black rounded-xl border-2 border-slate-700 shadow-2xl flex flex-col gap-3 select-none touch-none">
+    <!-- Barra Tática Superior de Ações Rápidas -->
+    <div class="flex items-center justify-between gap-2 flex-wrap pb-2 border-b border-slate-800">
+      <button id="btn-cycle" class="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-sky-600 to-cyan-700 hover:from-sky-500 hover:to-cyan-600 text-white font-bold text-xs rounded-lg border border-cyan-400 shadow-md active:scale-95 transition-transform">
+        <span>🔄 ARMA:</span>
+        <span id="cockpit-weapon-label" class="text-yellow-300 font-extrabold">HANDGUN (INF)</span>
+      </button>
+
+      <div class="flex items-center gap-2">
+        <button id="btn-restart" class="px-2.5 py-1.5 bg-red-950/70 hover:bg-red-900 border border-red-600 text-red-200 text-xs font-bold rounded-md active:scale-95 transition-transform">
+          🔁 Reiniciar
+        </button>
+        <button id="btn-fullscreen" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-200 text-xs font-bold rounded-md active:scale-95 transition-transform">
+          ⛶ Tela Cheia
+        </button>
+      </div>
     </div>
 
-    <!-- Botões de Ação -->
-    <div class="flex flex-wrap gap-1 justify-end max-w-[200px]">
-      <button id="btn-shoot" class="px-3 py-2 bg-red-600 active:bg-red-700 text-white rounded font-bold text-xs">💥 ATIRAR</button>
-      <button id="btn-punch" class="px-2 py-2 bg-amber-600 active:bg-amber-700 text-white rounded font-bold text-xs">👊 SOCO</button>
-      <button id="btn-roll" class="px-2 py-2 bg-purple-600 active:bg-purple-700 text-white rounded font-bold text-xs">🌀 ESQUIVA</button>
-      <button id="btn-grenade" class="px-2 py-2 bg-green-600 active:bg-green-700 text-white rounded font-bold text-xs">💣 GRANADA</button>
-      <button id="btn-cycle" class="px-2 py-2 bg-cyan-700 active:bg-cyan-600 text-white rounded font-bold text-xs">🔄 ARMA</button>
+    <!-- Área Principal de Controles (D-Pad à Esquerda e Botões de Combate à Direita) -->
+    <div class="flex items-center justify-between gap-4 flex-wrap">
+      <!-- D-Pad Tático 8-Direções com Suporte a Drag -->
+      <div class="flex flex-col items-center gap-1 mx-auto sm:mx-0">
+        <div id="dpad-container" class="relative w-40 h-40 bg-gradient-to-b from-slate-800 via-slate-900 to-black rounded-full border-4 border-slate-700 shadow-xl grid grid-cols-3 grid-rows-3 gap-1 p-1 touch-none">
+          <button id="dpad-ul" class="bg-slate-800/40 border border-slate-700/50 rounded-tl-lg text-slate-400 text-xs font-bold flex items-center justify-center active:bg-cyan-500 active:text-black">◤</button>
+          <button id="btn-up" class="bg-slate-800 border border-slate-600 rounded text-white text-lg font-bold flex items-center justify-center active:bg-cyan-500 active:shadow-[0_0_12px_#38bdf8]">▲</button>
+          <button id="dpad-ur" class="bg-slate-800/40 border border-slate-700/50 rounded-tr-lg text-slate-400 text-xs font-bold flex items-center justify-center active:bg-cyan-500 active:text-black">◥</button>
+          <button id="btn-left" class="bg-slate-800 border border-slate-600 rounded text-white text-lg font-bold flex items-center justify-center active:bg-cyan-500 active:shadow-[0_0_12px_#38bdf8]">◀</button>
+          <div class="bg-slate-900 rounded-full border border-slate-700 flex items-center justify-center">
+            <span id="dpad-center-led" class="w-3 h-3 rounded-full bg-slate-600"></span>
+          </div>
+          <button id="btn-right" class="bg-slate-800 border border-slate-600 rounded text-white text-lg font-bold flex items-center justify-center active:bg-cyan-500 active:shadow-[0_0_12px_#38bdf8]">▶</button>
+          <button id="dpad-dl" class="bg-slate-800/40 border border-slate-700/50 rounded-bl-lg text-slate-400 text-xs font-bold flex items-center justify-center active:bg-cyan-500 active:text-black">◣</button>
+          <button id="btn-down" class="bg-slate-800 border border-slate-600 rounded text-white text-lg font-bold flex items-center justify-center active:bg-cyan-500 active:shadow-[0_0_12px_#38bdf8]">▼</button>
+          <button id="dpad-dr" class="bg-slate-800/40 border border-slate-700/50 rounded-br-lg text-slate-400 text-xs font-bold flex items-center justify-center active:bg-cyan-500 active:text-black">◢</button>
+        </div>
+        <span class="text-[11px] text-slate-500 font-bold">D-PAD 8-WAY (TOQUE / ARRASTE)</span>
+      </div>
+
+      <!-- Cluster Arcade de Botões de Combate -->
+      <div class="flex flex-col items-center gap-1 mx-auto sm:mx-0">
+        <div class="grid grid-cols-2 gap-3 items-center justify-center">
+          <!-- Soco [Z] -->
+          <button id="btn-punch" class="w-16 h-16 rounded-full bg-gradient-to-br from-amber-500 to-amber-700 border-2 border-amber-400 text-white flex flex-col items-center justify-center shadow-lg active:scale-95 active:shadow-[0_0_16px_#f59e0b] transition-all">
+            <span class="text-xl leading-none">👊</span>
+            <span class="text-[10px] font-black mt-0.5 tracking-wider">SOCO</span>
+          </button>
+
+          <!-- Granada [G] -->
+          <button id="btn-grenade" class="relative w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 border-2 border-emerald-400 text-white flex flex-col items-center justify-center shadow-lg active:scale-95 active:shadow-[0_0_16px_#10b981] transition-all">
+            <span class="text-xl leading-none">💣</span>
+            <span class="text-[10px] font-black mt-0.5 tracking-wider">BOMBA</span>
+            <span id="cockpit-grenades-badge" class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-extrabold px-1.5 py-0.2 rounded-full border border-white">10</span>
+          </button>
+
+          <!-- Esquiva [C] -->
+          <button id="btn-roll" class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-purple-800 border-2 border-purple-400 text-white flex flex-col items-center justify-center shadow-lg active:scale-95 active:shadow-[0_0_16px_#a855f7] transition-all">
+            <span class="text-xl leading-none">🌀</span>
+            <span class="text-[10px] font-black mt-0.5 tracking-wider">ESQUIVA</span>
+          </button>
+
+          <!-- Atirar [X] -->
+          <button id="btn-shoot" class="w-20 h-20 rounded-full bg-gradient-to-br from-red-500 to-red-800 border-4 border-red-500 text-white flex flex-col items-center justify-center shadow-2xl active:scale-95 active:shadow-[0_0_24px_#ef4444] transition-all">
+            <span class="text-2xl leading-none">💥</span>
+            <span class="text-xs font-black mt-0.5 tracking-widest">FOGO</span>
+          </button>
+        </div>
+        <span class="text-[11px] text-slate-500 font-bold">ARSENAL DE COMBATE (MULTI-TOUCH)</span>
+      </div>
     </div>
   </div>
 
@@ -299,37 +349,199 @@
     });
     window.addEventListener("keyup", (e) => keys[e.key.toLowerCase()] = false);
 
-    // Mapeamento de controles virtuais touch
-    function bindTouch(id, keyName) {
+    // ==========================================
+    // SISTEMA DE CONTROLES ARCADE COCKPIT (TOUCH/MULTI-TOUCH)
+    // ==========================================
+    function triggerHaptic(ms = 14) {
+      if (typeof navigator !== "undefined" && navigator.vibrate) {
+        try { navigator.vibrate(ms); } catch (e) {}
+      }
+    }
+
+    function setKeyDirection(up, down, left, right) {
+      keys["arrowup"] = up;
+      keys["arrowdown"] = down;
+      keys["arrowleft"] = left;
+      keys["arrowright"] = right;
+
+      const led = document.getElementById("dpad-center-led");
+      if (led) {
+        led.className = (up || down || left || right)
+          ? "w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"
+          : "w-3 h-3 rounded-full bg-slate-600";
+      }
+      if (up || down || left || right) triggerHaptic(10);
+    }
+
+    // Touch Drag no D-Pad 8-Direções
+    const dpadEl = document.getElementById("dpad-container");
+    let dpadTouchId = null;
+
+    function handleDpadCoord(clientX, clientY) {
+      if (!dpadEl) return;
+      const rect = dpadEl.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const dx = clientX - centerX;
+      const dy = clientY - centerY;
+      const dist = Math.hypot(dx, dy);
+
+      if (dist < 14) {
+        setKeyDirection(false, false, false, false);
+        return;
+      }
+
+      const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+      let up = false, down = false, left = false, right = false;
+
+      if (angle >= -22.5 && angle < 22.5) {
+        right = true;
+      } else if (angle >= 22.5 && angle < 67.5) {
+        down = true; right = true;
+      } else if (angle >= 67.5 && angle < 112.5) {
+        down = true;
+      } else if (angle >= 112.5 && angle < 157.5) {
+        down = true; left = true;
+      } else if (angle >= 157.5 || angle < -157.5) {
+        left = true;
+      } else if (angle >= -157.5 && angle < -112.5) {
+        up = true; left = true;
+      } else if (angle >= -112.5 && angle < -67.5) {
+        up = true;
+      } else if (angle >= -67.5 && angle < -22.5) {
+        up = true; right = true;
+      }
+
+      setKeyDirection(up, down, left, right);
+    }
+
+    if (dpadEl) {
+      dpadEl.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        initAudio();
+        const t = e.changedTouches[0];
+        dpadTouchId = t.identifier;
+        handleDpadCoord(t.clientX, t.clientY);
+      }, { passive: false });
+
+      dpadEl.addEventListener("touchmove", (e) => {
+        e.preventDefault();
+        if (dpadTouchId === null) return;
+        for (let i = 0; i < e.changedTouches.length; i++) {
+          if (e.changedTouches[i].identifier === dpadTouchId) {
+            handleDpadCoord(e.changedTouches[i].clientX, e.changedTouches[i].clientY);
+            break;
+          }
+        }
+      }, { passive: false });
+
+      const endDpad = (e) => {
+        e.preventDefault();
+        for (let i = 0; i < e.changedTouches.length; i++) {
+          if (e.changedTouches[i].identifier === dpadTouchId) {
+            dpadTouchId = null;
+            setKeyDirection(false, false, false, false);
+            break;
+          }
+        }
+      };
+      dpadEl.addEventListener("touchend", endDpad, { passive: false });
+      dpadEl.addEventListener("touchcancel", endDpad, { passive: false });
+    }
+
+    // Mapeamento de botões de combate individuais
+    function bindActionTouch(id, keyName) {
       const el = document.getElementById(id);
       if (!el) return;
-      const start = (e) => { e.preventDefault(); initAudio(); keys[keyName] = true; };
-      const end = (e) => { e.preventDefault(); keys[keyName] = false; };
+      const start = (e) => {
+        e.preventDefault();
+        initAudio();
+        triggerHaptic(15);
+        keys[keyName] = true;
+      };
+      const end = (e) => {
+        e.preventDefault();
+        keys[keyName] = false;
+      };
       el.addEventListener("touchstart", start, { passive: false });
       el.addEventListener("touchend", end, { passive: false });
+      el.addEventListener("touchcancel", end, { passive: false });
       el.addEventListener("mousedown", start);
       el.addEventListener("mouseup", end);
     }
-    bindTouch("btn-up", "arrowup");
-    bindTouch("btn-down", "arrowdown");
-    bindTouch("btn-left", "arrowleft");
-    bindTouch("btn-right", "arrowright");
-    bindTouch("btn-shoot", "x");
-    bindTouch("btn-punch", "z");
-    bindTouch("btn-roll", "c");
-    bindTouch("btn-grenade", "g");
 
+    // Botões Cardinais / Diagonais individuais (fallback para cliques de mouse)
+    const btnUp = document.getElementById("btn-up");
+    if (btnUp) {
+      btnUp.addEventListener("mousedown", () => setKeyDirection(true, false, false, false));
+      btnUp.addEventListener("mouseup", () => setKeyDirection(false, false, false, false));
+    }
+    const btnDown = document.getElementById("btn-down");
+    if (btnDown) {
+      btnDown.addEventListener("mousedown", () => setKeyDirection(false, true, false, false));
+      btnDown.addEventListener("mouseup", () => setKeyDirection(false, false, false, false));
+    }
+    const btnLeft = document.getElementById("btn-left");
+    if (btnLeft) {
+      btnLeft.addEventListener("mousedown", () => setKeyDirection(false, false, true, false));
+      btnLeft.addEventListener("mouseup", () => setKeyDirection(false, false, false, false));
+    }
+    const btnRight = document.getElementById("btn-right");
+    if (btnRight) {
+      btnRight.addEventListener("mousedown", () => setKeyDirection(false, false, false, true));
+      btnRight.addEventListener("mouseup", () => setKeyDirection(false, false, false, false));
+    }
+
+    bindActionTouch("btn-shoot", "x");
+    bindActionTouch("btn-punch", "z");
+    bindActionTouch("btn-roll", "c");
+    bindActionTouch("btn-grenade", "g");
+
+    // Ciclo de armas
     const btnCycle = document.getElementById("btn-cycle");
+    function cycleWeapon() {
+      initAudio();
+      triggerHaptic(18);
+      const weaps = [WEAPONS.PISTOL];
+      if (WEAPONS.HMG.ammo > 0) weaps.push(WEAPONS.HMG);
+      if (WEAPONS.ROCKET.ammo > 0) weaps.push(WEAPONS.ROCKET);
+      if (WEAPONS.SHOTGUN.ammo > 0) weaps.push(WEAPONS.SHOTGUN);
+      const idx = weaps.indexOf(player.currentWeapon);
+      player.currentWeapon = weaps[(idx + 1) % weaps.length];
+      sfx.voice(player.currentWeapon.name);
+    }
     if (btnCycle) {
-      btnCycle.addEventListener("click", () => {
-        initAudio();
-        const weaps = [WEAPONS.PISTOL];
-        if (WEAPONS.HMG.ammo > 0) weaps.push(WEAPONS.HMG);
-        if (WEAPONS.ROCKET.ammo > 0) weaps.push(WEAPONS.ROCKET);
-        if (WEAPONS.SHOTGUN.ammo > 0) weaps.push(WEAPONS.SHOTGUN);
-        const idx = weaps.indexOf(player.currentWeapon);
-        player.currentWeapon = weaps[(idx + 1) % weaps.length];
-        sfx.voice(player.currentWeapon.name);
+      btnCycle.addEventListener("click", cycleWeapon);
+      btnCycle.addEventListener("touchstart", (e) => { e.preventDefault(); cycleWeapon(); }, { passive: false });
+    }
+
+    // Reiniciar
+    const btnRestart = document.getElementById("btn-restart");
+    if (btnRestart) {
+      btnRestart.addEventListener("click", () => {
+        player.hp = 100;
+        player.lives = 3;
+        player.score = 0;
+        player.grenades = 10;
+        player.currentWeapon = WEAPONS.PISTOL;
+        WEAPONS.HMG.ammo = 150;
+        WEAPONS.ROCKET.ammo = 25;
+        WEAPONS.SHOTGUN.ammo = 20;
+        gameOver = false;
+        gameWon = false;
+        loadStage(0);
+      });
+    }
+
+    // Tela cheia
+    const btnFs = document.getElementById("btn-fullscreen");
+    if (btnFs) {
+      btnFs.addEventListener("click", () => {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen?.().catch(() => {});
+        } else {
+          document.exitFullscreen?.().catch(() => {});
+        }
       });
     }
 
@@ -1446,6 +1658,16 @@
       ctx.fillStyle = "#94a3b8";
       const remaining = Math.max(0, stage.enemiesToClear - enemiesDefeated);
       ctx.fillText(`STAGE ${currentStageIndex + 1}/${STAGES.length} - ALVOS: ${remaining}`, canvas.width - 145, 16);
+
+      // Atualiza Badges do Cockpit Touch
+      const wLabel = document.getElementById("cockpit-weapon-label");
+      if (wLabel) {
+        wLabel.textContent = `${player.currentWeapon.name} (${ammoStr})`;
+      }
+      const gBadge = document.getElementById("cockpit-grenades-badge");
+      if (gBadge) {
+        gBadge.textContent = player.grenades;
+      }
 
       // Banner "START"
       if (stageBannerTimer > 0) {
