@@ -36,7 +36,7 @@ import {
   PhoneCall,
   Trophy
 } from 'lucide-react';
-import { PelotaoCompetitionModal } from './PelotaoCompetitionModal';
+import { PelotaoCompetitionView } from './PelotaoCompetitionView';
 import { 
   fetchRegistryFromCloud, 
   approveUserAccess, 
@@ -429,6 +429,19 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
 
   const approvedCount = studentsOnly.filter(u => u.status !== 'rejected').length;
   const blockedCount = studentsOnly.filter(u => u.status === 'rejected').length;
+
+  // TELA DEDICADA DE COMPETIÇÃO E PREMIAÇÃO (PÁGINA INTEIRA)
+  if (isCompetitionOpen) {
+    return (
+      <PelotaoCompetitionView
+        onBackToApp={() => {
+          setIsCompetitionOpen(false);
+          loadData();
+        }}
+        currentUser="Soldado Gean"
+      />
+    );
+  }
 
   return (
     <div style={{
@@ -2164,17 +2177,6 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
             </div>
           </div>
         </div>
-      )}
-
-      {/* MODAL DE COMPETIÇÃO & PREMIAÇÃO DO PELOTÃO */}
-      {isCompetitionOpen && (
-        <PelotaoCompetitionModal
-          onClose={() => {
-            setIsCompetitionOpen(false);
-            loadData();
-          }}
-          currentUser="Soldado Gean"
-        />
       )}
     </div>
   );

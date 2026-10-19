@@ -30,7 +30,7 @@ import { QuestionPdfModal } from './components/QuestionPdfModal';
 import { PromotionalAdModal } from './components/PromotionalAdModal';
 import { OrderRequestsModal } from './components/OrderRequestsModal';
 import { MilitaryLawBookletModal } from './components/MilitaryLawBookletModal';
-import { PelotaoCompetitionModal } from './components/PelotaoCompetitionModal';
+import { PelotaoCompetitionView } from './components/PelotaoCompetitionView';
 import { getDailyMotivationalQuote, type MotivationalQuote } from './utils/motivationalQuotes';
 import { recordStudentLogin, recordQuizCompletion } from './utils/studentAnalytics';
 import { fetchRegistryFromCloud, isMasterUser, checkActiveSessionValidity } from './utils/authManager';
@@ -815,6 +815,16 @@ export function App() {
     );
   }
 
+  // TELA DEDICADA E COMPLETA DE COMPETIÇÃO SEMANAL DO PELOTÃO (PÁGINA INTEIRA)
+  if (isCompetitionModalOpen) {
+    return (
+      <PelotaoCompetitionView
+        onBackToApp={() => setIsCompetitionModalOpen(false)}
+        currentUser={currentUser || ''}
+      />
+    );
+  }
+
   return (
     <div className="app-container">
       {/* Top HUD Header */}
@@ -1547,14 +1557,6 @@ export function App() {
             </div>
           </div>
         </div>
-      )}
-
-      {/* MODAL: COMPETIÇÃO SEMANAL DO PELOTÃO */}
-      {isCompetitionModalOpen && (
-        <PelotaoCompetitionModal
-          onClose={() => setIsCompetitionModalOpen(false)}
-          currentUser={currentUser || ''}
-        />
       )}
     </div>
   );
