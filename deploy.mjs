@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'deploy: Vade Mecum de Leis Secas em tela cheia e Jogo Policial 16-Bit estilo The Shadow SNES';
+  const commitMsg = 'refactor: organiza o Header com Menu Tático suspenso e cabeçalho da Central Operacional';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;

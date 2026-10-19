@@ -1,5 +1,9 @@
-import React from 'react';
-import { Volume2, VolumeX, Trophy, PlusCircle, Flame, Sparkles, LogOut, UserCheck, BarChart3, ShieldCheck, Calendar, FileText, MessageSquare, BookOpen } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { 
+  Volume2, VolumeX, Trophy, PlusCircle, Flame, Sparkles, LogOut, UserCheck, 
+  BarChart3, ShieldCheck, Calendar, FileText, MessageSquare, BookOpen, 
+  Target, Award, Gamepad2, ChevronDown, ChevronUp, Zap, Swords
+} from 'lucide-react';
 import type { PlayerStats } from '../types/game';
 import { sound } from '../utils/sound';
 import { StreakFlame } from './StreakFlame';
@@ -55,14 +59,34 @@ export const Header: React.FC<HeaderProps> = ({
   isRondaNoturnaActive = false,
   onOpenActionGame,
 }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Fecha o menu suspenso ao clicar fora dele
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
   // Cálculo de XP para o próximo nível (100 XP por nível com escala suave)
   const xpCurrentLevel = stats.xp % 100;
   const xpPercentage = Math.min(100, Math.max(0, xpCurrentLevel));
   const unlockedBadgesCount = stats.achievements.filter(a => a.unlocked).length;
 
   return (
-    <header className="main-header">
-      <div className="header-brand-row">
+    <header className="main-header" style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+      {/* LINHA 1: IDENTIDADE & UTILIDADES DO RECRUTA */}
+      <div className="header-brand-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.85rem', width: '100%' }}>
+        {/* Lado Esquerdo: Marca & Brasão Oficial PMPE */}
         <div 
           className="brand-section" 
           onClick={() => {
@@ -105,178 +129,36 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        {/* Botão de Sair em Destaque Visível no Topo Direito */}
-        {onLogout && (
-          <button
-            className="header-logout-btn"
-            onClick={() => {
-              sound.playClick();
-              onLogout();
-            }}
-            title="Encerrar Sessão / Sair do Jogo"
-          >
-            <LogOut size={16} />
-            <span>Sair</span>
-          </button>
-        )}
-      </div>
-
-      <div className="player-hud">
-        {/* Nível & Barra de XP Militar com transição dinâmica */}
-        <div 
-          className="hud-stat-pill" 
-          title={`Nível Militar ${stats.level} • ${xpCurrentLevel}/100 XP (Cada questão correta eleva o XP)`}
-          style={{
-            background: 'linear-gradient(135deg, rgba(20, 32, 24, 0.9) 0%, rgba(12, 18, 14, 0.95) 100%)',
-            border: '1px solid rgba(34, 197, 94, 0.35)',
-            boxShadow: '0 0 14px rgba(34, 197, 94, 0.15)'
-          }}
-        >
-          <div style={{
-            width: '28px',
-            height: '28px',
-            borderRadius: '8px',
-            background: 'linear-gradient(135deg, #15803d, #22c55e)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 0 10px rgba(34, 197, 94, 0.4)'
-          }}>
-            <Sparkles size={16} color="#ffffff" />
-          </div>
-          <div className="xp-progress-bar-wrap">
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.76rem', gap: '0.5rem' }}>
-              <span style={{ color: '#4ade80', fontWeight: 900, letterSpacing: '0.04em' }}>NÍVEL {stats.level}</span>
-              <span style={{ color: '#94a3b8', fontWeight: 700 }}>{xpCurrentLevel}/100 XP</span>
-            </div>
-            <div className="xp-bar-track" style={{ height: '7px', background: 'rgba(0, 0, 0, 0.45)' }}>
-              <div 
-                className="xp-bar-fill" 
-                style={{ 
-                  width: `${xpPercentage}%`,
-                  background: 'linear-gradient(90deg, #16a34a 0%, #22c55e 60%, #f59e0b 100%)',
-                  boxShadow: '0 0 12px rgba(34, 197, 94, 0.7)'
-                }} 
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Sequência / Chama da Diária Viva */}
-        <StreakFlame days={stats.streakDays} size="sm" />
-
-        {/* Ações Rápidas */}
-        <div className="hud-actions">
-          {/* Botão de Competição Semanal com Premiação Oficial */}
-          {onOpenCompetition && (
-            <button 
-              className="btn-secondary"
+        {/* Lado Direito: Ações de Utilidade (Limpo, Alinhado e Discreto) */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+          {userName && (
+            <div 
               style={{
-                padding: '0.45rem 0.95rem',
-                fontSize: '0.84rem',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.28) 0%, rgba(180, 83, 9, 0.35) 100%)',
-                borderColor: '#f59e0b',
-                color: '#fbbf24',
-                fontWeight: 900,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.45rem',
-                boxShadow: '0 0 15px rgba(245, 158, 11, 0.35)',
-                cursor: 'pointer'
-              }}
-              onClick={() => {
-                sound.playLevelUp();
-                onOpenCompetition();
-              }}
-              title="Competição Semanal do Pelotão PMPE (Segunda a Sábado com Premiação)"
-            >
-              <Trophy size={16} color="#fbbf24" />
-              <span>🏆 Competição</span>
-            </button>
-          )}
-
-          {isRondaNoturnaActive && (
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                padding: '0.4rem 0.8rem',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.35) 0%, rgba(147, 51, 234, 0.35) 100%)',
-                border: '1.5px solid #ef4444',
-                color: '#ffffff',
-                fontSize: '0.76rem',
-                fontWeight: 900,
-                boxShadow: '0 0 15px rgba(239, 68, 68, 0.45)',
-                animation: 'pulse 2s infinite'
-              }}
-              title="Ronda Noturna Operacional ativa até 23:59: Pontos em dobro (2x)!"
-            >
-              <span>🚨 2X PONTOS</span>
-            </div>
-          )}
-
-          {onOpenMistakes && (
-            <button
-              className="btn-secondary"
-              style={{
-                padding: '0.45rem 0.85rem',
-                fontSize: '0.82rem',
-                borderRadius: '12px',
-                background: (mistakesCount && mistakesCount > 0)
-                  ? 'linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(185, 28, 28, 0.3) 100%)'
-                  : 'rgba(239, 68, 68, 0.1)',
-                borderColor: (mistakesCount && mistakesCount > 0) ? '#f87171' : 'rgba(239, 68, 68, 0.4)',
-                color: '#fca5a5',
-                fontWeight: 800,
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.4rem',
-                boxShadow: (mistakesCount && mistakesCount > 0) ? '0 0 12px rgba(239, 68, 68, 0.35)' : 'none'
-              }}
-              onClick={() => {
-                sound.playClick();
-                onOpenMistakes();
-              }}
-              title="Caderno de Erros Inteligente AOCP • Retreinamento focado nas falhas"
-            >
-              <span>🎯 Erros {mistakesCount && mistakesCount > 0 ? `(${mistakesCount})` : ''}</span>
-            </button>
-          )}
-
-          {onOpenSundaySimulado && (
-            <button
-              className="btn-secondary"
-              style={{
-                padding: '0.45rem 0.85rem',
-                fontSize: '0.82rem',
+                padding: '0.38rem 0.75rem',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(2, 132, 199, 0.25) 100%)',
-                borderColor: 'rgba(56, 189, 248, 0.45)',
-                color: '#7dd3fc',
-                fontWeight: 800,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.4rem'
+                background: 'rgba(34, 197, 94, 0.12)',
+                border: '1px solid rgba(34, 197, 94, 0.35)',
+                fontSize: '0.78rem',
+                color: '#86efac',
+                fontWeight: 700
               }}
-              onClick={() => {
-                sound.playClick();
-                onOpenSundaySimulado();
-              }}
-              title="Simulado Geral Oficial de Domingo (60 Questões Espelho AOCP com cronômetro de 4h)"
+              title={`Guerreiro autenticado: ${userName}`}
             >
-              <span>📋 Simulado 60Q</span>
-            </button>
+              <UserCheck size={14} color="#22c55e" />
+              <span>{userName}</span>
+            </div>
           )}
 
+          {/* Botão de Comando militar (Apenas Master Gean) */}
           {isMasterUser(userName || '') && onOpenCommanderAccess && (
             <button 
               className="btn-secondary"
               style={{
-                padding: '0.45rem 0.85rem',
-                fontSize: '0.82rem',
+                padding: '0.4rem 0.8rem',
+                fontSize: '0.8rem',
                 borderRadius: '12px',
                 background: (pendingUsersCount && pendingUsersCount > 0)
                   ? 'linear-gradient(135deg, rgba(245, 158, 11, 0.3) 0%, rgba(217, 119, 6, 0.25) 100%)'
@@ -297,137 +179,14 @@ export const Header: React.FC<HeaderProps> = ({
                 sound.playClick();
                 onOpenCommanderAccess();
               }}
-              title="Painel de Controle de Acesso Militar (Exclusivo Titular Gean)"
+              title="Painel de Controle de Acesso Militar (Exclusivo Comandante Gean)"
             >
-              <ShieldCheck size={16} color="#fbbf24" />
+              <ShieldCheck size={15} color="#fbbf24" />
               <span>Comando {pendingUsersCount && pendingUsersCount > 0 ? `(${pendingUsersCount})` : ''}</span>
             </button>
           )}
 
-          {onOpenAnalytics && (
-            <button 
-              className="btn-secondary"
-              style={{
-                padding: '0.45rem 0.95rem',
-                fontSize: '0.84rem',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, rgba(20, 36, 22, 0.9) 0%, rgba(14, 25, 16, 0.95) 100%)',
-                borderColor: '#f59e0b',
-                color: '#fbbf24',
-                fontWeight: 900,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.45rem',
-                boxShadow: '0 0 12px rgba(245, 158, 11, 0.25)'
-              }}
-              onClick={() => {
-                sound.playGunshot38();
-                onOpenAnalytics();
-              }}
-              title="Quadro de Guerra do Pelotão (6 Vagas) • Disputa 1 vs 1 e Aproveitamento"
-            >
-              <BarChart3 size={16} color="#fbbf24" />
-              <span>⚔️ Duelo & Pelotão</span>
-            </button>
-          )}
-
-          {onOpenSchedule && (
-            <button
-              className="btn-secondary"
-              style={{
-                padding: '0.5rem 0.95rem',
-                fontSize: '0.84rem',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, rgba(234, 179, 8, 0.2), rgba(180, 83, 9, 0.25))',
-                borderColor: 'rgba(234, 179, 8, 0.5)',
-                color: '#fbbf24',
-                fontWeight: 800,
-                boxShadow: '0 0 12px rgba(234, 179, 8, 0.25)'
-              }}
-              onClick={() => {
-                sound.playClick();
-                onOpenSchedule();
-              }}
-              title="Cronograma Inteligente de Estudos PMPE 2026 (Exclusivo Comandante Gean VIP)"
-            >
-              <Calendar size={16} color="#fbbf24" />
-              <span>📅 Cronograma VIP</span>
-            </button>
-          )}
-
-          {onOpenPdfExport && (
-            <button
-              className="btn-secondary"
-              style={{
-                padding: '0.5rem 0.9rem',
-                fontSize: '0.84rem',
-                borderRadius: '12px',
-                background: 'rgba(56, 189, 248, 0.12)',
-                borderColor: 'rgba(56, 189, 248, 0.4)',
-                color: '#38bdf8',
-                fontWeight: 800
-              }}
-              onClick={() => {
-                sound.playClick();
-                onOpenPdfExport();
-              }}
-              title="Gerar e Baixar Caderno em PDF para Imprimir ou Responder"
-            >
-              <FileText size={16} color="#38bdf8" />
-              <span>📄 Baixar PDF</span>
-            </button>
-          )}
-
-          {onOpenLawBooklet && (
-            <button
-              className="btn-secondary"
-              style={{
-                padding: '0.5rem 0.95rem',
-                fontSize: '0.84rem',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, rgba(20, 83, 45, 0.35), rgba(5, 46, 22, 0.45))',
-                borderColor: 'rgba(34, 197, 94, 0.5)',
-                color: '#86efac',
-                fontWeight: 800,
-                boxShadow: '0 0 10px rgba(34, 197, 94, 0.2)'
-              }}
-              onClick={() => {
-                sound.playClick();
-                onOpenLawBooklet();
-              }}
-              title="Caderno de Legislação Seca do Edital PMPE (Crimes Hediondos, Estatuto, Direitos Humanos, etc.)"
-            >
-              <BookOpen size={16} color="#86efac" />
-              <span>📜 Leis do Edital</span>
-            </button>
-          )}
-
-          {onOpenActionGame && (
-            <button
-              className="btn-secondary"
-              style={{
-                padding: '0.5rem 0.95rem',
-                fontSize: '0.84rem',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.3), rgba(185, 28, 28, 0.4))',
-                borderColor: '#ef4444',
-                color: '#fca5a5',
-                fontWeight: 900,
-                boxShadow: '0 0 12px rgba(239, 68, 68, 0.35)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.4rem'
-              }}
-              onClick={() => {
-                sound.playGunshot38();
-                onOpenActionGame();
-              }}
-              title="Operação Rua: Jogo de Ação 16-Bit Policial vs Bandido (Estilo The Shadow de SNES)"
-            >
-              <span>🎮 Ação 16-Bit</span>
-            </button>
-          )}
-
+          {/* Dúvidas e Pedidos */}
           {onOpenOrders && (
             <button
               className="icon-btn"
@@ -446,79 +205,511 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           )}
 
-          {onOpenMotivation && (
-            <button 
-              className="icon-btn"
-              style={{
-                background: 'rgba(245, 158, 11, 0.12)',
-                borderColor: 'rgba(245, 158, 11, 0.35)',
-                color: '#f59e0b'
-              }}
-              onClick={() => {
-                sound.playClick();
-                onOpenMotivation();
-              }}
-              title="Ordem do Dia • Frase Motivacional"
-            >
-              <Flame size={17} color="#f59e0b" />
-            </button>
-          )}
-
-          <button 
-            className="btn-secondary"
-            style={{ padding: '0.5rem 0.9rem', fontSize: '0.85rem', borderRadius: '12px' }}
-            onClick={() => {
-              sound.playClick();
-              onOpenDeckCreator();
-            }}
-            title="Criar ou Importar Decks Personalizados"
-          >
-            <PlusCircle size={16} color="#22c55e" />
-            <span>Criar Deck</span>
-          </button>
-
+          {/* Conquistas e Medalhas */}
           <button 
             className="icon-btn" 
             onClick={() => {
               sound.playClick();
               onOpenAchievements();
             }}
-            title="Conquistas e Medalhas"
+            title="Conquistas e Medalhas Militares"
           >
-            <Trophy size={18} color="#f59e0b" />
+            <Trophy size={17} color="#f59e0b" />
             {unlockedBadgesCount > 0 && (
               <span className="badge-counter">{unlockedBadgesCount}</span>
             )}
           </button>
 
+          {/* Som Ativo/Mudo */}
           <button 
             className="icon-btn" 
             onClick={onToggleMute}
             title={isMuted ? 'Ativar Efeitos Sonoros' : 'Mutar Sons'}
           >
-            {isMuted ? <VolumeX size={18} color="var(--text-dim)" /> : <Volume2 size={18} color="#22c55e" />}
+            {isMuted ? <VolumeX size={17} color="var(--text-dim)" /> : <Volume2 size={17} color="#22c55e" />}
           </button>
 
-          {userName && (
-            <div 
+          {/* Sair do Jogo */}
+          {onLogout && (
+            <button
+              className="header-logout-btn"
+              onClick={() => {
+                sound.playClick();
+                onLogout();
+              }}
+              title="Encerrar Sessão / Sair do Jogo"
+            >
+              <LogOut size={15} />
+              <span>Sair</span>
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* DIVISÓRIA MILITAR SUAVE */}
+      <div style={{ height: '1px', background: 'linear-gradient(90deg, rgba(34, 197, 94, 0.3) 0%, rgba(59, 130, 246, 0.25) 50%, transparent 100%)' }} />
+
+      {/* LINHA 2: HUD DO GUERREIRO & AÇÕES OPERACIONAIS PRINCIPAIS */}
+      <div className="player-hud" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.85rem', width: '100%' }}>
+        {/* Esquerda: Nível & Barra de XP + Fogo Sagrado */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
+          <div 
+            className="hud-stat-pill" 
+            title={`Nível Militar ${stats.level} • ${xpCurrentLevel}/100 XP (Cada questão correta eleva o XP)`}
+            style={{
+              background: 'linear-gradient(135deg, rgba(20, 32, 24, 0.9) 0%, rgba(12, 18, 14, 0.95) 100%)',
+              border: '1px solid rgba(34, 197, 94, 0.35)',
+              boxShadow: '0 0 14px rgba(34, 197, 94, 0.15)',
+              padding: '0.45rem 0.85rem'
+            }}
+          >
+            <div style={{
+              width: '26px',
+              height: '26px',
+              borderRadius: '7px',
+              background: 'linear-gradient(135deg, #15803d, #22c55e)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 0 10px rgba(34, 197, 94, 0.4)'
+            }}>
+              <Sparkles size={15} color="#ffffff" />
+            </div>
+            <div className="xp-progress-bar-wrap" style={{ minWidth: '130px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.74rem', gap: '0.5rem' }}>
+                <span style={{ color: '#4ade80', fontWeight: 900, letterSpacing: '0.04em' }}>NÍVEL {stats.level}</span>
+                <span style={{ color: '#94a3b8', fontWeight: 700 }}>{xpCurrentLevel}/100 XP</span>
+              </div>
+              <div className="xp-bar-track" style={{ height: '6px', background: 'rgba(0, 0, 0, 0.45)' }}>
+                <div 
+                  className="xp-bar-fill" 
+                  style={{ 
+                    width: `${xpPercentage}%`,
+                    background: 'linear-gradient(90deg, #16a34a 0%, #22c55e 60%, #f59e0b 100%)',
+                    boxShadow: '0 0 12px rgba(34, 197, 94, 0.7)'
+                  }} 
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Fogo Sagrado / Dias Ativos */}
+          <StreakFlame days={stats.streakDays} size="sm" />
+        </div>
+
+        {/* Direita: Ações Prioritárias & Menu Tático Suspenso */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
+          {/* Badge Ronda Noturna 2X (quando ativa) */}
+          {isRondaNoturnaActive && (
+            <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.4rem',
-                padding: '0.4rem 0.75rem',
+                gap: '0.35rem',
+                padding: '0.45rem 0.8rem',
                 borderRadius: '12px',
-                background: 'rgba(34, 197, 94, 0.12)',
-                border: '1px solid rgba(34, 197, 94, 0.35)',
-                fontSize: '0.8rem',
-                color: '#86efac',
-                fontWeight: 700
+                background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.35) 0%, rgba(147, 51, 234, 0.35) 100%)',
+                border: '1.5px solid #ef4444',
+                color: '#ffffff',
+                fontSize: '0.75rem',
+                fontWeight: 900,
+                boxShadow: '0 0 15px rgba(239, 68, 68, 0.45)',
+                animation: 'pulse 2s infinite'
               }}
-              title={`Guerreiro autenticado: ${userName}`}
+              title="Ronda Noturna Operacional ativa até 23:59: Pontos em dobro (2x)!"
             >
-              <UserCheck size={14} color="#22c55e" />
-              <span>{userName}</span>
+              <span>🚨 2X PONTOS ATIVOS</span>
             </div>
           )}
+
+          {/* Competição Semanal (Destaque Principal) */}
+          {onOpenCompetition && (
+            <button 
+              className="btn-secondary"
+              style={{
+                padding: '0.48rem 0.95rem',
+                fontSize: '0.84rem',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.28) 0%, rgba(180, 83, 9, 0.35) 100%)',
+                borderColor: '#f59e0b',
+                color: '#fbbf24',
+                fontWeight: 900,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                boxShadow: '0 0 15px rgba(245, 158, 11, 0.35)',
+                cursor: 'pointer'
+              }}
+              onClick={() => {
+                sound.playLevelUp();
+                onOpenCompetition();
+              }}
+              title="Competição Semanal do Pelotão PMPE (Segunda a Sábado com Premiação Oficial R$ 50/R$ 100)"
+            >
+              <Trophy size={16} color="#fbbf24" />
+              <span>🏆 Competição Semanal</span>
+            </button>
+          )}
+
+          {/* MENU TÁTICO ORGANIZADO (DROPDOWN SUSPENSO) */}
+          <div ref={menuRef} style={{ position: 'relative' }}>
+            <button
+              onClick={() => {
+                sound.playClick();
+                setIsMenuOpen(!isMenuOpen);
+              }}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                padding: '0.48rem 0.95rem',
+                borderRadius: '12px',
+                background: isMenuOpen 
+                  ? 'linear-gradient(135deg, rgba(37, 99, 235, 0.35) 0%, rgba(29, 78, 216, 0.4) 100%)' 
+                  : 'linear-gradient(135deg, rgba(30, 41, 59, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%)',
+                border: isMenuOpen ? '1.5px solid #38bdf8' : '1px solid rgba(59, 130, 246, 0.35)',
+                color: '#f8fafc',
+                fontSize: '0.84rem',
+                fontWeight: 800,
+                cursor: 'pointer',
+                boxShadow: isMenuOpen ? '0 0 15px rgba(56, 189, 248, 0.35)' : 'none',
+                transition: 'all 0.2s ease'
+              }}
+              title="Acesse todas as ferramentas táticas do aplicativo em um só lugar"
+            >
+              <Zap size={16} color="#38bdf8" />
+              <span>Menu Tático</span>
+              {isMenuOpen ? <ChevronUp size={15} color="#94a3b8" /> : <ChevronDown size={15} color="#94a3b8" />}
+            </button>
+
+            {/* PAINEL DROPDOWN SUSPENSO */}
+            {isMenuOpen && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 'calc(100% + 8px)',
+                  right: 0,
+                  width: '320px',
+                  background: 'linear-gradient(180deg, rgba(11, 20, 38, 0.98) 0%, rgba(7, 13, 26, 0.99) 100%)',
+                  border: '1.5px solid rgba(59, 130, 246, 0.4)',
+                  borderRadius: '16px',
+                  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(37, 99, 235, 0.25)',
+                  backdropFilter: 'blur(20px)',
+                  padding: '1rem',
+                  zIndex: 9999,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.85rem',
+                  animation: 'fadeIn 0.15s ease'
+                }}
+              >
+                {/* GRUPO 1: ESTUDO & CADERNOS */}
+                <div>
+                  <div style={{ fontSize: '0.7rem', fontWeight: 900, color: '#93c5fd', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                    <BookOpen size={13} color="#60a5fa" />
+                    <span>Estudos & Legislação</span>
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                    {onOpenLawBooklet && (
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setIsMenuOpen(false);
+                          onOpenLawBooklet();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'rgba(37, 99, 235, 0.1)',
+                          border: '1px solid rgba(37, 99, 235, 0.25)',
+                          color: '#e2e8f0',
+                          fontSize: '0.82rem',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <BookOpen size={15} color="#3b82f6" />
+                          <span>Caderno de Leis Secas</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(37, 99, 235, 0.3)', color: '#93c5fd' }}>
+                          VADE MECUM
+                        </span>
+                      </button>
+                    )}
+
+                    {onOpenMistakes && (
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setIsMenuOpen(false);
+                          onOpenMistakes();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'rgba(239, 68, 68, 0.1)',
+                          border: '1px solid rgba(239, 68, 68, 0.25)',
+                          color: '#fca5a5',
+                          fontSize: '0.82rem',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <Target size={15} color="#ef4444" />
+                          <span>Caderno de Erros</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#dc2626', color: '#ffffff', fontWeight: 900 }}>
+                          {mistakesCount || 0} FALHAS
+                        </span>
+                      </button>
+                    )}
+
+                    {onOpenSchedule && (
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setIsMenuOpen(false);
+                          onOpenSchedule();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'rgba(234, 179, 8, 0.1)',
+                          border: '1px solid rgba(234, 179, 8, 0.25)',
+                          color: '#fde047',
+                          fontSize: '0.82rem',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <Calendar size={15} color="#eab308" />
+                          <span>Cronograma de Estudos</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(234, 179, 8, 0.25)', color: '#fbbf24' }}>
+                          VIP
+                        </span>
+                      </button>
+                    )}
+
+                    {onOpenPdfExport && (
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setIsMenuOpen(false);
+                          onOpenPdfExport();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'rgba(56, 189, 248, 0.08)',
+                          border: '1px solid rgba(56, 189, 248, 0.25)',
+                          color: '#bae6fd',
+                          fontSize: '0.82rem',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <FileText size={15} color="#38bdf8" />
+                          <span>Baixar Caderno em PDF</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8' }}>
+                          IMPRIMIR
+                        </span>
+                      </button>
+                    )}
+
+                    <button
+                      onClick={() => {
+                        sound.playClick();
+                        setIsMenuOpen(false);
+                        onOpenDeckCreator();
+                      }}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        padding: '0.5rem 0.65rem',
+                        borderRadius: '8px',
+                        background: 'rgba(34, 197, 94, 0.08)',
+                        border: '1px solid rgba(34, 197, 94, 0.25)',
+                        color: '#bbf7d0',
+                        fontSize: '0.82rem',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        textAlign: 'left'
+                      }}
+                    >
+                      <PlusCircle size={15} color="#22c55e" />
+                      <span>Criar / Importar Decks</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div style={{ height: '1px', background: 'rgba(255, 255, 255, 0.08)' }} />
+
+                {/* GRUPO 2: OPERAÇÕES & SIMULADOS */}
+                <div>
+                  <div style={{ fontSize: '0.7rem', fontWeight: 900, color: '#7dd3fc', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                    <Award size={13} color="#38bdf8" />
+                    <span>Simulados & Disputas</span>
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                    {onOpenSundaySimulado && (
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setIsMenuOpen(false);
+                          onOpenSundaySimulado();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'rgba(14, 165, 233, 0.12)',
+                          border: '1px solid rgba(14, 165, 233, 0.3)',
+                          color: '#e0f2fe',
+                          fontSize: '0.82rem',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <Award size={15} color="#0284c7" />
+                          <span>Simulado Oficial 60Q</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(56, 189, 248, 0.25)', color: '#7dd3fc' }}>
+                          DOMINGO
+                        </span>
+                      </button>
+                    )}
+
+                    {onOpenAnalytics && (
+                      <button
+                        onClick={() => {
+                          sound.playGunshot38();
+                          setIsMenuOpen(false);
+                          onOpenAnalytics();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.5rem',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'rgba(245, 158, 11, 0.1)',
+                          border: '1px solid rgba(245, 158, 11, 0.25)',
+                          color: '#fef3c7',
+                          fontSize: '0.82rem',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <Swords size={15} color="#f59e0b" />
+                        <span>Duelo 1v1 & Quadro do Pelotão</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                <div style={{ height: '1px', background: 'rgba(255, 255, 255, 0.08)' }} />
+
+                {/* GRUPO 3: DESCOMPRESSÃO */}
+                <div>
+                  <div style={{ fontSize: '0.7rem', fontWeight: 900, color: '#f0abfc', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                    <Gamepad2 size={13} color="#c084fc" />
+                    <span>Descompressão & Moral</span>
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                    {onOpenActionGame && (
+                      <button
+                        onClick={() => {
+                          sound.playGunshot38();
+                          setIsMenuOpen(false);
+                          onOpenActionGame();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'rgba(217, 70, 239, 0.12)',
+                          border: '1px solid rgba(217, 70, 239, 0.3)',
+                          color: '#fae8ff',
+                          fontSize: '0.82rem',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <Gamepad2 size={15} color="#c026d3" />
+                          <span>Operação Rua 16-Bit</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(217, 70, 239, 0.25)', color: '#f0abfc' }}>
+                          SNES
+                        </span>
+                      </button>
+                    )}
+
+                    {onOpenMotivation && (
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setIsMenuOpen(false);
+                          onOpenMotivation();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.5rem',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'rgba(245, 158, 11, 0.08)',
+                          border: '1px solid rgba(245, 158, 11, 0.2)',
+                          color: '#fef3c7',
+                          fontSize: '0.82rem',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <Flame size={15} color="#f59e0b" />
+                        <span>Ordem do Dia (Motivação)</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </header>

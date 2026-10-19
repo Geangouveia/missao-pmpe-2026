@@ -1125,6 +1125,33 @@ export function App() {
             </div>
           )}
 
+          {/* CABEÇALHO ORGANIZADO: CENTRAL OPERACIONAL DO SOLDADO */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '0.5rem',
+            marginTop: '0.65rem',
+            marginBottom: '0.75rem',
+            padding: '0 0.25rem'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+              <span style={{ fontSize: '1.2rem' }}>⚡</span>
+              <div>
+                <h2 style={{ fontSize: '0.98rem', fontWeight: 900, color: '#f8fafc', letterSpacing: '0.03em', textTransform: 'uppercase' }}>
+                  Central Operacional do Soldado
+                </h2>
+                <p style={{ fontSize: '0.76rem', color: '#94a3b8' }}>
+                  Vade Mecum em tela cheia, caderno de erros, cronograma VIP e simulados AOCP
+                </p>
+              </div>
+            </div>
+            <span style={{ fontSize: '0.7rem', padding: '0.2rem 0.6rem', borderRadius: '20px', background: 'rgba(59, 130, 246, 0.15)', color: '#93c5fd', fontWeight: 800, border: '1px solid rgba(59, 130, 246, 0.3)' }}>
+              6 MÓDULOS TÁTICOS
+            </span>
+          </div>
+
           {/* CARDS DE AÇÃO RÁPIDA: CRONOGRAMA, PDF, LEIS, ERROS & SIMULADO DOMINGO */}
           <div style={{
             display: 'grid',
