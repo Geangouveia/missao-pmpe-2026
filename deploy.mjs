@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'deploy: telemetria em tempo real dos soldados e painel de competicao semanal (seg a sab) com premiacao do comandante gean';
+  const commitMsg = 'deploy: Vade Mecum de Leis Secas em tela cheia e Jogo Policial 16-Bit estilo The Shadow SNES';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;

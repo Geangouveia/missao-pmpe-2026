@@ -28,6 +28,7 @@ interface HeaderProps {
   mistakesCount?: number;
   onOpenSundaySimulado?: () => void;
   isRondaNoturnaActive?: boolean;
+  onOpenActionGame?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -52,6 +53,7 @@ export const Header: React.FC<HeaderProps> = ({
   mistakesCount = 0,
   onOpenSundaySimulado,
   isRondaNoturnaActive = false,
+  onOpenActionGame,
 }) => {
   // Cálculo de XP para o próximo nível (100 XP por nível com escala suave)
   const xpCurrentLevel = stats.xp % 100;
@@ -397,6 +399,32 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <BookOpen size={16} color="#86efac" />
               <span>📜 Leis do Edital</span>
+            </button>
+          )}
+
+          {onOpenActionGame && (
+            <button
+              className="btn-secondary"
+              style={{
+                padding: '0.5rem 0.95rem',
+                fontSize: '0.84rem',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.3), rgba(185, 28, 28, 0.4))',
+                borderColor: '#ef4444',
+                color: '#fca5a5',
+                fontWeight: 900,
+                boxShadow: '0 0 12px rgba(239, 68, 68, 0.35)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem'
+              }}
+              onClick={() => {
+                sound.playGunshot38();
+                onOpenActionGame();
+              }}
+              title="Operação Rua: Jogo de Ação 16-Bit Policial vs Bandido (Estilo The Shadow de SNES)"
+            >
+              <span>🎮 Ação 16-Bit</span>
             </button>
           )}
 

@@ -174,6 +174,30 @@ class SoundController {
     osc.stop(this.ctx.currentTime + 0.2);
   }
 
+  // Som de impacto físico / coronhada / golpe corpo a corpo
+  public playHit() {
+    if (this.isMuted) return;
+    this.initContext();
+    if (!this.ctx) return;
+
+    const t = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(160, t);
+    osc.frequency.exponentialRampToValueAtTime(35, t + 0.12);
+
+    gain.gain.setValueAtTime(0.35, t);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.13);
+
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+
+    osc.start(t);
+    osc.stop(t + 0.14);
+  }
+
   // Fanfarra triunfante de Level Up e Conquistas
   public playLevelUp() {
     if (this.isMuted) return;

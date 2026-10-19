@@ -30,6 +30,8 @@ import { QuestionPdfModal } from './components/QuestionPdfModal';
 import { PromotionalAdModal } from './components/PromotionalAdModal';
 import { OrderRequestsModal } from './components/OrderRequestsModal';
 import { MilitaryLawBookletModal } from './components/MilitaryLawBookletModal';
+import { MilitaryLawBookletView } from './components/MilitaryLawBookletView';
+import { SnesPoliceActionGame } from './components/SnesPoliceActionGame';
 import { PelotaoCompetitionView } from './components/PelotaoCompetitionView';
 import { MistakeNotebookModal } from './components/MistakeNotebookModal';
 import { SundaySimuladoModal } from './components/SundaySimuladoModal';
@@ -40,7 +42,7 @@ import { fetchRegistryFromCloud, isMasterUser, checkActiveSessionValidity } from
 import { updateAndCalculateStreak } from './utils/studentStreak';
 import { recordLiveQuestionAnswer, isRondaNoturnaActive } from './utils/competitionManager';
 import { recordMistake, getPendingMistakesCount } from './utils/errorNotebookManager';
-import { Swords, ArrowRight, ShieldCheck, Shield, Calendar, FileText, Smartphone, AlertTriangle, BookOpen, Bell, Trophy, Target, Award, Flame } from 'lucide-react';
+import { Swords, ArrowRight, ShieldCheck, Shield, Calendar, FileText, Smartphone, AlertTriangle, BookOpen, Bell, Trophy, Target, Award, Flame, Gamepad2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export function App() {
@@ -178,6 +180,7 @@ export function App() {
   const [isMistakeNotebookOpen, setIsMistakeNotebookOpen] = useState(false);
   const [isSundaySimuladoOpen, setIsSundaySimuladoOpen] = useState(false);
   const [isPlatoonDuelOpen, setIsPlatoonDuelOpen] = useState(false);
+  const [isActionGameOpen, setIsActionGameOpen] = useState(false);
   const [pendingMistakesCount, setPendingMistakesCount] = useState<number>(0);
   const [isRondaNoturna, setIsRondaNoturna] = useState<boolean>(() => isRondaNoturnaActive());
   const [sessionKickedReason, setSessionKickedReason] = useState<{ title: string; message: string } | null>(null);
@@ -852,6 +855,24 @@ export function App() {
     );
   }
 
+  // TELA DEDICADA E COMPLETA DO VADE MECUM & CADERNO DE LEIS SECAS (TELA CHEIA)
+  if (isLawBookletOpen) {
+    return (
+      <MilitaryLawBookletView
+        onBackToApp={() => setIsLawBookletOpen(false)}
+      />
+    );
+  }
+
+  // TELA DEDICADA E COMPLETA DO JOGO DE AÇÃO POLICIAL 16-BIT (ESTILO THE SHADOW SNES)
+  if (isActionGameOpen) {
+    return (
+      <SnesPoliceActionGame
+        onBackToApp={() => setIsActionGameOpen(false)}
+      />
+    );
+  }
+
   return (
     <div className="app-container">
       {/* Top HUD Header */}
@@ -880,6 +901,7 @@ export function App() {
         mistakesCount={pendingMistakesCount}
         onOpenSundaySimulado={() => setIsSundaySimuladoOpen(true)}
         isRondaNoturnaActive={isRondaNoturna}
+        onOpenActionGame={() => setIsActionGameOpen(true)}
       />
 
       {/* Roteamento de Telas */}
@@ -1204,7 +1226,7 @@ export function App() {
               </div>
             </div>
 
-            {/* Card 3: Caderno de Leis Secas do Edital PMPE (Vade Mecum Tático) */}
+            {/* Card 3: Caderno de Leis Secas do Edital PMPE (Vade Mecum Tático em Tela Cheia) */}
             <div
               onClick={() => {
                 sound.playClick();
@@ -1237,16 +1259,16 @@ export function App() {
                 <BookOpen size={24} color="#ffffff" />
               </div>
               <div style={{ flex: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
                   <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#f8fafc' }}>
                     Caderno de Leis Secas
                   </span>
                   <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(37, 99, 235, 0.25)', color: '#93c5fd', fontWeight: 900 }}>
-                    EDITAL PMPE
+                    TELA CHEIA • VADE MECUM
                   </span>
                 </div>
                 <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem' }}>
-                  Crimes Hediondos, Direitos Humanos, Estatuto PMPE e CF/88 com macetes AOCP
+                  Planalto atualizado, Artigos na íntegra, Crimes Hediondos, Direitos Humanos (DUDH/CADH), Estatuto PMPE e CF/88
                 </div>
               </div>
             </div>
@@ -1350,6 +1372,53 @@ export function App() {
                 </div>
                 <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem' }}>
                   Espelho fiel da prova: 6 matérias balanceadas, 4h de prova e boletim militar
+                </div>
+              </div>
+            </div>
+
+            {/* Card 6: Operação Policial 16-Bit (Estilo The Shadow SNES) */}
+            <div
+              onClick={() => {
+                sound.playGunshot38();
+                setIsActionGameOpen(true);
+              }}
+              style={{
+                cursor: 'pointer',
+                padding: '1.1rem 1.25rem',
+                borderRadius: '16px',
+                background: 'linear-gradient(135deg, rgba(35, 12, 54, 0.95) 0%, rgba(18, 6, 28, 0.98) 100%)',
+                border: '1.5px solid rgba(217, 70, 239, 0.55)',
+                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(217, 70, 239, 0.25)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                transition: 'transform 0.2s, box-shadow 0.2s'
+              }}
+            >
+              <div style={{
+                width: '46px',
+                height: '46px',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #a855f7, #c026d3)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 0 15px rgba(192, 38, 211, 0.4)',
+                flexShrink: 0
+              }}>
+                <Gamepad2 size={24} color="#ffffff" />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#fae8ff' }}>
+                    Operação Rua 16-Bit
+                  </span>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(217, 70, 239, 0.25)', color: '#f0abfc', fontWeight: 900 }}>
+                    ESTILO SNES
+                  </span>
+                </div>
+                <div style={{ fontSize: '0.78rem', color: '#c084fc', marginTop: '0.2rem' }}>
+                  Descontraia do estudo: Ação pura PMPE vs Bandidos, armas, tiros e chefão estilo The Shadow!
                 </div>
               </div>
             </div>
