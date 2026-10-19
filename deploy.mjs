@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'fix: corrige renderizacao dos bonecos (jogador e inimigos) e amplia tela do arcade retro';
+  const commitMsg = 'feat: controle arcade touch mobile ergonomico e legislacao PMPE 2026 completa';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;

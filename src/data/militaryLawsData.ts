@@ -611,5 +611,397 @@ Pena: reclusão de 5 a 15 anos e pagamento de 500 a 1.500 dias-multa.
         warning: 'TRÁFICO PRIVILEGIADO (§ 4º): O STF e a Lei 13.964/2019 pacificaram que o Tráfico Privilegiado NÃO É HEDIONDO nem equiparado a hediondo!'
       }
     ]
+  },
+
+  // =========================================================================
+  // 7. CÓDIGO PENAL MILITAR (DECRETO-LEI Nº 1.001/1969 - ATUALIZADO 2026)
+  // =========================================================================
+  {
+    id: 'cpm_penal_militar',
+    category: 'pmpe',
+    shortTitle: 'Código Penal Militar',
+    fullTitle: 'Código Penal Militar • Decreto-Lei nº 1.001/1969 (Atualizado pelas Leis 13.491/17 e 14.688/23)',
+    officialRef: 'Presidência da República / Planalto • Atualizado até 2026',
+    badge: 'Art. 9º, Motim, Deserção e Peculato',
+    icon: '⚔️',
+    summary: 'Legislação penal militar aplicável aos policiais militares de Pernambuco. Define crimes propriamente e impropriamente militares, autoridade e disciplina.',
+    articles: [
+      {
+        number: 'Artigo 9º do CPM',
+        heading: 'Crimes Militares em Tempo de Paz e Competência do Tribunal do Júri',
+        text: `Art. 9º Consideram-se crimes militares, em tempo de paz:
+I - os crimes de que trata este Código, quando definidos de modo diverso na lei penal comum, ou nela não previstos, qualquer que seja o agente, salvo disposição especial;
+II - os crimes previstos neste Código e os previstos na LEGISLAÇÃO PENAL (comum e extravagante - alteração da Lei nº 13.491/2017), quando praticados:
+a) por militar em situação de atividade ou assemelhado, contra militar na mesma situação ou assemelhado;
+b) por militar em situação de atividade ou assemelhado, em lugar sujeito à administração militar, contra militar da reserva, ou reformado, ou civil;
+c) por militar em serviço ou atuando em razão da função, em comissão de natureza militar, ou em formatura, ainda que fora do lugar sujeito à administração militar contra militar da reserva, ou reformado, ou civil;
+d) por militar durante o período de manobras ou exercício, contra militar da reserva, ou reformado, ou assemelhado, ou civil;
+e) por militar em situação de atividade, ou assemelhado, contra o patrimônio sob a administração militar, ou a ordem administrativa militar.
+
+§ 1º Os crimes de que trata este artigo, quando dolosos contra a vida e cometidos por militares contra civil, SERÃO DA COMPETÊNCIA DO TRIBUNAL DO JÚRI (Justiça Comum Estadual).
+§ 2º Os crimes dolosos contra a vida cometidos por militares das Forças Armadas contra civil serão da competência da Justiça Militar da União se praticados no contexto de garantia da lei e da ordem (GLO).`,
+        tip: 'CRIME CONTRA A VIDA DE CIVIL: Se o Policial Militar cometer homicídio doloso contra civil, mesmo em serviço na viatura, o julgamento é do TRIBUNAL DO JÚRI da Justiça Comum Estadual (Art. 125, § 4º da CF e Art. 9º, § 1º do CPM)!',
+        warning: 'LEI 13.491/2017: Agora qualquer crime da lei extravagante (ex: Tortura, Abuso de Autoridade) praticado nas hipóteses do inciso II é CRIME MILITAR e julgado pela Vara da Justiça Militar Estadual.'
+      },
+      {
+        number: 'Artigos 149 a 166',
+        heading: 'Motim, Revolta, Violência contra Superior e Recusa de Obediência',
+        text: `Art. 149. MOTIM: Reunirem-se militares:
+I - agindo contra a ordem recebida de superior, ou negando-se a cumpri-la;
+II - recusando obediência a superior, quando estejam agindo sem ordem ou praticando violência;
+III - assentando de posse de armas, ou material bélico, para opor-se a ordem superior;
+IV - ocupando quartel, fortaleza, navio ou outro local sob administração militar.
+Pena: reclusão, de 8 a 20 anos, com aumento de um terço para os cabeças.
+
+REVOLTA: Se os agentes estavam ARMADOS:
+Pena: reclusão, de 8 a 20 anos, com aumento de um terço para os cabeças.
+
+Art. 157. VIOLÊNCIA CONTRA SUPERIOR: Praticar violência contra superior:
+Pena: detenção, de 3 meses a 2 anos.
+§ 1º Se o superior é o comandante da unidade ou oficial-general: Pena de reclusão, de 3 a 9 anos.
+§ 2º Se da violência resulta lesão corporal ou morte, aplica-se cumulativamente a pena do crime de resultado.
+
+Art. 160. DESRESPEITO A SUPERIOR: Desrespeitar superior diante de outro militar:
+Pena: detenção, de 3 meses a 1 ano.
+
+Art. 163. RECUSA DE OBEDIÊNCIA: Recusar obedecer a ordem do superior sobre assunto ou matéria de serviço, ou relativamente a dever imposto em lei, regulamento ou instrução:
+Pena: detenção, de 1 a 2 anos.`,
+        tip: 'MOTIM vs REVOLTA: A diferença única e decisiva é se os militares estavam ARMADOS. Sem armas = MOTIM. Com armas (mesmo que só um esteja armado) = REVOLTA!',
+        warning: 'DESRESPEITO A SUPERIOR (Art. 160): Exige que ocorra na presença de outro militar! Se ocorrer a sós entre o subordinado e o superior, não configura o art. 160 (pode ser transgressão disciplinar ou injúria).'
+      },
+      {
+        number: 'Artigos 187, 195 e 203',
+        heading: 'Deserção, Abandono de Posto e Dormir em Serviço',
+        text: `Art. 187. DESERÇÃO: Ausentar-se o militar, sem licença, da unidade em que serve, ou do lugar em que deve permanecer, por mais de 8 (oito) dias:
+Pena: detenção, de 6 meses a 2 anos; se oficial, a pena é agravada.
+Consumação: consuma-se à meia-noite do oitavo dia de ausência injustificada.
+
+Art. 195. ABANDONO DE POSTO: Abandonar, sem ordem superior, o posto ou lugar de serviço que lhe tenha sido designado, ou o serviço que lhe cumpria, antes de terminá-lo:
+Pena: detenção, de 3 meses a 1 ano.
+Natureza: Crime de perigo abstrato e de mera conduta. O crime se consuma no exato instante em que o militar se afasta do posto, independentemente de ocorrer qualquer dano à segurança.
+
+Art. 203. DORMIR EM SERVIÇO: Dormir o militar, quando em serviço, como sentinela, vigia, de plantão às armas ou em posto similar, ou na direção de viatura, aeronave ou embarcação:
+Pena: detenção, de 3 meses a 1 ano.`,
+        tip: 'ABANDONO DE POSTO É INSTANTÂNEO: O militar que sai do posto para comprar um lanche ou conversar na esquina, mesmo por 5 minutos, comete Abandono de Posto (Art. 195)! Não precisa de prazo de horas.',
+        warning: 'DESERÇÃO: Exige mais de 8 dias contínuos. Até 24 horas não há crime. De 24 horas a 8 dias = AUSÊNCIA (transgressão militar). Passou de 8 dias = DESERÇÃO (crime militar).'
+      },
+      {
+        number: 'Artigos 303 e 305',
+        heading: 'Peculato Militar e Concussão Militar',
+        text: `Art. 303. PECULATO: Apropriar-se de dinheiro, valor ou qualquer outro bem móvel, público ou particular, de que tem a posse ou detenção em razão do cargo ou comissão, ou desviá-lo em proveito próprio ou alheio:
+Pena: reclusão, de 3 a 15 anos.
+
+§ 1º PECULATO-FURTO: Aplica-se a mesma pena a quem, embora não tendo a posse do dinheiro ou coisa móvel, o subtrai, ou concorre para que seja subtraído, em proveito próprio ou alheio, valendo-se da facilidade que lhe proporciona a qualidade de militar ou funcionário público.
+
+§ 3º PECULATO CULPOSO: Se o funcionário ou militar concorre culposamente para o crime de outrem: Pena de detenção, de 6 meses a 2 anos.
+§ 4º Extinção da punibilidade e redução da pena: No caso do peculato culposo, a reparação do dano, se precede a sentença irrecorrível, EXTingue a punibilidade; se lhe é posterior, reduz de metade a pena imposta.
+
+Art. 305. CONCUSSÃO: Exigir, para si ou para outrem, direta ou indiretamente, ainda que fora da função ou antes de assumi-la, mas em razão dela, vantagem indevida:
+Pena: reclusão, de 2 a 8 anos.`,
+        tip: 'VERBO DA CONCUSSÃO: É sempre EXIGIR! Na corrupção passiva (Art. 308) é SOLICITAR ou RECEBER. Exigiu vantagem em blitz ou ocorrência = CONCUSSÃO!',
+        warning: 'PECULATO CULPOSO: A reparação do dano ANTES da sentença irrecorrível EXTingue a punibilidade. Se for depois da sentença irrecorrível, apenas reduz a pena pela metade. Isso cai em TODAS as bancas!'
+      }
+    ]
+  },
+
+  // =========================================================================
+  // 8. CÓDIGO PENAL BRASILEIRO (PARTE ESPECIAL - DECRETO-LEI Nº 2.848/1940)
+  // =========================================================================
+  {
+    id: 'codigo_penal_comum',
+    category: 'penal',
+    shortTitle: 'Código Penal (Pessoa, Patrimônio e Adm.)',
+    fullTitle: 'Código Penal Brasileiro • Decreto-Lei nº 2.848/1940 (Parte Especial Atualizada)',
+    officialRef: 'Presidência da República / Planalto • Atualizado até 2026',
+    badge: 'Art. 121, 129, 155, 157 e 312 a 331',
+    icon: '⚖️',
+    summary: 'Crimes contra a Pessoa (Homicídio e Lesão), Crimes contra o Patrimônio (Furto e Roubo) e Crimes contra a Administração Pública essenciais para a PMPE.',
+    articles: [
+      {
+        number: 'Artigo 121 do Código Penal',
+        heading: 'Homicídio Simples, Privilegiado, Feminicídio e Homicídio Funcional',
+        text: `Art. 121. Matar alguém:
+Pena: reclusão, de 6 a 20 anos.
+
+§ 1º HOMICÍDIO PRIVILEGIADO: Se o agente comete o crime impelido por motivo de relevante valor social ou moral, ou sob o domínio de violenta emoção, logo em seguida a injusta provocação da vítima, o juiz pode reduzir a pena de um sexto a um terço.
+
+§ 2º HOMICÍDIO QUALIFICADO (Reclusão de 12 a 30 anos):
+I - mediante paga ou promessa de recompensa, ou por outro motivo torpe;
+II - por motivo fútil;
+III - com emprego de veneno, fogo, explosivo, asfixia, tortura ou outro meio insidioso ou cruel, ou de que possa resultar perigo comum;
+IV - à traição, de emboscada, ou mediante dissimulação ou outro recurso que dificulte ou torne impossível a defesa do ofendido;
+V - para assegurar a execução, a ocultação, a impunidade ou vantagem de outro crime;
+VI - FEMINICÍDIO: contra a mulher por razões da condição de sexo feminino (violência doméstica e familiar ou menosprezo/discriminação à condição de mulher);
+VII - HOMICÍDIO FUNCIONAL: contra autoridade ou agente descrito nos arts. 142 e 144 da Constituição Federal (policiais militares, civis, federais, bombeiros, guardas), integrantes do sistema prisional e da Força Nacional de Segurança Pública, no exercício da função ou em decorrência dela, ou contra seu cônjuge, companheiro ou parente consanguíneo até terceiro grau, em razão dessa condição.`,
+        tip: 'HOMICÍDIO FUNCIONAL (§ 2º, VII): Matar policial em razão de sua função torna o homicídio duplamente gravoso: é QUALIFICADO e formalmente HEDIONDO!',
+        warning: 'Homicídio privilegiado-qualificado: É admitido pelo STF/STJ desde que a qualificadora seja de natureza OBJETIVA (ex: veneno, emboscada). Privilegiado NUNCA pode coexistir com motivo torpe ou fútil (que são subjetivas).'
+      },
+      {
+        number: 'Artigo 129 do Código Penal',
+        heading: 'Lesão Corporal: Leve, Grave, Gravíssima e Funcional',
+        text: `Art. 129. Ofender a integridade corporal ou a saúde de outrem:
+Pena: detenção, de 3 meses a 1 ano.
+
+§ 1º LESÃO CORPORAL GRAVE (Reclusão, de 1 a 5 anos), se resulta:
+I - Incapacidade para as ocupações habituais, por mais de 30 dias;
+II - Perigo de vida;
+III - Debilidade permanente de membro, sentido ou função;
+IV - Aceleração de parto.
+
+§ 2º LESÃO CORPORAL GRAVÍSSIMA (Reclusão, de 2 a 8 anos), se resulta:
+I - Incapacidade permanente para o trabalho;
+II - Enfermidade incurável;
+III - Perda ou inutilização de membro, sentido ou função;
+IV - Deformidade permanente;
+V - Aborto.
+
+§ 3º LESÃO SEGUIDA DE MORTE (Reclusão, de 4 a 12 anos): Se resulta morte e as circunstâncias evidenciam que o agente não quis o resultado, nem assumiu o risco de produzi-lo (crime preterdoloso: dolo na lesão e culpa na morte).
+
+§ 12. LESÃO FUNCIONAL: Se a lesão for praticada contra autoridade ou agente dos arts. 142 e 144 da CF, integrantes do sistema prisional e Força Nacional, no exercício da função ou em decorrência dela, ou seus parentes até 3º grau: A pena é aumentada de um a dois terços.`,
+        tip: 'GRAVE vs GRAVÍSSIMA: Debilidade = GRAVE. Perda ou inutilização = GRAVÍSSIMA. Aceleração de parto = GRAVE. Aborto = GRAVÍSSIMA. Incapacidade mais de 30 dias = GRAVE. Incapacidade permanente = GRAVÍSSIMA.',
+        warning: 'Lesão dolosa gravíssima ou seguida de morte contra policial no exercício da função é CRIME HEDIONDO (Art. 1º, I-A da Lei 8.072/90)!'
+      },
+      {
+        number: 'Artigos 155 e 157 do Código Penal',
+        heading: 'Furto, Roubo Majorado e Latrocínio',
+        text: `Art. 155. FURTO: Subtrair, para si ou para outrem, coisa alheia móvel:
+Pena: reclusão, de 1 a 4 anos, e multa.
+§ 1º A pena aumenta-se de um terço, se o crime é praticado durante o REPOUSO NOTURNO.
+§ 4º Furto Qualificado (Reclusão de 2 a 8 anos): com destruição de obstáculo, abuso de confiança, concurso de 2 ou mais pessoas.
+§ 4º-A Furto com emprego de explosivo ou artefato similar que cause perigo comum: Reclusão de 4 a 10 anos (CRIME HEDIONDO!).
+
+Art. 157. ROUBO: Subtrair coisa móvel alheia, para si ou para outrem, mediante grave ameaça ou violência a pessoa, ou depois de havê-la, por qualquer meio, reduzido à impossibilidade de resistência:
+Pena: reclusão, de 4 a 10 anos, e multa.
+§ 2º A pena aumenta-se de 1/3 até metade: se há concurso de 2 ou mais pessoas; se a vítima está em serviço de transporte de valores; se há restrição da liberdade da vítima.
+§ 2º-A Aumenta-se a pena de 2/3 (dois terços):
+I - se a violência ou ameaça é exercida com emprego de ARMA DE FOGO (uso permitido);
+§ 2º-B Se a violência ou grave ameaça é exercida com emprego de ARMA DE FOGO DE USO RESTRITO OU PROIBIDO, aplica-se em DOBRO a pena do caput.
+
+§ 3º ROUBO QUALIFICADO:
+II - se da violência resulta MORTE: LATROCÍNIO.
+Pena: reclusão, de 20 a 30 anos, e multa (CRIME HEDIONDO!).`,
+        tip: 'SÚMULA 610 DO STF: "Há crime de latrocínio, quando o homicídio se consuma, ainda que não realize o agente a subtração dos bens da vítima." Matou a vítima mas não conseguiu levar o dinheiro = LATROCÍNIO CONSUMADO!',
+        warning: 'Arma branca no roubo aumenta a pena de 1/3 a metade (§ 2º, VII). Arma de fogo de uso permitido aumenta de 2/3 (§ 2º-A). Arma de uso restrito ou proibido DUPLICA a pena (§ 2º-B)!'
+      },
+      {
+        number: 'Artigos 312 a 331 do Código Penal',
+        heading: 'Crimes Contra a Administração Pública Praticados por Funcionários Públicos',
+        text: `Art. 312. PECULATO: Apropriar-se o funcionário público de dinheiro, valor ou qualquer outro bem móvel, público ou particular, de que tem a posse em razão do cargo, ou desviá-lo em proveito próprio ou alheio. Pena: reclusão de 2 a 12 anos e multa.
+
+Art. 316. CONCUSSÃO: EXIGIR, para si ou para outrem, direta ou indiretamente, ainda que fora da função ou antes de assumi-la, mas em razão dela, vantagem indevida. Pena: reclusão de 2 a 12 anos e multa.
+
+Art. 317. CORRUPÇÃO PASSIVA: SOLICITAR ou RECEBER, para si ou para outrem, direta ou indiretamente, ainda que fora da função ou antes de assumi-la, mas em razão dela, vantagem indevida, ou ACEITAR PROMESSA de tal vantagem. Pena: reclusão de 2 a 12 anos e multa.
+
+Art. 319. PREVARICAÇÃO: Retardar ou deixar de praticar, indevidamente, ato de ofício, ou praticá-lo contra disposição expressa de lei, para satisfazer INTERESSE OU SENTIMENTO PESSOAL. Pena: detenção de 3 meses a 1 ano e multa.
+
+Art. 330. DESOBEDIÊNCIA: Desobedecer a ordem legal de funcionário público. Pena: detenção de 15 dias a 6 meses e multa.
+
+Art. 331. DESACATO: Desacatar funcionário público no exercício da função ou em razão dela. Pena: detenção de 6 meses a 2 anos ou multa.`,
+        tip: 'CONCUSSÃO vs CORRUPÇÃO PASSIVA: Concussão = EXIGIR (o funcionário impõe a exigência). Corrupção Passiva = SOLICITAR ou RECEBER (pede ou aceita propina).',
+        warning: 'PREVARICAÇÃO: Exige imprescindivelmente o fim especial de "satisfazer interesse ou sentimento pessoal". Se o policial deixou de multar um amigo por amizade = PREVARICAÇÃO!'
+      }
+    ]
+  },
+
+  // =========================================================================
+  // 9. LEI DE CRIMES DE RACISMO E INJÚRIA RACIAL (LEI Nº 7.716/1989 E LEI 14.532/2023)
+  // =========================================================================
+  {
+    id: 'lei_racismo_injuria',
+    category: 'especiais',
+    shortTitle: 'Lei de Racismo e Injúria Racial',
+    fullTitle: 'Lei Federal nº 7.716/1989 • Crimes de Discriminação e Preconceito (Atualizada pela Lei 14.532/2023)',
+    officialRef: 'Presidência da República / Planalto • Atualizada até 2026',
+    badge: 'Lei 14.532/23 • Inafiançável e Imprescritível',
+    icon: '✊🏿',
+    summary: 'A histórica equiparação legal da Injúria Racial ao crime de Racismo, tornando a conduta inafiançável, imprescritível e de ação penal pública incondicionada.',
+    articles: [
+      {
+        number: 'Artigo 2º-A da Lei 7.716/1989',
+        heading: 'Tipificação da Injúria Racial como Crime de Racismo',
+        text: `Art. 2º-A. Injuriar alguém, ofendendo-lhe a dignidade ou o decoro, em razão de raça, cor, etnia ou procedência nacional:
+Pena: reclusão, de 2 (dois) a 5 (cinco) anos, e multa.
+
+Parágrafo único. A pena é aumentada de metade se o crime for cometido por duas ou mais pessoas, ou com o concurso de menores de 18 anos.
+
+IMPACTO CONSTITUCIONAL E PROCESSUAL DA LEI Nº 14.532/2023:
+1. Revogou o § 3º do Art. 140 do Código Penal no tocante à raça/cor e transferiu a injúria racial formalmente para a Lei nº 7.716/1989;
+2. STATUS CONSTITUCIONAL: Agora a Injúria Racial é formally crime de RACISMO, sendo INAFIANÇÁVEL e IMPRESCRITÍVEL (Art. 5º, XLII da CF/88);
+3. AÇÃO PENAL: Ação Penal Pública Incondicionada (não depende mais de representação da vítima);
+4. A fiança policial NÃO É MAIS ADMITIDA pelo Delegado de Polícia.`,
+        tip: 'NOVIDADE LEGISLATIVA CRUCIAL: Antes da Lei 14.532/2023, a injúria racial estava no Código Penal e dependia de representação. Agora está no Art. 2º-A da Lei 7.716/89, tem pena de 2 a 5 anos de reclusão, é INAFIANÇÁVEL, IMPRESCRITÍVEL e pública incondicionada!',
+        warning: 'A injúria contra pessoa idosa ou com deficiência permaneceu no Código Penal (art. 140, § 3º). Somente a injúria racial (raça, cor, etnia ou procedência nacional) foi migrada para a Lei 7.716/89.'
+      },
+      {
+        number: 'Artigo 20 da Lei 7.716/1989',
+        heading: 'Praticar, Induzir ou Incitar Preconceito em Redes Sociais e Eventos',
+        text: `Art. 20. Praticar, induzir ou incitar a discriminação ou preconceito de raça, cor, etnia, religião ou procedência nacional:
+Pena: reclusão de 1 a 3 anos e multa.
+
+§ 2º Se qualquer dos crimes previstos neste artigo for cometido por intermédio dos meios de comunicação social, de publicação em redes sociais, da rede mundial de computadores ou de publicação de qualquer natureza:
+Pena: reclusão de 2 a 5 anos e multa.
+
+§ 2º-A Se o crime for praticado no contexto de atividades esportivas, religiosas, artísticas ou culturais destinadas ao público:
+Pena: reclusão de 2 a 5 anos e proibição de frequência, por 3 anos, a locais destinados a práticas esportivas, artísticas ou culturais.
+
+§ 3º O juiz poderá determinar a interdição das respectivas mensagens ou páginas de informação na rede mundial de computadores e a cessação das transmissões de rádio ou televisão.`,
+        tip: 'MAJORANTE DE REDES SOCIAIS E ESTÁDIOS: Postagens racistas na internet, Instagram, WhatsApp, ou ofensas coletivas em estádios de futebol têm pena triplicada: reclusão de 2 a 5 anos!',
+        warning: 'Todos os crimes da Lei 7.716/1989 são de Ação Penal Pública Incondicionada e sujeitos a penas privativas de liberdade de RECLUSÃO.'
+      }
+    ]
+  },
+
+  // =========================================================================
+  // 10. REGULAMENTO DISCIPLINAR DA PMPE (RDPMPE - DECRETO Nº 17.589/1994)
+  // =========================================================================
+  {
+    id: 'rdpmpe_disciplinar',
+    category: 'pmpe',
+    shortTitle: 'Regulamento Disciplinar PMPE',
+    fullTitle: 'Decreto Estadual nº 17.589/1994 • Regulamento Disciplinar da PMPE (RDPMPE)',
+    officialRef: 'Governo do Estado de Pernambuco • Legislação Disciplinar em Vigor',
+    badge: 'Decreto 17.589/94 • Disciplina PMPE',
+    icon: '🛡️',
+    summary: 'Especifica as transgressões disciplinares, estabelece normas relativas à aplicação das punições disciplinares, classificação do comportamento e recursos.',
+    articles: [
+      {
+        number: 'Artigos 8º a 13 do RDPMPE',
+        heading: 'Definição e Classificação das Transgressões Disciplinares',
+        text: `Art. 8º Transgressão disciplinar é qualquer violação dos preceitos da ética, dos deveres e das obrigações policiais-militares, na sua manifestação elementar e simples, e qualquer omissão ou ação contrária aos preceitos estatuídos em leis, regulamentos, normas ou disposições, desde que não configure crime.
+
+Art. 12. As transgressões disciplinares são classificadas em:
+1. LEVES;
+2. MÉDIAS;
+3. GRAVES.
+A classificação da gravidade da transgressão é de competência de quem tem autoridade para punir, levando em consideração os atos e circunstâncias que a determinaram, os danos e repercussões causados à disciplina e à Corporação.
+
+Art. 10. A competência para aplicar as prescrições contidas neste Regulamento é conferida ao:
+1. Governador do Estado: a todos os integrantes da Polícia Militar;
+2. Comandante-Geral: a todos os integrantes da Polícia Militar sujeitos ao seu comando;
+3. Chefe do Estado-Maior, Diretores e Comandantes de OPM: aos policiais sob sua subordinação direta.`,
+        tip: 'GRADAÇÃO DAS TRANSGRESSÕES: Apenas três graus: LEVES, MÉDIAS e GRAVES. Não existe transgressão "gravíssima" no RDPMPE!',
+        warning: 'Crime vs Transgressão: Se o fato configurar simultaneamente crime e transgressão disciplinar, o militar responderá penalmente e disciplinarmente de forma autônoma.'
+      },
+      {
+        number: 'Artigos 14 a 22 do RDPMPE',
+        heading: 'Escala de Punições Disciplinares e Aplicação',
+        text: `Art. 14. As punições disciplinares a que estão sujeitos os policiais-militares, segundo a classificação resultante do julgamento da transgressão, são as seguintes, em ordem de gravidade crescente:
+1. ADVERTÊNCIA;
+2. REPREENSÃO;
+3. DETENÇÃO (até 30 dias);
+4. PRISÃO (até 30 dias);
+5. LICENCIAMENTO A BEM DA DISCIPLINA;
+6. EXCLUSÃO A BEM DA DISCIPLINA.
+
+Art. 15. ADVERTÊNCIA é a forma mais branda de punir. É feita verbalmente ao transgressor, em caráter reservado ou ostensivo, não constando das alterações do policial-militar.
+Art. 16. REPREENSÃO é a punição que, publicada em Boletim Interno, constará dos assentamentos do policial-militar.
+Art. 17. DETENÇÃO consiste na retenção do policial-militar no quartel, sem que fique encarcerado. O detido comparece a todos os atos de instrução e serviço.
+Art. 18. PRISÃO consiste no recolhimento do policial-militar a compartimento próprio da OPM (sem comunicação de presos da justiça comum).
+Art. 21. O LICENCIAMENTO a bem da disciplina é aplicado pelo Comandante-Geral às PRAÇAS SEM ESTABILIDADE assegurada (menos de 10 anos de serviço).
+Art. 22. A EXCLUSÃO a bem da disciplina é aplicada pelo Comandante-Geral às PRAÇAS COM ESTABILIDADE assegurada (10 ou mais anos de serviço), após processo regular em Conselho de Disciplina.`,
+        tip: 'LICENCIAMENTO vs EXCLUSÃO: Praça SEM estabilidade (menos de 10 anos) = LICENCIAMENTO a bem da disciplina. Praça COM estabilidade (10 anos ou mais) = EXCLUSÃO a bem da disciplina após CONSELHO DE DISCIPLINA!',
+        warning: 'Advertência NÃO constará nas alterações/ficha do policial. A Repreensão é a primeira punição formal publicada em Boletim Interno.'
+      },
+      {
+        number: 'Artigos 23 a 30 do RDPMPE',
+        heading: 'Circunstâncias Atenuantes, Agravantes e Classificação do Comportamento',
+        text: `Art. 23. São circunstâncias ATENUANTES no julgamento da transgressão:
+1. Bom comportamento militar;
+2. Relevância de serviços prestados;
+3. Falta de prática do serviço (menos de 6 meses de serviço);
+4. Ter sido cometida a transgressão para evitar mal maior;
+5. Ter sido cometida sob a influência de violenta emoção provocada por ato injusto de outrem.
+
+Art. 24. São circunstâncias AGRAVANTES:
+1. Mau comportamento;
+2. Prática simultânea ou conexão de duas ou mais transgressões;
+3. Reincidência de transgressão;
+4. Conluio de duas ou mais pessoas;
+5. Ter sido cometida durante o serviço de escala ou guarda;
+6. Ter sido cometida em presença de tropa, em público ou de subordinado;
+7. Ter sido praticada com premeditação.
+
+CLASSIFICAÇÃO DO COMPORTAMENTO MILITAR (Art. 52):
+• EXCEPCIONAL: quando no período de 8 (oito) anos contínuos de efetivo serviço não tenha sofrido qualquer punição disciplinar;
+• ÓTIMO: quando no período de 4 (quatro) anos contínuos tenha sofrido até 1 detenção;
+• BOM: quando no período de 2 (dois) anos tenha sofrido até 2 prisões;
+• INSUFICIENTE: quando no período de 1 (um) ano tenha sofrido até 2 prisões;
+• MAU: quando no período de 1 (um) ano tenha sofrido mais de 2 prisões.`,
+        tip: 'TEMPO PARA O COMPORTAMENTO EXCEPCIONAL: 8 (OITO) ANOS sem sofrer nenhuma punição disciplinar! Para Ótimo são 4 anos. Para Bom são 2 anos.',
+        warning: 'Atenuante de falta de prática: Considera-se apenas até 6 (seis) meses de serviço na Corporação.'
+      }
+    ]
+  },
+
+  // =========================================================================
+  // 11. LEI ORGÂNICA NACIONAL DAS PMs E CBMs (LEI FEDERAL Nº 14.751/2023)
+  // =========================================================================
+  {
+    id: 'lei_organica_nacional_pm_14751',
+    category: 'pmpe',
+    shortTitle: 'Lei Orgânica Nacional PM (14.751/23)',
+    fullTitle: 'Lei Federal nº 14.751/2023 • Lei Orgânica Nacional das Polícias Militares e Corpos de Bombeiros Militares',
+    officialRef: 'Presidência da República / Planalto • Sancionada em 12/12/2023 (Em vigor para 2026)',
+    badge: 'Lei 14.751/23 • Marco Nacional',
+    icon: '🏛️',
+    summary: 'Novo marco legal nacional que unifica regras de organização, garantias fundamentais, porte de arma em âmbito nacional, prisão especial e carreira para as Polícias Militares de todo o Brasil.',
+    articles: [
+      {
+        number: 'Artigos 1º a 5º da Lei 14.751/2023',
+        heading: 'Competências Constitucionais Exclusivas e Subordinação',
+        text: `Art. 1º Esta Lei estabelece normas gerais para as Polícias Militares e os Corpos de Bombeiros Militares dos Estados, do Distrito Federal e dos Territórios, nos termos do inciso XXI do caput do art. 22 da Constituição Federal.
+
+Art. 3º As Polícias Militares e os Corpos de Bombeiros Militares, instituições permanentes, essenciais à Justiça e à Segurança Pública, forças auxiliares e reserva do Exército, subordinadas aos Governadores dos Estados, do Distrito Federal e dos Territórios, são organizadas com base na hierarquia e na disciplina miltares.
+
+Art. 4º Compete com exclusividade às POLÍCIAS MILITARES:
+I - a polícia ostensiva e a preservação da ordem pública;
+II - a polícia ostensiva de trânsito rodoviário e urbano, na forma da legislação aplicável;
+III - a polícia judiciária militar estadual, apurando as infrações penais militares;
+IV - a garantia do exercício do poder de polícia dos órgãos públicos estaduais e municipais;
+V - atuar preventivamente e repressivamente nos conflitos agrários, manifestações e eventos públicos de grande vulto;
+VI - realizar o policiamento ambiental, aéreo, fluvial e lacustre.`,
+        tip: 'FORÇAS AUXILIARES E RESERVA: As PMs continuam sendo forças auxiliares e reserva do Exército, subordinadas operacional e administrativamente aos Governadores de Estado!',
+        warning: 'COMPETÊNCIA EXCLUSIVA: O policiamento ostensivo e a preservação da ordem pública são competências constitucionais exclusivas da Polícia Militar, vedada a usurpação por outras entidades.'
+      },
+      {
+        number: 'Artigo 13 a 18 da Lei 14.751/2023',
+        heading: 'Garantias, Prerrogativas e Prisão Especial Militar',
+        text: `Art. 13. São garantias fundamentais dos policiais militares e dos bombeiros militares:
+I - uso privativo dos uniformes, insígnias, distintivos e condecorações militares;
+II - porte de arma de fogo em todo o território nacional, em serviço ou fora dele, respeitadas as normas federais;
+III - documento de identidade militar com fé pública e validade em todo o território nacional;
+IV - cumprimento de prisão provisória ou pena privativa de liberdade em estabelecimento prisional militar ou em dependência militar separada de civis até o trânsito em julgado da sentença condenatória;
+V - assistência jurídica integral promovida ou custeada pelo Estado quando processados por atos praticados no estrito cumprimento do dever legal;
+VI - seguro de vida e de acidentes pessoais decorrentes do exercício da função;
+VII - traslado do militar falecido em serviço e de seus dependentes na localidade de lotação.
+
+Art. 18. Ao militar do Estado é assegurado o direito à previdência social militar específica nos termos da legislação federal e estadual aplicável.`,
+        tip: 'GARANTIA DE PRISÃO ESPECIAL: Policial Militar preso em flagrante ou preventivamente TEM DIREITO a ficar recolhido em quartel militar até o trânsito em julgado de sua condenação penal!',
+        warning: 'PORTE DE ARMA NACIONAL: O porte de arma funcional tem validade em todo o território brasileiro, mesmo quando o militar estiver fora de seu Estado de origem.'
+      },
+      {
+        number: 'Artigos 21 a 29 da Lei 14.751/2023',
+        heading: 'Estrutura de Postos e Graduações e Transição de Ingresso',
+        text: `Art. 21. A hierarquia nas Polícias Militares compreende os seguintes postos e graduações unificados nacionalmente:
+
+I - OFICIAIS:
+a) Oficiais Superiores: Coronel PM, Tenente-Coronel PM e Major PM;
+b) Oficiais Intermediários: Capitão PM;
+c) Oficiais Subalternos: Primeiro-Tenente PM e Segundo-Tenente PM;
+d) Praças Especiais: Aspirante a Oficial PM e Aluno-Oficial PM (Cadete).
+
+II - PRAÇAS:
+a) Subtenente PM;
+b) Primeiro-Sargento PM, Segundo-Sargento PM e Terceiro-Sargento PM;
+c) Cabo PM;
+d) Soldado PM e Aluno do Curso de Formação de Soldados.
+
+Art. 24. A investidura nos cargos militares dar-se-á por concurso público de provas ou de provas e títulos.
+A Lei estabelece o prazo de transição de até 6 (seis) anos da data de publicação da lei para que os Estados exijam nível superior para todos os quadros (Oficiais e Praças), conforme adaptação da legislação estadual competente.`,
+        tip: 'OFICIAL INTERMEDIÁRIO: Atenção para pegadinha da AOCP: Capitão é Oficial INTERMEDIÁRIO. Tenentes são Oficiais Subalternos, e Majores/Ten-Coronéis/Coronéis são Oficiais Superiores.',
+        warning: 'Posto é privativo de Oficial (conferido pelo Governador via Carta Patente). Graduação é conferida às Praças (pelo Comandante-Geral).'
+      }
+    ]
   }
 ];
+

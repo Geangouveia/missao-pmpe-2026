@@ -484,12 +484,137 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
     loadStage(0);
   }, [loadStage]);
 
+  // Estado dos botões ativos (feedback visual nos controles touch)
+  const [activeButtons, setActiveButtons] = useState<Record<string, boolean>>({});
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const dpadRef = useRef<HTMLDivElement>(null);
+  const dpadTouchIdRef = useRef<number | null>(null);
+
+  // Monitora mudança de fullscreen
+  useEffect(() => {
+    const handleFsChange = () => setIsFullscreen(!!document.fullscreenElement);
+    document.addEventListener('fullscreenchange', handleFsChange);
+    return () => document.removeEventListener('fullscreenchange', handleFsChange);
+  }, []);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen?.().catch(() => {});
+    } else {
+      document.exitFullscreen?.().catch(() => {});
+    }
+  };
+
+  // Feedback tátil de vibração para celulares
+  const triggerVibrate = (ms = 14) => {
+    if (typeof navigator !== 'undefined' && navigator.vibrate) {
+      try { navigator.vibrate(ms); } catch { /* ignore */ }
+    }
+  };
+
   // Controles virtuais (Mobile/Touch)
   const setVirtualKey = (key: string, state: boolean) => {
-    gameRef.current.keys[key.toLowerCase()] = state;
+    const k = key.toLowerCase();
+    gameRef.current.keys[k] = state;
+    setActiveButtons(prev => {
+      if (prev[k] === state) return prev;
+      return { ...prev, [k]: state };
+    });
+    if (state) triggerVibrate(15);
+  };
+
+  const setVirtualDirection = (up: boolean, down: boolean, left: boolean, right: boolean) => {
+    const g = gameRef.current;
+    g.keys['arrowup'] = up;
+    g.keys['arrowdown'] = down;
+    g.keys['arrowleft'] = left;
+    g.keys['arrowright'] = right;
+    setActiveButtons(prev => ({
+      ...prev,
+      arrowup: up,
+      arrowdown: down,
+      arrowleft: left,
+      arrowright: right
+    }));
+    if (up || down || left || right) triggerVibrate(10);
+  };
+
+  // Processa o toque no D-Pad (Touch Drag e Ângulo 8-Way)
+  const updateDpadFromTouch = (clientX: number, clientY: number) => {
+    if (!dpadRef.current) return;
+    const rect = dpadRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const dx = clientX - centerX;
+    const dy = clientY - centerY;
+    const dist = Math.hypot(dx, dy);
+
+    if (dist < 14) {
+      // Deadzone central
+      setVirtualDirection(false, false, false, false);
+      return;
+    }
+
+    const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+    let up = false;
+    let down = false;
+    let left = false;
+    let right = false;
+
+    if (angle >= -22.5 && angle < 22.5) {
+      right = true;
+    } else if (angle >= 22.5 && angle < 67.5) {
+      down = true; right = true;
+    } else if (angle >= 67.5 && angle < 112.5) {
+      down = true;
+    } else if (angle >= 112.5 && angle < 157.5) {
+      down = true; left = true;
+    } else if (angle >= 157.5 || angle < -157.5) {
+      left = true;
+    } else if (angle >= -157.5 && angle < -112.5) {
+      up = true; left = true;
+    } else if (angle >= -112.5 && angle < -67.5) {
+      up = true;
+    } else if (angle >= -67.5 && angle < -22.5) {
+      up = true; right = true;
+    }
+
+    setVirtualDirection(up, down, left, right);
+  };
+
+  const handleDpadTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
+    const touch = e.changedTouches[0];
+    dpadTouchIdRef.current = touch.identifier;
+    updateDpadFromTouch(touch.clientX, touch.clientY);
+  };
+
+  const handleDpadTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault();
+    if (dpadTouchIdRef.current === null) return;
+    for (let i = 0; i < e.changedTouches.length; i++) {
+      const touch = e.changedTouches[i];
+      if (touch.identifier === dpadTouchIdRef.current) {
+        updateDpadFromTouch(touch.clientX, touch.clientY);
+        break;
+      }
+    }
+  };
+
+  const handleDpadTouchEnd = (e: React.TouchEvent) => {
+    e.preventDefault();
+    for (let i = 0; i < e.changedTouches.length; i++) {
+      if (e.changedTouches[i].identifier === dpadTouchIdRef.current) {
+        dpadTouchIdRef.current = null;
+        setVirtualDirection(false, false, false, false);
+        break;
+      }
+    }
   };
 
   const cycleWeapon = () => {
+    triggerVibrate(18);
     const p = gameRef.current.player;
     const available = [WEAPONS.PISTOL];
     if (WEAPONS.HMG.ammo > 0) available.push(WEAPONS.HMG);
@@ -1752,190 +1877,508 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
           </div>
         </div>
 
-        {/* D-Pad e Controles Virtuais Touch para Celular / Tablet */}
+        {/* D-Pad e Controles Virtuais Touch para Celular / Tablet (Arcade Cockpit Pro) */}
         <div style={{
           width: '100%',
           maxWidth: isExpanded ? '1120px' : '880px',
           display: 'flex',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '0.5rem',
-          padding: '0.5rem',
-          background: 'rgba(15, 23, 42, 0.6)',
-          borderRadius: '8px',
-          border: '1px solid rgba(148, 163, 184, 0.2)',
-          transition: 'max-width 0.25s ease'
+          flexDirection: 'column',
+          gap: '0.75rem',
+          padding: '0.85rem',
+          background: 'linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(3, 7, 18, 0.98) 100%)',
+          borderRadius: '14px',
+          border: '2px solid rgba(148, 163, 184, 0.25)',
+          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+          transition: 'max-width 0.25s ease',
+          userSelect: 'none',
+          WebkitUserSelect: 'none',
+          touchAction: 'none'
         }}>
-          {/* D-Pad Virtual */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 42px)', gap: '4px' }}>
-            <div />
-            <button
-              onMouseDown={() => setVirtualKey('arrowup', true)}
-              onMouseUp={() => setVirtualKey('arrowup', false)}
-              onTouchStart={(e) => { e.preventDefault(); setVirtualKey('arrowup', true); }}
-              onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('arrowup', false); }}
-              style={{
-                padding: '8px',
-                background: '#1e293b',
-                color: '#fff',
-                border: '1px solid #475569',
-                borderRadius: '6px',
-                fontWeight: 'bold',
-                cursor: 'pointer'
-              }}
-            >
-              ▲
-            </button>
-            <div />
-            <button
-              onMouseDown={() => setVirtualKey('arrowleft', true)}
-              onMouseUp={() => setVirtualKey('arrowleft', false)}
-              onTouchStart={(e) => { e.preventDefault(); setVirtualKey('arrowleft', true); }}
-              onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('arrowleft', false); }}
-              style={{
-                padding: '8px',
-                background: '#1e293b',
-                color: '#fff',
-                border: '1px solid #475569',
-                borderRadius: '6px',
-                fontWeight: 'bold',
-                cursor: 'pointer'
-              }}
-            >
-              ◀
-            </button>
-            <button
-              onMouseDown={() => setVirtualKey('arrowdown', true)}
-              onMouseUp={() => setVirtualKey('arrowdown', false)}
-              onTouchStart={(e) => { e.preventDefault(); setVirtualKey('arrowdown', true); }}
-              onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('arrowdown', false); }}
-              style={{
-                padding: '8px',
-                background: '#1e293b',
-                color: '#fff',
-                border: '1px solid #475569',
-                borderRadius: '6px',
-                fontWeight: 'bold',
-                cursor: 'pointer'
-              }}
-            >
-              ▼
-            </button>
-            <button
-              onMouseDown={() => setVirtualKey('arrowright', true)}
-              onMouseUp={() => setVirtualKey('arrowright', false)}
-              onTouchStart={(e) => { e.preventDefault(); setVirtualKey('arrowright', true); }}
-              onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('arrowright', false); }}
-              style={{
-                padding: '8px',
-                background: '#1e293b',
-                color: '#fff',
-                border: '1px solid #475569',
-                borderRadius: '6px',
-                fontWeight: 'bold',
-                cursor: 'pointer'
-              }}
-            >
-              ▶
-            </button>
-          </div>
-
-          {/* Botões de Ação Touch */}
-          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-            <button
-              onMouseDown={() => setVirtualKey('x', true)}
-              onMouseUp={() => setVirtualKey('x', false)}
-              onTouchStart={(e) => { e.preventDefault(); setVirtualKey('x', true); }}
-              onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('x', false); }}
-              style={{
-                padding: '8px 14px',
-                background: 'linear-gradient(135deg, #dc2626, #b91c1c)',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '6px',
-                fontWeight: 900,
-                fontSize: '0.8rem',
-                cursor: 'pointer',
-                boxShadow: '0 0 10px rgba(220, 38, 38, 0.4)'
-              }}
-            >
-              💥 ATIRAR [X]
-            </button>
-
-            <button
-              onMouseDown={() => setVirtualKey('z', true)}
-              onMouseUp={() => setVirtualKey('z', false)}
-              onTouchStart={(e) => { e.preventDefault(); setVirtualKey('z', true); }}
-              onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('z', false); }}
-              style={{
-                padding: '8px 12px',
-                background: '#d97706',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '6px',
-                fontWeight: 900,
-                fontSize: '0.8rem',
-                cursor: 'pointer'
-              }}
-            >
-              👊 SOCO [Z]
-            </button>
-
-            <button
-              onMouseDown={() => setVirtualKey('c', true)}
-              onMouseUp={() => setVirtualKey('c', false)}
-              onTouchStart={(e) => { e.preventDefault(); setVirtualKey('c', true); }}
-              onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('c', false); }}
-              style={{
-                padding: '8px 12px',
-                background: '#9333ea',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '6px',
-                fontWeight: 900,
-                fontSize: '0.8rem',
-                cursor: 'pointer',
-                boxShadow: '0 0 10px rgba(147, 51, 234, 0.4)'
-              }}
-            >
-              🌀 ESQUIVA [C]
-            </button>
-
-            <button
-              onMouseDown={() => setVirtualKey('g', true)}
-              onMouseUp={() => setVirtualKey('g', false)}
-              onTouchStart={(e) => { e.preventDefault(); setVirtualKey('g', true); }}
-              onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('g', false); }}
-              style={{
-                padding: '8px 12px',
-                background: '#16a34a',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '6px',
-                fontWeight: 900,
-                fontSize: '0.8rem',
-                cursor: 'pointer'
-              }}
-            >
-              💣 BOMBA [G]
-            </button>
-
+          {/* Barra Tática de Ações Rápidas (Centro de Comando) */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '0.5rem',
+            flexWrap: 'wrap',
+            paddingBottom: '0.5rem',
+            borderBottom: '1px solid rgba(148, 163, 184, 0.15)'
+          }}>
+            {/* Trocar Arma com Nome e Munição Atual */}
             <button
               onClick={cycleWeapon}
+              onTouchStart={(e) => { e.preventDefault(); cycleWeapon(); }}
               style={{
-                padding: '8px 12px',
-                background: '#0284c7',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                padding: '0.45rem 0.85rem',
+                background: 'linear-gradient(135deg, #0284c7, #0369a1)',
                 color: '#fff',
-                border: 'none',
-                borderRadius: '6px',
+                border: '1px solid #38bdf8',
+                borderRadius: '8px',
                 fontWeight: 900,
-                fontSize: '0.8rem',
-                cursor: 'pointer'
+                fontSize: '0.82rem',
+                cursor: 'pointer',
+                boxShadow: '0 2px 8px rgba(2, 132, 199, 0.4)'
               }}
+              title="Trocar arma atual"
             >
-              🔄 ARMA [1-4]
+              <span>🔄 ARMA:</span>
+              <strong style={{ color: '#fef08a' }}>{hudWeapon} ({hudAmmo})</strong>
             </button>
+
+            {/* Atalhos Rápidos */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
+              <button
+                onClick={resetGame}
+                onTouchStart={(e) => { e.preventDefault(); resetGame(); }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.3rem',
+                  padding: '0.4rem 0.7rem',
+                  background: 'rgba(239, 68, 68, 0.2)',
+                  border: '1px solid #ef4444',
+                  borderRadius: '6px',
+                  color: '#fca5a5',
+                  fontSize: '0.78rem',
+                  fontWeight: 'bold',
+                  cursor: 'pointer'
+                }}
+              >
+                <RotateCcw size={13} /> Reiniciar
+              </button>
+
+              <button
+                onClick={toggleFullscreen}
+                onTouchStart={(e) => { e.preventDefault(); toggleFullscreen(); }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.3rem',
+                  padding: '0.4rem 0.7rem',
+                  background: isFullscreen ? 'rgba(34, 197, 94, 0.3)' : 'rgba(30, 41, 59, 0.8)',
+                  border: isFullscreen ? '1px solid #22c55e' : '1px solid rgba(148, 163, 184, 0.3)',
+                  borderRadius: '6px',
+                  color: isFullscreen ? '#86efac' : '#cbd5e1',
+                  fontSize: '0.78rem',
+                  fontWeight: 'bold',
+                  cursor: 'pointer'
+                }}
+                title="Modo Tela Cheia para Celular (Remove barras do navegador)"
+              >
+                {isFullscreen ? <Minimize2 size={13} /> : <Maximize2 size={13} />}
+                <span>{isFullscreen ? "Tela Normal" : "Tela Cheia"}</span>
+              </button>
+
+              <button
+                onClick={() => setCrtEnabled(prev => !prev)}
+                onTouchStart={(e) => { e.preventDefault(); setCrtEnabled(prev => !prev); }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.3rem',
+                  padding: '0.4rem 0.7rem',
+                  background: crtEnabled ? 'rgba(234, 179, 8, 0.25)' : 'rgba(30, 41, 59, 0.8)',
+                  border: crtEnabled ? '1px solid #facc15' : '1px solid rgba(148, 163, 184, 0.3)',
+                  borderRadius: '6px',
+                  color: crtEnabled ? '#fef08a' : '#94a3b8',
+                  fontSize: '0.78rem',
+                  fontWeight: 'bold',
+                  cursor: 'pointer'
+                }}
+              >
+                <Tv size={13} /> CRT {crtEnabled ? "ON" : "OFF"}
+              </button>
+            </div>
+          </div>
+
+          {/* Painel Principal de Controles (Cockpit: D-Pad à Esquerda e Botões de Combate à Direita) */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '1rem',
+            flexWrap: 'wrap'
+          }}>
+            {/* LADO ESQUERDO: D-PAD TÁTICO 8-DIREÇÕES COM SUPORTE A TOUCH DRAG */}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.35rem' }}>
+              <div
+                ref={dpadRef}
+                onTouchStart={handleDpadTouchStart}
+                onTouchMove={handleDpadTouchMove}
+                onTouchEnd={handleDpadTouchEnd}
+                onTouchCancel={handleDpadTouchEnd}
+                style={{
+                  position: 'relative',
+                  width: '160px',
+                  height: '160px',
+                  background: 'radial-gradient(circle, #1e293b 0%, #0b1120 70%, #030712 100%)',
+                  borderRadius: '50%',
+                  border: '3px solid #334155',
+                  boxShadow: '0 6px 18px rgba(0, 0, 0, 0.8), inset 0 2px 8px rgba(0, 0, 0, 0.6)',
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(3, 1fr)',
+                  gridTemplateRows: 'repeat(3, 1fr)',
+                  gap: '3px',
+                  padding: '5px',
+                  touchAction: 'none',
+                  cursor: 'pointer'
+                }}
+              >
+                {/* 1. Diagonal Cima-Esquerda */}
+                <button
+                  onMouseDown={() => setVirtualDirection(true, false, true, false)}
+                  onMouseUp={() => setVirtualDirection(false, false, false, false)}
+                  style={{
+                    background: (activeButtons['arrowup'] && activeButtons['arrowleft']) ? '#38bdf8' : 'rgba(30, 41, 59, 0.5)',
+                    border: '1px solid rgba(148, 163, 184, 0.2)',
+                    borderRadius: '8px 4px 4px 4px',
+                    color: (activeButtons['arrowup'] && activeButtons['arrowleft']) ? '#000' : '#64748b',
+                    fontSize: '0.85rem',
+                    fontWeight: 900,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  ◤
+                </button>
+
+                {/* 2. CIMA */}
+                <button
+                  onMouseDown={() => setVirtualKey('arrowup', true)}
+                  onMouseUp={() => setVirtualKey('arrowup', false)}
+                  style={{
+                    background: activeButtons['arrowup'] ? 'linear-gradient(180deg, #38bdf8, #0284c7)' : '#1e293b',
+                    border: activeButtons['arrowup'] ? '1px solid #38bdf8' : '1px solid #475569',
+                    borderRadius: '6px',
+                    color: '#fff',
+                    fontSize: '1.25rem',
+                    fontWeight: 900,
+                    cursor: 'pointer',
+                    boxShadow: activeButtons['arrowup'] ? '0 0 12px #38bdf8' : 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  ▲
+                </button>
+
+                {/* 3. Diagonal Cima-Direita */}
+                <button
+                  onMouseDown={() => setVirtualDirection(true, false, false, true)}
+                  onMouseUp={() => setVirtualDirection(false, false, false, false)}
+                  style={{
+                    background: (activeButtons['arrowup'] && activeButtons['arrowright']) ? '#38bdf8' : 'rgba(30, 41, 59, 0.5)',
+                    border: '1px solid rgba(148, 163, 184, 0.2)',
+                    borderRadius: '4px 8px 4px 4px',
+                    color: (activeButtons['arrowup'] && activeButtons['arrowright']) ? '#000' : '#64748b',
+                    fontSize: '0.85rem',
+                    fontWeight: 900,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  ◥
+                </button>
+
+                {/* 4. ESQUERDA */}
+                <button
+                  onMouseDown={() => setVirtualKey('arrowleft', true)}
+                  onMouseUp={() => setVirtualKey('arrowleft', false)}
+                  style={{
+                    background: activeButtons['arrowleft'] ? 'linear-gradient(90deg, #38bdf8, #0284c7)' : '#1e293b',
+                    border: activeButtons['arrowleft'] ? '1px solid #38bdf8' : '1px solid #475569',
+                    borderRadius: '6px',
+                    color: '#fff',
+                    fontSize: '1.25rem',
+                    fontWeight: 900,
+                    cursor: 'pointer',
+                    boxShadow: activeButtons['arrowleft'] ? '0 0 12px #38bdf8' : 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  ◀
+                </button>
+
+                {/* 5. NÚCLEO CENTRAL */}
+                <div style={{
+                  background: 'radial-gradient(circle, #334155 0%, #0f172a 100%)',
+                  borderRadius: '50%',
+                  border: '2px solid #475569',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <div style={{
+                    width: '10px',
+                    height: '10px',
+                    borderRadius: '50%',
+                    background: (activeButtons['arrowup'] || activeButtons['arrowdown'] || activeButtons['arrowleft'] || activeButtons['arrowright']) ? '#22c55e' : '#475569',
+                    boxShadow: (activeButtons['arrowup'] || activeButtons['arrowdown'] || activeButtons['arrowleft'] || activeButtons['arrowright']) ? '0 0 8px #22c55e' : 'none'
+                  }} />
+                </div>
+
+                {/* 6. DIREITA */}
+                <button
+                  onMouseDown={() => setVirtualKey('arrowright', true)}
+                  onMouseUp={() => setVirtualKey('arrowright', false)}
+                  style={{
+                    background: activeButtons['arrowright'] ? 'linear-gradient(270deg, #38bdf8, #0284c7)' : '#1e293b',
+                    border: activeButtons['arrowright'] ? '1px solid #38bdf8' : '1px solid #475569',
+                    borderRadius: '6px',
+                    color: '#fff',
+                    fontSize: '1.25rem',
+                    fontWeight: 900,
+                    cursor: 'pointer',
+                    boxShadow: activeButtons['arrowright'] ? '0 0 12px #38bdf8' : 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  ▶
+                </button>
+
+                {/* 7. Diagonal Baixo-Esquerda */}
+                <button
+                  onMouseDown={() => setVirtualDirection(false, true, true, false)}
+                  onMouseUp={() => setVirtualDirection(false, false, false, false)}
+                  style={{
+                    background: (activeButtons['arrowdown'] && activeButtons['arrowleft']) ? '#38bdf8' : 'rgba(30, 41, 59, 0.5)',
+                    border: '1px solid rgba(148, 163, 184, 0.2)',
+                    borderRadius: '4px 4px 4px 8px',
+                    color: (activeButtons['arrowdown'] && activeButtons['arrowleft']) ? '#000' : '#64748b',
+                    fontSize: '0.85rem',
+                    fontWeight: 900,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  ◣
+                </button>
+
+                {/* 8. BAIXO */}
+                <button
+                  onMouseDown={() => setVirtualKey('arrowdown', true)}
+                  onMouseUp={() => setVirtualKey('arrowdown', false)}
+                  style={{
+                    background: activeButtons['arrowdown'] ? 'linear-gradient(0deg, #38bdf8, #0284c7)' : '#1e293b',
+                    border: activeButtons['arrowdown'] ? '1px solid #38bdf8' : '1px solid #475569',
+                    borderRadius: '6px',
+                    color: '#fff',
+                    fontSize: '1.25rem',
+                    fontWeight: 900,
+                    cursor: 'pointer',
+                    boxShadow: activeButtons['arrowdown'] ? '0 0 12px #38bdf8' : 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  ▼
+                </button>
+
+                {/* 9. Diagonal Baixo-Direita */}
+                <button
+                  onMouseDown={() => setVirtualDirection(false, true, false, true)}
+                  onMouseUp={() => setVirtualDirection(false, false, false, false)}
+                  style={{
+                    background: (activeButtons['arrowdown'] && activeButtons['arrowright']) ? '#38bdf8' : 'rgba(30, 41, 59, 0.5)',
+                    border: '1px solid rgba(148, 163, 184, 0.2)',
+                    borderRadius: '4px 4px 8px 4px',
+                    color: (activeButtons['arrowdown'] && activeButtons['arrowright']) ? '#000' : '#64748b',
+                    fontSize: '0.85rem',
+                    fontWeight: 900,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  ◢
+                </button>
+              </div>
+              <span style={{ fontSize: '0.68rem', color: '#64748b', fontWeight: 'bold' }}>
+                D-PAD 8-WAY (TOQUE OU ARRASTE)
+              </span>
+            </div>
+
+            {/* LADO DIREITO: CLUSTER ARCADE DE BOTÕES DE COMBATE (ERGONÔMICO PARA O POLEGAR) */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '0.35rem'
+            }}>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, auto)',
+                gap: '12px',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                {/* BOTÃO 1: SOCO [Z] */}
+                <button
+                  onMouseDown={() => setVirtualKey('z', true)}
+                  onMouseUp={() => setVirtualKey('z', false)}
+                  onTouchStart={(e) => { e.preventDefault(); setVirtualKey('z', true); }}
+                  onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('z', false); }}
+                  onTouchCancel={(e) => { e.preventDefault(); setVirtualKey('z', false); }}
+                  style={{
+                    width: '62px',
+                    height: '62px',
+                    borderRadius: '50%',
+                    background: activeButtons['z']
+                      ? 'linear-gradient(135deg, #fbbf24, #f59e0b)'
+                      : 'linear-gradient(135deg, #d97706, #92400e)',
+                    border: '3px solid #f59e0b',
+                    color: '#fff',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    boxShadow: activeButtons['z']
+                      ? '0 0 20px rgba(245, 158, 11, 0.9), inset 0 2px 4px rgba(255, 255, 255, 0.4)'
+                      : '0 6px 14px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(255, 255, 255, 0.2)',
+                    transform: activeButtons['z'] ? 'scale(0.94)' : 'scale(1)',
+                    transition: 'transform 0.08s, box-shadow 0.08s',
+                    touchAction: 'none'
+                  }}
+                >
+                  <span style={{ fontSize: '1.25rem', lineHeight: 1 }}>👊</span>
+                  <span style={{ fontSize: '0.62rem', fontWeight: 900, marginTop: '2px', letterSpacing: '0.5px' }}>SOCO</span>
+                </button>
+
+                {/* BOTÃO 2: GRANADA [G] */}
+                <button
+                  onMouseDown={() => setVirtualKey('g', true)}
+                  onMouseUp={() => setVirtualKey('g', false)}
+                  onTouchStart={(e) => { e.preventDefault(); setVirtualKey('g', true); }}
+                  onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('g', false); }}
+                  onTouchCancel={(e) => { e.preventDefault(); setVirtualKey('g', false); }}
+                  style={{
+                    width: '62px',
+                    height: '62px',
+                    borderRadius: '50%',
+                    background: activeButtons['g']
+                      ? 'linear-gradient(135deg, #4ade80, #22c55e)'
+                      : 'linear-gradient(135deg, #16a34a, #14532d)',
+                    border: '3px solid #22c55e',
+                    color: '#fff',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    boxShadow: activeButtons['g']
+                      ? '0 0 20px rgba(34, 197, 94, 0.9), inset 0 2px 4px rgba(255, 255, 255, 0.4)'
+                      : '0 6px 14px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(255, 255, 255, 0.2)',
+                    transform: activeButtons['g'] ? 'scale(0.94)' : 'scale(1)',
+                    transition: 'transform 0.08s, box-shadow 0.08s',
+                    position: 'relative',
+                    touchAction: 'none'
+                  }}
+                >
+                  <span style={{ fontSize: '1.25rem', lineHeight: 1 }}>💣</span>
+                  <span style={{ fontSize: '0.62rem', fontWeight: 900, marginTop: '2px', letterSpacing: '0.5px' }}>BOMBA</span>
+                  <span style={{
+                    position: 'absolute',
+                    top: '-4px',
+                    right: '-4px',
+                    background: '#ef4444',
+                    color: '#fff',
+                    borderRadius: '10px',
+                    fontSize: '0.6rem',
+                    fontWeight: 900,
+                    padding: '1px 5px',
+                    border: '1px solid #fff'
+                  }}>
+                    {hudGrenades}
+                  </span>
+                </button>
+
+                {/* BOTÃO 3: ESQUIVA [C] */}
+                <button
+                  onMouseDown={() => setVirtualKey('c', true)}
+                  onMouseUp={() => setVirtualKey('c', false)}
+                  onTouchStart={(e) => { e.preventDefault(); setVirtualKey('c', true); }}
+                  onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('c', false); }}
+                  onTouchCancel={(e) => { e.preventDefault(); setVirtualKey('c', false); }}
+                  style={{
+                    width: '62px',
+                    height: '62px',
+                    borderRadius: '50%',
+                    background: activeButtons['c']
+                      ? 'linear-gradient(135deg, #c084fc, #a855f7)'
+                      : 'linear-gradient(135deg, #9333ea, #581c87)',
+                    border: '3px solid #c084fc',
+                    color: '#fff',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    boxShadow: activeButtons['c']
+                      ? '0 0 20px rgba(168, 85, 247, 0.9), inset 0 2px 4px rgba(255, 255, 255, 0.4)'
+                      : '0 6px 14px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(255, 255, 255, 0.2)',
+                    transform: activeButtons['c'] ? 'scale(0.94)' : 'scale(1)',
+                    transition: 'transform 0.08s, box-shadow 0.08s',
+                    touchAction: 'none'
+                  }}
+                >
+                  <span style={{ fontSize: '1.25rem', lineHeight: 1 }}>🌀</span>
+                  <span style={{ fontSize: '0.62rem', fontWeight: 900, marginTop: '2px', letterSpacing: '0.5px' }}>ESQUIVA</span>
+                </button>
+
+                {/* BOTÃO 4: ATIRAR [X / ESPAÇO] - BOTÃO PRINCIPAL COM DESTAQUE */}
+                <button
+                  onMouseDown={() => setVirtualKey('x', true)}
+                  onMouseUp={() => setVirtualKey('x', false)}
+                  onTouchStart={(e) => { e.preventDefault(); setVirtualKey('x', true); }}
+                  onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('x', false); }}
+                  onTouchCancel={(e) => { e.preventDefault(); setVirtualKey('x', false); }}
+                  style={{
+                    width: '74px',
+                    height: '74px',
+                    borderRadius: '50%',
+                    background: activeButtons['x']
+                      ? 'linear-gradient(135deg, #f87171, #ef4444)'
+                      : 'linear-gradient(135deg, #dc2626, #7f1d1d)',
+                    border: '4px solid #ef4444',
+                    color: '#fff',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    boxShadow: activeButtons['x']
+                      ? '0 0 28px rgba(239, 68, 68, 1), inset 0 2px 6px rgba(255, 255, 255, 0.6)'
+                      : '0 8px 18px rgba(220, 38, 38, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.3)',
+                    transform: activeButtons['x'] ? 'scale(0.93)' : 'scale(1)',
+                    transition: 'transform 0.08s, box-shadow 0.08s',
+                    touchAction: 'none'
+                  }}
+                >
+                  <span style={{ fontSize: '1.45rem', lineHeight: 1 }}>💥</span>
+                  <span style={{ fontSize: '0.72rem', fontWeight: 900, marginTop: '2px', letterSpacing: '1px' }}>FOGO</span>
+                </button>
+              </div>
+              <span style={{ fontSize: '0.68rem', color: '#64748b', fontWeight: 'bold' }}>
+                ARSENAL DE COMBATE (MULTI-TOUCH)
+              </span>
+            </div>
           </div>
         </div>
 
