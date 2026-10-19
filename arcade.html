@@ -46,7 +46,7 @@
 <body class="flex flex-col items-center justify-center min-h-screen p-2 text-gray-200">
 
   <!-- Cabeçalho Arcade -->
-  <header class="flex items-center justify-between w-full max-w-[768px] mb-2 px-2">
+  <header class="flex items-center justify-between w-full max-w-[1020px] mb-2 px-2">
     <div class="flex items-center gap-2">
       <span class="inline-block w-3 h-3 bg-red-600 rounded-full animate-ping"></span>
       <h1 class="text-base sm:text-xl tracking-wider text-yellow-400 pixel-text">THE SHADOW <span class="text-red-500">X</span> MS2</h1>
@@ -60,10 +60,10 @@
   </header>
 
   <!-- Gabinete e Canvas do Jogo -->
-  <div class="relative rounded-lg p-2 bg-gradient-to-b from-gray-800 to-gray-950 border-4 border-gray-700 shadow-2xl shadow-black max-w-full">
+  <div class="relative rounded-lg p-2 bg-gradient-to-b from-gray-800 to-gray-950 border-4 border-gray-700 shadow-2xl shadow-black max-w-full w-full max-w-[1020px]">
     <div class="relative overflow-hidden rounded border-2 border-gray-900">
-      <canvas id="gameCanvas" width="384" height="224" class="block w-full max-w-[768px] h-auto bg-black cursor-crosshair"></canvas>
-      <div class="absolute inset-0 crt-overlay"></div>
+      <canvas id="gameCanvas" width="384" height="224" class="block w-full max-w-[1020px] h-auto bg-black cursor-crosshair"></canvas>
+      <div class="absolute inset-0 crt-overlay opacity-40"></div>
     </div>
   </div>
 
@@ -1226,12 +1226,116 @@
         ctx.ellipse(item.x + (item.w ? item.w/2 : 0), item.y, (item.w || 16) * 0.7, 4, 0, Math.PI * 2);
         ctx.fill();
 
-        if (item.maxHp) {
+        // ==========================================
+        // 1. JOGADOR PRINCIPAL (POLICIAL MILITAR)
+        // ==========================================
+        if (item === player) {
+          if (player.isRolling) {
+            ctx.fillStyle = "#9333ea";
+            ctx.beginPath();
+            ctx.arc(player.x + player.w/2, player.y - 10, 10, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = "#c084fc";
+            ctx.beginPath();
+            ctx.arc(player.x + player.w/2, player.y - 10, 6, 0, Math.PI * 2);
+            ctx.fill();
+            return;
+          }
+
+          // Calça Farda PMPE (Azul Ferrete / Coturnos pretos)
+          ctx.fillStyle = "#1e3a8a";
+          ctx.fillRect(player.x + 2, player.y - 14, 6, 14);
+          ctx.fillRect(player.x + 10, player.y - 14, 6, 14);
+          ctx.fillStyle = "#020617";
+          ctx.fillRect(player.x + (player.facing === 1 ? 2 : 0), player.y - 4, 7, 4);
+          ctx.fillRect(player.x + (player.facing === 1 ? 10 : 8), player.y - 4, 7, 4);
+
+          // Cinto & Fivela
+          ctx.fillStyle = "#0f172a";
+          ctx.fillRect(player.x + 1, player.y - 17, 16, 4);
+          ctx.fillStyle = "#facc15";
+          ctx.fillRect(player.x + 7, player.y - 16, 4, 2);
+
+          // Tronco / Colete Balístico Tático
+          ctx.fillStyle = "#1e40af";
+          ctx.fillRect(player.x + 2, player.y - player.h + 10, 14, 15);
+          ctx.fillStyle = "#0f172a";
+          ctx.fillRect(player.x + 3, player.y - player.h + 10, 12, 12);
+          ctx.fillStyle = "#facc15";
+          ctx.fillRect(player.x + 5, player.y - player.h + 13, 3, 4);
+
+          // Cabeça, Pele, Óculos e Boina Militar
+          ctx.fillStyle = "#fed7aa";
+          ctx.fillRect(player.x + 4, player.y - player.h + 2, 10, 9);
+          ctx.fillStyle = "#020617";
+          ctx.fillRect(player.x + (player.facing === 1 ? 6 : 4), player.y - player.h + 4, 6, 3);
+          ctx.fillStyle = "#1d4ed8";
+          ctx.fillRect(player.x + 2, player.y - player.h - 3, 14, 6);
+          ctx.fillStyle = "#facc15";
+          ctx.fillRect(player.x + (player.facing === 1 ? 10 : 4), player.y - player.h - 2, 3, 3);
+
+          // Cano da Arma
+          const gunBarrel = player.currentWeapon.barrelLen;
+          const gunColor = player.currentWeapon.color;
+          const gunX = player.facing === 1 ? player.x + player.w - 2 : player.x - gunBarrel + 2;
+          const gunY = player.y - player.h * 0.52;
+
+          ctx.fillStyle = "#475569";
+          ctx.fillRect(gunX, gunY, gunBarrel, 5);
+          ctx.fillStyle = gunColor;
+          ctx.fillRect(gunX + (player.facing === 1 ? gunBarrel - 4 : 0), gunY - 1, 4, 7);
+
+          if (player.muzzleFlash > 0) {
+            ctx.fillStyle = "#fef08a";
+            const fx = player.facing === 1 ? gunX + gunBarrel : gunX - 8;
+            ctx.fillRect(fx, gunY - 3, 8, 10);
+            ctx.fillStyle = "#f97316";
+            ctx.fillRect(fx + 2, gunY - 1, 4, 6);
+          }
+
+          if (player.isAttacking) {
+            ctx.fillStyle = "#f8fafc";
+            const fistX = player.facing === 1 ? player.x + player.w : player.x - 12;
+            ctx.fillRect(fistX, player.y - player.h * 0.6, 12, 8);
+          }
+          return;
+        }
+
+        // ==========================================
+        // 2. INIMIGO (SOLDADO REBELDE)
+        // ==========================================
+        if (item.facing !== undefined && item.shootCooldown !== undefined) {
+          const eColor = item.hitFlash > 0 ? "#ffffff" : item.color;
+          ctx.fillStyle = item.hitFlash > 0 ? "#ffffff" : "#374151";
+          ctx.fillRect(item.x + 2, item.y - 12, 5, 12);
+          ctx.fillRect(item.x + 9, item.y - 12, 5, 12);
+
+          ctx.fillStyle = eColor;
+          ctx.fillRect(item.x + 2, item.y - item.h + 10, 14, 15);
+          ctx.fillStyle = item.hitFlash > 0 ? "#ffffff" : "#1f2937";
+          ctx.fillRect(item.x + 4, item.y - item.h + 11, 10, 10);
+
+          ctx.fillStyle = item.hitFlash > 0 ? "#ffffff" : "#fed7aa";
+          ctx.fillRect(item.x + 4, item.y - item.h + 2, 9, 8);
+          ctx.fillStyle = item.hitFlash > 0 ? "#ffffff" : "#451a03";
+          ctx.fillRect(item.x + 2, item.y - item.h - 2, 13, 6);
+
+          ctx.fillStyle = "#0f172a";
+          const eGunX = item.facing === 1 ? item.x + item.w - 2 : item.x - 8;
+          ctx.fillRect(eGunX, item.y - item.h * 0.5, 9, 3);
+          return;
+        }
+
+        // ==========================================
+        // 3. PROPS DESTRUTÍVEIS
+        // ==========================================
+        if (item.type && (item.type === "fuel_barrel" || item.type === "wood_barrel" || item.type === "crate" || item.type === "sandbag" || item.type === "stone_pillar_destruct" || item.type === "generator")) {
           if (item.type === "fuel_barrel") {
             ctx.fillStyle = "#dc2626";
             ctx.fillRect(item.x - 8, item.y - 18, 16, 18);
             ctx.fillStyle = "#fef08a";
-            ctx.fillText("!", item.x - 2, item.y - 6);
+            ctx.font = "bold 10px monospace";
+            ctx.fillText("!", item.x - 3, item.y - 5);
           } else if (item.type === "wood_barrel") {
             ctx.fillStyle = "#92400e";
             ctx.fillRect(item.x - 7, item.y - 16, 14, 16);
@@ -1257,6 +1361,9 @@
           return;
         }
 
+        // ==========================================
+        // 4. P.O.W.
+        // ==========================================
         if (item.reward !== undefined) {
           if (!item.freed) {
             ctx.fillStyle = "#facc15";
@@ -1275,6 +1382,9 @@
           return;
         }
 
+        // ==========================================
+        // 5. ITENS
+        // ==========================================
         if (item.type === "WEAPON") {
           ctx.fillStyle = "#1e293b";
           ctx.fillRect(item.x - 8, item.y - 12, 16, 12);
@@ -1294,46 +1404,6 @@
           ctx.fillStyle = "#fff";
           ctx.fillText("+", item.x - 3, item.y - 1);
           return;
-        }
-
-        if (item === player) {
-          if (player.isRolling) {
-            ctx.fillStyle = "#c084fc";
-            ctx.beginPath();
-            ctx.arc(player.x + player.w/2, player.y - 9, 9, 0, Math.PI * 2);
-            ctx.fill();
-          } else {
-            ctx.fillStyle = player.color;
-            ctx.fillRect(player.x, player.y - player.h, player.w, player.h);
-
-            // Chapéu The Shadow
-            ctx.fillStyle = "#0f172a";
-            ctx.fillRect(player.x - 4, player.y - player.h - 4, player.w + 8, 6);
-
-            // Cano da arma
-            ctx.fillStyle = "#94a3b8";
-            const barrel = player.currentWeapon.barrelLen;
-            const gunX = player.facing === 1 ? player.x + player.w : player.x - barrel;
-            ctx.fillRect(gunX, player.y - player.h * 0.55, barrel, 4);
-
-            if (player.muzzleFlash > 0) {
-              ctx.fillStyle = "#facc15";
-              const fx = player.facing === 1 ? gunX + barrel : gunX - 6;
-              ctx.fillRect(fx, player.y - player.h * 0.55 - 2, 6, 8);
-            }
-
-            if (player.isAttacking) {
-              ctx.fillStyle = "#f8fafc";
-              const fistX = player.facing === 1 ? player.x + player.w : player.x - 10;
-              ctx.fillRect(fistX, player.y - player.h * 0.6, 10, 6);
-            }
-          }
-        } else {
-          ctx.fillStyle = item.hitFlash > 0 ? "#ffffff" : item.color;
-          ctx.fillRect(item.x, item.y - item.h, item.w, item.h);
-
-          ctx.fillStyle = "#1f2937";
-          ctx.fillRect(item.x - 2, item.y - item.h - 2, item.w + 4, 5);
         }
       });
 
