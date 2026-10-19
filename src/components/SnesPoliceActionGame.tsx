@@ -3,11 +3,9 @@ import {
   ArrowLeft, 
   RotateCcw, 
   Shield, 
-  Play, 
-  Pause,
-  Zap,
-  Flame,
-  Bomb,
+  ExternalLink,
+  Volume2,
+  VolumeX,
   Trophy
 } from 'lucide-react';
 import { sound } from '../utils/sound';
@@ -16,23 +14,290 @@ interface SnesPoliceActionGameProps {
   onBackToApp: () => void;
 }
 
-// Tipos de Armas Oficiais Metal Slug 2
-export type WeaponType = 'PISTOL' | 'HMG' | 'ROCKET' | 'SHOTGUN';
+// ==========================================
+// DEFINIÇÃO DO ARSENAL METAL SLUG 2
+// ==========================================
+interface WeaponDef {
+  id: string;
+  name: string;
+  code: string;
+  damage: number;
+  speed: number;
+  cooldown: number;
+  pellets: number;
+  spread: number;
+  ammo: number;
+  barrelLen: number;
+  color: string;
+  isHoming?: boolean;
+  sound: () => void;
+}
 
-// Tipos do Jogo
-interface Bullet {
+const WEAPONS: Record<string, WeaponDef> = {
+  PISTOL: {
+    id: "PISTOL",
+    name: "HANDGUN",
+    code: "HG",
+    damage: 22,
+    speed: 7.5,
+    cooldown: 18,
+    pellets: 1,
+    spread: 0,
+    ammo: Infinity,
+    barrelLen: 8,
+    color: "#facc15",
+    sound: () => sound.playPistol()
+  },
+  HMG: {
+    id: "HMG",
+    name: "HEAVY MACHINE GUN",
+    code: "H",
+    damage: 18,
+    speed: 9.5,
+    cooldown: 5,
+    pellets: 1,
+    spread: 0.18,
+    ammo: 150,
+    barrelLen: 15,
+    color: "#fbbf24",
+    sound: () => sound.playHmg()
+  },
+  ROCKET: {
+    id: "ROCKET",
+    name: "ROCKET LAUNCHER",
+    code: "R",
+    damage: 65,
+    speed: 4.8,
+    cooldown: 28,
+    pellets: 1,
+    spread: 0,
+    ammo: 25,
+    barrelLen: 14,
+    color: "#f87171",
+    isHoming: true,
+    sound: () => sound.playRocket()
+  },
+  SHOTGUN: {
+    id: "SHOTGUN",
+    name: "SHOTGUN",
+    code: "S",
+    damage: 16,
+    speed: 7.0,
+    cooldown: 34,
+    pellets: 6,
+    spread: 0.85,
+    ammo: 20,
+    barrelLen: 13,
+    color: "#f3f4f6",
+    sound: () => sound.playShotgun()
+  }
+};
+
+// ==========================================
+// ESTÁGIOS OFICIAIS DO JOGO
+// ==========================================
+interface StageDecoration {
+  type: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+}
+
+interface StageProp {
+  type: string;
+  x: number;
+  y: number;
+  hp: number;
+  maxHp: number;
+  solid?: boolean;
+  explosive?: boolean;
+  drop?: string;
+}
+
+interface StageTrap {
+  type: 'steam' | 'spikes' | 'electric';
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  timer: number;
+  activeTime: number;
+  interval: number;
+}
+
+interface StageDef {
+  id: number;
+  title: string;
+  skyColor: string;
+  groundColor: string;
+  curbColor: string;
+  ambient: string;
+  enemiesToClear: number;
+  generateDecorations: () => StageDecoration[];
+  generateProps: () => StageProp[];
+  generatePOWs: () => Array<{ x: number; y: number; freed: boolean; reward: string }>;
+  traps: StageTrap[];
+}
+
+const STAGES: StageDef[] = [
+  {
+    id: 1,
+    title: "MISSION 1: ARABIAN RUINS & MARKET",
+    skyColor: "#f59e0b",
+    groundColor: "#b45309",
+    curbColor: "#78350f",
+    ambient: "desert",
+    enemiesToClear: 7,
+    generateDecorations() {
+      return [
+        { type: "dune", x: 40, y: 70, w: 90, h: 45 },
+        { type: "minaret", x: 140, y: 25, w: 35, h: 90 },
+        { type: "tent", x: 230, y: 75, w: 75, h: 40 },
+        { type: "dune", x: 310, y: 65, w: 80, h: 50 }
+      ];
+    },
+    generateProps() {
+      return [
+        { type: "crate", x: 110, y: 145, hp: 30, maxHp: 30, drop: "HMG" },
+        { type: "wood_barrel", x: 170, y: 185, hp: 20, maxHp: 20, drop: "FOOD" },
+        { type: "fuel_barrel", x: 250, y: 155, hp: 25, maxHp: 25, explosive: true },
+        { type: "sandbag", x: 290, y: 190, hp: 50, maxHp: 50, solid: true }
+      ];
+    },
+    generatePOWs() {
+      return [{ x: 200, y: 150, freed: false, reward: "ROCKET" }];
+    },
+    traps: []
+  },
+  {
+    id: 2,
+    title: "MISSION 2: INDUSTRIAL HARBOR NIGHT",
+    skyColor: "#0f172a",
+    groundColor: "#1e293b",
+    curbColor: "#0f172a",
+    ambient: "night",
+    enemiesToClear: 9,
+    generateDecorations() {
+      return [
+        { type: "crane", x: 50, y: 20, w: 60, h: 95 },
+        { type: "ship_hull", x: 140, y: 55, w: 100, h: 60 },
+        { type: "warehouse", x: 260, y: 35, w: 110, h: 80 }
+      ];
+    },
+    generateProps() {
+      return [
+        { type: "fuel_barrel", x: 100, y: 150, hp: 25, maxHp: 25, explosive: true },
+        { type: "crate", x: 180, y: 190, hp: 30, maxHp: 30, drop: "SHOTGUN" },
+        { type: "fuel_barrel", x: 270, y: 165, hp: 25, maxHp: 25, explosive: true },
+        { type: "crate", x: 310, y: 145, hp: 30, maxHp: 30, drop: "AMMO" }
+      ];
+    },
+    generatePOWs() {
+      return [{ x: 220, y: 170, freed: false, reward: "HMG" }];
+    },
+    traps: [
+      { type: "steam", x: 145, y: 135, w: 14, h: 22, timer: 0, activeTime: 70, interval: 140 },
+      { type: "steam", x: 235, y: 185, w: 14, h: 22, timer: 70, activeTime: 70, interval: 140 }
+    ]
+  },
+  {
+    id: 3,
+    title: "MISSION 3: ANCIENT CATACOMBS",
+    skyColor: "#1c1917",
+    groundColor: "#292524",
+    curbColor: "#1c1917",
+    ambient: "dungeon",
+    enemiesToClear: 11,
+    generateDecorations() {
+      return [
+        { type: "stone_pillar", x: 45, y: 30, w: 20, h: 85 },
+        { type: "crypt_arch", x: 120, y: 40, w: 70, h: 75 },
+        { type: "stone_pillar", x: 220, y: 30, w: 20, h: 85 },
+        { type: "crypt_arch", x: 290, y: 40, w: 70, h: 75 }
+      ];
+    },
+    generateProps() {
+      return [
+        { type: "stone_pillar_destruct", x: 90, y: 160, hp: 45, maxHp: 45, solid: true, drop: "ROCKET" },
+        { type: "crate", x: 160, y: 195, hp: 30, maxHp: 30, drop: "FOOD" },
+        { type: "wood_barrel", x: 260, y: 140, hp: 20, maxHp: 20, drop: "AMMO" },
+        { type: "stone_pillar_destruct", x: 320, y: 180, hp: 45, maxHp: 45, solid: true }
+      ];
+    },
+    generatePOWs() {
+      return [{ x: 190, y: 140, freed: false, reward: "SHOTGUN" }];
+    },
+    traps: [
+      { type: "spikes", x: 130, y: 175, w: 28, h: 14, timer: 0, activeTime: 80, interval: 160 },
+      { type: "spikes", x: 220, y: 145, w: 28, h: 14, timer: 80, activeTime: 80, interval: 160 }
+    ]
+  },
+  {
+    id: 4,
+    title: "FINAL MISSION: MILITARY BASE RAIN",
+    skyColor: "#022c22",
+    groundColor: "#064e3b",
+    curbColor: "#022c22",
+    ambient: "rain",
+    enemiesToClear: 15,
+    generateDecorations() {
+      return [
+        { type: "radar", x: 50, y: 25, w: 50, h: 90 },
+        { type: "bunker", x: 130, y: 45, w: 85, h: 70 },
+        { type: "searchlight_tower", x: 245, y: 15, w: 45, h: 100 },
+        { type: "barracks", x: 310, y: 45, w: 70, h: 70 }
+      ];
+    },
+    generateProps() {
+      return [
+        { type: "sandbag", x: 90, y: 150, hp: 60, maxHp: 60, solid: true },
+        { type: "fuel_barrel", x: 140, y: 190, hp: 25, maxHp: 25, explosive: true },
+        { type: "generator", x: 210, y: 140, hp: 80, maxHp: 80, explosive: true, drop: "HMG" },
+        { type: "fuel_barrel", x: 270, y: 165, hp: 25, maxHp: 25, explosive: true },
+        { type: "sandbag", x: 310, y: 195, hp: 60, maxHp: 60, solid: true }
+      ];
+    },
+    generatePOWs() {
+      return [{ x: 170, y: 145, freed: false, reward: "ROCKET" }];
+    },
+    traps: [
+      { type: "electric", x: 210, y: 148, w: 22, h: 16, timer: 0, activeTime: 60, interval: 120 }
+    ]
+  }
+];
+
+interface GameEnemy {
+  name: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  speed: number;
+  hp: number;
+  maxHp: number;
+  facing: number;
+  isAttacking: boolean;
+  attackTimer: number;
+  shootCooldown: number;
+  hitFlash: number;
+  color: string;
+}
+
+interface GameBullet {
   x: number;
   y: number;
   vx: number;
   vy: number;
-  isPlayer: boolean;
+  baseY: number;
   damage: number;
   color: string;
   isHoming?: boolean;
-  isRocket?: boolean;
+  fromPlayer: boolean;
+  life: number;
 }
 
-interface Grenade {
+interface GameGrenade {
   x: number;
   y: number;
   groundY: number;
@@ -42,64 +307,39 @@ interface Grenade {
   timer: number;
 }
 
-interface Explosion {
+interface GameExplosion {
   x: number;
   y: number;
   radius: number;
-  maxRadius: number;
   life: number;
+  maxLife: number;
 }
 
-interface Pow {
-  id: number;
+interface GamePickup {
+  x: number;
+  y: number;
+  type: string;
+  weapon?: WeaponDef;
+}
+
+interface GameRainDrop {
+  x: number;
+  y: number;
+  len: number;
+  speed: number;
+}
+
+interface GamePow {
   x: number;
   y: number;
   freed: boolean;
-  thanked: boolean;
-  itemDropped: boolean;
-  waveAnim: number;
-}
-
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  alpha: number;
-  color: string;
-  size: number;
-}
-
-interface AmmoPickup {
-  id: number;
-  x: number;
-  y: number;
-  weapon: WeaponType;
-  amount: number;
-  isGunDrop?: boolean;
-}
-
-interface Enemy {
-  id: number;
-  type: 'knife' | 'pistol' | 'rifle' | 'boss';
-  x: number;
-  y: number;
-  vx: number;
-  width: number;
-  height: number;
-  hp: number;
-  maxHp: number;
-  shootCooldown: number;
-  state: 'walk' | 'attack' | 'hurt' | 'dead';
-  facing: -1 | 1;
-  hitFlash: number;
+  reward: string;
 }
 
 export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBackToApp }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  // Estados do Jogo
-  const [score, setScore] = useState(0);
+  // Estados React para topo da tela e recordes
   const [highScore, setHighScore] = useState(() => {
     try {
       return parseInt(localStorage.getItem('pmpe_snes_highscore') || '0', 10);
@@ -107,1826 +347,1479 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
       return 0;
     }
   });
-  const [currentLevel, setCurrentLevel] = useState(1);
-  const [killsCount, setKillsCount] = useState(0);
-  const [isGameOver, setIsGameOver] = useState(false);
-  const [isVictory, setIsVictory] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-  const [playerHp, setPlayerHp] = useState(100);
-  const [playerArmor, setPlayerArmor] = useState(100);
-  
-  // Arsenal Metal Slug 2
-  const [currentWeapon, setCurrentWeapon] = useState<WeaponType>('PISTOL');
-  const [ammoHmg, setAmmoHmg] = useState(150);
-  const [ammoRocket, setAmmoRocket] = useState(20);
-  const [ammoShotgun, setAmmoShotgun] = useState(15);
-  const [grenadesCount, setGrenadesCount] = useState(10);
-  const [isSuperSoldier, setIsSuperSoldier] = useState(false);
-  const [rollReady, setRollReady] = useState(true);
+  const [hudHp, setHudHp] = useState(100);
+  const [hudScore, setHudScore] = useState(0);
+  const [hudLives, setHudLives] = useState(3);
+  const [hudWeapon, setHudWeapon] = useState<string>("HANDGUN");
+  const [hudAmmo, setHudAmmo] = useState<string>("INF");
+  const [hudGrenades, setHudGrenades] = useState(10);
+  const [hudStage, setHudStage] = useState(1);
+  const [hudTargets, setHudTargets] = useState(7);
+  const [isMuted, setIsMuted] = useState(() => sound.getIsMuted());
 
-  // Referências mutáveis para loop de alta performance a 60 FPS
-  const gameStateRef = useRef({
+  // Referência interna mutável de 60fps
+  const gameRef = useRef({
+    currentStageIndex: 0,
+    stageDecorations: [] as StageDecoration[],
+    props: [] as StageProp[],
+    pows: [] as GamePow[],
+    enemies: [] as GameEnemy[],
+    bullets: [] as GameBullet[],
+    grenades: [] as GameGrenade[],
+    explosions: [] as GameExplosion[],
+    pickups: [] as GamePickup[],
+    rainDrops: [] as GameRainDrop[],
+    enemiesDefeated: 0,
+    isAreaCleared: false,
+    goBlinkTimer: 0,
+    stageBannerTimer: 160,
+    gameWon: false,
+    gameOver: false,
+    keys: {} as Record<string, boolean>,
     player: {
-      x: 100,
-      y: 280,
-      vx: 0,
-      vy: 0,
-      width: 38,
-      height: 64,
-      isGrounded: true,
-      isCrouching: false,
-      facing: 1 as -1 | 1,
-      isAttacking: false,
-      attackCooldown: 0,
+      name: "SHADOW",
+      x: 35,
+      y: 170,
+      w: 18,
+      h: 36,
+      speed: 2.1,
       hp: 100,
-      armor: 100,
-      weapon: 'PISTOL' as WeaponType,
-      ammoHmg: 150,
-      ammoRocket: 20,
-      ammoShotgun: 15,
+      maxHp: 100,
+      lives: 3,
+      score: 0,
+      facing: 1,
+      isAttacking: false,
+      punchCooldown: 0,
+      shootCooldown: 0,
+      muzzleFlash: 0,
       grenades: 10,
       grenadeCooldown: 0,
-      isSuperSoldier: false,
-      superSoldierTimer: 0,
-      invulnerableTimer: 0,
-      muzzleFlash: 0,
-      // Rolamento de Esquiva Tático (Dodge Roll)
+      // Dodge Roll
       isRolling: false,
       rollTimer: 0,
-      rollDuration: 14,
+      rollDuration: 13,
       rollCooldown: 0,
-      rollCooldownTime: 28,
-      rollSpeed: 7.2
-    },
-    bullets: [] as Bullet[],
-    grenades: [] as Grenade[],
-    explosions: [] as Explosion[],
-    pows: [] as Pow[],
-    particles: [] as Particle[],
-    enemies: [] as Enemy[],
-    ammoPickups: [] as AmmoPickup[],
-    keys: {
-      left: false,
-      right: false,
-      up: false,
-      down: false,
-      shoot: false,
-      melee: false,
-      grenade: false
-    },
-    level: 1,
-    kills: 0,
-    score: 0,
-    cameraX: 0,
-    worldWidth: 3200,
-    groundY: 340,
-    enemyIdCounter: 1,
-    spawnTimer: 0,
-    bossSpawned: false
+      rollCooldownTime: 26,
+      rollSpeed: 4.2,
+      currentWeapon: WEAPONS.PISTOL,
+      color: "#3b82f6"
+    }
   });
 
-  // Função para acionar o Rolamento de Esquiva (Dodge Roll com i-frames)
-  const triggerDodgeRoll = useCallback(() => {
-    const p = gameStateRef.current.player;
-    if (!p.isRolling && p.rollCooldown <= 0) {
-      p.isRolling = true;
-      p.rollTimer = p.rollDuration;
-      p.rollCooldown = p.rollCooldownTime;
-      p.isAttacking = false;
-      setRollReady(false);
-      sound.playRoll();
-    }
-  }, []);
+  // Alternar som
+  const toggleMute = () => {
+    const next = sound.toggleMute();
+    setIsMuted(next);
+  };
 
-  // Lançamento de Granadas de Mão estilo Metal Slug 2 [G]
-  const triggerGrenade = useCallback(() => {
-    const s = gameStateRef.current;
-    const p = s.player;
-    if (p.grenades > 0 && p.grenadeCooldown <= 0) {
-      p.grenades--;
-      p.grenadeCooldown = 25;
-      setGrenadesCount(p.grenades);
-      sound.playClick();
+  // Carregar Estágio
+  const loadStage = useCallback((index: number) => {
+    const g = gameRef.current;
+    g.currentStageIndex = index;
+    const stage = STAGES[index];
+    g.stageDecorations = stage.generateDecorations();
+    g.props = stage.generateProps();
+    g.pows = stage.generatePOWs();
+    g.enemiesDefeated = 0;
+    g.isAreaCleared = false;
+    g.goBlinkTimer = 0;
+    g.stageBannerTimer = 160;
 
-      s.grenades.push({
-        x: p.x + (p.facing === 1 ? p.width + 4 : -4),
-        y: p.y + 16,
-        groundY: s.groundY - 10,
-        vx: p.facing * 4.6,
-        vy: -5.2, // Arco parabólico para cima
-        gravity: 0.35,
-        timer: 45
-      });
-    }
-  }, []);
+    g.bullets = [];
+    g.grenades = [];
+    g.pickups = [];
+    g.player.x = 25;
 
-  // Alternar Arma
-  const cycleWeapon = useCallback(() => {
-    const p = gameStateRef.current.player;
-    const weapons: WeaponType[] = ['PISTOL', 'HMG', 'ROCKET', 'SHOTGUN'];
-    const currentIdx = weapons.indexOf(p.weapon);
-    const nextW = weapons[(currentIdx + 1) % weapons.length];
-    p.weapon = nextW;
-    setCurrentWeapon(nextW);
+    // Função de criação de inimigo
+    const createEnemy = (x?: number, y?: number) => {
+      const hpMultiplier = 1 + index * 0.35;
+      return {
+        name: "SOLDIER",
+        x: x || 340,
+        y: y || (130 + Math.random() * 70),
+        w: 18,
+        h: 36,
+        speed: 1.0 + Math.random() * 0.4,
+        hp: Math.round(50 * hpMultiplier),
+        maxHp: Math.round(50 * hpMultiplier),
+        facing: -1,
+        isAttacking: false,
+        attackTimer: 0,
+        shootCooldown: 80 + Math.random() * 60,
+        hitFlash: 0,
+        color: index === 0 ? "#b45309" : (index === 1 ? "#334155" : (index === 2 ? "#57534e" : "#065f46"))
+      };
+    };
 
-    // Locutor Arcade anuncia a arma
-    if (nextW === 'HMG') sound.voiceAnnounce('HEAVY MACHINE GUN!');
-    else if (nextW === 'ROCKET') sound.voiceAnnounce('ROCKET LAUNCHER!');
-    else if (nextW === 'SHOTGUN') sound.voiceAnnounce('SHOTGUN!');
-    else sound.playClick();
-  }, []);
-
-  // Inicializar / Resetar Partida
-  const initGame = useCallback((levelToStart = 1) => {
-    const s = gameStateRef.current;
-    s.player.x = 100;
-    s.player.y = 280;
-    s.player.vx = 0;
-    s.player.vy = 0;
-    s.player.hp = 100;
-    s.player.armor = 100;
-    s.player.weapon = 'PISTOL';
-    s.player.ammoHmg = 150;
-    s.player.ammoRocket = 20;
-    s.player.ammoShotgun = 15;
-    s.player.grenades = 10;
-    s.player.grenadeCooldown = 0;
-    s.player.isSuperSoldier = false;
-    s.player.superSoldierTimer = 0;
-    s.player.facing = 1;
-    s.player.isRolling = false;
-    s.player.rollTimer = 0;
-    s.player.rollCooldown = 0;
-    s.player.muzzleFlash = 0;
-    s.bullets = [];
-    s.grenades = [];
-    s.explosions = [];
-    s.particles = [];
-    s.enemies = [];
-    s.ammoPickups = [];
-    s.cameraX = 0;
-    s.level = levelToStart;
-    s.kills = 0;
-    s.bossSpawned = false;
-    s.spawnTimer = 0;
-
-    // Coloca os Prisioneiros de Guerra (P.O.W.) no cenário
-    s.pows = [
-      { id: 1, x: 550, y: s.groundY, freed: false, thanked: false, itemDropped: false, waveAnim: 0 },
-      { id: 2, x: 1250, y: s.groundY, freed: false, thanked: false, itemDropped: false, waveAnim: 0 },
-      { id: 3, x: 1950, y: s.groundY, freed: false, thanked: false, itemDropped: false, waveAnim: 0 }
+    g.enemies = [
+      createEnemy(240, 150),
+      createEnemy(300, 185)
     ];
 
-    setPlayerHp(100);
-    setPlayerArmor(100);
-    setAmmoHmg(150);
-    setAmmoRocket(20);
-    setAmmoShotgun(15);
-    setGrenadesCount(10);
-    setCurrentWeapon('PISTOL');
-    setIsSuperSoldier(false);
-    setRollReady(true);
-    setCurrentLevel(levelToStart);
-    setIsGameOver(false);
-    setIsVictory(false);
-    setIsPaused(false);
+    setHudStage(index + 1);
+    setHudTargets(stage.enemiesToClear);
 
-    // Anúncio oficial de voz arcade estilo Metal Slug
-    sound.voiceAnnounce(`MISSION ${levelToStart} START!`);
-
-    // Spawna primeiros inimigos
-    for (let i = 0; i < 4; i++) {
-      s.enemies.push({
-        id: s.enemyIdCounter++,
-        type: i % 2 === 0 ? 'knife' : 'pistol',
-        x: 450 + i * 220,
-        y: s.groundY - 58,
-        vx: 0,
-        width: 36,
-        height: 58,
-        hp: 30,
-        maxHp: 30,
-        shootCooldown: 60 + Math.random() * 60,
-        state: 'walk',
-        facing: -1,
-        hitFlash: 0
-      });
-    }
+    // Locutor Arcade
+    sound.voiceAnnounce(stage.title.split(":")[0]);
   }, []);
 
+  // Reiniciar Jogo Completo
+  const resetGame = useCallback(() => {
+    const g = gameRef.current;
+    g.player.hp = 100;
+    g.player.lives = 3;
+    g.player.score = 0;
+    g.player.grenades = 10;
+    g.player.currentWeapon = WEAPONS.PISTOL;
+    WEAPONS.HMG.ammo = 150;
+    WEAPONS.ROCKET.ammo = 25;
+    WEAPONS.SHOTGUN.ammo = 20;
+    g.gameWon = false;
+    g.gameOver = false;
+    loadStage(0);
+  }, [loadStage]);
+
+  // Controles virtuais (Mobile/Touch)
+  const setVirtualKey = (key: string, state: boolean) => {
+    gameRef.current.keys[key.toLowerCase()] = state;
+  };
+
+  const cycleWeapon = () => {
+    const p = gameRef.current.player;
+    const available = [WEAPONS.PISTOL];
+    if (WEAPONS.HMG.ammo > 0) available.push(WEAPONS.HMG);
+    if (WEAPONS.ROCKET.ammo > 0) available.push(WEAPONS.ROCKET);
+    if (WEAPONS.SHOTGUN.ammo > 0) available.push(WEAPONS.SHOTGUN);
+    const idx = available.indexOf(p.currentWeapon);
+    p.currentWeapon = available[(idx + 1) % available.length];
+    sound.voiceAnnounce(p.currentWeapon.name);
+  };
+
+  // Loop do jogo Canvas
   useEffect(() => {
-    initGame(1);
-  }, [initGame]);
-
-  // Teclado Desktop
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      const k = gameStateRef.current.keys;
-      const p = gameStateRef.current.player;
-
-      if (e.code === 'ArrowLeft' || e.code === 'KeyA') k.left = true;
-      if (e.code === 'ArrowRight' || e.code === 'KeyD') k.right = true;
-      if (e.code === 'ArrowUp' || e.code === 'KeyW') k.up = true;
-      if (e.code === 'ArrowDown' || e.code === 'KeyS') k.down = true;
-
-      // Atirar: Barra de Espaço ou Z
-      if (e.code === 'Space' || e.code === 'KeyZ') {
-        k.shoot = true;
-        e.preventDefault();
-      }
-
-      // Coronhada: Tecla X
-      if (e.code === 'KeyX') {
-        k.melee = true;
-        e.preventDefault();
-      }
-
-      // Esquiva / Rolamento: Tecla C ou Shift
-      if (e.code === 'KeyC' || e.code === 'ShiftLeft') {
-        triggerDodgeRoll();
-        e.preventDefault();
-      }
-
-      // Granadas de Mão estilo Metal Slug: Tecla G
-      if (e.code === 'KeyG') {
-        triggerGrenade();
-        e.preventDefault();
-      }
-
-      // Teclas de Armas Metal Slug (H, R, S) ou 1, 2, 3, 4
-      if (e.code === 'Digit1') {
-        p.weapon = 'PISTOL';
-        setCurrentWeapon('PISTOL');
-        sound.playClick();
-      }
-      if (e.code === 'KeyH' || e.code === 'Digit2') {
-        p.weapon = 'HMG';
-        setCurrentWeapon('HMG');
-        sound.voiceAnnounce('HEAVY MACHINE GUN!');
-      }
-      if (e.code === 'KeyR' || e.code === 'Digit3') {
-        p.weapon = 'ROCKET';
-        setCurrentWeapon('ROCKET');
-        sound.voiceAnnounce('ROCKET LAUNCHER!');
-      }
-      if (e.code === 'KeyS' || e.code === 'Digit4') {
-        p.weapon = 'SHOTGUN';
-        setCurrentWeapon('SHOTGUN');
-        sound.voiceAnnounce('SHOTGUN!');
-      }
-
-      // Alternar armas com Q
-      if (e.code === 'KeyQ') {
-        cycleWeapon();
-      }
-
-      // Pausar com P
-      if (e.code === 'KeyP') {
-        setIsPaused(prev => !prev);
-      }
-    };
-
-    const handleKeyUp = (e: KeyboardEvent) => {
-      const k = gameStateRef.current.keys;
-      if (e.code === 'ArrowLeft' || e.code === 'KeyA') k.left = false;
-      if (e.code === 'ArrowRight' || e.code === 'KeyD') k.right = false;
-      if (e.code === 'ArrowUp' || e.code === 'KeyW') k.up = false;
-      if (e.code === 'ArrowDown' || e.code === 'KeyS') k.down = false;
-      if (e.code === 'Space' || e.code === 'KeyZ') k.shoot = false;
-      if (e.code === 'KeyX') k.melee = false;
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyUp);
-    };
-  }, [triggerDodgeRoll, triggerGrenade, cycleWeapon]);
-
-  // Loop Principal de Física e Renderização 60 FPS
-  useEffect(() => {
-    let animId: number;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const gameLoop = () => {
-      const state = gameStateRef.current;
-      const { player, keys, bullets, grenades, explosions, pows, particles, enemies, ammoPickups } = state;
+    const g = gameRef.current;
 
-      if (!isPaused && !isGameOver && !isVictory) {
-        // ================= ATUALIZAÇÃO DO JOGADOR =================
-        // Transformação Super Soldado PMPE (Modo Fúria Tática)
-        if (player.isSuperSoldier) {
-          player.superSoldierTimer--;
-          if (player.superSoldierTimer <= 0) {
-            player.isSuperSoldier = false;
-            setIsSuperSoldier(false);
-          }
-          // Partículas de aura dourada
-          if (Math.random() < 0.4) {
-            particles.push({
-              x: player.x + Math.random() * player.width,
-              y: player.y + Math.random() * player.height,
-              vx: (Math.random() - 0.5) * 1.5,
-              vy: -Math.random() * 2.5,
-              alpha: 0.9,
-              color: '#fde047',
-              size: 3
-            });
-          }
-        }
+    // Inicializa pingos de chuva
+    g.rainDrops = [];
+    for (let i = 0; i < 70; i++) {
+      g.rainDrops.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        len: 4 + Math.random() * 5,
+        speed: 8 + Math.random() * 4
+      });
+    }
 
-        // Se estiver rolando (Dodge Roll Tático com i-frames)
-        if (player.isRolling) {
-          player.vx = player.facing * player.rollSpeed;
-          player.x += player.vx;
-          player.rollTimer--;
+    // Handlers de teclado
+    const handleKeyDown = (e: KeyboardEvent) => {
+      g.keys[e.key.toLowerCase()] = true;
+    };
+    const handleKeyUp = (e: KeyboardEvent) => {
+      g.keys[e.key.toLowerCase()] = false;
+    };
 
-          // Rastro tático de velocidade (Motion Blur Particles)
-          if (Math.random() < 0.65) {
-            particles.push({
-              x: player.x + (player.facing === 1 ? -12 : player.width + 12),
-              y: state.groundY - 18 + (Math.random() - 0.5) * 8,
-              vx: -player.facing * 2.5,
-              vy: (Math.random() - 0.5) * 2,
-              alpha: 0.65,
-              color: '#38bdf8',
-              size: 3
-            });
-          }
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
 
-          if (player.rollTimer <= 0) {
-            player.isRolling = false;
-          }
-        } else {
-          // Movimento Horizontal Normal
-          const moveSpeed = player.isSuperSoldier ? 5.5 : 4.2;
-          if (keys.left) {
-            player.vx = -moveSpeed;
-            player.facing = -1;
-          } else if (keys.right) {
-            player.vx = moveSpeed;
-            player.facing = 1;
-          } else {
-            player.vx *= 0.75;
-          }
+    // Carrega primeira fase
+    loadStage(0);
 
-          // Pulo
-          if (keys.up && player.isGrounded) {
-            player.vy = -12.5;
-            player.isGrounded = false;
-          }
+    let animId: number;
 
-          // Agachar
-          player.isCrouching = keys.down && player.isGrounded;
+    const createEnemy = (x?: number, y?: number) => {
+      const idx = g.currentStageIndex;
+      const hpMultiplier = 1 + idx * 0.35;
+      return {
+        name: "SOLDIER",
+        x: x || 340,
+        y: y || (130 + Math.random() * 70),
+        w: 18,
+        h: 36,
+        speed: 1.0 + Math.random() * 0.4,
+        hp: Math.round(50 * hpMultiplier),
+        maxHp: Math.round(50 * hpMultiplier),
+        facing: -1,
+        isAttacking: false,
+        attackTimer: 0,
+        shootCooldown: 80 + Math.random() * 60,
+        hitFlash: 0,
+        color: idx === 0 ? "#b45309" : (idx === 1 ? "#334155" : (idx === 2 ? "#57534e" : "#065f46"))
+      };
+    };
 
-          // Gravidade
-          player.vy += 0.65;
-          player.x += player.vx;
-          player.y += player.vy;
+    const triggerExplosion = (x: number, y: number, radius: number, damage: number) => {
+      sound.playExplosion();
+      g.explosions.push({ x, y, radius, life: 14, maxLife: 14 });
 
-          // Colisão com o Chão
-          if (player.y >= state.groundY - player.height) {
-            player.y = state.groundY - player.height;
-            player.vy = 0;
-            player.isGrounded = true;
-          }
-        }
-
-        // Decrementa Cooldown da Esquiva e Granada
-        if (player.rollCooldown > 0) {
-          player.rollCooldown--;
-          if (player.rollCooldown === 0) setRollReady(true);
-        }
-        if (player.grenadeCooldown > 0) player.grenadeCooldown--;
-
-        // Limites do Mundo
-        player.x = Math.max(20, Math.min(state.worldWidth - player.width - 20, player.x));
-
-        // Câmera segue o jogador suavemente
-        const targetCamX = player.x - 350;
-        state.cameraX += (targetCamX - state.cameraX) * 0.1;
-        state.cameraX = Math.max(0, Math.min(state.worldWidth - 800, state.cameraX));
-
-        if (player.invulnerableTimer > 0) player.invulnerableTimer--;
-        if (player.attackCooldown > 0) player.attackCooldown--;
-        if (player.muzzleFlash > 0) player.muzzleFlash--;
-
-        // ================= DISPAROS DO ARSENAL METAL SLUG 2 =================
-        if (keys.shoot && player.attackCooldown <= 0 && !player.isRolling) {
-          const spawnX = player.facing === 1 ? player.x + player.width + 4 : player.x - 4;
-          const spawnY = player.isCrouching ? player.y + 38 : player.y + 22;
-
-          if (player.weapon === 'PISTOL') {
-            player.attackCooldown = 15;
-            player.muzzleFlash = 3;
-            sound.playGunshot38();
-            bullets.push({
-              x: spawnX,
-              y: spawnY,
-              vx: player.facing * 14,
-              vy: 0,
-              isPlayer: true,
-              damage: player.isSuperSoldier ? 35 : 20,
-              color: '#fde047'
-            });
-          } else if (player.weapon === 'HMG') {
-            // H - Heavy Machine Gun (Cadência ultrarrápida contínua)
-            if (player.ammoHmg > 0) {
-              player.ammoHmg--;
-              setAmmoHmg(player.ammoHmg);
-              player.attackCooldown = 5; // muito rápida!
-              player.muzzleFlash = 3;
-              sound.playHeavyAk47Burst();
-              bullets.push({
-                x: spawnX,
-                y: spawnY + (Math.random() - 0.5) * 4,
-                vx: player.facing * 16,
-                vy: (Math.random() - 0.5) * 0.8,
-                isPlayer: true,
-                damage: player.isSuperSoldier ? 28 : 18,
-                color: '#ffcc00'
-              });
-            } else {
-              player.weapon = 'PISTOL';
-              setCurrentWeapon('PISTOL');
-              sound.playClick();
-            }
-          } else if (player.weapon === 'ROCKET') {
-            // R - Rocket Launcher (Mísseis Teleguiados com Fumaça)
-            if (player.ammoRocket > 0) {
-              player.ammoRocket--;
-              setAmmoRocket(player.ammoRocket);
-              player.attackCooldown = 26;
-              player.muzzleFlash = 4;
-              sound.playRocket();
-              bullets.push({
-                x: spawnX,
-                y: spawnY,
-                vx: player.facing * 7.5,
-                vy: 0,
-                isPlayer: true,
-                damage: player.isSuperSoldier ? 85 : 55,
-                color: '#ef4444',
-                isHoming: true,
-                isRocket: true
-              });
-            } else {
-              player.weapon = 'PISTOL';
-              setCurrentWeapon('PISTOL');
-              sound.playClick();
-            }
-          } else if (player.weapon === 'SHOTGUN') {
-            // S - Shotgun (Nuvem de Estilhaços Devastadora)
-            if (player.ammoShotgun > 0) {
-              player.ammoShotgun--;
-              setAmmoShotgun(player.ammoShotgun);
-              player.attackCooldown = 32;
-              player.muzzleFlash = 5;
-              sound.playShotgunBlast();
-              for (let i = -3; i <= 3; i++) {
-                bullets.push({
-                  x: spawnX,
-                  y: spawnY,
-                  vx: player.facing * (13 + Math.random() * 4),
-                  vy: i * 1.6,
-                  isPlayer: true,
-                  damage: player.isSuperSoldier ? 22 : 15,
-                  color: '#ffffff'
-                });
-              }
-            } else {
-              player.weapon = 'PISTOL';
-              setCurrentWeapon('PISTOL');
-              sound.playClick();
-            }
-          }
-        }
-
-        // ================= FÍSICA DAS GRANADAS DE MÃO [G] =================
-        for (let i = grenades.length - 1; i >= 0; i--) {
-          const g = grenades[i];
-          g.x += g.vx;
-          g.y += g.vy;
-          g.vy += g.gravity;
-
-          // Quica no chão
-          if (g.y >= g.groundY) {
-            g.y = g.groundY;
-            g.vy = -g.vy * 0.45;
-            g.vx *= 0.72;
-          }
-
-          // Fumaça sutil na granada
-          if (Math.random() < 0.3) {
-            particles.push({
-              x: g.x,
-              y: g.y,
-              vx: (Math.random() - 0.5) * 1,
-              vy: -Math.random() * 1.5,
-              alpha: 0.7,
-              color: '#94a3b8',
-              size: 2.5
-            });
-          }
-
-          g.timer--;
-          if (g.timer <= 0) {
-            // Explosão em Área (Splash Damage)
-            explosions.push({
-              x: g.x,
-              y: g.groundY,
-              radius: 36,
-              maxRadius: 36,
-              life: 14
-            });
-            sound.playExplosion();
-
-            // Dano massivo a todos os inimigos no raio da explosão
-            enemies.forEach((enemy) => {
-              const dist = Math.hypot(enemy.x + enemy.width / 2 - g.x, enemy.y + enemy.height / 2 - g.groundY);
-              if (dist < 48 && enemy.hp > 0) {
-                enemy.hp -= 85;
-                enemy.hitFlash = 6;
-                enemy.vx = Math.sign(enemy.x - g.x) * 12;
-              }
-            });
-
-            grenades.splice(i, 1);
-          }
-        }
-
-        // ================= ATUALIZAÇÃO DOS PROJÉTEIS E FOGUETES =================
-        for (let i = bullets.length - 1; i >= 0; i--) {
-          const b = bullets[i];
-          b.x += b.vx;
-          b.y += b.vy;
-
-          // Foguetes Teleguiados (Homing) & Fumaça
-          if (b.isRocket) {
-            particles.push({
-              x: b.x - b.vx * 0.6,
-              y: b.y + (Math.random() - 0.5) * 3,
-              vx: -b.vx * 0.15,
-              vy: (Math.random() - 0.5) * 1.2,
-              alpha: 0.8,
-              color: '#cbd5e1',
-              size: 3
-            });
-
-            if (b.isHoming) {
-              const target = enemies.find(e => e.hp > 0 && Math.abs(e.x - b.x) < 450);
-              if (target) {
-                const targetCenterY = target.y + target.height / 2;
-                if (targetCenterY > b.y) b.y += 1.0;
-                if (targetCenterY < b.y) b.y -= 1.0;
-              }
-            }
-          }
-
-          // Se saiu do campo de visão da câmera
-          if (b.x < state.cameraX - 100 || b.x > state.cameraX + 900) {
-            bullets.splice(i, 1);
-            continue;
-          }
-
-          // Colisão com Inimigos (quando o tiro é do Policial)
-          if (b.isPlayer) {
-            let hit = false;
-            for (const enemy of enemies) {
-              if (
-                enemy.hp > 0 &&
-                b.x > enemy.x &&
-                b.x < enemy.x + enemy.width &&
-                b.y > enemy.y &&
-                b.y < enemy.y + enemy.height
-              ) {
-                enemy.hp -= b.damage;
-                enemy.state = 'hurt';
-                enemy.hitFlash = 4;
-                hit = true;
-
-                // Se era foguete, causa explosão no impacto
-                if (b.isRocket) {
-                  explosions.push({
-                    x: b.x,
-                    y: b.y,
-                    radius: 28,
-                    maxRadius: 28,
-                    life: 12
-                  });
-                  sound.playExplosion();
-                }
-
-                // Partículas de faísca / impacto
-                for (let p = 0; p < 5; p++) {
-                  particles.push({
-                    x: b.x,
-                    y: b.y,
-                    vx: (Math.random() - 0.5) * 4,
-                    vy: (Math.random() - 0.5) * 4,
-                    alpha: 1,
-                    color: '#ef4444',
-                    size: 2.5
-                  });
-                }
-                break;
-              }
-            }
-            if (hit) {
-              bullets.splice(i, 1);
-              continue;
-            }
-          } else {
-            // Tiro do Inimigo tentando acertar o Policial
-            // FRAMES DE INVULNERABILIDADE (I-FRAMES DO ROLAMENTO)
-            if (player.isRolling) continue;
-
-            if (
-              player.invulnerableTimer <= 0 &&
-              b.x > player.x &&
-              b.x < player.x + player.width &&
-              b.y > (player.isCrouching ? player.y + 24 : player.y) &&
-              b.y < player.y + player.height
-            ) {
-              sound.playError();
-              player.invulnerableTimer = 35;
-
-              if (player.armor > 0) {
-                player.armor = Math.max(0, player.armor - b.damage);
-                setPlayerArmor(player.armor);
-              } else {
-                player.hp = Math.max(0, player.hp - b.damage);
-                setPlayerHp(player.hp);
-              }
-
-              if (player.hp <= 0) setIsGameOver(true);
-
-              bullets.splice(i, 1);
-              continue;
-            }
-          }
-        }
-
-        // ================= RESGATE DE PRISIONEIROS (P.O.W.) =================
-        pows.forEach((pow) => {
-          if (!pow.freed) {
-            // Resgate ao encostar nele ou atingi-lo
-            const dist = Math.abs(player.x + player.width / 2 - pow.x);
-            if (dist < 34) {
-              pow.freed = true;
-              pow.thanked = true;
-              sound.voiceAnnounce('THANK YOU!');
-              state.score += 500;
-              setScore(state.score);
-
-              // Prisioneiro joga uma arma do Metal Slug 2 no chão!
-              const weaponOptions: WeaponType[] = ['HMG', 'ROCKET', 'SHOTGUN'];
-              const chosen = weaponOptions[Math.floor(Math.random() * weaponOptions.length)];
-              
-              ammoPickups.push({
-                id: Math.random(),
-                x: pow.x + (player.facing === 1 ? 25 : -25),
-                y: state.groundY - 14,
-                weapon: chosen,
-                amount: chosen === 'HMG' ? 120 : chosen === 'ROCKET' ? 15 : 12,
-                isGunDrop: true
-              });
-            }
-          } else {
-            // Prisioneiro resgatado corre para fora da tela agradecendo
-            pow.x -= 1.8;
+      if (damage > 0) {
+        g.enemies.forEach(e => {
+          if (e.hp <= 0) return;
+          const dist = Math.hypot(e.x - x, e.y - y);
+          if (dist < radius + 15) {
+            e.hp -= damage;
+            e.x += Math.sign(e.x - x) * 12;
+            e.hitFlash = 6;
+            if (e.hp <= 0) killEnemy(e);
           }
         });
 
-        // ================= COLETA DE ARMAS E MUNIÇÃO =================
-        for (let i = ammoPickups.length - 1; i >= 0; i--) {
-          const item = ammoPickups[i];
-          const dist = Math.abs(player.x + player.width / 2 - item.x);
-          if (dist < 32 && player.y + player.height >= state.groundY - 20) {
-            if (item.isGunDrop) {
-              // Caixa de Arma Especial do P.O.W.
-              player.weapon = item.weapon;
-              setCurrentWeapon(item.weapon);
+        g.props.forEach(p => {
+          if (p.hp <= 0) return;
+          const dist = Math.hypot(p.x - x, p.y - y);
+          if (dist < radius + 10) damageProp(p, damage);
+        });
 
-              if (item.weapon === 'HMG') {
-                player.ammoHmg = Math.min(300, player.ammoHmg + item.amount);
-                setAmmoHmg(player.ammoHmg);
-                sound.voiceAnnounce('HEAVY MACHINE GUN!');
-              } else if (item.weapon === 'ROCKET') {
-                player.ammoRocket = Math.min(40, player.ammoRocket + item.amount);
-                setAmmoRocket(player.ammoRocket);
-                sound.voiceAnnounce('ROCKET LAUNCHER!');
-              } else if (item.weapon === 'SHOTGUN') {
-                player.ammoShotgun = Math.min(30, player.ammoShotgun + item.amount);
-                setAmmoShotgun(player.ammoShotgun);
-                sound.voiceAnnounce('SHOTGUN!');
-              }
-            } else {
-              // Caixa de Munição Comum / Granadas
-              player.grenades = Math.min(20, player.grenades + 4);
-              setGrenadesCount(player.grenades);
-              if (item.weapon === 'HMG') {
-                player.ammoHmg = Math.min(300, player.ammoHmg + item.amount);
-                setAmmoHmg(player.ammoHmg);
-              } else if (item.weapon === 'ROCKET') {
-                player.ammoRocket = Math.min(40, player.ammoRocket + item.amount);
-                setAmmoRocket(player.ammoRocket);
-              } else {
-                player.ammoShotgun = Math.min(30, player.ammoShotgun + item.amount);
-                setAmmoShotgun(player.ammoShotgun);
-              }
-              sound.playPickup();
-            }
+        const distPlayer = Math.hypot(g.player.x - x, g.player.y - y);
+        if (distPlayer < radius && !g.player.isRolling) {
+          damagePlayer(Math.round(damage * 0.4));
+        }
+      }
+    };
 
-            // Partículas verdes de coleta
-            for (let p = 0; p < 8; p++) {
-              particles.push({
-                x: item.x,
-                y: state.groundY - 10,
-                vx: (Math.random() - 0.5) * 4,
-                vy: -Math.random() * 4,
-                alpha: 1,
-                color: '#22c55e',
-                size: 2.5
-              });
-            }
-
-            ammoPickups.splice(i, 1);
+    const damageProp = (prop: StageProp, amount: number) => {
+      prop.hp -= amount;
+      if (prop.hp <= 0) {
+        if (prop.explosive) {
+          triggerExplosion(prop.x, prop.y, 45, 95);
+        } else {
+          sound.playPunch();
+        }
+        if (prop.drop) {
+          const rewardWeapon = WEAPONS[prop.drop];
+          if (rewardWeapon) {
+            g.pickups.push({ x: prop.x, y: prop.y, type: "WEAPON", weapon: rewardWeapon });
+          } else {
+            g.pickups.push({ x: prop.x, y: prop.y, type: prop.drop });
           }
         }
+      }
+    };
 
-        // ================= ATUALIZAÇÃO DOS INIMIGOS =================
-        state.spawnTimer++;
-        if (state.spawnTimer > 130 && enemies.filter(e => e.hp > 0).length < 7) {
-          state.spawnTimer = 0;
-          const types: ('knife' | 'pistol' | 'rifle')[] = ['knife', 'pistol', 'rifle'];
-          const pickedType = types[Math.floor(Math.random() * types.length)];
-          const spawnX = Math.random() > 0.5 ? player.x + 480 : player.x - 480;
+    const killEnemy = (enemy: typeof g.enemies[0]) => {
+      g.player.score += 100;
+      g.enemiesDefeated++;
+      triggerExplosion(enemy.x + 8, enemy.y - 12, 16, 0);
 
-          if (spawnX > 50 && spawnX < state.worldWidth - 50) {
-            enemies.push({
-              id: state.enemyIdCounter++,
-              type: pickedType,
-              x: spawnX,
-              y: state.groundY - 58,
-              vx: 0,
-              width: 36,
-              height: 58,
-              hp: pickedType === 'rifle' ? 45 : 30,
-              maxHp: pickedType === 'rifle' ? 45 : 30,
-              shootCooldown: 50 + Math.random() * 50,
-              state: 'walk',
-              facing: spawnX > player.x ? -1 : 1,
-              hitFlash: 0
-            });
+      // Recorde local
+      if (g.player.score > highScore) {
+        setHighScore(g.player.score);
+        try {
+          localStorage.setItem('pmpe_snes_highscore', String(g.player.score));
+        } catch {
+          // ignore
+        }
+      }
+
+      if (Math.random() < 0.45) {
+        const type = Math.random() < 0.35 ? "FOOD" : "AMMO";
+        g.pickups.push({ x: enemy.x + 6, y: enemy.y, type });
+      }
+    };
+
+    const damagePlayer = (amount: number) => {
+      g.player.hp -= amount;
+      sound.playPunch();
+      if (g.player.hp <= 0) {
+        g.player.lives--;
+        if (g.player.lives <= 0) {
+          g.gameOver = true;
+          sound.voiceAnnounce("GAME OVER");
+        } else {
+          g.player.hp = g.player.maxHp;
+          g.player.x = 25;
+          g.player.isRolling = true;
+          g.player.rollTimer = 25;
+        }
+      }
+    };
+
+    // UPDATE DO JOGO
+    const update = () => {
+      if (g.gameOver || g.gameWon) return;
+
+      const currentStage = STAGES[g.currentStageIndex];
+      const p = g.player;
+
+      // Atalhos de Armas
+      if (g.keys["1"]) p.currentWeapon = WEAPONS.PISTOL;
+      if (g.keys["2"] && WEAPONS.HMG.ammo > 0) p.currentWeapon = WEAPONS.HMG;
+      if (g.keys["3"] && WEAPONS.ROCKET.ammo > 0) p.currentWeapon = WEAPONS.ROCKET;
+      if (g.keys["4"] && WEAPONS.SHOTGUN.ammo > 0) p.currentWeapon = WEAPONS.SHOTGUN;
+
+      // Dodge Roll [C]
+      if (g.keys["c"] && !p.isRolling && p.rollCooldown <= 0) {
+        p.isRolling = true;
+        p.rollTimer = p.rollDuration;
+        p.rollCooldown = p.rollCooldownTime;
+        p.isAttacking = false;
+        sound.playRoll();
+      }
+
+      if (p.isRolling) {
+        p.x += p.facing * p.rollSpeed;
+        if (g.keys["arrowdown"] || g.keys["s"]) p.y += 0.8;
+        if (g.keys["arrowup"] || g.keys["w"]) p.y -= 0.8;
+        p.rollTimer--;
+        if (p.rollTimer <= 0) p.isRolling = false;
+      } else {
+        let moveX = 0;
+        let moveY = 0;
+        if (g.keys["arrowright"] || g.keys["d"]) { moveX += p.speed; p.facing = 1; }
+        if (g.keys["arrowleft"] || g.keys["a"])  { moveX -= p.speed; p.facing = -1; }
+        if (g.keys["arrowdown"] || g.keys["s"])  { moveY += p.speed; }
+        if (g.keys["arrowup"] || g.keys["w"])    { moveY -= p.speed; }
+
+        const nextX = p.x + moveX;
+        const nextY = p.y + moveY;
+        let blocked = false;
+
+        g.props.forEach(prop => {
+          if (prop.solid && prop.hp > 0) {
+            const inX = nextX + p.w > prop.x - 12 && nextX < prop.x + 12;
+            const inY = Math.abs(nextY - prop.y) < 8;
+            if (inX && inY) blocked = true;
           }
+        });
+
+        if (!blocked) {
+          p.x = nextX;
+          p.y = nextY;
         }
 
-        // Chefão de Fase se atingir mortes suficientes
-        if (state.kills >= 12 && !state.bossSpawned) {
-          state.bossSpawned = true;
-          sound.playMilitaryAchievement();
-          sound.voiceAnnounce('WARNING! BOSS INCOMING!');
-          enemies.push({
-            id: state.enemyIdCounter++,
-            type: 'boss',
-            x: player.x + 500,
-            y: state.groundY - 76,
-            vx: 0,
-            width: 52,
-            height: 76,
-            hp: 280,
-            maxHp: 280,
-            shootCooldown: 40,
-            state: 'walk',
-            facing: -1,
-            hitFlash: 0
+        // Soco [Z]
+        if (g.keys["z"] && !p.isAttacking && p.punchCooldown <= 0) {
+          p.isAttacking = true;
+          p.punchCooldown = 18;
+          sound.playPunch();
+
+          g.enemies.forEach(e => {
+            if (e.hp <= 0) return;
+            const hitX = p.facing === 1
+              ? (e.x > p.x && e.x < p.x + p.w + 24)
+              : (e.x < p.x && e.x > p.x - p.w - 24);
+            const depth = Math.abs(p.y - e.y) < 10;
+            if (hitX && depth) {
+              e.hp -= 20;
+              e.x += p.facing * 10;
+              e.hitFlash = 4;
+              if (e.hp <= 0) killEnemy(e);
+            }
+          });
+
+          g.props.forEach(prop => {
+            if (prop.hp <= 0) return;
+            const hitX = Math.abs(p.x - prop.x) < 26;
+            const depth = Math.abs(p.y - prop.y) < 12;
+            if (hitX && depth) damageProp(prop, 25);
           });
         }
 
-        // Comportamento da IA dos Inimigos
-        for (let i = enemies.length - 1; i >= 0; i--) {
-          const enemy = enemies[i];
-          if (enemy.hitFlash > 0) enemy.hitFlash--;
+        // Tiro [X ou Espaço]
+        if ((g.keys["x"] || g.keys[" "]) && p.shootCooldown <= 0) {
+          const w = p.currentWeapon;
+          if (w.ammo > 0) {
+            if (w.ammo !== Infinity) w.ammo--;
+            p.shootCooldown = w.cooldown;
+            p.muzzleFlash = 3;
+            w.sound();
 
-          if (enemy.hp <= 0) {
-            state.kills++;
-            setKillsCount(state.kills);
-            const gainedScore = enemy.type === 'boss' ? 500 : 50;
-            state.score += gainedScore;
-            setScore(state.score);
+            const spawnX = p.facing === 1 ? p.x + p.w + w.barrelLen : p.x - w.barrelLen;
+            const spawnY = p.y - p.h * 0.55;
 
-            // Chance de dropar munição / granadas
-            if (Math.random() < 0.55) {
-              const dropType: WeaponType = Math.random() < 0.5 ? 'HMG' : Math.random() < 0.75 ? 'ROCKET' : 'SHOTGUN';
-              ammoPickups.push({
-                id: Math.random(),
-                x: enemy.x + enemy.width / 2,
-                y: state.groundY - 14,
-                weapon: dropType,
-                amount: dropType === 'HMG' ? 30 : dropType === 'ROCKET' ? 4 : 3
+            for (let i = 0; i < w.pellets; i++) {
+              const vy = (Math.random() - 0.5) * w.spread * 4;
+              g.bullets.push({
+                x: spawnX,
+                y: spawnY,
+                vx: p.facing * w.speed,
+                vy: vy,
+                baseY: p.y,
+                damage: w.damage,
+                color: w.color,
+                isHoming: !!w.isHoming,
+                fromPlayer: true,
+                life: 55
               });
             }
 
-            if (state.score > highScore) {
-              setHighScore(state.score);
-              localStorage.setItem('pmpe_snes_highscore', state.score.toString());
+            if (w.ammo <= 0 && w !== WEAPONS.PISTOL) {
+              p.currentWeapon = WEAPONS.PISTOL;
             }
+          }
+        }
 
-            // Se matou o Chefão: Vitória da Fase!
-            if (enemy.type === 'boss') {
-              setIsVictory(true);
-              sound.playMilitaryAchievement();
-              sound.voiceAnnounce('MISSION COMPLETE!');
+        // Lançar Granada [G]
+        if (g.keys["g"] && p.grenades > 0 && p.grenadeCooldown <= 0) {
+          p.grenades--;
+          p.grenadeCooldown = 28;
+          g.grenades.push({
+            x: p.x + (p.facing === 1 ? p.w : 0),
+            y: p.y - 20,
+            groundY: p.y,
+            vx: p.facing * 3.8,
+            vy: -4.4,
+            gravity: 0.32,
+            timer: 45
+          });
+        }
+      }
+
+      // Limites de tela
+      p.x = Math.max(10, Math.min(canvas.width - p.w - 10, p.x));
+      p.y = Math.max(125, Math.min(218, p.y));
+
+      // Timers
+      if (p.rollCooldown > 0) p.rollCooldown--;
+      if (p.punchCooldown > 0) {
+        p.punchCooldown--;
+        if (p.punchCooldown < 10) p.isAttacking = false;
+      }
+      if (p.shootCooldown > 0) p.shootCooldown--;
+      if (p.grenadeCooldown > 0) p.grenadeCooldown--;
+      if (p.muzzleFlash > 0) p.muzzleFlash--;
+
+      // Física das granadas
+      for (let i = g.grenades.length - 1; i >= 0; i--) {
+        const gr = g.grenades[i];
+        gr.x += gr.vx;
+        gr.y += gr.vy;
+        gr.vy += gr.gravity;
+
+        if (gr.y >= gr.groundY) {
+          gr.y = gr.groundY;
+          gr.vy = -gr.vy * 0.45;
+          gr.vx *= 0.7;
+        }
+
+        gr.timer--;
+        if (gr.timer <= 0) {
+          triggerExplosion(gr.x, gr.groundY, 32, 90);
+          g.grenades.splice(i, 1);
+        }
+      }
+
+      // Projéteis
+      for (let i = g.bullets.length - 1; i >= 0; i--) {
+        const b = g.bullets[i];
+        b.x += b.vx;
+        b.y += b.vy;
+        b.life--;
+
+        // Mísseis teleguiados
+        if (b.isHoming && b.fromPlayer) {
+          const target = g.enemies.find(e => e.hp > 0);
+          if (target) {
+            if (target.y - 15 > b.y) b.y += 1.1;
+            if (target.y - 15 < b.y) b.y -= 1.1;
+          }
+        }
+
+        let consumed = false;
+
+        if (b.fromPlayer) {
+          for (let j = 0; j < g.enemies.length; j++) {
+            const e = g.enemies[j];
+            if (e.hp <= 0) continue;
+            const inX = b.x >= e.x && b.x <= e.x + e.w;
+            const inY = b.y >= e.y - e.h && b.y <= e.y;
+            const depth = Math.abs(b.baseY - e.y) < 14;
+
+            if (inX && inY && depth) {
+              e.hp -= b.damage;
+              e.x += Math.sign(b.vx) * 6;
+              e.hitFlash = 4;
+              consumed = true;
+              if (b.isHoming) triggerExplosion(b.x, b.y, 20, 30);
+              if (e.hp <= 0) killEnemy(e);
+              break;
             }
-
-            enemies.splice(i, 1);
-            continue;
           }
 
-          enemy.facing = enemy.x < player.x ? 1 : -1;
-          const distToPlayer = Math.abs(enemy.x - player.x);
-
-          if (enemy.type === 'knife') {
-            enemy.vx = enemy.facing * 2.8;
-            enemy.x += enemy.vx;
-
-            if (distToPlayer < 40 && player.invulnerableTimer <= 0) {
-              if (!player.isRolling) {
-                player.invulnerableTimer = 30;
-                if (player.armor > 0) player.armor = Math.max(0, player.armor - 15);
-                else player.hp = Math.max(0, player.hp - 15);
-                setPlayerArmor(player.armor);
-                setPlayerHp(player.hp);
-                sound.playError();
-                if (player.hp <= 0) setIsGameOver(true);
+          if (!consumed) {
+            for (let k = 0; k < g.props.length; k++) {
+              const prop = g.props[k];
+              if (prop.hp <= 0) continue;
+              const inX = Math.abs(b.x - prop.x) < 14;
+              const depth = Math.abs(b.baseY - prop.y) < 14;
+              if (inX && depth) {
+                damageProp(prop, b.damage);
+                consumed = true;
+                if (b.isHoming) triggerExplosion(b.x, b.y, 20, 30);
+                break;
               }
             }
-          } else {
-            if (distToPlayer > 260) {
-              enemy.vx = enemy.facing * 1.8;
-              enemy.x += enemy.vx;
-            } else if (distToPlayer < 120) {
-              enemy.vx = -enemy.facing * 1.5;
-              enemy.x += enemy.vx;
-            }
+          }
+        } else {
+          // Bala inimiga atinge o jogador
+          const inX = b.x >= p.x && b.x <= p.x + p.w;
+          const inY = b.y >= p.y - p.h && b.y <= p.y;
+          const depth = Math.abs(b.baseY - p.y) < 12;
 
-            enemy.shootCooldown--;
-            if (enemy.shootCooldown <= 0 && distToPlayer < 450) {
-              enemy.shootCooldown = enemy.type === 'boss' ? 45 : enemy.type === 'rifle' ? 60 : 80;
-              sound.playGunshot38();
-              bullets.push({
-                x: enemy.facing === 1 ? enemy.x + enemy.width + 4 : enemy.x - 4,
-                y: enemy.y + 24,
-                vx: enemy.facing * 8.5,
-                vy: (Math.random() - 0.5) * 0.8,
-                isPlayer: false,
-                damage: enemy.type === 'boss' ? 25 : 12,
-                color: '#ef4444'
-              });
+          if (inX && inY && depth) {
+            consumed = true;
+            if (!p.isRolling) {
+              damagePlayer(b.damage);
             }
           }
         }
 
-        // Atualiza Explosões de Fogo
-        for (let i = explosions.length - 1; i >= 0; i--) {
-          const exp = explosions[i];
-          exp.life--;
-          if (exp.life <= 0) explosions.splice(i, 1);
-        }
-
-        // Atualiza Partículas
-        for (let i = particles.length - 1; i >= 0; i--) {
-          const p = particles[i];
-          p.x += p.vx;
-          p.y += p.vy;
-          p.alpha -= 0.035;
-          if (p.alpha <= 0) particles.splice(i, 1);
+        if (consumed || b.life <= 0 || b.x < 0 || b.x > canvas.width) {
+          g.bullets.splice(i, 1);
         }
       }
 
-      // ================= RENDERIZAÇÃO ESTILO 16-BIT SNES =================
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Inimigos
+      g.enemies.forEach(e => {
+        if (e.hp <= 0) return;
+        if (e.hitFlash > 0) e.hitFlash--;
 
-      // 1. Céu Urbano Noturno / Recife Antigo
-      const skyGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      skyGrad.addColorStop(0, '#020617');
-      skyGrad.addColorStop(0.5, '#0f172a');
-      skyGrad.addColorStop(1, '#1e1b4b');
-      ctx.fillStyle = skyGrad;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+        const dx = p.x - e.x;
+        const dy = p.y - e.y;
+        e.facing = dx >= 0 ? 1 : -1;
 
-      // 2. Silhueta de Prédios e Postes em Parallax
-      ctx.fillStyle = '#090d16';
-      for (let b = 0; b < 18; b++) {
-        const bx = b * 140 - (state.cameraX * 0.25) % 140;
-        const bh = 140 + (b % 4) * 45;
-        ctx.fillRect(bx, state.groundY - bh, 110, bh);
+        if (Math.abs(dx) > 35) e.x += Math.sign(dx) * e.speed;
+        if (Math.abs(dy) > 4)  e.y += Math.sign(dy) * (e.speed * 0.7);
 
-        ctx.fillStyle = '#fef08a';
-        for (let w = 0; w < 4; w++) {
-          if ((b + w) % 3 === 0) {
-            ctx.fillRect(bx + 15 + (w % 2) * 40, state.groundY - bh + 25 + Math.floor(w / 2) * 35, 16, 16);
+        // Tiro à distância
+        e.shootCooldown--;
+        if (e.shootCooldown <= 0 && Math.abs(dy) < 14 && Math.abs(dx) < 160) {
+          e.shootCooldown = 90 + Math.random() * 60;
+          g.bullets.push({
+            x: e.facing === 1 ? e.x + e.w + 6 : e.x - 6,
+            y: e.y - e.h * 0.55,
+            vx: e.facing * 4.2,
+            vy: 0,
+            baseY: e.y,
+            damage: 10,
+            color: "#ef4444",
+            fromPlayer: false,
+            life: 60
+          });
+          sound.playPistol();
+        }
+
+        // Soco próximo
+        if (Math.abs(dx) <= 28 && Math.abs(dy) <= 6) {
+          e.attackTimer++;
+          if (e.attackTimer > 40) {
+            e.attackTimer = 0;
+            if (!p.isRolling) {
+              damagePlayer(12);
+              p.x += e.facing * 8;
+            }
           }
         }
-        ctx.fillStyle = '#090d16';
+      });
+
+      // Armadilhas de Cenário
+      currentStage.traps.forEach(trap => {
+        trap.timer = (trap.timer + 1) % trap.interval;
+        const isActive = trap.timer < trap.activeTime;
+
+        if (isActive) {
+          const inTrap = Math.abs(p.x - trap.x) < trap.w && Math.abs(p.y - trap.y) < 10;
+          if (inTrap && !p.isRolling) {
+            damagePlayer(1);
+            if (trap.type === "steam" && Math.random() < 0.1) sound.playSteam();
+          }
+        }
+      });
+
+      // Coleta de Itens
+      for (let i = g.pickups.length - 1; i >= 0; i--) {
+        const item = g.pickups[i];
+        const dist = Math.hypot((p.x + p.w / 2) - item.x, p.y - item.y);
+        if (dist < 18) {
+          if (item.type === "WEAPON" && item.weapon) {
+            p.currentWeapon = item.weapon;
+            p.currentWeapon.ammo += item.weapon.ammo;
+            sound.voiceAnnounce(item.weapon.name);
+            p.score += 200;
+          } else if (item.type === "FOOD") {
+            p.hp = Math.min(p.maxHp, p.hp + 35);
+            sound.playPickup();
+            p.score += 150;
+          } else if (item.type === "AMMO") {
+            WEAPONS.HMG.ammo += 40;
+            WEAPONS.ROCKET.ammo += 8;
+            WEAPONS.SHOTGUN.ammo += 8;
+            p.grenades += 3;
+            sound.playPickup();
+          }
+          g.pickups.splice(i, 1);
+        }
       }
 
-      // 3. Asfalto / Chão da Rua
-      ctx.fillStyle = '#1e293b';
-      ctx.fillRect(0, state.groundY, canvas.width, canvas.height - state.groundY);
-
-      ctx.fillStyle = '#475569';
-      ctx.fillRect(0, state.groundY, canvas.width, 6);
-
-      // Faixas Amarelas da Rua
-      ctx.fillStyle = '#f59e0b';
-      for (let f = 0; f < 15; f++) {
-        const fx = f * 100 - (state.cameraX % 100);
-        ctx.fillRect(fx, state.groundY + 28, 48, 8);
-      }
-
-      // 4. Prisioneiros de Guerra (P.O.W. - Metal Slug Style)
-      pows.forEach((pow) => {
-        const powScreenX = pow.x - state.cameraX;
-        if (powScreenX < -60 || powScreenX > canvas.width + 60) return;
-
-        // Sombra
-        ctx.fillStyle = 'rgba(0,0,0,0.45)';
-        ctx.beginPath();
-        ctx.ellipse(powScreenX + 12, state.groundY + 2, 14, 5, 0, 0, Math.PI * 2);
-        ctx.fill();
-
+      // Resgate de P.O.W.
+      g.pows.forEach(pow => {
         if (!pow.freed) {
-          // Amarrado: Shorts amarelo, tronco nu, barba e cabelos longos
-          ctx.fillStyle = '#eab308'; // Shorts amarelo
-          ctx.fillRect(powScreenX + 4, state.groundY - 20, 16, 18);
-
-          ctx.fillStyle = '#fed7aa'; // Tronco
-          ctx.fillRect(powScreenX + 6, state.groundY - 36, 12, 16);
-
-          // Cordas amarrando os braços
-          ctx.fillStyle = '#78350f';
-          ctx.fillRect(powScreenX + 4, state.groundY - 28, 16, 4);
-
-          // Rosto com barba e cabelo comprido castanho
-          ctx.fillStyle = '#fed7aa';
-          ctx.fillRect(powScreenX + 8, state.groundY - 48, 12, 12);
-          ctx.fillStyle = '#854d0e'; // Barba comprida
-          ctx.fillRect(powScreenX + 6, state.groundY - 40, 16, 10);
-          ctx.fillRect(powScreenX + 4, state.groundY - 52, 18, 8); // Cabelos longos
-
-          // Letreiro piscante "HELP!"
-          if (Math.floor(Date.now() / 400) % 2 === 0) {
-            ctx.fillStyle = '#ef4444';
-            ctx.font = 'bold 9px monospace';
-            ctx.fillText('HELP!', powScreenX + 2, state.groundY - 56);
+          const dist = Math.hypot((p.x + p.w / 2) - pow.x, p.y - pow.y);
+          if (dist < 22) {
+            pow.freed = true;
+            sound.voiceAnnounce("THANK YOU!");
+            p.score += 500;
+            const rewardWeapon = WEAPONS[pow.reward] || WEAPONS.HMG;
+            g.pickups.push({ x: pow.x + 12, y: pow.y, type: "WEAPON", weapon: rewardWeapon });
           }
         } else {
-          // Resgatado: Acenando e correndo com letreiro "THANK YOU!"
-          ctx.fillStyle = '#eab308';
-          ctx.fillRect(powScreenX + 4, state.groundY - 24, 14, 22);
-          ctx.fillStyle = '#fed7aa';
-          ctx.fillRect(powScreenX + 6, state.groundY - 38, 10, 14);
-          ctx.fillStyle = '#854d0e';
-          ctx.fillRect(powScreenX + 6, state.groundY - 48, 14, 12);
-
-          // Balão "THANK YOU!"
-          ctx.fillStyle = '#ffffff';
-          ctx.font = 'bold 10px monospace';
-          ctx.fillText('THANK YOU!', powScreenX - 16, state.groundY - 54);
+          pow.x -= 1.1;
         }
       });
 
-      // 5. Caixas de Armas & Munição no Asfalto (Metal Slug Drops)
-      ammoPickups.forEach((item) => {
-        const ix = item.x - state.cameraX;
-        const bounce = Math.sin(Date.now() / 150) * 3;
-        
-        ctx.fillStyle = item.weapon === 'HMG' ? '#eab308' : item.weapon === 'ROCKET' ? '#ef4444' : '#0284c7';
-        ctx.fillRect(ix - 14, state.groundY - 16 + bounce, 28, 16);
-
-        ctx.fillStyle = '#020617';
-        ctx.font = 'bold 9px monospace';
-        const label = item.weapon === 'HMG' ? '[H]' : item.weapon === 'ROCKET' ? '[R]' : '[S]';
-        ctx.fillText(label, ix - 8, state.groundY - 4 + bounce);
-
-        // Letreiro luminoso flutuante da arma
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 8px monospace';
-        ctx.fillText(item.weapon, ix - 16, state.groundY - 20 + bounce);
-      });
-
-      // 6. Granadas de Mão em Movimento Parabólico
-      grenades.forEach((g) => {
-        const gx = g.x - state.cameraX;
-        ctx.fillStyle = '#22c55e'; // Granada verde oliva redonda
-        ctx.beginPath();
-        ctx.arc(gx, g.y, 5, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillStyle = '#eab308'; // Pino dourado
-        ctx.fillRect(gx - 2, g.y - 7, 4, 3);
-      });
-
-      // ================= RENDERIZAÇÃO DO POLICIAL =================
-      const p = player;
-      const screenPx = p.x - state.cameraX;
-
-      ctx.save();
-      if (p.invulnerableTimer > 0 && Math.floor(p.invulnerableTimer / 4) % 2 === 0) {
-        ctx.globalAlpha = 0.4;
+      // Explosões
+      for (let i = g.explosions.length - 1; i >= 0; i--) {
+        const exp = g.explosions[i];
+        exp.life--;
+        if (exp.life <= 0) g.explosions.splice(i, 1);
       }
 
-      // Sombra no chão
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';
-      ctx.beginPath();
-      const shadowW = p.isRolling ? p.width * 1.1 : p.width * 0.7;
-      ctx.ellipse(screenPx + p.width / 2, state.groundY + 2, shadowW, 6, 0, 0, Math.PI * 2);
-      ctx.fill();
+      // Chuva na Missão 4
+      if (currentStage.ambient === "rain") {
+        g.rainDrops.forEach(r => {
+          r.y += r.speed;
+          r.x += 1.2;
+          if (r.y > canvas.height) {
+            r.y = -10;
+            r.x = Math.random() * canvas.width;
+          }
+        });
+      }
 
-      // ANIMAÇÃO DE ESQUIVA TÁTICA (DODGE ROLL)
-      if (p.isRolling) {
-        ctx.save();
-        ctx.translate(screenPx + p.width / 2, state.groundY - 18);
-        const rotAngle = (Date.now() / 35) * p.facing;
-        ctx.rotate(rotAngle);
+      // Spawner Contínuo
+      if (g.enemiesDefeated < currentStage.enemiesToClear) {
+        const active = g.enemies.filter(e => e.hp > 0).length;
+        if (active < 3 && Math.random() < 0.025) {
+          g.enemies.push(createEnemy(Math.random() < 0.5 ? -15 : canvas.width + 15));
+        }
+      } else if (!g.isAreaCleared) {
+        g.isAreaCleared = true;
+        sound.playGo();
+      }
 
-        ctx.fillStyle = '#38bdf8';
-        ctx.beginPath();
-        ctx.arc(0, 0, 16, 0, Math.PI * 2);
-        ctx.fill();
+      // Avanço de Fase clássico "GO! ➔"
+      if (g.isAreaCleared) {
+        g.goBlinkTimer++;
+        if (p.x >= canvas.width - p.w - 8) {
+          if (g.currentStageIndex + 1 < STAGES.length) {
+            loadStage(g.currentStageIndex + 1);
+          } else {
+            g.gameWon = true;
+            sound.voiceAnnounce("ALL MISSIONS COMPLETE! YOU ARE A HERO!");
+          }
+        }
+      }
 
-        ctx.fillStyle = '#1e3a8a';
-        ctx.beginPath();
-        ctx.arc(0, 0, 12, 0, Math.PI * 2);
-        ctx.fill();
+      if (g.stageBannerTimer > 0) g.stageBannerTimer--;
 
-        ctx.fillStyle = '#fbbf24';
-        ctx.fillRect(-4, -4, 8, 8);
-        ctx.restore();
+      // Atualiza estados para HUD React
+      setHudHp(p.hp);
+      setHudScore(p.score);
+      setHudLives(p.lives);
+      setHudWeapon(p.currentWeapon.name);
+      setHudAmmo(p.currentWeapon.ammo === Infinity ? "INF" : String(p.currentWeapon.ammo));
+      setHudGrenades(p.grenades);
+      setHudTargets(Math.max(0, currentStage.enemiesToClear - g.enemiesDefeated));
+    };
 
-        ctx.fillStyle = 'rgba(56, 189, 248, 0.3)';
-        const trailOffset = -p.facing * 18;
-        ctx.fillRect(screenPx + trailOffset, state.groundY - 24, p.width, 18);
-      } else {
-        const bodyH = p.isCrouching ? p.height * 0.6 : p.height;
-        const bodyY = p.isCrouching ? p.y + p.height * 0.4 : p.y;
+    // DRAW DO JOGO
+    const draw = () => {
+      const stage = STAGES[g.currentStageIndex];
+      const p = g.player;
 
-        // Calça Tática Azul PMPE
-        ctx.fillStyle = '#1e3a8a';
-        ctx.fillRect(screenPx + 6, bodyY + 36, 10, bodyH - 36);
-        ctx.fillRect(screenPx + p.width - 16, bodyY + 36, 10, bodyH - 36);
+      // 1. Céu e Decorações
+      ctx.fillStyle = stage.skyColor;
+      ctx.fillRect(0, 0, canvas.width, 120);
 
-        // Coturnos pretos
-        ctx.fillStyle = '#020617';
-        ctx.fillRect(screenPx + (p.facing === 1 ? 6 : 4), bodyY + bodyH - 8, 14, 8);
-        ctx.fillRect(screenPx + (p.facing === 1 ? p.width - 16 : p.width - 18), bodyY + bodyH - 8, 14, 8);
-
-        // Tronco / Colete Balístico Tático PMPE
-        ctx.fillStyle = p.isSuperSoldier ? '#d97706' : '#0f172a';
-        ctx.fillRect(screenPx + 4, bodyY + 14, p.width - 8, 24);
-
-        // Brasão PMPE
-        ctx.fillStyle = '#fbbf24';
-        ctx.fillRect(screenPx + (p.facing === 1 ? 16 : 8), bodyY + 18, 6, 6);
-
-        // Rosto
-        ctx.fillStyle = '#fbcfe8';
-        ctx.fillRect(screenPx + 10, bodyY + 2, 18, 14);
-
-        // Boina Militar PMPE
-        ctx.fillStyle = '#1e3a8a';
-        ctx.fillRect(screenPx + 6, bodyY - 4, 26, 8);
-        ctx.fillStyle = '#d97706';
-        ctx.fillRect(screenPx + (p.facing === 1 ? 22 : 6), bodyY + 1, 8, 3);
-
-        // Arma em punho de acordo com o arsenal Metal Slug
-        ctx.fillStyle = '#020617';
-        const gunX = p.facing === 1 ? screenPx + p.width - 2 : screenPx - 16;
-        const gunY = bodyY + 20;
-
-        if (p.weapon === 'PISTOL') {
-          ctx.fillRect(gunX, gunY, 14, 6);
-          ctx.fillRect(p.facing === 1 ? gunX + 2 : gunX + 8, gunY + 4, 5, 8);
-        } else if (p.weapon === 'HMG') {
-          // HMG: Fuzil pesado dourado/metálico com tambor
-          ctx.fillStyle = '#ca8a04';
-          ctx.fillRect(p.facing === 1 ? gunX - 6 : gunX - 4, gunY - 2, 28, 9);
-          ctx.fillStyle = '#1e293b';
-          ctx.fillRect(p.facing === 1 ? gunX + 4 : gunX + 8, gunY + 6, 10, 8); // tambor de balas
-        } else if (p.weapon === 'ROCKET') {
-          // Rocket Launcher com tubo grosso
-          ctx.fillStyle = '#15803d';
-          ctx.fillRect(p.facing === 1 ? gunX - 10 : gunX - 8, gunY - 6, 34, 14);
-          ctx.fillStyle = '#ef4444'; // ogiva vermelha
-          ctx.fillRect(p.facing === 1 ? gunX + 24 : gunX - 12, gunY - 4, 6, 10);
+      stage.generateDecorations().forEach(dec => {
+        if (dec.type === "dune") {
+          ctx.fillStyle = "#d97706";
+          ctx.beginPath();
+          ctx.arc(dec.x + dec.w/2, dec.y + dec.h, dec.w/2, Math.PI, 0);
+          ctx.fill();
+        } else if (dec.type === "minaret") {
+          ctx.fillStyle = "#78350f";
+          ctx.fillRect(dec.x, dec.y, dec.w, dec.h);
+          ctx.beginPath();
+          ctx.arc(dec.x + dec.w/2, dec.y, dec.w/2, Math.PI, 0);
+          ctx.fill();
+        } else if (dec.type === "tent") {
+          ctx.fillStyle = "#fef3c7";
+          ctx.beginPath();
+          ctx.moveTo(dec.x, dec.y + dec.h);
+          ctx.lineTo(dec.x + dec.w/2, dec.y);
+          ctx.lineTo(dec.x + dec.w, dec.y + dec.h);
+          ctx.fill();
+        } else if (dec.type === "crane") {
+          ctx.fillStyle = "#f97316";
+          ctx.fillRect(dec.x, dec.y, 8, dec.h);
+          ctx.fillRect(dec.x, dec.y, dec.w, 8);
+          ctx.strokeStyle = "#ea580c";
+          ctx.strokeRect(dec.x, dec.y + 10, dec.w - 10, 20);
+        } else if (dec.type === "stone_pillar") {
+          ctx.fillStyle = "#44403c";
+          ctx.fillRect(dec.x, dec.y, dec.w, dec.h);
+          ctx.fillStyle = "#78716c";
+          ctx.fillRect(dec.x - 3, dec.y, dec.w + 6, 6);
+        } else if (dec.type === "searchlight_tower") {
+          ctx.fillStyle = "#1e293b";
+          ctx.fillRect(dec.x, dec.y, dec.w, dec.h);
+          ctx.fillStyle = "rgba(254, 240, 138, 0.15)";
+          ctx.beginPath();
+          ctx.moveTo(dec.x + dec.w/2, dec.y);
+          ctx.lineTo(dec.x - 40, canvas.height);
+          ctx.lineTo(dec.x + 80, canvas.height);
+          ctx.fill();
         } else {
-          // Shotgun com cano duplo prateado
-          ctx.fillStyle = '#94a3b8';
-          ctx.fillRect(p.facing === 1 ? gunX - 6 : gunX - 4, gunY, 26, 8);
-          ctx.fillStyle = '#78350f';
-          ctx.fillRect(p.facing === 1 ? gunX - 12 : gunX + 16, gunY + 2, 8, 6);
+          ctx.fillStyle = "#1e293b";
+          ctx.fillRect(dec.x, dec.y, dec.w, dec.h);
         }
+      });
 
-        // Muzzle Flash
-        if (p.muzzleFlash > 0) {
-          ctx.fillStyle = '#fffb00';
-          const flashX = p.facing === 1 ? gunX + 26 : gunX - 12;
-          ctx.fillRect(flashX, gunY - 4, 12, 14);
+      // 2. Chão e Pista de Combate
+      ctx.fillStyle = stage.groundColor;
+      ctx.fillRect(0, 120, canvas.width, 104);
+      ctx.fillStyle = stage.curbColor;
+      ctx.fillRect(0, 120, canvas.width, 4);
+
+      // Armadilhas
+      stage.traps.forEach(trap => {
+        const isActive = (trap.timer < trap.activeTime);
+        if (trap.type === "steam") {
+          ctx.fillStyle = "#64748b";
+          ctx.fillRect(trap.x - 4, trap.y - 4, 8, 8);
+          if (isActive) {
+            ctx.fillStyle = "rgba(241, 245, 249, 0.75)";
+            ctx.beginPath();
+            ctx.arc(trap.x, trap.y - 12, 10 + Math.random() * 4, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        } else if (trap.type === "spikes") {
+          ctx.fillStyle = "#1c1917";
+          ctx.fillRect(trap.x - trap.w/2, trap.y - 2, trap.w, trap.h);
+          if (isActive) {
+            ctx.fillStyle = "#e7e5e4";
+            for (let s = -trap.w/2 + 2; s < trap.w/2; s += 6) {
+              ctx.beginPath();
+              ctx.moveTo(trap.x + s, trap.y + trap.h);
+              ctx.lineTo(trap.x + s + 3, trap.y - 8);
+              ctx.lineTo(trap.x + s + 6, trap.y + trap.h);
+              ctx.fill();
+            }
+          }
+        } else if (trap.type === "electric") {
+          if (isActive) {
+            ctx.fillStyle = "#67e8f9";
+            ctx.fillRect(trap.x - 6, trap.y - 6, 12, 12);
+            ctx.strokeStyle = "#fff";
+            ctx.strokeRect(trap.x - 8, trap.y - 8, 16, 16);
+          }
         }
-      }
+      });
 
-      ctx.restore();
+      // 3. Projéteis
+      g.bullets.forEach(b => {
+        ctx.fillStyle = b.color;
+        ctx.fillRect(b.x, b.y, b.isHoming ? 6 : 4, 2);
+        if (b.isHoming) {
+          ctx.fillStyle = "rgba(255,255,255,0.4)";
+          ctx.fillRect(b.x - 4, b.y, 3, 2);
+        }
+      });
 
-      // ================= RENDERIZAÇÃO DOS INIMIGOS =================
-      enemies.forEach((enemy) => {
-        const ex = enemy.x - state.cameraX;
-
-        // Sombra
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';
+      // Granadas
+      g.grenades.forEach(gr => {
+        ctx.fillStyle = "#15803d";
         ctx.beginPath();
-        ctx.ellipse(ex + enemy.width / 2, state.groundY + 2, enemy.width * 0.7, 6, 0, 0, Math.PI * 2);
+        ctx.arc(gr.x, gr.y, 4, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // 4. Entidades em Profundidade 2.5D
+      const renderList = [
+        p,
+        ...g.enemies.filter(e => e.hp > 0),
+        ...g.props.filter(prop => prop.hp > 0),
+        ...g.pows,
+        ...g.pickups
+      ].sort((a, b) => a.y - b.y);
+
+      renderList.forEach(item => {
+        // Sombra
+        ctx.fillStyle = "rgba(0,0,0,0.4)";
+        ctx.beginPath();
+        const baseW = ('w' in item && typeof item.w === 'number') ? item.w : 16;
+        ctx.ellipse(item.x + baseW/2, item.y, baseW * 0.7, 4, 0, 0, Math.PI * 2);
         ctx.fill();
 
-        // Barra de Vida
-        ctx.fillStyle = 'rgba(0,0,0,0.6)';
-        ctx.fillRect(ex, enemy.y - 14, enemy.width, 5);
-        ctx.fillStyle = enemy.type === 'boss' ? '#f59e0b' : '#ef4444';
-        const hpPct = Math.max(0, enemy.hp / enemy.maxHp);
-        ctx.fillRect(ex, enemy.y - 14, enemy.width * hpPct, 5);
-
-        // Flash de dano
-        if (enemy.hitFlash > 0) {
-          ctx.fillStyle = '#ffffff';
-          ctx.fillRect(ex + 4, enemy.y + 4, enemy.width - 8, enemy.height - 8);
+        // Props Destrutíveis
+        if ('maxHp' in item && typeof item.maxHp === 'number') {
+          const prop = item as StageProp;
+          if (prop.type === "fuel_barrel") {
+            ctx.fillStyle = "#dc2626";
+            ctx.fillRect(prop.x - 8, prop.y - 18, 16, 18);
+            ctx.fillStyle = "#fef08a";
+            ctx.fillText("!", prop.x - 2, prop.y - 6);
+          } else if (prop.type === "wood_barrel") {
+            ctx.fillStyle = "#92400e";
+            ctx.fillRect(prop.x - 7, prop.y - 16, 14, 16);
+            ctx.fillStyle = "#451a03";
+            ctx.fillRect(prop.x - 7, prop.y - 10, 14, 2);
+          } else if (prop.type === "crate") {
+            ctx.fillStyle = "#b45309";
+            ctx.fillRect(prop.x - 9, prop.y - 18, 18, 18);
+            ctx.strokeStyle = "#78350f";
+            ctx.strokeRect(prop.x - 8, prop.y - 17, 16, 16);
+          } else if (prop.type === "sandbag") {
+            ctx.fillStyle = "#ca8a04";
+            ctx.fillRect(prop.x - 12, prop.y - 12, 24, 12);
+          } else if (prop.type === "stone_pillar_destruct") {
+            ctx.fillStyle = "#57534e";
+            ctx.fillRect(prop.x - 8, prop.y - 28, 16, 28);
+          } else if (prop.type === "generator") {
+            ctx.fillStyle = "#0284c7";
+            ctx.fillRect(prop.x - 10, prop.y - 22, 20, 22);
+            ctx.fillStyle = "#facc15";
+            ctx.fillRect(prop.x - 3, prop.y - 16, 6, 10);
+          }
           return;
         }
 
-        if (enemy.type === 'boss') {
-          // CHEFÃO "O SOMBRA"
-          ctx.fillStyle = '#450a0a';
-          ctx.fillRect(ex + 4, enemy.y + 12, enemy.width - 8, enemy.height - 24);
-          ctx.fillStyle = '#020617';
-          ctx.fillRect(ex + 8, enemy.y + enemy.height - 12, 14, 12);
-          ctx.fillRect(ex + enemy.width - 22, enemy.y + enemy.height - 12, 14, 12);
-
-          ctx.fillStyle = '#1e293b';
-          ctx.fillRect(ex + 14, enemy.y + 2, 24, 14);
-          ctx.fillStyle = '#ef4444';
-          ctx.fillRect(enemy.facing === 1 ? ex + 28 : ex + 18, enemy.y + 6, 4, 3);
-
-          ctx.fillStyle = '#020617';
-          ctx.fillRect(enemy.facing === 1 ? ex + enemy.width - 4 : ex - 18, enemy.y + 24, 24, 9);
-        } else {
-          ctx.fillStyle = enemy.type === 'knife' ? '#ca8a04' : enemy.type === 'rifle' ? '#15803d' : '#b91c1c';
-          ctx.fillRect(ex + 6, enemy.y + 14, enemy.width - 12, enemy.height - 28);
-
-          ctx.fillStyle = '#1e3a8a';
-          ctx.fillRect(ex + 8, enemy.y + enemy.height - 14, 8, 14);
-          ctx.fillRect(ex + enemy.width - 16, enemy.y + enemy.height - 14, 8, 14);
-
-          ctx.fillStyle = '#fed7aa';
-          ctx.fillRect(ex + 10, enemy.y + 2, 16, 12);
-          ctx.fillStyle = '#020617';
-          ctx.fillRect(ex + 6, enemy.y - 2, 24, 6);
-
-          if (enemy.type === 'knife') {
-            ctx.fillStyle = '#e2e8f0';
-            ctx.fillRect(enemy.facing === 1 ? ex + enemy.width - 2 : ex - 8, enemy.y + 22, 10, 4);
+        // P.O.W.
+        if ('reward' in item) {
+          const pow = item as { x: number; y: number; freed: boolean; reward: string };
+          if (!pow.freed) {
+            ctx.fillStyle = "#facc15";
+            ctx.fillRect(pow.x - 4, pow.y - 12, 8, 12);
+            ctx.fillStyle = "#fed7aa";
+            ctx.fillRect(pow.x - 3, pow.y - 20, 6, 8);
+            ctx.fillStyle = "#78350f";
+            ctx.fillRect(pow.x - 5, pow.y - 26, 10, 6);
           } else {
-            ctx.fillStyle = '#020617';
-            ctx.fillRect(enemy.facing === 1 ? ex + enemy.width - 2 : ex - 10, enemy.y + 20, 12, 5);
+            ctx.fillStyle = "#facc15";
+            ctx.fillRect(pow.x - 3, pow.y - 14, 6, 14);
+            ctx.fillStyle = "#fff";
+            ctx.font = "8px monospace";
+            ctx.fillText("THANK YOU!", pow.x - 18, pow.y - 24);
+          }
+          return;
+        }
+
+        // Pickups
+        if ('type' in item && typeof (item as { type: string }).type === 'string') {
+          const pickup = item as { type: string; weapon?: WeaponDef; x: number; y: number };
+          if (pickup.type === "WEAPON" && pickup.weapon) {
+            ctx.fillStyle = "#1e293b";
+            ctx.fillRect(pickup.x - 8, pickup.y - 12, 16, 12);
+            ctx.fillStyle = pickup.weapon.color;
+            ctx.font = "bold 8px monospace";
+            ctx.fillText(pickup.weapon.code, pickup.x - 3, pickup.y - 3);
+            return;
+          } else if (pickup.type === "FOOD") {
+            ctx.fillStyle = "#f43f5e";
+            ctx.fillRect(pickup.x - 6, pickup.y - 10, 12, 10);
+            ctx.fillStyle = "#84cc16";
+            ctx.fillRect(pickup.x - 2, pickup.y - 12, 4, 3);
+            return;
+          } else if (pickup.type === "AMMO") {
+            ctx.fillStyle = "#15803d";
+            ctx.fillRect(pickup.x - 6, pickup.y - 8, 12, 8);
+            ctx.fillStyle = "#fff";
+            ctx.fillText("+", pickup.x - 3, pickup.y - 1);
+            return;
           }
         }
-      });
 
-      // ================= PROJÉTEIS E FOGUETES =================
-      bullets.forEach((b) => {
-        const bx = b.x - state.cameraX;
+        // Jogador (The Shadow)
+        if (item === p) {
+          if (p.isRolling) {
+            ctx.fillStyle = "#c084fc";
+            ctx.beginPath();
+            ctx.arc(p.x + p.w/2, p.y - 9, 9, 0, Math.PI * 2);
+            ctx.fill();
+          } else {
+            ctx.fillStyle = p.color;
+            ctx.fillRect(p.x, p.y - p.h, p.w, p.h);
 
-        if (b.isRocket) {
-          // Desenho do Míssil do Rocket Launcher
-          ctx.fillStyle = '#ef4444';
-          ctx.fillRect(bx - (b.vx > 0 ? 12 : -2), b.y - 4, 14, 8);
-          ctx.fillStyle = '#ffffff';
-          ctx.fillRect(bx - (b.vx > 0 ? 6 : -4), b.y - 2, 4, 4);
+            // Chapéu The Shadow
+            ctx.fillStyle = "#0f172a";
+            ctx.fillRect(p.x - 4, p.y - p.h - 4, p.w + 8, 6);
+
+            // Cano da arma ativa
+            ctx.fillStyle = "#94a3b8";
+            const barrel = p.currentWeapon.barrelLen;
+            const gunX = p.facing === 1 ? p.x + p.w : p.x - barrel;
+            ctx.fillRect(gunX, p.y - p.h * 0.55, barrel, 4);
+
+            if (p.muzzleFlash > 0) {
+              ctx.fillStyle = "#facc15";
+              const fx = p.facing === 1 ? gunX + barrel : gunX - 6;
+              ctx.fillRect(fx, p.y - p.h * 0.55 - 2, 6, 8);
+            }
+
+            if (p.isAttacking) {
+              ctx.fillStyle = "#f8fafc";
+              const fistX = p.facing === 1 ? p.x + p.w : p.x - 10;
+              ctx.fillRect(fistX, p.y - p.h * 0.6, 10, 6);
+            }
+          }
         } else {
-          ctx.fillStyle = b.color;
-          ctx.beginPath();
-          ctx.arc(bx, b.y, b.isPlayer ? 3.5 : 3, 0, Math.PI * 2);
-          ctx.fill();
+          // Inimigo
+          const enemy = item as typeof g.enemies[0];
+          ctx.fillStyle = enemy.hitFlash > 0 ? "#ffffff" : enemy.color;
+          ctx.fillRect(enemy.x, enemy.y - enemy.h, enemy.w, enemy.h);
 
-          ctx.strokeStyle = b.color;
-          ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          ctx.moveTo(bx, b.y);
-          ctx.lineTo(bx - b.vx * 1.5, b.y);
-          ctx.stroke();
+          ctx.fillStyle = "#1f2937";
+          ctx.fillRect(enemy.x - 2, enemy.y - enemy.h - 2, enemy.w + 4, 5);
         }
       });
 
-      // ================= EXPLOSÕES DE FOGO EXPANSIVAS =================
-      explosions.forEach((exp) => {
-        const ex = exp.x - state.cameraX;
-        const progress = 1 - exp.life / 14;
-        const curRadius = exp.radius * progress;
-
-        ctx.fillStyle = exp.life > 7 ? '#fef08a' : '#ef4444';
+      // 5. Explosões
+      g.explosions.forEach(exp => {
+        const progress = 1 - (exp.life / exp.maxLife);
+        ctx.fillStyle = exp.life > 6 ? "#facc15" : "#ef4444";
         ctx.beginPath();
-        ctx.arc(ex, exp.y - 12, curRadius, 0, Math.PI * 2);
+        ctx.arc(exp.x, exp.y, exp.radius * (0.4 + progress * 0.6), 0, Math.PI * 2);
         ctx.fill();
+      });
 
-        ctx.strokeStyle = '#fbbf24';
-        ctx.lineWidth = 3;
+      // 6. Efeito Climático de Chuva
+      if (stage.ambient === "rain") {
+        ctx.strokeStyle = "rgba(148, 163, 184, 0.45)";
         ctx.beginPath();
-        ctx.arc(ex, exp.y - 12, curRadius * 1.2, 0, Math.PI * 2);
+        g.rainDrops.forEach(r => {
+          ctx.moveTo(r.x, r.y);
+          ctx.lineTo(r.x + 1.2, r.y + r.len);
+        });
         ctx.stroke();
-      });
-
-      particles.forEach((pt) => {
-        const px = pt.x - state.cameraX;
-        ctx.fillStyle = pt.color;
-        ctx.globalAlpha = Math.max(0, pt.alpha);
-        ctx.fillRect(px, pt.y, pt.size, pt.size);
-        ctx.globalAlpha = 1;
-      });
-
-      // Scanlines CRT Retrô
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
-      for (let y = 0; y < canvas.height; y += 4) {
-        ctx.fillRect(0, y, canvas.width, 1.5);
       }
 
-      animId = requestAnimationFrame(gameLoop);
+      // HUD Arcade no Canvas
+      ctx.fillStyle = "#0f172a";
+      ctx.fillRect(8, 8, 90, 8);
+      ctx.fillStyle = p.hp > 30 ? "#3b82f6" : "#ef4444";
+      ctx.fillRect(8, 8, Math.max(0, (p.hp / p.maxHp) * 90), 8);
+      ctx.strokeStyle = "#475569";
+      ctx.strokeRect(8, 8, 90, 8);
+
+      ctx.fillStyle = "#fff";
+      ctx.font = "8px monospace";
+      ctx.fillText(`1P LIVES: ${p.lives} | SCORE: ${p.score}`, 8, 24);
+
+      ctx.fillStyle = p.currentWeapon.color;
+      const ammoStr = p.currentWeapon.ammo === Infinity ? "INF" : p.currentWeapon.ammo;
+      ctx.fillText(`[${p.currentWeapon.code}] ${p.currentWeapon.name}: ${ammoStr} | GRENADES [G]: ${p.grenades}`, 8, 34);
+
+      ctx.fillStyle = "#94a3b8";
+      const remaining = Math.max(0, stage.enemiesToClear - g.enemiesDefeated);
+      ctx.fillText(`STAGE ${g.currentStageIndex + 1}/${STAGES.length} - ALVOS: ${remaining}`, canvas.width - 145, 16);
+
+      // Banner "START"
+      if (g.stageBannerTimer > 0) {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+        ctx.fillRect(0, 85, canvas.width, 40);
+        ctx.fillStyle = "#facc15";
+        ctx.font = "bold 10px monospace";
+        ctx.textAlign = "center";
+        ctx.fillText(stage.title, canvas.width / 2, 102);
+        ctx.fillStyle = "#38bdf8";
+        ctx.fillText("MISSION START!", canvas.width / 2, 115);
+        ctx.textAlign = "left";
+      }
+
+      // Sinalizador clássico "GO! ➔"
+      if (g.isAreaCleared && Math.floor(g.goBlinkTimer / 10) % 2 === 0) {
+        ctx.fillStyle = "#facc15";
+        ctx.font = "bold 15px monospace";
+        ctx.fillText("GO! ➔", canvas.width - 65, 145);
+      }
+
+      // Telas de Fim
+      if (g.gameOver) {
+        ctx.fillStyle = "rgba(0,0,0,0.85)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#ef4444";
+        ctx.font = "bold 16px monospace";
+        ctx.textAlign = "center";
+        ctx.fillText("GAME OVER", canvas.width / 2, 110);
+        ctx.fillStyle = "#fff";
+        ctx.font = "9px monospace";
+        ctx.fillText("PRESSIONE REINICIAR ACIMA", canvas.width / 2, 130);
+      } else if (g.gameWon) {
+        ctx.fillStyle = "rgba(0,0,0,0.85)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#facc15";
+        ctx.font = "bold 14px monospace";
+        ctx.textAlign = "center";
+        ctx.fillText("ALL MISSIONS COMPLETED!", canvas.width / 2, 100);
+        ctx.fillStyle = "#38bdf8";
+        ctx.font = "10px monospace";
+        ctx.fillText(`FINAL SCORE: ${p.score}`, canvas.width / 2, 120);
+      }
     };
 
-    animId = requestAnimationFrame(gameLoop);
-    return () => cancelAnimationFrame(animId);
-  }, [isPaused, isGameOver, isVictory, highScore]);
+    const loop = () => {
+      update();
+      draw();
+      animId = requestAnimationFrame(loop);
+    };
 
-  // Controles Virtuais Touch
-  const handleTouchStart = (action: 'left' | 'right' | 'up' | 'down' | 'shoot' | 'melee') => {
-    gameStateRef.current.keys[action] = true;
-  };
+    loop();
 
-  const handleTouchEnd = (action: 'left' | 'right' | 'up' | 'down' | 'shoot' | 'melee') => {
-    gameStateRef.current.keys[action] = false;
-  };
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, [loadStage, highScore]);
 
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        background: '#020617',
-        color: '#f8fafc',
+    <div style={{
+      minHeight: '100vh',
+      background: 'radial-gradient(circle at center, #0f172a 0%, #030712 100%)',
+      color: '#f8fafc',
+      display: 'flex',
+      flexDirection: 'column',
+      fontFamily: "'Courier New', Courier, monospace"
+    }}>
+      {/* Barra Superior de Comando e HUD */}
+      <header style={{
+        padding: '0.75rem 1.25rem',
+        background: 'rgba(15, 23, 42, 0.95)',
+        borderBottom: '2px solid rgba(234, 179, 8, 0.3)',
         display: 'flex',
-        flexDirection: 'column',
-        animation: 'fadeIn 0.2s ease'
-      }}
-    >
-      {/* ================= BARRA SUPERIOR FIXA ================= */}
-      <header
-        style={{
-          background: 'linear-gradient(180deg, rgba(15, 23, 42, 0.98) 0%, rgba(2, 6, 23, 0.98) 100%)',
-          borderBottom: '2px solid #ef4444',
-          padding: '0.85rem 1.25rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '1rem',
-          boxShadow: '0 4px 20px rgba(239, 68, 68, 0.25)'
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: '0.75rem'
+      }}>
+        {/* Voltar e Título */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <button
-            onClick={() => {
-              sound.playClick();
-              onBackToApp();
-            }}
+            onClick={onBackToApp}
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '0.45rem',
-              padding: '0.55rem 1.15rem',
-              borderRadius: '10px',
-              background: 'rgba(255, 255, 255, 0.08)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              color: '#ffffff',
-              fontWeight: 800,
-              fontSize: '0.84rem',
+              gap: '0.5rem',
+              padding: '0.5rem 0.9rem',
+              background: 'rgba(30, 41, 59, 0.9)',
+              border: '1px solid rgba(148, 163, 184, 0.3)',
+              borderRadius: '6px',
+              color: '#38bdf8',
+              fontWeight: 'bold',
+              fontSize: '0.85rem',
               cursor: 'pointer'
             }}
           >
-            <ArrowLeft size={16} />
-            <span>Voltar ao App</span>
+            <ArrowLeft size={16} /> Voltar à Missão PMPE
           </button>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-            <div
-              style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '10px',
-                background: 'linear-gradient(135deg, #dc2626, #b91c1c)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.2rem',
-                boxShadow: '0 0 15px rgba(239, 68, 68, 0.5)'
-              }}
-            >
-              🎖️
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{
+                display: 'inline-block',
+                width: '10px',
+                height: '10px',
+                borderRadius: '50%',
+                background: '#ef4444',
+                boxShadow: '0 0 10px #ef4444'
+              }} />
+              <h1 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 900, color: '#facc15', letterSpacing: '1px' }}>
+                THE SHADOW <span style={{ color: '#ef4444' }}>X</span> METAL SLUG 2
+              </h1>
             </div>
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <h1 style={{ margin: 0, fontSize: '1.15rem', fontWeight: 900, letterSpacing: '0.04em' }}>
-                  MISSÃO METAL SLUG PMPE • ARCADE ACTION
-                </h1>
-                <span
-                  style={{
-                    background: '#eab308',
-                    color: '#020617',
-                    fontSize: '0.68rem',
-                    fontWeight: 900,
-                    padding: '0.15rem 0.5rem',
-                    borderRadius: '4px'
-                  }}
-                >
-                  ESTILO METAL SLUG 2
-                </span>
-              </div>
-              <div style={{ fontSize: '0.76rem', color: '#94a3b8' }}>
-                Arsenal Clássico (HMG, Rocket, Shotgun) • Granadas de Mão • Resgate de Reféns (P.O.W.)
-              </div>
-            </div>
+            <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>
+              Módulo Tático de Descompressão 16-Bit &bull; 0 Questões &bull; 100% Arcade
+            </span>
           </div>
         </div>
 
-        {/* HUD de Status */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-            <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: '0.68rem', color: '#94a3b8', fontWeight: 800 }}>PONTUAÇÃO</div>
-              <div style={{ fontSize: '1.15rem', fontWeight: 900, color: '#fbbf24' }}>
-                {score.toString().padStart(6, '0')}
-              </div>
-            </div>
+        {/* Stats de Batalha */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            background: 'rgba(30, 41, 59, 0.6)',
+            padding: '0.4rem 0.8rem',
+            borderRadius: '6px',
+            border: '1px solid rgba(234, 179, 8, 0.4)'
+          }}>
+            <Trophy size={16} color="#facc15" />
+            <span style={{ fontSize: '0.82rem', color: '#94a3b8' }}>RECORDE:</span>
+            <strong style={{ fontSize: '0.95rem', color: '#facc15' }}>{highScore}</strong>
+          </div>
 
-            <div style={{ textAlign: 'right', borderLeft: '1px solid rgba(255,255,255,0.1)', paddingLeft: '0.8rem' }}>
-              <div style={{ fontSize: '0.68rem', color: '#94a3b8', fontWeight: 800 }}>RECORDE</div>
-              <div style={{ fontSize: '1.15rem', fontWeight: 900, color: '#38bdf8' }}>
-                {highScore.toString().padStart(6, '0')}
-              </div>
-            </div>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            background: 'rgba(30, 41, 59, 0.6)',
+            padding: '0.4rem 0.8rem',
+            borderRadius: '6px',
+            border: '1px solid rgba(56, 189, 248, 0.4)'
+          }}>
+            <Shield size={16} color="#38bdf8" />
+            <span style={{ fontSize: '0.82rem', color: '#94a3b8' }}>MISSÃO:</span>
+            <strong style={{ fontSize: '0.95rem', color: '#38bdf8' }}>{hudStage}/4</strong>
           </div>
 
           <button
-            onClick={() => setIsPaused(prev => !prev)}
+            onClick={resetGame}
             style={{
-              padding: '0.5rem 0.9rem',
-              borderRadius: '10px',
-              background: isPaused ? '#22c55e' : 'rgba(255, 255, 255, 0.08)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              color: '#ffffff',
-              fontWeight: 800,
-              fontSize: '0.82rem',
-              cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.4rem'
+              gap: '0.35rem',
+              padding: '0.45rem 0.8rem',
+              background: 'rgba(239, 68, 68, 0.2)',
+              border: '1px solid #ef4444',
+              borderRadius: '6px',
+              color: '#fca5a5',
+              fontSize: '0.82rem',
+              fontWeight: 'bold',
+              cursor: 'pointer'
             }}
           >
-            {isPaused ? <Play size={15} /> : <Pause size={15} />}
-            <span>{isPaused ? 'Continuar' : 'Pausar (P)'}</span>
+            <RotateCcw size={14} /> Reiniciar
+          </button>
+
+          <button
+            onClick={toggleMute}
+            style={{
+              padding: '0.45rem 0.6rem',
+              background: 'rgba(30, 41, 59, 0.8)',
+              border: '1px solid rgba(148, 163, 184, 0.3)',
+              borderRadius: '6px',
+              color: '#f8fafc',
+              cursor: 'pointer'
+            }}
+            title={isMuted ? "Ativar Áudio" : "Silenciar Áudio"}
+          >
+            {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+          </button>
+
+          <button
+            onClick={() => window.open('./arcade.html', '_blank')}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.35rem',
+              padding: '0.45rem 0.8rem',
+              background: 'rgba(56, 189, 248, 0.15)',
+              border: '1px solid #38bdf8',
+              borderRadius: '6px',
+              color: '#7dd3fc',
+              fontSize: '0.82rem',
+              fontWeight: 'bold',
+              cursor: 'pointer'
+            }}
+            title="Abrir em aba cheia independente"
+          >
+            <ExternalLink size={14} /> Tela Independente
           </button>
         </div>
       </header>
 
-      {/* ================= ÁREA PRINCIPAL DO JOGO ================= */}
-      <main
-        style={{
-          flex: 1,
+      {/* Área Central do Jogo e Gabinete */}
+      <main style={{
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '0.75rem',
+        gap: '0.75rem'
+      }}>
+        {/* Gabinete Retro Arcade */}
+        <div style={{
+          position: 'relative',
+          background: 'linear-gradient(180deg, #1e293b 0%, #030712 100%)',
+          padding: '8px',
+          borderRadius: '10px',
+          border: '4px solid #334155',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.15)',
+          maxWidth: '100%',
+          overflow: 'hidden'
+        }}>
+          <div style={{ position: 'relative', overflow: 'hidden', borderRadius: '4px' }}>
+            <canvas
+              ref={canvasRef}
+              width={384}
+              height={224}
+              style={{
+                display: 'block',
+                width: '100%',
+                maxWidth: '768px',
+                height: 'auto',
+                aspectRatio: '384 / 224',
+                background: '#000',
+                imageRendering: 'pixelated'
+              }}
+            />
+            {/* Scanlines CRT */}
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              pointerEvents: 'none',
+              background: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03))',
+              backgroundSize: '100% 3px, 6px 100%'
+            }} />
+          </div>
+        </div>
+
+        {/* HUD Rápido Integrado */}
+        <div style={{
+          width: '100%',
+          maxWidth: '768px',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+          gap: '0.5rem',
+          fontSize: '0.75rem'
+        }}>
+          <div style={{ background: 'rgba(15, 23, 42, 0.8)', padding: '0.5rem', borderRadius: '6px', border: '1px solid #334155' }}>
+            <span style={{ color: '#94a3b8', display: 'block' }}>VIDA & VIDAS</span>
+            <strong style={{ color: hudHp > 30 ? '#38bdf8' : '#ef4444', fontSize: '0.9rem' }}>
+              HP {hudHp}% &bull; {hudLives}P LIVES
+            </strong>
+          </div>
+
+          <div style={{ background: 'rgba(15, 23, 42, 0.8)', padding: '0.5rem', borderRadius: '6px', border: '1px solid #334155' }}>
+            <span style={{ color: '#94a3b8', display: 'block' }}>PONTUAÇÃO</span>
+            <strong style={{ color: '#facc15', fontSize: '0.9rem' }}>{hudScore} PTS</strong>
+          </div>
+
+          <div style={{ background: 'rgba(15, 23, 42, 0.8)', padding: '0.5rem', borderRadius: '6px', border: '1px solid #334155' }}>
+            <span style={{ color: '#94a3b8', display: 'block' }}>ARMA EM USO</span>
+            <strong style={{ color: '#fbbf24', fontSize: '0.9rem' }}>{hudWeapon} ({hudAmmo})</strong>
+          </div>
+
+          <div style={{ background: 'rgba(15, 23, 42, 0.8)', padding: '0.5rem', borderRadius: '6px', border: '1px solid #334155' }}>
+            <span style={{ color: '#94a3b8', display: 'block' }}>GRANADAS [G]</span>
+            <strong style={{ color: '#4ade80', fontSize: '0.9rem' }}>{hudGrenades} BOMBAS</strong>
+          </div>
+
+          <div style={{ background: 'rgba(15, 23, 42, 0.8)', padding: '0.5rem', borderRadius: '6px', border: '1px solid #334155' }}>
+            <span style={{ color: '#94a3b8', display: 'block' }}>ALVOS RESTANTES</span>
+            <strong style={{ color: '#f87171', fontSize: '0.9rem' }}>{hudTargets} INIMIGOS</strong>
+          </div>
+        </div>
+
+        {/* D-Pad e Controles Virtuais Touch para Celular / Tablet */}
+        <div style={{
+          width: '100%',
+          maxWidth: '768px',
           display: 'flex',
-          flexDirection: 'column',
+          flexWrap: 'wrap',
           alignItems: 'center',
-          justifyContent: 'center',
-          padding: '1rem',
-          maxWidth: '1000px',
-          margin: '0 auto',
-          width: '100%'
-        }}
-      >
-        {/* HUD DO ARSENAL METAL SLUG 2 (VIDA, COLETE, GRANADAS, ARMAS) */}
-        <div
-          style={{
-            width: '100%',
-            maxWidth: '800px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '1rem',
-            marginBottom: '0.65rem',
-            padding: '0.75rem 1.25rem',
-            background: 'rgba(15, 23, 42, 0.95)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            borderRadius: '14px',
-            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.5)'
-          }}
-        >
-          {/* Vida e Colete */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
-            <div>
-              <div style={{ fontSize: '0.72rem', fontWeight: 900, color: '#f87171' }}>
-                ❤️ VIDA: {playerHp}%
-              </div>
-              <div style={{ width: '100px', height: '8px', background: '#334155', borderRadius: '4px', overflow: 'hidden', marginTop: '0.2rem' }}>
-                <div style={{ width: `${playerHp}%`, height: '100%', background: '#ef4444', transition: 'width 0.2s' }} />
-              </div>
-            </div>
-
-            <div>
-              <div style={{ fontSize: '0.72rem', fontWeight: 900, color: '#38bdf8' }}>
-                🛡️ COLETE: {playerArmor}%
-              </div>
-              <div style={{ width: '100px', height: '8px', background: '#334155', borderRadius: '4px', overflow: 'hidden', marginTop: '0.2rem' }}>
-                <div style={{ width: `${playerArmor}%`, height: '100%', background: '#0284c7', transition: 'width 0.2s' }} />
-              </div>
-            </div>
-
-            {/* Granadas de Mão */}
-            <div>
-              <div style={{ fontSize: '0.72rem', fontWeight: 900, color: '#4ade80' }}>
-                💣 BOMBAS [G]
-              </div>
-              <div style={{ fontSize: '0.92rem', fontWeight: 900, color: '#86efac' }}>
-                {grenadesCount}x
-              </div>
-            </div>
-
-            {/* Status da Esquiva Tática */}
-            <div>
-              <div style={{ fontSize: '0.72rem', fontWeight: 900, color: rollReady ? '#c084fc' : '#64748b' }}>
-                🌀 ESQUIVA [C]
-              </div>
-              <div style={{ fontSize: '0.8rem', fontWeight: 900, color: rollReady ? '#a855f7' : '#475569' }}>
-                {rollReady ? 'PRONTA' : 'RECARREGANDO'}
-              </div>
-            </div>
+          justifyContent: 'space-between',
+          gap: '0.5rem',
+          padding: '0.5rem',
+          background: 'rgba(15, 23, 42, 0.6)',
+          borderRadius: '8px',
+          border: '1px solid rgba(148, 163, 184, 0.2)'
+        }}>
+          {/* D-Pad Virtual */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 42px)', gap: '4px' }}>
+            <div />
+            <button
+              onMouseDown={() => setVirtualKey('arrowup', true)}
+              onMouseUp={() => setVirtualKey('arrowup', false)}
+              onTouchStart={(e) => { e.preventDefault(); setVirtualKey('arrowup', true); }}
+              onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('arrowup', false); }}
+              style={{
+                padding: '8px',
+                background: '#1e293b',
+                color: '#fff',
+                border: '1px solid #475569',
+                borderRadius: '6px',
+                fontWeight: 'bold',
+                cursor: 'pointer'
+              }}
+            >
+              ▲
+            </button>
+            <div />
+            <button
+              onMouseDown={() => setVirtualKey('arrowleft', true)}
+              onMouseUp={() => setVirtualKey('arrowleft', false)}
+              onTouchStart={(e) => { e.preventDefault(); setVirtualKey('arrowleft', true); }}
+              onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('arrowleft', false); }}
+              style={{
+                padding: '8px',
+                background: '#1e293b',
+                color: '#fff',
+                border: '1px solid #475569',
+                borderRadius: '6px',
+                fontWeight: 'bold',
+                cursor: 'pointer'
+              }}
+            >
+              ◀
+            </button>
+            <button
+              onMouseDown={() => setVirtualKey('arrowdown', true)}
+              onMouseUp={() => setVirtualKey('arrowdown', false)}
+              onTouchStart={(e) => { e.preventDefault(); setVirtualKey('arrowdown', true); }}
+              onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('arrowdown', false); }}
+              style={{
+                padding: '8px',
+                background: '#1e293b',
+                color: '#fff',
+                border: '1px solid #475569',
+                borderRadius: '6px',
+                fontWeight: 'bold',
+                cursor: 'pointer'
+              }}
+            >
+              ▼
+            </button>
+            <button
+              onMouseDown={() => setVirtualKey('arrowright', true)}
+              onMouseUp={() => setVirtualKey('arrowright', false)}
+              onTouchStart={(e) => { e.preventDefault(); setVirtualKey('arrowright', true); }}
+              onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('arrowright', false); }}
+              style={{
+                padding: '8px',
+                background: '#1e293b',
+                color: '#fff',
+                border: '1px solid #475569',
+                borderRadius: '6px',
+                fontWeight: 'bold',
+                cursor: 'pointer'
+              }}
+            >
+              ▶
+            </button>
           </div>
 
-          {/* Arma Atual & Munição */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
-            <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: '0.72rem', color: '#94a3b8', fontWeight: 800 }}>
-                ARSENAL [H / R / S / Q]
-              </div>
-              <div style={{ fontSize: '0.98rem', fontWeight: 900, color: '#fde047' }}>
-                {currentWeapon === 'PISTOL' && '🔫 HANDGUN (.40 ILIMITADA)'}
-                {currentWeapon === 'HMG' && `⚡ [H] HEAVY MACHINE GUN (${ammoHmg})`}
-                {currentWeapon === 'ROCKET' && `🚀 [R] ROCKET LAUNCHER (${ammoRocket})`}
-                {currentWeapon === 'SHOTGUN' && `💥 [S] SHOTGUN (${ammoShotgun})`}
-              </div>
-            </div>
-
-            <div
+          {/* Botões de Ação Touch */}
+          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+            <button
+              onMouseDown={() => setVirtualKey('x', true)}
+              onMouseUp={() => setVirtualKey('x', false)}
+              onTouchStart={(e) => { e.preventDefault(); setVirtualKey('x', true); }}
+              onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('x', false); }}
               style={{
-                padding: '0.35rem 0.8rem',
-                borderRadius: '8px',
-                background: 'rgba(239, 68, 68, 0.2)',
-                border: '1px solid #ef4444',
-                color: '#fca5a5',
+                padding: '8px 14px',
+                background: 'linear-gradient(135deg, #dc2626, #b91c1c)',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '6px',
+                fontWeight: 900,
                 fontSize: '0.8rem',
-                fontWeight: 900
+                cursor: 'pointer',
+                boxShadow: '0 0 10px rgba(220, 38, 38, 0.4)'
               }}
             >
-              💀 {killsCount} Abates
-            </div>
-          </div>
-        </div>
+              💥 ATIRAR [X]
+            </button>
 
-        {/* CANVAS RETRÔ COM OVERLAY DE GAME OVER / VITÓRIA */}
-        <div
-          style={{
-            position: 'relative',
-            borderRadius: '16px',
-            overflow: 'hidden',
-            border: '3px solid #334155',
-            boxShadow: '0 0 35px rgba(0, 0, 0, 0.9)'
-          }}
-        >
-          <canvas
-            ref={canvasRef}
-            width={800}
-            height={400}
-            style={{
-              display: 'block',
-              background: '#020617',
-              maxWidth: '100%',
-              height: 'auto'
-            }}
-          />
-
-          {/* MODAL DE GAME OVER */}
-          {isGameOver && (
-            <div
-              style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'rgba(0, 0, 0, 0.88)',
-                backdropFilter: 'blur(6px)',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '1rem',
-                padding: '2rem',
-                textAlign: 'center'
-              }}
-            >
-              <div style={{ fontSize: '3.5rem' }}>💀</div>
-              <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#ef4444', margin: 0, letterSpacing: '0.04em' }}>
-                MISSION FAILED!
-              </h2>
-              <p style={{ color: '#cbd5e1', fontSize: '0.95rem', maxWidth: '450px', margin: 0 }}>
-                Os criminosos prevaleceram. O comando militar aguarda seu retorno!
-              </p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 900, color: '#fbbf24' }}>
-                Pontuação Final: {score} pontos
-              </div>
-              <button
-                onClick={() => initGame(1)}
-                style={{
-                  marginTop: '0.5rem',
-                  padding: '0.85rem 1.8rem',
-                  borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #dc2626, #b91c1c)',
-                  color: '#ffffff',
-                  fontWeight: 900,
-                  fontSize: '1rem',
-                  border: 'none',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  boxShadow: '0 4px 20px rgba(220, 38, 38, 0.5)'
-                }}
-              >
-                <RotateCcw size={18} />
-                <span>Tentar Novamente</span>
-              </button>
-            </div>
-          )}
-
-          {/* MODAL DE VITÓRIA / MISSÃO CUMPRIDA */}
-          {isVictory && (
-            <div
-              style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'rgba(2, 6, 23, 0.92)',
-                backdropFilter: 'blur(8px)',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '1rem',
-                padding: '2rem',
-                textAlign: 'center'
-              }}
-            >
-              <div style={{ fontSize: '3.5rem' }}>🎖️</div>
-              <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#4ade80', margin: 0, letterSpacing: '0.04em' }}>
-                MISSION COMPLETE!
-              </h2>
-              <p style={{ color: '#cbd5e1', fontSize: '0.95rem', maxWidth: '450px', margin: 0 }}>
-                Você neutralizou as forças inimigas, resgatou os prisioneiros e concluiu a missão com honra!
-              </p>
-              <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#fbbf24' }}>
-                Pontuação Total: {score} PONTOS!
-              </div>
-              <button
-                onClick={() => initGame(currentLevel + 1)}
-                style={{
-                  marginTop: '0.5rem',
-                  padding: '0.85rem 1.8rem',
-                  borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #15803d, #16a34a)',
-                  color: '#ffffff',
-                  fontWeight: 900,
-                  fontSize: '1rem',
-                  border: 'none',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  boxShadow: '0 4px 20px rgba(34, 197, 94, 0.5)'
-                }}
-              >
-                <Play size={18} />
-                <span>Avançar para Missão {currentLevel + 1}</span>
-              </button>
-            </div>
-          )}
-        </div>
-
-        {/* GUIA DE COMANDOS / CONTROLES VIRTUAIS TÁTEIS */}
-        <div
-          style={{
-            width: '100%',
-            maxWidth: '800px',
-            marginTop: '1rem',
-            padding: '1rem 1.25rem',
-            background: 'rgba(15, 23, 42, 0.9)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            borderRadius: '14px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '0.85rem'
-          }}
-        >
-          {/* Instruções de Teclado */}
-          <div style={{ fontSize: '0.82rem', color: '#cbd5e1', display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }}>
-            <div>
-              <strong style={{ color: '#ffffff' }}>Mover:</strong> Setas / A-D
-            </div>
-            <div>
-              <strong style={{ color: '#ffffff' }}>Pular:</strong> Seta Cima / W
-            </div>
-            <div>
-              <strong style={{ color: '#ffffff' }}>Agachar:</strong> Seta Baixo / S
-            </div>
-            <div>
-              <strong style={{ color: '#c084fc' }}>Esquiva (i-frames):</strong> Tecla C / Shift
-            </div>
-            <div>
-              <strong style={{ color: '#4ade80' }}>Granada:</strong> Tecla G
-            </div>
-            <div>
-              <strong style={{ color: '#fde047' }}>Atirar:</strong> Barra de Espaço / Z
-            </div>
-            <div>
-              <strong style={{ color: '#f87171' }}>Coronhada:</strong> Tecla X
-            </div>
-            <div>
-              <strong style={{ color: '#38bdf8' }}>Arsenal:</strong> [H] Machine Gun | [R] Rocket | [S] Shotgun | [Q] Trocar
-            </div>
-          </div>
-
-          {/* D-Pad Virtual e Botões de Ação para Telas Touch / Mobile */}
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
-            {/* Movimentação */}
             <button
-              onMouseDown={() => handleTouchStart('left')}
-              onMouseUp={() => handleTouchEnd('left')}
-              onTouchStart={() => handleTouchStart('left')}
-              onTouchEnd={() => handleTouchEnd('left')}
+              onMouseDown={() => setVirtualKey('z', true)}
+              onMouseUp={() => setVirtualKey('z', false)}
+              onTouchStart={(e) => { e.preventDefault(); setVirtualKey('z', true); }}
+              onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('z', false); }}
               style={{
-                padding: '0.65rem 0.9rem',
-                borderRadius: '8px',
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                color: '#ffffff',
+                padding: '8px 12px',
+                background: '#d97706',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '6px',
                 fontWeight: 900,
+                fontSize: '0.8rem',
                 cursor: 'pointer'
               }}
             >
-              ◀ Esquerda
+              👊 SOCO [Z]
             </button>
+
             <button
-              onMouseDown={() => handleTouchStart('up')}
-              onMouseUp={() => handleTouchEnd('up')}
-              onTouchStart={() => handleTouchStart('up')}
-              onTouchEnd={() => handleTouchEnd('up')}
+              onMouseDown={() => setVirtualKey('c', true)}
+              onMouseUp={() => setVirtualKey('c', false)}
+              onTouchStart={(e) => { e.preventDefault(); setVirtualKey('c', true); }}
+              onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('c', false); }}
               style={{
-                padding: '0.65rem 0.9rem',
-                borderRadius: '8px',
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                color: '#ffffff',
+                padding: '8px 12px',
+                background: '#9333ea',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '6px',
                 fontWeight: 900,
+                fontSize: '0.8rem',
+                cursor: 'pointer',
+                boxShadow: '0 0 10px rgba(147, 51, 234, 0.4)'
+              }}
+            >
+              🌀 ESQUIVA [C]
+            </button>
+
+            <button
+              onMouseDown={() => setVirtualKey('g', true)}
+              onMouseUp={() => setVirtualKey('g', false)}
+              onTouchStart={(e) => { e.preventDefault(); setVirtualKey('g', true); }}
+              onTouchEnd={(e) => { e.preventDefault(); setVirtualKey('g', false); }}
+              style={{
+                padding: '8px 12px',
+                background: '#16a34a',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '6px',
+                fontWeight: 900,
+                fontSize: '0.8rem',
                 cursor: 'pointer'
               }}
             >
-              ▲ Pular
-            </button>
-            <button
-              onMouseDown={() => handleTouchStart('right')}
-              onMouseUp={() => handleTouchEnd('right')}
-              onTouchStart={() => handleTouchStart('right')}
-              onTouchEnd={() => handleTouchEnd('right')}
-              style={{
-                padding: '0.65rem 0.9rem',
-                borderRadius: '8px',
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                color: '#ffffff',
-                fontWeight: 900,
-                cursor: 'pointer'
-              }}
-            >
-              Direita ▶
+              💣 BOMBA [G]
             </button>
 
-            {/* ESQUIVA TÁTICA (C) */}
-            <button
-              onClick={triggerDodgeRoll}
-              style={{
-                padding: '0.65rem 1rem',
-                borderRadius: '8px',
-                background: rollReady
-                  ? 'linear-gradient(135deg, #7c3aed, #9333ea)'
-                  : 'rgba(100, 116, 139, 0.4)',
-                border: rollReady ? '1.5px solid #c084fc' : '1px solid #475569',
-                color: '#ffffff',
-                fontWeight: 900,
-                cursor: rollReady ? 'pointer' : 'not-allowed',
-                boxShadow: rollReady ? '0 0 15px rgba(147, 51, 234, 0.45)' : 'none'
-              }}
-            >
-              🌀 ESQUIVA (C)
-            </button>
-
-            {/* LANÇAR GRANADA [G] */}
-            <button
-              onClick={triggerGrenade}
-              style={{
-                padding: '0.65rem 1rem',
-                borderRadius: '8px',
-                background: grenadesCount > 0
-                  ? 'linear-gradient(135deg, #15803d, #16a34a)'
-                  : 'rgba(100, 116, 139, 0.4)',
-                border: '1.5px solid #4ade80',
-                color: '#ffffff',
-                fontWeight: 900,
-                cursor: grenadesCount > 0 ? 'pointer' : 'not-allowed'
-              }}
-            >
-              💣 GRANADA ({grenadesCount})
-            </button>
-
-            {/* Coronhada */}
-            <button
-              onMouseDown={() => handleTouchStart('melee')}
-              onMouseUp={() => handleTouchEnd('melee')}
-              onTouchStart={() => handleTouchStart('melee')}
-              onTouchEnd={() => handleTouchEnd('melee')}
-              style={{
-                padding: '0.65rem 0.9rem',
-                borderRadius: '8px',
-                background: 'rgba(239, 68, 68, 0.2)',
-                border: '1px solid #ef4444',
-                color: '#fca5a5',
-                fontWeight: 900,
-                cursor: 'pointer'
-              }}
-            >
-              👊 CORONHADA
-            </button>
-
-            {/* Alternar Arma */}
             <button
               onClick={cycleWeapon}
               style={{
-                padding: '0.65rem 1rem',
-                borderRadius: '8px',
-                background: 'rgba(56, 189, 248, 0.2)',
-                border: '1px solid #38bdf8',
-                color: '#7dd3fc',
+                padding: '8px 12px',
+                background: '#0284c7',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '6px',
                 fontWeight: 900,
+                fontSize: '0.8rem',
                 cursor: 'pointer'
               }}
             >
-              🔄 ARMA ({currentWeapon})
-            </button>
-
-            {/* Disparo */}
-            <button
-              onMouseDown={() => handleTouchStart('shoot')}
-              onMouseUp={() => handleTouchEnd('shoot')}
-              onTouchStart={() => handleTouchStart('shoot')}
-              onTouchEnd={() => handleTouchEnd('shoot')}
-              style={{
-                padding: '0.65rem 1.35rem',
-                borderRadius: '8px',
-                background: 'linear-gradient(135deg, #dc2626, #b91c1c)',
-                border: 'none',
-                color: '#ffffff',
-                fontWeight: 900,
-                cursor: 'pointer',
-                boxShadow: '0 0 15px rgba(220, 38, 38, 0.4)'
-              }}
-            >
-              💥 ATIRAR
+              🔄 ARMA [1-4]
             </button>
           </div>
         </div>
+
+        {/* Legenda de Teclado */}
+        <footer style={{
+          width: '100%',
+          maxWidth: '768px',
+          background: 'rgba(15, 23, 42, 0.8)',
+          border: '1px solid #334155',
+          borderRadius: '8px',
+          padding: '0.65rem 1rem',
+          fontSize: '0.75rem',
+          color: '#cbd5e1'
+        }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+            gap: '0.5rem',
+            textAlign: 'center'
+          }}>
+            <div><strong style={{ color: '#facc15' }}>Mover:</strong> Setas / WASD</div>
+            <div><strong style={{ color: '#ef4444' }}>Ataque:</strong> [Z] Soco &bull; [X / Espaço] Fogo</div>
+            <div><strong style={{ color: '#c084fc' }}>Tática:</strong> [C] Esquiva &bull; [G] Granada</div>
+            <div><strong style={{ color: '#38bdf8' }}>Arsenal:</strong> [1] HG &bull; [2] HMG &bull; [3] Rocket &bull; [4] Shotgun</div>
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '0.35rem', color: '#94a3b8', fontSize: '0.7rem' }}>
+            Destrua barris e caixas para itens &bull; Resgate prisioneiros amarrados &bull; Quando surgir <strong style={{ color: '#facc15' }}>GO! ➔</strong>, avance para a direita!
+          </div>
+        </footer>
       </main>
     </div>
   );
