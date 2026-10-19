@@ -6,7 +6,10 @@ import {
   ExternalLink,
   Volume2,
   VolumeX,
-  Trophy
+  Trophy,
+  Maximize2,
+  Minimize2,
+  Tv
 } from 'lucide-react';
 import { sound } from '../utils/sound';
 
@@ -356,6 +359,8 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
   const [hudStage, setHudStage] = useState(1);
   const [hudTargets, setHudTargets] = useState(7);
   const [isMuted, setIsMuted] = useState(() => sound.getIsMuted());
+  const [isExpanded, setIsExpanded] = useState(true);
+  const [crtEnabled, setCrtEnabled] = useState(false);
 
   // Referência interna mutável de 60fps
   const gameRef = useRef({
@@ -1149,21 +1154,153 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
       ].sort((a, b) => a.y - b.y);
 
       renderList.forEach(item => {
-        // Sombra
+        // Sombra dos elementos na pista
         ctx.fillStyle = "rgba(0,0,0,0.4)";
         ctx.beginPath();
         const baseW = ('w' in item && typeof item.w === 'number') ? item.w : 16;
-        ctx.ellipse(item.x + baseW/2, item.y, baseW * 0.7, 4, 0, 0, Math.PI * 2);
+        ctx.ellipse(item.x + baseW / 2, item.y, baseW * 0.7, 4, 0, 0, Math.PI * 2);
         ctx.fill();
 
-        // Props Destrutíveis
-        if ('maxHp' in item && typeof item.maxHp === 'number') {
+        // ==========================================
+        // 1. JOGADOR PRINCIPAL (POLICIAL MILITAR / COMMANDO)
+        // ==========================================
+        if (item === p) {
+          if (p.isRolling) {
+            // Efeito visual de Rolamento Tático
+            ctx.fillStyle = "#9333ea";
+            ctx.beginPath();
+            ctx.arc(p.x + p.w / 2, p.y - 10, 10, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = "#c084fc";
+            ctx.beginPath();
+            ctx.arc(p.x + p.w / 2, p.y - 10, 6, 0, Math.PI * 2);
+            ctx.fill();
+            // Rastro de velocidade
+            ctx.fillStyle = "rgba(192, 132, 252, 0.45)";
+            ctx.beginPath();
+            ctx.arc(p.x + p.w / 2 - p.facing * 8, p.y - 10, 8, 0, Math.PI * 2);
+            ctx.fill();
+            return;
+          }
+
+          // Calça Farda PMPE (Azul Escuro Operacional & Coturnos)
+          ctx.fillStyle = "#1e3a8a";
+          ctx.fillRect(p.x + 2, p.y - 14, 6, 14);
+          ctx.fillRect(p.x + 10, p.y - 14, 6, 14);
+          // Coturnos pretos
+          ctx.fillStyle = "#020617";
+          ctx.fillRect(p.x + (p.facing === 1 ? 2 : 0), p.y - 4, 7, 4);
+          ctx.fillRect(p.x + (p.facing === 1 ? 10 : 8), p.y - 4, 7, 4);
+
+          // Cinto de Guarnição & Coldre
+          ctx.fillStyle = "#0f172a";
+          ctx.fillRect(p.x + 1, p.y - 17, 16, 4);
+          ctx.fillStyle = "#facc15"; // Fivela dourada
+          ctx.fillRect(p.x + 7, p.y - 16, 4, 2);
+
+          // Tronco / Colete Balístico Tático Operacional
+          ctx.fillStyle = "#1e40af"; // Camisa interna
+          ctx.fillRect(p.x + 2, p.y - p.h + 10, 14, 15);
+          ctx.fillStyle = "#0f172a"; // Colete balístico
+          ctx.fillRect(p.x + 3, p.y - p.h + 10, 12, 12);
+          // Brasão PMPE dourado no peito
+          ctx.fillStyle = "#facc15";
+          ctx.fillRect(p.x + 5, p.y - p.h + 13, 3, 4);
+
+          // Cabeça e Rosto
+          ctx.fillStyle = "#fed7aa"; // Pele
+          ctx.fillRect(p.x + 4, p.y - p.h + 2, 10, 9);
+          // Óculos escuros táticos
+          ctx.fillStyle = "#020617";
+          ctx.fillRect(p.x + (p.facing === 1 ? 6 : 4), p.y - p.h + 4, 6, 3);
+          // Boina / Boné Operacional PMPE
+          ctx.fillStyle = "#1d4ed8";
+          ctx.fillRect(p.x + 2, p.y - p.h - 3, 14, 6);
+          ctx.fillStyle = "#facc15"; // Divisa / Brasão na boina
+          ctx.fillRect(p.x + (p.facing === 1 ? 10 : 4), p.y - p.h - 2, 3, 3);
+
+          // Braço e Arma
+          const gunBarrel = p.currentWeapon.barrelLen;
+          const gunColor = p.currentWeapon.color;
+          const gunX = p.facing === 1 ? p.x + p.w - 2 : p.x - gunBarrel + 2;
+          const gunY = p.y - p.h * 0.52;
+
+          // Desenho da Arma
+          ctx.fillStyle = "#475569";
+          ctx.fillRect(gunX, gunY, gunBarrel, 5);
+          ctx.fillStyle = gunColor;
+          ctx.fillRect(gunX + (p.facing === 1 ? gunBarrel - 4 : 0), gunY - 1, 4, 7);
+
+          // Efeito de Disparo (Muzzle Flash)
+          if (p.muzzleFlash > 0) {
+            ctx.fillStyle = "#fef08a";
+            const fx = p.facing === 1 ? gunX + gunBarrel : gunX - 8;
+            ctx.fillRect(fx, gunY - 3, 8, 10);
+            ctx.fillStyle = "#f97316";
+            ctx.fillRect(fx + 2, gunY - 1, 4, 6);
+          }
+
+          // Ataque Corpo a Corpo (Soco)
+          if (p.isAttacking) {
+            ctx.fillStyle = "#f8fafc";
+            const fistX = p.facing === 1 ? p.x + p.w : p.x - 12;
+            ctx.fillRect(fistX, p.y - p.h * 0.6, 12, 8);
+            ctx.fillStyle = "rgba(56, 189, 248, 0.6)";
+            ctx.fillRect(fistX + (p.facing === 1 ? 6 : -4), p.y - p.h * 0.6 - 2, 8, 12);
+          }
+          return;
+        }
+
+        // ==========================================
+        // 2. INIMIGO (SOLDADO REBELDE / TERRORISTA)
+        // ==========================================
+        if ('facing' in item && 'shootCooldown' in item) {
+          const enemy = item as GameEnemy;
+          const eColor = enemy.hitFlash > 0 ? "#ffffff" : enemy.color;
+
+          // Pernas / Calça de combate
+          ctx.fillStyle = enemy.hitFlash > 0 ? "#ffffff" : "#374151";
+          ctx.fillRect(enemy.x + 2, enemy.y - 12, 5, 12);
+          ctx.fillRect(enemy.x + 9, enemy.y - 12, 5, 12);
+
+          // Tronco / Uniforme Militar Inimigo
+          ctx.fillStyle = eColor;
+          ctx.fillRect(enemy.x + 2, enemy.y - enemy.h + 10, 14, 15);
+          ctx.fillStyle = enemy.hitFlash > 0 ? "#ffffff" : "#1f2937"; // Colete
+          ctx.fillRect(enemy.x + 4, enemy.y - enemy.h + 11, 10, 10);
+
+          // Cabeça e Capacete de Combate
+          ctx.fillStyle = enemy.hitFlash > 0 ? "#ffffff" : "#fed7aa"; // Pele
+          ctx.fillRect(enemy.x + 4, enemy.y - enemy.h + 2, 9, 8);
+          ctx.fillStyle = enemy.hitFlash > 0 ? "#ffffff" : "#451a03"; // Capacete / Bandana
+          ctx.fillRect(enemy.x + 2, enemy.y - enemy.h - 2, 13, 6);
+
+          // Arma do Inimigo
+          ctx.fillStyle = "#0f172a";
+          const eGunX = enemy.facing === 1 ? enemy.x + enemy.w - 2 : enemy.x - 8;
+          ctx.fillRect(eGunX, enemy.y - enemy.h * 0.5, 9, 3);
+
+          // Barra de Vida Mini sobre a cabeça se atingido
+          if (enemy.hp < enemy.maxHp) {
+            ctx.fillStyle = "#ef4444";
+            ctx.fillRect(enemy.x - 2, enemy.y - enemy.h - 8, enemy.w + 4, 3);
+            ctx.fillStyle = "#22c55e";
+            ctx.fillRect(enemy.x - 2, enemy.y - enemy.h - 8, (enemy.w + 4) * (enemy.hp / enemy.maxHp), 3);
+          }
+          return;
+        }
+
+        // ==========================================
+        // 3. PROPS DESTRUTÍVEIS (CAIXAS, BARRIS, GERADORES)
+        // ==========================================
+        if ('maxHp' in item && 'type' in item && typeof (item as any).type === 'string') {
           const prop = item as StageProp;
           if (prop.type === "fuel_barrel") {
             ctx.fillStyle = "#dc2626";
             ctx.fillRect(prop.x - 8, prop.y - 18, 16, 18);
             ctx.fillStyle = "#fef08a";
-            ctx.fillText("!", prop.x - 2, prop.y - 6);
+            ctx.font = "bold 10px monospace";
+            ctx.fillText("!", prop.x - 3, prop.y - 5);
           } else if (prop.type === "wood_barrel") {
             ctx.fillStyle = "#92400e";
             ctx.fillRect(prop.x - 7, prop.y - 16, 14, 16);
@@ -1189,15 +1326,17 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
           return;
         }
 
-        // P.O.W.
+        // ==========================================
+        // 4. P.O.W. (PRISIONEIROS DE GUERRA AMARRADOS)
+        // ==========================================
         if ('reward' in item) {
           const pow = item as { x: number; y: number; freed: boolean; reward: string };
           if (!pow.freed) {
-            ctx.fillStyle = "#facc15";
+            ctx.fillStyle = "#facc15"; // Bermuda amarela clássica
             ctx.fillRect(pow.x - 4, pow.y - 12, 8, 12);
-            ctx.fillStyle = "#fed7aa";
+            ctx.fillStyle = "#fed7aa"; // Tronco
             ctx.fillRect(pow.x - 3, pow.y - 20, 6, 8);
-            ctx.fillStyle = "#78350f";
+            ctx.fillStyle = "#78350f"; // Cabelos longos e barba
             ctx.fillRect(pow.x - 5, pow.y - 26, 10, 6);
           } else {
             ctx.fillStyle = "#facc15";
@@ -1209,7 +1348,9 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
           return;
         }
 
-        // Pickups
+        // ==========================================
+        // 5. ITENS COLETÁVEIS (ARMAS, COMIDA, MUNIÇÃO)
+        // ==========================================
         if ('type' in item && typeof (item as { type: string }).type === 'string') {
           const pickup = item as { type: string; weapon?: WeaponDef; x: number; y: number };
           if (pickup.type === "WEAPON" && pickup.weapon) {
@@ -1232,49 +1373,6 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
             ctx.fillText("+", pickup.x - 3, pickup.y - 1);
             return;
           }
-        }
-
-        // Jogador (The Shadow)
-        if (item === p) {
-          if (p.isRolling) {
-            ctx.fillStyle = "#c084fc";
-            ctx.beginPath();
-            ctx.arc(p.x + p.w/2, p.y - 9, 9, 0, Math.PI * 2);
-            ctx.fill();
-          } else {
-            ctx.fillStyle = p.color;
-            ctx.fillRect(p.x, p.y - p.h, p.w, p.h);
-
-            // Chapéu The Shadow
-            ctx.fillStyle = "#0f172a";
-            ctx.fillRect(p.x - 4, p.y - p.h - 4, p.w + 8, 6);
-
-            // Cano da arma ativa
-            ctx.fillStyle = "#94a3b8";
-            const barrel = p.currentWeapon.barrelLen;
-            const gunX = p.facing === 1 ? p.x + p.w : p.x - barrel;
-            ctx.fillRect(gunX, p.y - p.h * 0.55, barrel, 4);
-
-            if (p.muzzleFlash > 0) {
-              ctx.fillStyle = "#facc15";
-              const fx = p.facing === 1 ? gunX + barrel : gunX - 6;
-              ctx.fillRect(fx, p.y - p.h * 0.55 - 2, 6, 8);
-            }
-
-            if (p.isAttacking) {
-              ctx.fillStyle = "#f8fafc";
-              const fistX = p.facing === 1 ? p.x + p.w : p.x - 10;
-              ctx.fillRect(fistX, p.y - p.h * 0.6, 10, 6);
-            }
-          }
-        } else {
-          // Inimigo
-          const enemy = item as typeof g.enemies[0];
-          ctx.fillStyle = enemy.hitFlash > 0 ? "#ffffff" : enemy.color;
-          ctx.fillRect(enemy.x, enemy.y - enemy.h, enemy.w, enemy.h);
-
-          ctx.fillStyle = "#1f2937";
-          ctx.fillRect(enemy.x - 2, enemy.y - enemy.h - 2, enemy.w + 4, 5);
         }
       });
 
@@ -1503,6 +1601,48 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
           </button>
 
           <button
+            onClick={() => setIsExpanded(prev => !prev)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.35rem',
+              padding: '0.45rem 0.8rem',
+              background: isExpanded ? 'rgba(59, 130, 246, 0.3)' : 'rgba(30, 41, 59, 0.8)',
+              border: isExpanded ? '1px solid #3b82f6' : '1px solid rgba(148, 163, 184, 0.3)',
+              borderRadius: '6px',
+              color: isExpanded ? '#60a5fa' : '#cbd5e1',
+              fontSize: '0.82rem',
+              fontWeight: 'bold',
+              cursor: 'pointer'
+            }}
+            title={isExpanded ? "Tamanho Normal" : "Expandir Tela para Máximo Conforto"}
+          >
+            {isExpanded ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
+            <span>{isExpanded ? "Normal" : "Expandir Tela"}</span>
+          </button>
+
+          <button
+            onClick={() => setCrtEnabled(prev => !prev)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.35rem',
+              padding: '0.45rem 0.8rem',
+              background: crtEnabled ? 'rgba(234, 179, 8, 0.25)' : 'rgba(30, 41, 59, 0.8)',
+              border: crtEnabled ? '1px solid #facc15' : '1px solid rgba(148, 163, 184, 0.3)',
+              borderRadius: '6px',
+              color: crtEnabled ? '#fef08a' : '#94a3b8',
+              fontSize: '0.82rem',
+              fontWeight: 'bold',
+              cursor: 'pointer'
+            }}
+            title="Ligar ou desligar efeito retrô de TV (Linhas CRT)"
+          >
+            <Tv size={14} />
+            <span>CRT {crtEnabled ? "ON" : "OFF"}</span>
+          </button>
+
+          <button
             onClick={() => window.open('./arcade.html', '_blank')}
             style={{
               display: 'flex',
@@ -1534,18 +1674,20 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
         padding: '0.75rem',
         gap: '0.75rem'
       }}>
-        {/* Gabinete Retro Arcade */}
+        {/* Gabinete Retro Arcade (Tela Ampla & Confortável) */}
         <div style={{
           position: 'relative',
+          width: '100%',
+          maxWidth: isExpanded ? '1120px' : '880px',
           background: 'linear-gradient(180deg, #1e293b 0%, #030712 100%)',
           padding: '8px',
-          borderRadius: '10px',
+          borderRadius: '12px',
           border: '4px solid #334155',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.15)',
-          maxWidth: '100%',
-          overflow: 'hidden'
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 35px rgba(56, 189, 248, 0.2)',
+          overflow: 'hidden',
+          transition: 'max-width 0.25s ease'
         }}>
-          <div style={{ position: 'relative', overflow: 'hidden', borderRadius: '4px' }}>
+          <div style={{ position: 'relative', overflow: 'hidden', borderRadius: '6px' }}>
             <canvas
               ref={canvasRef}
               width={384}
@@ -1553,32 +1695,34 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
               style={{
                 display: 'block',
                 width: '100%',
-                maxWidth: '768px',
                 height: 'auto',
                 aspectRatio: '384 / 224',
                 background: '#000',
                 imageRendering: 'pixelated'
               }}
             />
-            {/* Scanlines CRT */}
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              pointerEvents: 'none',
-              background: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03))',
-              backgroundSize: '100% 3px, 6px 100%'
-            }} />
+            {/* Scanlines CRT (Apenas quando crtEnabled for true) */}
+            {crtEnabled && (
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                pointerEvents: 'none',
+                background: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.16) 50%)',
+                backgroundSize: '100% 4px'
+              }} />
+            )}
           </div>
         </div>
 
         {/* HUD Rápido Integrado */}
         <div style={{
           width: '100%',
-          maxWidth: '768px',
+          maxWidth: isExpanded ? '1120px' : '880px',
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
           gap: '0.5rem',
-          fontSize: '0.75rem'
+          fontSize: '0.75rem',
+          transition: 'max-width 0.25s ease'
         }}>
           <div style={{ background: 'rgba(15, 23, 42, 0.8)', padding: '0.5rem', borderRadius: '6px', border: '1px solid #334155' }}>
             <span style={{ color: '#94a3b8', display: 'block' }}>VIDA & VIDAS</span>
@@ -1611,7 +1755,7 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
         {/* D-Pad e Controles Virtuais Touch para Celular / Tablet */}
         <div style={{
           width: '100%',
-          maxWidth: '768px',
+          maxWidth: isExpanded ? '1120px' : '880px',
           display: 'flex',
           flexWrap: 'wrap',
           alignItems: 'center',
@@ -1620,7 +1764,8 @@ export const SnesPoliceActionGame: React.FC<SnesPoliceActionGameProps> = ({ onBa
           padding: '0.5rem',
           background: 'rgba(15, 23, 42, 0.6)',
           borderRadius: '8px',
-          border: '1px solid rgba(148, 163, 184, 0.2)'
+          border: '1px solid rgba(148, 163, 184, 0.2)',
+          transition: 'max-width 0.25s ease'
         }}>
           {/* D-Pad Virtual */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 42px)', gap: '4px' }}>

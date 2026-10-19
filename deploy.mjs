@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'feat: otimizacao mobile do Vade Mecum e Leis Secas com chips horizontais, busca e gaveta tatica';
+  const commitMsg = 'fix: corrige renderizacao dos bonecos (jogador e inimigos) e amplia tela do arcade retro';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;
