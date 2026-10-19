@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'feat: Metal Slug 2 x The Shadow - 4 estágios, arsenal clássico, locutor arcade e P.O.W.';
+  const commitMsg = 'feat: otimizacao mobile do Vade Mecum e Leis Secas com chips horizontais, busca e gaveta tatica';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;
