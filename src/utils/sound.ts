@@ -555,6 +555,70 @@ class SoundController {
     osc.start(t);
     osc.stop(t + 0.035);
   }
+
+  // Som rápido de rolamento / esquiva tática (whoosh + atrito no asfalto)
+  public playRoll() {
+    if (this.isMuted) return;
+    this.initContext();
+    if (!this.ctx) return;
+
+    const t = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(200, t);
+    osc.frequency.exponentialRampToValueAtTime(60, t + 0.16);
+
+    gain.gain.setValueAtTime(0.25, t);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.16);
+
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start(t);
+    osc.stop(t + 0.17);
+
+    // Ruído suave de atrito no chão
+    const noiseBuffer = this.createNoiseBuffer(0.14);
+    if (noiseBuffer) {
+      const noise = this.ctx.createBufferSource();
+      noise.buffer = noiseBuffer;
+      const filter = this.ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(450, t);
+      const noiseGain = this.ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.2, t);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, t + 0.14);
+      noise.connect(filter);
+      filter.connect(noiseGain);
+      noiseGain.connect(this.ctx.destination);
+      noise.start(t);
+      noise.stop(t + 0.15);
+    }
+  }
+
+  // Som de coleta de munição / item tático no chão
+  public playPickup() {
+    if (this.isMuted) return;
+    this.initContext();
+    if (!this.ctx) return;
+
+    const t = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(350, t);
+    osc.frequency.setValueAtTime(720, t + 0.06);
+
+    gain.gain.setValueAtTime(0.22, t);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.18);
+
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start(t);
+    osc.stop(t + 0.19);
+  }
 }
 
 export const sound = new SoundController();

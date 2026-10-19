@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'refactor: organiza o Header com Menu Tático suspenso e cabeçalho da Central Operacional';
+  const commitMsg = 'feat: Rolamento de Esquiva Tático (Dodge Roll com i-frames), drops de munição e áudio procedural';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;
