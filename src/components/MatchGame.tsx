@@ -25,7 +25,7 @@ export const MATCH_LEVELS: MatchLevelConfig[] = [
     badge: '🔰',
     pairCount: 4,
     xpReward: 80,
-    color: '#22c55e',
+    color: '#a1a1aa',
     description: 'Fundamentos e fatos basilares de PE e Direito'
   },
   {
@@ -36,7 +36,7 @@ export const MATCH_LEVELS: MatchLevelConfig[] = [
     badge: '🎖️',
     pairCount: 4,
     xpReward: 120,
-    color: '#38bdf8',
+    color: '#cbd5e1',
     description: 'Noções essenciais do edital e leis fundamentais'
   },
   {
@@ -47,7 +47,7 @@ export const MATCH_LEVELS: MatchLevelConfig[] = [
     badge: '⚔️',
     pairCount: 5,
     xpReward: 150,
-    color: '#06b6d4',
+    color: '#c59b27',
     description: 'Prazos operacionais e artigos de rotina militar'
   },
   {
@@ -58,7 +58,7 @@ export const MATCH_LEVELS: MatchLevelConfig[] = [
     badge: '🛡️',
     pairCount: 5,
     xpReward: 180,
-    color: '#eab308',
+    color: '#d4af37',
     description: 'Prazos legais, regras de RLM e exceções constitucionais'
   },
   {
@@ -69,7 +69,7 @@ export const MATCH_LEVELS: MatchLevelConfig[] = [
     badge: '⭐',
     pairCount: 5,
     xpReward: 220,
-    color: '#f97316',
+    color: '#e5c158',
     description: 'Doutrina militar aprofundada e enunciados densos'
   },
   {
@@ -80,7 +80,7 @@ export const MATCH_LEVELS: MatchLevelConfig[] = [
     badge: '🌟',
     pairCount: 6,
     xpReward: 280,
-    color: '#ef4444',
+    color: '#f59e0b',
     description: 'Jurisprudência e normas específicas da corporação'
   },
   {
@@ -88,10 +88,10 @@ export const MATCH_LEVELS: MatchLevelConfig[] = [
     key: 'dificilimo',
     title: 'Muito Difícil',
     rank: 'Tenente Oficial',
-    badge: '👑',
+    badge: '⚡',
     pairCount: 6,
     xpReward: 350,
-    color: '#c084fc',
+    color: '#dc2626',
     description: 'Alto rigor técnico de detalhes e pegadinhas AOCP'
   },
   {
@@ -102,7 +102,7 @@ export const MATCH_LEVELS: MatchLevelConfig[] = [
     badge: '💀',
     pairCount: 7,
     xpReward: 450,
-    color: '#f43f5e',
+    color: '#b91c1c',
     description: 'Nível máximo de corte e domínio absoluto do edital'
   }
 ];

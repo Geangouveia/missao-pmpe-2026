@@ -103,9 +103,9 @@ export const FlashcardGame: React.FC<FlashcardGameProps> = ({ cards, onFinish, o
             letterSpacing: '0.08em',
             padding: '0.25rem 0.75rem',
             borderRadius: '20px',
-            background: 'rgba(6, 182, 212, 0.15)',
-            border: '1px solid var(--border-cyan)',
-            color: 'var(--neon-cyan)'
+            background: 'rgba(212, 175, 55, 0.15)',
+            border: '1px solid rgba(212, 175, 55, 0.35)',
+            color: '#d4af37'
           }}
         >
           {currentCard.categoryName}
@@ -138,14 +138,14 @@ export const FlashcardGame: React.FC<FlashcardGameProps> = ({ cards, onFinish, o
           {/* Verso do Card */}
           <div className="flashcard-face flashcard-back">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '0.8rem', color: 'var(--neon-cyan)', fontWeight: 700 }}>
+              <span style={{ fontSize: '0.8rem', color: '#d4af37', fontWeight: 700 }}>
                 VERSO • DEFINIÇÃO & RESPOSTA
               </span>
-              <Sparkles size={18} color="var(--neon-cyan)" />
+              <Sparkles size={18} color="#d4af37" />
             </div>
 
             <div style={{ padding: '1.5rem 0' }}>
-              <p style={{ fontSize: '1.2rem', color: '#e0f2fe', lineHeight: 1.6, whiteSpace: 'pre-line' }}>
+              <p style={{ fontSize: '1.2rem', color: '#ffffff', lineHeight: 1.6, whiteSpace: 'pre-line' }}>
                 {currentCard.back}
               </p>
             </div>
@@ -170,9 +170,9 @@ export const FlashcardGame: React.FC<FlashcardGameProps> = ({ cards, onFinish, o
               onClick={() => handleRate('hard')}
               className="btn-secondary"
               style={{
-                borderColor: 'rgba(239, 68, 68, 0.4)',
+                borderColor: 'rgba(220, 38, 38, 0.45)',
                 color: '#fca5a5',
-                background: 'rgba(239, 68, 68, 0.1)'
+                background: 'rgba(220, 38, 38, 0.15)'
               }}
             >
               <span>Difícil (1)</span>
@@ -182,9 +182,9 @@ export const FlashcardGame: React.FC<FlashcardGameProps> = ({ cards, onFinish, o
               onClick={() => handleRate('medium')}
               className="btn-secondary"
               style={{
-                borderColor: 'rgba(245, 158, 11, 0.4)',
-                color: '#fde68a',
-                background: 'rgba(245, 158, 11, 0.1)'
+                borderColor: 'rgba(212, 175, 55, 0.4)',
+                color: '#fef08a',
+                background: 'rgba(212, 175, 55, 0.1)'
               }}
             >
               <span>Médio (2)</span>
@@ -194,8 +194,10 @@ export const FlashcardGame: React.FC<FlashcardGameProps> = ({ cards, onFinish, o
               onClick={() => handleRate('easy')}
               className="btn-primary"
               style={{
-                background: 'linear-gradient(135deg, #10b981, #059669)',
-                boxShadow: '0 6px 20px rgba(16, 185, 129, 0.4)'
+                background: 'linear-gradient(135deg, #b8860b, #d4af37)',
+                color: '#07080a',
+                fontWeight: 900,
+                boxShadow: '0 6px 20px rgba(212, 175, 55, 0.4)'
               }}
             >
               <Check size={18} />

@@ -50,7 +50,7 @@ const SECTORS: MazeSectorConfig[] = [
     code: 'SETOR ALPHA-01 • MUITO FÁCIL',
     theme: 'Perímetro Externo',
     banditName: 'Sentinela Armado',
-    ambientColor: '#22c55e',
+    ambientColor: '#a1a1aa',
     description: 'Incursão inicial no perímetro. Neutralize a sentinela armada para abrir o portão tático.'
   },
   {
@@ -59,7 +59,7 @@ const SECTORS: MazeSectorConfig[] = [
     code: 'SETOR BRAVO-02 • FÁCIL',
     theme: 'Complexo Logístico',
     banditName: 'Guarda do Depósito',
-    ambientColor: '#38bdf8',
+    ambientColor: '#cbd5e1',
     description: 'Labirinto entre contêineres e máquinas industriais. Cuidado com disparos nos ângulos mortos.'
   },
   {
@@ -68,7 +68,7 @@ const SECTORS: MazeSectorConfig[] = [
     code: 'SETOR CHARLIE-03 • MEIO MÉDIO',
     theme: 'Pátio Central',
     banditName: 'Vigia Noturno',
-    ambientColor: '#06b6d4',
+    ambientColor: '#c59b27',
     description: 'Área aberta com visibilidade restrita. Avance com cuidado e mantenha cobertura.'
   },
   {
@@ -77,7 +77,7 @@ const SECTORS: MazeSectorConfig[] = [
     code: 'SETOR DELTA-04 • MÉDIO',
     theme: 'Subsolo Tático',
     banditName: 'Tirador do Tráfico',
-    ambientColor: '#eab308',
+    ambientColor: '#d4af37',
     description: 'Visibilidade reduzida e eco de disparos. Avance com lanterna e escudo tático em prontidão.'
   },
   {
@@ -86,7 +86,7 @@ const SECTORS: MazeSectorConfig[] = [
     code: 'SETOR ECHO-05 • MEIO DIFÍCIL',
     theme: 'Sala de Máquinas',
     banditName: 'Especialista em Armas Pesadas',
-    ambientColor: '#f97316',
+    ambientColor: '#e5c158',
     description: 'Tubulações de vapor e barulho de geradores. O inimigo atira com precisão.'
   },
   {
@@ -95,7 +95,7 @@ const SECTORS: MazeSectorConfig[] = [
     code: 'SETOR FOXTROT-06 • DIFÍCIL',
     theme: 'Ala de Segurança Máxima',
     banditName: 'Guarda-Costas do Chefe',
-    ambientColor: '#ef4444',
+    ambientColor: '#f59e0b',
     description: 'Portas reforçadas e câmeras. Alta resistência e respostas rápidas exigidas.'
   },
   {
@@ -104,7 +104,7 @@ const SECTORS: MazeSectorConfig[] = [
     code: 'SETOR GOLF-07 • MUITO DIFÍCIL',
     theme: 'Centro Tático Inimigo',
     banditName: 'Subcomandante da Facção',
-    ambientColor: '#c084fc',
+    ambientColor: '#dc2626',
     description: 'Sala de monitoramento e rádio. Inimigos bem treinados e tempo reduzido.'
   },
   {
@@ -113,7 +113,7 @@ const SECTORS: MazeSectorConfig[] = [
     code: 'SETOR HOTEL-08 • DIFÍCIL AO EXTREMO',
     theme: 'QG Fortificado',
     banditName: 'Líder da Facção Criminosa',
-    ambientColor: '#f43f5e',
+    ambientColor: '#b91c1c',
     description: 'A incursão final. Neutralize o comandante supremo para retomar o controle absoluto do labirinto.'
   }
 ];
