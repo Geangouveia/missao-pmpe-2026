@@ -40,6 +40,11 @@ import { InvestorPitchView } from './components/InvestorPitchView';
 import { LogicalReasoningGuideView } from './components/LogicalReasoningGuideView';
 import { RedacaoPmpeModal } from './components/RedacaoPmpeModal';
 import { ProficiencyRadarModal } from './components/ProficiencyRadarModal';
+import { TafSimulatorModal } from './components/TafSimulatorModal';
+import { AocpPegadinhasModal } from './components/AocpPegadinhasModal';
+import { MilitaryCertificateModal } from './components/MilitaryCertificateModal';
+import { RetaFinalModal } from './components/RetaFinalModal';
+import { TacticalPodcastModal } from './components/TacticalPodcastModal';
 import { getDailyMotivationalQuote, type MotivationalQuote } from './utils/motivationalQuotes';
 import { recordStudentLogin, recordQuizCompletion } from './utils/studentAnalytics';
 import { fetchRegistryFromCloud, isMasterUser, checkActiveSessionValidity } from './utils/authManager';
@@ -189,6 +194,11 @@ export function App() {
   const [isRlmGuideOpen, setIsRlmGuideOpen] = useState(false);
   const [isRedacaoOpen, setIsRedacaoOpen] = useState(false);
   const [isRadarOpen, setIsRadarOpen] = useState(false);
+  const [isTafOpen, setIsTafOpen] = useState(false);
+  const [isPegadinhasOpen, setIsPegadinhasOpen] = useState(false);
+  const [isCertificateOpen, setIsCertificateOpen] = useState(false);
+  const [isRetaFinalOpen, setIsRetaFinalOpen] = useState(false);
+  const [isPodcastOpen, setIsPodcastOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [pendingMistakesCount, setPendingMistakesCount] = useState<number>(0);
   const [isRondaNoturna, setIsRondaNoturna] = useState<boolean>(() => isRondaNoturnaActive());
@@ -939,6 +949,11 @@ export function App() {
         onOpenRedacao={() => setIsRedacaoOpen(true)}
         onOpenRadar={() => setIsRadarOpen(true)}
         onOpenFlashcards={() => setActiveMode('flashcards')}
+        onOpenTaf={() => setIsTafOpen(true)}
+        onOpenPegadinhas={() => setIsPegadinhasOpen(true)}
+        onOpenCertificate={() => setIsCertificateOpen(true)}
+        onOpenRetaFinal={() => setIsRetaFinalOpen(true)}
+        onOpenPodcast={() => setIsPodcastOpen(true)}
       />
 
       {/* Roteamento de Telas */}
@@ -2081,8 +2096,65 @@ export function App() {
           setIsRadarOpen(false);
         }}
       />
+
+      {/* MODAL: SIMULADOR OFICIAL DO TAF PMPE */}
+      <TafSimulatorModal
+        isOpen={isTafOpen}
+        onClose={() => setIsTafOpen(false)}
+        userName={currentUser || 'Soldado PMPE'}
+      />
+
+      {/* MODAL: LABORATÓRIO DE PEGADINHAS DA AOCP */}
+      <AocpPegadinhasModal
+        isOpen={isPegadinhasOpen}
+        onClose={() => setIsPegadinhasOpen(false)}
+      />
+
+      {/* MODAL: CERTIFICADO MILITAR DE CONCLUSÃO */}
+      <MilitaryCertificateModal
+        isOpen={isCertificateOpen}
+        onClose={() => setIsCertificateOpen(false)}
+        userName={currentUser || 'Soldado Combatente'}
+        userLevel={stats.level}
+        totalAnswered={stats.totalAnswered}
+        correctAnswers={stats.correctAnswers}
+        xp={stats.xp}
+      />
+
+      {/* MODAL: OPERAÇÃO RETA FINAL (ÚLTIMOS 15 DIAS) */}
+      <RetaFinalModal
+        isOpen={isRetaFinalOpen}
+        onClose={() => setIsRetaFinalOpen(false)}
+        userName={currentUser || 'Soldado PMPE'}
+        onStartSurvival={(catId) => {
+          setSelectedCategory(catId as any);
+          setActiveMode('survival');
+          setIsRetaFinalOpen(false);
+        }}
+        onOpenSimulado={() => {
+          setIsRetaFinalOpen(false);
+          setIsSundaySimuladoOpen(true);
+        }}
+        onOpenRedacao={() => {
+          setIsRetaFinalOpen(false);
+          setIsRedacaoOpen(true);
+        }}
+        onOpenMistakes={() => {
+          setIsRetaFinalOpen(false);
+          setIsMistakeNotebookOpen(true);
+        }}
+      />
+
+      {/* MODAL: PODCAST TÁTICO / FLASH-AULAS EM ÁUDIO */}
+      {isPodcastOpen && (
+        <TacticalPodcastModal
+          onClose={() => setIsPodcastOpen(false)}
+          userName={currentUser || 'Soldado'}
+        />
+      )}
     </div>
   );
 }
 
 export default App;
+

@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { 
   Volume2, VolumeX, Trophy, PlusCircle, Flame, Sparkles, LogOut, UserCheck, 
   BarChart3, ShieldCheck, Calendar, FileText, MessageSquare, BookOpen, 
-  Target, Award, Gamepad2, ChevronDown, ChevronUp, Zap, Swords, PenTool, Radar
+  Target, Award, Gamepad2, ChevronDown, ChevronUp, Zap, Swords, PenTool, Radar,
+  Headphones, AlertTriangle, Activity
 } from 'lucide-react';
 import type { PlayerStats } from '../types/game';
 import { sound } from '../utils/sound';
@@ -38,6 +39,11 @@ interface HeaderProps {
   onOpenRedacao?: () => void;
   onOpenRadar?: () => void;
   onOpenFlashcards?: () => void;
+  onOpenTaf?: () => void;
+  onOpenPegadinhas?: () => void;
+  onOpenCertificate?: () => void;
+  onOpenRetaFinal?: () => void;
+  onOpenPodcast?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -68,6 +74,11 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenRedacao,
   onOpenRadar,
   onOpenFlashcards,
+  onOpenTaf,
+  onOpenPegadinhas,
+  onOpenCertificate,
+  onOpenRetaFinal,
+  onOpenPodcast,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -546,6 +557,70 @@ export const Header: React.FC<HeaderProps> = ({
                       </button>
                     )}
 
+                    {onOpenPegadinhas && (
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setIsMenuOpen(false);
+                          onOpenPegadinhas();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'rgba(239, 68, 68, 0.12)',
+                          border: '1px solid rgba(239, 68, 68, 0.4)',
+                          color: '#fca5a5',
+                          fontSize: '0.82rem',
+                          fontWeight: 800,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <AlertTriangle size={15} color="#ef4444" />
+                          <span>Pegadinhas da AOCP</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#dc2626', color: '#ffffff', fontWeight: 900 }}>
+                          ARMADILHAS
+                        </span>
+                      </button>
+                    )}
+
+                    {onOpenPodcast && (
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setIsMenuOpen(false);
+                          onOpenPodcast();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'rgba(56, 189, 248, 0.12)',
+                          border: '1px solid rgba(56, 189, 248, 0.4)',
+                          color: '#bae6fd',
+                          fontSize: '0.82rem',
+                          fontWeight: 800,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <Headphones size={15} color="#38bdf8" />
+                          <span>Podcast Tático PMPE</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#0284c7', color: '#ffffff', fontWeight: 900 }}>
+                          8 AULAS
+                        </span>
+                      </button>
+                    )}
+
                     {onOpenFlashcards && (
                       <button
                         onClick={() => {
@@ -774,6 +849,102 @@ export const Header: React.FC<HeaderProps> = ({
                   </div>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                    {onOpenRetaFinal && (
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setIsMenuOpen(false);
+                          onOpenRetaFinal();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.22) 0%, rgba(185, 28, 28, 0.28) 100%)',
+                          border: '1px solid rgba(239, 68, 68, 0.5)',
+                          color: '#fecaca',
+                          fontSize: '0.82rem',
+                          fontWeight: 800,
+                          cursor: 'pointer',
+                          textAlign: 'left',
+                          boxShadow: '0 0 12px rgba(220, 38, 38, 0.25)'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <Target size={15} color="#ef4444" />
+                          <span>Operação Reta Final</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#dc2626', color: '#ffffff', fontWeight: 900 }}>
+                          15 DIAS
+                        </span>
+                      </button>
+                    )}
+
+                    {onOpenTaf && (
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setIsMenuOpen(false);
+                          onOpenTaf();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'rgba(34, 197, 94, 0.12)',
+                          border: '1px solid rgba(34, 197, 94, 0.4)',
+                          color: '#86efac',
+                          fontSize: '0.82rem',
+                          fontWeight: 800,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <Activity size={15} color="#22c55e" />
+                          <span>Simulador TAF PMPE</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#16a34a', color: '#ffffff', fontWeight: 900 }}>
+                          OFICIAL
+                        </span>
+                      </button>
+                    )}
+
+                    {onOpenCertificate && (
+                      <button
+                        onClick={() => {
+                          sound.playMilitaryAchievement();
+                          setIsMenuOpen(false);
+                          onOpenCertificate();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'rgba(245, 158, 11, 0.12)',
+                          border: '1px solid rgba(245, 158, 11, 0.4)',
+                          color: '#fef08a',
+                          fontSize: '0.82rem',
+                          fontWeight: 800,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <ShieldCheck size={15} color="#fbbf24" />
+                          <span>Certificado Militar</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#d97706', color: '#000000', fontWeight: 900 }}>
+                          A4 / DIPLOMA
+                        </span>
+                      </button>
+                    )}
                     {onOpenSundaySimulado && (
                       <button
                         onClick={() => {

@@ -12,6 +12,7 @@ const LOCAL_DUELS_KEY = 'pmpe_platoon_duels_v1';
 
 export interface PlatoonDuel {
   id: string;
+  roomCode?: string;
   challengerName: string;
   opponentName: string;
   questionIds: string[];
@@ -28,6 +29,15 @@ export interface PlatoonDuel {
   status: 'waiting_opponent' | 'finished';
   createdAt: string;
   completedAt?: string;
+}
+
+export function generateRoomCode(): string {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = 'PE-';
+  for (let i = 0; i < 4; i++) {
+    code += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return code;
 }
 
 export function getLocalDuels(): PlatoonDuel[] {
@@ -207,3 +217,138 @@ export async function fetchUserDuels(userName: string): Promise<PlatoonDuel[]> {
     d => d.challengerName.toLowerCase() === clean || d.opponentName.toLowerCase() === clean
   );
 }
+
+/**
+ * Cria uma sala de combate com código (Ex: PE-9842) para compartilhar
+ */
+export async function createRoomDuel(
+  challengerName: string,
+  questionIds: string[],
+  challengerScore: number,
+  challengerTimeSeconds: number
+): Promise<{ duel: PlatoonDuel; roomCode: string }> {
+  const roomCode = generateRoomCode();
+  const duelId = `duel_${roomCode}_${Date.now()}`;
+  const now = new Date().toISOString();
+
+  const newDuel: PlatoonDuel = {
+    id: duelId,
+    roomCode,
+    challengerName: challengerName.trim(),
+    opponentName: 'Desafiante da Sala',
+    questionIds,
+    challengerScore,
+    challengerTimeSeconds,
+    challengerCompleted: true,
+    opponentScore: 0,
+    opponentTimeSeconds: 0,
+    opponentCompleted: false,
+    winnerName: null,
+    status: 'waiting_opponent',
+    createdAt: now
+  };
+
+  // Salva localmente
+  const duels = getLocalDuels();
+  saveLocalDuels([newDuel, ...duels]);
+
+  // Salva no KVdb com a chave room_XXXX e duelId
+  try {
+    const payload = JSON.stringify(newDuel);
+    await Promise.all([
+      fetch(`${CLOUD_API_BASE}/room_${roomCode}?ttl=604800`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: payload
+      }),
+      fetch(`${CLOUD_API_BASE}/${duelId}?ttl=604800`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: payload
+      })
+    ]);
+  } catch {}
+
+  return { duel: newDuel, roomCode };
+}
+
+/**
+ * Busca um duelo pelo código da sala (Ex: PE-9842)
+ */
+export async function fetchDuelByRoomCode(code: string): Promise<PlatoonDuel | null> {
+  const cleanCode = code.trim().toUpperCase().replace(/[^A-Z0-9-]/g, '');
+  const formattedCode = cleanCode.startsWith('PE-') ? cleanCode : `PE-${cleanCode}`;
+
+  // Primeiro busca no Cloud KVdb
+  try {
+    const res = await fetch(`${CLOUD_API_BASE}/room_${formattedCode}`);
+    if (res.ok) {
+      const duel: PlatoonDuel = await res.json();
+      return duel;
+    }
+  } catch {}
+
+  // Fallback: busca nos duelos locais
+  const local = getLocalDuels();
+  const found = local.find(d => d.roomCode === formattedCode);
+  return found || null;
+}
+
+/**
+ * Conclui um duelo de sala após o oponente responder
+ */
+export async function completeRoomDuel(
+  roomCode: string,
+  opponentName: string,
+  opponentScore: number,
+  opponentTimeSeconds: number
+): Promise<PlatoonDuel | null> {
+  const duel = await fetchDuelByRoomCode(roomCode);
+  if (!duel) return null;
+
+  duel.opponentName = opponentName.trim();
+  duel.opponentScore = opponentScore;
+  duel.opponentTimeSeconds = opponentTimeSeconds;
+  duel.opponentCompleted = true;
+  duel.status = 'finished';
+  duel.completedAt = new Date().toISOString();
+
+  // Define o vencedor
+  if (duel.opponentScore > duel.challengerScore) {
+    duel.winnerName = duel.opponentName;
+  } else if (duel.challengerScore > duel.opponentScore) {
+    duel.winnerName = duel.challengerName;
+  } else {
+    if (duel.opponentTimeSeconds < duel.challengerTimeSeconds) {
+      duel.winnerName = duel.opponentName;
+    } else if (duel.challengerTimeSeconds < duel.opponentTimeSeconds) {
+      duel.winnerName = duel.challengerName;
+    } else {
+      duel.winnerName = 'Empate Tático';
+    }
+  }
+
+  // Atualiza local e nuvem
+  const localList = getLocalDuels();
+  const updatedList = [duel, ...localList.filter(d => d.id !== duel.id && d.roomCode !== roomCode)];
+  saveLocalDuels(updatedList);
+
+  try {
+    const payload = JSON.stringify(duel);
+    await Promise.all([
+      fetch(`${CLOUD_API_BASE}/room_${roomCode}?ttl=604800`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: payload
+      }),
+      fetch(`${CLOUD_API_BASE}/${duel.id}?ttl=604800`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: payload
+      })
+    ]);
+  } catch {}
+
+  return duel;
+}
+
