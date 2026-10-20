@@ -355,7 +355,7 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           )}
 
-          {/* MENU TÁTICO ORGANIZADO (DROPDOWN SUSPENSO) */}
+          {/* MENU TÁTICO ORGANIZADO (PADRÃO BOPE - ALINHADO & COMPACTO) */}
           <div ref={menuRef} style={{ position: 'relative' }}>
             <button
               onClick={() => {
@@ -367,50 +367,53 @@ export const Header: React.FC<HeaderProps> = ({
                 alignItems: 'center',
                 gap: '0.45rem',
                 padding: '0.48rem 0.95rem',
-                borderRadius: '12px',
+                borderRadius: '10px',
                 background: isMenuOpen 
-                  ? 'linear-gradient(135deg, rgba(37, 99, 235, 0.35) 0%, rgba(29, 78, 216, 0.4) 100%)' 
-                  : 'linear-gradient(135deg, rgba(30, 41, 59, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%)',
-                border: isMenuOpen ? '1.5px solid #38bdf8' : '1px solid rgba(59, 130, 246, 0.35)',
-                color: '#f8fafc',
+                  ? 'linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(220, 38, 38, 0.25) 100%)' 
+                  : 'linear-gradient(135deg, #0e1017 0%, #08090d 100%)',
+                border: isMenuOpen ? '1.5px solid #fbbf24' : '1px solid rgba(245, 158, 11, 0.4)',
+                color: '#ffffff',
                 fontSize: '0.84rem',
                 fontWeight: 800,
                 cursor: 'pointer',
-                boxShadow: isMenuOpen ? '0 0 15px rgba(56, 189, 248, 0.35)' : 'none',
+                boxShadow: isMenuOpen ? '0 0 15px rgba(245, 158, 11, 0.4)' : '0 2px 8px rgba(0,0,0,0.6)',
                 transition: 'all 0.2s ease'
               }}
               title="Acesse todas as ferramentas táticas do aplicativo em um só lugar"
             >
-              <Zap size={16} color="#38bdf8" />
-              <span>Menu Tático</span>
-              {isMenuOpen ? <ChevronUp size={15} color="#94a3b8" /> : <ChevronDown size={15} color="#94a3b8" />}
+              <Zap size={16} color="#fbbf24" />
+              <span style={{ letterSpacing: '0.04em' }}>Menu Tático</span>
+              {isMenuOpen ? <ChevronUp size={15} color="#fbbf24" /> : <ChevronDown size={15} color="#cbd5e1" />}
             </button>
 
-            {/* PAINEL DROPDOWN SUSPENSO */}
+            {/* PAINEL DROPDOWN SUSPENSO (BOPE MILITAR: PRETO, DOURADO, VERMELHO E BRANCO) */}
             {isMenuOpen && (
               <div
                 style={{
                   position: 'absolute',
                   top: 'calc(100% + 8px)',
                   right: 0,
-                  width: '320px',
-                  background: 'linear-gradient(180deg, rgba(11, 20, 38, 0.98) 0%, rgba(7, 13, 26, 0.99) 100%)',
-                  border: '1.5px solid rgba(59, 130, 246, 0.4)',
-                  borderRadius: '16px',
-                  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(37, 99, 235, 0.25)',
+                  width: '340px',
+                  maxWidth: '92vw',
+                  maxHeight: 'min(80vh, 640px)',
+                  overflowY: 'auto',
+                  background: 'linear-gradient(180deg, #0d0f15 0%, #06070a 100%)',
+                  border: '1.5px solid rgba(245, 158, 11, 0.45)',
+                  borderRadius: '14px',
+                  boxShadow: '0 20px 50px rgba(0, 0, 0, 0.95), 0 0 25px rgba(245, 158, 11, 0.2)',
                   backdropFilter: 'blur(20px)',
-                  padding: '1rem',
+                  padding: '0.85rem',
                   zIndex: 9999,
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '0.85rem',
+                  gap: '0.75rem',
                   animation: 'fadeIn 0.15s ease'
                 }}
               >
                 {/* GRUPO 1: ESTUDO & CADERNOS */}
                 <div>
-                  <div style={{ fontSize: '0.7rem', fontWeight: 900, color: '#93c5fd', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                    <BookOpen size={13} color="#60a5fa" />
+                  <div style={{ fontSize: '0.7rem', fontWeight: 900, color: '#fbbf24', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                    <BookOpen size={13} color="#f59e0b" />
                     <span>Estudos & Legislação</span>
                   </div>
 
@@ -428,9 +431,9 @@ export const Header: React.FC<HeaderProps> = ({
                           justifyContent: 'space-between',
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
-                          background: 'rgba(37, 99, 235, 0.1)',
-                          border: '1px solid rgba(37, 99, 235, 0.25)',
-                          color: '#e2e8f0',
+                          background: 'rgba(245, 158, 11, 0.08)',
+                          border: '1px solid rgba(245, 158, 11, 0.25)',
+                          color: '#ffffff',
                           fontSize: '0.82rem',
                           fontWeight: 700,
                           cursor: 'pointer',
@@ -438,10 +441,10 @@ export const Header: React.FC<HeaderProps> = ({
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <BookOpen size={15} color="#3b82f6" />
+                          <BookOpen size={15} color="#fbbf24" />
                           <span>Caderno de Leis Secas</span>
                         </div>
-                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(37, 99, 235, 0.3)', color: '#93c5fd' }}>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(245, 158, 11, 0.25)', color: '#fbbf24', fontWeight: 800 }}>
                           VADE MECUM
                         </span>
                       </button>
@@ -460,9 +463,9 @@ export const Header: React.FC<HeaderProps> = ({
                           justifyContent: 'space-between',
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
-                          background: 'rgba(6, 182, 212, 0.12)',
-                          border: '1px solid rgba(6, 182, 212, 0.3)',
-                          color: '#bae6fd',
+                          background: 'rgba(245, 158, 11, 0.08)',
+                          border: '1px solid rgba(245, 158, 11, 0.25)',
+                          color: '#ffffff',
                           fontSize: '0.82rem',
                           fontWeight: 700,
                           cursor: 'pointer',
@@ -470,10 +473,10 @@ export const Header: React.FC<HeaderProps> = ({
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <BookOpen size={15} color="#06b6d4" />
+                          <BookOpen size={15} color="#f59e0b" />
                           <span>Guia Raciocínio Lógico (RLM)</span>
                         </div>
-                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(6, 182, 212, 0.25)', color: '#38bdf8', fontWeight: 900 }}>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#d97706', color: '#000000', fontWeight: 900 }}>
                           MANÉ & TABELA
                         </span>
                       </button>
@@ -492,9 +495,9 @@ export const Header: React.FC<HeaderProps> = ({
                           justifyContent: 'space-between',
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
-                          background: 'rgba(239, 68, 68, 0.1)',
-                          border: '1px solid rgba(239, 68, 68, 0.25)',
-                          color: '#fca5a5',
+                          background: 'rgba(220, 38, 38, 0.12)',
+                          border: '1px solid rgba(220, 38, 38, 0.35)',
+                          color: '#fee2e2',
                           fontSize: '0.82rem',
                           fontWeight: 700,
                           cursor: 'pointer',
@@ -524,9 +527,9 @@ export const Header: React.FC<HeaderProps> = ({
                           justifyContent: 'space-between',
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
-                          background: 'rgba(234, 179, 8, 0.1)',
-                          border: '1px solid rgba(234, 179, 8, 0.25)',
-                          color: '#fde047',
+                          background: 'rgba(245, 158, 11, 0.08)',
+                          border: '1px solid rgba(245, 158, 11, 0.25)',
+                          color: '#ffffff',
                           fontSize: '0.82rem',
                           fontWeight: 700,
                           cursor: 'pointer',
@@ -534,10 +537,10 @@ export const Header: React.FC<HeaderProps> = ({
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <Calendar size={15} color="#eab308" />
+                          <Calendar size={15} color="#fbbf24" />
                           <span>Cronograma de Estudos</span>
                         </div>
-                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(234, 179, 8, 0.25)', color: '#fbbf24' }}>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(245, 158, 11, 0.25)', color: '#fbbf24', fontWeight: 800 }}>
                           VIP
                         </span>
                       </button>
@@ -556,9 +559,9 @@ export const Header: React.FC<HeaderProps> = ({
                           justifyContent: 'space-between',
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
-                          background: 'rgba(56, 189, 248, 0.08)',
-                          border: '1px solid rgba(56, 189, 248, 0.25)',
-                          color: '#bae6fd',
+                          background: 'rgba(255, 255, 255, 0.05)',
+                          border: '1px solid rgba(255, 255, 255, 0.15)',
+                          color: '#ffffff',
                           fontSize: '0.82rem',
                           fontWeight: 700,
                           cursor: 'pointer',
@@ -566,10 +569,10 @@ export const Header: React.FC<HeaderProps> = ({
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <FileText size={15} color="#38bdf8" />
+                          <FileText size={15} color="#e2e8f0" />
                           <span>Baixar Caderno em PDF</span>
                         </div>
-                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8' }}>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(255, 255, 255, 0.15)', color: '#ffffff', fontWeight: 800 }}>
                           IMPRIMIR
                         </span>
                       </button>
@@ -587,27 +590,27 @@ export const Header: React.FC<HeaderProps> = ({
                         gap: '0.5rem',
                         padding: '0.5rem 0.65rem',
                         borderRadius: '8px',
-                        background: 'rgba(34, 197, 94, 0.08)',
-                        border: '1px solid rgba(34, 197, 94, 0.25)',
-                        color: '#bbf7d0',
+                        background: 'rgba(245, 158, 11, 0.08)',
+                        border: '1px solid rgba(245, 158, 11, 0.25)',
+                        color: '#ffffff',
                         fontSize: '0.82rem',
                         fontWeight: 700,
                         cursor: 'pointer',
                         textAlign: 'left'
                       }}
                     >
-                      <PlusCircle size={15} color="#22c55e" />
+                      <PlusCircle size={15} color="#fbbf24" />
                       <span>Criar / Importar Decks</span>
                     </button>
                   </div>
                 </div>
 
-                <div style={{ height: '1px', background: 'rgba(255, 255, 255, 0.08)' }} />
+                <div style={{ height: '1px', background: 'rgba(245, 158, 11, 0.2)' }} />
 
                 {/* GRUPO 2: OPERAÇÕES & SIMULADOS */}
                 <div>
-                  <div style={{ fontSize: '0.7rem', fontWeight: 900, color: '#7dd3fc', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                    <Award size={13} color="#38bdf8" />
+                  <div style={{ fontSize: '0.7rem', fontWeight: 900, color: '#ef4444', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                    <Award size={13} color="#ef4444" />
                     <span>Simulados & Disputas</span>
                   </div>
 
@@ -625,9 +628,9 @@ export const Header: React.FC<HeaderProps> = ({
                           justifyContent: 'space-between',
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
-                          background: 'rgba(14, 165, 233, 0.12)',
-                          border: '1px solid rgba(14, 165, 233, 0.3)',
-                          color: '#e0f2fe',
+                          background: 'rgba(220, 38, 38, 0.1)',
+                          border: '1px solid rgba(220, 38, 38, 0.3)',
+                          color: '#ffffff',
                           fontSize: '0.82rem',
                           fontWeight: 700,
                           cursor: 'pointer',
@@ -635,10 +638,10 @@ export const Header: React.FC<HeaderProps> = ({
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <Award size={15} color="#0284c7" />
+                          <Award size={15} color="#ef4444" />
                           <span>Simulado Oficial 60Q</span>
                         </div>
-                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(56, 189, 248, 0.25)', color: '#7dd3fc' }}>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(220, 38, 38, 0.3)', color: '#fca5a5', fontWeight: 800 }}>
                           DOMINGO
                         </span>
                       </button>
@@ -657,16 +660,16 @@ export const Header: React.FC<HeaderProps> = ({
                           gap: '0.5rem',
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
-                          background: 'rgba(245, 158, 11, 0.1)',
+                          background: 'rgba(245, 158, 11, 0.08)',
                           border: '1px solid rgba(245, 158, 11, 0.25)',
-                          color: '#fef3c7',
+                          color: '#ffffff',
                           fontSize: '0.82rem',
                           fontWeight: 700,
                           cursor: 'pointer',
                           textAlign: 'left'
                         }}
                       >
-                        <Swords size={15} color="#f59e0b" />
+                        <Swords size={15} color="#fbbf24" />
                         <span>Duelo 1v1 & Quadro do Pelotão</span>
                       </button>
                     )}
@@ -684,9 +687,9 @@ export const Header: React.FC<HeaderProps> = ({
                           justifyContent: 'space-between',
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
-                          background: 'linear-gradient(135deg, rgba(234, 179, 8, 0.16) 0%, rgba(217, 119, 6, 0.22) 100%)',
-                          border: '1px solid rgba(234, 179, 8, 0.45)',
-                          color: '#fef08a',
+                          background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(220, 38, 38, 0.2) 100%)',
+                          border: '1px solid rgba(245, 158, 11, 0.5)',
+                          color: '#fbbf24',
                           fontSize: '0.82rem',
                           fontWeight: 800,
                           cursor: 'pointer',
@@ -697,7 +700,7 @@ export const Header: React.FC<HeaderProps> = ({
                           <Award size={15} color="#fbbf24" />
                           <span>Pitch do Investidor 2026</span>
                         </div>
-                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#eab308', color: '#000000', fontWeight: 900 }}>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#f59e0b', color: '#000000', fontWeight: 900 }}>
                           SLIDES & MRR
                         </span>
                       </button>
@@ -705,12 +708,12 @@ export const Header: React.FC<HeaderProps> = ({
                   </div>
                 </div>
 
-                <div style={{ height: '1px', background: 'rgba(255, 255, 255, 0.08)' }} />
+                <div style={{ height: '1px', background: 'rgba(245, 158, 11, 0.2)' }} />
 
                 {/* GRUPO 3: DESCOMPRESSÃO */}
                 <div>
-                  <div style={{ fontSize: '0.7rem', fontWeight: 900, color: '#f0abfc', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                    <Gamepad2 size={13} color="#c084fc" />
+                  <div style={{ fontSize: '0.7rem', fontWeight: 900, color: '#f8fafc', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                    <Gamepad2 size={13} color="#f8fafc" />
                     <span>Descompressão & Moral</span>
                   </div>
 
@@ -728,9 +731,9 @@ export const Header: React.FC<HeaderProps> = ({
                           justifyContent: 'space-between',
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
-                          background: 'rgba(217, 70, 239, 0.12)',
-                          border: '1px solid rgba(217, 70, 239, 0.3)',
-                          color: '#fae8ff',
+                          background: 'rgba(220, 38, 38, 0.1)',
+                          border: '1px solid rgba(220, 38, 38, 0.3)',
+                          color: '#ffffff',
                           fontSize: '0.82rem',
                           fontWeight: 700,
                           cursor: 'pointer',
@@ -738,10 +741,10 @@ export const Header: React.FC<HeaderProps> = ({
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <Gamepad2 size={15} color="#c026d3" />
+                          <Gamepad2 size={15} color="#ef4444" />
                           <span>Operação Rua 16-Bit</span>
                         </div>
-                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(217, 70, 239, 0.25)', color: '#f0abfc' }}>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(220, 38, 38, 0.3)', color: '#fca5a5' }}>
                           SNES
                         </span>
                       </button>
@@ -761,15 +764,15 @@ export const Header: React.FC<HeaderProps> = ({
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
                           background: 'rgba(245, 158, 11, 0.08)',
-                          border: '1px solid rgba(245, 158, 11, 0.2)',
-                          color: '#fef3c7',
+                          border: '1px solid rgba(245, 158, 11, 0.25)',
+                          color: '#ffffff',
                           fontSize: '0.82rem',
                           fontWeight: 700,
                           cursor: 'pointer',
                           textAlign: 'left'
                         }}
                       >
-                        <Flame size={15} color="#f59e0b" />
+                        <Flame size={15} color="#fbbf24" />
                         <span>Ordem do Dia (Motivação)</span>
                       </button>
                     )}

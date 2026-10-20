@@ -53,18 +53,18 @@ export {
 };
 
 export const SIMULADOS_LIST = [
-  { id: 'all', name: '⭐ Acervo Geral Soldado PMPE (Questões 100% Comentadas Tintim por Tintim)', count: 2370, tag: '⭐ Acervo Geral (2.370 Q)' },
+  { id: 'all', name: '⭐ Acervo Geral Soldado PMPE (Questões 100% Inéditas e Sem Repetição)', count: 2052, tag: '⭐ Acervo Geral (2.052 Q)' },
   { id: 'caderno_elite_dificil', name: '🔥 Desafio de Elite: 160 Questões Avançadas (Nível Difícil • Edital AOCP)', count: 160, tag: '🔥 160 Elite (Nível Difícil)' },
   { id: 'caderno_400_novas_edital', name: '🔥 Super Acervo Especial: 400 Questões Inéditas do Edital (50 de Cada Matéria)', count: 400, tag: '🔥 400 Inéditas (50/Matéria)' },
   { id: 'caderno_edital_aocp_300', name: '🎯 Caderno de Elite: Questões Cirúrgicas do Edital AOCP 2026', count: 70, tag: '🎯 Edital AOCP (70 Q)' },
   { id: 'caderno_direitos_humanos', name: '🕊️ Bloco Especial: Direitos Humanos & Pacto de São José da Costa Rica (250 Questões)', count: 250, tag: '🕊️ Direitos Humanos (250 Q)' },
-  { id: 'caderno_leg_extravagante', name: '🚨 Bloco Especial: Legislação Extravagante (300 Questões)', count: 300, tag: '🚨 Leis Extravagantes (300 Q)' },
-  { id: 'caderno_rlm_probabilidade', name: '🧠 Bloco Especial: RLM & Probabilidade com Passo a Passo (300 Questões)', count: 300, tag: '🧠 RLM & Probabilidade (300 Q)' },
+  { id: 'caderno_leg_extravagante', name: '🚨 Bloco Especial: Legislação Extravagante (100 Questões Inéditas)', count: 100, tag: '🚨 Leis Extravagantes (100 Q)' },
+  { id: 'caderno_rlm_probabilidade', name: '🧠 Bloco Especial: RLM & Probabilidade com Passo a Passo (200 Inéditas)', count: 200, tag: '🧠 RLM & Probabilidade (200 Inéditas)' },
   { id: 'caderno_const_pmpe', name: '⚖️ Bloco Especial: Direito Constitucional & Art. 144 (210 Questões)', count: 210, tag: '⚖️ Constitucional (210 Q)' },
-  { id: 'caderno_portugues_aocp', name: '📖 Bloco Especial: Língua Portuguesa AOCP (300 Questões)', count: 300, tag: '📖 Português AOCP (300 Q)' },
+  { id: 'caderno_portugues_aocp', name: '📖 Bloco Especial: Língua Portuguesa AOCP (200 Inéditas)', count: 200, tag: '📖 Português AOCP (200 Inéditas)' },
   { id: 'caderno_pmpe_estatuto', name: '🛡️ Caderno Oficial: Legislação PMPE & Estatuto (Lei 6.783/74) (164 Questões)', count: 164, tag: '🛡️ Estatuto PMPE (164 Q)' },
   { id: 'caderno_informatica', name: '💻 Bloco Especial: Noções de Informática PMPE AOCP (350 Questões)', count: 350, tag: '💻 Informática PMPE (350 Q)' },
-  { id: 'caderno_historia_pe', name: '🦁 Bloco Especial: História de Pernambuco AOCP (108 Questões)', count: 108, tag: '🦁 História de PE (108 Q)' },
+  { id: 'caderno_historia_pe', name: '🦁 Bloco Especial: História de Pernambuco AOCP (200 Inéditas • Zero Geografia)', count: 200, tag: '🦁 História de PE (200 Inéditas)' },
   { id: 'aocp_elite', name: 'Caderno de Elite AOCP (Resoluções & Contas Tintim por Tintim)', count: 25, tag: 'Elite Didática' },
   { id: 'aocp_especial', name: 'Super Simulado Banca AOCP (Edital Oficial)', count: 30, tag: 'Foco AOCP' },
   { id: 'nuce_completo', name: 'Simulado Completo Soldado PMPE (NUCE)', count: 60, tag: 'Simulado PMPE' },

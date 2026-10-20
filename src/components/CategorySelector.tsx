@@ -69,43 +69,96 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
           </span>
         </div>
         {typeof totalFilteredQuestions === 'number' && (
-          <div style={{ fontSize: '0.78rem', color: '#38bdf8', fontWeight: 700, background: 'rgba(56, 189, 248, 0.12)', padding: '0.2rem 0.6rem', borderRadius: '12px', border: '1px solid rgba(56, 189, 248, 0.25)' }}>
+          <div style={{ fontSize: '0.78rem', color: '#fbbf24', fontWeight: 800, background: 'rgba(245, 158, 11, 0.12)', padding: '0.2rem 0.6rem', borderRadius: '10px', border: '1px solid rgba(245, 158, 11, 0.35)' }}>
             🎯 {totalFilteredQuestions} questões ativas
           </div>
         )}
       </div>
 
-      {/* Seletor Rápido de Simulado / Semanas */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap', padding: '0.4rem 0.6rem', background: 'rgba(255, 255, 255, 0.03)', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
-        <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', marginRight: '0.25rem', letterSpacing: '0.05em' }}>
-          Semana:
-        </span>
-        {simuladosOptions.map((sim) => {
-          const isActive = selectedSimulado === sim.id;
-          return (
-            <button
-              key={sim.id}
-              onClick={() => {
-                sound.playClick();
-                onSelectSimulado?.(sim.id);
-              }}
-              style={{
-                padding: '0.28rem 0.65rem',
-                fontSize: '0.76rem',
-                fontWeight: isActive ? 700 : 500,
-                color: isActive ? '#ffffff' : '#9ca3af',
-                background: isActive ? 'linear-gradient(135deg, #15803d, #16a34a)' : 'rgba(255, 255, 255, 0.05)',
-                border: isActive ? '1px solid #22c55e' : '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '8px',
-                cursor: 'pointer',
-                transition: 'all 0.15s ease',
-                boxShadow: isActive ? '0 0 12px rgba(34, 197, 94, 0.45)' : 'none'
-              }}
-            >
-              {sim.label}
-            </button>
-          );
-        })}
+      {/* Seletor Compacto de Caderno / Semana (Padrão Tático BOPE) */}
+      <div 
+        style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '0.65rem', 
+          padding: '0.45rem 0.85rem', 
+          background: 'linear-gradient(135deg, rgba(14, 16, 22, 0.95) 0%, rgba(8, 9, 12, 0.98) 100%)', 
+          borderRadius: '10px', 
+          border: '1.5px solid rgba(245, 158, 11, 0.35)',
+          boxShadow: '0 4px 15px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(245, 158, 11, 0.05)',
+          width: '100%',
+          boxSizing: 'border-box'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', whiteSpace: 'nowrap', flexShrink: 0 }}>
+          <Sparkles size={15} color="#fbbf24" />
+          <span style={{ fontSize: '0.78rem', fontWeight: 900, color: '#fbbf24', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+            Caderno / Semana:
+          </span>
+        </div>
+
+        <div style={{ flex: 1, minWidth: '180px', position: 'relative' }}>
+          <select
+            value={selectedSimulado}
+            onChange={(e) => {
+              sound.playClick();
+              onSelectSimulado?.(e.target.value);
+            }}
+            style={{
+              width: '100%',
+              padding: '0.42rem 0.75rem',
+              fontSize: '0.82rem',
+              fontWeight: 700,
+              color: '#ffffff',
+              background: '#090a0d',
+              border: '1px solid rgba(245, 158, 11, 0.45)',
+              borderRadius: '8px',
+              outline: 'none',
+              cursor: 'pointer',
+              boxShadow: 'inset 0 1px 4px rgba(0, 0, 0, 0.8)'
+            }}
+            title="Selecione o Caderno de Questões ou Simulado da Semana"
+          >
+            {simuladosOptions.map((sim) => (
+              <option 
+                key={sim.id} 
+                value={sim.id} 
+                style={{ 
+                  background: '#0e1017', 
+                  color: sim.id === selectedSimulado ? '#fbbf24' : '#e2e8f0',
+                  fontWeight: sim.id === selectedSimulado ? 'bold' : 'normal',
+                  padding: '6px'
+                }}
+              >
+                {sim.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {selectedSimulado !== 'all' && (
+          <button
+            onClick={() => {
+              sound.playClick();
+              onSelectSimulado?.('all');
+            }}
+            style={{
+              padding: '0.35rem 0.65rem',
+              fontSize: '0.74rem',
+              fontWeight: 800,
+              color: '#ffffff',
+              background: 'linear-gradient(135deg, #dc2626 0%, #991b1b 100%)',
+              border: '1px solid #ef4444',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              boxShadow: '0 0 8px rgba(220, 38, 38, 0.4)'
+            }}
+            title="Voltar ao Acervo Geral Completo"
+          >
+            Resetar Geral
+          </button>
+        )}
       </div>
 
       {/* Seleção de Disciplinas e Blocos */}
@@ -129,10 +182,10 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
             sound.playClick();
             onSelectCategory('bloco_1');
           }}
-          style={{ ['--active-color' as string]: '#38bdf8' }}
+          style={{ ['--active-color' as string]: '#fbbf24' }}
           title="Português + História de PE"
         >
-          <span style={{ fontWeight: 800, color: '#93c5fd' }}>Bloco I</span>
+          <span style={{ fontWeight: 800, color: '#fbbf24' }}>Bloco I</span>
           <span>(Português & História PE)</span>
         </button>
 
@@ -143,10 +196,10 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
             sound.playClick();
             onSelectCategory('bloco_2');
           }}
-          style={{ ['--active-color' as string]: '#22c55e' }}
+          style={{ ['--active-color' as string]: '#ef4444' }}
           title="Raciocínio Lógico + Informática"
         >
-          <span style={{ fontWeight: 800, color: '#86efac' }}>Bloco II</span>
+          <span style={{ fontWeight: 800, color: '#ef4444' }}>Bloco II</span>
           <span>(RLM & Informática)</span>
         </button>
 
@@ -157,10 +210,10 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
             sound.playClick();
             onSelectCategory('bloco_3');
           }}
-          style={{ ['--active-color' as string]: '#ef4444' }}
+          style={{ ['--active-color' as string]: '#ffffff' }}
           title="Constitucional + Direitos Humanos"
         >
-          <span style={{ fontWeight: 800, color: '#fca5a5' }}>Bloco III</span>
+          <span style={{ fontWeight: 800, color: '#ffffff' }}>Bloco III</span>
           <span>(Constitucional & Direitos)</span>
         </button>
 

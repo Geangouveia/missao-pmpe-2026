@@ -1,7 +1,8 @@
 /* ==========================================================================
-   MISSÃO PMPE 2026: SISTEMA DE DESIGN OFICIAL POLÍCIA MILITAR DE PERNAMBUCO
-   Identidade Visual: Azul Ferrete Operacional, Azul Noturno Tático, Cinza Aço & Dourado Heráldico
-   Padrão: Fardamento Operacional da PMPE e Brasão Oficial do Estado de Pernambuco
+   MISSÃO PMPE 2026: SISTEMA TÁTICO MILITAR DE ELITE (PADRÃO BOPE)
+   Paleta Oficial: Preto Fosco Tático (#07080a), Dourado Militar / Caveira (#fbbf24 / #f59e0b),
+   Vermelho Operacional (#dc2626 / #ef4444) e Branco Puro (#ffffff / #f8fafc).
+   Design Sóbrio, Operacional, Sem Efeitos Clichês de IA.
    ========================================================================== */
 
 :root {
@@ -9,53 +10,54 @@
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Cores Base Militares Operacionais (Polícia Militar de Pernambuco - PMPE) */
-  --bg-space: #060b17; /* Azul Noturno Profundo PMPE */
-  --bg-deep: #0a1324;  /* Azul Ferrete Tático Operacional */
-  --bg-card: rgba(11, 20, 38, 0.96); /* Painel Blindado Azul Petróleo PMPE */
-  --bg-card-hover: rgba(17, 30, 58, 0.98);
-  --bg-glass: rgba(59, 130, 246, 0.035);
-  --bg-glass-active: rgba(37, 99, 235, 0.16);
+  /* Cores Base Militares Operacionais (BOPE / Tático) */
+  --bg-space: #07080a; /* Preto Profundo Tático Fosco */
+  --bg-deep: #0c0e12;  /* Preto Chumbo Blindado */
+  --bg-card: rgba(13, 15, 20, 0.96); /* Painel Kevlar / Carbono Tático */
+  --bg-card-hover: rgba(20, 23, 31, 0.98);
+  --bg-glass: rgba(245, 158, 11, 0.035);
+  --bg-glass-active: rgba(245, 158, 11, 0.14);
 
-  /* Bordas e Contornos Táticos Militares (Azul Viatura & Aço Tático) */
-  --border-subtle: rgba(59, 130, 246, 0.25);
-  --border-glow: rgba(37, 99, 235, 0.55);
-  --border-cyan: rgba(56, 189, 248, 0.45);
+  /* Bordas e Contornos Táticos Militares (Dourado Militar & Aço Escuro) */
+  --border-subtle: rgba(245, 158, 11, 0.22);
+  --border-glow: rgba(245, 158, 11, 0.5);
+  --border-cyan: rgba(245, 158, 11, 0.45);
 
-  /* Paleta Tática Militar Oficial PMPE */
-  --pmpe-blue: #1d4ed8;
-  --pmpe-blue-bright: #2563eb;
-  --pmpe-blue-light: #60a5fa;
-  --military-green-dark: #091326;
-  --military-green: #1d4ed8;
-  --military-green-bright: #3b82f6;
-  --military-gold: #d4af37; /* Ouro Nobre do Brasão de Pernambuco e Divisas */
-  --military-gold-bright: #eab308;
-  --military-khaki: #94a3b8;
-  --military-red: #ef4444; /* Vermelho Heráldico da Bandeira de Pernambuco */
-  --military-blue: #1d4ed8;
+  /* Paleta Tática Militar de Elite (BOPE) */
+  --pmpe-blue: #d97706;
+  --pmpe-blue-bright: #f59e0b;
+  --pmpe-blue-light: #fbbf24;
+  --military-green-dark: #0a0c10;
+  --military-green: #d97706;
+  --military-green-bright: #f59e0b;
+  --military-gold: #f59e0b; /* Dourado da Faca na Caveira e Insígnias */
+  --military-gold-bright: #fbbf24;
+  --military-khaki: #cbd5e1;
+  --military-red: #dc2626; /* Vermelho Operacional / Alerta de Combate */
+  --military-red-bright: #ef4444;
+  --military-blue: #b45309;
 
   /* Acentos Operacionais Táticos */
-  --neon-cyan: #38bdf8;
-  --neon-purple: #2563eb;
-  --neon-violet: #1d4ed8;
+  --neon-cyan: #fbbf24;
+  --neon-purple: #dc2626;
+  --neon-violet: #b91c1c;
   --neon-pink: #ef4444;
-  --neon-emerald: #38bdf8;
-  --neon-amber: #eab308;
-  --neon-red: #ef4444;
+  --neon-emerald: #fbbf24;
+  --neon-amber: #f59e0b;
+  --neon-red: #dc2626;
 
   /* Texto */
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
-  --text-glow: #e0f2fe;
+  --text-main: #ffffff;
+  --text-muted: #cbd5e1;
+  --text-dim: #94a3b8;
+  --text-glow: #fef3c7;
 
   /* Sombras e Brilho Tático Militar */
-  --glow-cyan: 0 0 20px rgba(37, 99, 235, 0.3);
-  --glow-purple: 0 0 20px rgba(29, 78, 216, 0.3);
-  --glow-gold: 0 0 25px rgba(212, 175, 55, 0.35);
-  --shadow-card: 0 16px 45px -10px rgba(0, 0, 0, 0.92), 0 0 0 1px var(--border-subtle);
-  --shadow-popup: 0 25px 65px -15px rgba(0, 0, 0, 0.98), 0 0 0 1px rgba(37, 99, 235, 0.45);
+  --glow-cyan: 0 0 20px rgba(245, 158, 11, 0.25);
+  --glow-purple: 0 0 20px rgba(220, 38, 38, 0.25);
+  --glow-gold: 0 0 25px rgba(245, 158, 11, 0.4);
+  --shadow-card: 0 16px 45px -10px rgba(0, 0, 0, 0.95), 0 0 0 1px var(--border-subtle);
+  --shadow-popup: 0 25px 65px -15px rgba(0, 0, 0, 0.98), 0 0 0 1.5px rgba(245, 158, 11, 0.45);
 
   /* Transições Suaves */
   --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
@@ -83,19 +85,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Fundo Dinâmico Militar PMPE: Azul Ferrete & Noturno Tático com Grid Operacional */
+/* Fundo Tático BOPE: Preto Fosco com Textura de Carbono & Vinheta Militar Sutil */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background-image: 
-    radial-gradient(circle at 20% 15%, rgba(37, 99, 235, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 80% 25%, rgba(29, 78, 216, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 50% 90%, rgba(10, 19, 36, 0.55) 0%, transparent 60%),
-    linear-gradient(rgba(59, 130, 246, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.035) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-  background-position: 0 0, 0 0, 0 0, center center, center center;
+    radial-gradient(circle at 50% 12%, rgba(245, 158, 11, 0.05) 0%, transparent 60%),
+    radial-gradient(circle at 85% 85%, rgba(220, 38, 38, 0.04) 0%, transparent 50%),
+    linear-gradient(rgba(245, 158, 11, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 158, 11, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+  background-position: 0 0, 0 0, center center, center center;
   pointer-events: none;
   z-index: 0;
 }
@@ -564,10 +565,10 @@ button:focus-visible {
 }
 
 .category-chip.active {
-  background: var(--active-bg, linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(59, 130, 246, 0.25)));
-  border-color: var(--active-color, var(--neon-cyan));
-  color: white;
-  box-shadow: 0 0 16px -2px var(--active-color, var(--neon-cyan));
+  background: var(--active-bg, linear-gradient(135deg, rgba(245, 158, 11, 0.22) 0%, rgba(220, 38, 38, 0.22) 100%));
+  border-color: var(--active-color, #fbbf24);
+  color: #ffffff;
+  box-shadow: 0 0 16px -2px var(--active-color, rgba(245, 158, 11, 0.5));
 }
 
 /* QUIZ GAME STYLES */
