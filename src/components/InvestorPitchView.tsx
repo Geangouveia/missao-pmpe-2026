@@ -84,7 +84,7 @@ export const InvestorPitchView: React.FC<InvestorPitchViewProps> = ({
     }
   };
 
-  // Suporte a teclas de seta para passar slides
+  // Suporte a teclas de seta para passar slides e Escape para sair
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
@@ -93,6 +93,8 @@ export const InvestorPitchView: React.FC<InvestorPitchViewProps> = ({
       } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
         e.preventDefault();
         setCurrentSlide((prev) => Math.max(0, prev - 1));
+      } else if (e.key === 'Escape') {
+        handleExit();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -101,8 +103,12 @@ export const InvestorPitchView: React.FC<InvestorPitchViewProps> = ({
 
   return (
     <div style={{
+      position: 'fixed',
+      inset: 0,
+      zIndex: 999999,
+      overflowY: 'auto',
       minHeight: '100vh',
-      background: 'radial-gradient(ellipse at top, #0f172a 0%, #030712 100%)',
+      background: 'linear-gradient(180deg, #07080a 0%, #040406 100%)',
       color: '#f8fafc',
       display: 'flex',
       flexDirection: 'column',
@@ -111,8 +117,8 @@ export const InvestorPitchView: React.FC<InvestorPitchViewProps> = ({
       {/* Barra Superior Executiva */}
       <header style={{
         padding: '0.75rem 1.5rem',
-        background: 'rgba(15, 23, 42, 0.95)',
-        borderBottom: '2px solid rgba(234, 179, 8, 0.4)',
+        background: 'rgba(10, 11, 15, 0.98)',
+        borderBottom: '1.5px solid rgba(212, 175, 55, 0.35)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -132,23 +138,24 @@ export const InvestorPitchView: React.FC<InvestorPitchViewProps> = ({
               alignItems: 'center',
               gap: '0.4rem',
               padding: '0.5rem 0.9rem',
-              background: 'rgba(30, 41, 59, 0.8)',
-              border: '1px solid rgba(148, 163, 184, 0.3)',
+              background: 'rgba(212, 175, 55, 0.12)',
+              border: '1px solid rgba(212, 175, 55, 0.4)',
               borderRadius: '8px',
-              color: '#38bdf8',
+              color: '#d4af37',
               fontWeight: 800,
               fontSize: '0.82rem',
               cursor: 'pointer'
             }}
           >
-            <ArrowLeft size={16} /> Voltar ao App
+            <ArrowLeft size={16} /> ✕ Fechar / Voltar ao App
           </button>
 
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
               <span style={{
-                background: '#facc15',
-                color: '#000',
+                background: 'rgba(212, 175, 55, 0.2)',
+                color: '#d4af37',
+                border: '1px solid rgba(212, 175, 55, 0.4)',
                 padding: '2px 6px',
                 borderRadius: '4px',
                 fontSize: '0.65rem',
@@ -160,7 +167,7 @@ export const InvestorPitchView: React.FC<InvestorPitchViewProps> = ({
                 Apresentação Executiva & Tour Guiado
               </h1>
             </div>
-            <span style={{ fontSize: '0.72rem', color: '#94a3b8' }}>
+            <span style={{ fontSize: '0.72rem', color: '#a1a1aa' }}>
               Missão PMPE 2026 &bull; Slide {currentSlide + 1} de {totalSlides}
             </span>
           </div>
@@ -188,7 +195,7 @@ export const InvestorPitchView: React.FC<InvestorPitchViewProps> = ({
             <ChevronLeft size={16} /> Anterior
           </button>
 
-          <span style={{ fontSize: '0.85rem', fontWeight: 900, color: '#facc15', padding: '0 0.5rem' }}>
+          <span style={{ fontSize: '0.85rem', fontWeight: 900, color: '#d4af37', padding: '0 0.5rem' }}>
             {currentSlide + 1} / {totalSlides}
           </span>
 
@@ -197,10 +204,10 @@ export const InvestorPitchView: React.FC<InvestorPitchViewProps> = ({
             disabled={currentSlide === totalSlides - 1}
             style={{
               padding: '0.45rem 0.75rem',
-              background: currentSlide === totalSlides - 1 ? 'rgba(30, 41, 59, 0.3)' : 'linear-gradient(135deg, #eab308, #ca8a04)',
+              background: currentSlide === totalSlides - 1 ? 'rgba(30, 41, 59, 0.3)' : 'linear-gradient(135deg, #c59b27, #967117)',
               border: 'none',
               borderRadius: '6px',
-              color: currentSlide === totalSlides - 1 ? '#475569' : '#000',
+              color: currentSlide === totalSlides - 1 ? '#475569' : '#07080a',
               cursor: currentSlide === totalSlides - 1 ? 'not-allowed' : 'pointer',
               display: 'flex',
               alignItems: 'center',

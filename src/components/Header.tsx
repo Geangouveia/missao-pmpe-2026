@@ -120,7 +120,7 @@ export const Header: React.FC<HeaderProps> = ({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            filter: 'drop-shadow(0 0 10px rgba(6, 182, 212, 0.4))',
+            filter: 'drop-shadow(0 0 10px rgba(212, 175, 55, 0.3))',
             transition: 'transform 0.2s ease'
           }}>
             <PmpeBrasaoLogo size={42} showText={false} />
@@ -128,20 +128,20 @@ export const Header: React.FC<HeaderProps> = ({
           <div>
             <div className="brand-title">
               MISSÃO PMPE
-              <span className="brand-badge" style={{ background: 'rgba(234, 179, 8, 0.2)', color: '#fbbf24', borderColor: '#f59e0b' }}>
+              <span className="brand-badge" style={{ background: 'rgba(212, 175, 55, 0.15)', color: '#d4af37', borderColor: 'rgba(212, 175, 55, 0.4)' }}>
                 SOLDADO 2026
               </span>
             </div>
-            <div style={{ fontSize: '0.78rem', color: '#93c5fd', display: 'flex', alignItems: 'center', gap: '0.45rem', flexWrap: 'wrap' }}>
+            <div style={{ fontSize: '0.78rem', color: '#a1a1aa', display: 'flex', alignItems: 'center', gap: '0.45rem', flexWrap: 'wrap' }}>
               <span>Preparatório Oficial • Instituto AOCP</span>
-              <span style={{ color: 'rgba(255, 255, 255, 0.25)' }}>•</span>
-              <span style={{ fontSize: '0.68rem', color: '#cbd5e1' }}>Powered by</span>
+              <span style={{ color: 'rgba(255, 255, 255, 0.2)' }}>•</span>
+              <span style={{ fontSize: '0.68rem', color: '#71717a' }}>Powered by</span>
               <span style={{
                 fontFamily: '"Caveat", "Dancing Script", cursive',
                 fontSize: '1.05rem',
                 fontWeight: 900,
-                color: '#fbbf24',
-                textShadow: '0 0 8px rgba(245, 158, 11, 0.5)',
+                color: '#d4af37',
+                textShadow: '0 0 8px rgba(212, 175, 55, 0.45)',
                 lineHeight: 1
               }}>
                 GEAN
@@ -150,7 +150,7 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        {/* Lado Direito: Ações de Utilidade (Limpo, Alinhado e Discreto) */}
+        {/* Lado Direito: Ações de Utilidade (Padrão Tático BOPE: Preto, Dourado e Aço) */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
           {userName && (
             <div 
@@ -159,16 +159,16 @@ export const Header: React.FC<HeaderProps> = ({
                 alignItems: 'center',
                 gap: '0.4rem',
                 padding: '0.38rem 0.75rem',
-                borderRadius: '12px',
-                background: 'rgba(34, 197, 94, 0.12)',
-                border: '1px solid rgba(34, 197, 94, 0.35)',
+                borderRadius: '10px',
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid rgba(212, 175, 55, 0.35)',
                 fontSize: '0.78rem',
-                color: '#86efac',
+                color: '#f4f4f5',
                 fontWeight: 700
               }}
               title={`Guerreiro autenticado: ${userName}`}
             >
-              <UserCheck size={14} color="#22c55e" />
+              <UserCheck size={14} color="#d4af37" />
               <span>{userName}</span>
             </div>
           )}
@@ -180,20 +180,20 @@ export const Header: React.FC<HeaderProps> = ({
               style={{
                 padding: '0.4rem 0.8rem',
                 fontSize: '0.8rem',
-                borderRadius: '12px',
+                borderRadius: '10px',
                 background: (pendingUsersCount && pendingUsersCount > 0)
-                  ? 'linear-gradient(135deg, rgba(245, 158, 11, 0.3) 0%, rgba(217, 119, 6, 0.25) 100%)'
-                  : 'rgba(245, 158, 11, 0.12)',
+                  ? 'linear-gradient(135deg, rgba(220, 38, 38, 0.25) 0%, rgba(185, 28, 28, 0.2) 100%)'
+                  : 'rgba(255, 255, 255, 0.05)',
                 borderColor: (pendingUsersCount && pendingUsersCount > 0)
-                  ? '#f59e0b'
-                  : 'rgba(245, 158, 11, 0.4)',
-                color: '#fbbf24',
+                  ? '#dc2626'
+                  : 'rgba(212, 175, 55, 0.4)',
+                color: (pendingUsersCount && pendingUsersCount > 0) ? '#fca5a5' : '#d4af37',
                 fontWeight: 800,
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.4rem',
                 boxShadow: (pendingUsersCount && pendingUsersCount > 0)
-                  ? '0 0 15px rgba(245, 158, 11, 0.4)'
+                  ? '0 0 15px rgba(220, 38, 38, 0.35)'
                   : 'none'
               }}
               onClick={() => {
@@ -202,7 +202,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               title="Painel de Controle de Acesso Militar (Exclusivo Comandante Gean)"
             >
-              <ShieldCheck size={15} color="#fbbf24" />
+              <ShieldCheck size={15} color={pendingUsersCount && pendingUsersCount > 0 ? '#ef4444' : '#d4af37'} />
               <span>Comando {pendingUsersCount && pendingUsersCount > 0 ? `(${pendingUsersCount})` : ''}</span>
             </button>
           )}
@@ -212,9 +212,9 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               className="icon-btn"
               style={{
-                background: 'rgba(16, 185, 129, 0.12)',
-                borderColor: 'rgba(16, 185, 129, 0.4)',
-                color: '#34d399'
+                background: 'rgba(255, 255, 255, 0.05)',
+                borderColor: 'rgba(212, 175, 55, 0.35)',
+                color: '#d4af37'
               }}
               onClick={() => {
                 sound.playClick();
@@ -222,38 +222,53 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               title="Canal de Pedidos & Dúvidas com o Comandante Gean"
             >
-              <MessageSquare size={17} color="#34d399" />
+              <MessageSquare size={17} color="#d4af37" />
             </button>
           )}
 
           {/* Conquistas e Medalhas */}
           <button 
             className="icon-btn" 
+            style={{
+              background: 'rgba(255, 255, 255, 0.05)',
+              borderColor: 'rgba(212, 175, 55, 0.35)',
+              color: '#d4af37'
+            }}
             onClick={() => {
               sound.playClick();
               onOpenAchievements();
             }}
             title="Conquistas e Medalhas Militares"
           >
-            <Trophy size={17} color="#f59e0b" />
+            <Trophy size={17} color="#d4af37" />
             {unlockedBadgesCount > 0 && (
-              <span className="badge-counter">{unlockedBadgesCount}</span>
+              <span className="badge-counter" style={{ background: '#b91c1c', color: '#ffffff' }}>{unlockedBadgesCount}</span>
             )}
           </button>
 
           {/* Som Ativo/Mudo */}
           <button 
             className="icon-btn" 
+            style={{
+              background: 'rgba(255, 255, 255, 0.05)',
+              borderColor: 'rgba(212, 175, 55, 0.35)',
+              color: '#d4af37'
+            }}
             onClick={onToggleMute}
             title={isMuted ? 'Ativar Efeitos Sonoros' : 'Mutar Sons'}
           >
-            {isMuted ? <VolumeX size={17} color="var(--text-dim)" /> : <Volume2 size={17} color="#22c55e" />}
+            {isMuted ? <VolumeX size={17} color="var(--text-dim)" /> : <Volume2 size={17} color="#d4af37" />}
           </button>
 
           {/* Sair do Jogo */}
           {onLogout && (
             <button
               className="header-logout-btn"
+              style={{
+                background: 'rgba(185, 28, 28, 0.15)',
+                borderColor: 'rgba(220, 38, 38, 0.35)',
+                color: '#fca5a5'
+              }}
               onClick={() => {
                 sound.playClick();
                 onLogout();
@@ -267,8 +282,8 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* DIVISÓRIA MILITAR SUAVE */}
-      <div style={{ height: '1px', background: 'linear-gradient(90deg, rgba(34, 197, 94, 0.3) 0%, rgba(59, 130, 246, 0.25) 50%, transparent 100%)' }} />
+      {/* DIVISÓRIA MILITAR SUAVE (BOPE DOURADO / AÇO) */}
+      <div style={{ height: '1px', background: 'linear-gradient(90deg, rgba(212, 175, 55, 0.35) 0%, rgba(185, 28, 28, 0.3) 50%, transparent 100%)' }} />
 
       {/* LINHA 2: HUD DO GUERREIRO & AÇÕES OPERACIONAIS PRINCIPAIS */}
       <div className="player-hud" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.85rem', width: '100%' }}>
@@ -278,9 +293,9 @@ export const Header: React.FC<HeaderProps> = ({
             className="hud-stat-pill" 
             title={`Nível Militar ${stats.level} • ${xpCurrentLevel}/100 XP (Cada questão correta eleva o XP)`}
             style={{
-              background: 'linear-gradient(135deg, rgba(20, 32, 24, 0.9) 0%, rgba(12, 18, 14, 0.95) 100%)',
-              border: '1px solid rgba(34, 197, 94, 0.35)',
-              boxShadow: '0 0 14px rgba(34, 197, 94, 0.15)',
+              background: 'linear-gradient(135deg, rgba(16, 18, 24, 0.96) 0%, rgba(10, 11, 15, 0.98) 100%)',
+              border: '1px solid rgba(212, 175, 55, 0.35)',
+              boxShadow: '0 4px 14px rgba(0, 0, 0, 0.5)',
               padding: '0.45rem 0.85rem'
             }}
           >
@@ -288,26 +303,26 @@ export const Header: React.FC<HeaderProps> = ({
               width: '26px',
               height: '26px',
               borderRadius: '7px',
-              background: 'linear-gradient(135deg, #15803d, #22c55e)',
+              background: 'linear-gradient(135deg, #b8860b, #d4af37)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 0 10px rgba(34, 197, 94, 0.4)'
+              boxShadow: '0 0 10px rgba(212, 175, 55, 0.35)'
             }}>
-              <Sparkles size={15} color="#ffffff" />
+              <Sparkles size={15} color="#07080a" />
             </div>
             <div className="xp-progress-bar-wrap" style={{ minWidth: '130px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.74rem', gap: '0.5rem' }}>
-                <span style={{ color: '#4ade80', fontWeight: 900, letterSpacing: '0.04em' }}>NÍVEL {stats.level}</span>
-                <span style={{ color: '#94a3b8', fontWeight: 700 }}>{xpCurrentLevel}/100 XP</span>
+                <span style={{ color: '#d4af37', fontWeight: 900, letterSpacing: '0.04em' }}>NÍVEL {stats.level}</span>
+                <span style={{ color: '#a1a1aa', fontWeight: 700 }}>{xpCurrentLevel}/100 XP</span>
               </div>
-              <div className="xp-bar-track" style={{ height: '6px', background: 'rgba(0, 0, 0, 0.45)' }}>
+              <div className="xp-bar-track" style={{ height: '6px', background: 'rgba(0, 0, 0, 0.65)' }}>
                 <div 
                   className="xp-bar-fill" 
                   style={{ 
                     width: `${xpPercentage}%`,
-                    background: 'linear-gradient(90deg, #16a34a 0%, #22c55e 60%, #f59e0b 100%)',
-                    boxShadow: '0 0 12px rgba(34, 197, 94, 0.7)'
+                    background: 'linear-gradient(90deg, #967117 0%, #d4af37 100%)',
+                    boxShadow: '0 0 10px rgba(212, 175, 55, 0.5)'
                   }} 
                 />
               </div>
@@ -328,13 +343,13 @@ export const Header: React.FC<HeaderProps> = ({
                 alignItems: 'center',
                 gap: '0.35rem',
                 padding: '0.45rem 0.8rem',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.35) 0%, rgba(147, 51, 234, 0.35) 100%)',
-                border: '1.5px solid #ef4444',
+                borderRadius: '10px',
+                background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.3) 0%, rgba(185, 28, 28, 0.35) 100%)',
+                border: '1.5px solid #dc2626',
                 color: '#ffffff',
                 fontSize: '0.75rem',
                 fontWeight: 900,
-                boxShadow: '0 0 15px rgba(239, 68, 68, 0.45)',
+                boxShadow: '0 0 15px rgba(220, 38, 38, 0.35)',
                 animation: 'pulse 2s infinite'
               }}
               title="Ronda Noturna Operacional ativa até 23:59: Pontos em dobro (2x)!"
@@ -350,15 +365,15 @@ export const Header: React.FC<HeaderProps> = ({
               style={{
                 padding: '0.48rem 0.95rem',
                 fontSize: '0.84rem',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.28) 0%, rgba(180, 83, 9, 0.35) 100%)',
-                borderColor: '#f59e0b',
-                color: '#fbbf24',
-                fontWeight: 900,
+                borderRadius: '10px',
+                background: 'linear-gradient(135deg, rgba(20, 22, 28, 0.98) 0%, rgba(12, 13, 17, 0.98) 100%)',
+                borderColor: 'rgba(212, 175, 55, 0.45)',
+                color: '#f4f4f5',
+                fontWeight: 800,
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.45rem',
-                boxShadow: '0 0 15px rgba(245, 158, 11, 0.35)',
+                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.5)',
                 cursor: 'pointer'
               }}
               onClick={() => {
@@ -367,7 +382,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               title="Competição Semanal do Pelotão PMPE (Segunda a Sábado com Premiação Oficial R$ 50/R$ 100)"
             >
-              <Trophy size={16} color="#fbbf24" />
+              <Trophy size={16} color="#d4af37" />
               <span>🏆 Competição Semanal</span>
             </button>
           )}
@@ -379,15 +394,15 @@ export const Header: React.FC<HeaderProps> = ({
               style={{
                 padding: '0.48rem 0.95rem',
                 fontSize: '0.84rem',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.22) 0%, rgba(217, 119, 6, 0.3) 100%)',
-                borderColor: '#f59e0b',
-                color: '#fef08a',
-                fontWeight: 900,
+                borderRadius: '10px',
+                background: 'linear-gradient(135deg, rgba(20, 22, 28, 0.98) 0%, rgba(12, 13, 17, 0.98) 100%)',
+                borderColor: 'rgba(212, 175, 55, 0.45)',
+                color: '#f4f4f5',
+                fontWeight: 800,
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.45rem',
-                boxShadow: '0 0 14px rgba(245, 158, 11, 0.25)',
+                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.5)',
                 cursor: 'pointer'
               }}
               onClick={() => {
@@ -396,7 +411,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               title="QG da Redação PMPE: Folha Pautada Oficial (20-30 Linhas), Temas Quentes e Modelos Coringa"
             >
-              <PenTool size={16} color="#fbbf24" />
+              <PenTool size={16} color="#d4af37" />
               <span>✍️ Redação PMPE</span>
             </button>
           )}
@@ -408,15 +423,15 @@ export const Header: React.FC<HeaderProps> = ({
               style={{
                 padding: '0.48rem 0.95rem',
                 fontSize: '0.84rem',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(16, 185, 129, 0.25) 100%)',
-                borderColor: '#22c55e',
-                color: '#86efac',
-                fontWeight: 900,
+                borderRadius: '10px',
+                background: 'linear-gradient(135deg, rgba(20, 22, 28, 0.98) 0%, rgba(12, 13, 17, 0.98) 100%)',
+                borderColor: 'rgba(212, 175, 55, 0.45)',
+                color: '#f4f4f5',
+                fontWeight: 800,
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.45rem',
-                boxShadow: '0 0 14px rgba(34, 197, 94, 0.2)',
+                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.5)',
                 cursor: 'pointer'
               }}
               onClick={() => {
@@ -425,7 +440,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               title="Raio-X de Proficiência: Gráfico Radar de Fraquezas nas 8 Matérias do Edital AOCP"
             >
-              <Radar size={16} color="#4ade80" />
+              <Radar size={16} color="#d4af37" />
               <span>🕸️ Radar AOCP</span>
             </button>
           )}
@@ -444,21 +459,21 @@ export const Header: React.FC<HeaderProps> = ({
                 padding: '0.48rem 0.95rem',
                 borderRadius: '10px',
                 background: isMenuOpen 
-                  ? 'linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(220, 38, 38, 0.25) 100%)' 
-                  : 'linear-gradient(135deg, #0e1017 0%, #08090d 100%)',
-                border: isMenuOpen ? '1.5px solid #fbbf24' : '1px solid rgba(245, 158, 11, 0.4)',
+                  ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(185, 28, 28, 0.25) 100%)' 
+                  : 'linear-gradient(135deg, #111319 0%, #0a0b0e 100%)',
+                border: isMenuOpen ? '1.5px solid #d4af37' : '1px solid rgba(212, 175, 55, 0.45)',
                 color: '#ffffff',
                 fontSize: '0.84rem',
                 fontWeight: 800,
                 cursor: 'pointer',
-                boxShadow: isMenuOpen ? '0 0 15px rgba(245, 158, 11, 0.4)' : '0 2px 8px rgba(0,0,0,0.6)',
+                boxShadow: isMenuOpen ? '0 0 15px rgba(212, 175, 55, 0.35)' : '0 2px 8px rgba(0,0,0,0.6)',
                 transition: 'all 0.2s ease'
               }}
               title="Acesse todas as ferramentas táticas do aplicativo em um só lugar"
             >
-              <Zap size={16} color="#fbbf24" />
+              <Zap size={16} color="#d4af37" />
               <span style={{ letterSpacing: '0.04em' }}>Menu Tático</span>
-              {isMenuOpen ? <ChevronUp size={15} color="#fbbf24" /> : <ChevronDown size={15} color="#cbd5e1" />}
+              {isMenuOpen ? <ChevronUp size={15} color="#d4af37" /> : <ChevronDown size={15} color="#a1a1aa" />}
             </button>
 
             {/* PAINEL DROPDOWN SUSPENSO (BOPE MILITAR: PRETO, DOURADO, VERMELHO E BRANCO) */}
@@ -473,9 +488,9 @@ export const Header: React.FC<HeaderProps> = ({
                   maxHeight: 'min(80vh, 640px)',
                   overflowY: 'auto',
                   background: 'linear-gradient(180deg, #0d0f15 0%, #06070a 100%)',
-                  border: '1.5px solid rgba(245, 158, 11, 0.45)',
+                  border: '1.5px solid rgba(212, 175, 55, 0.45)',
                   borderRadius: '14px',
-                  boxShadow: '0 20px 50px rgba(0, 0, 0, 0.95), 0 0 25px rgba(245, 158, 11, 0.2)',
+                  boxShadow: '0 20px 50px rgba(0, 0, 0, 0.95), 0 0 25px rgba(212, 175, 55, 0.15)',
                   backdropFilter: 'blur(20px)',
                   padding: '0.85rem',
                   zIndex: 9999,
@@ -487,8 +502,8 @@ export const Header: React.FC<HeaderProps> = ({
               >
                 {/* GRUPO 1: ESTUDO & CADERNOS */}
                 <div>
-                  <div style={{ fontSize: '0.7rem', fontWeight: 900, color: '#fbbf24', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                    <BookOpen size={13} color="#f59e0b" />
+                  <div style={{ fontSize: '0.7rem', fontWeight: 900, color: '#d4af37', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                    <BookOpen size={13} color="#d4af37" />
                     <span>Estudos & Legislação</span>
                   </div>
 
@@ -506,9 +521,9 @@ export const Header: React.FC<HeaderProps> = ({
                           justifyContent: 'space-between',
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
-                          background: 'rgba(245, 158, 11, 0.15)',
-                          border: '1px solid rgba(245, 158, 11, 0.4)',
-                          color: '#fef08a',
+                          background: 'rgba(212, 175, 55, 0.08)',
+                          border: '1px solid rgba(212, 175, 55, 0.35)',
+                          color: '#f4f4f5',
                           fontSize: '0.82rem',
                           fontWeight: 800,
                           cursor: 'pointer',
@@ -516,10 +531,10 @@ export const Header: React.FC<HeaderProps> = ({
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <PenTool size={15} color="#fbbf24" />
+                          <PenTool size={15} color="#d4af37" />
                           <span>QG da Redação PMPE</span>
                         </div>
-                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#f59e0b', color: '#060b17', fontWeight: 900 }}>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#b8860b', color: '#07080a', fontWeight: 900 }}>
                           20-30 LINHAS
                         </span>
                       </button>
@@ -538,9 +553,9 @@ export const Header: React.FC<HeaderProps> = ({
                           justifyContent: 'space-between',
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
-                          background: 'rgba(34, 197, 94, 0.1)',
-                          border: '1px solid rgba(34, 197, 94, 0.35)',
-                          color: '#86efac',
+                          background: 'rgba(212, 175, 55, 0.08)',
+                          border: '1px solid rgba(212, 175, 55, 0.35)',
+                          color: '#f4f4f5',
                           fontSize: '0.82rem',
                           fontWeight: 800,
                           cursor: 'pointer',
@@ -548,10 +563,10 @@ export const Header: React.FC<HeaderProps> = ({
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <Radar size={15} color="#4ade80" />
+                          <Radar size={15} color="#d4af37" />
                           <span>Radar de Fraquezas AOCP</span>
                         </div>
-                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#22c55e', color: '#060b17', fontWeight: 900 }}>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#b8860b', color: '#07080a', fontWeight: 900 }}>
                           RAIO-X
                         </span>
                       </button>
@@ -570,8 +585,8 @@ export const Header: React.FC<HeaderProps> = ({
                           justifyContent: 'space-between',
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
-                          background: 'rgba(239, 68, 68, 0.12)',
-                          border: '1px solid rgba(239, 68, 68, 0.4)',
+                          background: 'rgba(185, 28, 28, 0.15)',
+                          border: '1px solid rgba(220, 38, 38, 0.4)',
                           color: '#fca5a5',
                           fontSize: '0.82rem',
                           fontWeight: 800,
@@ -580,7 +595,7 @@ export const Header: React.FC<HeaderProps> = ({
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <AlertTriangle size={15} color="#ef4444" />
+                          <AlertTriangle size={15} color="#dc2626" />
                           <span>Pegadinhas da AOCP</span>
                         </div>
                         <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#dc2626', color: '#ffffff', fontWeight: 900 }}>
@@ -602,9 +617,9 @@ export const Header: React.FC<HeaderProps> = ({
                           justifyContent: 'space-between',
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
-                          background: 'rgba(56, 189, 248, 0.12)',
-                          border: '1px solid rgba(56, 189, 248, 0.4)',
-                          color: '#bae6fd',
+                          background: 'rgba(255, 255, 255, 0.04)',
+                          border: '1px solid rgba(212, 175, 55, 0.35)',
+                          color: '#f4f4f5',
                           fontSize: '0.82rem',
                           fontWeight: 800,
                           cursor: 'pointer',
@@ -612,10 +627,10 @@ export const Header: React.FC<HeaderProps> = ({
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <Headphones size={15} color="#38bdf8" />
+                          <Headphones size={15} color="#d4af37" />
                           <span>Podcast Tático PMPE</span>
                         </div>
-                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#0284c7', color: '#ffffff', fontWeight: 900 }}>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#b8860b', color: '#07080a', fontWeight: 900 }}>
                           8 AULAS
                         </span>
                       </button>
@@ -634,9 +649,9 @@ export const Header: React.FC<HeaderProps> = ({
                           justifyContent: 'space-between',
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
-                          background: 'rgba(56, 189, 248, 0.1)',
-                          border: '1px solid rgba(56, 189, 248, 0.35)',
-                          color: '#bae6fd',
+                          background: 'rgba(255, 255, 255, 0.04)',
+                          border: '1px solid rgba(212, 175, 55, 0.35)',
+                          color: '#f4f4f5',
                           fontSize: '0.82rem',
                           fontWeight: 800,
                           cursor: 'pointer',
@@ -644,10 +659,10 @@ export const Header: React.FC<HeaderProps> = ({
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <Zap size={15} color="#38bdf8" />
+                          <Zap size={15} color="#d4af37" />
                           <span>Flashcards Táticos</span>
                         </div>
-                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#0284c7', color: '#ffffff', fontWeight: 900 }}>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#b8860b', color: '#07080a', fontWeight: 900 }}>
                           MNEMÔNICOS
                         </span>
                       </button>
@@ -895,9 +910,9 @@ export const Header: React.FC<HeaderProps> = ({
                           justifyContent: 'space-between',
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
-                          background: 'rgba(34, 197, 94, 0.12)',
-                          border: '1px solid rgba(34, 197, 94, 0.4)',
-                          color: '#86efac',
+                          background: 'rgba(212, 175, 55, 0.08)',
+                          border: '1px solid rgba(212, 175, 55, 0.35)',
+                          color: '#f4f4f5',
                           fontSize: '0.82rem',
                           fontWeight: 800,
                           cursor: 'pointer',
@@ -905,10 +920,10 @@ export const Header: React.FC<HeaderProps> = ({
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <Activity size={15} color="#22c55e" />
+                          <Activity size={15} color="#d4af37" />
                           <span>Simulador TAF PMPE</span>
                         </div>
-                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#16a34a', color: '#ffffff', fontWeight: 900 }}>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#b8860b', color: '#07080a', fontWeight: 900 }}>
                           OFICIAL
                         </span>
                       </button>
@@ -927,9 +942,9 @@ export const Header: React.FC<HeaderProps> = ({
                           justifyContent: 'space-between',
                           padding: '0.5rem 0.65rem',
                           borderRadius: '8px',
-                          background: 'rgba(245, 158, 11, 0.12)',
-                          border: '1px solid rgba(245, 158, 11, 0.4)',
-                          color: '#fef08a',
+                          background: 'rgba(212, 175, 55, 0.08)',
+                          border: '1px solid rgba(212, 175, 55, 0.35)',
+                          color: '#f4f4f5',
                           fontSize: '0.82rem',
                           fontWeight: 800,
                           cursor: 'pointer',

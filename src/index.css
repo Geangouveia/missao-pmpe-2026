@@ -10,40 +10,40 @@
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Cores Base Militares Operacionais (BOPE / Tático) */
-  --bg-space: #07080a; /* Preto Profundo Tático Fosco */
-  --bg-deep: #0c0e12;  /* Preto Chumbo Blindado */
-  --bg-card: rgba(13, 15, 20, 0.96); /* Painel Kevlar / Carbono Tático */
-  --bg-card-hover: rgba(20, 23, 31, 0.98);
-  --bg-glass: rgba(245, 158, 11, 0.035);
-  --bg-glass-active: rgba(245, 158, 11, 0.14);
+  /* Cores Base Militares Operacionais BOPE RJ (Faca na Caveira) */
+  --bg-space: #07080a; /* Preto Tático Profundo */
+  --bg-deep: #0c0e12;  /* Preto Carbono Tático */
+  --bg-card: rgba(15, 17, 23, 0.96); /* Painel Kevlar / Carbono Fosco */
+  --bg-card-hover: rgba(22, 25, 34, 0.98);
+  --bg-glass: rgba(212, 175, 55, 0.03);
+  --bg-glass-active: rgba(212, 175, 55, 0.12);
 
-  /* Bordas e Contornos Táticos Militares (Dourado Militar & Aço Escuro) */
-  --border-subtle: rgba(245, 158, 11, 0.22);
-  --border-glow: rgba(245, 158, 11, 0.5);
-  --border-cyan: rgba(245, 158, 11, 0.45);
+  /* Bordas e Contornos Táticos BOPE (Dourado de Insígnia e Aço Escuro) */
+  --border-subtle: rgba(212, 175, 55, 0.22);
+  --border-glow: rgba(212, 175, 55, 0.45);
+  --border-cyan: rgba(212, 175, 55, 0.35);
 
-  /* Paleta Tática Militar de Elite (BOPE) */
-  --pmpe-blue: #d97706;
-  --pmpe-blue-bright: #f59e0b;
-  --pmpe-blue-light: #fbbf24;
+  /* Paleta Tática Militar de Elite (BOPE RJ) */
+  --pmpe-blue: #c59b27;
+  --pmpe-blue-bright: #d4af37;
+  --pmpe-blue-light: #e5c158;
   --military-green-dark: #0a0c10;
-  --military-green: #d97706;
-  --military-green-bright: #f59e0b;
-  --military-gold: #f59e0b; /* Dourado da Faca na Caveira e Insígnias */
-  --military-gold-bright: #fbbf24;
+  --military-green: #b8860b;
+  --military-green-bright: #d4af37;
+  --military-gold: #d4af37; /* Dourado da Faca na Caveira e Insígnias */
+  --military-gold-bright: #e5c158;
   --military-khaki: #cbd5e1;
   --military-red: #dc2626; /* Vermelho Operacional / Alerta de Combate */
   --military-red-bright: #ef4444;
-  --military-blue: #b45309;
+  --military-blue: #967117;
 
-  /* Acentos Operacionais Táticos */
-  --neon-cyan: #fbbf24;
+  /* Acentos Operacionais Táticos (Sem Cores Carnavalescas) */
+  --neon-cyan: #d4af37;
   --neon-purple: #dc2626;
   --neon-violet: #b91c1c;
   --neon-pink: #ef4444;
-  --neon-emerald: #fbbf24;
-  --neon-amber: #f59e0b;
+  --neon-emerald: #d4af37;
+  --neon-amber: #c59b27;
   --neon-red: #dc2626;
 
   /* Texto */
@@ -53,11 +53,11 @@
   --text-glow: #fef3c7;
 
   /* Sombras e Brilho Tático Militar */
-  --glow-cyan: 0 0 20px rgba(245, 158, 11, 0.25);
-  --glow-purple: 0 0 20px rgba(220, 38, 38, 0.25);
-  --glow-gold: 0 0 25px rgba(245, 158, 11, 0.4);
+  --glow-cyan: 0 0 20px rgba(212, 175, 55, 0.22);
+  --glow-purple: 0 0 20px rgba(220, 38, 38, 0.22);
+  --glow-gold: 0 0 22px rgba(212, 175, 55, 0.35);
   --shadow-card: 0 16px 45px -10px rgba(0, 0, 0, 0.95), 0 0 0 1px var(--border-subtle);
-  --shadow-popup: 0 25px 65px -15px rgba(0, 0, 0, 0.98), 0 0 0 1.5px rgba(245, 158, 11, 0.45);
+  --shadow-popup: 0 25px 65px -15px rgba(0, 0, 0, 0.98), 0 0 0 1.5px rgba(212, 175, 55, 0.45);
 
   /* Transições Suaves */
   --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);

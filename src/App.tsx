@@ -51,7 +51,7 @@ import { fetchRegistryFromCloud, isMasterUser, checkActiveSessionValidity } from
 import { updateAndCalculateStreak } from './utils/studentStreak';
 import { recordLiveQuestionAnswer, isRondaNoturnaActive } from './utils/competitionManager';
 import { recordMistake, getPendingMistakesCount } from './utils/errorNotebookManager';
-import { Swords, ArrowRight, ShieldCheck, Shield, Calendar, FileText, Smartphone, AlertTriangle, BookOpen, Bell, Trophy, Target, Award, Flame, Gamepad2 } from 'lucide-react';
+import { Swords, ArrowRight, ShieldCheck, Shield, Calendar, FileText, Smartphone, AlertTriangle, BookOpen, Bell, Trophy, Target, Award, Flame, Gamepad2, BrainCircuit } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export function App() {
@@ -959,7 +959,7 @@ export function App() {
       {/* Roteamento de Telas */}
       {activeMode === null && (
         <>
-          {/* BANNER DE ACESSO DIRETO À TELA DE COMANDO (EXCLUSIVO GEAN) */}
+          {/* BANNER DE ACESSO DIRETO À TELA DE COMANDO (EXCLUSIVO GEAN - PADRÃO BOPE) */}
           {isMasterUser(currentUser) && (
             <div 
               onClick={() => {
@@ -969,10 +969,10 @@ export function App() {
               style={{
                 cursor: 'pointer',
                 padding: '0.95rem 1.35rem',
-                borderRadius: '16px',
-                background: 'linear-gradient(135deg, rgba(180, 83, 9, 0.3) 0%, rgba(245, 158, 11, 0.2) 100%)',
-                border: '2px solid #f59e0b',
-                boxShadow: '0 0 25px rgba(245, 158, 11, 0.25)',
+                borderRadius: '14px',
+                background: 'linear-gradient(135deg, #101217 0%, #151720 100%)',
+                border: '1.5px solid rgba(212, 175, 55, 0.45)',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
@@ -983,11 +983,11 @@ export function App() {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 0 35px rgba(245, 158, 11, 0.45)';
+                e.currentTarget.style.boxShadow = '0 8px 28px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.2)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 0 25px rgba(245, 158, 11, 0.25)';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.6)';
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
@@ -995,25 +995,26 @@ export function App() {
                   width: '42px',
                   height: '42px',
                   borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #b45309, #f59e0b)',
+                  background: 'linear-gradient(135deg, #1f232c, #13151b)',
+                  border: '1px solid rgba(212, 175, 55, 0.4)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  boxShadow: '0 0 15px rgba(245, 158, 11, 0.4)'
+                  boxShadow: '0 0 15px rgba(0, 0, 0, 0.5)'
                 }}>
-                  <Shield color="#ffffff" size={22} />
+                  <Shield color="#d4af37" size={22} />
                 </div>
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <span style={{ fontSize: '1.05rem', fontWeight: 900, color: '#ffffff' }}>
                       Sala de Comando Geral & Gestão de Alunos
                     </span>
-                    <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.5rem', borderRadius: '4px', background: '#b45309', color: '#fef3c7', fontWeight: 900 }}>
+                    <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.5rem', borderRadius: '4px', background: 'rgba(212, 175, 55, 0.15)', color: '#d4af37', border: '1px solid rgba(212, 175, 55, 0.35)', fontWeight: 900 }}>
                       COMANDANTE GEAN
                     </span>
                   </div>
-                  <div style={{ fontSize: '0.78rem', color: '#fbbf24', marginTop: '0.15rem' }}>
-                    Clique aqui para gerenciar os alunos matriculados, bloquear/cancelar acessos e alterar senhas
+                  <div style={{ fontSize: '0.78rem', color: '#a1a1aa', marginTop: '0.15rem' }}>
+                    Clique aqui para gerenciar os alunos matriculados, certidões militares, bloqueios e senhas
                   </div>
                 </div>
               </div>
@@ -1024,11 +1025,12 @@ export function App() {
                   padding: '0.5rem 1.15rem',
                   fontSize: '0.84rem',
                   borderRadius: '10px',
-                  background: 'linear-gradient(135deg, #d97706, #b45309)',
-                  border: '1px solid #f59e0b',
-                  color: '#ffffff',
+                  background: 'linear-gradient(135deg, #c59b27, #967117)',
+                  border: 'none',
+                  color: '#07080a',
                   fontWeight: 900,
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.5)'
                 }}
               >
                 Abrir Tela de Gestão de Alunos ➔
@@ -1036,7 +1038,7 @@ export function App() {
             </div>
           )}
 
-          {/* BANNER OFICIAL: COMPETIÇÃO SEMANAL DO PELOTÃO */}
+          {/* BANNER OFICIAL: COMPETIÇÃO SEMANAL DO PELOTÃO (PADRÃO BOPE) */}
           <div 
             onClick={() => {
               sound.playLevelUp();
@@ -1045,10 +1047,10 @@ export function App() {
             style={{
               cursor: 'pointer',
               padding: '1rem 1.4rem',
-              borderRadius: '16px',
-              background: 'linear-gradient(135deg, rgba(29, 78, 216, 0.35) 0%, rgba(245, 158, 11, 0.22) 100%)',
-              border: '2px solid rgba(245, 158, 11, 0.65)',
-              boxShadow: '0 0 30px rgba(245, 158, 11, 0.25)',
+              borderRadius: '14px',
+              background: 'linear-gradient(135deg, #101217 0%, #151720 100%)',
+              border: '1.5px solid rgba(212, 175, 55, 0.45)',
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
@@ -1059,37 +1061,38 @@ export function App() {
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 0 35px rgba(245, 158, 11, 0.45)';
+              e.currentTarget.style.boxShadow = '0 8px 28px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.2)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 0 30px rgba(245, 158, 11, 0.25)';
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.6)';
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
               <div style={{
                 width: '46px',
                 height: '46px',
-                borderRadius: '14px',
-                background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #1f232c, #13151b)',
+                border: '1px solid rgba(212, 175, 55, 0.4)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 18px rgba(245, 158, 11, 0.5)',
-                color: '#ffffff'
+                boxShadow: '0 0 15px rgba(0, 0, 0, 0.5)',
+                color: '#d4af37'
               }}>
                 <Trophy size={24} />
               </div>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '1.08rem', fontWeight: 900, color: '#fef08a' }}>
+                  <span style={{ fontSize: '1.08rem', fontWeight: 900, color: '#ffffff' }}>
                     🏆 Competição Semanal do Pelotão PMPE 2026
                   </span>
-                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.55rem', borderRadius: '4px', background: 'rgba(34, 197, 94, 0.25)', border: '1px solid #22c55e', color: '#4ade80', fontWeight: 900 }}>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.55rem', borderRadius: '4px', background: 'rgba(212, 175, 55, 0.15)', border: '1px solid rgba(212, 175, 55, 0.35)', color: '#d4af37', fontWeight: 900 }}>
                     DISPUTA OFICIAL
                   </span>
                 </div>
-                <div style={{ fontSize: '0.82rem', color: '#cbd5e1', marginTop: '0.2rem' }}>
+                <div style={{ fontSize: '0.82rem', color: '#a1a1aa', marginTop: '0.2rem' }}>
                   Premiação Oficial estipulada pelo Comandante Gean para o 1º Colocado no fechamento de Sábado!
                 </div>
               </div>
@@ -1100,15 +1103,15 @@ export function App() {
               style={{
                 padding: '0.55rem 1.25rem',
                 fontSize: '0.86rem',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+                borderRadius: '10px',
+                background: 'linear-gradient(135deg, #c59b27, #967117)',
                 border: 'none',
-                color: '#060b17',
+                color: '#07080a',
                 fontWeight: 900,
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.45rem',
-                boxShadow: '0 0 15px rgba(245, 158, 11, 0.4)'
+                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.5)'
               }}
             >
               <span>Ver Ranking & Premiação</span>
@@ -1116,7 +1119,7 @@ export function App() {
             </button>
           </div>
 
-          {/* BANNER DINÂMICO: RONDA NOTURNA (2X PONTOS ATIVOS) */}
+          {/* BANNER DINÂMICO: RONDA NOTURNA (PADRÃO TÁTICO BOPE) */}
           {isRondaNoturna && (
             <div
               onClick={() => {
@@ -1126,10 +1129,10 @@ export function App() {
               style={{
                 cursor: 'pointer',
                 padding: '0.95rem 1.35rem',
-                borderRadius: '16px',
-                background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.28) 0%, rgba(147, 51, 234, 0.28) 100%)',
-                border: '2px solid #ef4444',
-                boxShadow: '0 0 25px rgba(239, 68, 68, 0.35)',
+                borderRadius: '14px',
+                background: 'linear-gradient(135deg, #150a0a 0%, #0d0808 100%)',
+                border: '1.5px solid rgba(220, 38, 38, 0.55)',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6), 0 0 20px rgba(220, 38, 38, 0.2)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
@@ -1145,7 +1148,8 @@ export function App() {
                     width: '42px',
                     height: '42px',
                     borderRadius: '12px',
-                    background: 'linear-gradient(135deg, #dc2626, #9333ea)',
+                    background: '#1f0d0d',
+                    border: '1px solid rgba(220, 38, 38, 0.5)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -1157,14 +1161,14 @@ export function App() {
                 </div>
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-                    <span style={{ fontSize: '1rem', fontWeight: 900, color: '#fca5a5' }}>
+                    <span style={{ fontSize: '1rem', fontWeight: 900, color: '#ffffff' }}>
                       RONDA NOTURNA OPERACIONAL EM ANDAMENTO
                     </span>
                     <span style={{ fontSize: '0.7rem', padding: '0.15rem 0.55rem', borderRadius: '6px', background: '#dc2626', color: '#ffffff', fontWeight: 900 }}>
                       2X PONTOS ATIVOS
                     </span>
                   </div>
-                  <div style={{ fontSize: '0.8rem', color: '#e2e8f0', marginTop: '0.15rem' }}>
+                  <div style={{ fontSize: '0.8rem', color: '#fca5a5', marginTop: '0.15rem' }}>
                     De 21:00 às 23:59, todas as questões certas contam o DOBRO de pontos na competição semanal!
                   </div>
                 </div>
@@ -1189,18 +1193,18 @@ export function App() {
             padding: '0 0.25rem'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              <span style={{ fontSize: '1.2rem' }}>⚡</span>
+              <span style={{ fontSize: '1.2rem', color: '#d4af37' }}>⚡</span>
               <div>
-                <h2 style={{ fontSize: '0.98rem', fontWeight: 900, color: '#f8fafc', letterSpacing: '0.03em', textTransform: 'uppercase' }}>
+                <h2 style={{ fontSize: '0.98rem', fontWeight: 900, color: '#ffffff', letterSpacing: '0.03em', textTransform: 'uppercase' }}>
                   Central Operacional do Soldado
                 </h2>
-                <p style={{ fontSize: '0.76rem', color: '#94a3b8' }}>
+                <p style={{ fontSize: '0.76rem', color: '#a1a1aa' }}>
                   Vade Mecum em tela cheia, caderno de erros, cronograma VIP e simulados AOCP
                 </p>
               </div>
             </div>
-            <span style={{ fontSize: '0.7rem', padding: '0.2rem 0.6rem', borderRadius: '20px', background: 'rgba(59, 130, 246, 0.15)', color: '#93c5fd', fontWeight: 800, border: '1px solid rgba(59, 130, 246, 0.3)' }}>
-              6 MÓDULOS TÁTICOS
+            <span style={{ fontSize: '0.7rem', padding: '0.2rem 0.6rem', borderRadius: '12px', background: 'rgba(212, 175, 55, 0.12)', color: '#d4af37', fontWeight: 800, border: '1px solid rgba(212, 175, 55, 0.35)' }}>
+              8 MÓDULOS TÁTICOS
             </span>
           </div>
 
@@ -1220,39 +1224,50 @@ export function App() {
               style={{
                 cursor: 'pointer',
                 padding: '1.1rem 1.25rem',
-                borderRadius: '16px',
-                background: 'linear-gradient(135deg, rgba(30, 24, 10, 0.95) 0%, rgba(18, 14, 5, 0.98) 100%)',
-                border: '1.5px solid rgba(234, 179, 8, 0.5)',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(234, 179, 8, 0.2)',
+                borderRadius: '14px',
+                background: 'linear-gradient(135deg, #101217 0%, #151720 100%)',
+                border: '1px solid #27272a',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.55)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '1rem',
-                transition: 'transform 0.2s, box-shadow 0.2s'
+                transition: 'transform 0.2s, box-shadow 0.2s, border-color 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+                e.currentTarget.style.boxShadow = '0 8px 28px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = '#27272a';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.55)';
               }}
             >
               <div style={{
                 width: '46px',
                 height: '46px',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #eab308, #ca8a04)',
+                background: 'linear-gradient(135deg, #1f232c, #13151b)',
+                border: '1px solid rgba(212, 175, 55, 0.35)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 15px rgba(234, 179, 8, 0.4)',
+                boxShadow: '0 0 12px rgba(0, 0, 0, 0.6)',
                 flexShrink: 0
               }}>
-                <Calendar size={24} color="#0f172a" />
+                <Calendar size={24} color="#d4af37" />
               </div>
               <div style={{ flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#fef3c7' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#ffffff' }}>
                     Cronograma de Estudos
                   </span>
-                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(234, 179, 8, 0.2)', color: '#fbbf24', fontWeight: 900 }}>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(212, 175, 55, 0.15)', color: '#d4af37', border: '1px solid rgba(212, 175, 55, 0.35)', fontWeight: 900 }}>
                     VIP
                   </span>
                 </div>
-                <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+                <div style={{ fontSize: '0.78rem', color: '#a1a1aa', marginTop: '0.2rem' }}>
                   Metodologia neurocientífica de alta retenção adaptada à sua rotina (AOCP)
                 </div>
               </div>
@@ -1267,39 +1282,50 @@ export function App() {
               style={{
                 cursor: 'pointer',
                 padding: '1.1rem 1.25rem',
-                borderRadius: '16px',
-                background: 'linear-gradient(135deg, rgba(14, 28, 38, 0.95) 0%, rgba(8, 16, 22, 0.98) 100%)',
-                border: '1.5px solid rgba(56, 189, 248, 0.4)',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(56, 189, 248, 0.2)',
+                borderRadius: '14px',
+                background: 'linear-gradient(135deg, #101217 0%, #151720 100%)',
+                border: '1px solid #27272a',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.55)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '1rem',
-                transition: 'transform 0.2s, box-shadow 0.2s'
+                transition: 'transform 0.2s, box-shadow 0.2s, border-color 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+                e.currentTarget.style.boxShadow = '0 8px 28px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = '#27272a';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.55)';
               }}
             >
               <div style={{
                 width: '46px',
                 height: '46px',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #0284c7, #0369a1)',
+                background: 'linear-gradient(135deg, #1f232c, #13151b)',
+                border: '1px solid rgba(212, 175, 55, 0.35)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 15px rgba(2, 132, 199, 0.4)',
+                boxShadow: '0 0 12px rgba(0, 0, 0, 0.6)',
                 flexShrink: 0
               }}>
-                <FileText size={24} color="#ffffff" />
+                <FileText size={24} color="#d4af37" />
               </div>
               <div style={{ flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#f0f9ff' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#ffffff' }}>
                     Baixar Caderno em PDF
                   </span>
-                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8', fontWeight: 900 }}>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(212, 175, 55, 0.15)', color: '#d4af37', border: '1px solid rgba(212, 175, 55, 0.35)', fontWeight: 900 }}>
                     IMPRIMIR
                   </span>
                 </div>
-                <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+                <div style={{ fontSize: '0.78rem', color: '#a1a1aa', marginTop: '0.2rem' }}>
                   Gere listas de questões prontas para imprimir com folha de respostas
                 </div>
               </div>
@@ -1314,39 +1340,50 @@ export function App() {
               style={{
                 cursor: 'pointer',
                 padding: '1.1rem 1.25rem',
-                borderRadius: '16px',
-                background: 'linear-gradient(135deg, rgba(20, 36, 24, 0.95) 0%, rgba(10, 20, 14, 0.98) 100%)',
-                border: '1.5px solid rgba(34, 197, 94, 0.45)',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(34, 197, 94, 0.2)',
+                borderRadius: '14px',
+                background: 'linear-gradient(135deg, #101217 0%, #151720 100%)',
+                border: '1px solid #27272a',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.55)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '1rem',
-                transition: 'transform 0.2s, box-shadow 0.2s'
+                transition: 'transform 0.2s, box-shadow 0.2s, border-color 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+                e.currentTarget.style.boxShadow = '0 8px 28px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = '#27272a';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.55)';
               }}
             >
               <div style={{
                 width: '46px',
                 height: '46px',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #1d4ed8, #2563eb)',
+                background: 'linear-gradient(135deg, #1f232c, #13151b)',
+                border: '1px solid rgba(212, 175, 55, 0.35)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 15px rgba(37, 99, 235, 0.4)',
+                boxShadow: '0 0 12px rgba(0, 0, 0, 0.6)',
                 flexShrink: 0
               }}>
-                <BookOpen size={24} color="#ffffff" />
+                <BookOpen size={24} color="#d4af37" />
               </div>
               <div style={{ flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#f8fafc' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#ffffff' }}>
                     Caderno de Leis Secas
                   </span>
-                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(37, 99, 235, 0.25)', color: '#93c5fd', fontWeight: 900 }}>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(212, 175, 55, 0.15)', color: '#d4af37', border: '1px solid rgba(212, 175, 55, 0.35)', fontWeight: 900 }}>
                     TELA CHEIA • VADE MECUM
                   </span>
                 </div>
-                <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+                <div style={{ fontSize: '0.78rem', color: '#a1a1aa', marginTop: '0.2rem' }}>
                   Planalto atualizado, Artigos na íntegra, Crimes Hediondos, Direitos Humanos (DUDH/CADH), Estatuto PMPE e CF/88
                 </div>
               </div>
@@ -1361,48 +1398,60 @@ export function App() {
               style={{
                 cursor: 'pointer',
                 padding: '1.1rem 1.25rem',
-                borderRadius: '16px',
-                background: 'linear-gradient(135deg, rgba(38, 14, 14, 0.95) 0%, rgba(20, 8, 8, 0.98) 100%)',
-                border: pendingMistakesCount > 0 ? '1.5px solid rgba(239, 68, 68, 0.65)' : '1.5px solid rgba(239, 68, 68, 0.35)',
+                borderRadius: '14px',
+                background: 'linear-gradient(135deg, #101217 0%, #151720 100%)',
+                border: pendingMistakesCount > 0 ? '1.5px solid rgba(220, 38, 38, 0.65)' : '1px solid #27272a',
                 boxShadow: pendingMistakesCount > 0
-                  ? '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(239, 68, 68, 0.25)'
-                  : '0 8px 20px rgba(0, 0, 0, 0.4)',
+                  ? '0 8px 24px rgba(0, 0, 0, 0.6), 0 0 18px rgba(220, 38, 38, 0.2)'
+                  : '0 8px 24px rgba(0, 0, 0, 0.55)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '1rem',
-                transition: 'transform 0.2s, box-shadow 0.2s'
+                transition: 'transform 0.2s, box-shadow 0.2s, border-color 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.borderColor = 'rgba(220, 38, 38, 0.7)';
+                e.currentTarget.style.boxShadow = '0 8px 28px rgba(0, 0, 0, 0.8), 0 0 15px rgba(220, 38, 38, 0.25)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = pendingMistakesCount > 0 ? 'rgba(220, 38, 38, 0.65)' : '#27272a';
+                e.currentTarget.style.boxShadow = pendingMistakesCount > 0 ? '0 8px 24px rgba(0, 0, 0, 0.6), 0 0 18px rgba(220, 38, 38, 0.2)' : '0 8px 24px rgba(0, 0, 0, 0.55)';
               }}
             >
               <div style={{
                 width: '46px',
                 height: '46px',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #dc2626, #b91c1c)',
+                background: 'linear-gradient(135deg, #220e0e, #140808)',
+                border: '1px solid rgba(220, 38, 38, 0.45)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 15px rgba(220, 38, 38, 0.4)',
+                boxShadow: '0 0 12px rgba(220, 38, 38, 0.3)',
                 flexShrink: 0
               }}>
-                <Target size={24} color="#ffffff" />
+                <Target size={24} color="#dc2626" />
               </div>
               <div style={{ flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#fecaca' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#ffffff' }}>
                     Caderno de Erros Inteligente
                   </span>
                   <span style={{
                     fontSize: '0.68rem',
                     padding: '0.15rem 0.45rem',
                     borderRadius: '4px',
-                    background: pendingMistakesCount > 0 ? '#dc2626' : 'rgba(34, 197, 94, 0.25)',
-                    color: '#ffffff',
+                    background: pendingMistakesCount > 0 ? '#dc2626' : 'rgba(212, 175, 55, 0.15)',
+                    border: pendingMistakesCount > 0 ? '1px solid #ef4444' : '1px solid rgba(212, 175, 55, 0.35)',
+                    color: pendingMistakesCount > 0 ? '#ffffff' : '#d4af37',
                     fontWeight: 900
                   }}>
                     {pendingMistakesCount > 0 ? `${pendingMistakesCount} FALHAS` : '0 FALHAS'}
                   </span>
                 </div>
-                <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+                <div style={{ fontSize: '0.78rem', color: '#a1a1aa', marginTop: '0.2rem' }}>
                   Retreine taticamente apenas as questões que errou até alcançar 100% de domínio
                 </div>
               </div>
@@ -1417,86 +1466,108 @@ export function App() {
               style={{
                 cursor: 'pointer',
                 padding: '1.1rem 1.25rem',
-                borderRadius: '16px',
-                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.98) 100%)',
-                border: '1.5px solid rgba(56, 189, 248, 0.55)',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(56, 189, 248, 0.25)',
+                borderRadius: '14px',
+                background: 'linear-gradient(135deg, #101217 0%, #151720 100%)',
+                border: '1px solid #27272a',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.55)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '1rem',
-                transition: 'transform 0.2s, box-shadow 0.2s'
+                transition: 'transform 0.2s, box-shadow 0.2s, border-color 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+                e.currentTarget.style.boxShadow = '0 8px 28px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = '#27272a';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.55)';
               }}
             >
               <div style={{
                 width: '46px',
                 height: '46px',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #0284c7, #06b6d4)',
+                background: 'linear-gradient(135deg, #1f232c, #13151b)',
+                border: '1px solid rgba(212, 175, 55, 0.35)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 15px rgba(6, 182, 212, 0.4)',
+                boxShadow: '0 0 12px rgba(0, 0, 0, 0.6)',
                 flexShrink: 0
               }}>
-                <Award size={24} color="#060b17" />
+                <Award size={24} color="#d4af37" />
               </div>
               <div style={{ flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#e0f2fe' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#ffffff' }}>
                     Simulado Oficial de Domingo
                   </span>
-                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8', fontWeight: 900 }}>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(212, 175, 55, 0.15)', color: '#d4af37', border: '1px solid rgba(212, 175, 55, 0.35)', fontWeight: 900 }}>
                     60Q AOCP
                   </span>
                 </div>
-                <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+                <div style={{ fontSize: '0.78rem', color: '#a1a1aa', marginTop: '0.2rem' }}>
                   Espelho fiel da prova: 6 matérias balanceadas, 4h de prova e boletim militar
                 </div>
               </div>
             </div>
 
-            {/* Card 6: Operação Policial 16-Bit (Estilo The Shadow SNES) */}
+            {/* Card 6: Operação Policial 16-Bit */}
             <div
               onClick={() => {
-                sound.playGunshot38();
+                try { sound.playGunshot38(); } catch {}
                 setIsActionGameOpen(true);
               }}
               style={{
                 cursor: 'pointer',
                 padding: '1.1rem 1.25rem',
-                borderRadius: '16px',
-                background: 'linear-gradient(135deg, rgba(35, 12, 54, 0.95) 0%, rgba(18, 6, 28, 0.98) 100%)',
-                border: '1.5px solid rgba(217, 70, 239, 0.55)',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(217, 70, 239, 0.25)',
+                borderRadius: '14px',
+                background: 'linear-gradient(135deg, #101217 0%, #151720 100%)',
+                border: '1px solid #27272a',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.55)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '1rem',
-                transition: 'transform 0.2s, box-shadow 0.2s'
+                transition: 'transform 0.2s, box-shadow 0.2s, border-color 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+                e.currentTarget.style.boxShadow = '0 8px 28px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = '#27272a';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.55)';
               }}
             >
               <div style={{
                 width: '46px',
                 height: '46px',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #a855f7, #c026d3)',
+                background: 'linear-gradient(135deg, #1f232c, #13151b)',
+                border: '1px solid rgba(212, 175, 55, 0.35)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 15px rgba(192, 38, 211, 0.4)',
+                boxShadow: '0 0 12px rgba(0, 0, 0, 0.6)',
                 flexShrink: 0
               }}>
-                <Gamepad2 size={24} color="#ffffff" />
+                <Gamepad2 size={24} color="#d4af37" />
               </div>
               <div style={{ flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#fae8ff' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#ffffff' }}>
                     Operação Rua 16-Bit
                   </span>
-                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(217, 70, 239, 0.25)', color: '#f0abfc', fontWeight: 900 }}>
-                    ESTILO SNES
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(212, 175, 55, 0.15)', color: '#d4af37', border: '1px solid rgba(212, 175, 55, 0.35)', fontWeight: 900 }}>
+                    AÇÃO TÁTICA
                   </span>
                 </div>
-                <div style={{ fontSize: '0.78rem', color: '#c084fc', marginTop: '0.2rem' }}>
+                <div style={{ fontSize: '0.78rem', color: '#a1a1aa', marginTop: '0.2rem' }}>
                   Descontraia do estudo: Ação pura PMPE vs Bandidos, armas, tiros e chefão estilo The Shadow!
                 </div>
               </div>
@@ -1511,86 +1582,112 @@ export function App() {
               style={{
                 cursor: 'pointer',
                 padding: '1.1rem 1.25rem',
-                borderRadius: '16px',
-                background: 'linear-gradient(135deg, rgba(8, 28, 44, 0.95) 0%, rgba(4, 15, 26, 0.98) 100%)',
-                border: '1.5px solid rgba(6, 182, 212, 0.55)',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(6, 182, 212, 0.25)',
+                borderRadius: '14px',
+                background: 'linear-gradient(135deg, #101217 0%, #151720 100%)',
+                border: '1px solid #27272a',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.55)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '1rem',
-                transition: 'transform 0.2s, box-shadow 0.2s'
+                transition: 'transform 0.2s, box-shadow 0.2s, border-color 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+                e.currentTarget.style.boxShadow = '0 8px 28px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = '#27272a';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.55)';
               }}
             >
               <div style={{
                 width: '46px',
                 height: '46px',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #0891b2, #06b6d4)',
+                background: 'linear-gradient(135deg, #1f232c, #13151b)',
+                border: '1px solid rgba(212, 175, 55, 0.35)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 15px rgba(6, 182, 212, 0.4)',
+                boxShadow: '0 0 12px rgba(0, 0, 0, 0.6)',
                 flexShrink: 0
               }}>
-                <BookOpen size={24} color="#ffffff" />
+                <BrainCircuit size={24} color="#d4af37" />
               </div>
               <div style={{ flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#e0f2fe' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#ffffff' }}>
                     Guia Raciocínio Lógico (RLM)
                   </span>
-                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(6, 182, 212, 0.25)', color: '#38bdf8', fontWeight: 900 }}>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(212, 175, 55, 0.15)', color: '#d4af37', border: '1px solid rgba(212, 175, 55, 0.35)', fontWeight: 900 }}>
                     MANÉ & TABELA
                   </span>
                 </div>
-                <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+                <div style={{ fontSize: '0.78rem', color: '#a1a1aa', marginTop: '0.2rem' }}>
                   Tabela verdade interativa, o que é proposição, regra do MANÉ, De Morgan e equivalências
                 </div>
               </div>
             </div>
 
-            {/* Card 8: Apresentação do Investidor & Projeção SaaS */}
+            {/* Card 8: Apresentação do Investidor & Projeção SaaS (CLIQUE DIRETO COM POPUP INSTANTÂNEO) */}
             <div
               onClick={() => {
-                sound.playLevelUp();
+                try {
+                  sound.playClick();
+                } catch {}
                 setIsInvestorPitchOpen(true);
               }}
+              role="button"
+              tabIndex={0}
               style={{
                 cursor: 'pointer',
                 padding: '1.1rem 1.25rem',
-                borderRadius: '16px',
-                background: 'linear-gradient(135deg, rgba(38, 28, 8, 0.95) 0%, rgba(20, 14, 4, 0.98) 100%)',
-                border: '1.5px solid rgba(234, 179, 8, 0.55)',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(234, 179, 8, 0.25)',
+                borderRadius: '14px',
+                background: 'linear-gradient(135deg, #101217 0%, #151720 100%)',
+                border: '1.5px solid rgba(212, 175, 55, 0.45)',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.55)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '1rem',
-                transition: 'transform 0.2s, box-shadow 0.2s'
+                transition: 'transform 0.2s, box-shadow 0.2s, border-color 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.borderColor = '#d4af37';
+                e.currentTarget.style.boxShadow = '0 8px 28px rgba(0, 0, 0, 0.8), 0 0 18px rgba(212, 175, 55, 0.25)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.45)';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.55)';
               }}
             >
               <div style={{
                 width: '46px',
                 height: '46px',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #d97706, #f59e0b)',
+                background: 'linear-gradient(135deg, #1f232c, #13151b)',
+                border: '1px solid rgba(212, 175, 55, 0.4)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 15px rgba(245, 158, 11, 0.4)',
+                boxShadow: '0 0 12px rgba(0, 0, 0, 0.6)',
                 flexShrink: 0
               }}>
-                <Award size={24} color="#060b17" />
+                <Award size={24} color="#d4af37" />
               </div>
               <div style={{ flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#fef08a' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#ffffff' }}>
                     Apresentação Investidores 2026
                   </span>
-                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(234, 179, 8, 0.25)', color: '#facc15', fontWeight: 900 }}>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(212, 175, 55, 0.2)', color: '#d4af37', border: '1px solid rgba(212, 175, 55, 0.4)', fontWeight: 900 }}>
                     PITCH KEYNOTE
                   </span>
                 </div>
-                <div style={{ fontSize: '0.78rem', color: '#cbd5e1', marginTop: '0.2rem' }}>
+                <div style={{ fontSize: '0.78rem', color: '#a1a1aa', marginTop: '0.2rem' }}>
                   Demonstração dos módulos, simulador interativo de receita SaaS (MRR/ARR) e roteiro do fundador
                 </div>
               </div>
@@ -1619,10 +1716,10 @@ export function App() {
             style={{
               cursor: 'pointer',
               padding: '1.15rem 1.4rem',
-              borderRadius: '16px',
-              background: 'linear-gradient(135deg, rgba(14, 26, 52, 0.95) 0%, rgba(9, 16, 34, 0.98) 100%)',
-              border: '2px solid rgba(245, 158, 11, 0.55)',
-              boxShadow: '0 0 25px rgba(245, 158, 11, 0.25)',
+              borderRadius: '14px',
+              background: 'linear-gradient(135deg, #101217 0%, #151720 100%)',
+              border: '1.5px solid rgba(212, 175, 55, 0.45)',
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
@@ -1633,11 +1730,11 @@ export function App() {
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 0 35px rgba(245, 158, 11, 0.45)';
+              e.currentTarget.style.boxShadow = '0 8px 28px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.2)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 0 25px rgba(245, 158, 11, 0.25)';
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.6)';
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem' }}>
@@ -1645,25 +1742,26 @@ export function App() {
                 width: '46px',
                 height: '46px',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #b45309, #d97706)',
+                background: 'linear-gradient(135deg, #1f232c, #13151b)',
+                border: '1px solid rgba(212, 175, 55, 0.4)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 15px rgba(245, 158, 11, 0.6)',
+                boxShadow: '0 0 15px rgba(0, 0, 0, 0.5)',
                 flexShrink: 0
               }}>
-                <Swords size={24} color="#ffffff" />
+                <Swords size={24} color="#d4af37" />
               </div>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
                   <span style={{ fontSize: '1.05rem', fontWeight: 900, color: '#ffffff', textTransform: 'uppercase', letterSpacing: '0.02em' }}>
                     ⚔️ DUELO 1 VS 1 DO PELOTÃO (5 TIROS TÁTICOS)
                   </span>
-                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.5rem', borderRadius: '4px', background: '#22c55e', color: '#052e16', fontWeight: 900 }}>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.5rem', borderRadius: '4px', background: 'rgba(212, 175, 55, 0.15)', color: '#d4af37', border: '1px solid rgba(212, 175, 55, 0.35)', fontWeight: 900 }}>
                     DISPUTA DIRETA
                   </span>
                 </div>
-                <div style={{ fontSize: '0.82rem', color: '#cbd5e1', marginTop: '0.2rem' }}>
+                <div style={{ fontSize: '0.82rem', color: '#a1a1aa', marginTop: '0.2rem' }}>
                   Desafie qualquer colega do pelotão em um tiroteio rápido de 5 questões AOCP e veja quem é mais rápido e certeiro!
                 </div>
               </div>
@@ -1680,9 +1778,9 @@ export function App() {
                 style={{
                   padding: '0.55rem 0.95rem',
                   borderRadius: '10px',
-                  background: 'rgba(255, 255, 255, 0.08)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  color: '#93c5fd',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(212, 175, 55, 0.35)',
+                  color: '#f4f4f5',
                   fontWeight: 800,
                   fontSize: '0.82rem',
                   cursor: 'pointer'
@@ -1697,11 +1795,11 @@ export function App() {
                 gap: '0.45rem',
                 padding: '0.55rem 1.15rem',
                 borderRadius: '10px',
-                background: 'linear-gradient(135deg, #d97706, #b45309)',
-                color: '#ffffff',
+                background: 'linear-gradient(135deg, #c59b27, #967117)',
+                color: '#07080a',
                 fontWeight: 900,
                 fontSize: '0.84rem',
-                boxShadow: '0 0 15px rgba(217, 119, 6, 0.5)'
+                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.5)'
               }}>
                 <span>Iniciar Duelo 1 vs 1</span>
                 <ArrowRight size={15} />
