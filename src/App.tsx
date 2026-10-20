@@ -38,6 +38,8 @@ import { SundaySimuladoModal } from './components/SundaySimuladoModal';
 import { PlatoonDuelModal } from './components/PlatoonDuelModal';
 import { InvestorPitchView } from './components/InvestorPitchView';
 import { LogicalReasoningGuideView } from './components/LogicalReasoningGuideView';
+import { RedacaoPmpeModal } from './components/RedacaoPmpeModal';
+import { ProficiencyRadarModal } from './components/ProficiencyRadarModal';
 import { getDailyMotivationalQuote, type MotivationalQuote } from './utils/motivationalQuotes';
 import { recordStudentLogin, recordQuizCompletion } from './utils/studentAnalytics';
 import { fetchRegistryFromCloud, isMasterUser, checkActiveSessionValidity } from './utils/authManager';
@@ -185,6 +187,9 @@ export function App() {
   const [isActionGameOpen, setIsActionGameOpen] = useState(false);
   const [isInvestorPitchOpen, setIsInvestorPitchOpen] = useState(false);
   const [isRlmGuideOpen, setIsRlmGuideOpen] = useState(false);
+  const [isRedacaoOpen, setIsRedacaoOpen] = useState(false);
+  const [isRadarOpen, setIsRadarOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const [pendingMistakesCount, setPendingMistakesCount] = useState<number>(0);
   const [isRondaNoturna, setIsRondaNoturna] = useState<boolean>(() => isRondaNoturnaActive());
   const [sessionKickedReason, setSessionKickedReason] = useState<{ title: string; message: string } | null>(null);
@@ -470,8 +475,27 @@ export function App() {
     });
   };
 
-  // Filtrar dados pela categoria/bloco E pelo simulado/semana selecionado
+  // Filtrar dados pela categoria/bloco E pelo simulado/semana selecionado E pela busca textual
   const filterByBlockOrCat = useCallback(<T extends { id?: string; categoryId: CategoryId; bloco?: string; simuladoOrigem?: string; topicoEdital?: string; materiaNome?: string }>(item: T) => {
+    // 0. Filtro por Busca Textual Tática (Item 3)
+    if (searchQuery && searchQuery.trim()) {
+      const q = searchQuery.toLowerCase().trim();
+      const anyItem = item as any;
+      const inStem = anyItem.question ? anyItem.question.toLowerCase().includes(q) : false;
+      const inFront = anyItem.front ? anyItem.front.toLowerCase().includes(q) : false;
+      const inBack = anyItem.back ? anyItem.back.toLowerCase().includes(q) : false;
+      const inLeft = anyItem.left ? anyItem.left.toLowerCase().includes(q) : false;
+      const inRight = anyItem.right ? anyItem.right.toLowerCase().includes(q) : false;
+      const inMateria = anyItem.materiaNome ? anyItem.materiaNome.toLowerCase().includes(q) : false;
+      const inTopico = anyItem.topicoEdital ? anyItem.topicoEdital.toLowerCase().includes(q) : false;
+      const inTag = anyItem.tag ? anyItem.tag.toLowerCase().includes(q) : false;
+      const inOptions = Array.isArray(anyItem.options) ? anyItem.options.some((opt: string) => opt.toLowerCase().includes(q)) : false;
+
+      if (!inStem && !inFront && !inBack && !inLeft && !inRight && !inMateria && !inTopico && !inTag && !inOptions) {
+        return false;
+      }
+    }
+
     // 1. Filtro por Categoria ou Bloco Oficial PMPE
     let matchCat = true;
     if (selectedCategory === 'bloco_1') matchCat = item.bloco === 'bloco_1';
@@ -503,7 +527,7 @@ export function App() {
     else if (selectedSimulado === 'caderno_400_novas_edital') matchSim = (item.id ? item.id.includes('_50_edital_') : false);
 
     return matchCat && matchSim;
-  }, [selectedCategory, selectedSimulado]);
+  }, [selectedCategory, selectedSimulado, searchQuery]);
 
   const filteredQuestions = useMemo(() => questions.filter(filterByBlockOrCat), [questions, filterByBlockOrCat]);
   const filteredMatchPairs = useMemo(() => matchPairs.filter(filterByBlockOrCat), [matchPairs, filterByBlockOrCat]);
@@ -912,6 +936,9 @@ export function App() {
         onOpenActionGame={() => setIsActionGameOpen(true)}
         onOpenInvestorPitch={() => setIsInvestorPitchOpen(true)}
         onOpenRlmGuide={() => setIsRlmGuideOpen(true)}
+        onOpenRedacao={() => setIsRedacaoOpen(true)}
+        onOpenRadar={() => setIsRadarOpen(true)}
+        onOpenFlashcards={() => setActiveMode('flashcards')}
       />
 
       {/* Roteamento de Telas */}
@@ -1564,6 +1591,8 @@ export function App() {
             selectedSimulado={selectedSimulado}
             onSelectSimulado={setSelectedSimulado}
             totalFilteredQuestions={filteredQuestions.length}
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
           />
 
           {/* BANNER MILITAR: DISPUTA DE PELOTÃO • DUELO 1 VS 1 TÁTICO */}
@@ -2034,6 +2063,24 @@ export function App() {
           }}
         />
       )}
+
+      {/* MODAL: QG DA REDAÇÃO PMPE (AOCP 20 A 30 LINHAS) */}
+      <RedacaoPmpeModal
+        isOpen={isRedacaoOpen}
+        onClose={() => setIsRedacaoOpen(false)}
+        userName={currentUser || 'Soldado PMPE'}
+      />
+
+      {/* MODAL: RAIO-X RADAR DE PROFICIÊNCIA */}
+      <ProficiencyRadarModal
+        isOpen={isRadarOpen}
+        onClose={() => setIsRadarOpen(false)}
+        currentUser={currentUser}
+        onNavigateToCategory={(catId) => {
+          setSelectedCategory(catId as any);
+          setIsRadarOpen(false);
+        }}
+      />
     </div>
   );
 }

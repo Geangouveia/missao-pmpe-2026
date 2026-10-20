@@ -1,6 +1,6 @@
 import React from 'react';
 import type { GameMode } from '../types/game';
-import { Target, Network, Swords, Compass, ArrowRight, Flame } from 'lucide-react';
+import { Target, Network, Swords, Compass, ArrowRight, Flame, Zap } from 'lucide-react';
 import { sound } from '../utils/sound';
 
 interface ModeSelectorProps {
@@ -52,6 +52,17 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
       color: '#f87171',
       accentBg: 'linear-gradient(135deg, #dc2626, #ea580c)',
       shadow: 'rgba(220, 38, 38, 0.4)'
+    },
+    {
+      id: 'flashcards' as GameMode,
+      title: 'Flashcards Táticos Operacionais',
+      subtitle: 'Mnemônicos, Prazos e Leis Secas',
+      description: 'Cartões interativos frente e verso com rotação 3D para revisões relâmpago de 10 a 15 min: "Até a Maria sua", Prazos do ECA, Leis de De Morgan, 3T+H e CF Art. 144.',
+      icon: <Zap size={28} />,
+      badge: 'Revisão Rápida ⚡',
+      color: '#a855f7',
+      accentBg: 'linear-gradient(135deg, #9333ea, #7e22ce)',
+      shadow: 'rgba(168, 85, 247, 0.4)'
     }
   ];
 

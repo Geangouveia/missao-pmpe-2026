@@ -20,9 +20,12 @@ import {
   AlertTriangle,
   ArrowLeft,
   Scale,
-  BookOpen
+  BookOpen,
+  Volume2,
+  VolumeX
 } from 'lucide-react';
 import { sound } from '../utils/sound';
+import { speakQuestion, stopSpeaking } from '../utils/speechNarrator';
 import confetti from 'canvas-confetti';
 import { prepareGameQuestions } from '../utils/questionRandomizer';
 import { filterOutAnsweredToday, markQuestionAnsweredToday, clearAnsweredToday } from '../utils/dailyQuestionTracker';
@@ -220,10 +223,25 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
 
   const [disabledOptions, setDisabledOptions] = useState<number[]>([]);
   const [showHintActive, setShowHintActive] = useState(false);
+  const [isNarrating, setIsNarrating] = useState(false);
 
   const timerRef = useRef<any>(null);
 
   const currentQ = shuffledQuestions[currentIndex] || questions[0];
+
+  // Cancela narração ao trocar de questão ou desmontar
+  useEffect(() => {
+    return () => {
+      stopSpeaking();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isNarrating) {
+      stopSpeaking();
+      setIsNarrating(false);
+    }
+  }, [currentIndex]);
 
   // Progressão Tática de Patente
   const [rankIndex, setRankIndex] = useState(0);
@@ -1125,8 +1143,43 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                 </span>
               </div>
 
-              <div style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: 800 }}>
-                Questão {currentIndex + 1} de {shuffledQuestions.length}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                <button
+                  onClick={() => {
+                    if (isNarrating) {
+                      stopSpeaking();
+                      setIsNarrating(false);
+                    } else {
+                      setIsNarrating(true);
+                      speakQuestion(currentQ.question, currentQ.options, {
+                        onStart: () => setIsNarrating(true),
+                        onEnd: () => setIsNarrating(false),
+                        onError: () => setIsNarrating(false)
+                      });
+                    }
+                  }}
+                  style={{
+                    background: isNarrating ? 'rgba(239, 68, 68, 0.25)' : 'rgba(245, 158, 11, 0.18)',
+                    border: isNarrating ? '1px solid #ef4444' : '1px solid #f59e0b',
+                    color: isNarrating ? '#fca5a5' : '#fbbf24',
+                    padding: '0.2rem 0.55rem',
+                    borderRadius: '8px',
+                    fontSize: '0.74rem',
+                    fontWeight: 800,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.35rem',
+                    cursor: 'pointer'
+                  }}
+                  title="Ouvir Enunciado e Alternativas em Voz Alta"
+                >
+                  {isNarrating ? <VolumeX size={14} /> : <Volume2 size={14} />}
+                  <span>{isNarrating ? 'Parar Áudio' : 'Ouvir Questão'}</span>
+                </button>
+
+                <div style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: 800 }}>
+                  Questão {currentIndex + 1} de {shuffledQuestions.length}
+                </div>
               </div>
             </div>
 

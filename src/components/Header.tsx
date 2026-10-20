@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { 
   Volume2, VolumeX, Trophy, PlusCircle, Flame, Sparkles, LogOut, UserCheck, 
   BarChart3, ShieldCheck, Calendar, FileText, MessageSquare, BookOpen, 
-  Target, Award, Gamepad2, ChevronDown, ChevronUp, Zap, Swords
+  Target, Award, Gamepad2, ChevronDown, ChevronUp, Zap, Swords, PenTool, Radar
 } from 'lucide-react';
 import type { PlayerStats } from '../types/game';
 import { sound } from '../utils/sound';
@@ -35,6 +35,9 @@ interface HeaderProps {
   onOpenActionGame?: () => void;
   onOpenInvestorPitch?: () => void;
   onOpenRlmGuide?: () => void;
+  onOpenRedacao?: () => void;
+  onOpenRadar?: () => void;
+  onOpenFlashcards?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -62,6 +65,9 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenActionGame,
   onOpenInvestorPitch,
   onOpenRlmGuide,
+  onOpenRedacao,
+  onOpenRadar,
+  onOpenFlashcards,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -355,6 +361,64 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           )}
 
+          {/* QG da Redação PMPE */}
+          {onOpenRedacao && (
+            <button 
+              className="btn-secondary"
+              style={{
+                padding: '0.48rem 0.95rem',
+                fontSize: '0.84rem',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.22) 0%, rgba(217, 119, 6, 0.3) 100%)',
+                borderColor: '#f59e0b',
+                color: '#fef08a',
+                fontWeight: 900,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                boxShadow: '0 0 14px rgba(245, 158, 11, 0.25)',
+                cursor: 'pointer'
+              }}
+              onClick={() => {
+                sound.playClick();
+                onOpenRedacao();
+              }}
+              title="QG da Redação PMPE: Folha Pautada Oficial (20-30 Linhas), Temas Quentes e Modelos Coringa"
+            >
+              <PenTool size={16} color="#fbbf24" />
+              <span>✍️ Redação PMPE</span>
+            </button>
+          )}
+
+          {/* Raio-X Radar de Fraquezas */}
+          {onOpenRadar && (
+            <button 
+              className="btn-secondary"
+              style={{
+                padding: '0.48rem 0.95rem',
+                fontSize: '0.84rem',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(16, 185, 129, 0.25) 100%)',
+                borderColor: '#22c55e',
+                color: '#86efac',
+                fontWeight: 900,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                boxShadow: '0 0 14px rgba(34, 197, 94, 0.2)',
+                cursor: 'pointer'
+              }}
+              onClick={() => {
+                sound.playClick();
+                onOpenRadar();
+              }}
+              title="Raio-X de Proficiência: Gráfico Radar de Fraquezas nas 8 Matérias do Edital AOCP"
+            >
+              <Radar size={16} color="#4ade80" />
+              <span>🕸️ Radar AOCP</span>
+            </button>
+          )}
+
           {/* MENU TÁTICO ORGANIZADO (PADRÃO BOPE - ALINHADO & COMPACTO) */}
           <div ref={menuRef} style={{ position: 'relative' }}>
             <button
@@ -418,6 +482,101 @@ export const Header: React.FC<HeaderProps> = ({
                   </div>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                    {onOpenRedacao && (
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setIsMenuOpen(false);
+                          onOpenRedacao();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'rgba(245, 158, 11, 0.15)',
+                          border: '1px solid rgba(245, 158, 11, 0.4)',
+                          color: '#fef08a',
+                          fontSize: '0.82rem',
+                          fontWeight: 800,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <PenTool size={15} color="#fbbf24" />
+                          <span>QG da Redação PMPE</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#f59e0b', color: '#060b17', fontWeight: 900 }}>
+                          20-30 LINHAS
+                        </span>
+                      </button>
+                    )}
+
+                    {onOpenRadar && (
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setIsMenuOpen(false);
+                          onOpenRadar();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'rgba(34, 197, 94, 0.1)',
+                          border: '1px solid rgba(34, 197, 94, 0.35)',
+                          color: '#86efac',
+                          fontSize: '0.82rem',
+                          fontWeight: 800,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <Radar size={15} color="#4ade80" />
+                          <span>Radar de Fraquezas AOCP</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#22c55e', color: '#060b17', fontWeight: 900 }}>
+                          RAIO-X
+                        </span>
+                      </button>
+                    )}
+
+                    {onOpenFlashcards && (
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setIsMenuOpen(false);
+                          onOpenFlashcards();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'rgba(56, 189, 248, 0.1)',
+                          border: '1px solid rgba(56, 189, 248, 0.35)',
+                          color: '#bae6fd',
+                          fontSize: '0.82rem',
+                          fontWeight: 800,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <Zap size={15} color="#38bdf8" />
+                          <span>Flashcards Táticos</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#0284c7', color: '#ffffff', fontWeight: 900 }}>
+                          MNEMÔNICOS
+                        </span>
+                      </button>
+                    )}
                     {onOpenLawBooklet && (
                       <button
                         onClick={() => {

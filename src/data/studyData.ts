@@ -294,29 +294,38 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     bloco: 'bloco_3',
     categoryName: 'Direito Constitucional',
     tag: 'Art. 144 CF',
-    front: 'Quais são as atribuições constitucionais exclusivas da Polícia Militar segundo o Art. 144, § 5º?',
-    back: '1. Polícia Ostensiva\n2. Preservação da Ordem Pública\n* Além de serem forças auxiliares e reserva do Exército.'
+    front: 'Quais são as atribuições constitucionais exclusivas da Polícia Militar segundo o Art. 144, § 5º da CF/88?',
+    back: '1. Polícia Ostensiva\n2. Preservação da Ordem Pública\n* Forças auxiliares e reserva do Exército Brasileiro subordinadas aos Governadores de Estado.'
   },
   {
-    id: 'f-pmpe-2',
-    categoryId: 'historia_pe',
+    id: 'f-pmpe-crase-1',
+    categoryId: 'portugues',
     bloco: 'bloco_1',
-    categoryName: 'História de PE',
-    tag: 'Revolução de 1817',
-    front: 'O que motivou a Revolução Pernambucana de 1817 e qual seu legado para a bandeira do Estado?',
-    back: 'Motivos: Altos tributos cobrados pela Corte no RJ, seca de 1816 e ideias iluministas.\nLegado: A bandeira tricolor republicana criada em 1817 é a atual Bandeira Oficial do Estado de Pernambuco!'
+    categoryName: 'Língua Portuguesa',
+    tag: 'Mnemônico Crase',
+    front: 'Quais são os 3 casos clássicos de Crase Facultativa mais cobrados pelo Instituto AOCP?',
+    back: 'Mnemônico "ATÉ A MARIA SUA":\n• ATÉ (preposição até)\n• MARIA (nomes próprios femininos sem especificador)\n• SUA (pronomes possessivos femininos no singular: minha, tua, sua)\n\nExemplo: Fui até a (ou à) praia. Entreguei o livro à (ou a) Maria.'
   },
   {
-    id: 'f-pmpe-3',
-    categoryId: 'constitucional',
+    id: 'f-pmpe-crase-2',
+    categoryId: 'portugues',
+    bloco: 'bloco_1',
+    categoryName: 'Língua Portuguesa',
+    tag: 'Crase Proibida',
+    front: 'Quais as 4 proibições absolutas de uso do acento grave indicativo de crase?',
+    back: 'NUNCA ocorre crase:\n1. Antes de palavras masculinas (a pé, a cavalo, a prazo)\n2. Antes de verbos no infinitivo (a partir, a caminhar)\n3. Antes de pronomes de tratamento e indefinidos (a ela, a ninguém, a você - exceto senhora/senhorita)\n4. Entre palavras repetidas (dia a dia, cara a cara)'
+  },
+  {
+    id: 'f-pmpe-eca-1',
+    categoryId: 'humanos_leis',
     bloco: 'bloco_3',
-    categoryName: 'Direito Constitucional',
-    tag: 'Art. 5º, XI CF',
-    front: 'Em quais hipóteses é permitido adentrar em domicílio alheio durante a NOITE sem consentimento?',
-    back: 'Durante a NOITE, apenas em 3 casos:\n1. Flagrante delito\n2. Desastre\n3. Prestar socorro\n\nATENÇÃO: Mandado Judicial NUNCA pode ser cumprido à noite!'
+    categoryName: 'Legislação Extravagante',
+    tag: 'ECA - Medida de Internação',
+    front: 'Quais os 3 prazos fatais da Medida Socioeducativa de Internação no ECA (Art. 121)?',
+    back: '• Prazo Máximo: 3 anos (período máximo contínuo)\n• Reavaliação Obrigatória: no máximo a cada 6 meses\n• Liberação Compulsória e Improrrogável: aos 21 anos de idade.'
   },
   {
-    id: 'f-pmpe-4',
+    id: 'f-pmpe-rlm-1',
     categoryId: 'raciocinio',
     bloco: 'bloco_2',
     categoryName: 'Raciocínio Lógico',
@@ -325,22 +334,139 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
     back: 'Aplica-se a regra do MANÉ:\n• MAntém a primeira parte (P)\n• E (conjunção ^)\n• NEga a segunda parte (~Q)\n\nExemplo: "Se sou policial, ando armado" -> Negação: "Sou policial E não ando armado".'
   },
   {
-    id: 'f-pmpe-5',
+    id: 'f-pmpe-rlm-demorgan',
+    categoryId: 'raciocinio',
+    bloco: 'bloco_2',
+    categoryName: 'Raciocínio Lógico',
+    tag: 'Leis de De Morgan',
+    front: 'Como aplicar as Leis de De Morgan na negação de "P e Q" e na negação de "P ou Q"?',
+    back: '• Negação de (P e Q): ~P OU ~Q (Nega tudo e troca "e" por "ou")\n• Negação de (P ou Q): ~P E ~Q (Nega tudo e troca "ou" por "e")\n\nEx: Negação de "Estudo e passo": "Não estudo OU não passo".'
+  },
+  {
+    id: 'f-pmpe-rlm-equiv',
+    categoryId: 'raciocinio',
+    bloco: 'bloco_2',
+    categoryName: 'Raciocínio Lógico',
+    tag: 'Equivalência da Condicional',
+    front: 'Quais são as 2 equivalências lógicas fundamentais de "Se P, então Q"?',
+    back: '1. Contrapositiva: "Se ~Q, então ~P" (Inverte os lados e nega ambos)\n2. Regra do NE-OU: "~P OU Q" (Nega a primeira OU mantém a segunda)'
+  },
+  {
+    id: 'f-pmpe-const-3th',
+    categoryId: 'constitucional',
+    bloco: 'bloco_3',
+    categoryName: 'Direito Constitucional',
+    tag: '3T + H',
+    front: 'Quais crimes são Inafiançáveis e Insuscetíveis de Graça ou Anistia na CF/88 (Art. 5º, XLIII)?',
+    back: 'Mnemônico "3T + H":\n• Tortura\n• Tráfico ilícito de entorpecentes\n• Terrorismo\n• Hediondos\n\n* Por eles respondem mandantes, executores e os que, podendo evitá-los, se omitirem.'
+  },
+  {
+    id: 'f-pmpe-const-racao',
+    categoryId: 'constitucional',
+    bloco: 'bloco_3',
+    categoryName: 'Direito Constitucional',
+    tag: 'Crimes Imprescritíveis',
+    front: 'Quais são os únicos 2 crimes Imprescritíveis e Inafiançáveis previstos expressamente na Constituição?',
+    back: 'Mnemônico "RAÇÃO":\n• RA: Racismo (sujeito à pena de reclusão)\n• AÇÃO: Ação de grupos armados, civis ou militares, contra a ordem constitucional e o Estado Democrático.'
+  },
+  {
+    id: 'f-pmpe-hist-1817',
+    categoryId: 'historia_pe',
+    bloco: 'bloco_1',
+    categoryName: 'História de PE',
+    tag: 'Revolução de 1817',
+    front: 'O que motivou a Revolução Pernambucana de 1817 e qual seu legado para a bandeira do Estado?',
+    back: 'Motivos: Altos tributos cobrados pela Corte no RJ, seca de 1816 e ideias iluministas.\nLegado: A bandeira tricolor republicana criada em 1817 com arco-íris, sol e cruz é a atual Bandeira Oficial do Estado de Pernambuco!'
+  },
+  {
+    id: 'f-pmpe-hist-1824',
+    categoryId: 'historia_pe',
+    bloco: 'bloco_1',
+    categoryName: 'História de PE',
+    tag: 'Confederação do Equador',
+    front: 'Quem foi o líder mártir da Confederação do Equador em 1824 e qual era a principal reivindicação?',
+    back: 'Líder: Frei Joaquim do Amor Divino Caneca (Frei Caneca).\nMotivo: Revolta contra o autoritarismo de D. Pedro I, dissolução da Constituinte e imposição do Poder Moderador na Constituição outorgada de 1824.\nDesfecho: Frei Caneca foi fuzilado no Forte das Cinco Pontas no Recife.'
+  },
+  {
+    id: 'f-pmpe-hist-guararapes',
+    categoryId: 'historia_pe',
+    bloco: 'bloco_1',
+    categoryName: 'História de PE',
+    tag: 'Guararapes 1648/1649',
+    front: 'Qual o significado histórico da Batalha dos Guararapes travada em Pernambuco?',
+    back: 'Travada em 1648 e 1649 no Monte dos Guararapes (Jaboatão dos Guararapes), uniu brancos, negros e indígenas (liderados por Fernandes Vieira, Henrique Dias e Filipe Camarão) para expulsar os invasores holandeses.\nÉ considerada o Berço Histórico do Exército Brasileiro e da Nacionalidade!'
+  },
+  {
+    id: 'f-pmpe-hist-criacao',
+    categoryId: 'historia_pe',
+    bloco: 'bloco_1',
+    categoryName: 'História de PE / PMPE',
+    tag: 'Criação da PMPE 1825',
+    front: 'Em que data e por qual ato imperial foi fundada a Polícia Militar de Pernambuco?',
+    back: 'Data: 11 de junho de 1825.\nAto: Decreto Imperial emitido por Dom Pedro I, criando o "Corpo de Polícia da Província de Pernambuco", com a missão de manter a ordem após as agitações da Confederação do Equador.'
+  },
+  {
+    id: 'f-pmpe-abuso-1',
     categoryId: 'humanos_leis',
     bloco: 'bloco_3',
     categoryName: 'Legislação Extravagante',
-    tag: 'Lei 11.340/06',
-    front: 'Quais são as 5 formas de violência doméstica previstas na Lei Maria da Penha?',
-    back: '1. Física (ofensa à integridade corporal)\n2. Psicológica (humilhação, ameaça, controle)\n3. Sexual (constrangimento ao ato sexual forçado)\n4. Patrimonial (destruição de bens, retenção de documentos)\n5. Moral (calúnia, difamação, injúria)'
+    tag: 'Lei 13.869/19 (Abuso)',
+    front: 'O que é indispensável para a configuração de crime de Abuso de Autoridade segundo o Art. 1º, § 1º?',
+    back: 'Exige-se DOLO ESPECÍFICO (elemento subjetivo especial):\n• Finalidade específica de prejudicar outrem;\n• Beneficiar a si mesmo ou a terceiro;\n• Ou por mero capricho ou satisfação pessoal.\n* A mera divergência na interpretação de lei ou avaliação de fatos NÃO configura abuso.'
   },
   {
-    id: 'f-pmpe-6',
+    id: 'f-pmpe-maria-penha',
     categoryId: 'humanos_leis',
     bloco: 'bloco_3',
+    categoryName: 'Legislação Extravagante',
+    tag: 'Lei Maria da Penha',
+    front: 'Quais são as 5 formas de violência doméstica e familiar contra a mulher previstas na Lei 11.340/06?',
+    back: '1. Física (integridade ou saúde corporal)\n2. Psicológica (dano emocional, controle, ameaça, humilhação)\n3. Sexual (constrangimento ao ato sexual ou reprodução)\n4. Patrimonial (retenção, subtração ou destruição de bens e documentos)\n5. Moral (calúnia, difamação ou injúria)'
+  },
+  {
+    id: 'f-pmpe-estatuto-afastamentos',
+    categoryId: 'legislacao_pmpe',
+    bloco: 'bloco_3',
     categoryName: 'Estatuto PMPE',
-    tag: 'Lei 6.783/74',
+    tag: 'Lei Estadual 6.783/74',
     front: 'Quais os períodos de afastamento total do serviço previstos no Estatuto dos Policiais Militares de PE?',
-    back: '• Núpcias: 8 dias\n• Luto: 8 dias\n• Instalação: até 10 dias\n• Trânsito: até 30 dias'
+    back: '• Núpcias (casamento): 8 dias\n• Luto (falecimento de cônjuge, pais, filhos, irmãos): 8 dias\n• Instalação: até 10 dias\n• Trânsito: até 30 dias'
+  },
+  {
+    id: 'f-pmpe-tortura-perda',
+    categoryId: 'humanos_leis',
+    bloco: 'bloco_3',
+    categoryName: 'Legislação Extravagante',
+    tag: 'Lei de Tortura 9.455/97',
+    front: 'Qual o efeito automático da condenação pelo crime de Tortura para o servidor público?',
+    back: '• Perda automática do cargo, função ou emprego público;\n• Interdição para o exercício de qualquer função pública pelo DOBRO do prazo da pena privativa de liberdade aplicada.'
+  },
+  {
+    id: 'f-pmpe-info-malware',
+    categoryId: 'informatica',
+    bloco: 'bloco_2',
+    categoryName: 'Informática',
+    tag: 'Segurança da Informação',
+    front: 'Qual a diferença entre Ransomware, Phishing e Spyware nos concursos policiais da AOCP?',
+    back: '• Ransomware: Criptografa arquivos da vítima e exige pagamento de resgate (geralmente em criptomoedas).\n• Phishing: Técnica de engenharia social que usa e-mails ou sites falsos para "pescar" dados bancários e senhas.\n• Spyware: Software espião que monitora as atividades do usuário (ex: Keylogger captura teclas digitadas).'
+  },
+  {
+    id: 'f-pmpe-dh-sanjose',
+    categoryId: 'humanos_leis',
+    bloco: 'bloco_3',
+    categoryName: 'Direitos Humanos',
+    tag: 'Pacto de San José (CADH)',
+    front: 'O que estabelece a Súmula Vinculante 25 do STF com base no Pacto de San José da Costa Rica sobre prisão civil?',
+    back: '"É ilícita a prisão civil de depositário infiel, qualquer que seja a modalidade do depósito."\n* No ordenamento brasileiro atual, a ÚNICA prisão civil admitida é a do devedor inescusável de alimentos (pensão alimentícia).'
+  },
+  {
+    id: 'f-pmpe-const-domicilio',
+    categoryId: 'constitucional',
+    bloco: 'bloco_3',
+    categoryName: 'Direito Constitucional',
+    tag: 'Art. 5º, XI CF',
+    front: 'Em quais hipóteses a autoridade policial pode adentrar em domicílio alheio durante a NOITE sem consentimento?',
+    back: 'Durante a NOITE, apenas em 3 situações estritas:\n1. Flagrante delito\n2. Desastre\n3. Prestar socorro\n\nCUIDADO: Determinação Judicial (mandado) só pode ser cumprida DURANTE O DIA!'
   }
 ];
 

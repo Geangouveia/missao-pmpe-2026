@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Category, CategoryId } from '../types/game';
-import { BookOpen, Landmark, BrainCircuit, Laptop, Scale, ShieldAlert, Shield, Layers, Sparkles, Gavel } from 'lucide-react';
+import { BookOpen, Landmark, BrainCircuit, Laptop, Scale, ShieldAlert, Shield, Layers, Sparkles, Gavel, Search, X } from 'lucide-react';
 import { sound } from '../utils/sound';
 
 interface CategorySelectorProps {
@@ -11,6 +11,8 @@ interface CategorySelectorProps {
   selectedSimulado?: string;
   onSelectSimulado?: (simuladoId: string) => void;
   totalFilteredQuestions?: number;
+  searchQuery?: string;
+  onSearchChange?: (query: string) => void;
 }
 
 export const CategorySelector: React.FC<CategorySelectorProps> = ({
@@ -20,7 +22,9 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
   hasCustomDecks,
   selectedSimulado = 'all',
   onSelectSimulado,
-  totalFilteredQuestions
+  totalFilteredQuestions,
+  searchQuery = '',
+  onSearchChange
 }) => {
   const getIcon = (id: string) => {
     switch (id) {
@@ -37,7 +41,7 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
   };
 
   const simuladosOptions = [
-    { id: 'all', label: '⭐ Acervo Geral Soldado (2.157Q Comentadas)' },
+    { id: 'all', label: '⭐ Acervo Geral Soldado (2.052Q Comentadas)' },
     { id: 'caderno_edital_aocp_300', label: '🎯 300Q Cirúrgicas Edital AOCP 2026' },
     { id: 'caderno_direitos_humanos', label: '🕊️ Direitos Humanos & CADH (200Q)' },
     { id: 'caderno_leg_extravagante', label: '🚨 Leis Extravagantes (250Q)' },
@@ -46,7 +50,7 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
     { id: 'caderno_portugues_aocp', label: '📖 Português AOCP (250Q)' },
     { id: 'caderno_pmpe_estatuto', label: '🛡️ Estatuto PMPE (114Q)' },
     { id: 'caderno_informatica', label: '💻 Informática PMPE AOCP (350Q)' },
-    { id: 'caderno_historia_pe', label: '🦁 História de PE AOCP (58Q)' },
+    { id: 'caderno_historia_pe', label: '🦁 História de PE AOCP (200Q)' },
     { id: 'aocp_elite', label: '⭐ Caderno Elite AOCP' },
     { id: 'aocp_especial', label: '⚡ Foco AOCP Edital (30Q)' },
     { id: 'nuce_completo', label: 'Simulado PMPE Completo (60Q)' },
@@ -54,6 +58,19 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
     { id: 'semana_2', label: '2ª Semana (25Q)' },
     { id: 'semana_3', label: '3ª Semana (25Q)' },
     { id: 'semana_4', label: '4ª Semana (25Q)' },
+  ];
+
+  const quickSearchTags = [
+    'Crase',
+    'Frei Caneca',
+    'Art. 144',
+    'De Morgan',
+    'Maria da Penha',
+    'Probabilidade',
+    'Estatuto PMPE',
+    'Tortura',
+    'Guararapes',
+    'ECA'
   ];
 
   return (
@@ -73,6 +90,105 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
             🎯 {totalFilteredQuestions} questões ativas
           </div>
         )}
+      </div>
+
+      {/* BARRA DE BUSCA TEXTUAL TÁTICA (ITEM 3) */}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.45rem',
+          padding: '0.65rem 0.85rem',
+          background: 'linear-gradient(135deg, rgba(14, 16, 22, 0.95) 0%, rgba(8, 9, 12, 0.98) 100%)',
+          borderRadius: '12px',
+          border: '1.5px solid rgba(245, 158, 11, 0.35)',
+          boxShadow: '0 4px 15px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(245, 158, 11, 0.05)'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#fbbf24', flexShrink: 0 }}>
+            <Search size={16} />
+            <span style={{ fontSize: '0.78rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              Busca Tática por Assunto:
+            </span>
+          </div>
+
+          <div style={{ flex: 1, position: 'relative', display: 'flex', alignItems: 'center' }}>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => onSearchChange?.(e.target.value)}
+              placeholder="Digite um assunto específico: Ex: Frei Caneca, Crase facultativa, Art. 144, De Morgan..."
+              style={{
+                width: '100%',
+                padding: '0.45rem 2.2rem 0.45rem 0.8rem',
+                fontSize: '0.85rem',
+                color: '#ffffff',
+                background: '#07090e',
+                border: searchQuery ? '1.5px solid #f59e0b' : '1px solid rgba(255, 255, 255, 0.15)',
+                borderRadius: '8px',
+                outline: 'none',
+                boxShadow: 'inset 0 1px 3px rgba(0, 0, 0, 0.7)'
+              }}
+            />
+
+            {searchQuery && (
+              <button
+                onClick={() => {
+                  sound.playClick();
+                  onSearchChange?.('');
+                }}
+                style={{
+                  position: 'absolute',
+                  right: '8px',
+                  background: 'none',
+                  border: 'none',
+                  color: '#94a3b8',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '2px'
+                }}
+                title="Limpar pesquisa"
+              >
+                <X size={15} />
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Tags Rápidas de Assuntos Mais Cobrados */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexWrap: 'wrap' }}>
+          <span style={{ fontSize: '0.7rem', color: '#94a3b8', fontWeight: 700 }}>
+            Filtros Rápidos:
+          </span>
+          {quickSearchTags.map((tag) => {
+            const isSelected = searchQuery.toLowerCase() === tag.toLowerCase();
+            return (
+              <button
+                key={tag}
+                onClick={() => {
+                  sound.playClick();
+                  onSearchChange?.(isSelected ? '' : tag);
+                }}
+                style={{
+                  padding: '0.15rem 0.5rem',
+                  borderRadius: '12px',
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
+                  background: isSelected ? '#f59e0b' : 'rgba(255, 255, 255, 0.06)',
+                  border: isSelected ? '1px solid #fbbf24' : '1px solid rgba(255, 255, 255, 0.12)',
+                  color: isSelected ? '#060b17' : '#cbd5e1',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s'
+                }}
+              >
+                {tag}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Seletor Compacto de Caderno / Semana (Padrão Tático BOPE) */}
