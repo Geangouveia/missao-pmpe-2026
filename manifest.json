@@ -1,0 +1,18 @@
+{
+  "short_name": "Missão PMPE",
+  "name": "Missão PMPE 2026 - Preparatório Oficial Soldado",
+  "icons": [
+    {
+      "src": "./brasao-pmpe.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "./",
+  "background_color": "#07080a",
+  "theme_color": "#07080a",
+  "display": "standalone",
+  "orientation": "portrait",
+  "description": "Plataforma Tática Completa para Soldado da Polícia Militar de Pernambuco 2026 (Instituto AOCP): 2.052 Questões, Redação, SRS, TAF e Duelo 1v1."
+}
