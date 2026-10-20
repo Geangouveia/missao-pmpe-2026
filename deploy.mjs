@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'feat: controle arcade touch mobile ergonomico e legislacao PMPE 2026 completa';
+  const commitMsg = 'feat: 7 novos modulos taticos PMPE 2026 (TAF, Pegadinhas AOCP, PWA, Certificado, Reta Final, Podcast, Duelo 1v1 Sala)';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;
