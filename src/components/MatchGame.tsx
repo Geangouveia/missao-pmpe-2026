@@ -20,57 +20,90 @@ export const MATCH_LEVELS: MatchLevelConfig[] = [
   {
     level: 1,
     key: 'facilimo',
-    title: 'Facílimo',
+    title: 'Muito Fácil',
     rank: 'Recruta PMPE',
     badge: '🔰',
     pairCount: 4,
     xpReward: 80,
-    color: '#10b981',
+    color: '#22c55e',
     description: 'Fundamentos e fatos basilares de PE e Direito'
   },
   {
     level: 2,
     key: 'facil',
     title: 'Fácil',
-    rank: 'Soldado de Infantaria',
+    rank: 'Soldado Aluno',
     badge: '🎖️',
-    pairCount: 5,
+    pairCount: 4,
     xpReward: 120,
-    color: '#06b6d4',
+    color: '#38bdf8',
     description: 'Noções essenciais do edital e leis fundamentais'
   },
   {
     level: 3,
+    key: 'facil',
+    title: 'Meio Médio',
+    rank: 'Soldado Combatente',
+    badge: '⚔️',
+    pairCount: 5,
+    xpReward: 150,
+    color: '#06b6d4',
+    description: 'Prazos operacionais e artigos de rotina militar'
+  },
+  {
+    level: 4,
     key: 'medio',
     title: 'Médio',
-    rank: 'Cabo Tático',
-    badge: '⚔️',
+    rank: 'Cabo PMPE',
+    badge: '🛡️',
     pairCount: 5,
     xpReward: 180,
     color: '#eab308',
     description: 'Prazos legais, regras de RLM e exceções constitucionais'
   },
   {
-    level: 4,
-    key: 'dificil',
-    title: 'Difícil',
+    level: 5,
+    key: 'medio',
+    title: 'Meio Difícil',
     rank: '3º Sargento',
-    badge: '🛡️',
-    pairCount: 6,
-    xpReward: 250,
+    badge: '⭐',
+    pairCount: 5,
+    xpReward: 220,
     color: '#f97316',
-    description: 'Doutrina aprofundada, jurisprudência e normas específicas'
+    description: 'Doutrina militar aprofundada e enunciados densos'
   },
   {
-    level: 5,
+    level: 6,
+    key: 'dificil',
+    title: 'Difícil',
+    rank: 'Subtenente',
+    badge: '🌟',
+    pairCount: 6,
+    xpReward: 280,
+    color: '#ef4444',
+    description: 'Jurisprudência e normas específicas da corporação'
+  },
+  {
+    level: 7,
     key: 'dificilimo',
-    title: 'Dificílimo',
-    rank: 'Oficial Caveira (Elite)',
-    badge: '💀',
+    title: 'Muito Difícil',
+    rank: 'Tenente Oficial',
+    badge: '👑',
     pairCount: 6,
     xpReward: 350,
-    color: '#ef4444',
-    description: 'O nível máximo de rigor da banca examinadora AOCP'
+    color: '#c084fc',
+    description: 'Alto rigor técnico de detalhes e pegadinhas AOCP'
+  },
+  {
+    level: 8,
+    key: 'dificilimo',
+    title: 'Difícil ao Extremo',
+    rank: 'Elite Caveira AOCP',
+    badge: '💀',
+    pairCount: 7,
+    xpReward: 450,
+    color: '#f43f5e',
+    description: 'Nível máximo de corte e domínio absoluto do edital'
   }
 ];
 

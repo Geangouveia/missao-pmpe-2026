@@ -36,6 +36,8 @@ import { PelotaoCompetitionView } from './components/PelotaoCompetitionView';
 import { MistakeNotebookModal } from './components/MistakeNotebookModal';
 import { SundaySimuladoModal } from './components/SundaySimuladoModal';
 import { PlatoonDuelModal } from './components/PlatoonDuelModal';
+import { InvestorPitchView } from './components/InvestorPitchView';
+import { LogicalReasoningGuideView } from './components/LogicalReasoningGuideView';
 import { getDailyMotivationalQuote, type MotivationalQuote } from './utils/motivationalQuotes';
 import { recordStudentLogin, recordQuizCompletion } from './utils/studentAnalytics';
 import { fetchRegistryFromCloud, isMasterUser, checkActiveSessionValidity } from './utils/authManager';
@@ -181,6 +183,8 @@ export function App() {
   const [isSundaySimuladoOpen, setIsSundaySimuladoOpen] = useState(false);
   const [isPlatoonDuelOpen, setIsPlatoonDuelOpen] = useState(false);
   const [isActionGameOpen, setIsActionGameOpen] = useState(false);
+  const [isInvestorPitchOpen, setIsInvestorPitchOpen] = useState(false);
+  const [isRlmGuideOpen, setIsRlmGuideOpen] = useState(false);
   const [pendingMistakesCount, setPendingMistakesCount] = useState<number>(0);
   const [isRondaNoturna, setIsRondaNoturna] = useState<boolean>(() => isRondaNoturnaActive());
   const [sessionKickedReason, setSessionKickedReason] = useState<{ title: string; message: string } | null>(null);
@@ -841,6 +845,10 @@ export function App() {
       <CommanderDashboardView
         onBackToApp={() => setIsCommanderScreenOpen(false)}
         onRefreshPendingCount={checkPendingUsers}
+        onOpenInvestorPitch={() => {
+          setIsCommanderScreenOpen(false);
+          setIsInvestorPitchOpen(true);
+        }}
       />
     );
   }
@@ -902,6 +910,8 @@ export function App() {
         onOpenSundaySimulado={() => setIsSundaySimuladoOpen(true)}
         isRondaNoturnaActive={isRondaNoturna}
         onOpenActionGame={() => setIsActionGameOpen(true)}
+        onOpenInvestorPitch={() => setIsInvestorPitchOpen(true)}
+        onOpenRlmGuide={() => setIsRlmGuideOpen(true)}
       />
 
       {/* Roteamento de Telas */}
@@ -1449,6 +1459,100 @@ export function App() {
                 </div>
               </div>
             </div>
+
+            {/* Card 7: Guia de Raciocínio Lógico Proposicional (RLM) */}
+            <div
+              onClick={() => {
+                sound.playClick();
+                setIsRlmGuideOpen(true);
+              }}
+              style={{
+                cursor: 'pointer',
+                padding: '1.1rem 1.25rem',
+                borderRadius: '16px',
+                background: 'linear-gradient(135deg, rgba(8, 28, 44, 0.95) 0%, rgba(4, 15, 26, 0.98) 100%)',
+                border: '1.5px solid rgba(6, 182, 212, 0.55)',
+                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(6, 182, 212, 0.25)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                transition: 'transform 0.2s, box-shadow 0.2s'
+              }}
+            >
+              <div style={{
+                width: '46px',
+                height: '46px',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #0891b2, #06b6d4)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 0 15px rgba(6, 182, 212, 0.4)',
+                flexShrink: 0
+              }}>
+                <BookOpen size={24} color="#ffffff" />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#e0f2fe' }}>
+                    Guia Raciocínio Lógico (RLM)
+                  </span>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(6, 182, 212, 0.25)', color: '#38bdf8', fontWeight: 900 }}>
+                    MANÉ & TABELA
+                  </span>
+                </div>
+                <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+                  Tabela verdade interativa, o que é proposição, regra do MANÉ, De Morgan e equivalências
+                </div>
+              </div>
+            </div>
+
+            {/* Card 8: Apresentação do Investidor & Projeção SaaS */}
+            <div
+              onClick={() => {
+                sound.playLevelUp();
+                setIsInvestorPitchOpen(true);
+              }}
+              style={{
+                cursor: 'pointer',
+                padding: '1.1rem 1.25rem',
+                borderRadius: '16px',
+                background: 'linear-gradient(135deg, rgba(38, 28, 8, 0.95) 0%, rgba(20, 14, 4, 0.98) 100%)',
+                border: '1.5px solid rgba(234, 179, 8, 0.55)',
+                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(234, 179, 8, 0.25)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                transition: 'transform 0.2s, box-shadow 0.2s'
+              }}
+            >
+              <div style={{
+                width: '46px',
+                height: '46px',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #d97706, #f59e0b)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 0 15px rgba(245, 158, 11, 0.4)',
+                flexShrink: 0
+              }}>
+                <Award size={24} color="#060b17" />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '0.98rem', fontWeight: 900, color: '#fef08a' }}>
+                    Apresentação Investidores 2026
+                  </span>
+                  <span style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(234, 179, 8, 0.25)', color: '#facc15', fontWeight: 900 }}>
+                    PITCH KEYNOTE
+                  </span>
+                </div>
+                <div style={{ fontSize: '0.78rem', color: '#cbd5e1', marginTop: '0.2rem' }}>
+                  Demonstração dos módulos, simulador interativo de receita SaaS (MRR/ARR) e roteiro do fundador
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Seletor de Categoria, Semanas e Blocos PMPE */}
@@ -1905,6 +2009,29 @@ export function App() {
           allQuestions={questions}
           userName={currentUser || 'Soldado'}
           onQuestionAnswered={handleQuestionAnswered}
+        />
+      )}
+
+      {/* APRESENTAÇÃO KEYNOTE INTERATIVA DO INVESTIDOR */}
+      {isInvestorPitchOpen && (
+        <InvestorPitchView
+          onClose={() => setIsInvestorPitchOpen(false)}
+          onStartDemo={() => {
+            setIsInvestorPitchOpen(false);
+            setActiveMode('survival');
+          }}
+        />
+      )}
+
+      {/* GUIA COMPLETO DE RACIOCÍNIO LÓGICO PROPOSICIONAL (RLM AOCP) */}
+      {isRlmGuideOpen && (
+        <LogicalReasoningGuideView
+          onClose={() => setIsRlmGuideOpen(false)}
+          onOpenSurvivalMode={() => {
+            setIsRlmGuideOpen(false);
+            setActiveMode('survival');
+            setSelectedCategory('raciocinio');
+          }}
         />
       )}
     </div>

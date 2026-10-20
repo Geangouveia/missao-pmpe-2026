@@ -34,7 +34,8 @@ import {
   FileText,
   Send,
   PhoneCall,
-  Trophy
+  Trophy,
+  Award
 } from 'lucide-react';
 import { PelotaoCompetitionView } from './PelotaoCompetitionView';
 import { 
@@ -64,11 +65,13 @@ import { sound } from '../utils/sound';
 interface CommanderDashboardViewProps {
   onBackToApp: () => void;
   onRefreshPendingCount?: () => void;
+  onOpenInvestorPitch?: () => void;
 }
 
 export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
   onBackToApp,
-  onRefreshPendingCount
+  onRefreshPendingCount,
+  onOpenInvestorPitch,
 }) => {
   const [users, setUsers] = useState<Record<string, UserAccessRecord>>(() => getLocalUsersRegistry());
   const [isLoading, setIsLoading] = useState(true);
@@ -556,6 +559,33 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
               <Trophy size={16} color="#fbbf24" />
               <span>🏆 Competição & Premiação</span>
             </button>
+
+            {onOpenInvestorPitch && (
+              <button
+                onClick={() => {
+                  sound.playLevelUp();
+                  onOpenInvestorPitch();
+                }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  padding: '0.6rem 1.15rem',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.25) 0%, rgba(37, 99, 235, 0.3) 100%)',
+                  border: '1.5px solid #38bdf8',
+                  color: '#bae6fd',
+                  fontWeight: 900,
+                  fontSize: '0.86rem',
+                  cursor: 'pointer',
+                  boxShadow: '0 0 15px rgba(56, 189, 248, 0.3)'
+                }}
+                title="Abrir Apresentação Interativa para Investidores 2026 (Slides & Simulador SaaS)"
+              >
+                <Award size={16} color="#38bdf8" />
+                <span>Pitch do Investidor 2026</span>
+              </button>
+            )}
 
             <button
               onClick={() => {

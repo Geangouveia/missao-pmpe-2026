@@ -10,6 +10,7 @@ import {
   RotateCcw, 
   Home, 
   CheckCircle2, 
+  Check,
   XCircle, 
   ShieldAlert, 
   HelpCircle, 
@@ -60,6 +61,110 @@ export const PMPE_MILITARY_RANKS = [
   { level: 14, title: 'Coronel Comandante-Geral', icon: '👑🏆', color: '#eab308' },
 ];
 
+// OS 8 NÍVEIS PROGRESSIVOS DE DIFICULDADE (COMANDANTE GEAN)
+export interface DifficultyTier {
+  id: number; // 1 a 8
+  name: string;
+  rankTitle: string;
+  badge: string;
+  color: string;
+  timeLimitSec: number;
+  xpMultiplier: number;
+  questionsToAdvance: number;
+  description: string;
+}
+
+export const SURVIVAL_DIFFICULTY_TIERS: DifficultyTier[] = [
+  {
+    id: 1,
+    name: 'Muito Fácil',
+    rankTitle: 'Recruta PMPE',
+    badge: '🔰',
+    color: '#22c55e',
+    timeLimitSec: 60,
+    xpMultiplier: 1.0,
+    questionsToAdvance: 4,
+    description: 'Conceitos fundamentais e tempo generoso para ambientação'
+  },
+  {
+    id: 2,
+    name: 'Fácil',
+    rankTitle: 'Soldado Aluno',
+    badge: '🎖️',
+    color: '#38bdf8',
+    timeLimitSec: 55,
+    xpMultiplier: 1.2,
+    questionsToAdvance: 4,
+    description: 'Noções essenciais do edital e leis basilares'
+  },
+  {
+    id: 3,
+    name: 'Meio Médio',
+    rankTitle: 'Soldado Combatente',
+    badge: '⚔️',
+    color: '#06b6d4',
+    timeLimitSec: 50,
+    xpMultiplier: 1.4,
+    questionsToAdvance: 5,
+    description: 'Prazos legais e artigos de rotina policial'
+  },
+  {
+    id: 4,
+    name: 'Médio',
+    rankTitle: 'Cabo PMPE',
+    badge: '🛡️',
+    color: '#eab308',
+    timeLimitSec: 45,
+    xpMultiplier: 1.6,
+    questionsToAdvance: 5,
+    description: 'Exceções jurídicas, lógica proposicional e história'
+  },
+  {
+    id: 5,
+    name: 'Meio Difícil',
+    rankTitle: '3º Sargento',
+    badge: '⭐',
+    color: '#f97316',
+    timeLimitSec: 40,
+    xpMultiplier: 1.8,
+    questionsToAdvance: 5,
+    description: 'Doutrina militar aprofundada e enunciados densos'
+  },
+  {
+    id: 6,
+    name: 'Difícil',
+    rankTitle: 'Subtenente',
+    badge: '🌟',
+    color: '#ef4444',
+    timeLimitSec: 35,
+    xpMultiplier: 2.0,
+    questionsToAdvance: 6,
+    description: 'Pegadinhas clássicas da AOCP e análise de alternativas'
+  },
+  {
+    id: 7,
+    name: 'Muito Difícil',
+    rankTitle: 'Tenente Oficial',
+    badge: '👑',
+    color: '#c084fc',
+    timeLimitSec: 30,
+    xpMultiplier: 2.5,
+    questionsToAdvance: 6,
+    description: 'Alta pressão temporal e jurisprudência dos tribunais'
+  },
+  {
+    id: 8,
+    name: 'Difícil ao Extremo',
+    rankTitle: 'Elite Caveira AOCP',
+    badge: '💀',
+    color: '#f43f5e',
+    timeLimitSec: 25,
+    xpMultiplier: 3.0,
+    questionsToAdvance: 8,
+    description: 'Padrão máximo de corte dos primeiros colocados da PMPE'
+  }
+];
+
 export const SurvivalGame: React.FC<SurvivalGameProps> = ({
   questions,
   userName = '',
@@ -68,22 +173,40 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
   onAwardXp,
   onQuestionAnswered,
 }) => {
+  // Checkpoint persistente por usuário no localStorage
+  const checkpointKey = `pmpe_survival_checkpoint_${userName || 'recruta'}`;
+  const getSavedCheckpoint = (): number => {
+    try {
+      const val = localStorage.getItem(checkpointKey);
+      if (val) {
+        const parsed = parseInt(val, 10);
+        if (parsed >= 1 && parsed <= 8) return parsed;
+      }
+    } catch {}
+    return 1;
+  };
+
+  const [currentTierIndex, setCurrentTierIndex] = useState<number>(() => getSavedCheckpoint());
+  const [highestUnlockedTier, setHighestUnlockedTier] = useState<number>(() => getSavedCheckpoint());
+  const [tierCorrectInLevel, setTierCorrectInLevel] = useState<number>(0);
+
+  const currentTier = SURVIVAL_DIFFICULTY_TIERS[currentTierIndex - 1] || SURVIVAL_DIFFICULTY_TIERS[0];
+
   // Embaralhar as questões e filtrar não repetidas no mesmo dia (pedido pelo Comandante Gean: NUNCA REPETIR)
   const [shuffledQuestions, setShuffledQuestions] = useState<QuizQuestion[]>(() => {
     const unrepeated = filterOutAnsweredToday(questions, userName);
-    return prepareGameQuestions(unrepeated);
+    return prepareGameQuestions(unrepeated.length > 0 ? unrepeated : questions);
   });
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [lives, setLives] = useState(4); // Comandante Gean: Aumentado para 4 vidas (+1 vida)!
+  const [lives, setLives] = useState(4); // Comandante Gean: 4 vidas táticas
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
   const [maxStreak, setMaxStreak] = useState(0);
   const [totalCorrect, setTotalCorrect] = useState(0);
 
-  // Tempo por questão (50 segundos - Comandante Gean)
-  const QUESTION_TIME = 50;
-  const [timeLeft, setTimeLeft] = useState(QUESTION_TIME);
+  // Tempo dinâmico baseado no Nível de Dificuldade Atual (60s até 25s)
+  const [timeLeft, setTimeLeft] = useState(currentTier.timeLimitSec);
   const [isAnswered, setIsAnswered] = useState(false);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isGameOver, setIsGameOver] = useState(false);
@@ -92,7 +215,6 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
   const [powerupFiftyFiftyCharges, setPowerupFiftyFiftyCharges] = useState(2);
   const [powerupTimeCharges, setPowerupTimeCharges] = useState(2);
   const [powerupHintCharges, setPowerupHintCharges] = useState(2);
-  // NOVO PODER: Disparo Triplo de Pistola (4 chances no jogo - Comandante Gean)
   const [powerupTripleShotCharges, setPowerupTripleShotCharges] = useState(4);
   const [isShootingPistol, setIsShootingPistol] = useState(false);
 
@@ -103,7 +225,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
 
   const currentQ = shuffledQuestions[currentIndex] || questions[0];
 
-  // Progressão Tática de Patente (Comandante Gean: 4 acertos no total do nível para subir de patente)
+  // Progressão Tática de Patente
   const [rankIndex, setRankIndex] = useState(0);
   const [rankCorrectInLevel, setRankCorrectInLevel] = useState(0);
   const [promotionAlert, setPromotionAlert] = useState<string | null>(null);
@@ -190,28 +312,44 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
         sound.playGunshot38(); // Tiro tático seco .38
       }
 
-      // Multiplicador de Combo
+      // Multiplicador de Combo & Dificuldade Tática (Comandante Gean)
+      const tierXpMult = currentTier.xpMultiplier;
       const multiplier = Math.min(5, Math.floor(newStreak / 2) + 1);
-      const speedBonus = timeLeft * 10;
-      const pointsGained = (150 * multiplier) + speedBonus;
-      const xpGained = 20 * multiplier;
+      const speedBonus = Math.round(timeLeft * 10 * tierXpMult);
+      const pointsGained = Math.round(((150 * multiplier) + speedBonus) * tierXpMult);
+      const xpGained = Math.round(20 * multiplier * tierXpMult);
 
       setScore((prev) => prev + pointsGained);
       setTotalCorrect((prev) => prev + 1);
       onAwardXp(xpGained);
 
-      // Comandante Gean: Lógica de Promoção Militar
-      // 4 acertos no total do nível para subir de patente!
-      // (O combatente pode errar e perder vida, mas quando somar 4 acertos no nível, SOBE DE PATENTE!)
-      const nextRankCorrect = rankCorrectInLevel + 1;
+      // Comandante Gean: Lógica de Promoção através dos 8 Níveis de Dificuldade
+      const nextTierCorrect = tierCorrectInLevel + 1;
+      if (nextTierCorrect >= currentTier.questionsToAdvance && currentTierIndex < 8) {
+        const nextTierId = currentTierIndex + 1;
+        setCurrentTierIndex(nextTierId);
+        setTierCorrectInLevel(0);
+        if (nextTierId > highestUnlockedTier) {
+          setHighestUnlockedTier(nextTierId);
+          try {
+            localStorage.setItem(checkpointKey, String(nextTierId));
+          } catch {}
+        }
+        const nextTierObj = SURVIVAL_DIFFICULTY_TIERS[nextTierId - 1];
+        setPromotionAlert(`🎖️ NOVO NÍVEL ALCANÇADO: ${nextTierObj.name} (${nextTierObj.rankTitle})!`);
+        sound.playLevelUp();
+        confetti({ particleCount: 120, spread: 85, origin: { y: 0.35 } });
+      } else {
+        setTierCorrectInLevel(nextTierCorrect);
+      }
 
+      // Promoção Militar por Patente
+      const nextRankCorrect = rankCorrectInLevel + 1;
       if (nextRankCorrect >= 4 && rankIndex < PMPE_MILITARY_RANKS.length - 1) {
         const nextRank = PMPE_MILITARY_RANKS[rankIndex + 1];
         setRankIndex((prev) => prev + 1);
         setRankCorrectInLevel(0);
-        setPromotionAlert(nextRank.title);
         sound.playLevelUp();
-        confetti({ particleCount: 110, spread: 85, origin: { y: 0.35 } });
       } else {
         setRankCorrectInLevel(nextRankCorrect);
       }
@@ -227,20 +365,16 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     } else {
       sound.playError();
       setStreak(0);
-      // Comandante Gean: Errou? Perde vida, mas NÃO perde os acertos já acumulados na patente!
       const newLives = lives - 1;
       setLives(newLives);
 
       if (onQuestionAnswered) {
         onQuestionAnswered(false, 0, currentQ?.id);
       }
-
-      // Comandante Gean: NÃO fechar a tela automaticamente se zerar as vidas!
-      // O combatente terá todo o tempo que precisar para ler a explicação da última questão.
     }
   };
 
-  // Avançar para a Próxima Pergunta
+  // Avançar para a Próxima Pergunta (MODO INFINITO - SEM LIMITE DE PERGUNTAS)
   const handleNextQuestion = () => {
     if (lives <= 0) {
       triggerGameOver(score, totalCorrect);
@@ -249,16 +383,20 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
 
     sound.playClick();
     setPromotionAlert(null);
+    const activeTierCfg = SURVIVAL_DIFFICULTY_TIERS[currentTierIndex - 1] || SURVIVAL_DIFFICULTY_TIERS[0];
+    setTimeLeft(activeTierCfg.timeLimitSec);
+    setIsAnswered(false);
+    setSelectedOption(null);
+    setDisabledOptions([]);
+    setShowHintActive(false);
+
     if (currentIndex + 1 < shuffledQuestions.length) {
       setCurrentIndex((prev) => prev + 1);
-      setTimeLeft(QUESTION_TIME);
-      setIsAnswered(false);
-      setSelectedOption(null);
-      setDisabledOptions([]);
-      setShowHintActive(false);
     } else {
-      // Zerou o banco de questões na missão!
-      triggerGameOver(score, totalCorrect);
+      // MODO INFINITO: Reembaralha o banco completo de questões e continua indefinidamente sem travar!
+      const reshuffled = prepareGameQuestions(questions);
+      setShuffledQuestions(reshuffled);
+      setCurrentIndex(0);
     }
   };
 
@@ -322,18 +460,22 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     }, 450);
   };
 
-  // Reiniciar Missão com perguntas e gabaritos totalmente novos
-  const handleRestart = () => {
+  // Reiniciar Missão a partir de Checkpoint selecionado (Comandante Gean)
+  const handleRestartFromCheckpoint = (tierId: number = highestUnlockedTier) => {
     sound.playClick();
-    const unrepeated = filterOutAnsweredToday(questions, userName || '');
-    setShuffledQuestions(prepareGameQuestions(unrepeated));
+    const targetTier = Math.min(8, Math.max(1, tierId));
+    setCurrentTierIndex(targetTier);
+    setTierCorrectInLevel(0);
+    const targetCfg = SURVIVAL_DIFFICULTY_TIERS[targetTier - 1] || SURVIVAL_DIFFICULTY_TIERS[0];
+    const unrep = filterOutAnsweredToday(questions, userName || '');
+    setShuffledQuestions(prepareGameQuestions(unrep.length > 0 ? unrep : questions));
     setLives(4);
     setScore(0);
     setStreak(0);
     setMaxStreak(0);
     setTotalCorrect(0);
     setCurrentIndex(0);
-    setTimeLeft(QUESTION_TIME);
+    setTimeLeft(targetCfg.timeLimitSec);
     setIsAnswered(false);
     setSelectedOption(null);
     setIsGameOver(false);
@@ -343,9 +485,11 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     setPowerupTimeCharges(2);
     setPowerupHintCharges(2);
     setPowerupTripleShotCharges(4);
-    setRankIndex(0);
-    setRankCorrectInLevel(0);
     setPromotionAlert(null);
+  };
+
+  const handleRestart = () => {
+    handleRestartFromCheckpoint(1);
   };
 
   // Concluir e Voltar
@@ -361,7 +505,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
   };
 
   // Percentual do Tempo para Barra Circular
-  const timeProgress = (timeLeft / QUESTION_TIME) * 100;
+  const timeProgress = (timeLeft / currentTier.timeLimitSec) * 100;
   const timerColor = timeLeft > 15 ? '#38bdf8' : timeLeft > 7 ? '#fbbf24' : '#ef4444';
 
   // Se todas as questões do bloco selecionado já foram respondidas hoje
@@ -442,7 +586,23 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
             {currentRank.title}
           </h2>
 
-          <p style={{ color: '#94a3b8', fontSize: '0.95rem', margin: '0 auto 2rem', maxWidth: '480px' }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.4rem',
+            padding: '0.35rem 0.9rem',
+            borderRadius: '12px',
+            background: 'rgba(56, 189, 248, 0.15)',
+            border: '1px solid rgba(56, 189, 248, 0.35)',
+            color: '#38bdf8',
+            fontSize: '0.86rem',
+            fontWeight: 800,
+            marginBottom: '1rem'
+          }}>
+            <span>Dificuldade Alcançada: Nível {currentTier.id} - {currentTier.name} ({currentTier.rankTitle})</span>
+          </div>
+
+          <p style={{ color: '#94a3b8', fontSize: '0.95rem', margin: '0 auto 1.5rem', maxWidth: '520px' }}>
             Excelente patrulha operacional! Você combateu bravamente as questões da banca AOCP.
           </p>
 
@@ -451,7 +611,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
             gap: '1rem',
-            marginBottom: '2rem'
+            marginBottom: '1.75rem'
           }}>
             <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '1rem', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
               <div style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 800 }}>PONTUAÇÃO</div>
@@ -474,21 +634,111 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
             </div>
           </div>
 
-          {/* Botões de Ação */}
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          {/* SELETOR DE CHECKPOINTS DESBLOQUEADOS (1 A 8) */}
+          <div style={{
+            background: 'rgba(0, 0, 0, 0.45)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            borderRadius: '16px',
+            padding: '1.15rem',
+            marginBottom: '1.5rem',
+            textAlign: 'left'
+          }}>
+            <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <Sparkles size={15} color="#fbbf24" />
+              <span>Escolha o Nível para Recomeçar (Checkpoints Desbloqueados):</span>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '0.6rem' }}>
+              {SURVIVAL_DIFFICULTY_TIERS.map((tier) => {
+                const isUnlocked = tier.id <= highestUnlockedTier;
+                const isSelected = tier.id === currentTierIndex;
+                return (
+                  <button
+                    key={tier.id}
+                    disabled={!isUnlocked}
+                    onClick={() => handleRestartFromCheckpoint(tier.id)}
+                    style={{
+                      padding: '0.6rem 0.8rem',
+                      borderRadius: '10px',
+                      background: isSelected 
+                        ? 'rgba(34, 197, 94, 0.25)' 
+                        : isUnlocked 
+                          ? 'rgba(255, 255, 255, 0.05)' 
+                          : 'rgba(255, 255, 255, 0.02)',
+                      border: isSelected 
+                        ? '1.5px solid #22c55e' 
+                        : isUnlocked 
+                          ? '1px solid rgba(255, 255, 255, 0.15)' 
+                          : '1px dashed rgba(255, 255, 255, 0.05)',
+                      color: isUnlocked ? '#ffffff' : '#64748b',
+                      fontSize: '0.78rem',
+                      fontWeight: isSelected ? 800 : 600,
+                      cursor: isUnlocked ? 'pointer' : 'not-allowed',
+                      textAlign: 'left',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      opacity: isUnlocked ? 1 : 0.4
+                    }}
+                    title={isUnlocked ? `Iniciar direto no Nível ${tier.id}: ${tier.name}` : 'Bloqueado: alcance este nível durante o jogo'}
+                  >
+                    <div>
+                      <div style={{ color: tier.color, fontWeight: 800 }}>
+                        {tier.badge} Nv.{tier.id}: {tier.name}
+                      </div>
+                      <div style={{ fontSize: '0.68rem', color: '#94a3b8' }}>
+                        {tier.timeLimitSec}s • {tier.xpMultiplier}x XP
+                      </div>
+                    </div>
+                    {isSelected && <Check size={14} color="#22c55e" />}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Botões de Ação Principais */}
+          <div style={{ display: 'flex', gap: '0.85rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <button
-              onClick={handleRestart}
+              onClick={() => handleRestartFromCheckpoint(highestUnlockedTier)}
               className="btn-primary"
-              style={{ padding: '0.8rem 1.8rem', fontSize: '0.95rem', borderRadius: '14px', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+              style={{
+                padding: '0.85rem 1.6rem',
+                fontSize: '0.92rem',
+                borderRadius: '14px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                background: 'linear-gradient(135deg, #16a34a, #22c55e)',
+                boxShadow: '0 0 20px rgba(34, 197, 94, 0.4)'
+              }}
             >
               <RotateCcw size={18} />
-              <span>Jogar Novamente</span>
+              <span>Recomeçar do Checkpoint (Nv. {highestUnlockedTier})</span>
+            </button>
+
+            <button
+              onClick={() => handleRestartFromCheckpoint(1)}
+              style={{
+                padding: '0.85rem 1.4rem',
+                fontSize: '0.92rem',
+                borderRadius: '14px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                background: 'rgba(255, 255, 255, 0.08)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: '#e2e8f0',
+                cursor: 'pointer'
+              }}
+            >
+              <span>Reiniciar do Nível 1</span>
             </button>
 
             <button
               onClick={handleFinishMission}
               className="btn-secondary"
-              style={{ padding: '0.8rem 1.8rem', fontSize: '0.95rem', borderRadius: '14px', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+              style={{ padding: '0.85rem 1.4rem', fontSize: '0.92rem', borderRadius: '14px', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
             >
               <Home size={18} />
               <span>Voltar ao QG</span>
@@ -510,6 +760,28 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
             gap: '1rem',
             boxShadow: '0 8px 24px rgba(0,0,0,0.5)'
           }}>
+            {/* DIFICULDADE ATUAL (1 A 8 TIERS) */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.45rem',
+              padding: '0.35rem 0.75rem',
+              borderRadius: '12px',
+              background: 'rgba(15, 23, 42, 0.85)',
+              border: `1.5px solid ${currentTier.color}`,
+              boxShadow: `0 0 12px ${currentTier.color}35`
+            }}>
+              <span style={{ fontSize: '1.1rem' }}>{currentTier.badge}</span>
+              <div>
+                <div style={{ fontSize: '0.62rem', color: '#94a3b8', fontWeight: 800, textTransform: 'uppercase' }}>
+                  Dificuldade ({currentTierIndex}/8)
+                </div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 900, color: currentTier.color }}>
+                  {currentTier.name} • {currentTier.xpMultiplier}x XP
+                </div>
+              </div>
+            </div>
+
             {/* Vidas Restantes */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase' }}>

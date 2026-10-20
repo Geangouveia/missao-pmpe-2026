@@ -74,29 +74,53 @@ export const SIMULADOS_LIST = [
   { id: 'semana_4', name: '4ª Semana (Aulas ao Vivo)', count: 25, tag: 'Semana 4' },
 ];
 
-export const ALL_QUESTIONS: QuizQuestion[] = [
-  ...BANCO_QUESTOES_ELITE_DIFICIL,
-  ...BANCO_NOVAS_QUESTOES_BLOCO_1,
-  ...BANCO_NOVAS_QUESTOES_BLOCO_2,
-  ...BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_1,
-  ...BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_2,
-  ...BANCO_EDITAL_AOCP_300,
-  ...BANCO_DIREITOS_HUMANOS_PLANALTO,
-  ...BANCO_LEGISLACAO_EXTRAVAGANTE,
-  ...BANCO_RACIOCINIO_PROBABILIDADE,
-  ...BANCO_CONSTITUCIONAL_PMPE,
-  ...BANCO_PORTUGUES_AOCP,
-  ...BANCO_PORTUGUES_EXTRA,
-  ...BANCO_INFORMATICA_PMPE_AOCP,
-  ...BANCO_ESTATUTO_PMPE_EXTRA,
-  ...BANCO_LEGISLACAO_PMPE_60,
-  ...BANCO_HISTORIA_PE_EXTRA,
-  ...LEGISLACAO_PMPE_50_QUESTIONS,
-  ...SIMULADO_AOCP_ELITE,
-  ...SIMULADO_AOCP_ESPECIAL,
-  ...SIMULADO_COMPLETO_PMPE,
-  ...SIMULADO_SEMANA_1,
-  ...SIMULADO_SEMANA_2,
-  ...SIMULADO_SEMANA_3,
-  ...SIMULADO_SEMANA_4
-];
+// Filtro rigoroso de singularidade: NENHUMA questão repetida ou duplicada é servida ao aluno
+export const ALL_QUESTIONS: QuizQuestion[] = (() => {
+  const rawList: QuizQuestion[] = [
+    ...BANCO_QUESTOES_ELITE_DIFICIL,
+    ...BANCO_NOVAS_QUESTOES_BLOCO_1,
+    ...BANCO_NOVAS_QUESTOES_BLOCO_2,
+    ...BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_1,
+    ...BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_2,
+    ...BANCO_EDITAL_AOCP_300,
+    ...BANCO_DIREITOS_HUMANOS_PLANALTO,
+    ...BANCO_LEGISLACAO_EXTRAVAGANTE,
+    ...BANCO_RACIOCINIO_PROBABILIDADE,
+    ...BANCO_CONSTITUCIONAL_PMPE,
+    ...BANCO_PORTUGUES_AOCP,
+    ...BANCO_PORTUGUES_EXTRA,
+    ...BANCO_INFORMATICA_PMPE_AOCP,
+    ...BANCO_ESTATUTO_PMPE_EXTRA,
+    ...BANCO_LEGISLACAO_PMPE_60,
+    ...BANCO_HISTORIA_PE_EXTRA,
+    ...LEGISLACAO_PMPE_50_QUESTIONS,
+    ...SIMULADO_AOCP_ELITE,
+    ...SIMULADO_AOCP_ESPECIAL,
+    ...SIMULADO_COMPLETO_PMPE,
+    ...SIMULADO_SEMANA_1,
+    ...SIMULADO_SEMANA_2,
+    ...SIMULADO_SEMANA_3,
+    ...SIMULADO_SEMANA_4
+  ];
+
+  const seen = new Set<string>();
+  const uniqueQuestions: QuizQuestion[] = [];
+
+  for (const q of rawList) {
+    if (!q || !q.question) continue;
+    // Normaliza removendo prefixos de simulado para comparar a essência da pergunta
+    const normalized = q.question
+      .replace(/^\[[^\]]+\]\s*/i, '')
+      .replace(/^\([^)]+\)\s*/i, '')
+      .trim()
+      .toLowerCase();
+
+    if (!seen.has(normalized)) {
+      seen.add(normalized);
+      uniqueQuestions.push(q);
+    }
+  }
+
+  return uniqueQuestions;
+})();
+

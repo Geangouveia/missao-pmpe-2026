@@ -46,8 +46,8 @@ interface MazeSectorConfig {
 const SECTORS: MazeSectorConfig[] = [
   {
     sectorNum: 1,
-    name: 'Beco da Periferia',
-    code: 'SETOR ALPHA-01',
+    name: 'Beco da Periferia (Recruta)',
+    code: 'SETOR ALPHA-01 • MUITO FÁCIL',
     theme: 'Perímetro Externo',
     banditName: 'Sentinela Armado',
     ambientColor: '#22c55e',
@@ -55,8 +55,8 @@ const SECTORS: MazeSectorConfig[] = [
   },
   {
     sectorNum: 2,
-    name: 'Corredores do Galpão',
-    code: 'SETOR BRAVO-02',
+    name: 'Corredores do Galpão (Soldado Aluno)',
+    code: 'SETOR BRAVO-02 • FÁCIL',
     theme: 'Complexo Logístico',
     banditName: 'Guarda do Depósito',
     ambientColor: '#38bdf8',
@@ -64,21 +64,57 @@ const SECTORS: MazeSectorConfig[] = [
   },
   {
     sectorNum: 3,
-    name: 'Túnel Subterrâneo',
-    code: 'SETOR CHARLIE-03',
-    theme: 'Subsolo Tático',
-    banditName: 'Tirador de Elite do Tráfico',
-    ambientColor: '#f59e0b',
-    description: 'Visibilidade reduzida e eco de disparos. Avance com lanterna e escudo tático em prontidão.'
+    name: 'Pátio dos Contêineres (Soldado Combatente)',
+    code: 'SETOR CHARLIE-03 • MEIO MÉDIO',
+    theme: 'Pátio Central',
+    banditName: 'Vigia Noturno',
+    ambientColor: '#06b6d4',
+    description: 'Área aberta com visibilidade restrita. Avance com cuidado e mantenha cobertura.'
   },
   {
     sectorNum: 4,
-    name: 'Bunker Central do Inimigo',
-    code: 'SETOR FOXTROT-04',
+    name: 'Túnel Subterrâneo (Cabo PMPE)',
+    code: 'SETOR DELTA-04 • MÉDIO',
+    theme: 'Subsolo Tático',
+    banditName: 'Tirador do Tráfico',
+    ambientColor: '#eab308',
+    description: 'Visibilidade reduzida e eco de disparos. Avance com lanterna e escudo tático em prontidão.'
+  },
+  {
+    sectorNum: 5,
+    name: 'Subsolo Industrial (3º Sargento)',
+    code: 'SETOR ECHO-05 • MEIO DIFÍCIL',
+    theme: 'Sala de Máquinas',
+    banditName: 'Especialista em Armas Pesadas',
+    ambientColor: '#f97316',
+    description: 'Tubulações de vapor e barulho de geradores. O inimigo atira com precisão.'
+  },
+  {
+    sectorNum: 6,
+    name: 'Corredores Blindados (Subtenente)',
+    code: 'SETOR FOXTROT-06 • DIFÍCIL',
+    theme: 'Ala de Segurança Máxima',
+    banditName: 'Guarda-Costas do Chefe',
+    ambientColor: '#ef4444',
+    description: 'Portas reforçadas e câmeras. Alta resistência e respostas rápidas exigidas.'
+  },
+  {
+    sectorNum: 7,
+    name: 'Bunker de Comando (Tenente Oficial)',
+    code: 'SETOR GOLF-07 • MUITO DIFÍCIL',
+    theme: 'Centro Tático Inimigo',
+    banditName: 'Subcomandante da Facção',
+    ambientColor: '#c084fc',
+    description: 'Sala de monitoramento e rádio. Inimigos bem treinados e tempo reduzido.'
+  },
+  {
+    sectorNum: 8,
+    name: 'QG Central do Inimigo (Elite Caveira AOCP)',
+    code: 'SETOR HOTEL-08 • DIFÍCIL AO EXTREMO',
     theme: 'QG Fortificado',
     banditName: 'Líder da Facção Criminosa',
-    ambientColor: '#ef4444',
-    description: 'A incursão final. Neutralize o comandante inimigo para retomar o controle do labirinto.'
+    ambientColor: '#f43f5e',
+    description: 'A incursão final. Neutralize o comandante supremo para retomar o controle absoluto do labirinto.'
   }
 ];
 

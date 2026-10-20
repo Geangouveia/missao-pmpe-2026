@@ -33,6 +33,8 @@ interface HeaderProps {
   onOpenSundaySimulado?: () => void;
   isRondaNoturnaActive?: boolean;
   onOpenActionGame?: () => void;
+  onOpenInvestorPitch?: () => void;
+  onOpenRlmGuide?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -58,6 +60,8 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenSundaySimulado,
   isRondaNoturnaActive = false,
   onOpenActionGame,
+  onOpenInvestorPitch,
+  onOpenRlmGuide,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -443,6 +447,38 @@ export const Header: React.FC<HeaderProps> = ({
                       </button>
                     )}
 
+                    {onOpenRlmGuide && (
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setIsMenuOpen(false);
+                          onOpenRlmGuide();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'rgba(6, 182, 212, 0.12)',
+                          border: '1px solid rgba(6, 182, 212, 0.3)',
+                          color: '#bae6fd',
+                          fontSize: '0.82rem',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <BookOpen size={15} color="#06b6d4" />
+                          <span>Guia Raciocínio Lógico (RLM)</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: 'rgba(6, 182, 212, 0.25)', color: '#38bdf8', fontWeight: 900 }}>
+                          MANÉ & TABELA
+                        </span>
+                      </button>
+                    )}
+
                     {onOpenMistakes && (
                       <button
                         onClick={() => {
@@ -632,6 +668,38 @@ export const Header: React.FC<HeaderProps> = ({
                       >
                         <Swords size={15} color="#f59e0b" />
                         <span>Duelo 1v1 & Quadro do Pelotão</span>
+                      </button>
+                    )}
+
+                    {onOpenInvestorPitch && (
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setIsMenuOpen(false);
+                          onOpenInvestorPitch();
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.65rem',
+                          borderRadius: '8px',
+                          background: 'linear-gradient(135deg, rgba(234, 179, 8, 0.16) 0%, rgba(217, 119, 6, 0.22) 100%)',
+                          border: '1px solid rgba(234, 179, 8, 0.45)',
+                          color: '#fef08a',
+                          fontSize: '0.82rem',
+                          fontWeight: 800,
+                          cursor: 'pointer',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <Award size={15} color="#fbbf24" />
+                          <span>Pitch do Investidor 2026</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', padding: '0.1rem 0.35rem', borderRadius: '4px', background: '#eab308', color: '#000000', fontWeight: 900 }}>
+                          SLIDES & MRR
+                        </span>
                       </button>
                     )}
                   </div>
