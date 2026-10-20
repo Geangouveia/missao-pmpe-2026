@@ -383,7 +383,7 @@ export function App() {
           particleCount: 120,
           spread: 90,
           origin: { y: 0.35 },
-          colors: ['#06b6d4', '#fbbf24', '#10b981', '#ec4899', '#f97316']
+          colors: ['#d4af37', '#e5c158', '#dc2626', '#ffffff', '#71717a']
         });
       }
 
@@ -418,7 +418,7 @@ export function App() {
           particleCount: 130,
           spread: 90,
           origin: { y: 0.35 },
-          colors: ['#06b6d4', '#fbbf24', '#10b981', '#ec4899', '#f97316']
+          colors: ['#d4af37', '#e5c158', '#dc2626', '#ffffff', '#71717a']
         });
       }
 

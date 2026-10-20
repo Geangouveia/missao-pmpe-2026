@@ -45,26 +45,26 @@ interface SurvivalGameProps {
   onQuestionAnswered?: (isCorrect: boolean, xpGained: number, questionId?: string) => void;
 }
 
-// Patentes Militares Oficiais PMPE com Escala Completa de Carreira
+// Patentes Militares Oficiais PMPE com Escala Completa de Carreira (Padrão Tático BOPE)
 export const PMPE_MILITARY_RANKS = [
-  { level: 0, title: 'Aluno Soldado (Recruta)', icon: '🔰', color: '#94a3b8' },
-  { level: 1, title: 'Soldado Combatente', icon: '🎖️', color: '#38bdf8' },
-  { level: 2, title: 'Soldado 1ª Classe', icon: '🎖️⭐', color: '#60a5fa' },
-  { level: 3, title: 'Cabo PMPE', icon: '⚔️', color: '#34d399' },
-  { level: 4, title: '3º Sargento', icon: '🛡️', color: '#a855f7' },
-  { level: 5, title: '2º Sargento', icon: '🛡️', color: '#c084fc' },
-  { level: 6, title: '1º Sargento', icon: '🛡️', color: '#e879f9' },
-  { level: 7, title: 'Subtenente', icon: '⭐', color: '#f59e0b' },
-  { level: 8, title: 'Aspirante a Oficial', icon: '🌟', color: '#fbbf24' },
-  { level: 9, title: '2º Tenente', icon: '🔷', color: '#38bdf8' },
-  { level: 10, title: '1º Tenente', icon: '🔷🔷', color: '#0284c7' },
-  { level: 11, title: 'Capitão PMPE', icon: '🦅', color: '#f97316' },
-  { level: 12, title: 'Major PMPE', icon: '⚜️', color: '#ea580c' },
-  { level: 13, title: 'Tenente-Coronel', icon: '⭐👑', color: '#ef4444' },
-  { level: 14, title: 'Coronel Comandante-Geral', icon: '👑🏆', color: '#eab308' },
+  { level: 0, title: 'Aluno Soldado (Recruta)', icon: '🔰', color: '#a1a1aa' },
+  { level: 1, title: 'Soldado Combatente', icon: '🎖️', color: '#cbd5e1' },
+  { level: 2, title: 'Soldado 1ª Classe', icon: '🎖️⭐', color: '#e4e4e7' },
+  { level: 3, title: 'Cabo PMPE', icon: '⚔️', color: '#c59b27' },
+  { level: 4, title: '3º Sargento', icon: '🛡️', color: '#d4af37' },
+  { level: 5, title: '2º Sargento', icon: '🛡️', color: '#d4af37' },
+  { level: 6, title: '1º Sargento', icon: '🛡️', color: '#e5c158' },
+  { level: 7, title: 'Subtenente', icon: '⭐', color: '#d4af37' },
+  { level: 8, title: 'Aspirante a Oficial', icon: '🌟', color: '#f59e0b' },
+  { level: 9, title: '2º Tenente', icon: '⚔️', color: '#d4af37' },
+  { level: 10, title: '1º Tenente', icon: '⚔️⭐', color: '#fbbf24' },
+  { level: 11, title: 'Capitão PMPE', icon: '🦅', color: '#f59e0b' },
+  { level: 12, title: 'Major PMPE', icon: '⚜️', color: '#ef4444' },
+  { level: 13, title: 'Tenente-Coronel', icon: '⭐👑', color: '#dc2626' },
+  { level: 14, title: 'Coronel Comandante-Geral', icon: '👑🏆', color: '#d4af37' },
 ];
 
-// OS 8 NÍVEIS PROGRESSIVOS DE DIFICULDADE (COMANDANTE GEAN)
+// OS 8 NÍVEIS PROGRESSIVOS DE DIFICULDADE (PADRÃO TÁTICO BOPE)
 export interface DifficultyTier {
   id: number; // 1 a 8
   name: string;
@@ -83,7 +83,7 @@ export const SURVIVAL_DIFFICULTY_TIERS: DifficultyTier[] = [
     name: 'Muito Fácil',
     rankTitle: 'Recruta PMPE',
     badge: '🔰',
-    color: '#22c55e',
+    color: '#a1a1aa',
     timeLimitSec: 60,
     xpMultiplier: 1.0,
     questionsToAdvance: 4,
@@ -94,7 +94,7 @@ export const SURVIVAL_DIFFICULTY_TIERS: DifficultyTier[] = [
     name: 'Fácil',
     rankTitle: 'Soldado Aluno',
     badge: '🎖️',
-    color: '#38bdf8',
+    color: '#cbd5e1',
     timeLimitSec: 55,
     xpMultiplier: 1.2,
     questionsToAdvance: 4,
@@ -105,7 +105,7 @@ export const SURVIVAL_DIFFICULTY_TIERS: DifficultyTier[] = [
     name: 'Meio Médio',
     rankTitle: 'Soldado Combatente',
     badge: '⚔️',
-    color: '#06b6d4',
+    color: '#c59b27',
     timeLimitSec: 50,
     xpMultiplier: 1.4,
     questionsToAdvance: 5,
@@ -116,7 +116,7 @@ export const SURVIVAL_DIFFICULTY_TIERS: DifficultyTier[] = [
     name: 'Médio',
     rankTitle: 'Cabo PMPE',
     badge: '🛡️',
-    color: '#eab308',
+    color: '#d4af37',
     timeLimitSec: 45,
     xpMultiplier: 1.6,
     questionsToAdvance: 5,
@@ -127,7 +127,7 @@ export const SURVIVAL_DIFFICULTY_TIERS: DifficultyTier[] = [
     name: 'Meio Difícil',
     rankTitle: '3º Sargento',
     badge: '⭐',
-    color: '#f97316',
+    color: '#e5c158',
     timeLimitSec: 40,
     xpMultiplier: 1.8,
     questionsToAdvance: 5,
@@ -138,7 +138,7 @@ export const SURVIVAL_DIFFICULTY_TIERS: DifficultyTier[] = [
     name: 'Difícil',
     rankTitle: 'Subtenente',
     badge: '🌟',
-    color: '#ef4444',
+    color: '#f59e0b',
     timeLimitSec: 35,
     xpMultiplier: 2.0,
     questionsToAdvance: 6,
@@ -148,8 +148,8 @@ export const SURVIVAL_DIFFICULTY_TIERS: DifficultyTier[] = [
     id: 7,
     name: 'Muito Difícil',
     rankTitle: 'Tenente Oficial',
-    badge: '👑',
-    color: '#c084fc',
+    badge: '⚡',
+    color: '#dc2626',
     timeLimitSec: 30,
     xpMultiplier: 2.5,
     questionsToAdvance: 6,
@@ -160,7 +160,7 @@ export const SURVIVAL_DIFFICULTY_TIERS: DifficultyTier[] = [
     name: 'Difícil ao Extremo',
     rankTitle: 'Elite Caveira AOCP',
     badge: '💀',
-    color: '#f43f5e',
+    color: '#b91c1c',
     timeLimitSec: 25,
     xpMultiplier: 3.0,
     questionsToAdvance: 8,
@@ -524,13 +524,13 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
 
   // Percentual do Tempo para Barra Circular
   const timeProgress = (timeLeft / currentTier.timeLimitSec) * 100;
-  const timerColor = timeLeft > 15 ? '#38bdf8' : timeLeft > 7 ? '#fbbf24' : '#ef4444';
+  const timerColor = timeLeft > 15 ? '#d4af37' : timeLeft > 7 ? '#f59e0b' : '#dc2626';
 
   // Se todas as questões do bloco selecionado já foram respondidas hoje
   if (shuffledQuestions.length === 0) {
     return (
-      <div className="glass-panel" style={{ maxWidth: '640px', margin: '2rem auto', padding: '2.5rem', textAlign: 'center', borderRadius: '24px', border: '2px solid rgba(56, 189, 248, 0.4)' }}>
-        <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(56, 189, 248, 0.15)', border: '2px solid #38bdf8', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem auto', fontSize: '2.5rem' }}>
+      <div className="glass-panel" style={{ maxWidth: '640px', margin: '2rem auto', padding: '2.5rem', textAlign: 'center', borderRadius: '24px', border: '2px solid rgba(212, 175, 55, 0.4)', background: 'linear-gradient(135deg, rgba(16, 18, 24, 0.98), rgba(10, 11, 15, 0.98))' }}>
+        <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(212, 175, 55, 0.15)', border: '2px solid #d4af37', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem auto', fontSize: '2.5rem' }}>
           🎯
         </div>
         <h2 style={{ fontSize: '1.65rem', fontWeight: 900, color: '#f8fafc', marginBottom: '0.6rem' }}>
@@ -574,12 +574,12 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
       {/* TELA DE GAME OVER / VITÓRIA DE SOBREVIVÊNCIA */}
       {isGameOver ? (
         <div style={{
-          background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%)',
-          border: '2px solid rgba(245, 158, 11, 0.6)',
+          background: 'linear-gradient(135deg, rgba(16, 18, 24, 0.98) 0%, rgba(10, 11, 15, 0.98) 100%)',
+          border: '2px solid rgba(212, 175, 55, 0.5)',
           borderRadius: '24px',
           padding: '2.5rem 2rem',
           textAlign: 'center',
-          boxShadow: '0 25px 60px rgba(0,0,0,0.8), 0 0 35px rgba(245, 158, 11, 0.3)',
+          boxShadow: '0 25px 60px rgba(0,0,0,0.85), 0 0 35px rgba(212, 175, 55, 0.25)',
           animation: 'fadeIn 0.3s ease-out'
         }}>
           <div style={{ fontSize: '4.5rem', marginBottom: '0.5rem' }}>
@@ -591,9 +591,9 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
             fontWeight: 900,
             padding: '0.3rem 1rem',
             borderRadius: '20px',
-            background: 'rgba(245, 158, 11, 0.2)',
-            color: '#fbbf24',
-            border: '1px solid rgba(245, 158, 11, 0.4)',
+            background: 'rgba(212, 175, 55, 0.18)',
+            color: '#d4af37',
+            border: '1px solid rgba(212, 175, 55, 0.4)',
             textTransform: 'uppercase',
             letterSpacing: '0.08em'
           }}>
@@ -610,9 +610,9 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
             gap: '0.4rem',
             padding: '0.35rem 0.9rem',
             borderRadius: '12px',
-            background: 'rgba(56, 189, 248, 0.15)',
-            border: '1px solid rgba(56, 189, 248, 0.35)',
-            color: '#38bdf8',
+            background: 'rgba(212, 175, 55, 0.12)',
+            border: '1px solid rgba(212, 175, 55, 0.35)',
+            color: '#d4af37',
             fontSize: '0.86rem',
             fontWeight: 800,
             marginBottom: '1rem'
@@ -620,7 +620,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
             <span>Dificuldade Alcançada: Nível {currentTier.id} - {currentTier.name} ({currentTier.rankTitle})</span>
           </div>
 
-          <p style={{ color: '#94a3b8', fontSize: '0.95rem', margin: '0 auto 1.5rem', maxWidth: '520px' }}>
+          <p style={{ color: '#a1a1aa', fontSize: '0.95rem', margin: '0 auto 1.5rem', maxWidth: '520px' }}>
             Excelente patrulha operacional! Você combateu bravamente as questões da banca AOCP.
           </p>
 
@@ -631,38 +631,38 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
             gap: '1rem',
             marginBottom: '1.75rem'
           }}>
-            <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '1rem', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
-              <div style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 800 }}>PONTUAÇÃO</div>
-              <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#fbbf24', marginTop: '0.2rem' }}>{score}</div>
+            <div style={{ background: 'rgba(255, 255, 255, 0.04)', padding: '1rem', borderRadius: '16px', border: '1px solid rgba(212, 175, 55, 0.2)' }}>
+              <div style={{ fontSize: '0.75rem', color: '#a1a1aa', fontWeight: 800 }}>PONTUAÇÃO</div>
+              <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#d4af37', marginTop: '0.2rem' }}>{score}</div>
             </div>
 
-            <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '1rem', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
-              <div style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 800 }}>ACERTOS</div>
-              <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#34d399', marginTop: '0.2rem' }}>{totalCorrect}</div>
+            <div style={{ background: 'rgba(255, 255, 255, 0.04)', padding: '1rem', borderRadius: '16px', border: '1px solid rgba(212, 175, 55, 0.2)' }}>
+              <div style={{ fontSize: '0.75rem', color: '#a1a1aa', fontWeight: 800 }}>ACERTOS</div>
+              <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#f4f4f5', marginTop: '0.2rem' }}>{totalCorrect}</div>
             </div>
 
-            <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '1rem', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
-              <div style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 800 }}>MAIOR COMBO</div>
-              <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#f97316', marginTop: '0.2rem' }}>{maxStreak}x 🔥</div>
+            <div style={{ background: 'rgba(255, 255, 255, 0.04)', padding: '1rem', borderRadius: '16px', border: '1px solid rgba(212, 175, 55, 0.2)' }}>
+              <div style={{ fontSize: '0.75rem', color: '#a1a1aa', fontWeight: 800 }}>MAIOR COMBO</div>
+              <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#d4af37', marginTop: '0.2rem' }}>{maxStreak}x 🔥</div>
             </div>
 
-            <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '1rem', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
-              <div style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 800 }}>XP GANHO</div>
-              <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#a855f7', marginTop: '0.2rem' }}>+{Math.round(score / 5)} XP</div>
+            <div style={{ background: 'rgba(255, 255, 255, 0.04)', padding: '1rem', borderRadius: '16px', border: '1px solid rgba(212, 175, 55, 0.2)' }}>
+              <div style={{ fontSize: '0.75rem', color: '#a1a1aa', fontWeight: 800 }}>XP GANHO</div>
+              <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#d4af37', marginTop: '0.2rem' }}>+{Math.round(score / 5)} XP</div>
             </div>
           </div>
 
           {/* SELETOR DE CHECKPOINTS DESBLOQUEADOS (1 A 8) */}
           <div style={{
             background: 'rgba(0, 0, 0, 0.45)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(212, 175, 55, 0.2)',
             borderRadius: '16px',
             padding: '1.15rem',
             marginBottom: '1.5rem',
             textAlign: 'left'
           }}>
-            <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-              <Sparkles size={15} color="#fbbf24" />
+            <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#d4af37', textTransform: 'uppercase', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <Sparkles size={15} color="#d4af37" />
               <span>Escolha o Nível para Recomeçar (Checkpoints Desbloqueados):</span>
             </div>
 
@@ -679,16 +679,16 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                       padding: '0.6rem 0.8rem',
                       borderRadius: '10px',
                       background: isSelected 
-                        ? 'rgba(34, 197, 94, 0.25)' 
+                        ? 'rgba(212, 175, 55, 0.2)' 
                         : isUnlocked 
-                          ? 'rgba(255, 255, 255, 0.05)' 
+                          ? 'rgba(255, 255, 255, 0.04)' 
                           : 'rgba(255, 255, 255, 0.02)',
                       border: isSelected 
-                        ? '1.5px solid #22c55e' 
+                        ? '1.5px solid #d4af37' 
                         : isUnlocked 
-                          ? '1px solid rgba(255, 255, 255, 0.15)' 
+                          ? '1px solid rgba(212, 175, 55, 0.25)' 
                           : '1px dashed rgba(255, 255, 255, 0.05)',
-                      color: isUnlocked ? '#ffffff' : '#64748b',
+                      color: isUnlocked ? '#ffffff' : '#52525b',
                       fontSize: '0.78rem',
                       fontWeight: isSelected ? 800 : 600,
                       cursor: isUnlocked ? 'pointer' : 'not-allowed',
@@ -704,11 +704,11 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                       <div style={{ color: tier.color, fontWeight: 800 }}>
                         {tier.badge} Nv.{tier.id}: {tier.name}
                       </div>
-                      <div style={{ fontSize: '0.68rem', color: '#94a3b8' }}>
+                      <div style={{ fontSize: '0.68rem', color: '#a1a1aa' }}>
                         {tier.timeLimitSec}s • {tier.xpMultiplier}x XP
                       </div>
                     </div>
-                    {isSelected && <Check size={14} color="#22c55e" />}
+                    {isSelected && <Check size={14} color="#d4af37" />}
                   </button>
                 );
               })}
@@ -727,8 +727,10 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                background: 'linear-gradient(135deg, #16a34a, #22c55e)',
-                boxShadow: '0 0 20px rgba(34, 197, 94, 0.4)'
+                background: 'linear-gradient(135deg, #b8860b, #d4af37)',
+                color: '#07080a',
+                fontWeight: 900,
+                boxShadow: '0 0 20px rgba(212, 175, 55, 0.4)'
               }}
             >
               <RotateCcw size={18} />
@@ -767,8 +769,8 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
         <>
           {/* HEADER TÁTICO DA SOBREVIVÊNCIA */}
           <div style={{
-            background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%)',
-            border: '1px solid rgba(245, 158, 11, 0.35)',
+            background: 'linear-gradient(135deg, rgba(16, 18, 24, 0.98) 0%, rgba(10, 11, 15, 0.98) 100%)',
+            border: '1px solid rgba(212, 175, 55, 0.35)',
             borderRadius: '20px',
             padding: '1rem 1.25rem',
             display: 'flex',
@@ -776,7 +778,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
             justifyContent: 'space-between',
             flexWrap: 'wrap',
             gap: '1rem',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.5)'
+            boxShadow: '0 8px 24px rgba(0,0,0,0.65)'
           }}>
             {/* DIFICULDADE ATUAL (1 A 8 TIERS) */}
             <div style={{
@@ -785,13 +787,13 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
               gap: '0.45rem',
               padding: '0.35rem 0.75rem',
               borderRadius: '12px',
-              background: 'rgba(15, 23, 42, 0.85)',
+              background: 'rgba(10, 11, 15, 0.85)',
               border: `1.5px solid ${currentTier.color}`,
               boxShadow: `0 0 12px ${currentTier.color}35`
             }}>
               <span style={{ fontSize: '1.1rem' }}>{currentTier.badge}</span>
               <div>
-                <div style={{ fontSize: '0.62rem', color: '#94a3b8', fontWeight: 800, textTransform: 'uppercase' }}>
+                <div style={{ fontSize: '0.62rem', color: '#a1a1aa', fontWeight: 800, textTransform: 'uppercase' }}>
                   Dificuldade ({currentTierIndex}/8)
                 </div>
                 <div style={{ fontSize: '0.8rem', fontWeight: 900, color: currentTier.color }}>
@@ -802,7 +804,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
 
             {/* Vidas Restantes */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase' }}>
+              <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#a1a1aa', textTransform: 'uppercase' }}>
                 Vidas:
               </span>
               <div style={{ display: 'flex', gap: '0.35rem' }}>
@@ -810,10 +812,10 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                   <Heart
                     key={heartIndex}
                     size={22}
-                    fill={heartIndex <= lives ? '#ef4444' : 'none'}
-                    color={heartIndex <= lives ? '#ef4444' : '#475569'}
+                    fill={heartIndex <= lives ? '#dc2626' : 'none'}
+                    color={heartIndex <= lives ? '#dc2626' : '#52525b'}
                     style={{
-                      filter: heartIndex <= lives ? 'drop-shadow(0 0 8px rgba(239, 68, 68, 0.6))' : 'none',
+                      filter: heartIndex <= lives ? 'drop-shadow(0 0 8px rgba(220, 38, 38, 0.6))' : 'none',
                       transition: 'transform 0.2s ease',
                       transform: heartIndex <= lives ? 'scale(1)' : 'scale(0.85)'
                     }}
@@ -857,7 +859,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                 </span>
               </div>
               <div>
-                <div style={{ fontSize: '0.7rem', color: '#94a3b8', fontWeight: 800 }}>TEMPO</div>
+                <div style={{ fontSize: '0.7rem', color: '#a1a1aa', fontWeight: 800 }}>TEMPO</div>
                 <div style={{ fontSize: '0.85rem', fontWeight: 900, color: timerColor }}>{timeLeft}s</div>
               </div>
             </div>
@@ -870,15 +872,15 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
               minWidth: '240px',
               padding: '0.45rem 0.85rem',
               borderRadius: '14px',
-              background: 'linear-gradient(135deg, rgba(20, 30, 24, 0.85), rgba(15, 23, 42, 0.9))',
-              border: '1.5px solid rgba(34, 197, 94, 0.3)',
-              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.35)'
+              background: 'linear-gradient(135deg, rgba(16, 18, 24, 0.95), rgba(10, 11, 15, 0.95))',
+              border: '1.5px solid rgba(212, 175, 55, 0.35)',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.5)'
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                   <span style={{ fontSize: '1.1rem' }}>{currentRank.icon}</span>
                   <div>
-                    <div style={{ fontSize: '0.64rem', color: '#94a3b8', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    <div style={{ fontSize: '0.64rem', color: '#a1a1aa', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                       Patente Atual
                     </div>
                     <div style={{ fontSize: '0.84rem', fontWeight: 900, color: currentRank.color }}>
@@ -894,14 +896,14 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                     gap: '0.25rem',
                     padding: '0.2rem 0.55rem',
                     borderRadius: '8px',
-                    background: 'rgba(249, 115, 22, 0.25)',
-                    border: '1px solid rgba(249, 115, 22, 0.5)',
-                    color: '#fb923c',
+                    background: 'rgba(212, 175, 55, 0.18)',
+                    border: '1px solid rgba(212, 175, 55, 0.45)',
+                    color: '#d4af37',
                     fontWeight: 900,
                     fontSize: '0.74rem',
                     animation: 'pulse 1s infinite'
                   }}>
-                    <Flame size={13} color="#f97316" />
+                    <Flame size={13} color="#d4af37" />
                     <span>{streak}x</span>
                   </div>
                 )}
@@ -915,7 +917,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                       ? `Rumo a: ${PMPE_MILITARY_RANKS[rankIndex + 1].title}` 
                       : 'Patente Máxima Alcançada! 🏆'}
                   </span>
-                  <span style={{ fontSize: '0.68rem', color: '#fbbf24', fontWeight: 800 }}>
+                  <span style={{ fontSize: '0.68rem', color: '#d4af37', fontWeight: 800 }}>
                     {rankCorrectInLevel}/4 acertos no nível
                   </span>
                 </div>
@@ -932,10 +934,10 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                           height: '9px',
                           borderRadius: '5px',
                           background: isFilled
-                            ? 'linear-gradient(90deg, #22c55e, #10b981)'
-                            : 'rgba(255, 255, 255, 0.1)',
-                          border: isFilled ? '1px solid #4ade80' : '1px solid rgba(255, 255, 255, 0.12)',
-                          boxShadow: isFilled ? '0 0 10px rgba(34, 197, 94, 0.7)' : 'none',
+                            ? 'linear-gradient(90deg, #967117, #d4af37)'
+                            : 'rgba(255, 255, 255, 0.08)',
+                          border: isFilled ? '1px solid #d4af37' : '1px solid rgba(255, 255, 255, 0.12)',
+                          boxShadow: isFilled ? '0 0 10px rgba(212, 175, 55, 0.5)' : 'none',
                           transition: 'all 0.25s ease'
                         }}
                         title={`Acerto ${step}/4 para subir de patente`}
@@ -1000,19 +1002,19 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                 padding: '0.45rem 0.95rem',
                 borderRadius: '12px',
                 background: powerupFiftyFiftyCharges > 0 && !isAnswered && disabledOptions.length === 0
-                  ? 'linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(2, 132, 199, 0.25))'
-                  : 'rgba(255, 255, 255, 0.05)',
+                  ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(184, 134, 11, 0.14))'
+                  : 'rgba(255, 255, 255, 0.04)',
                 border: powerupFiftyFiftyCharges > 0 && !isAnswered && disabledOptions.length === 0
-                  ? '1px solid #06b6d4'
+                  ? '1px solid #d4af37'
                   : '1px solid rgba(255, 255, 255, 0.1)',
-                color: powerupFiftyFiftyCharges > 0 && !isAnswered && disabledOptions.length === 0 ? '#38bdf8' : '#64748b',
+                color: powerupFiftyFiftyCharges > 0 && !isAnswered && disabledOptions.length === 0 ? '#f4f4f5' : '#64748b',
                 fontWeight: 800,
                 fontSize: '0.78rem',
                 cursor: powerupFiftyFiftyCharges > 0 && !isAnswered && disabledOptions.length === 0 ? 'pointer' : 'not-allowed'
               }}
               title="Elimina 2 alternativas erradas da questão"
             >
-              <Crosshair size={15} />
+              <Crosshair size={15} color={powerupFiftyFiftyCharges > 0 && !isAnswered && disabledOptions.length === 0 ? '#d4af37' : '#64748b'} />
               <span>Tiro Certeiro (50/50) [{powerupFiftyFiftyCharges}]</span>
             </button>
 
@@ -1028,18 +1030,18 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                 borderRadius: '12px',
                 background: powerupTripleShotCharges > 0 && !isAnswered && disabledOptions.length < 3
                   ? isShootingPistol
-                    ? 'linear-gradient(135deg, rgba(239, 68, 68, 0.5), rgba(220, 38, 38, 0.7))'
-                    : 'linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(185, 28, 28, 0.35))'
-                  : 'rgba(255, 255, 255, 0.05)',
+                    ? 'linear-gradient(135deg, rgba(220, 38, 38, 0.6), rgba(185, 28, 28, 0.8))'
+                    : 'linear-gradient(135deg, rgba(220, 38, 38, 0.22), rgba(185, 28, 28, 0.32))'
+                  : 'rgba(255, 255, 255, 0.04)',
                 border: powerupTripleShotCharges > 0 && !isAnswered && disabledOptions.length < 3
-                  ? '1px solid #ef4444'
+                  ? '1px solid #dc2626'
                   : '1px solid rgba(255, 255, 255, 0.1)',
                 color: powerupTripleShotCharges > 0 && !isAnswered && disabledOptions.length < 3 ? '#fca5a5' : '#64748b',
                 fontWeight: 800,
                 fontSize: '0.78rem',
                 cursor: powerupTripleShotCharges > 0 && !isAnswered && disabledOptions.length < 3 ? 'pointer' : 'not-allowed',
                 transform: isShootingPistol ? 'scale(1.05)' : 'none',
-                boxShadow: isShootingPistol ? '0 0 15px rgba(239, 68, 68, 0.8)' : 'none',
+                boxShadow: isShootingPistol ? '0 0 15px rgba(220, 38, 38, 0.8)' : 'none',
                 transition: 'all 0.18s ease'
               }}
               title="Disparo Triplo de Pistola (POW! POW! POW!) - Elimina 3 alternativas erradas, restando apenas 2 opções!"
@@ -1062,19 +1064,19 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                 padding: '0.45rem 0.95rem',
                 borderRadius: '12px',
                 background: powerupTimeCharges > 0 && !isAnswered
-                  ? 'linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(126, 34, 206, 0.25))'
-                  : 'rgba(255, 255, 255, 0.05)',
+                  ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(184, 134, 11, 0.14))'
+                  : 'rgba(255, 255, 255, 0.04)',
                 border: powerupTimeCharges > 0 && !isAnswered
-                  ? '1px solid #a855f7'
+                  ? '1px solid #d4af37'
                   : '1px solid rgba(255, 255, 255, 0.1)',
-                color: powerupTimeCharges > 0 && !isAnswered ? '#c084fc' : '#64748b',
+                color: powerupTimeCharges > 0 && !isAnswered ? '#f4f4f5' : '#64748b',
                 fontWeight: 800,
                 fontSize: '0.78rem',
                 cursor: powerupTimeCharges > 0 && !isAnswered ? 'pointer' : 'not-allowed'
               }}
               title="Ganha +15 segundos no cronômetro"
             >
-              <Zap size={15} />
+              <Zap size={15} color={powerupTimeCharges > 0 && !isAnswered ? '#d4af37' : '#64748b'} />
               <span>Reforço (+15s) [{powerupTimeCharges}]</span>
             </button>
 
@@ -1088,30 +1090,30 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                 padding: '0.45rem 0.95rem',
                 borderRadius: '12px',
                 background: powerupHintCharges > 0 && !isAnswered && !showHintActive
-                  ? 'linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(217, 119, 6, 0.25))'
-                  : 'rgba(255, 255, 255, 0.05)',
+                  ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(184, 134, 11, 0.14))'
+                  : 'rgba(255, 255, 255, 0.04)',
                 border: powerupHintCharges > 0 && !isAnswered && !showHintActive
-                  ? '1px solid #f59e0b'
+                  ? '1px solid #d4af37'
                   : '1px solid rgba(255, 255, 255, 0.1)',
-                color: powerupHintCharges > 0 && !isAnswered && !showHintActive ? '#fbbf24' : '#64748b',
+                color: powerupHintCharges > 0 && !isAnswered && !showHintActive ? '#f4f4f5' : '#64748b',
                 fontWeight: 800,
                 fontSize: '0.78rem',
                 cursor: powerupHintCharges > 0 && !isAnswered && !showHintActive ? 'pointer' : 'not-allowed'
               }}
               title="Exibe a dica tática ou mnemônico da AOCP"
             >
-              <HelpCircle size={15} />
+              <HelpCircle size={15} color={powerupHintCharges > 0 && !isAnswered && !showHintActive ? '#d4af37' : '#64748b'} />
               <span>Doutrina AOCP [{powerupHintCharges}]</span>
             </button>
           </div>
 
           {/* CARD DA QUESTÃO TÁTICA */}
           <div style={{
-            background: 'rgba(15, 23, 42, 0.92)',
-            border: '1.5px solid rgba(56, 189, 248, 0.3)',
+            background: 'linear-gradient(135deg, rgba(16, 18, 24, 0.98) 0%, rgba(10, 11, 15, 0.98) 100%)',
+            border: '1.5px solid rgba(212, 175, 55, 0.35)',
             borderRadius: '22px',
             padding: '1.75rem',
-            boxShadow: '0 15px 40px rgba(0,0,0,0.6)',
+            boxShadow: '0 15px 40px rgba(0,0,0,0.85)',
             position: 'relative'
           }}>
             {/* Meta tags da questão */}
@@ -1122,9 +1124,9 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                   fontWeight: 900,
                   padding: '0.2rem 0.6rem',
                   borderRadius: '8px',
-                  background: 'rgba(56, 189, 248, 0.15)',
-                  color: '#38bdf8',
-                  border: '1px solid rgba(56, 189, 248, 0.35)',
+                  background: 'rgba(212, 175, 55, 0.15)',
+                  color: '#d4af37',
+                  border: '1px solid rgba(212, 175, 55, 0.4)',
                   textTransform: 'uppercase'
                 }}>
                   {currentQ.materiaNome}
@@ -1135,9 +1137,9 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                   fontWeight: 800,
                   padding: '0.2rem 0.55rem',
                   borderRadius: '8px',
-                  background: 'rgba(234, 179, 8, 0.15)',
-                  color: '#fbbf24',
-                  border: '1px solid rgba(234, 179, 8, 0.35)'
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  color: '#cbd5e1',
+                  border: '1px solid rgba(255, 255, 255, 0.15)'
                 }}>
                   {currentQ.banca || 'Instituto AOCP'}
                 </span>
@@ -1159,9 +1161,9 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                     }
                   }}
                   style={{
-                    background: isNarrating ? 'rgba(239, 68, 68, 0.25)' : 'rgba(245, 158, 11, 0.18)',
-                    border: isNarrating ? '1px solid #ef4444' : '1px solid #f59e0b',
-                    color: isNarrating ? '#fca5a5' : '#fbbf24',
+                    background: isNarrating ? 'rgba(220, 38, 38, 0.25)' : 'rgba(212, 175, 55, 0.15)',
+                    border: isNarrating ? '1px solid #dc2626' : '1px solid rgba(212, 175, 55, 0.4)',
+                    color: isNarrating ? '#fca5a5' : '#d4af37',
                     padding: '0.2rem 0.55rem',
                     borderRadius: '8px',
                     fontSize: '0.74rem',
@@ -1225,24 +1227,24 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                 const isSelected = selectedOption === idx;
                 const isCorrect = idx === currentQ.correctIndex;
 
-                let btnBg = 'rgba(30, 41, 59, 0.6)';
-                let btnBorder = 'rgba(71, 85, 105, 0.4)';
-                let textColor = '#e2e8f0';
+                let btnBg = 'rgba(20, 23, 30, 0.75)';
+                let btnBorder = 'rgba(212, 175, 55, 0.22)';
+                let textColor = '#f4f4f5';
 
                 if (isAnswered) {
                   if (isCorrect) {
-                    btnBg = 'rgba(16, 185, 129, 0.25)';
-                    btnBorder = '#10b981';
-                    textColor = '#a7f3d0';
+                    btnBg = 'rgba(212, 175, 55, 0.22)';
+                    btnBorder = '#d4af37';
+                    textColor = '#fef08a';
                   } else if (isSelected) {
-                    btnBg = 'rgba(239, 68, 68, 0.25)';
-                    btnBorder = '#ef4444';
+                    btnBg = 'rgba(220, 38, 38, 0.25)';
+                    btnBorder = '#dc2626';
                     textColor = '#fecaca';
                   }
                 } else if (isDisabled) {
-                  btnBg = 'rgba(15, 23, 42, 0.3)';
+                  btnBg = 'rgba(10, 11, 15, 0.35)';
                   btnBorder = 'rgba(255, 255, 255, 0.05)';
-                  textColor = '#475569';
+                  textColor = '#52525b';
                 }
 
                 return (
@@ -1274,11 +1276,11 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                       height: '28px',
                       borderRadius: '8px',
                       background: isAnswered && isCorrect
-                        ? '#10b981'
+                        ? '#d4af37'
                         : isAnswered && isSelected
-                          ? '#ef4444'
+                          ? '#dc2626'
                           : 'rgba(255, 255, 255, 0.08)',
-                      color: '#ffffff',
+                      color: isAnswered && isCorrect ? '#07080a' : '#ffffff',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -1294,10 +1296,10 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                     {isDisabled && !isAnswered && (
                       <span style={{
                         fontSize: '0.72rem',
-                        color: '#f87171',
+                        color: '#fca5a5',
                         fontWeight: 800,
-                        background: 'rgba(239, 68, 68, 0.15)',
-                        border: '1px solid rgba(239, 68, 68, 0.3)',
+                        background: 'rgba(220, 38, 38, 0.15)',
+                        border: '1px solid rgba(220, 38, 38, 0.35)',
                         padding: '0.2rem 0.5rem',
                         borderRadius: '6px',
                         display: 'flex',
@@ -1310,10 +1312,10 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                     )}
 
                     {isAnswered && isCorrect && (
-                      <CheckCircle2 size={20} color="#10b981" style={{ flexShrink: 0 }} />
+                      <CheckCircle2 size={20} color="#d4af37" style={{ flexShrink: 0 }} />
                     )}
                     {isAnswered && isSelected && !isCorrect && (
-                      <XCircle size={20} color="#ef4444" style={{ flexShrink: 0 }} />
+                      <XCircle size={20} color="#dc2626" style={{ flexShrink: 0 }} />
                     )}
                   </button>
                 );
@@ -1325,7 +1327,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
               <div style={{
                 marginTop: '1.5rem',
                 paddingTop: '1.25rem',
-                borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+                borderTop: '1px solid rgba(212, 175, 55, 0.2)',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '1rem',
@@ -1336,15 +1338,15 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                   <div style={{
                     padding: '1.1rem 1.25rem',
                     borderRadius: '16px',
-                    background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(185, 28, 28, 0.35))',
-                    border: '1.5px solid #ef4444',
+                    background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.25), rgba(185, 28, 28, 0.35))',
+                    border: '1.5px solid #dc2626',
                     color: '#fecaca',
                     display: 'flex',
                     alignItems: 'flex-start',
                     gap: '0.85rem',
-                    boxShadow: '0 8px 25px rgba(239, 68, 68, 0.3)'
+                    boxShadow: '0 8px 25px rgba(220, 38, 38, 0.3)'
                   }}>
-                    <AlertTriangle size={24} color="#f87171" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    <AlertTriangle size={24} color="#ef4444" style={{ flexShrink: 0, marginTop: '2px' }} />
                     <div style={{ fontSize: '0.88rem', lineHeight: 1.5 }}>
                       <strong style={{ color: '#ffffff', display: 'block', fontSize: '1rem', marginBottom: '0.25rem' }}>
                         🚨 VOCÊ PERDEU SUA ÚLTIMA VIDA NESTA QUESTÃO!
@@ -1360,9 +1362,9 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                   padding: '1.25rem',
                   borderRadius: '16px',
                   background: selectedOption === currentQ.correctIndex 
-                    ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 95, 70, 0.2))' 
-                    : 'linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(127, 29, 29, 0.2))',
-                  border: `1.5px solid ${selectedOption === currentQ.correctIndex ? 'rgba(16, 185, 129, 0.4)' : 'rgba(239, 68, 68, 0.4)'}`,
+                    ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(184, 134, 11, 0.18))' 
+                    : 'linear-gradient(135deg, rgba(220, 38, 38, 0.12), rgba(127, 29, 29, 0.2))',
+                  border: `1.5px solid ${selectedOption === currentQ.correctIndex ? 'rgba(212, 175, 55, 0.45)' : 'rgba(220, 38, 38, 0.45)'}`,
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '0.85rem'
@@ -1371,7 +1373,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                   <div style={{
                     fontSize: '0.86rem',
                     fontWeight: 900,
-                    color: selectedOption === currentQ.correctIndex ? '#34d399' : '#f87171',
+                    color: selectedOption === currentQ.correctIndex ? '#d4af37' : '#f87171',
                     textTransform: 'uppercase',
                     display: 'flex',
                     alignItems: 'center',
@@ -1389,13 +1391,13 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                     gap: '0.75rem',
                     padding: '0.85rem',
                     borderRadius: '12px',
-                    background: 'rgba(15, 23, 42, 0.65)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)'
+                    background: 'rgba(10, 11, 15, 0.85)',
+                    border: '1px solid rgba(212, 175, 55, 0.15)'
                   }}>
                     {selectedOption !== null && selectedOption !== -1 && (
                       <div style={{ fontSize: '0.84rem' }}>
-                        <span style={{ color: '#94a3b8', fontWeight: 700 }}>Sua Resposta: </span>
-                        <strong style={{ color: selectedOption === currentQ.correctIndex ? '#34d399' : '#f87171' }}>
+                        <span style={{ color: '#a1a1aa', fontWeight: 700 }}>Sua Resposta: </span>
+                        <strong style={{ color: selectedOption === currentQ.correctIndex ? '#d4af37' : '#f87171' }}>
                           Alternativa {['A', 'B', 'C', 'D', 'E'][selectedOption]}
                         </strong>
                         <div style={{ color: '#cbd5e1', fontSize: '0.8rem', marginTop: '0.2rem', fontStyle: 'italic' }}>
@@ -1404,11 +1406,11 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                       </div>
                     )}
                     <div style={{ fontSize: '0.84rem' }}>
-                      <span style={{ color: '#94a3b8', fontWeight: 700 }}>Gabarito Oficial AOCP: </span>
-                      <strong style={{ color: '#34d399' }}>
+                      <span style={{ color: '#a1a1aa', fontWeight: 700 }}>Gabarito Oficial AOCP: </span>
+                      <strong style={{ color: '#d4af37' }}>
                         Alternativa {['A', 'B', 'C', 'D', 'E'][currentQ.correctIndex]}
                       </strong>
-                      <div style={{ color: '#86efac', fontSize: '0.8rem', marginTop: '0.2rem', fontWeight: 600 }}>
+                      <div style={{ color: '#fef08a', fontSize: '0.8rem', marginTop: '0.2rem', fontWeight: 600 }}>
                         "{currentQ.options[currentQ.correctIndex]}"
                       </div>
                     </div>
@@ -1419,13 +1421,13 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                     <div style={{
                       padding: '0.9rem 1rem',
                       borderRadius: '12px',
-                      background: 'rgba(239, 68, 68, 0.08)',
-                      border: '1px dashed rgba(239, 68, 68, 0.45)',
+                      background: 'rgba(220, 38, 38, 0.08)',
+                      border: '1px dashed rgba(220, 38, 38, 0.45)',
                       fontSize: '0.86rem',
                       color: '#fca5a5',
                       lineHeight: 1.5
                     }}>
-                      <strong style={{ color: '#f87171', display: 'flex', alignItems: 'center', gap: '0.35rem', marginBottom: '0.3rem' }}>
+                      <strong style={{ color: '#ef4444', display: 'flex', alignItems: 'center', gap: '0.35rem', marginBottom: '0.3rem' }}>
                         🔍 Raio-X do seu Erro na Alternativa {['A', 'B', 'C', 'D', 'E'][selectedOption]}:
                       </strong>
                       {currentQ.porqueErrou?.[selectedOption] ||
@@ -1438,10 +1440,10 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                   <div style={{
                     padding: '1rem',
                     borderRadius: '12px',
-                    background: 'rgba(15, 23, 42, 0.75)',
-                    border: '1px solid rgba(56, 189, 248, 0.3)',
+                    background: 'rgba(10, 11, 15, 0.8)',
+                    border: '1px solid rgba(212, 175, 55, 0.3)',
                     fontSize: '0.88rem',
-                    color: '#e2e8f0',
+                    color: '#e4e4e7',
                     lineHeight: 1.6
                   }}>
                     <div style={{
@@ -1449,27 +1451,27 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                       alignItems: 'center',
                       gap: '0.45rem',
                       fontWeight: 800,
-                      color: '#38bdf8',
+                      color: '#d4af37',
                       fontSize: '0.82rem',
                       textTransform: 'uppercase',
                       marginBottom: '0.5rem'
                     }}>
-                      <BookOpen size={16} />
+                      <BookOpen size={16} color="#d4af37" />
                       <span>Explicação Tintim por Tintim da Questão:</span>
                     </div>
 
-                    <p style={{ margin: 0, color: '#f1f5f9' }}>
+                    <p style={{ margin: 0, color: '#f4f4f5' }}>
                       {currentQ.explanation}
                     </p>
 
                     {/* Resolução Matemática Passo a Passo (RLM) */}
                     {currentQ.passoAPassoConta && currentQ.passoAPassoConta.length > 0 && (
-                      <div style={{ marginTop: '0.9rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-                        <div style={{ fontWeight: 800, color: '#fbbf24', fontSize: '0.8rem', marginBottom: '0.45rem' }}>
+                      <div style={{ marginTop: '0.9rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(212, 175, 55, 0.15)' }}>
+                        <div style={{ fontWeight: 800, color: '#d4af37', fontSize: '0.8rem', marginBottom: '0.45rem' }}>
                           📐 Resolução Matemática / Lógica Passo a Passo:
                         </div>
                         {currentQ.passoAPassoConta.map((step, sIdx) => (
-                          <div key={sIdx} style={{ fontSize: '0.83rem', color: '#cbd5e1', marginBottom: '0.3rem', paddingLeft: '0.6rem', borderLeft: '2px solid #fbbf24' }}>
+                          <div key={sIdx} style={{ fontSize: '0.83rem', color: '#cbd5e1', marginBottom: '0.3rem', paddingLeft: '0.6rem', borderLeft: '2px solid #d4af37' }}>
                             {step}
                           </div>
                         ))}
@@ -1478,14 +1480,14 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
 
                     {/* Raio-X de Todas as Alternativas se disponível */}
                     {currentQ.analiseAlternativas && Object.keys(currentQ.analiseAlternativas).length > 0 && (
-                      <div style={{ marginTop: '0.9rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-                        <div style={{ fontWeight: 800, color: '#94a3b8', fontSize: '0.8rem', marginBottom: '0.45rem' }}>
+                      <div style={{ marginTop: '0.9rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(212, 175, 55, 0.15)' }}>
+                        <div style={{ fontWeight: 800, color: '#a1a1aa', fontSize: '0.8rem', marginBottom: '0.45rem' }}>
                           📋 Análise Tática das Alternativas:
                         </div>
                         {Object.entries(currentQ.analiseAlternativas).map(([altLetter, analise]) => (
                           <div key={altLetter} style={{ 
                             fontSize: '0.82rem', 
-                            color: altLetter === ['A', 'B', 'C', 'D', 'E'][currentQ.correctIndex] ? '#86efac' : '#cbd5e1', 
+                            color: altLetter === ['A', 'B', 'C', 'D', 'E'][currentQ.correctIndex] ? '#fef08a' : '#cbd5e1', 
                             marginBottom: '0.35rem' 
                           }}>
                             <strong>Alternativa {altLetter}:</strong> {analise}
@@ -1500,15 +1502,15 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                     <div style={{
                       padding: '0.8rem 1rem',
                       borderRadius: '10px',
-                      background: 'rgba(56, 189, 248, 0.1)',
-                      border: '1px solid rgba(56, 189, 248, 0.3)',
-                      color: '#7dd3fc',
+                      background: 'rgba(212, 175, 55, 0.1)',
+                      border: '1px solid rgba(212, 175, 55, 0.3)',
+                      color: '#fef08a',
                       fontSize: '0.83rem',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '0.5rem'
                     }}>
-                      <Scale size={18} color="#38bdf8" style={{ flexShrink: 0 }} />
+                      <Scale size={18} color="#d4af37" style={{ flexShrink: 0 }} />
                       <div>
                         <strong>⚖️ Base Legal / Dispositivo Normativo:</strong> {currentQ.fundamentacaoLegal}
                       </div>
@@ -1520,15 +1522,15 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                     <div style={{
                       padding: '0.8rem 1rem',
                       borderRadius: '10px',
-                      background: 'rgba(245, 158, 11, 0.1)',
-                      border: '1px solid rgba(245, 158, 11, 0.3)',
+                      background: 'rgba(212, 175, 55, 0.1)',
+                      border: '1px solid rgba(212, 175, 55, 0.3)',
                       color: '#fde68a',
                       fontSize: '0.83rem',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '0.5rem'
                     }}>
-                      <Sparkles size={18} color="#f59e0b" style={{ flexShrink: 0 }} />
+                      <Sparkles size={18} color="#d4af37" style={{ flexShrink: 0 }} />
                       <div>
                         <strong>💡 Macete Tático da PMPE / AOCP:</strong> {currentQ.dicaMacete || currentQ.hint}
                       </div>
@@ -1545,16 +1547,16 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                       borderRadius: '14px',
                       background: lives <= 0 
                         ? 'linear-gradient(135deg, #dc2626 0%, #991b1b 100%)' 
-                        : 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)',
-                      border: lives <= 0 ? '1.5px solid #ef4444' : '1px solid #38bdf8',
-                      color: '#ffffff',
+                        : 'linear-gradient(135deg, #b8860b 0%, #d4af37 100%)',
+                      border: lives <= 0 ? '1.5px solid #ef4444' : '1px solid #d4af37',
+                      color: lives <= 0 ? '#ffffff' : '#07080a',
                       fontWeight: 900,
                       fontSize: '0.95rem',
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '0.6rem',
-                      boxShadow: lives <= 0 ? '0 6px 20px rgba(220, 38, 38, 0.5)' : '0 4px 15px rgba(2, 132, 199, 0.4)',
+                      boxShadow: lives <= 0 ? '0 6px 20px rgba(220, 38, 38, 0.5)' : '0 4px 15px rgba(212, 175, 55, 0.4)',
                       transition: 'transform 0.15s ease'
                     }}
                   >
