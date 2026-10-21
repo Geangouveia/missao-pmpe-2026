@@ -184,11 +184,11 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
       alignItems: 'center',
       justifyContent: 'center',
       padding: '2rem 1.25rem',
-      background: 'radial-gradient(circle at 50% 12%, #0e1b38 0%, #070d1e 55%, #040812 100%)',
+      background: 'radial-gradient(circle at 50% 12%, #101218 0%, #07080a 55%, #040507 100%)',
       position: 'relative',
       overflow: 'hidden'
     }}>
-      {/* Iluminação Tática Militar (Azul Ferrete & Dourado Heráldico PMPE) */}
+      {/* Iluminação Tática Militar (Dourado de Insígnia e Aço Escuro BOPE) */}
       <div style={{
         position: 'absolute',
         top: '2%',
@@ -196,7 +196,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
         transform: 'translateX(-50%)',
         width: '680px',
         height: '680px',
-        background: 'radial-gradient(circle, rgba(37, 99, 235, 0.18) 0%, rgba(212, 175, 55, 0.08) 45%, transparent 75%)',
+        background: 'radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(220, 38, 38, 0.04) 45%, transparent 75%)',
         borderRadius: '50%',
         filter: 'blur(75px)',
         pointerEvents: 'none'
@@ -206,7 +206,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
       <div style={{
         position: 'absolute',
         inset: 0,
-        backgroundImage: 'linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px)',
+        backgroundImage: 'linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px)',
         backgroundSize: '36px 36px',
         pointerEvents: 'none'
       }} />
@@ -216,12 +216,12 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
         style={{
           width: '100%',
           maxWidth: '500px',
-          background: 'rgba(11, 20, 40, 0.96)',
+          background: 'linear-gradient(145deg, rgba(16, 18, 24, 0.98) 0%, rgba(10, 11, 15, 0.99) 100%)',
           backdropFilter: 'blur(24px)',
-          border: '1.5px solid rgba(59, 130, 246, 0.35)',
+          border: '1.5px solid rgba(212, 175, 55, 0.35)',
           borderRadius: '24px',
           padding: '2.25rem 2rem',
-          boxShadow: '0 25px 60px -10px rgba(0, 0, 0, 0.9), 0 0 35px rgba(37, 99, 235, 0.2)',
+          boxShadow: '0 25px 60px -10px rgba(0, 0, 0, 0.95), 0 0 35px rgba(212, 175, 55, 0.12)',
           position: 'relative',
           zIndex: 10
         }}
@@ -311,8 +311,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
 
           <p style={{
             fontSize: '0.84rem',
-            color: '#93c5fd',
-            fontWeight: 600,
+            color: '#d4af37',
+            fontWeight: 700,
             margin: 0,
             letterSpacing: '0.04em'
           }}>
@@ -322,13 +322,13 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
 
         {/* Card Motivacional Militar */}
         <div style={{
-          background: 'linear-gradient(135deg, rgba(14, 25, 50, 0.92) 0%, rgba(9, 16, 34, 0.96) 100%)',
-          border: '1px solid rgba(59, 130, 246, 0.35)',
+          background: 'linear-gradient(135deg, rgba(16, 18, 24, 0.96) 0%, rgba(10, 11, 15, 0.98) 100%)',
+          border: '1px solid rgba(212, 175, 55, 0.35)',
           borderRadius: '14px',
           padding: '0.85rem 1rem',
           marginBottom: '1.25rem',
           position: 'relative',
-          boxShadow: '0 6px 16px rgba(0, 0, 0, 0.5)'
+          boxShadow: '0 6px 16px rgba(0, 0, 0, 0.65)'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
@@ -336,7 +336,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
               <span style={{
                 fontSize: '0.72rem',
                 fontWeight: 900,
-                color: '#f59e0b',
+                color: '#d4af37',
                 textTransform: 'uppercase',
                 letterSpacing: '0.08em'
               }}>
@@ -471,7 +471,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
             </div>
 
             <div style={{ position: 'relative' }}>
-              <div style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }}>
+              <div style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#d4af37' }}>
                 <User size={18} />
               </div>
               <input
@@ -486,16 +486,16 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                 style={{
                   width: '100%',
                   padding: '0.85rem 1rem 0.85rem 2.8rem',
-                  background: 'rgba(13, 23, 44, 0.85)',
-                  border: '1px solid rgba(71, 85, 105, 0.55)',
+                  background: 'rgba(18, 20, 27, 0.95)',
+                  border: '1.5px solid rgba(212, 175, 55, 0.3)',
                   borderRadius: '12px',
                   color: '#ffffff',
                   fontSize: '0.95rem',
                   outline: 'none',
                   boxSizing: 'border-box'
                 }}
-                onFocus={(e) => e.target.style.borderColor = '#2563eb'}
-                onBlur={(e) => e.target.style.borderColor = 'rgba(71, 85, 105, 0.55)'}
+                onFocus={(e) => e.target.style.borderColor = '#d4af37'}
+                onBlur={(e) => e.target.style.borderColor = 'rgba(212, 175, 55, 0.3)'}
                 required
               />
             </div>
@@ -509,7 +509,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
             </div>
 
             <div style={{ position: 'relative' }}>
-              <div style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }}>
+              <div style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#d4af37' }}>
                 <Lock size={18} />
               </div>
               <input
@@ -524,16 +524,16 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                 style={{
                   width: '100%',
                   padding: '0.85rem 3rem 0.85rem 2.8rem',
-                  background: 'rgba(13, 23, 44, 0.85)',
-                  border: '1px solid rgba(71, 85, 105, 0.55)',
+                  background: 'rgba(18, 20, 27, 0.95)',
+                  border: '1.5px solid rgba(212, 175, 55, 0.3)',
                   borderRadius: '12px',
                   color: '#ffffff',
                   fontSize: '0.95rem',
                   outline: 'none',
                   boxSizing: 'border-box'
                 }}
-                onFocus={(e) => e.target.style.borderColor = '#2563eb'}
-                onBlur={(e) => e.target.style.borderColor = 'rgba(71, 85, 105, 0.55)'}
+                onFocus={(e) => e.target.style.borderColor = '#d4af37'}
+                onBlur={(e) => e.target.style.borderColor = 'rgba(212, 175, 55, 0.3)'}
                 required
               />
               <button
@@ -546,7 +546,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                   transform: 'translateY(-50%)',
                   background: 'transparent',
                   border: 'none',
-                  color: '#64748b',
+                  color: '#a1a1aa',
                   cursor: 'pointer',
                   padding: '0.25rem'
                 }}
@@ -562,7 +562,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                style={{ accentColor: '#2563eb', width: '16px', height: '16px' }}
+                style={{ accentColor: '#d4af37', width: '16px', height: '16px' }}
               />
               <span>Manter conectado neste dispositivo</span>
             </label>
@@ -575,8 +575,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
               padding: '0.95rem',
               borderRadius: '14px',
               border: 'none',
-              background: 'linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%)',
-              color: '#ffffff',
+              background: 'linear-gradient(135deg, #b8860b 0%, #d4af37 50%, #e5c158 100%)',
+              color: '#07080a',
               fontWeight: 900,
               fontSize: '1.02rem',
               letterSpacing: '0.04em',
@@ -585,7 +585,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
               alignItems: 'center',
               justifyContent: 'center',
               gap: '0.65rem',
-              boxShadow: '0 8px 24px rgba(37, 99, 235, 0.45)',
+              boxShadow: '0 8px 24px rgba(212, 175, 55, 0.4)',
               transition: 'all 0.15s ease',
               opacity: isSubmitting ? 0.8 : 1,
               marginTop: '0.35rem'
@@ -595,7 +595,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
               <span>Validando Acesso Militar...</span>
             ) : (
               <>
-                <CheckCircle2 size={19} />
+                <CheckCircle2 size={19} color="#07080a" />
                 <span>Entrar na Missão PMPE ➔</span>
               </>
             )}
@@ -723,7 +723,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                 </svg>
               </div>
 
-              <div style={{ fontSize: '0.68rem', color: '#86efac', fontWeight: 700, marginTop: '0.2rem' }}>
+              <div style={{ fontSize: '0.68rem', color: '#d4af37', fontWeight: 700, marginTop: '0.2rem' }}>
                 Assinatura Oficial do Autor da Plataforma
               </div>
             </div>
@@ -774,24 +774,25 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
           <div style={{
             maxWidth: '440px',
             width: '100%',
-            background: 'rgba(20, 28, 22, 0.98)',
-            border: '1.5px solid rgba(34, 197, 94, 0.5)',
+            background: 'linear-gradient(145deg, rgba(16, 18, 24, 0.98) 0%, rgba(10, 11, 15, 0.99) 100%)',
+            border: '1.5px solid rgba(212, 175, 55, 0.45)',
             borderRadius: '20px',
             padding: '2rem',
-            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.8)'
+            boxShadow: '0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(212, 175, 55, 0.15)'
           }}>
             <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
               <div style={{
                 width: '56px',
                 height: '56px',
                 borderRadius: '50%',
-                background: 'rgba(34, 197, 94, 0.15)',
-                border: '1px solid #22c55e',
+                background: 'rgba(212, 175, 55, 0.12)',
+                border: '1.5px solid #d4af37',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 margin: '0 auto 0.75rem',
-                color: '#22c55e'
+                color: '#d4af37',
+                boxShadow: '0 0 15px rgba(212, 175, 55, 0.25)'
               }}>
                 <KeyRound size={26} />
               </div>
@@ -831,13 +832,15 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                     style={{
                       width: '100%',
                       padding: '0.8rem 2.8rem 0.8rem 1rem',
-                      background: 'rgba(0, 0, 0, 0.5)',
-                      border: '1px solid rgba(71, 85, 105, 0.6)',
+                      background: 'rgba(18, 20, 27, 0.95)',
+                      border: '1.5px solid rgba(212, 175, 55, 0.3)',
                       borderRadius: '10px',
                       color: '#ffffff',
                       outline: 'none',
                       boxSizing: 'border-box'
                     }}
+                    onFocus={(e) => e.target.style.borderColor = '#d4af37'}
+                    onBlur={(e) => e.target.style.borderColor = 'rgba(212, 175, 55, 0.3)'}
                     required
                   />
                   <button
@@ -850,7 +853,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                       transform: 'translateY(-50%)',
                       background: 'transparent',
                       border: 'none',
-                      color: '#64748b',
+                      color: '#a1a1aa',
                       cursor: 'pointer'
                     }}
                   >
@@ -871,13 +874,15 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                   style={{
                     width: '100%',
                     padding: '0.8rem 1rem',
-                    background: 'rgba(0, 0, 0, 0.5)',
-                    border: '1px solid rgba(71, 85, 105, 0.6)',
+                    background: 'rgba(18, 20, 27, 0.95)',
+                    border: '1.5px solid rgba(212, 175, 55, 0.3)',
                     borderRadius: '10px',
                     color: '#ffffff',
                     outline: 'none',
                     boxSizing: 'border-box'
                   }}
+                  onFocus={(e) => e.target.style.borderColor = '#d4af37'}
+                  onBlur={(e) => e.target.style.borderColor = 'rgba(212, 175, 55, 0.3)'}
                   required
                 />
               </div>
@@ -889,11 +894,13 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                   padding: '0.85rem',
                   borderRadius: '12px',
                   border: 'none',
-                  background: 'linear-gradient(135deg, #16a34a, #22c55e)',
-                  color: '#ffffff',
-                  fontWeight: 800,
+                  background: 'linear-gradient(135deg, #b8860b 0%, #d4af37 50%, #e5c158 100%)',
+                  color: '#07080a',
+                  fontWeight: 900,
                   fontSize: '0.95rem',
+                  letterSpacing: '0.03em',
                   cursor: isSubmittingPassword ? 'not-allowed' : 'pointer',
+                  boxShadow: '0 8px 24px rgba(212, 175, 55, 0.35)',
                   marginTop: '0.5rem'
                 }}
               >
