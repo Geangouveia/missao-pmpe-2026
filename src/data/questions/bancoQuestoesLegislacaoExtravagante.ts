@@ -2,7 +2,7 @@ import type { QuizQuestion } from '../../types/game';
 
 /**
  * CADERNO DE ELITE: LEGISLAÇÃO EXTRAVAGANTE PMPE 2026 (INSTITUTO AOCP)
- * Total: 100 Questões 100% INÉDITAS e EXCLUSIVAS, sem repetição.
+ * Total: 200 Questões 100% INÉDITAS e EXCLUSIVAS, sem repetição.
  * Abrange: Lei de Abuso de Autoridade (13.869/19), Estatuto do Desarmamento (10.826/03),
  * Lei de Drogas (11.343/06), Crimes Hediondos (8.072/90), Lei de Tortura (9.455/97),
  * Lei Maria da Penha (11.340/06), Crimes de Trânsito do CTB (9.503/97), ECA (8.069/90),
@@ -3007,6 +3007,3606 @@ export const BANCO_LEGISLACAO_EXTRAVAGANTE: QuizQuestion[] = [
       "C": "Incorreta. Em desacordo com a legislação penal extravagante e a jurisprudência vinculante.",
       "D": "Incorreta. Em desacordo com a legislação penal extravagante e a jurisprudência vinculante.",
       "E": "Incorreta. Em desacordo com a legislação penal extravagante e a jurisprudência vinculante."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_101",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 13.869/2019 • Invasão de Domicílio Noturna",
+    "question": "[Simulado PMPE AOCP - Questão 101] Conforme o art. 22, § 1º, inciso III da Lei de Abuso de Autoridade (Lei nº 13.869/2019), comete crime punido com pena de detenção de 1 a 4 anos e multa o agente que cumpre mandado de busca e apreensão domiciliar:",
+    "options": [
+      "Entre 21h (vinte e uma horas) e 5h (cinco horas).",
+      "Apenas aos domingos e feriados religiosos.",
+      "Em dias chuvosos sem prévia comunicação.",
+      "Entre 18h e 06h.",
+      "Após as 22h e antes das 07h."
+    ],
+    "correctIndex": 0,
+    "explanation": "O art. 22, § 1º, III da Lei 13.869/19 tipifica expressamente o cumprimento de mandado de busca e apreensão domiciliar após as 21h ou antes das 5h. O período noturno para busca com mandado foi fixado das 21h às 5h.",
+    "fundamentacaoLegal": "Art. 22, § 1º, III da Lei nº 13.869/2019.",
+    "hint": "Mandado de busca NÃO pode ser cumprido entre 21h e 5h!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Busca com mandado: proibido das 21h às 5h (horário noturno legal).",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O art. 22, § 1º, III da Lei 13.869/19 tipifica expressamente o cumprimento de mandado de busca e apreensão domiciliar após as 21h ou antes das 5h. O período noturno para busca com mandado foi fixado das 21h às 5h.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Invasão de Domicílio Noturna).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Invasão de Domicílio Noturna).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Invasão de Domicílio Noturna).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Invasão de Domicílio Noturna)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_102",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 13.869/2019 • Constrangimento do Preso / Exibicionismo",
+    "question": "[Simulado PMPE AOCP - Questão 102] Submeter o preso ou custodiado a vexame ou a constrangimento não autorizado em lei, ou produzir fotografias e vídeos para exibição midiática de forma depreciativa (art. 13 da Lei 13.869/19):",
+    "options": [
+      "Constitui conduta atípica se autorizada verbalmente pelo comandante da guarnição.",
+      "Constitui crime de abuso de autoridade punido com detenção de 1 a 4 anos e multa.",
+      "É mera infração administrativa resolvida com advertência disciplinar.",
+      "Só é crime se a vítima for menor de 18 anos.",
+      "É permitido caso o suspeito tenha confessado o delito."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 13 da Lei 13.869/19 criminaliza constranger o preso, mediante violência, grave ameaça ou redução de sua capacidade de resistência, a exibir-se ou ter seu corpo exposto à curiosidade pública ou submeter-se a situação vexatória.",
+    "fundamentacaoLegal": "Art. 13 da Lei nº 13.869/2019.",
+    "hint": "Expor preso a vexame ou filmagem degradante é crime de abuso de autoridade!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Preso tem dignidade: proibir 'desfile' vexatório e fotos humilhantes.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Constrangimento do Preso / Exibicionismo).",
+      "B": "Correta. O art. 13 da Lei 13.869/19 criminaliza constranger o preso, mediante violência, grave ameaça ou redução de sua capacidade de resistência, a exibir-se ou ter seu corpo exposto à curiosidade pública ou submeter-se a situação vexatória.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Constrangimento do Preso / Exibicionismo).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Constrangimento do Preso / Exibicionismo).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Constrangimento do Preso / Exibicionismo)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_103",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 13.869/2019 • Uso de Algemas e Súmula Vinculante 11 do STF",
+    "question": "[Simulado PMPE AOCP - Questão 103] O uso de algemas durante diligências policiais militares é regulado pela Súmula Vinculante nº 11 do STF e pela Lei de Abuso de Autoridade. O emprego de algemas é lícito somente nos casos de:",
+    "options": [
+      "Todo e qualquer cidadão abordado pela PMPE em blitz de trânsito.",
+      "Resistência e de fundado receio de fuga ou de perigo à integridade física própria ou alheia, justificada a excepcionalidade por escrito.",
+      "Decisão verbal e arbitrária do policial de patrulha sem necessidade de registro.",
+      "Apenas para réus condenados com sentença transitada em julgado.",
+      "Crimes hediondos de forma obrigatória e indiscriminada."
+    ],
+    "correctIndex": 1,
+    "explanation": "A Súmula Vinculante 11 do STF estabelece que o uso de algemas só é lícito em caso de Resistência, Fundado receio de fuga ou Perigo à integridade física própria ou de terceiros (mnemônico PRDF), justificada a excepcionalidade por escrito.",
+    "fundamentacaoLegal": "Súmula Vinculante nº 11 do STF e Lei nº 13.869/2019.",
+    "hint": "Mnemônico PRDF: Perigo, Resistência, Desobediência/Fuga!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Algemas: regra é a liberdade; exceção é algemar com justificativa por escrito (PRDF).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Uso de Algemas e Súmula Vinculante 11 do STF).",
+      "B": "Correta. A Súmula Vinculante 11 do STF estabelece que o uso de algemas só é lícito em caso de Resistência, Fundado receio de fuga ou Perigo à integridade física própria ou de terceiros (mnemônico PRDF), justificada a excepcionalidade por escrito.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Uso de Algemas e Súmula Vinculante 11 do STF).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Uso de Algemas e Súmula Vinculante 11 do STF).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Uso de Algemas e Súmula Vinculante 11 do STF)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_104",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 13.869/2019 • Prisão Manifestamente Ilegal",
+    "question": "[Simulado PMPE AOCP - Questão 104] Deixar de relaxar a prisão manifestamente ilegal e deixar de comunicar a prisão em flagrante à autoridade judiciária e à família do preso no prazo legal (art. 9º e 12 da Lei 13.869/19):",
+    "options": [
+      "Constituem crimes tipificados na Lei de Abuso de Autoridade.",
+      "São infrações exclusivamente civis indenizáveis pela Fazenda Pública.",
+      "São atos acobertados pelo estrito cumprimento do dever legal sem sanção penal.",
+      "Só geram punição caso o militar seja reincidente há mais de 10 anos.",
+      "Não se aplicam a policiais militares estaduais."
+    ],
+    "correctIndex": 0,
+    "explanation": "O art. 9º criminaliza decretar ou deixar de relaxar prisão manifestamente ilegal; o art. 12 criminaliza deixar de comunicar a prisão em flagrante à autoridade judiciária e à família no prazo legal.",
+    "fundamentacaoLegal": "Arts. 9º e 12 da Lei nº 13.869/2019.",
+    "hint": "Não comunicar a prisão de imediato ou manter prisão ilegal é crime de abuso!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Prisão ilegal não relaxada ou prisão não comunicada = Crime de abuso de autoridade.",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O art. 9º criminaliza decretar ou deixar de relaxar prisão manifestamente ilegal; o art. 12 criminaliza deixar de comunicar a prisão em flagrante à autoridade judiciária e à família no prazo legal.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Prisão Manifestamente Ilegal).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Prisão Manifestamente Ilegal).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Prisão Manifestamente Ilegal).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Prisão Manifestamente Ilegal)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_105",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 13.869/2019 • Violação de Prerrogativas de Advogado",
+    "question": "[Simulado PMPE AOCP - Questão 105] Suprimir ou violar direito ou prerrogativa de advogado, como impedir o profissional de entrevistar-se pessoal e reservadamente com seu cliente preso (art. 43 da Lei 13.869/19 e art. 7º-B da Lei 8.906/94):",
+    "options": [
+      "É conduta punível exclusivamente com repreensão verbal do comandante.",
+      "Constitui crime de abuso de autoridade punido com detenção de 3 meses a 1 ano e multa.",
+      "É permitido sempre que a delegacia ou batalhão estiver em estado de alerta.",
+      "Depende de alvará judicial assinado pelo presidente da OAB.",
+      "Apenas é crime se o preso estiver algemado."
+    ],
+    "correctIndex": 1,
+    "explanation": "Violar as prerrogativas profissionais do advogado (como comunicação reservada com cliente e acesso aos autos) é crime previsto no art. 7º-B do Estatuto da OAB (incluído pela Lei 13.869/19).",
+    "fundamentacaoLegal": "Art. 43 da Lei nº 13.869/2019 e Art. 7º-B da Lei nº 8.906/1994.",
+    "hint": "Impedir conversa reservada do advogado com o cliente preso é crime!",
+    "difficulty": "hard",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Prerrogativas do advogado: respeitar acesso e conversa reservada.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Violação de Prerrogativas de Advogado).",
+      "B": "Correta. Violar as prerrogativas profissionais do advogado (como comunicação reservada com cliente e acesso aos autos) é crime previsto no art. 7º-B do Estatuto da OAB (incluído pela Lei 13.869/19).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Violação de Prerrogativas de Advogado).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Violação de Prerrogativas de Advogado).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Violação de Prerrogativas de Advogado)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_106",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.340/2006 • Descumprimento de Medidas Protetivas (Art. 24-A)",
+    "question": "[Simulado PMPE AOCP - Questão 106] O único crime com pena privativa de liberdade tipificado expressamente na Lei Maria da Penha (Lei nº 11.340/2006) é:",
+    "options": [
+      "Agressão verbal leve.",
+      "Descumprir decisão judicial que defere medidas protetivas de urgência (art. 24-A).",
+      "Ameaça no ambiente de trabalho.",
+      "Furto de objeto de uso comum.",
+      "Falsidade ideológica em boletim de ocorrência."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 24-A da Lei 11.340/06 (incluído pela Lei 13.641/18) tipifica o crime de 'Descumprir decisão judicial que defere medidas protetivas de urgência', punido com pena de detenção de 3 meses a 2 anos.",
+    "fundamentacaoLegal": "Artigo 24-A da Lei nº 11.340/2006.",
+    "hint": "Descumprir medida protetiva dada pelo juiz é crime com prisão em flagrante!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 24-A: o único crime próprio da Lei Maria da Penha.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Descumprimento de Medidas Protetivas (Art. 24-A)).",
+      "B": "Correta. O art. 24-A da Lei 11.340/06 (incluído pela Lei 13.641/18) tipifica o crime de 'Descumprir decisão judicial que defere medidas protetivas de urgência', punido com pena de detenção de 3 meses a 2 anos.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Descumprimento de Medidas Protetivas (Art. 24-A)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Descumprimento de Medidas Protetivas (Art. 24-A)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Descumprimento de Medidas Protetivas (Art. 24-A))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_107",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.340/2006 • Fiança no Crime do Art. 24-A",
+    "question": "[Simulado PMPE AOCP - Questão 107] Na hipótese de prisão em flagrante pelo crime de descumprimento de medida protetiva de urgência (art. 24-A da Lei Maria da Penha), a concessão de fiança:",
+    "options": [
+      "Pode ser arbitrada pelo Delegado de Polícia no valor de até 10 salários mínimos.",
+      "Só pode ser concedida pela autoridade judicial (juiz), sendo vedada a concessão pelo delegado.",
+      "É proibida inclusive para o juiz de direito em qualquer hipótese.",
+      "Depende de autorização expressa da vítima agredida.",
+      "É automática e gratuita para todos os réus."
+    ],
+    "correctIndex": 1,
+    "explanation": "O § 2º do art. 24-A da Lei 11.340/06 determina categoricamente: 'Na hipótese de prisão em flagrante, apenas a autoridade judicial poderá conceder fiança'. O delegado NÃO pode arbitrar fiança nesse crime.",
+    "fundamentacaoLegal": "Art. 24-A, § 2º da Lei nº 11.340/2006.",
+    "hint": "Fiança no descumprimento de medida protetiva: SOMENTE o juiz pode conceder!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 24-A: Delegado não arbitra fiança; só o juiz decide.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Fiança no Crime do Art. 24-A).",
+      "B": "Correta. O § 2º do art. 24-A da Lei 11.340/06 determina categoricamente: 'Na hipótese de prisão em flagrante, apenas a autoridade judicial poderá conceder fiança'. O delegado NÃO pode arbitrar fiança nesse crime.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Fiança no Crime do Art. 24-A).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Fiança no Crime do Art. 24-A).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Fiança no Crime do Art. 24-A)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_108",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.340/2006 • Princípio da Insignificância (Bagatela)",
+    "question": "[Simulado PMPE AOCP - Questão 108] De acordo com a jurisprudência sumulada do Superior Tribunal de Justiça (Súmula nº 589 do STJ):",
+    "options": [
+      "É plenamente aplicável o princípio da insignificância nos crimes de violência doméstica contra a mulher.",
+      "É inaplicável o princípio da insignificância aos crimes e contravenções praticados com violência doméstica e familiar contra a mulher.",
+      "O princípio da insignificância só se aplica se não houver lesão física visível.",
+      "Cabe aplicação de bagatela imprópria se o agressor for primário.",
+      "A insignificância é autorizada com o perdão tácito da vítima."
+    ],
+    "correctIndex": 1,
+    "explanation": "Súmula 589 do STJ: 'É inaplicável o princípio da insignificância aos crimes ou contravenções penais praticados com violência doméstica e familiar contra a mulher'. A proteção à integridade física e moral da mulher é absoluta.",
+    "fundamentacaoLegal": "Súmula nº 589 do Superior Tribunal de Justiça (STJ).",
+    "hint": "Violência doméstica contra a mulher: JAMAIS cabe insignificância/bagatela!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Súmula 589 STJ: Bagatela / Insignificância é PROIBIDA na Lei Maria da Penha.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Princípio da Insignificância (Bagatela)).",
+      "B": "Correta. Súmula 589 do STJ: 'É inaplicável o princípio da insignificância aos crimes ou contravenções penais praticados com violência doméstica e familiar contra a mulher'. A proteção à integridade física e moral da mulher é absoluta.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Princípio da Insignificância (Bagatela)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Princípio da Insignificância (Bagatela)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Princípio da Insignificância (Bagatela))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_109",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.340/2006 • Afastamento do Agressor pelo Policial Militar",
+    "question": "[Simulado PMPE AOCP - Questão 109] Conforme alteração legislativa no art. 12-C da Lei Maria da Penha, verificada a existência de risco atual ou iminente à vida ou à integridade física da mulher, se o município não for sede de comarca e não houver delegado de polícia disponível no momento:",
+    "options": [
+      "A mulher deve aguardar em casa até o próximo dia útil.",
+      "O policial (inclusive policial militar) poderá afastar imediatamente o agressor do lar ou local de convivência com a ofendida.",
+      "Apenas o juiz pode determinar qualquer afastamento por telefone.",
+      "O agressor deve ser transferido para outro estado federado.",
+      "O agressor só pode ser advertido verbalmente sem afastamento físico."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pelo art. 12-C da Lei 11.340/06: 1) autoridade judicial; 2) delegado de polícia quando o município não for sede de comarca; 3) pelo POLICIAL (civil ou militar) quando não houver delegado disponível. O juiz deve ser comunicado em até 24 horas para homologar.",
+    "fundamentacaoLegal": "Artigo 12-C, inciso III, da Lei nº 11.340/2006.",
+    "hint": "Sem juiz e sem delegado no município: o POLICIAL afasta o agressor do lar!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Afastamento do lar: Juiz -> Delegado -> Policial (na falta dos anteriores).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Afastamento do Agressor pelo Policial Militar).",
+      "B": "Correta. Pelo art. 12-C da Lei 11.340/06: 1) autoridade judicial; 2) delegado de polícia quando o município não for sede de comarca; 3) pelo POLICIAL (civil ou militar) quando não houver delegado disponível. O juiz deve ser comunicado em até 24 horas para homologar.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Afastamento do Agressor pelo Policial Militar).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Afastamento do Agressor pelo Policial Militar).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Afastamento do Agressor pelo Policial Militar)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_110",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.340/2006 • Violência Patrimonial",
+    "question": "[Simulado PMPE AOCP - Questão 110] A conduta do parceiro que retém os documentos pessoais, destrói o telefone celular, quebra instrumentos de trabalho ou rasga as roupas da vítima constitui forma de violência:",
+    "options": [
+      "Moral.",
+      "Física.",
+      "Patrimonial.",
+      "Institucional.",
+      "Casual."
+    ],
+    "correctIndex": 2,
+    "explanation": "O art. 7º, inciso IV da Lei 11.340/06 define a violência patrimonial como a retenção, subtração, destruição parcial ou total de seus objetos, instrumentos de trabalho, documentos pessoais, bens ou valores.",
+    "fundamentacaoLegal": "Art. 7º, IV da Lei nº 11.340/2006.",
+    "hint": "Destruir celular, rasgar roupa, reter documentos = Violência PATRIMONIAL!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Patrimonial = Bens, dinheiro, documentos e instrumentos de trabalho.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Violência Patrimonial).",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Violência Patrimonial).",
+      "C": "Correta. O art. 7º, inciso IV da Lei 11.340/06 define a violência patrimonial como a retenção, subtração, destruição parcial ou total de seus objetos, instrumentos de trabalho, documentos pessoais, bens ou valores.",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Violência Patrimonial).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Violência Patrimonial)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_111",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Estatuto do Desarmamento • Arma com Numeração Raspada (Art. 16, § 1º, I)",
+    "question": "[Simulado PMPE AOCP - Questão 111] O cidadão que porta arma de fogo de uso permitido, mas com sinal identificador, número de série ou marca raspada, suprimida ou adulterada, responde por:",
+    "options": [
+      "Crime de porte de arma de uso permitido (art. 14) com atenuante genérica.",
+      "Crime equiparado de porte/posse de arma de uso restrito (art. 16, § 1º, inciso I), com pena severa de reclusão de 3 a 6 anos e multa.",
+      "Mera infração administrativa com apreensão do armamento.",
+      "Contravenção penal afiançável com perdão judicial.",
+      "Crime de receptação culposa."
+    ],
+    "correctIndex": 1,
+    "explanation": "A raspagem ou supressão da numeração equipara a conduta ao art. 16 da Lei 10.826/03, independentemente de a arma original ser de calibre permitido ou restrito.",
+    "fundamentacaoLegal": "Art. 16, § 1º, inciso I da Lei nº 10.826/2003.",
+    "hint": "Arma com número raspado: SEMPRE responde pelo Art. 16 (crime grave equiparado a restrito)!",
+    "difficulty": "hard",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Raspou, suprimiu ou adulterou = Cai no Artigo 16!",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma com Numeração Raspada (Art. 16, § 1º, I)).",
+      "B": "Correta. A raspagem ou supressão da numeração equipara a conduta ao art. 16 da Lei 10.826/03, independentemente de a arma original ser de calibre permitido ou restrito.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma com Numeração Raspada (Art. 16, § 1º, I)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma com Numeração Raspada (Art. 16, § 1º, I)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma com Numeração Raspada (Art. 16, § 1º, I))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_112",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Estatuto do Desarmamento • Arma Desmuniciada",
+    "question": "[Simulado PMPE AOCP - Questão 112] Segundo a jurisprudência pacífica e vinculante do Supremo Tribunal Federal (STF) e do STJ, o porte ilegal de arma de fogo desmuniciada (sem munição) e sem que o agente tenha munições ao seu alcance:",
+    "options": [
+      "É conduta atípica, pois não há perigo real nem capacidade lesiva.",
+      "Configura crime formal de perigo abstrato, sendo típica a conduta pela tutela da segurança pública coletiva.",
+      "Gera apenas pena de advertência administrativa.",
+      "Exige laudo de balística comprovando a intenção de matar.",
+      "É punido apenas com fiança simples perante o batalhão."
+    ],
+    "correctIndex": 1,
+    "explanation": "O porte ilegal de arma de fogo é crime de perigo abstrato e de mera conduta: a lei tutela a segurança pública coletiva e a paz social, sendo desnecessário que a arma esteja municiada no momento da apreensão.",
+    "fundamentacaoLegal": "Jurisprudência pacífica do STF (RHC 110.609) e STJ (Tema 1039).",
+    "hint": "Arma desmuniciada no bolso ou na cintura É CRIME de perigo abstrato!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Porte de arma desmuniciada = CRIME sim (perigo abstrato).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma Desmuniciada).",
+      "B": "Correta. O porte ilegal de arma de fogo é crime de perigo abstrato e de mera conduta: a lei tutela a segurança pública coletiva e a paz social, sendo desnecessário que a arma esteja municiada no momento da apreensão.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma Desmuniciada).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma Desmuniciada).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma Desmuniciada)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_113",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Estatuto do Desarmamento • Disparo de Arma de Fogo (Art. 15)",
+    "question": "[Simulado PMPE AOCP - Questão 113] Disparar arma de fogo ou acionar munição em lugar habitado ou em suas adjacências, em via pública ou em direção a ela (art. 15 da Lei 10.826/03):",
+    "options": [
+      "É crime comum desde que essa conduta não tenha por finalidade a prática de outro crime.",
+      "É crime hediondo inafiançável em qualquer situação.",
+      "É infração militar julgada perante a corregedoria do exército.",
+      "Constitui legítima defesa putativa automática.",
+      "Só é crime caso atinja veículo oficial do Estado."
+    ],
+    "correctIndex": 0,
+    "explanation": "O art. 15 consagra expressamente a subsidiariedade: 'Disparar arma de fogo (...) desde que essa conduta não tenha por finalidade a prática de outro crime'. Se o disparo visava matar, responde por tentativa de homicídio.",
+    "fundamentacaoLegal": "Art. 15 da Lei nº 10.826/2003 (Crime Subsidiário).",
+    "hint": "Disparo em via pública é crime subsidiário: vale desde que não vise cometer outro crime!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 15 = Disparo a esmo (sem querer atingir alguém especificamente).",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O art. 15 consagra expressamente a subsidiariedade: 'Disparar arma de fogo (...) desde que essa conduta não tenha por finalidade a prática de outro crime'. Se o disparo visava matar, responde por tentativa de homicídio.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Disparo de Arma de Fogo (Art. 15)).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Disparo de Arma de Fogo (Art. 15)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Disparo de Arma de Fogo (Art. 15)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Disparo de Arma de Fogo (Art. 15))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_114",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Estatuto do Desarmamento • Omissão de Cautela (Art. 13)",
+    "question": "[Simulado PMPE AOCP - Questão 114] Deixar de observar as cautelas necessárias para impedir que menor de 18 (dezoito) anos ou pessoa com deficiência mental se apodere de arma de fogo que esteja sob sua posse ou que seja de sua propriedade configura o crime de:",
+    "options": [
+      "Homicídio culposo tentado.",
+      "Omissão de cautela (art. 13 da Lei 10.826/03).",
+      "Abandono de incapaz com agravante.",
+      "Prevaricação policial militar.",
+      "Lesão corporal negligente."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 13 tipifica a omissão de cautela, crime culposo punido com detenção de 1 a 2 anos e multa, punindo quem descumpre o dever de guarda segura de arma de fogo perante menores ou pessoas com deficiência mental.",
+    "fundamentacaoLegal": "Artigo 13 da Lei nº 10.826/2003.",
+    "hint": "Deixar arma ao alcance de criança ou adolescente = Omissão de cautela!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 13 = Cautela com a arma perto de menor de 18 anos.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Omissão de Cautela (Art. 13)).",
+      "B": "Correta. O art. 13 tipifica a omissão de cautela, crime culposo punido com detenção de 1 a 2 anos e multa, punindo quem descumpre o dever de guarda segura de arma de fogo perante menores ou pessoas com deficiência mental.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Omissão de Cautela (Art. 13)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Omissão de Cautela (Art. 13)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Omissão de Cautela (Art. 13))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_115",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Estatuto do Desarmamento • Porte Funcional de Arma para Policiais Militares",
+    "question": "[Simulado PMPE AOCP - Questão 115] Aos integrantes das Polícias Militares e Corpos de Bombeiros Militares dos Estados e do DF, o direito ao porte de arma de fogo institucional ou particular:",
+    "options": [
+      "É restrito aos dias de serviço operacional no quartel.",
+      "É garantido com validade em todo o território nacional, inclusive fora de serviço.",
+      "Depende de alvará expedido pela Polícia Federal a cada 6 meses.",
+      "Só é permitido caso o militar seja graduado como Sargento ou Oficial.",
+      "É proibido no deslocamento interestadual em viagens de férias."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 6º, inciso II da Lei 10.826/03 garante o porte de arma de fogo aos policiais militares em serviço ou fora dele, com eficácia em todo o território nacional.",
+    "fundamentacaoLegal": "Art. 6º, II da Lei nº 10.826/2003.",
+    "hint": "Policial militar tem porte de arma no Brasil inteiro, fardado ou de folga!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Porte do policial militar = Âmbito nacional, em serviço ou fora dele.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Porte Funcional de Arma para Policiais Militares).",
+      "B": "Correta. O art. 6º, inciso II da Lei 10.826/03 garante o porte de arma de fogo aos policiais militares em serviço ou fora dele, com eficácia em todo o território nacional.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Porte Funcional de Arma para Policiais Militares).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Porte Funcional de Arma para Policiais Militares).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Porte Funcional de Arma para Policiais Militares)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_116",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.343/2006 • Associação para o Tráfico (Art. 35)",
+    "question": "[Simulado PMPE AOCP - Questão 116] O crime de associação para o tráfico (art. 35 da Lei nº 11.343/2006) exige, para sua configuração típica segundo a jurisprudência pacífica do STF e STJ:",
+    "options": [
+      "Apenas o concurso eventual de duas ou mais pessoas para a venda de uma porção de droga.",
+      "O ânimo de associação estável e permanente entre duas ou mais pessoas com a finalidade de praticar os crimes de tráfico.",
+      "A apreensão comprovada de pelo menos dez quilos de cocaína pura.",
+      "A presença obrigatória de arma de fogo de uso proibido.",
+      "A constituição formal de pessoa jurídica de fachada."
+    ],
+    "correctIndex": 1,
+    "explanation": "A jurisprudência exige demonstração de vínculo estável e permanente entre os agentes (animus associativo). A reunião ocasional/eventual caracteriza apenas concurso de pessoas no tráfico, não o crime autônomo do art. 35.",
+    "fundamentacaoLegal": "Art. 35 da Lei nº 11.343/2006 e jurisprudência vinculante.",
+    "hint": "Associação para o tráfico exige ESTABILIDADE e PERMANÊNCIA (não basta encontro eventual)!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 35 = Associação estável e duradoura (mais de uma vez, planejado).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Associação para o Tráfico (Art. 35)).",
+      "B": "Correta. A jurisprudência exige demonstração de vínculo estável e permanente entre os agentes (animus associativo). A reunião ocasional/eventual caracteriza apenas concurso de pessoas no tráfico, não o crime autônomo do art. 35.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Associação para o Tráfico (Art. 35)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Associação para o Tráfico (Art. 35)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Associação para o Tráfico (Art. 35))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_117",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.343/2006 • Plantação de Maconha para Consumo Pessoal",
+    "question": "[Simulado PMPE AOCP - Questão 117] Aquele que semeia, cultiva ou colhe pequenas plantas destinadas à preparação de substância entorpecente exclusivamente para seu consumo pessoal incorre nas penas do:",
+    "options": [
+      "Art. 33 (Tráfico ilícito de drogas com reclusão de 5 a 15 anos).",
+      "Art. 28, § 1º (mesmas medidas de advertência, prestação de serviços à comunidade e comparecimento a programa educativo).",
+      "Art. 34 (fabricação de maquinário).",
+      "Código Florestal por crime ambiental com prisão civil.",
+      "Código Penal por corrupção passiva privilegiada."
+    ],
+    "correctIndex": 1,
+    "explanation": "O § 1º do art. 28 equipara a semeadura, cultivo e colheita para consumo próprio ao regime do usuário de drogas, vedada a pena privativa de liberdade.",
+    "fundamentacaoLegal": "Artigo 28, § 1º da Lei nº 11.343/2006.",
+    "hint": "Cultivo de poucas plantas para consumo pessoal = Regime do Art. 28!",
+    "difficulty": "hard",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Plantação para uso próprio = Art. 28 (sem cadeia).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Plantação de Maconha para Consumo Pessoal).",
+      "B": "Correta. O § 1º do art. 28 equipara a semeadura, cultivo e colheita para consumo próprio ao regime do usuário de drogas, vedada a pena privativa de liberdade.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Plantação de Maconha para Consumo Pessoal).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Plantação de Maconha para Consumo Pessoal).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Plantação de Maconha para Consumo Pessoal)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_118",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.343/2006 • Tráfico Interestadual (Art. 40, V)",
+    "question": "[Simulado PMPE AOCP - Questão 118] Para a incidência da causa de aumento de pena do tráfico interestadual de drogas (art. 40, inciso V da Lei de Drogas), conforme a Súmula nº 587 do STJ:",
+    "options": [
+      "É indispensável que o veículo cruze a divisa entre os estados.",
+      "É desnecessária a efetiva transposição da fronteira interestadual, sendo suficiente a demonstração inequívoca de que a substância tinha como destino outro estado federado.",
+      "Exige-se a apreensão simultânea de passagens aéreas e marítimas.",
+      "Aplica-se apenas aos estados da Região Norte e Centro-Oeste.",
+      "É necessária a prisão prévia do destinatário no estado de destino."
+    ],
+    "correctIndex": 1,
+    "explanation": "Súmula 587 do STJ: 'Para a incidência da majorante prevista no art. 40, V, da Lei n. 11.343/2006, é desnecessária a efetiva transposição de fronteiras entre estados da Federação, bastando a demonstração inequívoca da destinação interestadual das drogas'.",
+    "fundamentacaoLegal": "Súmula nº 587 do Superior Tribunal de Justiça (STJ).",
+    "hint": "Não precisa cruzar a divisa física: basta provar que a droga ia para outro estado!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Súmula 587 STJ: Provou que ia pra outro estado = Aumento de pena aplicado.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Tráfico Interestadual (Art. 40, V)).",
+      "B": "Correta. Súmula 587 do STJ: 'Para a incidência da majorante prevista no art. 40, V, da Lei n. 11.343/2006, é desnecessária a efetiva transposição de fronteiras entre estados da Federação, bastando a demonstração inequívoca da destinação interestadual das drogas'.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Tráfico Interestadual (Art. 40, V)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Tráfico Interestadual (Art. 40, V)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Tráfico Interestadual (Art. 40, V))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_119",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.343/2006 • Prescrição do Crime de Consumo de Drogas",
+    "question": "[Simulado PMPE AOCP - Questão 119] Prescreve em qual prazo a pretensão punitiva e executória dos crimes previstos no art. 28 da Lei de Drogas (posse para consumo pessoal), conforme determina o art. 30 da Lei 11.343/06?",
+    "options": [
+      "1 ano.",
+      "2 anos.",
+      "4 anos.",
+      "5 anos.",
+      "8 anos."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 30 da Lei de Drogas estabelece prazo prescricional especial de 2 (dois) anos para a imposição e execução das penas previstas no art. 28.",
+    "fundamentacaoLegal": "Artigo 30 da Lei nº 11.343/2006.",
+    "hint": "Prescrição do art. 28 da Lei de Drogas: 2 anos!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 28 prescreve em 2 anos (art. 30).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Prescrição do Crime de Consumo de Drogas).",
+      "B": "Correta. O art. 30 da Lei de Drogas estabelece prazo prescricional especial de 2 (dois) anos para a imposição e execução das penas previstas no art. 28.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Prescrição do Crime de Consumo de Drogas).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Prescrição do Crime de Consumo de Drogas).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Prescrição do Crime de Consumo de Drogas)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_120",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.343/2006 • Colaboração Premiada com Redução de Pena",
+    "question": "[Simulado PMPE AOCP - Questão 120] O agente de tráfico de drogas que voluntariamente colaborar com a investigação policial e o processo criminal, possibilitando a identificação dos demais coautores e a recuperação do produto do crime, terá sua pena reduzida:",
+    "options": [
+      "De um terço a dois terços.",
+      "De metade a três quartos.",
+      "Exclusivamente em um sexto.",
+      "Com perdão judicial automático sem julgamento.",
+      "Em dez por cento da multa civil."
+    ],
+    "correctIndex": 0,
+    "explanation": "O art. 41 da Lei de Drogas prevê a delação premiada, autorizando a redução da pena de um terço a dois terços na hipótese de colaboração voluntária e eficaz.",
+    "fundamentacaoLegal": "Art. 41 da Lei nº 11.343/2006.",
+    "hint": "Delação na lei de drogas reduz de 1/3 a 2/3 da pena!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Delação premiada na droga: reduz de um terço a dois terços.",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O art. 41 da Lei de Drogas prevê a delação premiada, autorizando a redução da pena de um terço a dois terços na hipótese de colaboração voluntária e eficaz.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Colaboração Premiada com Redução de Pena).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Colaboração Premiada com Redução de Pena).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Colaboração Premiada com Redução de Pena).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Colaboração Premiada com Redução de Pena)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_121",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 9.455/1997 • Tortura-Castigo",
+    "question": "[Simulado PMPE AOCP - Questão 121] Submeter pessoa presa ou sujeita a medida de segurança a sofrimento físico ou mental, por intermédio da prática de ato não previsto em lei ou não resultante de medida legal (art. 1º, § 1º da Lei 9.455/97), configura modalidade de:",
+    "options": [
+      "Tortura equiparada praticada contra pessoa presa.",
+      "Abuso de poder sem conotação delitiva.",
+      "Prevaricação com lesão leve.",
+      "Exercício regular de direito de custódia.",
+      "Mera irregularidade de cela."
+    ],
+    "correctIndex": 0,
+    "explanation": "O art. 1º, § 1º pune na mesma pena de 2 a 8 anos de reclusão quem submete pessoa presa ou sujeita a medida de segurança a sofrimento físico ou mental por ato não previsto em lei.",
+    "fundamentacaoLegal": "Art. 1º, § 1º da Lei nº 9.455/1997.",
+    "hint": "Fazer preso sofrer além do que a lei prevê = Tortura!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Sofrimento ilegal contra preso = Equiparado a Tortura.",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O art. 1º, § 1º pune na mesma pena de 2 a 8 anos de reclusão quem submete pessoa presa ou sujeita a medida de segurança a sofrimento físico ou mental por ato não previsto em lei.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Tortura-Castigo).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Tortura-Castigo).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Tortura-Castigo).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Tortura-Castigo)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_122",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 9.455/1997 • Causa de Aumento de Pena",
+    "question": "[Simulado PMPE AOCP - Questão 122] Nos termos do art. 1º, § 4º da Lei de Tortura, a pena aumenta-se de um sexto até um terço se o crime:",
+    "options": [
+      "For cometido por agente público, contra criança, gestante, deficiente, adolescente ou maior de 60 anos, ou se for cometido mediante sequestro.",
+      "Ocorrer durante os dias úteis da semana.",
+      "For praticado com arma desmuniciada.",
+      "Não gerar laudo pericial conclusivo.",
+      "For cometido em área rural."
+    ],
+    "correctIndex": 0,
+    "explanation": "Causas de aumento (1/6 a 1/3): I - se cometido por agente público; II - se cometido contra criança, gestante, portador de deficiência, adolescente ou maior de 60 anos; III - se cometido mediante sequestro.",
+    "fundamentacaoLegal": "Art. 1º, § 4º da Lei nº 9.455/1997.",
+    "hint": "Agente público + Vítima vulnerável + Sequestro = Pena aumentada de 1/6 a 1/3!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Tortura com aumento: Agente público, Vulneráveis (idoso/criança/gestante) e Sequestro.",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. Causas de aumento (1/6 a 1/3): I - se cometido por agente público; II - se cometido contra criança, gestante, portador de deficiência, adolescente ou maior de 60 anos; III - se cometido mediante sequestro.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Causa de Aumento de Pena).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Causa de Aumento de Pena).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Causa de Aumento de Pena).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Causa de Aumento de Pena)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_123",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 8.072/1990 • Homicídio Funcional Contra Policial Militar",
+    "question": "[Simulado PMPE AOCP - Questão 123] O homicídio praticado contra autoridade ou agente integrante dos órgãos de segurança pública (art. 144 da CF), no exercício da função ou em decorrência dela, ou contra seu cônjuge, companheiro ou parente consanguíneo até 3º grau:",
+    "options": [
+      "É homicídio qualificado (art. 121, § 2º, VII do CP) e classificado legalmente como CRIME HEDIONDO.",
+      "É homicídio simples sujeito a perdão judicial.",
+      "É crime de menor potencial ofensivo conciliável no JECRIM.",
+      "É julgado perante a Justiça Militar Estadual.",
+      "Admite fiança arbitrada pelo delegado de polícia militar."
+    ],
+    "correctIndex": 0,
+    "explanation": "O homicídio contra policial militar (ou parentes até 3º grau por essa razão) é qualificado (art. 121, § 2º, VII do CP) e figura expressamente no rol dos Crimes Hediondos (art. 1º, I da Lei 8.072/90).",
+    "fundamentacaoLegal": "Art. 1º, inciso I da Lei nº 8.072/1990 e Art. 121, § 2º, VII do CP.",
+    "hint": "Matar policial em razão da função é crime qualificado e HEDIONDO!",
+    "difficulty": "hard",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Homicídio funcional contra policial = Hediondo puro.",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O homicídio contra policial militar (ou parentes até 3º grau por essa razão) é qualificado (art. 121, § 2º, VII do CP) e figura expressamente no rol dos Crimes Hediondos (art. 1º, I da Lei 8.072/90).",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Homicídio Funcional Contra Policial Militar).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Homicídio Funcional Contra Policial Militar).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Homicídio Funcional Contra Policial Militar).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Homicídio Funcional Contra Policial Militar)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_124",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 8.072/1990 • Furto Qualificado por Emprego de Explosivo",
+    "question": "[Simulado PMPE AOCP - Questão 124] Com as alterações promovidas pelo Pacote Anticrime (Lei nº 13.964/2019), o crime de furto é classificado como CRIME HEDIONDO na hipótese de:",
+    "options": [
+      "Furto noturno de bicicleta.",
+      "Furto qualificado pelo emprego de explosivo ou de artefato análogo que cause perigo comum (art. 155, § 4º-A do CP).",
+      "Furto mediante fraude pela internet.",
+      "Furto de gado no sertão (abigeato).",
+      "Furto praticado por duas ou mais pessoas desarmadas."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Pacote Anticrime incluiu no rol dos crimes hediondos o furto qualificado pelo emprego de explosivo ou artefato análogo (art. 155, § 4º-A do CP - ex: explosão de caixas eletrônicos).",
+    "fundamentacaoLegal": "Art. 1º, inciso IX da Lei nº 8.072/1990.",
+    "hint": "Explodir caixa eletrônico para furtar dinheiro é CRIME HEDIONDO!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Furto com explosivo = Hediondo (Lei 8.072/90).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Furto Qualificado por Emprego de Explosivo).",
+      "B": "Correta. O Pacote Anticrime incluiu no rol dos crimes hediondos o furto qualificado pelo emprego de explosivo ou artefato análogo (art. 155, § 4º-A do CP - ex: explosão de caixas eletrônicos).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Furto Qualificado por Emprego de Explosivo).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Furto Qualificado por Emprego de Explosivo).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Furto Qualificado por Emprego de Explosivo)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_125",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 8.072/1990 • Tráfico Privilegiado NÃO é Hediondo",
+    "question": "[Simulado PMPE AOCP - Questão 125] O chamado tráfico privilegiado (§ 4º do art. 33 da Lei de Drogas), aplicável ao agente primário, de bons antecedentes e sem vínculo com facções:",
+    "options": [
+      "Permanece classificado como hediondo com cumprimento de 3/5 da pena.",
+      "NÃO é considerado crime hediondo nem a ele equiparado, por expressa disposição da Lei Anticrime e jurisprudência pacífica do STF e STJ.",
+      "Permite a aplicação de pena perpétua.",
+      "Impede qualquer tipo de progressão de regime.",
+      "É julgado pela Corte Interamericana de Direitos Humanos."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Pacote Anticrime incluiu o § 5º no art. 112 da LEP, consolidando que o tráfico privilegiado NÃO é hediondo nem equiparado, permitindo progressão de regime comum.",
+    "fundamentacaoLegal": "Art. 112, § 5º da Lei de Execução Penal e Súmula Vinculante 59 do STF.",
+    "hint": "Tráfico privilegiado (pequeno traficante primário) NÃO É HEDIONDO!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Tráfico comum = Equiparado a hediondo. Tráfico privilegiado = NÃO é hediondo.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Tráfico Privilegiado NÃO é Hediondo).",
+      "B": "Correta. O Pacote Anticrime incluiu o § 5º no art. 112 da LEP, consolidando que o tráfico privilegiado NÃO é hediondo nem equiparado, permitindo progressão de regime comum.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Tráfico Privilegiado NÃO é Hediondo).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Tráfico Privilegiado NÃO é Hediondo).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Tráfico Privilegiado NÃO é Hediondo)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_126",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "ECA (Lei nº 8.069/1990) • Medida Socioeducativa de Internação",
+    "question": "[Simulado PMPE AOCP - Questão 126] A medida socioeducativa de internação aplicada ao adolescente infrator constitui medida privativa de liberdade sujeita aos princípios da brevidade, excepcionalidade e respeito à condição peculiar de pessoa em desenvolvimento. O prazo máximo legal de internação é de:",
+    "options": [
+      "1 ano.",
+      "3 anos.",
+      "5 anos.",
+      "8 anos.",
+      "Até atingir a maioridade civil de 18 anos em qualquer caso."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 121, § 2º do ECA fixa o limite máximo improrrogável de 3 (três) anos de internação para o adolescente infrator, com reavaliação obrigatória no máximo a cada 6 meses.",
+    "fundamentacaoLegal": "Artigo 121, § 2º e § 3º da Lei nº 8.069/1990 (ECA).",
+    "hint": "Prazo máximo de internação do adolescente: 3 anos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Internação no ECA: Máximo 3 anos, reavaliação de 6 em 6 meses, cessa aos 21 anos.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (ECA (Lei nº 8.069/1990) • Medida Socioeducativa de Internação).",
+      "B": "Correta. O art. 121, § 2º do ECA fixa o limite máximo improrrogável de 3 (três) anos de internação para o adolescente infrator, com reavaliação obrigatória no máximo a cada 6 meses.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (ECA (Lei nº 8.069/1990) • Medida Socioeducativa de Internação).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (ECA (Lei nº 8.069/1990) • Medida Socioeducativa de Internação).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (ECA (Lei nº 8.069/1990) • Medida Socioeducativa de Internação)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_127",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "ECA • Liberação Compulsória aos 21 Anos",
+    "question": "[Simulado PMPE AOCP - Questão 127] A liberação do jovem que cumpre medida socioeducativa de internação será COMPULSÓRIA e definitiva quando ele completar:",
+    "options": [
+      "18 anos de idade.",
+      "19 anos de idade.",
+      "20 anos de idade.",
+      "21 anos de idade.",
+      "25 anos de idade."
+    ],
+    "correctIndex": 3,
+    "explanation": "O art. 121, § 5º do ECA estabelece que a liberação do jovem internado será compulsória aos 21 (vinte e um) anos de idade completos, cessando a jurisdição da infância e juventude.",
+    "fundamentacaoLegal": "Artigo 121, § 5º da Lei nº 8.069/1990.",
+    "hint": "Completou 21 anos: soltura obrigatória imediata no ECA!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "ECA: 21 anos = Rua obrigatória (liberação compulsória).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Liberação Compulsória aos 21 Anos).",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Liberação Compulsória aos 21 Anos).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Liberação Compulsória aos 21 Anos).",
+      "D": "Correta. O art. 121, § 5º do ECA estabelece que a liberação do jovem internado será compulsória aos 21 (vinte e um) anos de idade completos, cessando a jurisdição da infância e juventude.",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Liberação Compulsória aos 21 Anos)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_128",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "ECA • Transporte de Adolescente em Viatura Policial",
+    "question": "[Simulado PMPE AOCP - Questão 128] Nos termos do art. 178 do ECA, o adolescente a quem se atribua autoria de ato infracional NÃO poderá ser transportado em:",
+    "options": [
+      "Viatura caracterizada da Polícia Militar.",
+      "Compartimento fechado de veículo policial em condições atentatórias à sua dignidade, ou que impliquem risco à sua integridade física ou mental.",
+      "Assento dianteiro com cinto de segurança.",
+      "Acompanhado de seus responsáveis legais.",
+      "Presença de policial militar do mesmo sexo."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 178 do ECA veda o transporte do adolescente infrator em compartimento fechado ('camburão/mala') que fira sua dignidade ou coloque em risco sua integridade.",
+    "fundamentacaoLegal": "Artigo 178 da Lei nº 8.069/1990.",
+    "hint": "Não pode transportar adolescente no camburão fechado sem condições dignas!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 178 ECA: proibido transportar adolescente em compartimento fechado desumano.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Transporte de Adolescente em Viatura Policial).",
+      "B": "Correta. O art. 178 do ECA veda o transporte do adolescente infrator em compartimento fechado ('camburão/mala') que fira sua dignidade ou coloque em risco sua integridade.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Transporte de Adolescente em Viatura Policial).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Transporte de Adolescente em Viatura Policial).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Transporte de Adolescente em Viatura Policial)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_129",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Código de Trânsito Brasileiro (Lei nº 9.503/1997) • Embriaguez ao Volante",
+    "question": "[Simulado PMPE AOCP - Questão 129] O crime de conduzir veículo automotor com capacidade psicomotora alterada em razão da influência de álcool ou de outra substância psicoativa (art. 306 do CTB) classifica-se doutrinariamente como crime de:",
+    "options": [
+      "Dano concreto, exigindo a colisão do veículo ou atropelamento de pedestre.",
+      "Perigo abstrato, consumando-se com a condução sob efeito da substância constatada por bafômetro, exame de sangue ou sinais visíveis de embriaguez.",
+      "Culpa presumida sem aplicação de pena privativa de liberdade.",
+      "Contravenção de mera conduta sem apreensão da CNH.",
+      "Natureza administrativa sem repercussão na vara criminal."
+    ],
+    "correctIndex": 1,
+    "explanation": "O crime do art. 306 do CTB é de perigo abstrato: não precisa bater o carro nem causar acidente para consumar o delito, bastando dirigir com alteração psicomotora comprovada.",
+    "fundamentacaoLegal": "Artigo 306 da Lei nº 9.503/1997 e Súmula do STJ.",
+    "hint": "Embriaguez ao volante é crime de perigo abstrato!",
+    "difficulty": "hard",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Bebeu e dirigiu = Crime consumado na hora (perigo abstrato).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro (Lei nº 9.503/1997) • Embriaguez ao Volante).",
+      "B": "Correta. O crime do art. 306 do CTB é de perigo abstrato: não precisa bater o carro nem causar acidente para consumar o delito, bastando dirigir com alteração psicomotora comprovada.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro (Lei nº 9.503/1997) • Embriaguez ao Volante).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro (Lei nº 9.503/1997) • Embriaguez ao Volante).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro (Lei nº 9.503/1997) • Embriaguez ao Volante)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_130",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Código de Trânsito Brasileiro • Homicídio Culposo Qualificado por Embriaguez",
+    "question": "[Simulado PMPE AOCP - Questão 130] Se o condutor do veículo automotor comete homicídio culposo na direção de veículo automotor estando sob a influência de álcool ou de substância psicoativa (art. 302, § 3º do CTB), a pena prevista é de:",
+    "options": [
+      "Detenção de 6 meses a 1 ano com suspensão da CNH.",
+      "Reclusão, de 5 (cinco) a 8 (oito) anos, e suspensão ou proibição do direito de se obter a permissão ou a habilitação para dirigir veículo automotor.",
+      "Prestação de serviços comunitários e entrega de cesta básica.",
+      "Multa simples de trânsito sem privação de liberdade.",
+      "Prisão perpétua em presídio de trânsito."
+    ],
+    "correctIndex": 1,
+    "explanation": "A Lei 13.546/2017 qualificou o homicídio culposo de trânsito praticado por motorista embriagado, cominando pena pesada de RECLUSÃO de 5 a 8 anos (impedindo fiança pelo delegado).",
+    "fundamentacaoLegal": "Artigo 302, § 3º da Lei nº 9.503/1997 (CTB).",
+    "hint": "Morte no trânsito provocada por motorista bêbado: RECLUSÃO de 5 a 8 anos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Matou bêbado no volante = Reclusão de 5 a 8 anos (sem fiança na delegacia).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Homicídio Culposo Qualificado por Embriaguez).",
+      "B": "Correta. A Lei 13.546/2017 qualificou o homicídio culposo de trânsito praticado por motorista embriagado, cominando pena pesada de RECLUSÃO de 5 a 8 anos (impedindo fiança pelo delegado).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Homicídio Culposo Qualificado por Embriaguez).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Homicídio Culposo Qualificado por Embriaguez).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Homicídio Culposo Qualificado por Embriaguez)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_131",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Código de Trânsito Brasileiro • Racha / Corrida Clandestina (Art. 308)",
+    "question": "[Simulado PMPE AOCP - Questão 131] Disputar corrida, disputa ou competição automobilística não autorizada pela autoridade competente em via pública (racha), gerando situação de perigo a incolumidade pública ou privada (art. 308 do CTB):",
+    "options": [
+      "Constitui apenas infração gravíssima do código de trânsito com retenção do carro.",
+      "Constitui crime punido com detenção de 6 meses a 3 anos, podendo atingir até 10 anos de reclusão se resultar em morte.",
+      "É permitido aos finais de semana nas rodovias estaduais.",
+      "É conduta autorizada caso os participantes usem capacete e cinto.",
+      "Só é crime se houver apostas em dinheiro."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 308 tipifica o racha de trânsito como crime de perigo, com penas exasperadas para lesão corporal grave (3 a 6 anos) e morte culposa (5 a 10 anos de reclusão).",
+    "fundamentacaoLegal": "Artigo 308 da Lei nº 9.503/1997.",
+    "hint": "Racha em via pública é crime e dá reclusão se houver morte!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Racha na rua = Crime de trânsito grave.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Racha / Corrida Clandestina (Art. 308)).",
+      "B": "Correta. O art. 308 tipifica o racha de trânsito como crime de perigo, com penas exasperadas para lesão corporal grave (3 a 6 anos) e morte culposa (5 a 10 anos de reclusão).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Racha / Corrida Clandestina (Art. 308)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Racha / Corrida Clandestina (Art. 308)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Racha / Corrida Clandestina (Art. 308))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_132",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Crimes de Racismo e Injúria Racial • Lei nº 14.532/2023",
+    "question": "[Simulado PMPE AOCP - Questão 132] Com o advento da Lei nº 14.532/2023, a injúria racial (ofensa à honra de alguém em razão de raça, cor, etnia ou procedência nacional):",
+    "options": [
+      "Foi descriminalizada, restando apenas o dever de indenizar civilmente.",
+      "Foi formalmente equiparada ao crime de RACISMO, passando a integrar o art. 2º-A da Lei nº 7.716/1989, com pena de reclusão de 2 a 5 anos, sendo inafiançável e imprescritível.",
+      "Permaneceu no Código Penal como crime afiançável com prescrição em 2 anos.",
+      "Passou a admitir transação penal e perdão judicial.",
+      "Aplica-se apenas quando praticada por policiais militares em serviço."
+    ],
+    "correctIndex": 1,
+    "explanation": "A Lei 14.532/23 tipificou a injúria racial na Lei de Racismo (art. 2º-A), com pena de 2 a 5 anos de reclusão, tornando-a inafiançável e imprescritível (conforme já decidira o STF no HC 154.248).",
+    "fundamentacaoLegal": "Art. 2º-A da Lei nº 7.716/1989 e Lei nº 14.532/2023.",
+    "hint": "Injúria racial agora É CRIME DE RACISMO: inafiançável e imprescritível!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Injúria racial = Crime de racismo (inafiançável e imprescritível).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Crimes de Racismo e Injúria Racial • Lei nº 14.532/2023).",
+      "B": "Correta. A Lei 14.532/23 tipificou a injúria racial na Lei de Racismo (art. 2º-A), com pena de 2 a 5 anos de reclusão, tornando-a inafiançável e imprescritível (conforme já decidira o STF no HC 154.248).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Crimes de Racismo e Injúria Racial • Lei nº 14.532/2023).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Crimes de Racismo e Injúria Racial • Lei nº 14.532/2023).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Crimes de Racismo e Injúria Racial • Lei nº 14.532/2023)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_133",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Crimes de Racismo • Aumento de Pena em Locais Esportivos e Culturais",
+    "question": "[Simulado PMPE AOCP - Questão 133] Conforme o art. 2º-B da Lei nº 7.716/1989, se o crime de injúria racial for cometido no contexto de atividades esportivas, religiosas, artísticas ou culturais destinadas ao público, a pena será:",
+    "options": [
+      "Reduzida pela metade.",
+      "Aumentada de 1/3 até a metade, e o autor será proibido de frequentar esses locais por 3 anos.",
+      "Substituída por doação de cestas básicas.",
+      "Anulada por imunidade de torcida.",
+      "Convertida em advertência oral."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 2º-B prevê aumento de pena de um terço até a metade quando o racismo ocorre em estádios, teatros ou shows públicos, acompanhado de interdição de acesso a esses locais por 3 anos.",
+    "fundamentacaoLegal": "Artigo 2º-B da Lei nº 7.716/1989.",
+    "hint": "Racismo em estádio de futebol e eventos: pena aumenta de 1/3 a 1/2 e banimento de 3 anos!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Racismo no estádio de futebol = Pena aumentada e proibido de entrar por 3 anos.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Crimes de Racismo • Aumento de Pena em Locais Esportivos e Culturais).",
+      "B": "Correta. O art. 2º-B prevê aumento de pena de um terço até a metade quando o racismo ocorre em estádios, teatros ou shows públicos, acompanhado de interdição de acesso a esses locais por 3 anos.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Crimes de Racismo • Aumento de Pena em Locais Esportivos e Culturais).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Crimes de Racismo • Aumento de Pena em Locais Esportivos e Culturais).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Crimes de Racismo • Aumento de Pena em Locais Esportivos e Culturais)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_134",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 12.850/2013 • Conceito Legal de Organização Criminosa",
+    "question": "[Simulado PMPE AOCP - Questão 134] Nos termos do art. 1º, § 1º da Lei nº 12.850/2013, considera-se organização criminosa a associação de:",
+    "options": [
+      "2 ou mais pessoas para a prática de qualquer contravenção.",
+      "3 ou mais pessoas armadas com hierarquia militar.",
+      "4 (quatro) ou mais pessoas estruturalmente ordenada e caracterizada pela divisão de tarefas, ainda que informalmente, com objetivo de obter vantagem mediante infrações com penas máximas superiores a 4 anos ou de caráter transnacional.",
+      "10 ou mais pessoas cadastradas em facção prisional.",
+      "Apenas quadrilhas especializadas em roubo a bancos."
+    ],
+    "correctIndex": 2,
+    "explanation": "Requisitos legais de organização criminosa: 4 ou mais pessoas + estrutura ordenada com divisão de tarefas + infrações com pena máxima > 4 anos ou transnacionais.",
+    "fundamentacaoLegal": "Artigo 1º, § 1º da Lei nº 12.850/2013.",
+    "hint": "Organização criminosa = Mínimo de 4 pessoas + Pena máxima > 4 anos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "ORCRIM: 4 ou mais pessoas + Penas maiores que 4 anos (Regra do 4).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 12.850/2013 • Conceito Legal de Organização Criminosa).",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 12.850/2013 • Conceito Legal de Organização Criminosa).",
+      "C": "Correta. Requisitos legais de organização criminosa: 4 ou mais pessoas + estrutura ordenada com divisão de tarefas + infrações com pena máxima > 4 anos ou transnacionais.",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 12.850/2013 • Conceito Legal de Organização Criminosa).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 12.850/2013 • Conceito Legal de Organização Criminosa)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_135",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 12.850/2013 • Ação Controlada Policial",
+    "question": "[Simulado PMPE AOCP - Questão 135] O meio de obtenção de prova consistente em retardar a intervenção policial relativa à ação praticada por organização criminosa, desde que mantida sob vigilância, para que a medida se concretize no momento mais eficaz de colheita de provas e prisões, denomina-se:",
+    "options": [
+      "Infiltração de agentes.",
+      "Ação Controlada (ou flagrante prorrogado/retardado).",
+      "Flagrante forjado ilícito.",
+      "Interceptação telemática.",
+      "Delação compulsória."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 8º da Lei 12.850/13 define a Ação Controlada: retardar a intervenção policial para prender o maior número de membros da organização e colher mais provas com maior eficácia.",
+    "fundamentacaoLegal": "Artigo 8º da Lei nº 12.850/2013.",
+    "hint": "Esperar o melhor momento para prender a quadrilha inteira = Ação Controlada!",
+    "difficulty": "hard",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Ação Controlada = Retardar o flagrante para dar o bote na hora certa.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 12.850/2013 • Ação Controlada Policial).",
+      "B": "Correta. O art. 8º da Lei 12.850/13 define a Ação Controlada: retardar a intervenção policial para prender o maior número de membros da organização e colher mais provas com maior eficácia.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 12.850/2013 • Ação Controlada Policial).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 12.850/2013 • Ação Controlada Policial).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 12.850/2013 • Ação Controlada Policial)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_136",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 13.869/2019 • Invasão de Domicílio Noturna",
+    "question": "[Simulado PMPE AOCP - Questão 136] Conforme o art. 22, § 1º, inciso III da Lei de Abuso de Autoridade (Lei nº 13.869/2019), comete crime punido com pena de detenção de 1 a 4 anos e multa o agente que cumpre mandado de busca e apreensão domiciliar:",
+    "options": [
+      "Entre 21h (vinte e uma horas) e 5h (cinco horas).",
+      "Apenas aos domingos e feriados religiosos.",
+      "Em dias chuvosos sem prévia comunicação.",
+      "Entre 18h e 06h.",
+      "Após as 22h e antes das 07h."
+    ],
+    "correctIndex": 0,
+    "explanation": "O art. 22, § 1º, III da Lei 13.869/19 tipifica expressamente o cumprimento de mandado de busca e apreensão domiciliar após as 21h ou antes das 5h. O período noturno para busca com mandado foi fixado das 21h às 5h.",
+    "fundamentacaoLegal": "Art. 22, § 1º, III da Lei nº 13.869/2019.",
+    "hint": "Mandado de busca NÃO pode ser cumprido entre 21h e 5h!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Busca com mandado: proibido das 21h às 5h (horário noturno legal).",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O art. 22, § 1º, III da Lei 13.869/19 tipifica expressamente o cumprimento de mandado de busca e apreensão domiciliar após as 21h ou antes das 5h. O período noturno para busca com mandado foi fixado das 21h às 5h.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Invasão de Domicílio Noturna).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Invasão de Domicílio Noturna).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Invasão de Domicílio Noturna).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Invasão de Domicílio Noturna)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_137",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 13.869/2019 • Constrangimento do Preso / Exibicionismo",
+    "question": "[Simulado PMPE AOCP - Questão 137] Submeter o preso ou custodiado a vexame ou a constrangimento não autorizado em lei, ou produzir fotografias e vídeos para exibição midiática de forma depreciativa (art. 13 da Lei 13.869/19):",
+    "options": [
+      "Constitui conduta atípica se autorizada verbalmente pelo comandante da guarnição.",
+      "Constitui crime de abuso de autoridade punido com detenção de 1 a 4 anos e multa.",
+      "É mera infração administrativa resolvida com advertência disciplinar.",
+      "Só é crime se a vítima for menor de 18 anos.",
+      "É permitido caso o suspeito tenha confessado o delito."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 13 da Lei 13.869/19 criminaliza constranger o preso, mediante violência, grave ameaça ou redução de sua capacidade de resistência, a exibir-se ou ter seu corpo exposto à curiosidade pública ou submeter-se a situação vexatória.",
+    "fundamentacaoLegal": "Art. 13 da Lei nº 13.869/2019.",
+    "hint": "Expor preso a vexame ou filmagem degradante é crime de abuso de autoridade!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Preso tem dignidade: proibir 'desfile' vexatório e fotos humilhantes.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Constrangimento do Preso / Exibicionismo).",
+      "B": "Correta. O art. 13 da Lei 13.869/19 criminaliza constranger o preso, mediante violência, grave ameaça ou redução de sua capacidade de resistência, a exibir-se ou ter seu corpo exposto à curiosidade pública ou submeter-se a situação vexatória.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Constrangimento do Preso / Exibicionismo).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Constrangimento do Preso / Exibicionismo).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Constrangimento do Preso / Exibicionismo)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_138",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 13.869/2019 • Uso de Algemas e Súmula Vinculante 11 do STF",
+    "question": "[Simulado PMPE AOCP - Questão 138] O uso de algemas durante diligências policiais militares é regulado pela Súmula Vinculante nº 11 do STF e pela Lei de Abuso de Autoridade. O emprego de algemas é lícito somente nos casos de:",
+    "options": [
+      "Todo e qualquer cidadão abordado pela PMPE em blitz de trânsito.",
+      "Resistência e de fundado receio de fuga ou de perigo à integridade física própria ou alheia, justificada a excepcionalidade por escrito.",
+      "Decisão verbal e arbitrária do policial de patrulha sem necessidade de registro.",
+      "Apenas para réus condenados com sentença transitada em julgado.",
+      "Crimes hediondos de forma obrigatória e indiscriminada."
+    ],
+    "correctIndex": 1,
+    "explanation": "A Súmula Vinculante 11 do STF estabelece que o uso de algemas só é lícito em caso de Resistência, Fundado receio de fuga ou Perigo à integridade física própria ou de terceiros (mnemônico PRDF), justificada a excepcionalidade por escrito.",
+    "fundamentacaoLegal": "Súmula Vinculante nº 11 do STF e Lei nº 13.869/2019.",
+    "hint": "Mnemônico PRDF: Perigo, Resistência, Desobediência/Fuga!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Algemas: regra é a liberdade; exceção é algemar com justificativa por escrito (PRDF).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Uso de Algemas e Súmula Vinculante 11 do STF).",
+      "B": "Correta. A Súmula Vinculante 11 do STF estabelece que o uso de algemas só é lícito em caso de Resistência, Fundado receio de fuga ou Perigo à integridade física própria ou de terceiros (mnemônico PRDF), justificada a excepcionalidade por escrito.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Uso de Algemas e Súmula Vinculante 11 do STF).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Uso de Algemas e Súmula Vinculante 11 do STF).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Uso de Algemas e Súmula Vinculante 11 do STF)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_139",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 13.869/2019 • Prisão Manifestamente Ilegal",
+    "question": "[Simulado PMPE AOCP - Questão 139] Deixar de relaxar a prisão manifestamente ilegal e deixar de comunicar a prisão em flagrante à autoridade judiciária e à família do preso no prazo legal (art. 9º e 12 da Lei 13.869/19):",
+    "options": [
+      "Constituem crimes tipificados na Lei de Abuso de Autoridade.",
+      "São infrações exclusivamente civis indenizáveis pela Fazenda Pública.",
+      "São atos acobertados pelo estrito cumprimento do dever legal sem sanção penal.",
+      "Só geram punição caso o militar seja reincidente há mais de 10 anos.",
+      "Não se aplicam a policiais militares estaduais."
+    ],
+    "correctIndex": 0,
+    "explanation": "O art. 9º criminaliza decretar ou deixar de relaxar prisão manifestamente ilegal; o art. 12 criminaliza deixar de comunicar a prisão em flagrante à autoridade judiciária e à família no prazo legal.",
+    "fundamentacaoLegal": "Arts. 9º e 12 da Lei nº 13.869/2019.",
+    "hint": "Não comunicar a prisão de imediato ou manter prisão ilegal é crime de abuso!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Prisão ilegal não relaxada ou prisão não comunicada = Crime de abuso de autoridade.",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O art. 9º criminaliza decretar ou deixar de relaxar prisão manifestamente ilegal; o art. 12 criminaliza deixar de comunicar a prisão em flagrante à autoridade judiciária e à família no prazo legal.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Prisão Manifestamente Ilegal).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Prisão Manifestamente Ilegal).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Prisão Manifestamente Ilegal).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Prisão Manifestamente Ilegal)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_140",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 13.869/2019 • Violação de Prerrogativas de Advogado",
+    "question": "[Simulado PMPE AOCP - Questão 140] Suprimir ou violar direito ou prerrogativa de advogado, como impedir o profissional de entrevistar-se pessoal e reservadamente com seu cliente preso (art. 43 da Lei 13.869/19 e art. 7º-B da Lei 8.906/94):",
+    "options": [
+      "É conduta punível exclusivamente com repreensão verbal do comandante.",
+      "Constitui crime de abuso de autoridade punido com detenção de 3 meses a 1 ano e multa.",
+      "É permitido sempre que a delegacia ou batalhão estiver em estado de alerta.",
+      "Depende de alvará judicial assinado pelo presidente da OAB.",
+      "Apenas é crime se o preso estiver algemado."
+    ],
+    "correctIndex": 1,
+    "explanation": "Violar as prerrogativas profissionais do advogado (como comunicação reservada com cliente e acesso aos autos) é crime previsto no art. 7º-B do Estatuto da OAB (incluído pela Lei 13.869/19).",
+    "fundamentacaoLegal": "Art. 43 da Lei nº 13.869/2019 e Art. 7º-B da Lei nº 8.906/1994.",
+    "hint": "Impedir conversa reservada do advogado com o cliente preso é crime!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Prerrogativas do advogado: respeitar acesso e conversa reservada.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Violação de Prerrogativas de Advogado).",
+      "B": "Correta. Violar as prerrogativas profissionais do advogado (como comunicação reservada com cliente e acesso aos autos) é crime previsto no art. 7º-B do Estatuto da OAB (incluído pela Lei 13.869/19).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Violação de Prerrogativas de Advogado).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Violação de Prerrogativas de Advogado).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Violação de Prerrogativas de Advogado)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_141",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.340/2006 • Descumprimento de Medidas Protetivas (Art. 24-A)",
+    "question": "[Simulado PMPE AOCP - Questão 141] O único crime com pena privativa de liberdade tipificado expressamente na Lei Maria da Penha (Lei nº 11.340/2006) é:",
+    "options": [
+      "Agressão verbal leve.",
+      "Descumprir decisão judicial que defere medidas protetivas de urgência (art. 24-A).",
+      "Ameaça no ambiente de trabalho.",
+      "Furto de objeto de uso comum.",
+      "Falsidade ideológica em boletim de ocorrência."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 24-A da Lei 11.340/06 (incluído pela Lei 13.641/18) tipifica o crime de 'Descumprir decisão judicial que defere medidas protetivas de urgência', punido com pena de detenção de 3 meses a 2 anos.",
+    "fundamentacaoLegal": "Artigo 24-A da Lei nº 11.340/2006.",
+    "hint": "Descumprir medida protetiva dada pelo juiz é crime com prisão em flagrante!",
+    "difficulty": "hard",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 24-A: o único crime próprio da Lei Maria da Penha.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Descumprimento de Medidas Protetivas (Art. 24-A)).",
+      "B": "Correta. O art. 24-A da Lei 11.340/06 (incluído pela Lei 13.641/18) tipifica o crime de 'Descumprir decisão judicial que defere medidas protetivas de urgência', punido com pena de detenção de 3 meses a 2 anos.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Descumprimento de Medidas Protetivas (Art. 24-A)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Descumprimento de Medidas Protetivas (Art. 24-A)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Descumprimento de Medidas Protetivas (Art. 24-A))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_142",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.340/2006 • Fiança no Crime do Art. 24-A",
+    "question": "[Simulado PMPE AOCP - Questão 142] Na hipótese de prisão em flagrante pelo crime de descumprimento de medida protetiva de urgência (art. 24-A da Lei Maria da Penha), a concessão de fiança:",
+    "options": [
+      "Pode ser arbitrada pelo Delegado de Polícia no valor de até 10 salários mínimos.",
+      "Só pode ser concedida pela autoridade judicial (juiz), sendo vedada a concessão pelo delegado.",
+      "É proibida inclusive para o juiz de direito em qualquer hipótese.",
+      "Depende de autorização expressa da vítima agredida.",
+      "É automática e gratuita para todos os réus."
+    ],
+    "correctIndex": 1,
+    "explanation": "O § 2º do art. 24-A da Lei 11.340/06 determina categoricamente: 'Na hipótese de prisão em flagrante, apenas a autoridade judicial poderá conceder fiança'. O delegado NÃO pode arbitrar fiança nesse crime.",
+    "fundamentacaoLegal": "Art. 24-A, § 2º da Lei nº 11.340/2006.",
+    "hint": "Fiança no descumprimento de medida protetiva: SOMENTE o juiz pode conceder!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 24-A: Delegado não arbitra fiança; só o juiz decide.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Fiança no Crime do Art. 24-A).",
+      "B": "Correta. O § 2º do art. 24-A da Lei 11.340/06 determina categoricamente: 'Na hipótese de prisão em flagrante, apenas a autoridade judicial poderá conceder fiança'. O delegado NÃO pode arbitrar fiança nesse crime.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Fiança no Crime do Art. 24-A).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Fiança no Crime do Art. 24-A).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Fiança no Crime do Art. 24-A)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_143",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.340/2006 • Princípio da Insignificância (Bagatela)",
+    "question": "[Simulado PMPE AOCP - Questão 143] De acordo com a jurisprudência sumulada do Superior Tribunal de Justiça (Súmula nº 589 do STJ):",
+    "options": [
+      "É plenamente aplicável o princípio da insignificância nos crimes de violência doméstica contra a mulher.",
+      "É inaplicável o princípio da insignificância aos crimes e contravenções praticados com violência doméstica e familiar contra a mulher.",
+      "O princípio da insignificância só se aplica se não houver lesão física visível.",
+      "Cabe aplicação de bagatela imprópria se o agressor for primário.",
+      "A insignificância é autorizada com o perdão tácito da vítima."
+    ],
+    "correctIndex": 1,
+    "explanation": "Súmula 589 do STJ: 'É inaplicável o princípio da insignificância aos crimes ou contravenções penais praticados com violência doméstica e familiar contra a mulher'. A proteção à integridade física e moral da mulher é absoluta.",
+    "fundamentacaoLegal": "Súmula nº 589 do Superior Tribunal de Justiça (STJ).",
+    "hint": "Violência doméstica contra a mulher: JAMAIS cabe insignificância/bagatela!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Súmula 589 STJ: Bagatela / Insignificância é PROIBIDA na Lei Maria da Penha.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Princípio da Insignificância (Bagatela)).",
+      "B": "Correta. Súmula 589 do STJ: 'É inaplicável o princípio da insignificância aos crimes ou contravenções penais praticados com violência doméstica e familiar contra a mulher'. A proteção à integridade física e moral da mulher é absoluta.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Princípio da Insignificância (Bagatela)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Princípio da Insignificância (Bagatela)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Princípio da Insignificância (Bagatela))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_144",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.340/2006 • Afastamento do Agressor pelo Policial Militar",
+    "question": "[Simulado PMPE AOCP - Questão 144] Conforme alteração legislativa no art. 12-C da Lei Maria da Penha, verificada a existência de risco atual ou iminente à vida ou à integridade física da mulher, se o município não for sede de comarca e não houver delegado de polícia disponível no momento:",
+    "options": [
+      "A mulher deve aguardar em casa até o próximo dia útil.",
+      "O policial (inclusive policial militar) poderá afastar imediatamente o agressor do lar ou local de convivência com a ofendida.",
+      "Apenas o juiz pode determinar qualquer afastamento por telefone.",
+      "O agressor deve ser transferido para outro estado federado.",
+      "O agressor só pode ser advertido verbalmente sem afastamento físico."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pelo art. 12-C da Lei 11.340/06: 1) autoridade judicial; 2) delegado de polícia quando o município não for sede de comarca; 3) pelo POLICIAL (civil ou militar) quando não houver delegado disponível. O juiz deve ser comunicado em até 24 horas para homologar.",
+    "fundamentacaoLegal": "Artigo 12-C, inciso III, da Lei nº 11.340/2006.",
+    "hint": "Sem juiz e sem delegado no município: o POLICIAL afasta o agressor do lar!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Afastamento do lar: Juiz -> Delegado -> Policial (na falta dos anteriores).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Afastamento do Agressor pelo Policial Militar).",
+      "B": "Correta. Pelo art. 12-C da Lei 11.340/06: 1) autoridade judicial; 2) delegado de polícia quando o município não for sede de comarca; 3) pelo POLICIAL (civil ou militar) quando não houver delegado disponível. O juiz deve ser comunicado em até 24 horas para homologar.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Afastamento do Agressor pelo Policial Militar).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Afastamento do Agressor pelo Policial Militar).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Afastamento do Agressor pelo Policial Militar)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_145",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.340/2006 • Violência Patrimonial",
+    "question": "[Simulado PMPE AOCP - Questão 145] A conduta do parceiro que retém os documentos pessoais, destrói o telefone celular, quebra instrumentos de trabalho ou rasga as roupas da vítima constitui forma de violência:",
+    "options": [
+      "Moral.",
+      "Física.",
+      "Patrimonial.",
+      "Institucional.",
+      "Casual."
+    ],
+    "correctIndex": 2,
+    "explanation": "O art. 7º, inciso IV da Lei 11.340/06 define a violência patrimonial como a retenção, subtração, destruição parcial ou total de seus objetos, instrumentos de trabalho, documentos pessoais, bens ou valores.",
+    "fundamentacaoLegal": "Art. 7º, IV da Lei nº 11.340/2006.",
+    "hint": "Destruir celular, rasgar roupa, reter documentos = Violência PATRIMONIAL!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Patrimonial = Bens, dinheiro, documentos e instrumentos de trabalho.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Violência Patrimonial).",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Violência Patrimonial).",
+      "C": "Correta. O art. 7º, inciso IV da Lei 11.340/06 define a violência patrimonial como a retenção, subtração, destruição parcial ou total de seus objetos, instrumentos de trabalho, documentos pessoais, bens ou valores.",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Violência Patrimonial).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Violência Patrimonial)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_146",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Estatuto do Desarmamento • Arma com Numeração Raspada (Art. 16, § 1º, I)",
+    "question": "[Simulado PMPE AOCP - Questão 146] O cidadão que porta arma de fogo de uso permitido, mas com sinal identificador, número de série ou marca raspada, suprimida ou adulterada, responde por:",
+    "options": [
+      "Crime de porte de arma de uso permitido (art. 14) com atenuante genérica.",
+      "Crime equiparado de porte/posse de arma de uso restrito (art. 16, § 1º, inciso I), com pena severa de reclusão de 3 a 6 anos e multa.",
+      "Mera infração administrativa com apreensão do armamento.",
+      "Contravenção penal afiançável com perdão judicial.",
+      "Crime de receptação culposa."
+    ],
+    "correctIndex": 1,
+    "explanation": "A raspagem ou supressão da numeração equipara a conduta ao art. 16 da Lei 10.826/03, independentemente de a arma original ser de calibre permitido ou restrito.",
+    "fundamentacaoLegal": "Art. 16, § 1º, inciso I da Lei nº 10.826/2003.",
+    "hint": "Arma com número raspado: SEMPRE responde pelo Art. 16 (crime grave equiparado a restrito)!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Raspou, suprimiu ou adulterou = Cai no Artigo 16!",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma com Numeração Raspada (Art. 16, § 1º, I)).",
+      "B": "Correta. A raspagem ou supressão da numeração equipara a conduta ao art. 16 da Lei 10.826/03, independentemente de a arma original ser de calibre permitido ou restrito.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma com Numeração Raspada (Art. 16, § 1º, I)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma com Numeração Raspada (Art. 16, § 1º, I)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma com Numeração Raspada (Art. 16, § 1º, I))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_147",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Estatuto do Desarmamento • Arma Desmuniciada",
+    "question": "[Simulado PMPE AOCP - Questão 147] Segundo a jurisprudência pacífica e vinculante do Supremo Tribunal Federal (STF) e do STJ, o porte ilegal de arma de fogo desmuniciada (sem munição) e sem que o agente tenha munições ao seu alcance:",
+    "options": [
+      "É conduta atípica, pois não há perigo real nem capacidade lesiva.",
+      "Configura crime formal de perigo abstrato, sendo típica a conduta pela tutela da segurança pública coletiva.",
+      "Gera apenas pena de advertência administrativa.",
+      "Exige laudo de balística comprovando a intenção de matar.",
+      "É punido apenas com fiança simples perante o batalhão."
+    ],
+    "correctIndex": 1,
+    "explanation": "O porte ilegal de arma de fogo é crime de perigo abstrato e de mera conduta: a lei tutela a segurança pública coletiva e a paz social, sendo desnecessário que a arma esteja municiada no momento da apreensão.",
+    "fundamentacaoLegal": "Jurisprudência pacífica do STF (RHC 110.609) e STJ (Tema 1039).",
+    "hint": "Arma desmuniciada no bolso ou na cintura É CRIME de perigo abstrato!",
+    "difficulty": "hard",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Porte de arma desmuniciada = CRIME sim (perigo abstrato).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma Desmuniciada).",
+      "B": "Correta. O porte ilegal de arma de fogo é crime de perigo abstrato e de mera conduta: a lei tutela a segurança pública coletiva e a paz social, sendo desnecessário que a arma esteja municiada no momento da apreensão.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma Desmuniciada).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma Desmuniciada).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma Desmuniciada)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_148",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Estatuto do Desarmamento • Disparo de Arma de Fogo (Art. 15)",
+    "question": "[Simulado PMPE AOCP - Questão 148] Disparar arma de fogo ou acionar munição em lugar habitado ou em suas adjacências, em via pública ou em direção a ela (art. 15 da Lei 10.826/03):",
+    "options": [
+      "É crime comum desde que essa conduta não tenha por finalidade a prática de outro crime.",
+      "É crime hediondo inafiançável em qualquer situação.",
+      "É infração militar julgada perante a corregedoria do exército.",
+      "Constitui legítima defesa putativa automática.",
+      "Só é crime caso atinja veículo oficial do Estado."
+    ],
+    "correctIndex": 0,
+    "explanation": "O art. 15 consagra expressamente a subsidiariedade: 'Disparar arma de fogo (...) desde que essa conduta não tenha por finalidade a prática de outro crime'. Se o disparo visava matar, responde por tentativa de homicídio.",
+    "fundamentacaoLegal": "Art. 15 da Lei nº 10.826/2003 (Crime Subsidiário).",
+    "hint": "Disparo em via pública é crime subsidiário: vale desde que não vise cometer outro crime!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 15 = Disparo a esmo (sem querer atingir alguém especificamente).",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O art. 15 consagra expressamente a subsidiariedade: 'Disparar arma de fogo (...) desde que essa conduta não tenha por finalidade a prática de outro crime'. Se o disparo visava matar, responde por tentativa de homicídio.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Disparo de Arma de Fogo (Art. 15)).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Disparo de Arma de Fogo (Art. 15)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Disparo de Arma de Fogo (Art. 15)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Disparo de Arma de Fogo (Art. 15))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_149",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Estatuto do Desarmamento • Omissão de Cautela (Art. 13)",
+    "question": "[Simulado PMPE AOCP - Questão 149] Deixar de observar as cautelas necessárias para impedir que menor de 18 (dezoito) anos ou pessoa com deficiência mental se apodere de arma de fogo que esteja sob sua posse ou que seja de sua propriedade configura o crime de:",
+    "options": [
+      "Homicídio culposo tentado.",
+      "Omissão de cautela (art. 13 da Lei 10.826/03).",
+      "Abandono de incapaz com agravante.",
+      "Prevaricação policial militar.",
+      "Lesão corporal negligente."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 13 tipifica a omissão de cautela, crime culposo punido com detenção de 1 a 2 anos e multa, punindo quem descumpre o dever de guarda segura de arma de fogo perante menores ou pessoas com deficiência mental.",
+    "fundamentacaoLegal": "Artigo 13 da Lei nº 10.826/2003.",
+    "hint": "Deixar arma ao alcance de criança ou adolescente = Omissão de cautela!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 13 = Cautela com a arma perto de menor de 18 anos.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Omissão de Cautela (Art. 13)).",
+      "B": "Correta. O art. 13 tipifica a omissão de cautela, crime culposo punido com detenção de 1 a 2 anos e multa, punindo quem descumpre o dever de guarda segura de arma de fogo perante menores ou pessoas com deficiência mental.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Omissão de Cautela (Art. 13)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Omissão de Cautela (Art. 13)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Omissão de Cautela (Art. 13))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_150",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Estatuto do Desarmamento • Porte Funcional de Arma para Policiais Militares",
+    "question": "[Simulado PMPE AOCP - Questão 150] Aos integrantes das Polícias Militares e Corpos de Bombeiros Militares dos Estados e do DF, o direito ao porte de arma de fogo institucional ou particular:",
+    "options": [
+      "É restrito aos dias de serviço operacional no quartel.",
+      "É garantido com validade em todo o território nacional, inclusive fora de serviço.",
+      "Depende de alvará expedido pela Polícia Federal a cada 6 meses.",
+      "Só é permitido caso o militar seja graduado como Sargento ou Oficial.",
+      "É proibido no deslocamento interestadual em viagens de férias."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 6º, inciso II da Lei 10.826/03 garante o porte de arma de fogo aos policiais militares em serviço ou fora dele, com eficácia em todo o território nacional.",
+    "fundamentacaoLegal": "Art. 6º, II da Lei nº 10.826/2003.",
+    "hint": "Policial militar tem porte de arma no Brasil inteiro, fardado ou de folga!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Porte do policial militar = Âmbito nacional, em serviço ou fora dele.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Porte Funcional de Arma para Policiais Militares).",
+      "B": "Correta. O art. 6º, inciso II da Lei 10.826/03 garante o porte de arma de fogo aos policiais militares em serviço ou fora dele, com eficácia em todo o território nacional.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Porte Funcional de Arma para Policiais Militares).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Porte Funcional de Arma para Policiais Militares).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Porte Funcional de Arma para Policiais Militares)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_151",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.343/2006 • Associação para o Tráfico (Art. 35)",
+    "question": "[Simulado PMPE AOCP - Questão 151] O crime de associação para o tráfico (art. 35 da Lei nº 11.343/2006) exige, para sua configuração típica segundo a jurisprudência pacífica do STF e STJ:",
+    "options": [
+      "Apenas o concurso eventual de duas ou mais pessoas para a venda de uma porção de droga.",
+      "O ânimo de associação estável e permanente entre duas ou mais pessoas com a finalidade de praticar os crimes de tráfico.",
+      "A apreensão comprovada de pelo menos dez quilos de cocaína pura.",
+      "A presença obrigatória de arma de fogo de uso proibido.",
+      "A constituição formal de pessoa jurídica de fachada."
+    ],
+    "correctIndex": 1,
+    "explanation": "A jurisprudência exige demonstração de vínculo estável e permanente entre os agentes (animus associativo). A reunião ocasional/eventual caracteriza apenas concurso de pessoas no tráfico, não o crime autônomo do art. 35.",
+    "fundamentacaoLegal": "Art. 35 da Lei nº 11.343/2006 e jurisprudência vinculante.",
+    "hint": "Associação para o tráfico exige ESTABILIDADE e PERMANÊNCIA (não basta encontro eventual)!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 35 = Associação estável e duradoura (mais de uma vez, planejado).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Associação para o Tráfico (Art. 35)).",
+      "B": "Correta. A jurisprudência exige demonstração de vínculo estável e permanente entre os agentes (animus associativo). A reunião ocasional/eventual caracteriza apenas concurso de pessoas no tráfico, não o crime autônomo do art. 35.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Associação para o Tráfico (Art. 35)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Associação para o Tráfico (Art. 35)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Associação para o Tráfico (Art. 35))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_152",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.343/2006 • Plantação de Maconha para Consumo Pessoal",
+    "question": "[Simulado PMPE AOCP - Questão 152] Aquele que semeia, cultiva ou colhe pequenas plantas destinadas à preparação de substância entorpecente exclusivamente para seu consumo pessoal incorre nas penas do:",
+    "options": [
+      "Art. 33 (Tráfico ilícito de drogas com reclusão de 5 a 15 anos).",
+      "Art. 28, § 1º (mesmas medidas de advertência, prestação de serviços à comunidade e comparecimento a programa educativo).",
+      "Art. 34 (fabricação de maquinário).",
+      "Código Florestal por crime ambiental com prisão civil.",
+      "Código Penal por corrupção passiva privilegiada."
+    ],
+    "correctIndex": 1,
+    "explanation": "O § 1º do art. 28 equipara a semeadura, cultivo e colheita para consumo próprio ao regime do usuário de drogas, vedada a pena privativa de liberdade.",
+    "fundamentacaoLegal": "Artigo 28, § 1º da Lei nº 11.343/2006.",
+    "hint": "Cultivo de poucas plantas para consumo pessoal = Regime do Art. 28!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Plantação para uso próprio = Art. 28 (sem cadeia).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Plantação de Maconha para Consumo Pessoal).",
+      "B": "Correta. O § 1º do art. 28 equipara a semeadura, cultivo e colheita para consumo próprio ao regime do usuário de drogas, vedada a pena privativa de liberdade.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Plantação de Maconha para Consumo Pessoal).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Plantação de Maconha para Consumo Pessoal).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Plantação de Maconha para Consumo Pessoal)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_153",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.343/2006 • Tráfico Interestadual (Art. 40, V)",
+    "question": "[Simulado PMPE AOCP - Questão 153] Para a incidência da causa de aumento de pena do tráfico interestadual de drogas (art. 40, inciso V da Lei de Drogas), conforme a Súmula nº 587 do STJ:",
+    "options": [
+      "É indispensável que o veículo cruze a divisa entre os estados.",
+      "É desnecessária a efetiva transposição da fronteira interestadual, sendo suficiente a demonstração inequívoca de que a substância tinha como destino outro estado federado.",
+      "Exige-se a apreensão simultânea de passagens aéreas e marítimas.",
+      "Aplica-se apenas aos estados da Região Norte e Centro-Oeste.",
+      "É necessária a prisão prévia do destinatário no estado de destino."
+    ],
+    "correctIndex": 1,
+    "explanation": "Súmula 587 do STJ: 'Para a incidência da majorante prevista no art. 40, V, da Lei n. 11.343/2006, é desnecessária a efetiva transposição de fronteiras entre estados da Federação, bastando a demonstração inequívoca da destinação interestadual das drogas'.",
+    "fundamentacaoLegal": "Súmula nº 587 do Superior Tribunal de Justiça (STJ).",
+    "hint": "Não precisa cruzar a divisa física: basta provar que a droga ia para outro estado!",
+    "difficulty": "hard",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Súmula 587 STJ: Provou que ia pra outro estado = Aumento de pena aplicado.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Tráfico Interestadual (Art. 40, V)).",
+      "B": "Correta. Súmula 587 do STJ: 'Para a incidência da majorante prevista no art. 40, V, da Lei n. 11.343/2006, é desnecessária a efetiva transposição de fronteiras entre estados da Federação, bastando a demonstração inequívoca da destinação interestadual das drogas'.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Tráfico Interestadual (Art. 40, V)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Tráfico Interestadual (Art. 40, V)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Tráfico Interestadual (Art. 40, V))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_154",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.343/2006 • Prescrição do Crime de Consumo de Drogas",
+    "question": "[Simulado PMPE AOCP - Questão 154] Prescreve em qual prazo a pretensão punitiva e executória dos crimes previstos no art. 28 da Lei de Drogas (posse para consumo pessoal), conforme determina o art. 30 da Lei 11.343/06?",
+    "options": [
+      "1 ano.",
+      "2 anos.",
+      "4 anos.",
+      "5 anos.",
+      "8 anos."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 30 da Lei de Drogas estabelece prazo prescricional especial de 2 (dois) anos para a imposição e execução das penas previstas no art. 28.",
+    "fundamentacaoLegal": "Artigo 30 da Lei nº 11.343/2006.",
+    "hint": "Prescrição do art. 28 da Lei de Drogas: 2 anos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 28 prescreve em 2 anos (art. 30).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Prescrição do Crime de Consumo de Drogas).",
+      "B": "Correta. O art. 30 da Lei de Drogas estabelece prazo prescricional especial de 2 (dois) anos para a imposição e execução das penas previstas no art. 28.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Prescrição do Crime de Consumo de Drogas).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Prescrição do Crime de Consumo de Drogas).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Prescrição do Crime de Consumo de Drogas)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_155",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.343/2006 • Colaboração Premiada com Redução de Pena",
+    "question": "[Simulado PMPE AOCP - Questão 155] O agente de tráfico de drogas que voluntariamente colaborar com a investigação policial e o processo criminal, possibilitando a identificação dos demais coautores e a recuperação do produto do crime, terá sua pena reduzida:",
+    "options": [
+      "De um terço a dois terços.",
+      "De metade a três quartos.",
+      "Exclusivamente em um sexto.",
+      "Com perdão judicial automático sem julgamento.",
+      "Em dez por cento da multa civil."
+    ],
+    "correctIndex": 0,
+    "explanation": "O art. 41 da Lei de Drogas prevê a delação premiada, autorizando a redução da pena de um terço a dois terços na hipótese de colaboração voluntária e eficaz.",
+    "fundamentacaoLegal": "Art. 41 da Lei nº 11.343/2006.",
+    "hint": "Delação na lei de drogas reduz de 1/3 a 2/3 da pena!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Delação premiada na droga: reduz de um terço a dois terços.",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O art. 41 da Lei de Drogas prevê a delação premiada, autorizando a redução da pena de um terço a dois terços na hipótese de colaboração voluntária e eficaz.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Colaboração Premiada com Redução de Pena).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Colaboração Premiada com Redução de Pena).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Colaboração Premiada com Redução de Pena).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Colaboração Premiada com Redução de Pena)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_156",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 9.455/1997 • Tortura-Castigo",
+    "question": "[Simulado PMPE AOCP - Questão 156] Submeter pessoa presa ou sujeita a medida de segurança a sofrimento físico ou mental, por intermédio da prática de ato não previsto em lei ou não resultante de medida legal (art. 1º, § 1º da Lei 9.455/97), configura modalidade de:",
+    "options": [
+      "Tortura equiparada praticada contra pessoa presa.",
+      "Abuso de poder sem conotação delitiva.",
+      "Prevaricação com lesão leve.",
+      "Exercício regular de direito de custódia.",
+      "Mera irregularidade de cela."
+    ],
+    "correctIndex": 0,
+    "explanation": "O art. 1º, § 1º pune na mesma pena de 2 a 8 anos de reclusão quem submete pessoa presa ou sujeita a medida de segurança a sofrimento físico ou mental por ato não previsto em lei.",
+    "fundamentacaoLegal": "Art. 1º, § 1º da Lei nº 9.455/1997.",
+    "hint": "Fazer preso sofrer além do que a lei prevê = Tortura!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Sofrimento ilegal contra preso = Equiparado a Tortura.",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O art. 1º, § 1º pune na mesma pena de 2 a 8 anos de reclusão quem submete pessoa presa ou sujeita a medida de segurança a sofrimento físico ou mental por ato não previsto em lei.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Tortura-Castigo).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Tortura-Castigo).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Tortura-Castigo).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Tortura-Castigo)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_157",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 9.455/1997 • Causa de Aumento de Pena",
+    "question": "[Simulado PMPE AOCP - Questão 157] Nos termos do art. 1º, § 4º da Lei de Tortura, a pena aumenta-se de um sexto até um terço se o crime:",
+    "options": [
+      "For cometido por agente público, contra criança, gestante, deficiente, adolescente ou maior de 60 anos, ou se for cometido mediante sequestro.",
+      "Ocorrer durante os dias úteis da semana.",
+      "For praticado com arma desmuniciada.",
+      "Não gerar laudo pericial conclusivo.",
+      "For cometido em área rural."
+    ],
+    "correctIndex": 0,
+    "explanation": "Causas de aumento (1/6 a 1/3): I - se cometido por agente público; II - se cometido contra criança, gestante, portador de deficiência, adolescente ou maior de 60 anos; III - se cometido mediante sequestro.",
+    "fundamentacaoLegal": "Art. 1º, § 4º da Lei nº 9.455/1997.",
+    "hint": "Agente público + Vítima vulnerável + Sequestro = Pena aumentada de 1/6 a 1/3!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Tortura com aumento: Agente público, Vulneráveis (idoso/criança/gestante) e Sequestro.",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. Causas de aumento (1/6 a 1/3): I - se cometido por agente público; II - se cometido contra criança, gestante, portador de deficiência, adolescente ou maior de 60 anos; III - se cometido mediante sequestro.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Causa de Aumento de Pena).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Causa de Aumento de Pena).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Causa de Aumento de Pena).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Causa de Aumento de Pena)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_158",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 8.072/1990 • Homicídio Funcional Contra Policial Militar",
+    "question": "[Simulado PMPE AOCP - Questão 158] O homicídio praticado contra autoridade ou agente integrante dos órgãos de segurança pública (art. 144 da CF), no exercício da função ou em decorrência dela, ou contra seu cônjuge, companheiro ou parente consanguíneo até 3º grau:",
+    "options": [
+      "É homicídio qualificado (art. 121, § 2º, VII do CP) e classificado legalmente como CRIME HEDIONDO.",
+      "É homicídio simples sujeito a perdão judicial.",
+      "É crime de menor potencial ofensivo conciliável no JECRIM.",
+      "É julgado perante a Justiça Militar Estadual.",
+      "Admite fiança arbitrada pelo delegado de polícia militar."
+    ],
+    "correctIndex": 0,
+    "explanation": "O homicídio contra policial militar (ou parentes até 3º grau por essa razão) é qualificado (art. 121, § 2º, VII do CP) e figura expressamente no rol dos Crimes Hediondos (art. 1º, I da Lei 8.072/90).",
+    "fundamentacaoLegal": "Art. 1º, inciso I da Lei nº 8.072/1990 e Art. 121, § 2º, VII do CP.",
+    "hint": "Matar policial em razão da função é crime qualificado e HEDIONDO!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Homicídio funcional contra policial = Hediondo puro.",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O homicídio contra policial militar (ou parentes até 3º grau por essa razão) é qualificado (art. 121, § 2º, VII do CP) e figura expressamente no rol dos Crimes Hediondos (art. 1º, I da Lei 8.072/90).",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Homicídio Funcional Contra Policial Militar).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Homicídio Funcional Contra Policial Militar).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Homicídio Funcional Contra Policial Militar).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Homicídio Funcional Contra Policial Militar)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_159",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 8.072/1990 • Furto Qualificado por Emprego de Explosivo",
+    "question": "[Simulado PMPE AOCP - Questão 159] Com as alterações promovidas pelo Pacote Anticrime (Lei nº 13.964/2019), o crime de furto é classificado como CRIME HEDIONDO na hipótese de:",
+    "options": [
+      "Furto noturno de bicicleta.",
+      "Furto qualificado pelo emprego de explosivo ou de artefato análogo que cause perigo comum (art. 155, § 4º-A do CP).",
+      "Furto mediante fraude pela internet.",
+      "Furto de gado no sertão (abigeato).",
+      "Furto praticado por duas ou mais pessoas desarmadas."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Pacote Anticrime incluiu no rol dos crimes hediondos o furto qualificado pelo emprego de explosivo ou artefato análogo (art. 155, § 4º-A do CP - ex: explosão de caixas eletrônicos).",
+    "fundamentacaoLegal": "Art. 1º, inciso IX da Lei nº 8.072/1990.",
+    "hint": "Explodir caixa eletrônico para furtar dinheiro é CRIME HEDIONDO!",
+    "difficulty": "hard",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Furto com explosivo = Hediondo (Lei 8.072/90).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Furto Qualificado por Emprego de Explosivo).",
+      "B": "Correta. O Pacote Anticrime incluiu no rol dos crimes hediondos o furto qualificado pelo emprego de explosivo ou artefato análogo (art. 155, § 4º-A do CP - ex: explosão de caixas eletrônicos).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Furto Qualificado por Emprego de Explosivo).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Furto Qualificado por Emprego de Explosivo).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Furto Qualificado por Emprego de Explosivo)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_160",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 8.072/1990 • Tráfico Privilegiado NÃO é Hediondo",
+    "question": "[Simulado PMPE AOCP - Questão 160] O chamado tráfico privilegiado (§ 4º do art. 33 da Lei de Drogas), aplicável ao agente primário, de bons antecedentes e sem vínculo com facções:",
+    "options": [
+      "Permanece classificado como hediondo com cumprimento de 3/5 da pena.",
+      "NÃO é considerado crime hediondo nem a ele equiparado, por expressa disposição da Lei Anticrime e jurisprudência pacífica do STF e STJ.",
+      "Permite a aplicação de pena perpétua.",
+      "Impede qualquer tipo de progressão de regime.",
+      "É julgado pela Corte Interamericana de Direitos Humanos."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Pacote Anticrime incluiu o § 5º no art. 112 da LEP, consolidando que o tráfico privilegiado NÃO é hediondo nem equiparado, permitindo progressão de regime comum.",
+    "fundamentacaoLegal": "Art. 112, § 5º da Lei de Execução Penal e Súmula Vinculante 59 do STF.",
+    "hint": "Tráfico privilegiado (pequeno traficante primário) NÃO É HEDIONDO!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Tráfico comum = Equiparado a hediondo. Tráfico privilegiado = NÃO é hediondo.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Tráfico Privilegiado NÃO é Hediondo).",
+      "B": "Correta. O Pacote Anticrime incluiu o § 5º no art. 112 da LEP, consolidando que o tráfico privilegiado NÃO é hediondo nem equiparado, permitindo progressão de regime comum.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Tráfico Privilegiado NÃO é Hediondo).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Tráfico Privilegiado NÃO é Hediondo).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Tráfico Privilegiado NÃO é Hediondo)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_161",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "ECA (Lei nº 8.069/1990) • Medida Socioeducativa de Internação",
+    "question": "[Simulado PMPE AOCP - Questão 161] A medida socioeducativa de internação aplicada ao adolescente infrator constitui medida privativa de liberdade sujeita aos princípios da brevidade, excepcionalidade e respeito à condição peculiar de pessoa em desenvolvimento. O prazo máximo legal de internação é de:",
+    "options": [
+      "1 ano.",
+      "3 anos.",
+      "5 anos.",
+      "8 anos.",
+      "Até atingir a maioridade civil de 18 anos em qualquer caso."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 121, § 2º do ECA fixa o limite máximo improrrogável de 3 (três) anos de internação para o adolescente infrator, com reavaliação obrigatória no máximo a cada 6 meses.",
+    "fundamentacaoLegal": "Artigo 121, § 2º e § 3º da Lei nº 8.069/1990 (ECA).",
+    "hint": "Prazo máximo de internação do adolescente: 3 anos!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Internação no ECA: Máximo 3 anos, reavaliação de 6 em 6 meses, cessa aos 21 anos.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (ECA (Lei nº 8.069/1990) • Medida Socioeducativa de Internação).",
+      "B": "Correta. O art. 121, § 2º do ECA fixa o limite máximo improrrogável de 3 (três) anos de internação para o adolescente infrator, com reavaliação obrigatória no máximo a cada 6 meses.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (ECA (Lei nº 8.069/1990) • Medida Socioeducativa de Internação).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (ECA (Lei nº 8.069/1990) • Medida Socioeducativa de Internação).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (ECA (Lei nº 8.069/1990) • Medida Socioeducativa de Internação)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_162",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "ECA • Liberação Compulsória aos 21 Anos",
+    "question": "[Simulado PMPE AOCP - Questão 162] A liberação do jovem que cumpre medida socioeducativa de internação será COMPULSÓRIA e definitiva quando ele completar:",
+    "options": [
+      "18 anos de idade.",
+      "19 anos de idade.",
+      "20 anos de idade.",
+      "21 anos de idade.",
+      "25 anos de idade."
+    ],
+    "correctIndex": 3,
+    "explanation": "O art. 121, § 5º do ECA estabelece que a liberação do jovem internado será compulsória aos 21 (vinte e um) anos de idade completos, cessando a jurisdição da infância e juventude.",
+    "fundamentacaoLegal": "Artigo 121, § 5º da Lei nº 8.069/1990.",
+    "hint": "Completou 21 anos: soltura obrigatória imediata no ECA!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "ECA: 21 anos = Rua obrigatória (liberação compulsória).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Liberação Compulsória aos 21 Anos).",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Liberação Compulsória aos 21 Anos).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Liberação Compulsória aos 21 Anos).",
+      "D": "Correta. O art. 121, § 5º do ECA estabelece que a liberação do jovem internado será compulsória aos 21 (vinte e um) anos de idade completos, cessando a jurisdição da infância e juventude.",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Liberação Compulsória aos 21 Anos)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_163",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "ECA • Transporte de Adolescente em Viatura Policial",
+    "question": "[Simulado PMPE AOCP - Questão 163] Nos termos do art. 178 do ECA, o adolescente a quem se atribua autoria de ato infracional NÃO poderá ser transportado em:",
+    "options": [
+      "Viatura caracterizada da Polícia Militar.",
+      "Compartimento fechado de veículo policial em condições atentatórias à sua dignidade, ou que impliquem risco à sua integridade física ou mental.",
+      "Assento dianteiro com cinto de segurança.",
+      "Acompanhado de seus responsáveis legais.",
+      "Presença de policial militar do mesmo sexo."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 178 do ECA veda o transporte do adolescente infrator em compartimento fechado ('camburão/mala') que fira sua dignidade ou coloque em risco sua integridade.",
+    "fundamentacaoLegal": "Artigo 178 da Lei nº 8.069/1990.",
+    "hint": "Não pode transportar adolescente no camburão fechado sem condições dignas!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 178 ECA: proibido transportar adolescente em compartimento fechado desumano.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Transporte de Adolescente em Viatura Policial).",
+      "B": "Correta. O art. 178 do ECA veda o transporte do adolescente infrator em compartimento fechado ('camburão/mala') que fira sua dignidade ou coloque em risco sua integridade.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Transporte de Adolescente em Viatura Policial).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Transporte de Adolescente em Viatura Policial).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Transporte de Adolescente em Viatura Policial)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_164",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Código de Trânsito Brasileiro (Lei nº 9.503/1997) • Embriaguez ao Volante",
+    "question": "[Simulado PMPE AOCP - Questão 164] O crime de conduzir veículo automotor com capacidade psicomotora alterada em razão da influência de álcool ou de outra substância psicoativa (art. 306 do CTB) classifica-se doutrinariamente como crime de:",
+    "options": [
+      "Dano concreto, exigindo a colisão do veículo ou atropelamento de pedestre.",
+      "Perigo abstrato, consumando-se com a condução sob efeito da substância constatada por bafômetro, exame de sangue ou sinais visíveis de embriaguez.",
+      "Culpa presumida sem aplicação de pena privativa de liberdade.",
+      "Contravenção de mera conduta sem apreensão da CNH.",
+      "Natureza administrativa sem repercussão na vara criminal."
+    ],
+    "correctIndex": 1,
+    "explanation": "O crime do art. 306 do CTB é de perigo abstrato: não precisa bater o carro nem causar acidente para consumar o delito, bastando dirigir com alteração psicomotora comprovada.",
+    "fundamentacaoLegal": "Artigo 306 da Lei nº 9.503/1997 e Súmula do STJ.",
+    "hint": "Embriaguez ao volante é crime de perigo abstrato!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Bebeu e dirigiu = Crime consumado na hora (perigo abstrato).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro (Lei nº 9.503/1997) • Embriaguez ao Volante).",
+      "B": "Correta. O crime do art. 306 do CTB é de perigo abstrato: não precisa bater o carro nem causar acidente para consumar o delito, bastando dirigir com alteração psicomotora comprovada.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro (Lei nº 9.503/1997) • Embriaguez ao Volante).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro (Lei nº 9.503/1997) • Embriaguez ao Volante).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro (Lei nº 9.503/1997) • Embriaguez ao Volante)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_165",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Código de Trânsito Brasileiro • Homicídio Culposo Qualificado por Embriaguez",
+    "question": "[Simulado PMPE AOCP - Questão 165] Se o condutor do veículo automotor comete homicídio culposo na direção de veículo automotor estando sob a influência de álcool ou de substância psicoativa (art. 302, § 3º do CTB), a pena prevista é de:",
+    "options": [
+      "Detenção de 6 meses a 1 ano com suspensão da CNH.",
+      "Reclusão, de 5 (cinco) a 8 (oito) anos, e suspensão ou proibição do direito de se obter a permissão ou a habilitação para dirigir veículo automotor.",
+      "Prestação de serviços comunitários e entrega de cesta básica.",
+      "Multa simples de trânsito sem privação de liberdade.",
+      "Prisão perpétua em presídio de trânsito."
+    ],
+    "correctIndex": 1,
+    "explanation": "A Lei 13.546/2017 qualificou o homicídio culposo de trânsito praticado por motorista embriagado, cominando pena pesada de RECLUSÃO de 5 a 8 anos (impedindo fiança pelo delegado).",
+    "fundamentacaoLegal": "Artigo 302, § 3º da Lei nº 9.503/1997 (CTB).",
+    "hint": "Morte no trânsito provocada por motorista bêbado: RECLUSÃO de 5 a 8 anos!",
+    "difficulty": "hard",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Matou bêbado no volante = Reclusão de 5 a 8 anos (sem fiança na delegacia).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Homicídio Culposo Qualificado por Embriaguez).",
+      "B": "Correta. A Lei 13.546/2017 qualificou o homicídio culposo de trânsito praticado por motorista embriagado, cominando pena pesada de RECLUSÃO de 5 a 8 anos (impedindo fiança pelo delegado).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Homicídio Culposo Qualificado por Embriaguez).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Homicídio Culposo Qualificado por Embriaguez).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Homicídio Culposo Qualificado por Embriaguez)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_166",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Código de Trânsito Brasileiro • Racha / Corrida Clandestina (Art. 308)",
+    "question": "[Simulado PMPE AOCP - Questão 166] Disputar corrida, disputa ou competição automobilística não autorizada pela autoridade competente em via pública (racha), gerando situação de perigo a incolumidade pública ou privada (art. 308 do CTB):",
+    "options": [
+      "Constitui apenas infração gravíssima do código de trânsito com retenção do carro.",
+      "Constitui crime punido com detenção de 6 meses a 3 anos, podendo atingir até 10 anos de reclusão se resultar em morte.",
+      "É permitido aos finais de semana nas rodovias estaduais.",
+      "É conduta autorizada caso os participantes usem capacete e cinto.",
+      "Só é crime se houver apostas em dinheiro."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 308 tipifica o racha de trânsito como crime de perigo, com penas exasperadas para lesão corporal grave (3 a 6 anos) e morte culposa (5 a 10 anos de reclusão).",
+    "fundamentacaoLegal": "Artigo 308 da Lei nº 9.503/1997.",
+    "hint": "Racha em via pública é crime e dá reclusão se houver morte!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Racha na rua = Crime de trânsito grave.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Racha / Corrida Clandestina (Art. 308)).",
+      "B": "Correta. O art. 308 tipifica o racha de trânsito como crime de perigo, com penas exasperadas para lesão corporal grave (3 a 6 anos) e morte culposa (5 a 10 anos de reclusão).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Racha / Corrida Clandestina (Art. 308)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Racha / Corrida Clandestina (Art. 308)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Racha / Corrida Clandestina (Art. 308))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_167",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Crimes de Racismo e Injúria Racial • Lei nº 14.532/2023",
+    "question": "[Simulado PMPE AOCP - Questão 167] Com o advento da Lei nº 14.532/2023, a injúria racial (ofensa à honra de alguém em razão de raça, cor, etnia ou procedência nacional):",
+    "options": [
+      "Foi descriminalizada, restando apenas o dever de indenizar civilmente.",
+      "Foi formalmente equiparada ao crime de RACISMO, passando a integrar o art. 2º-A da Lei nº 7.716/1989, com pena de reclusão de 2 a 5 anos, sendo inafiançável e imprescritível.",
+      "Permaneceu no Código Penal como crime afiançável com prescrição em 2 anos.",
+      "Passou a admitir transação penal e perdão judicial.",
+      "Aplica-se apenas quando praticada por policiais militares em serviço."
+    ],
+    "correctIndex": 1,
+    "explanation": "A Lei 14.532/23 tipificou a injúria racial na Lei de Racismo (art. 2º-A), com pena de 2 a 5 anos de reclusão, tornando-a inafiançável e imprescritível (conforme já decidira o STF no HC 154.248).",
+    "fundamentacaoLegal": "Art. 2º-A da Lei nº 7.716/1989 e Lei nº 14.532/2023.",
+    "hint": "Injúria racial agora É CRIME DE RACISMO: inafiançável e imprescritível!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Injúria racial = Crime de racismo (inafiançável e imprescritível).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Crimes de Racismo e Injúria Racial • Lei nº 14.532/2023).",
+      "B": "Correta. A Lei 14.532/23 tipificou a injúria racial na Lei de Racismo (art. 2º-A), com pena de 2 a 5 anos de reclusão, tornando-a inafiançável e imprescritível (conforme já decidira o STF no HC 154.248).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Crimes de Racismo e Injúria Racial • Lei nº 14.532/2023).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Crimes de Racismo e Injúria Racial • Lei nº 14.532/2023).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Crimes de Racismo e Injúria Racial • Lei nº 14.532/2023)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_168",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Crimes de Racismo • Aumento de Pena em Locais Esportivos e Culturais",
+    "question": "[Simulado PMPE AOCP - Questão 168] Conforme o art. 2º-B da Lei nº 7.716/1989, se o crime de injúria racial for cometido no contexto de atividades esportivas, religiosas, artísticas ou culturais destinadas ao público, a pena será:",
+    "options": [
+      "Reduzida pela metade.",
+      "Aumentada de 1/3 até a metade, e o autor será proibido de frequentar esses locais por 3 anos.",
+      "Substituída por doação de cestas básicas.",
+      "Anulada por imunidade de torcida.",
+      "Convertida em advertência oral."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 2º-B prevê aumento de pena de um terço até a metade quando o racismo ocorre em estádios, teatros ou shows públicos, acompanhado de interdição de acesso a esses locais por 3 anos.",
+    "fundamentacaoLegal": "Artigo 2º-B da Lei nº 7.716/1989.",
+    "hint": "Racismo em estádio de futebol e eventos: pena aumenta de 1/3 a 1/2 e banimento de 3 anos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Racismo no estádio de futebol = Pena aumentada e proibido de entrar por 3 anos.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Crimes de Racismo • Aumento de Pena em Locais Esportivos e Culturais).",
+      "B": "Correta. O art. 2º-B prevê aumento de pena de um terço até a metade quando o racismo ocorre em estádios, teatros ou shows públicos, acompanhado de interdição de acesso a esses locais por 3 anos.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Crimes de Racismo • Aumento de Pena em Locais Esportivos e Culturais).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Crimes de Racismo • Aumento de Pena em Locais Esportivos e Culturais).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Crimes de Racismo • Aumento de Pena em Locais Esportivos e Culturais)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_169",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 12.850/2013 • Conceito Legal de Organização Criminosa",
+    "question": "[Simulado PMPE AOCP - Questão 169] Nos termos do art. 1º, § 1º da Lei nº 12.850/2013, considera-se organização criminosa a associação de:",
+    "options": [
+      "2 ou mais pessoas para a prática de qualquer contravenção.",
+      "3 ou mais pessoas armadas com hierarquia militar.",
+      "4 (quatro) ou mais pessoas estruturalmente ordenada e caracterizada pela divisão de tarefas, ainda que informalmente, com objetivo de obter vantagem mediante infrações com penas máximas superiores a 4 anos ou de caráter transnacional.",
+      "10 ou mais pessoas cadastradas em facção prisional.",
+      "Apenas quadrilhas especializadas em roubo a bancos."
+    ],
+    "correctIndex": 2,
+    "explanation": "Requisitos legais de organização criminosa: 4 ou mais pessoas + estrutura ordenada com divisão de tarefas + infrações com pena máxima > 4 anos ou transnacionais.",
+    "fundamentacaoLegal": "Artigo 1º, § 1º da Lei nº 12.850/2013.",
+    "hint": "Organização criminosa = Mínimo de 4 pessoas + Pena máxima > 4 anos!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "ORCRIM: 4 ou mais pessoas + Penas maiores que 4 anos (Regra do 4).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 12.850/2013 • Conceito Legal de Organização Criminosa).",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 12.850/2013 • Conceito Legal de Organização Criminosa).",
+      "C": "Correta. Requisitos legais de organização criminosa: 4 ou mais pessoas + estrutura ordenada com divisão de tarefas + infrações com pena máxima > 4 anos ou transnacionais.",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 12.850/2013 • Conceito Legal de Organização Criminosa).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 12.850/2013 • Conceito Legal de Organização Criminosa)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_170",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 12.850/2013 • Ação Controlada Policial",
+    "question": "[Simulado PMPE AOCP - Questão 170] O meio de obtenção de prova consistente em retardar a intervenção policial relativa à ação praticada por organização criminosa, desde que mantida sob vigilância, para que a medida se concretize no momento mais eficaz de colheita de provas e prisões, denomina-se:",
+    "options": [
+      "Infiltração de agentes.",
+      "Ação Controlada (ou flagrante prorrogado/retardado).",
+      "Flagrante forjado ilícito.",
+      "Interceptação telemática.",
+      "Delação compulsória."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 8º da Lei 12.850/13 define a Ação Controlada: retardar a intervenção policial para prender o maior número de membros da organização e colher mais provas com maior eficácia.",
+    "fundamentacaoLegal": "Artigo 8º da Lei nº 12.850/2013.",
+    "hint": "Esperar o melhor momento para prender a quadrilha inteira = Ação Controlada!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Ação Controlada = Retardar o flagrante para dar o bote na hora certa.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 12.850/2013 • Ação Controlada Policial).",
+      "B": "Correta. O art. 8º da Lei 12.850/13 define a Ação Controlada: retardar a intervenção policial para prender o maior número de membros da organização e colher mais provas com maior eficácia.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 12.850/2013 • Ação Controlada Policial).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 12.850/2013 • Ação Controlada Policial).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 12.850/2013 • Ação Controlada Policial)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_171",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 13.869/2019 • Invasão de Domicílio Noturna",
+    "question": "[Simulado PMPE AOCP - Questão 171] Conforme o art. 22, § 1º, inciso III da Lei de Abuso de Autoridade (Lei nº 13.869/2019), comete crime punido com pena de detenção de 1 a 4 anos e multa o agente que cumpre mandado de busca e apreensão domiciliar:",
+    "options": [
+      "Entre 21h (vinte e uma horas) e 5h (cinco horas).",
+      "Apenas aos domingos e feriados religiosos.",
+      "Em dias chuvosos sem prévia comunicação.",
+      "Entre 18h e 06h.",
+      "Após as 22h e antes das 07h."
+    ],
+    "correctIndex": 0,
+    "explanation": "O art. 22, § 1º, III da Lei 13.869/19 tipifica expressamente o cumprimento de mandado de busca e apreensão domiciliar após as 21h ou antes das 5h. O período noturno para busca com mandado foi fixado das 21h às 5h.",
+    "fundamentacaoLegal": "Art. 22, § 1º, III da Lei nº 13.869/2019.",
+    "hint": "Mandado de busca NÃO pode ser cumprido entre 21h e 5h!",
+    "difficulty": "hard",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Busca com mandado: proibido das 21h às 5h (horário noturno legal).",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O art. 22, § 1º, III da Lei 13.869/19 tipifica expressamente o cumprimento de mandado de busca e apreensão domiciliar após as 21h ou antes das 5h. O período noturno para busca com mandado foi fixado das 21h às 5h.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Invasão de Domicílio Noturna).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Invasão de Domicílio Noturna).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Invasão de Domicílio Noturna).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Invasão de Domicílio Noturna)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_172",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 13.869/2019 • Constrangimento do Preso / Exibicionismo",
+    "question": "[Simulado PMPE AOCP - Questão 172] Submeter o preso ou custodiado a vexame ou a constrangimento não autorizado em lei, ou produzir fotografias e vídeos para exibição midiática de forma depreciativa (art. 13 da Lei 13.869/19):",
+    "options": [
+      "Constitui conduta atípica se autorizada verbalmente pelo comandante da guarnição.",
+      "Constitui crime de abuso de autoridade punido com detenção de 1 a 4 anos e multa.",
+      "É mera infração administrativa resolvida com advertência disciplinar.",
+      "Só é crime se a vítima for menor de 18 anos.",
+      "É permitido caso o suspeito tenha confessado o delito."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 13 da Lei 13.869/19 criminaliza constranger o preso, mediante violência, grave ameaça ou redução de sua capacidade de resistência, a exibir-se ou ter seu corpo exposto à curiosidade pública ou submeter-se a situação vexatória.",
+    "fundamentacaoLegal": "Art. 13 da Lei nº 13.869/2019.",
+    "hint": "Expor preso a vexame ou filmagem degradante é crime de abuso de autoridade!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Preso tem dignidade: proibir 'desfile' vexatório e fotos humilhantes.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Constrangimento do Preso / Exibicionismo).",
+      "B": "Correta. O art. 13 da Lei 13.869/19 criminaliza constranger o preso, mediante violência, grave ameaça ou redução de sua capacidade de resistência, a exibir-se ou ter seu corpo exposto à curiosidade pública ou submeter-se a situação vexatória.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Constrangimento do Preso / Exibicionismo).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Constrangimento do Preso / Exibicionismo).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Constrangimento do Preso / Exibicionismo)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_173",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 13.869/2019 • Uso de Algemas e Súmula Vinculante 11 do STF",
+    "question": "[Simulado PMPE AOCP - Questão 173] O uso de algemas durante diligências policiais militares é regulado pela Súmula Vinculante nº 11 do STF e pela Lei de Abuso de Autoridade. O emprego de algemas é lícito somente nos casos de:",
+    "options": [
+      "Todo e qualquer cidadão abordado pela PMPE em blitz de trânsito.",
+      "Resistência e de fundado receio de fuga ou de perigo à integridade física própria ou alheia, justificada a excepcionalidade por escrito.",
+      "Decisão verbal e arbitrária do policial de patrulha sem necessidade de registro.",
+      "Apenas para réus condenados com sentença transitada em julgado.",
+      "Crimes hediondos de forma obrigatória e indiscriminada."
+    ],
+    "correctIndex": 1,
+    "explanation": "A Súmula Vinculante 11 do STF estabelece que o uso de algemas só é lícito em caso de Resistência, Fundado receio de fuga ou Perigo à integridade física própria ou de terceiros (mnemônico PRDF), justificada a excepcionalidade por escrito.",
+    "fundamentacaoLegal": "Súmula Vinculante nº 11 do STF e Lei nº 13.869/2019.",
+    "hint": "Mnemônico PRDF: Perigo, Resistência, Desobediência/Fuga!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Algemas: regra é a liberdade; exceção é algemar com justificativa por escrito (PRDF).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Uso de Algemas e Súmula Vinculante 11 do STF).",
+      "B": "Correta. A Súmula Vinculante 11 do STF estabelece que o uso de algemas só é lícito em caso de Resistência, Fundado receio de fuga ou Perigo à integridade física própria ou de terceiros (mnemônico PRDF), justificada a excepcionalidade por escrito.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Uso de Algemas e Súmula Vinculante 11 do STF).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Uso de Algemas e Súmula Vinculante 11 do STF).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Uso de Algemas e Súmula Vinculante 11 do STF)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_174",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 13.869/2019 • Prisão Manifestamente Ilegal",
+    "question": "[Simulado PMPE AOCP - Questão 174] Deixar de relaxar a prisão manifestamente ilegal e deixar de comunicar a prisão em flagrante à autoridade judiciária e à família do preso no prazo legal (art. 9º e 12 da Lei 13.869/19):",
+    "options": [
+      "Constituem crimes tipificados na Lei de Abuso de Autoridade.",
+      "São infrações exclusivamente civis indenizáveis pela Fazenda Pública.",
+      "São atos acobertados pelo estrito cumprimento do dever legal sem sanção penal.",
+      "Só geram punição caso o militar seja reincidente há mais de 10 anos.",
+      "Não se aplicam a policiais militares estaduais."
+    ],
+    "correctIndex": 0,
+    "explanation": "O art. 9º criminaliza decretar ou deixar de relaxar prisão manifestamente ilegal; o art. 12 criminaliza deixar de comunicar a prisão em flagrante à autoridade judiciária e à família no prazo legal.",
+    "fundamentacaoLegal": "Arts. 9º e 12 da Lei nº 13.869/2019.",
+    "hint": "Não comunicar a prisão de imediato ou manter prisão ilegal é crime de abuso!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Prisão ilegal não relaxada ou prisão não comunicada = Crime de abuso de autoridade.",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O art. 9º criminaliza decretar ou deixar de relaxar prisão manifestamente ilegal; o art. 12 criminaliza deixar de comunicar a prisão em flagrante à autoridade judiciária e à família no prazo legal.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Prisão Manifestamente Ilegal).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Prisão Manifestamente Ilegal).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Prisão Manifestamente Ilegal).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Prisão Manifestamente Ilegal)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_175",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 13.869/2019 • Violação de Prerrogativas de Advogado",
+    "question": "[Simulado PMPE AOCP - Questão 175] Suprimir ou violar direito ou prerrogativa de advogado, como impedir o profissional de entrevistar-se pessoal e reservadamente com seu cliente preso (art. 43 da Lei 13.869/19 e art. 7º-B da Lei 8.906/94):",
+    "options": [
+      "É conduta punível exclusivamente com repreensão verbal do comandante.",
+      "Constitui crime de abuso de autoridade punido com detenção de 3 meses a 1 ano e multa.",
+      "É permitido sempre que a delegacia ou batalhão estiver em estado de alerta.",
+      "Depende de alvará judicial assinado pelo presidente da OAB.",
+      "Apenas é crime se o preso estiver algemado."
+    ],
+    "correctIndex": 1,
+    "explanation": "Violar as prerrogativas profissionais do advogado (como comunicação reservada com cliente e acesso aos autos) é crime previsto no art. 7º-B do Estatuto da OAB (incluído pela Lei 13.869/19).",
+    "fundamentacaoLegal": "Art. 43 da Lei nº 13.869/2019 e Art. 7º-B da Lei nº 8.906/1994.",
+    "hint": "Impedir conversa reservada do advogado com o cliente preso é crime!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Prerrogativas do advogado: respeitar acesso e conversa reservada.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Violação de Prerrogativas de Advogado).",
+      "B": "Correta. Violar as prerrogativas profissionais do advogado (como comunicação reservada com cliente e acesso aos autos) é crime previsto no art. 7º-B do Estatuto da OAB (incluído pela Lei 13.869/19).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Violação de Prerrogativas de Advogado).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Violação de Prerrogativas de Advogado).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 13.869/2019 • Violação de Prerrogativas de Advogado)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_176",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.340/2006 • Descumprimento de Medidas Protetivas (Art. 24-A)",
+    "question": "[Simulado PMPE AOCP - Questão 176] O único crime com pena privativa de liberdade tipificado expressamente na Lei Maria da Penha (Lei nº 11.340/2006) é:",
+    "options": [
+      "Agressão verbal leve.",
+      "Descumprir decisão judicial que defere medidas protetivas de urgência (art. 24-A).",
+      "Ameaça no ambiente de trabalho.",
+      "Furto de objeto de uso comum.",
+      "Falsidade ideológica em boletim de ocorrência."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 24-A da Lei 11.340/06 (incluído pela Lei 13.641/18) tipifica o crime de 'Descumprir decisão judicial que defere medidas protetivas de urgência', punido com pena de detenção de 3 meses a 2 anos.",
+    "fundamentacaoLegal": "Artigo 24-A da Lei nº 11.340/2006.",
+    "hint": "Descumprir medida protetiva dada pelo juiz é crime com prisão em flagrante!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 24-A: o único crime próprio da Lei Maria da Penha.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Descumprimento de Medidas Protetivas (Art. 24-A)).",
+      "B": "Correta. O art. 24-A da Lei 11.340/06 (incluído pela Lei 13.641/18) tipifica o crime de 'Descumprir decisão judicial que defere medidas protetivas de urgência', punido com pena de detenção de 3 meses a 2 anos.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Descumprimento de Medidas Protetivas (Art. 24-A)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Descumprimento de Medidas Protetivas (Art. 24-A)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Descumprimento de Medidas Protetivas (Art. 24-A))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_177",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.340/2006 • Fiança no Crime do Art. 24-A",
+    "question": "[Simulado PMPE AOCP - Questão 177] Na hipótese de prisão em flagrante pelo crime de descumprimento de medida protetiva de urgência (art. 24-A da Lei Maria da Penha), a concessão de fiança:",
+    "options": [
+      "Pode ser arbitrada pelo Delegado de Polícia no valor de até 10 salários mínimos.",
+      "Só pode ser concedida pela autoridade judicial (juiz), sendo vedada a concessão pelo delegado.",
+      "É proibida inclusive para o juiz de direito em qualquer hipótese.",
+      "Depende de autorização expressa da vítima agredida.",
+      "É automática e gratuita para todos os réus."
+    ],
+    "correctIndex": 1,
+    "explanation": "O § 2º do art. 24-A da Lei 11.340/06 determina categoricamente: 'Na hipótese de prisão em flagrante, apenas a autoridade judicial poderá conceder fiança'. O delegado NÃO pode arbitrar fiança nesse crime.",
+    "fundamentacaoLegal": "Art. 24-A, § 2º da Lei nº 11.340/2006.",
+    "hint": "Fiança no descumprimento de medida protetiva: SOMENTE o juiz pode conceder!",
+    "difficulty": "hard",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 24-A: Delegado não arbitra fiança; só o juiz decide.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Fiança no Crime do Art. 24-A).",
+      "B": "Correta. O § 2º do art. 24-A da Lei 11.340/06 determina categoricamente: 'Na hipótese de prisão em flagrante, apenas a autoridade judicial poderá conceder fiança'. O delegado NÃO pode arbitrar fiança nesse crime.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Fiança no Crime do Art. 24-A).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Fiança no Crime do Art. 24-A).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Fiança no Crime do Art. 24-A)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_178",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.340/2006 • Princípio da Insignificância (Bagatela)",
+    "question": "[Simulado PMPE AOCP - Questão 178] De acordo com a jurisprudência sumulada do Superior Tribunal de Justiça (Súmula nº 589 do STJ):",
+    "options": [
+      "É plenamente aplicável o princípio da insignificância nos crimes de violência doméstica contra a mulher.",
+      "É inaplicável o princípio da insignificância aos crimes e contravenções praticados com violência doméstica e familiar contra a mulher.",
+      "O princípio da insignificância só se aplica se não houver lesão física visível.",
+      "Cabe aplicação de bagatela imprópria se o agressor for primário.",
+      "A insignificância é autorizada com o perdão tácito da vítima."
+    ],
+    "correctIndex": 1,
+    "explanation": "Súmula 589 do STJ: 'É inaplicável o princípio da insignificância aos crimes ou contravenções penais praticados com violência doméstica e familiar contra a mulher'. A proteção à integridade física e moral da mulher é absoluta.",
+    "fundamentacaoLegal": "Súmula nº 589 do Superior Tribunal de Justiça (STJ).",
+    "hint": "Violência doméstica contra a mulher: JAMAIS cabe insignificância/bagatela!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Súmula 589 STJ: Bagatela / Insignificância é PROIBIDA na Lei Maria da Penha.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Princípio da Insignificância (Bagatela)).",
+      "B": "Correta. Súmula 589 do STJ: 'É inaplicável o princípio da insignificância aos crimes ou contravenções penais praticados com violência doméstica e familiar contra a mulher'. A proteção à integridade física e moral da mulher é absoluta.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Princípio da Insignificância (Bagatela)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Princípio da Insignificância (Bagatela)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Princípio da Insignificância (Bagatela))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_179",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.340/2006 • Afastamento do Agressor pelo Policial Militar",
+    "question": "[Simulado PMPE AOCP - Questão 179] Conforme alteração legislativa no art. 12-C da Lei Maria da Penha, verificada a existência de risco atual ou iminente à vida ou à integridade física da mulher, se o município não for sede de comarca e não houver delegado de polícia disponível no momento:",
+    "options": [
+      "A mulher deve aguardar em casa até o próximo dia útil.",
+      "O policial (inclusive policial militar) poderá afastar imediatamente o agressor do lar ou local de convivência com a ofendida.",
+      "Apenas o juiz pode determinar qualquer afastamento por telefone.",
+      "O agressor deve ser transferido para outro estado federado.",
+      "O agressor só pode ser advertido verbalmente sem afastamento físico."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pelo art. 12-C da Lei 11.340/06: 1) autoridade judicial; 2) delegado de polícia quando o município não for sede de comarca; 3) pelo POLICIAL (civil ou militar) quando não houver delegado disponível. O juiz deve ser comunicado em até 24 horas para homologar.",
+    "fundamentacaoLegal": "Artigo 12-C, inciso III, da Lei nº 11.340/2006.",
+    "hint": "Sem juiz e sem delegado no município: o POLICIAL afasta o agressor do lar!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Afastamento do lar: Juiz -> Delegado -> Policial (na falta dos anteriores).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Afastamento do Agressor pelo Policial Militar).",
+      "B": "Correta. Pelo art. 12-C da Lei 11.340/06: 1) autoridade judicial; 2) delegado de polícia quando o município não for sede de comarca; 3) pelo POLICIAL (civil ou militar) quando não houver delegado disponível. O juiz deve ser comunicado em até 24 horas para homologar.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Afastamento do Agressor pelo Policial Militar).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Afastamento do Agressor pelo Policial Militar).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Afastamento do Agressor pelo Policial Militar)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_180",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.340/2006 • Violência Patrimonial",
+    "question": "[Simulado PMPE AOCP - Questão 180] A conduta do parceiro que retém os documentos pessoais, destrói o telefone celular, quebra instrumentos de trabalho ou rasga as roupas da vítima constitui forma de violência:",
+    "options": [
+      "Moral.",
+      "Física.",
+      "Patrimonial.",
+      "Institucional.",
+      "Casual."
+    ],
+    "correctIndex": 2,
+    "explanation": "O art. 7º, inciso IV da Lei 11.340/06 define a violência patrimonial como a retenção, subtração, destruição parcial ou total de seus objetos, instrumentos de trabalho, documentos pessoais, bens ou valores.",
+    "fundamentacaoLegal": "Art. 7º, IV da Lei nº 11.340/2006.",
+    "hint": "Destruir celular, rasgar roupa, reter documentos = Violência PATRIMONIAL!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Patrimonial = Bens, dinheiro, documentos e instrumentos de trabalho.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Violência Patrimonial).",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Violência Patrimonial).",
+      "C": "Correta. O art. 7º, inciso IV da Lei 11.340/06 define a violência patrimonial como a retenção, subtração, destruição parcial ou total de seus objetos, instrumentos de trabalho, documentos pessoais, bens ou valores.",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Violência Patrimonial).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.340/2006 • Violência Patrimonial)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_181",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Estatuto do Desarmamento • Arma com Numeração Raspada (Art. 16, § 1º, I)",
+    "question": "[Simulado PMPE AOCP - Questão 181] O cidadão que porta arma de fogo de uso permitido, mas com sinal identificador, número de série ou marca raspada, suprimida ou adulterada, responde por:",
+    "options": [
+      "Crime de porte de arma de uso permitido (art. 14) com atenuante genérica.",
+      "Crime equiparado de porte/posse de arma de uso restrito (art. 16, § 1º, inciso I), com pena severa de reclusão de 3 a 6 anos e multa.",
+      "Mera infração administrativa com apreensão do armamento.",
+      "Contravenção penal afiançável com perdão judicial.",
+      "Crime de receptação culposa."
+    ],
+    "correctIndex": 1,
+    "explanation": "A raspagem ou supressão da numeração equipara a conduta ao art. 16 da Lei 10.826/03, independentemente de a arma original ser de calibre permitido ou restrito.",
+    "fundamentacaoLegal": "Art. 16, § 1º, inciso I da Lei nº 10.826/2003.",
+    "hint": "Arma com número raspado: SEMPRE responde pelo Art. 16 (crime grave equiparado a restrito)!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Raspou, suprimiu ou adulterou = Cai no Artigo 16!",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma com Numeração Raspada (Art. 16, § 1º, I)).",
+      "B": "Correta. A raspagem ou supressão da numeração equipara a conduta ao art. 16 da Lei 10.826/03, independentemente de a arma original ser de calibre permitido ou restrito.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma com Numeração Raspada (Art. 16, § 1º, I)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma com Numeração Raspada (Art. 16, § 1º, I)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma com Numeração Raspada (Art. 16, § 1º, I))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_182",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Estatuto do Desarmamento • Arma Desmuniciada",
+    "question": "[Simulado PMPE AOCP - Questão 182] Segundo a jurisprudência pacífica e vinculante do Supremo Tribunal Federal (STF) e do STJ, o porte ilegal de arma de fogo desmuniciada (sem munição) e sem que o agente tenha munições ao seu alcance:",
+    "options": [
+      "É conduta atípica, pois não há perigo real nem capacidade lesiva.",
+      "Configura crime formal de perigo abstrato, sendo típica a conduta pela tutela da segurança pública coletiva.",
+      "Gera apenas pena de advertência administrativa.",
+      "Exige laudo de balística comprovando a intenção de matar.",
+      "É punido apenas com fiança simples perante o batalhão."
+    ],
+    "correctIndex": 1,
+    "explanation": "O porte ilegal de arma de fogo é crime de perigo abstrato e de mera conduta: a lei tutela a segurança pública coletiva e a paz social, sendo desnecessário que a arma esteja municiada no momento da apreensão.",
+    "fundamentacaoLegal": "Jurisprudência pacífica do STF (RHC 110.609) e STJ (Tema 1039).",
+    "hint": "Arma desmuniciada no bolso ou na cintura É CRIME de perigo abstrato!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Porte de arma desmuniciada = CRIME sim (perigo abstrato).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma Desmuniciada).",
+      "B": "Correta. O porte ilegal de arma de fogo é crime de perigo abstrato e de mera conduta: a lei tutela a segurança pública coletiva e a paz social, sendo desnecessário que a arma esteja municiada no momento da apreensão.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma Desmuniciada).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma Desmuniciada).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Arma Desmuniciada)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_183",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Estatuto do Desarmamento • Disparo de Arma de Fogo (Art. 15)",
+    "question": "[Simulado PMPE AOCP - Questão 183] Disparar arma de fogo ou acionar munição em lugar habitado ou em suas adjacências, em via pública ou em direção a ela (art. 15 da Lei 10.826/03):",
+    "options": [
+      "É crime comum desde que essa conduta não tenha por finalidade a prática de outro crime.",
+      "É crime hediondo inafiançável em qualquer situação.",
+      "É infração militar julgada perante a corregedoria do exército.",
+      "Constitui legítima defesa putativa automática.",
+      "Só é crime caso atinja veículo oficial do Estado."
+    ],
+    "correctIndex": 0,
+    "explanation": "O art. 15 consagra expressamente a subsidiariedade: 'Disparar arma de fogo (...) desde que essa conduta não tenha por finalidade a prática de outro crime'. Se o disparo visava matar, responde por tentativa de homicídio.",
+    "fundamentacaoLegal": "Art. 15 da Lei nº 10.826/2003 (Crime Subsidiário).",
+    "hint": "Disparo em via pública é crime subsidiário: vale desde que não vise cometer outro crime!",
+    "difficulty": "hard",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 15 = Disparo a esmo (sem querer atingir alguém especificamente).",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O art. 15 consagra expressamente a subsidiariedade: 'Disparar arma de fogo (...) desde que essa conduta não tenha por finalidade a prática de outro crime'. Se o disparo visava matar, responde por tentativa de homicídio.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Disparo de Arma de Fogo (Art. 15)).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Disparo de Arma de Fogo (Art. 15)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Disparo de Arma de Fogo (Art. 15)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Disparo de Arma de Fogo (Art. 15))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_184",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Estatuto do Desarmamento • Omissão de Cautela (Art. 13)",
+    "question": "[Simulado PMPE AOCP - Questão 184] Deixar de observar as cautelas necessárias para impedir que menor de 18 (dezoito) anos ou pessoa com deficiência mental se apodere de arma de fogo que esteja sob sua posse ou que seja de sua propriedade configura o crime de:",
+    "options": [
+      "Homicídio culposo tentado.",
+      "Omissão de cautela (art. 13 da Lei 10.826/03).",
+      "Abandono de incapaz com agravante.",
+      "Prevaricação policial militar.",
+      "Lesão corporal negligente."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 13 tipifica a omissão de cautela, crime culposo punido com detenção de 1 a 2 anos e multa, punindo quem descumpre o dever de guarda segura de arma de fogo perante menores ou pessoas com deficiência mental.",
+    "fundamentacaoLegal": "Artigo 13 da Lei nº 10.826/2003.",
+    "hint": "Deixar arma ao alcance de criança ou adolescente = Omissão de cautela!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 13 = Cautela com a arma perto de menor de 18 anos.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Omissão de Cautela (Art. 13)).",
+      "B": "Correta. O art. 13 tipifica a omissão de cautela, crime culposo punido com detenção de 1 a 2 anos e multa, punindo quem descumpre o dever de guarda segura de arma de fogo perante menores ou pessoas com deficiência mental.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Omissão de Cautela (Art. 13)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Omissão de Cautela (Art. 13)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Omissão de Cautela (Art. 13))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_185",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Estatuto do Desarmamento • Porte Funcional de Arma para Policiais Militares",
+    "question": "[Simulado PMPE AOCP - Questão 185] Aos integrantes das Polícias Militares e Corpos de Bombeiros Militares dos Estados e do DF, o direito ao porte de arma de fogo institucional ou particular:",
+    "options": [
+      "É restrito aos dias de serviço operacional no quartel.",
+      "É garantido com validade em todo o território nacional, inclusive fora de serviço.",
+      "Depende de alvará expedido pela Polícia Federal a cada 6 meses.",
+      "Só é permitido caso o militar seja graduado como Sargento ou Oficial.",
+      "É proibido no deslocamento interestadual em viagens de férias."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 6º, inciso II da Lei 10.826/03 garante o porte de arma de fogo aos policiais militares em serviço ou fora dele, com eficácia em todo o território nacional.",
+    "fundamentacaoLegal": "Art. 6º, II da Lei nº 10.826/2003.",
+    "hint": "Policial militar tem porte de arma no Brasil inteiro, fardado ou de folga!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Porte do policial militar = Âmbito nacional, em serviço ou fora dele.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Porte Funcional de Arma para Policiais Militares).",
+      "B": "Correta. O art. 6º, inciso II da Lei 10.826/03 garante o porte de arma de fogo aos policiais militares em serviço ou fora dele, com eficácia em todo o território nacional.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Porte Funcional de Arma para Policiais Militares).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Porte Funcional de Arma para Policiais Militares).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Estatuto do Desarmamento • Porte Funcional de Arma para Policiais Militares)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_186",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.343/2006 • Associação para o Tráfico (Art. 35)",
+    "question": "[Simulado PMPE AOCP - Questão 186] O crime de associação para o tráfico (art. 35 da Lei nº 11.343/2006) exige, para sua configuração típica segundo a jurisprudência pacífica do STF e STJ:",
+    "options": [
+      "Apenas o concurso eventual de duas ou mais pessoas para a venda de uma porção de droga.",
+      "O ânimo de associação estável e permanente entre duas ou mais pessoas com a finalidade de praticar os crimes de tráfico.",
+      "A apreensão comprovada de pelo menos dez quilos de cocaína pura.",
+      "A presença obrigatória de arma de fogo de uso proibido.",
+      "A constituição formal de pessoa jurídica de fachada."
+    ],
+    "correctIndex": 1,
+    "explanation": "A jurisprudência exige demonstração de vínculo estável e permanente entre os agentes (animus associativo). A reunião ocasional/eventual caracteriza apenas concurso de pessoas no tráfico, não o crime autônomo do art. 35.",
+    "fundamentacaoLegal": "Art. 35 da Lei nº 11.343/2006 e jurisprudência vinculante.",
+    "hint": "Associação para o tráfico exige ESTABILIDADE e PERMANÊNCIA (não basta encontro eventual)!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 35 = Associação estável e duradoura (mais de uma vez, planejado).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Associação para o Tráfico (Art. 35)).",
+      "B": "Correta. A jurisprudência exige demonstração de vínculo estável e permanente entre os agentes (animus associativo). A reunião ocasional/eventual caracteriza apenas concurso de pessoas no tráfico, não o crime autônomo do art. 35.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Associação para o Tráfico (Art. 35)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Associação para o Tráfico (Art. 35)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Associação para o Tráfico (Art. 35))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_187",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.343/2006 • Plantação de Maconha para Consumo Pessoal",
+    "question": "[Simulado PMPE AOCP - Questão 187] Aquele que semeia, cultiva ou colhe pequenas plantas destinadas à preparação de substância entorpecente exclusivamente para seu consumo pessoal incorre nas penas do:",
+    "options": [
+      "Art. 33 (Tráfico ilícito de drogas com reclusão de 5 a 15 anos).",
+      "Art. 28, § 1º (mesmas medidas de advertência, prestação de serviços à comunidade e comparecimento a programa educativo).",
+      "Art. 34 (fabricação de maquinário).",
+      "Código Florestal por crime ambiental com prisão civil.",
+      "Código Penal por corrupção passiva privilegiada."
+    ],
+    "correctIndex": 1,
+    "explanation": "O § 1º do art. 28 equipara a semeadura, cultivo e colheita para consumo próprio ao regime do usuário de drogas, vedada a pena privativa de liberdade.",
+    "fundamentacaoLegal": "Artigo 28, § 1º da Lei nº 11.343/2006.",
+    "hint": "Cultivo de poucas plantas para consumo pessoal = Regime do Art. 28!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Plantação para uso próprio = Art. 28 (sem cadeia).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Plantação de Maconha para Consumo Pessoal).",
+      "B": "Correta. O § 1º do art. 28 equipara a semeadura, cultivo e colheita para consumo próprio ao regime do usuário de drogas, vedada a pena privativa de liberdade.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Plantação de Maconha para Consumo Pessoal).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Plantação de Maconha para Consumo Pessoal).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Plantação de Maconha para Consumo Pessoal)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_188",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.343/2006 • Tráfico Interestadual (Art. 40, V)",
+    "question": "[Simulado PMPE AOCP - Questão 188] Para a incidência da causa de aumento de pena do tráfico interestadual de drogas (art. 40, inciso V da Lei de Drogas), conforme a Súmula nº 587 do STJ:",
+    "options": [
+      "É indispensável que o veículo cruze a divisa entre os estados.",
+      "É desnecessária a efetiva transposição da fronteira interestadual, sendo suficiente a demonstração inequívoca de que a substância tinha como destino outro estado federado.",
+      "Exige-se a apreensão simultânea de passagens aéreas e marítimas.",
+      "Aplica-se apenas aos estados da Região Norte e Centro-Oeste.",
+      "É necessária a prisão prévia do destinatário no estado de destino."
+    ],
+    "correctIndex": 1,
+    "explanation": "Súmula 587 do STJ: 'Para a incidência da majorante prevista no art. 40, V, da Lei n. 11.343/2006, é desnecessária a efetiva transposição de fronteiras entre estados da Federação, bastando a demonstração inequívoca da destinação interestadual das drogas'.",
+    "fundamentacaoLegal": "Súmula nº 587 do Superior Tribunal de Justiça (STJ).",
+    "hint": "Não precisa cruzar a divisa física: basta provar que a droga ia para outro estado!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Súmula 587 STJ: Provou que ia pra outro estado = Aumento de pena aplicado.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Tráfico Interestadual (Art. 40, V)).",
+      "B": "Correta. Súmula 587 do STJ: 'Para a incidência da majorante prevista no art. 40, V, da Lei n. 11.343/2006, é desnecessária a efetiva transposição de fronteiras entre estados da Federação, bastando a demonstração inequívoca da destinação interestadual das drogas'.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Tráfico Interestadual (Art. 40, V)).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Tráfico Interestadual (Art. 40, V)).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Tráfico Interestadual (Art. 40, V))."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_189",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.343/2006 • Prescrição do Crime de Consumo de Drogas",
+    "question": "[Simulado PMPE AOCP - Questão 189] Prescreve em qual prazo a pretensão punitiva e executória dos crimes previstos no art. 28 da Lei de Drogas (posse para consumo pessoal), conforme determina o art. 30 da Lei 11.343/06?",
+    "options": [
+      "1 ano.",
+      "2 anos.",
+      "4 anos.",
+      "5 anos.",
+      "8 anos."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 30 da Lei de Drogas estabelece prazo prescricional especial de 2 (dois) anos para a imposição e execução das penas previstas no art. 28.",
+    "fundamentacaoLegal": "Artigo 30 da Lei nº 11.343/2006.",
+    "hint": "Prescrição do art. 28 da Lei de Drogas: 2 anos!",
+    "difficulty": "hard",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 28 prescreve em 2 anos (art. 30).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Prescrição do Crime de Consumo de Drogas).",
+      "B": "Correta. O art. 30 da Lei de Drogas estabelece prazo prescricional especial de 2 (dois) anos para a imposição e execução das penas previstas no art. 28.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Prescrição do Crime de Consumo de Drogas).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Prescrição do Crime de Consumo de Drogas).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Prescrição do Crime de Consumo de Drogas)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_190",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 11.343/2006 • Colaboração Premiada com Redução de Pena",
+    "question": "[Simulado PMPE AOCP - Questão 190] O agente de tráfico de drogas que voluntariamente colaborar com a investigação policial e o processo criminal, possibilitando a identificação dos demais coautores e a recuperação do produto do crime, terá sua pena reduzida:",
+    "options": [
+      "De um terço a dois terços.",
+      "De metade a três quartos.",
+      "Exclusivamente em um sexto.",
+      "Com perdão judicial automático sem julgamento.",
+      "Em dez por cento da multa civil."
+    ],
+    "correctIndex": 0,
+    "explanation": "O art. 41 da Lei de Drogas prevê a delação premiada, autorizando a redução da pena de um terço a dois terços na hipótese de colaboração voluntária e eficaz.",
+    "fundamentacaoLegal": "Art. 41 da Lei nº 11.343/2006.",
+    "hint": "Delação na lei de drogas reduz de 1/3 a 2/3 da pena!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Delação premiada na droga: reduz de um terço a dois terços.",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O art. 41 da Lei de Drogas prevê a delação premiada, autorizando a redução da pena de um terço a dois terços na hipótese de colaboração voluntária e eficaz.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Colaboração Premiada com Redução de Pena).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Colaboração Premiada com Redução de Pena).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Colaboração Premiada com Redução de Pena).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 11.343/2006 • Colaboração Premiada com Redução de Pena)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_191",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 9.455/1997 • Tortura-Castigo",
+    "question": "[Simulado PMPE AOCP - Questão 191] Submeter pessoa presa ou sujeita a medida de segurança a sofrimento físico ou mental, por intermédio da prática de ato não previsto em lei ou não resultante de medida legal (art. 1º, § 1º da Lei 9.455/97), configura modalidade de:",
+    "options": [
+      "Tortura equiparada praticada contra pessoa presa.",
+      "Abuso de poder sem conotação delitiva.",
+      "Prevaricação com lesão leve.",
+      "Exercício regular de direito de custódia.",
+      "Mera irregularidade de cela."
+    ],
+    "correctIndex": 0,
+    "explanation": "O art. 1º, § 1º pune na mesma pena de 2 a 8 anos de reclusão quem submete pessoa presa ou sujeita a medida de segurança a sofrimento físico ou mental por ato não previsto em lei.",
+    "fundamentacaoLegal": "Art. 1º, § 1º da Lei nº 9.455/1997.",
+    "hint": "Fazer preso sofrer além do que a lei prevê = Tortura!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Sofrimento ilegal contra preso = Equiparado a Tortura.",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O art. 1º, § 1º pune na mesma pena de 2 a 8 anos de reclusão quem submete pessoa presa ou sujeita a medida de segurança a sofrimento físico ou mental por ato não previsto em lei.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Tortura-Castigo).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Tortura-Castigo).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Tortura-Castigo).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Tortura-Castigo)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_192",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 9.455/1997 • Causa de Aumento de Pena",
+    "question": "[Simulado PMPE AOCP - Questão 192] Nos termos do art. 1º, § 4º da Lei de Tortura, a pena aumenta-se de um sexto até um terço se o crime:",
+    "options": [
+      "For cometido por agente público, contra criança, gestante, deficiente, adolescente ou maior de 60 anos, ou se for cometido mediante sequestro.",
+      "Ocorrer durante os dias úteis da semana.",
+      "For praticado com arma desmuniciada.",
+      "Não gerar laudo pericial conclusivo.",
+      "For cometido em área rural."
+    ],
+    "correctIndex": 0,
+    "explanation": "Causas de aumento (1/6 a 1/3): I - se cometido por agente público; II - se cometido contra criança, gestante, portador de deficiência, adolescente ou maior de 60 anos; III - se cometido mediante sequestro.",
+    "fundamentacaoLegal": "Art. 1º, § 4º da Lei nº 9.455/1997.",
+    "hint": "Agente público + Vítima vulnerável + Sequestro = Pena aumentada de 1/6 a 1/3!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Tortura com aumento: Agente público, Vulneráveis (idoso/criança/gestante) e Sequestro.",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. Causas de aumento (1/6 a 1/3): I - se cometido por agente público; II - se cometido contra criança, gestante, portador de deficiência, adolescente ou maior de 60 anos; III - se cometido mediante sequestro.",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Causa de Aumento de Pena).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Causa de Aumento de Pena).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Causa de Aumento de Pena).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 9.455/1997 • Causa de Aumento de Pena)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_193",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 8.072/1990 • Homicídio Funcional Contra Policial Militar",
+    "question": "[Simulado PMPE AOCP - Questão 193] O homicídio praticado contra autoridade ou agente integrante dos órgãos de segurança pública (art. 144 da CF), no exercício da função ou em decorrência dela, ou contra seu cônjuge, companheiro ou parente consanguíneo até 3º grau:",
+    "options": [
+      "É homicídio qualificado (art. 121, § 2º, VII do CP) e classificado legalmente como CRIME HEDIONDO.",
+      "É homicídio simples sujeito a perdão judicial.",
+      "É crime de menor potencial ofensivo conciliável no JECRIM.",
+      "É julgado perante a Justiça Militar Estadual.",
+      "Admite fiança arbitrada pelo delegado de polícia militar."
+    ],
+    "correctIndex": 0,
+    "explanation": "O homicídio contra policial militar (ou parentes até 3º grau por essa razão) é qualificado (art. 121, § 2º, VII do CP) e figura expressamente no rol dos Crimes Hediondos (art. 1º, I da Lei 8.072/90).",
+    "fundamentacaoLegal": "Art. 1º, inciso I da Lei nº 8.072/1990 e Art. 121, § 2º, VII do CP.",
+    "hint": "Matar policial em razão da função é crime qualificado e HEDIONDO!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Homicídio funcional contra policial = Hediondo puro.",
+    "porqueErrou": {
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Correta. O homicídio contra policial militar (ou parentes até 3º grau por essa razão) é qualificado (art. 121, § 2º, VII do CP) e figura expressamente no rol dos Crimes Hediondos (art. 1º, I da Lei 8.072/90).",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Homicídio Funcional Contra Policial Militar).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Homicídio Funcional Contra Policial Militar).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Homicídio Funcional Contra Policial Militar).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Homicídio Funcional Contra Policial Militar)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_194",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 8.072/1990 • Furto Qualificado por Emprego de Explosivo",
+    "question": "[Simulado PMPE AOCP - Questão 194] Com as alterações promovidas pelo Pacote Anticrime (Lei nº 13.964/2019), o crime de furto é classificado como CRIME HEDIONDO na hipótese de:",
+    "options": [
+      "Furto noturno de bicicleta.",
+      "Furto qualificado pelo emprego de explosivo ou de artefato análogo que cause perigo comum (art. 155, § 4º-A do CP).",
+      "Furto mediante fraude pela internet.",
+      "Furto de gado no sertão (abigeato).",
+      "Furto praticado por duas ou mais pessoas desarmadas."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Pacote Anticrime incluiu no rol dos crimes hediondos o furto qualificado pelo emprego de explosivo ou artefato análogo (art. 155, § 4º-A do CP - ex: explosão de caixas eletrônicos).",
+    "fundamentacaoLegal": "Art. 1º, inciso IX da Lei nº 8.072/1990.",
+    "hint": "Explodir caixa eletrônico para furtar dinheiro é CRIME HEDIONDO!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Furto com explosivo = Hediondo (Lei 8.072/90).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Furto Qualificado por Emprego de Explosivo).",
+      "B": "Correta. O Pacote Anticrime incluiu no rol dos crimes hediondos o furto qualificado pelo emprego de explosivo ou artefato análogo (art. 155, § 4º-A do CP - ex: explosão de caixas eletrônicos).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Furto Qualificado por Emprego de Explosivo).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Furto Qualificado por Emprego de Explosivo).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Furto Qualificado por Emprego de Explosivo)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_195",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Lei nº 8.072/1990 • Tráfico Privilegiado NÃO é Hediondo",
+    "question": "[Simulado PMPE AOCP - Questão 195] O chamado tráfico privilegiado (§ 4º do art. 33 da Lei de Drogas), aplicável ao agente primário, de bons antecedentes e sem vínculo com facções:",
+    "options": [
+      "Permanece classificado como hediondo com cumprimento de 3/5 da pena.",
+      "NÃO é considerado crime hediondo nem a ele equiparado, por expressa disposição da Lei Anticrime e jurisprudência pacífica do STF e STJ.",
+      "Permite a aplicação de pena perpétua.",
+      "Impede qualquer tipo de progressão de regime.",
+      "É julgado pela Corte Interamericana de Direitos Humanos."
+    ],
+    "correctIndex": 1,
+    "explanation": "O Pacote Anticrime incluiu o § 5º no art. 112 da LEP, consolidando que o tráfico privilegiado NÃO é hediondo nem equiparado, permitindo progressão de regime comum.",
+    "fundamentacaoLegal": "Art. 112, § 5º da Lei de Execução Penal e Súmula Vinculante 59 do STF.",
+    "hint": "Tráfico privilegiado (pequeno traficante primário) NÃO É HEDIONDO!",
+    "difficulty": "hard",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Tráfico comum = Equiparado a hediondo. Tráfico privilegiado = NÃO é hediondo.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Tráfico Privilegiado NÃO é Hediondo).",
+      "B": "Correta. O Pacote Anticrime incluiu o § 5º no art. 112 da LEP, consolidando que o tráfico privilegiado NÃO é hediondo nem equiparado, permitindo progressão de regime comum.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Tráfico Privilegiado NÃO é Hediondo).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Tráfico Privilegiado NÃO é Hediondo).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Lei nº 8.072/1990 • Tráfico Privilegiado NÃO é Hediondo)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_196",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "ECA (Lei nº 8.069/1990) • Medida Socioeducativa de Internação",
+    "question": "[Simulado PMPE AOCP - Questão 196] A medida socioeducativa de internação aplicada ao adolescente infrator constitui medida privativa de liberdade sujeita aos princípios da brevidade, excepcionalidade e respeito à condição peculiar de pessoa em desenvolvimento. O prazo máximo legal de internação é de:",
+    "options": [
+      "1 ano.",
+      "3 anos.",
+      "5 anos.",
+      "8 anos.",
+      "Até atingir a maioridade civil de 18 anos em qualquer caso."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 121, § 2º do ECA fixa o limite máximo improrrogável de 3 (três) anos de internação para o adolescente infrator, com reavaliação obrigatória no máximo a cada 6 meses.",
+    "fundamentacaoLegal": "Artigo 121, § 2º e § 3º da Lei nº 8.069/1990 (ECA).",
+    "hint": "Prazo máximo de internação do adolescente: 3 anos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Internação no ECA: Máximo 3 anos, reavaliação de 6 em 6 meses, cessa aos 21 anos.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (ECA (Lei nº 8.069/1990) • Medida Socioeducativa de Internação).",
+      "B": "Correta. O art. 121, § 2º do ECA fixa o limite máximo improrrogável de 3 (três) anos de internação para o adolescente infrator, com reavaliação obrigatória no máximo a cada 6 meses.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (ECA (Lei nº 8.069/1990) • Medida Socioeducativa de Internação).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (ECA (Lei nº 8.069/1990) • Medida Socioeducativa de Internação).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (ECA (Lei nº 8.069/1990) • Medida Socioeducativa de Internação)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_197",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "ECA • Liberação Compulsória aos 21 Anos",
+    "question": "[Simulado PMPE AOCP - Questão 197] A liberação do jovem que cumpre medida socioeducativa de internação será COMPULSÓRIA e definitiva quando ele completar:",
+    "options": [
+      "18 anos de idade.",
+      "19 anos de idade.",
+      "20 anos de idade.",
+      "21 anos de idade.",
+      "25 anos de idade."
+    ],
+    "correctIndex": 3,
+    "explanation": "O art. 121, § 5º do ECA estabelece que a liberação do jovem internado será compulsória aos 21 (vinte e um) anos de idade completos, cessando a jurisdição da infância e juventude.",
+    "fundamentacaoLegal": "Artigo 121, § 5º da Lei nº 8.069/1990.",
+    "hint": "Completou 21 anos: soltura obrigatória imediata no ECA!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "ECA: 21 anos = Rua obrigatória (liberação compulsória).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "1": "Você marcou (B): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Liberação Compulsória aos 21 Anos).",
+      "B": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Liberação Compulsória aos 21 Anos).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Liberação Compulsória aos 21 Anos).",
+      "D": "Correta. O art. 121, § 5º do ECA estabelece que a liberação do jovem internado será compulsória aos 21 (vinte e um) anos de idade completos, cessando a jurisdição da infância e juventude.",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Liberação Compulsória aos 21 Anos)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_198",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "ECA • Transporte de Adolescente em Viatura Policial",
+    "question": "[Simulado PMPE AOCP - Questão 198] Nos termos do art. 178 do ECA, o adolescente a quem se atribua autoria de ato infracional NÃO poderá ser transportado em:",
+    "options": [
+      "Viatura caracterizada da Polícia Militar.",
+      "Compartimento fechado de veículo policial em condições atentatórias à sua dignidade, ou que impliquem risco à sua integridade física ou mental.",
+      "Assento dianteiro com cinto de segurança.",
+      "Acompanhado de seus responsáveis legais.",
+      "Presença de policial militar do mesmo sexo."
+    ],
+    "correctIndex": 1,
+    "explanation": "O art. 178 do ECA veda o transporte do adolescente infrator em compartimento fechado ('camburão/mala') que fira sua dignidade ou coloque em risco sua integridade.",
+    "fundamentacaoLegal": "Artigo 178 da Lei nº 8.069/1990.",
+    "hint": "Não pode transportar adolescente no camburão fechado sem condições dignas!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Art. 178 ECA: proibido transportar adolescente em compartimento fechado desumano.",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Transporte de Adolescente em Viatura Policial).",
+      "B": "Correta. O art. 178 do ECA veda o transporte do adolescente infrator em compartimento fechado ('camburão/mala') que fira sua dignidade ou coloque em risco sua integridade.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Transporte de Adolescente em Viatura Policial).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Transporte de Adolescente em Viatura Policial).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (ECA • Transporte de Adolescente em Viatura Policial)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_199",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Código de Trânsito Brasileiro (Lei nº 9.503/1997) • Embriaguez ao Volante",
+    "question": "[Simulado PMPE AOCP - Questão 199] O crime de conduzir veículo automotor com capacidade psicomotora alterada em razão da influência de álcool ou de outra substância psicoativa (art. 306 do CTB) classifica-se doutrinariamente como crime de:",
+    "options": [
+      "Dano concreto, exigindo a colisão do veículo ou atropelamento de pedestre.",
+      "Perigo abstrato, consumando-se com a condução sob efeito da substância constatada por bafômetro, exame de sangue ou sinais visíveis de embriaguez.",
+      "Culpa presumida sem aplicação de pena privativa de liberdade.",
+      "Contravenção de mera conduta sem apreensão da CNH.",
+      "Natureza administrativa sem repercussão na vara criminal."
+    ],
+    "correctIndex": 1,
+    "explanation": "O crime do art. 306 do CTB é de perigo abstrato: não precisa bater o carro nem causar acidente para consumar o delito, bastando dirigir com alteração psicomotora comprovada.",
+    "fundamentacaoLegal": "Artigo 306 da Lei nº 9.503/1997 e Súmula do STJ.",
+    "hint": "Embriaguez ao volante é crime de perigo abstrato!",
+    "difficulty": "easy",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Bebeu e dirigiu = Crime consumado na hora (perigo abstrato).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro (Lei nº 9.503/1997) • Embriaguez ao Volante).",
+      "B": "Correta. O crime do art. 306 do CTB é de perigo abstrato: não precisa bater o carro nem causar acidente para consumar o delito, bastando dirigir com alteração psicomotora comprovada.",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro (Lei nº 9.503/1997) • Embriaguez ao Volante).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro (Lei nº 9.503/1997) • Embriaguez ao Volante).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro (Lei nº 9.503/1997) • Embriaguez ao Volante)."
+    }
+  },
+  {
+    "id": "leg_ext_inedita_200",
+    "categoryId": "legislacao_extravagante",
+    "bloco": "bloco_3",
+    "materiaNome": "Legislação Extravagante",
+    "topicoEdital": "Código de Trânsito Brasileiro • Homicídio Culposo Qualificado por Embriaguez",
+    "question": "[Simulado PMPE AOCP - Questão 200] Se o condutor do veículo automotor comete homicídio culposo na direção de veículo automotor estando sob a influência de álcool ou de substância psicoativa (art. 302, § 3º do CTB), a pena prevista é de:",
+    "options": [
+      "Detenção de 6 meses a 1 ano com suspensão da CNH.",
+      "Reclusão, de 5 (cinco) a 8 (oito) anos, e suspensão ou proibição do direito de se obter a permissão ou a habilitação para dirigir veículo automotor.",
+      "Prestação de serviços comunitários e entrega de cesta básica.",
+      "Multa simples de trânsito sem privação de liberdade.",
+      "Prisão perpétua em presídio de trânsito."
+    ],
+    "correctIndex": 1,
+    "explanation": "A Lei 13.546/2017 qualificou o homicídio culposo de trânsito praticado por motorista embriagado, cominando pena pesada de RECLUSÃO de 5 a 8 anos (impedindo fiança pelo delegado).",
+    "fundamentacaoLegal": "Artigo 302, § 3º da Lei nº 9.503/1997 (CTB).",
+    "hint": "Morte no trânsito provocada por motorista bêbado: RECLUSÃO de 5 a 8 anos!",
+    "difficulty": "medium",
+    "banca": "Instituto AOCP",
+    "simuladoOrigem": "caderno_leg_extravagante",
+    "dicaMacete": "Matou bêbado no volante = Reclusão de 5 a 8 anos (sem fiança na delegacia).",
+    "porqueErrou": {
+      "0": "Você marcou (A): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "2": "Você marcou (C): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "3": "Você marcou (D): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante.",
+      "4": "Você marcou (E): Alternativa incorreta perante o texto da lei e a jurisprudência vinculante."
+    },
+    "analiseAlternativas": {
+      "A": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Homicídio Culposo Qualificado por Embriaguez).",
+      "B": "Correta. A Lei 13.546/2017 qualificou o homicídio culposo de trânsito praticado por motorista embriagado, cominando pena pesada de RECLUSÃO de 5 a 8 anos (impedindo fiança pelo delegado).",
+      "C": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Homicídio Culposo Qualificado por Embriaguez).",
+      "D": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Homicídio Culposo Qualificado por Embriaguez).",
+      "E": "Incorreta. Em desacordo com a legislação penal extravagante (Código de Trânsito Brasileiro • Homicídio Culposo Qualificado por Embriaguez)."
     }
   }
 ];

@@ -67,7 +67,7 @@ export {
 };
 
 export const SIMULADOS_LIST = [
-  { id: 'all', name: '⭐ Acervo Geral Soldado PMPE (Questões 100% Inéditas e Sem Repetição)', count: 2652, tag: '⭐ Acervo Geral (2.652 Q)' },
+  { id: 'all', name: '⭐ Acervo Geral Soldado PMPE (Questões 100% Inéditas e Sem Repetição)', count: 2752, tag: '⭐ Acervo Geral (2.752 Q)' },
   { id: 'caderno_600_ineditas_edital', name: '⭐ Super Caderno PMPE: 600 Questões Inéditas do Edital AOCP (100 por Matéria)', count: 600, tag: '⭐ 600 Inéditas (100/Matéria)' },
   { id: 'caderno_100_portugues_aocp', name: '📖 100 Inéditas: Língua Portuguesa AOCP 2026', count: 100, tag: '📖 100 Português' },
   { id: 'caderno_100_historia_pe_aocp', name: '🦁 100 Inéditas: História de Pernambuco AOCP', count: 100, tag: '🦁 100 História PE' },
@@ -79,7 +79,7 @@ export const SIMULADOS_LIST = [
   { id: 'caderno_400_novas_edital', name: '🔥 Super Acervo Especial: 400 Questões Inéditas do Edital (50 de Cada Matéria)', count: 400, tag: '🔥 400 Inéditas (50/Matéria)' },
   { id: 'caderno_edital_aocp_300', name: '🎯 Caderno de Elite: Questões Cirúrgicas do Edital AOCP 2026', count: 70, tag: '🎯 Edital AOCP (70 Q)' },
   { id: 'caderno_direitos_humanos', name: '🕊️ Bloco Especial: Direitos Humanos & Pacto de São José da Costa Rica (250 Questões)', count: 250, tag: '🕊️ Direitos Humanos (250 Q)' },
-  { id: 'caderno_leg_extravagante', name: '🚨 Bloco Especial: Legislação Extravagante (100 Questões Inéditas)', count: 100, tag: '🚨 Leis Extravagantes (100 Q)' },
+  { id: 'caderno_leg_extravagante', name: '🚨 Bloco Especial: Legislação Extravagante (200 Questões Inéditas)', count: 200, tag: '🚨 Leis Extravagantes (200 Q)' },
   { id: 'caderno_rlm_probabilidade', name: '🧠 Bloco Especial: RLM & Probabilidade com Passo a Passo (200 Inéditas)', count: 200, tag: '🧠 RLM & Probabilidade (200 Inéditas)' },
   { id: 'caderno_const_pmpe', name: '⚖️ Bloco Especial: Direito Constitucional & Art. 144 (210 Questões)', count: 210, tag: '⚖️ Constitucional (210 Q)' },
   { id: 'caderno_portugues_aocp', name: '📖 Bloco Especial: Língua Portuguesa AOCP (200 Inéditas)', count: 200, tag: '📖 Português AOCP (200 Inéditas)' },

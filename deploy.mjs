@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'feat: 600 novas questoes ineditas do edital PMPE AOCP (100 por materia)';
+  const commitMsg = 'feat: expansao de Legislacao Extravagante para 200 questoes completas';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;
