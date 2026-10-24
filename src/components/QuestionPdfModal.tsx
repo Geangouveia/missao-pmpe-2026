@@ -76,6 +76,20 @@ export const QuestionPdfModal: React.FC<QuestionPdfModalProps> = ({
       list = questions.filter((q) => q.categoryId === 'informatica');
     } else if (selectedSimulado === 'caderno_historia_pe') {
       list = questions.filter((q) => q.categoryId === 'historia_pe');
+    } else if (selectedSimulado === 'caderno_600_ineditas_edital') {
+      list = questions.filter((q) => q.simuladoOrigem === 'Caderno Oficial Edital AOCP 100 Inéditas');
+    } else if (selectedSimulado === 'caderno_100_portugues_aocp') {
+      list = questions.filter((q) => q.categoryId === 'portugues' && q.id.startsWith('port_inedita_100'));
+    } else if (selectedSimulado === 'caderno_100_historia_pe_aocp') {
+      list = questions.filter((q) => q.categoryId === 'historia_pe' && q.id.startsWith('hist_pe_inedita_100'));
+    } else if (selectedSimulado === 'caderno_100_rlm_aocp') {
+      list = questions.filter((q) => q.categoryId === 'raciocinio' && q.id.startsWith('rlm_inedita_100'));
+    } else if (selectedSimulado === 'caderno_100_informatica_aocp') {
+      list = questions.filter((q) => q.categoryId === 'informatica' && q.id.startsWith('info_inedita_100'));
+    } else if (selectedSimulado === 'caderno_100_constitucional_aocp') {
+      list = questions.filter((q) => q.categoryId === 'constitucional' && q.id.startsWith('const_inedita_100'));
+    } else if (selectedSimulado === 'caderno_100_humanos_leis_aocp') {
+      list = questions.filter((q) => q.categoryId === 'humanos_leis' && q.id.startsWith('humanos_leis_inedita_100'));
     } else {
       list = questions.filter((q) => q.simuladoOrigem === selectedSimulado);
     }

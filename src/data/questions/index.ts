@@ -25,6 +25,14 @@ import { BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_1 } from './banco50ConstitucionalHum
 import { BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_2 } from './banco50LegislacaoExtravagantePmpe';
 import { BANCO_QUESTOES_ELITE_DIFICIL } from './bancoQuestoesEliteDificil';
 
+// Novos 6 Cadernos de 100 Questões Inéditas do Edital AOCP PMPE (600 Questões)
+import { BANCO_100_PORTUGUES_AOCP } from './banco100IneditasPortuguesAocp';
+import { BANCO_100_HISTORIA_PE_AOCP } from './banco100IneditasHistoriaPeAocp';
+import { BANCO_100_RACIOCINIO_AOCP } from './banco100IneditasRaciocinioAocp';
+import { BANCO_100_INFORMATICA_AOCP } from './banco100IneditasInformaticaAocp';
+import { BANCO_100_CONSTITUCIONAL_AOCP } from './banco100IneditasConstitucionalAocp';
+import { BANCO_100_HUMANOS_LEIS_AOCP } from './banco100IneditasDireitosHumanosLeisAocp';
+
 export {
   SIMULADO_SEMANA_1,
   SIMULADO_SEMANA_2,
@@ -49,11 +57,24 @@ export {
   BANCO_NOVAS_QUESTOES_BLOCO_2,
   BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_1,
   BANCO_NOVAS_QUESTOES_BLOCO_3_PARTE_2,
-  BANCO_QUESTOES_ELITE_DIFICIL
+  BANCO_QUESTOES_ELITE_DIFICIL,
+  BANCO_100_PORTUGUES_AOCP,
+  BANCO_100_HISTORIA_PE_AOCP,
+  BANCO_100_RACIOCINIO_AOCP,
+  BANCO_100_INFORMATICA_AOCP,
+  BANCO_100_CONSTITUCIONAL_AOCP,
+  BANCO_100_HUMANOS_LEIS_AOCP
 };
 
 export const SIMULADOS_LIST = [
-  { id: 'all', name: '⭐ Acervo Geral Soldado PMPE (Questões 100% Inéditas e Sem Repetição)', count: 2052, tag: '⭐ Acervo Geral (2.052 Q)' },
+  { id: 'all', name: '⭐ Acervo Geral Soldado PMPE (Questões 100% Inéditas e Sem Repetição)', count: 2652, tag: '⭐ Acervo Geral (2.652 Q)' },
+  { id: 'caderno_600_ineditas_edital', name: '⭐ Super Caderno PMPE: 600 Questões Inéditas do Edital AOCP (100 por Matéria)', count: 600, tag: '⭐ 600 Inéditas (100/Matéria)' },
+  { id: 'caderno_100_portugues_aocp', name: '📖 100 Inéditas: Língua Portuguesa AOCP 2026', count: 100, tag: '📖 100 Português' },
+  { id: 'caderno_100_historia_pe_aocp', name: '🦁 100 Inéditas: História de Pernambuco AOCP', count: 100, tag: '🦁 100 História PE' },
+  { id: 'caderno_100_rlm_aocp', name: '🧠 100 Inéditas: Raciocínio Lógico-Matemático AOCP', count: 100, tag: '🧠 100 RLM' },
+  { id: 'caderno_100_informatica_aocp', name: '💻 100 Inéditas: Noções de Informática AOCP', count: 100, tag: '💻 100 Informática' },
+  { id: 'caderno_100_constitucional_aocp', name: '⚖️ 100 Inéditas: Direito Constitucional & Art. 144 AOCP', count: 100, tag: '⚖️ 100 Constitucional' },
+  { id: 'caderno_100_humanos_leis_aocp', name: '🛡️ 100 Inéditas: Direitos Humanos & Legislação Extravagante AOCP', count: 100, tag: '🛡️ 100 Humanos & Leis' },
   { id: 'caderno_elite_dificil', name: '🔥 Desafio de Elite: 160 Questões Avançadas (Nível Difícil • Edital AOCP)', count: 160, tag: '🔥 160 Elite (Nível Difícil)' },
   { id: 'caderno_400_novas_edital', name: '🔥 Super Acervo Especial: 400 Questões Inéditas do Edital (50 de Cada Matéria)', count: 400, tag: '🔥 400 Inéditas (50/Matéria)' },
   { id: 'caderno_edital_aocp_300', name: '🎯 Caderno de Elite: Questões Cirúrgicas do Edital AOCP 2026', count: 70, tag: '🎯 Edital AOCP (70 Q)' },
@@ -77,6 +98,12 @@ export const SIMULADOS_LIST = [
 // Filtro rigoroso de singularidade: NENHUMA questão repetida ou duplicada é servida ao aluno
 export const ALL_QUESTIONS: QuizQuestion[] = (() => {
   const rawList: QuizQuestion[] = [
+    ...BANCO_100_PORTUGUES_AOCP,
+    ...BANCO_100_HISTORIA_PE_AOCP,
+    ...BANCO_100_RACIOCINIO_AOCP,
+    ...BANCO_100_INFORMATICA_AOCP,
+    ...BANCO_100_CONSTITUCIONAL_AOCP,
+    ...BANCO_100_HUMANOS_LEIS_AOCP,
     ...BANCO_QUESTOES_ELITE_DIFICIL,
     ...BANCO_NOVAS_QUESTOES_BLOCO_1,
     ...BANCO_NOVAS_QUESTOES_BLOCO_2,
