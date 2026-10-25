@@ -45,6 +45,7 @@ import { AocpPegadinhasModal } from './components/AocpPegadinhasModal';
 import { MilitaryCertificateModal } from './components/MilitaryCertificateModal';
 import { RetaFinalModal } from './components/RetaFinalModal';
 import { TacticalPodcastModal } from './components/TacticalPodcastModal';
+import { TacticalCommandDashboard } from './components/TacticalCommandDashboard';
 import { getDailyMotivationalQuote, type MotivationalQuote } from './utils/motivationalQuotes';
 import { recordStudentLogin, recordQuizCompletion } from './utils/studentAnalytics';
 import { fetchRegistryFromCloud, isMasterUser, checkActiveSessionValidity } from './utils/authManager';
@@ -1180,6 +1181,22 @@ export function App() {
               </div>
             </div>
           )}
+
+          {/* PAINEL TÁTICO DE COMANDO & TELEMETRIA AOCP PMPE 2026 */}
+          <TacticalCommandDashboard
+            userName={currentUser || ''}
+            stats={stats}
+            pendingMistakesCount={pendingMistakesCount}
+            onOpenSimulado={() => setIsSundaySimuladoOpen(true)}
+            onOpenMistakes={() => setIsMistakeNotebookOpen(true)}
+            onOpenRadar={() => setIsRadarOpen(true)}
+            onOpenPdf={() => setIsPdfModalOpen(true)}
+            onOpenSchedule={() => setIsScheduleModalOpen(true)}
+            onOpenTaf={() => setIsTafOpen(true)}
+            onOpenPegadinhas={() => setIsPegadinhasOpen(true)}
+            onOpenLawBooklet={() => setIsLawBookletOpen(true)}
+            onOpenRedacao={() => setIsRedacaoOpen(true)}
+          />
 
           {/* CABEÇALHO ORGANIZADO: CENTRAL OPERACIONAL DO SOLDADO */}
           <div style={{

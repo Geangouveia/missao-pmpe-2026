@@ -22,9 +22,12 @@ import {
   Scale,
   BookOpen,
   Volume2,
-  VolumeX
+  VolumeX,
+  FileText
 } from 'lucide-react';
 import { sound } from '../utils/sound';
+import { haptics } from '../utils/haptics';
+import { getQuestionNote, saveQuestionNote } from '../utils/studentNotes';
 import { speakQuestion, stopSpeaking } from '../utils/speechNarrator';
 import confetti from 'canvas-confetti';
 import { prepareGameQuestions } from '../utils/questionRandomizer';
@@ -243,6 +246,17 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     }
   }, [currentIndex]);
 
+  // Anotações Táticas do Estudante por Questão
+  const [currentNote, setCurrentNote] = useState<string>('');
+  const [isNoteSaved, setIsNoteSaved] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (currentQ?.id && userName) {
+      setCurrentNote(getQuestionNote(userName, currentQ.id));
+      setIsNoteSaved(false);
+    }
+  }, [currentQ?.id, userName]);
+
   // Progressão Tática de Patente
   const [rankIndex, setRankIndex] = useState(0);
   const [rankCorrectInLevel, setRankCorrectInLevel] = useState(0);
@@ -313,6 +327,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
     const isCorrect = idx === currentQ.correctIndex;
 
     if (isCorrect) {
+      haptics.success();
       const newStreak = streak + 1;
       setStreak(newStreak);
       if (newStreak > maxStreak) setMaxStreak(newStreak);
@@ -356,6 +371,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
         const nextTierObj = SURVIVAL_DIFFICULTY_TIERS[nextTierId - 1];
         setPromotionAlert(`🎖️ NOVO NÍVEL ALCANÇADO: ${nextTierObj.name} (${nextTierObj.rankTitle})!`);
         sound.playLevelUp();
+        haptics.levelUp();
         confetti({ particleCount: 120, spread: 85, origin: { y: 0.35 } });
       } else {
         setTierCorrectInLevel(nextTierCorrect);
@@ -381,6 +397,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
         onQuestionAnswered(true, xpGained, currentQ?.id);
       }
     } else {
+      haptics.error();
       sound.playError();
       setStreak(0);
       const newLives = lives - 1;
@@ -394,6 +411,7 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
 
   // Avançar para a Próxima Pergunta (MODO INFINITO - SEM LIMITE DE PERGUNTAS)
   const handleNextQuestion = () => {
+    haptics.tap();
     if (lives <= 0) {
       triggerGameOver(score, totalCorrect);
       return;
@@ -1536,6 +1554,84 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
                       </div>
                     </div>
                   )}
+
+                  {/* Bloco de Anotações Táticas do Aluno (Caderno Pessoal) */}
+                  <div style={{
+                    marginTop: '0.85rem',
+                    padding: '0.9rem 1.1rem',
+                    borderRadius: '12px',
+                    background: 'rgba(16, 18, 24, 0.95)',
+                    border: '1.5px solid rgba(212, 175, 55, 0.25)',
+                    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.6)'
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem', flexWrap: 'wrap', gap: '0.4rem' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.82rem', fontWeight: 800, color: '#d4af37' }}>
+                        <FileText size={16} />
+                        <span>Anotação Tática Pessoal (Grave seus macetes e pegadinhas para esta questão):</span>
+                      </div>
+                      {isNoteSaved && (
+                        <span style={{ fontSize: '0.74rem', color: '#10b981', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                          <Check size={14} /> Salvo com sucesso!
+                        </span>
+                      )}
+                    </div>
+                    <textarea
+                      value={currentNote}
+                      onChange={(e) => {
+                        setCurrentNote(e.target.value);
+                        setIsNoteSaved(false);
+                      }}
+                      onBlur={() => {
+                        if (currentQ?.id && userName) {
+                          saveQuestionNote(userName, currentQ.id, currentNote);
+                          setIsNoteSaved(true);
+                        }
+                      }}
+                      placeholder="Escreva aqui suas observações, macetes pessoais, jurisprudência ou avisos para não esquecer mais..."
+                      style={{
+                        width: '100%',
+                        minHeight: '65px',
+                        background: '#07080a',
+                        border: '1px solid #27272a',
+                        borderRadius: '8px',
+                        color: '#f4f4f5',
+                        padding: '0.6rem 0.8rem',
+                        fontSize: '0.83rem',
+                        fontFamily: 'inherit',
+                        resize: 'vertical',
+                        outline: 'none',
+                        boxSizing: 'border-box'
+                      }}
+                    />
+                    <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.45rem' }}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (currentQ?.id && userName) {
+                            saveQuestionNote(userName, currentQ.id, currentNote);
+                            setIsNoteSaved(true);
+                            haptics.tap();
+                          }
+                        }}
+                        style={{
+                          padding: '0.35rem 0.9rem',
+                          fontSize: '0.76rem',
+                          borderRadius: '6px',
+                          background: 'rgba(212, 175, 55, 0.15)',
+                          border: '1px solid rgba(212, 175, 55, 0.4)',
+                          color: '#d4af37',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.35rem',
+                          transition: 'background 0.2s'
+                        }}
+                      >
+                        <span>💾 Salvar Anotação</span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
 
                 {/* BOTÃO DE AVANÇO OU RELATÓRIO DE MISSÃO */}

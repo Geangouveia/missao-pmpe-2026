@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'feat: expansao de Legislacao Extravagante para 200 questoes completas';
+  const commitMsg = 'feat: painel tatico de comando, telemetria aocp 3 blocos, haptics e caderno de anotacoes';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;
