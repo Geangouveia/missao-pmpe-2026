@@ -1203,6 +1203,49 @@ export const SurvivalGame: React.FC<SurvivalGameProps> = ({
               </div>
             </div>
 
+            {/* Texto de Apoio / Motivador se a questão tiver */}
+            {currentQ.textoApoio && (
+              <div
+                style={{
+                  background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(16, 18, 24, 0.98) 100%)',
+                  border: '1.5px solid rgba(212, 175, 55, 0.45)',
+                  borderRadius: '14px',
+                  padding: '1.15rem 1.35rem',
+                  marginBottom: '1.25rem',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.1)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.65rem'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem', borderBottom: '1px solid rgba(212, 175, 55, 0.25)', paddingBottom: '0.55rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                    <BookOpen size={18} color="#d4af37" />
+                    <span style={{ fontSize: '0.92rem', fontWeight: 900, color: '#fbbf24', letterSpacing: '0.02em', textTransform: 'uppercase' }}>
+                      {currentQ.tituloTexto || 'Texto Base para Interpretação e Análise Linguística'}
+                    </span>
+                  </div>
+                  <span style={{ fontSize: '0.7rem', padding: '0.15rem 0.55rem', borderRadius: '4px', background: 'rgba(212, 175, 55, 0.2)', color: '#d4af37', border: '1px solid rgba(212, 175, 55, 0.4)', fontWeight: 900 }}>
+                    📖 LEITURA OBRIGATÓRIA
+                  </span>
+                </div>
+
+                <div
+                  style={{
+                    fontSize: '0.94rem',
+                    lineHeight: 1.75,
+                    color: '#f4f4f5',
+                    whiteSpace: 'pre-line',
+                    fontFamily: 'inherit',
+                    textAlign: 'justify',
+                    padding: '0.35rem 0.2rem'
+                  }}
+                >
+                  {currentQ.textoApoio}
+                </div>
+              </div>
+            )}
+
             {/* Enunciado */}
             <h3 style={{
               fontSize: '1.15rem',

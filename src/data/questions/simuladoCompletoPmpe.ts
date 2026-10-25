@@ -1,5 +1,14 @@
 import type { QuizQuestion } from '../../types/game';
 
+// Textos de Apoio Oficiais do Simulado NUCE / AOCP PMPE
+const TEXTO_FRANTZ_FANON = `A reflexão sobre o tempo e a existência humana exige compreender como os indivíduos se situam diante de sua própria história. É preciso saber, em dez anos ou em um século, se a consciência individual foi capaz de emancipar-se das amarras que a paralisam e construir caminhos reais de liberdade coletiva. A alienação manifesta-se com frequência na incapacidade de articular a memória histórica às aspirações do porvir.
+
+A relação que estabelecemos com a temporalidade define a essência da nossa ação no mundo. Há aqueles cuja postura é marcada pela fixação obsessiva no ontem, recusando qualquer transformação. Quem não leva em conta o passado transforma-se em uma pessoa com a qual não se pode contar, desprovida de raízes e referências. Por outro lado, quem se apega exclusivamente ao momento presente acha, com todo o ímpeto, que tudo se encerra no agora e que não existe nada além dele mesmo no planeta. Por fim, aqueles que se refugiam em visões de um futuro distante descompromissado da realidade concreta alienam-se da responsabilidade do agir imediato. A verdadeira liberdade nasce da síntese ativa entre memória, compromisso no presente e projeto de futuro.`;
+
+const TEXTO_SEMIARIDO = `O semiárido brasileiro é um dos biomas que merece atenção especial por suas peculiaridades ecológicas e sociais. Historicamente marcado pelo estigma da seca e da escassez, a região vem passando por profundas transformações no modo como as populações locais se relacionam com o meio ambiente. Diversas organizações sociais vêm atuando junto às comunidades rurais para mudar esse paradigma. Elas mobilizam os agricultores e agricultoras, promovendo trocas de experiência e qualificação técnica para a produção agroecológica.
+
+Mesmo sofrendo com a problemática das mudanças climáticas que tanto aflige, principalmente, os agricultores familiares, a proposta central é transformar os obstáculos provocados pelo clima em oportunidades reais de emancipação. Isso inclui premissas como o cuidado com o meio ambiente para uma vida digna, o armazenamento de água para produção e a segurança alimentar. Assim, constrói-se uma convivência harmoniosa e sustentável com o semiárido, desmistificando a ideia de que a região é inviável para o desenvolvimento humano.`;
+
 export const SIMULADO_COMPLETO_PMPE: QuizQuestion[] = [
   // =========================================================================
   // BLOCO I: LÍNGUA PORTUGUESA (QUESTÕES 01 A 10)
@@ -23,6 +32,8 @@ export const SIMULADO_COMPLETO_PMPE: QuizQuestion[] = [
     correctIndex: 4,
     explanation: 'No texto, Fanon argumenta que quem foca exclusivamente no momento presente sem pensar no ontem nem no amanhã age como se não existisse nada além de si mesmo no planeta, assumindo uma postura individualista e egoísta.',
     fundamentacaoLegal: 'Interpretação Textual: Compreensão global dos sentidos do texto e das ideias do autor.',
+    tituloTexto: 'Texto I: "Alienação e Liberdade" — Frantz Fanon',
+    textoApoio: TEXTO_FRANTZ_FANON,
     hint: 'Quem vive só o agora crê que nada existe além de si mesmo no planeta.',
     difficulty: 'medium'
   },
@@ -45,6 +56,8 @@ export const SIMULADO_COMPLETO_PMPE: QuizQuestion[] = [
     correctIndex: 0,
     explanation: 'Os períodos descrevem 3 perfis temporais opostos: aquele que só olha o passado, aquele que só olha o presente e aquele que sonha apenas com um futuro longínquo, tipificando três posturas/personalidades distintas perante o tempo.',
     fundamentacaoLegal: 'Análise Textual: Organização retórica e tipologia das ideias no parágrafo.',
+    tituloTexto: 'Texto I: "Alienação e Liberdade" — Frantz Fanon',
+    textoApoio: TEXTO_FRANTZ_FANON,
     hint: 'São três atitudes diferentes em relação ao passado, presente e futuro.',
     difficulty: 'medium'
   },
@@ -67,6 +80,8 @@ export const SIMULADO_COMPLETO_PMPE: QuizQuestion[] = [
     correctIndex: 1,
     explanation: 'Em "...e que não existe nada além dele mesmo no planeta", a locução adverbial de lugar "no planeta" pode ser anteposta: "...e que, no planeta, não existe nada além dele mesmo", mantendo rigorosamente o sentido e a gramática.',
     fundamentacaoLegal: 'Sintaxe: Deslocamento de Adjunto Adverbial e manutenção da coesão e coerência.',
+    tituloTexto: 'Texto I: "Alienação e Liberdade" — Frantz Fanon',
+    textoApoio: TEXTO_FRANTZ_FANON,
     hint: 'Adjunto adverbial pode se deslocar no período mantendo a correção.',
     difficulty: 'hard'
   },
@@ -89,6 +104,8 @@ export const SIMULADO_COMPLETO_PMPE: QuizQuestion[] = [
     correctIndex: 4,
     explanation: 'O pronome relativo "a qual", quando se refere a ser humano/pessoa ("uma pessoa com a qual não se pode contar"), pode ser substituído perfeitamente por "quem" precedido da mesma preposição regida pelo verbo contar (contar COM alguém): "com quem".',
     fundamentacaoLegal: 'Gramática Normativa: O pronome "quem" substitui antecedente humano precedido de preposição.',
+    tituloTexto: 'Texto I: "Alienação e Liberdade" — Frantz Fanon',
+    textoApoio: TEXTO_FRANTZ_FANON,
     hint: 'Para pessoas: "com a qual" = "com quem".',
     difficulty: 'easy'
   },
@@ -155,6 +172,8 @@ export const SIMULADO_COMPLETO_PMPE: QuizQuestion[] = [
     correctIndex: 4,
     explanation: 'No texto, "Isso" resume a proposta de "transformar os obstáculos provocados pelas mudanças climáticas em oportunidades", enquanto "Elas" retoma o sujeito no plural "organizações sociais".',
     fundamentacaoLegal: 'Coesão Textual: Pronomes demonstrativos de síntese e pronomes pessoais anafóricos.',
+    tituloTexto: 'Texto II: "Convivência com o Semiárido e Agroecologia"',
+    textoApoio: TEXTO_SEMIARIDO,
     hint: '"Elas" refere-se às organizações sociais; "Isso" à transformação de obstáculos em oportunidades.',
     difficulty: 'medium'
   },
@@ -177,6 +196,8 @@ export const SIMULADO_COMPLETO_PMPE: QuizQuestion[] = [
     correctIndex: 0,
     explanation: 'O "com" introduz a causa do sofrimento (sofrer em razão de / por causa da problemática das mudanças climáticas), e o verbo "afligir" tem o sentido exato de causar aflição, atormentar, angustiar.',
     fundamentacaoLegal: 'Semântica: Valor circunstancial causal da preposição "com" e sinonímia verbal.',
+    tituloTexto: 'Texto II: "Convivência com o Semiárido e Agroecologia"',
+    textoApoio: TEXTO_SEMIARIDO,
     hint: 'Sofrendo COM a seca = sofrer POR CAUSA da seca (causa).',
     difficulty: 'easy'
   },
@@ -199,6 +220,8 @@ export const SIMULADO_COMPLETO_PMPE: QuizQuestion[] = [
     correctIndex: 0,
     explanation: 'Na alternativa A, a flexão do verbo intervir no pretérito perfeito é "interveio" (corretíssima, derivada de veio). Na B, "que compõem obstáculos" (plural); na C, o verbo haver no sentido de existir não vai para o plural ("haja trocas"); na D, "Já faz anos" e "vêm se dedicando"; na E, "Geram-se riquezas" e "caso se mantenha".',
     fundamentacaoLegal: 'Conjugação Verbal e Concordância: Verbo intervir conjuga-se como vir (ele veio -> interveio).',
+    tituloTexto: 'Texto II: "Convivência com o Semiárido e Agroecologia"',
+    textoApoio: TEXTO_SEMIARIDO,
     hint: 'Verbo intervir: ele VEIO, logo ele INTERVEIO.',
     difficulty: 'medium'
   },

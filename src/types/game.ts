@@ -45,6 +45,8 @@ export interface QuizQuestion {
   analiseAlternativas?: Record<string, string>; // Raio-X de cada alternativa: A, B, C, D, E
   dicaMacete?: string; // Macete mnemônico tático da PMPE / AOCP
   porqueErrou?: Record<number, string>; // Feedback específico para a alternativa incorreta que o usuário marcou
+  textoApoio?: string; // Texto base / motivador para questões de interpretação e análise textual
+  tituloTexto?: string; // Título do texto de apoio
 }
 
 export interface MatchPair {
