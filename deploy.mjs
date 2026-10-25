@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'feat: cache busting pwa v10 e layout inquebravel do simulado';
+  const commitMsg = 'fix: estabilizacao da tela de login e correcao de loop de recarregamento e autenticacao';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;

@@ -223,7 +223,9 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
           padding: '2.25rem 2rem',
           boxShadow: '0 25px 60px -10px rgba(0, 0, 0, 0.95), 0 0 35px rgba(212, 175, 55, 0.12)',
           position: 'relative',
-          zIndex: 10
+          zIndex: 10,
+          transform: 'translateZ(0)',
+          backfaceVisibility: 'hidden'
         }}
       >
         {/* SELO DISCRETO NO TOPO: POWERED BY GEAN COM ASSINATURA DIFERENCIADA */}
@@ -406,7 +408,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
             fontSize: '0.86rem',
             lineHeight: 1.5,
             marginBottom: '1.25rem',
-            animation: 'shake 0.3s ease-in-out',
+            animation: 'fadeIn 0.25s ease-out',
             boxShadow: '0 0 20px rgba(239, 68, 68, 0.3)'
           }}>
             <Smartphone size={24} color="#f87171" style={{ flexShrink: 0, marginTop: '2px' }} />
@@ -453,7 +455,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
             color: '#fca5a5',
             fontSize: '0.84rem',
             marginBottom: '1.15rem',
-            animation: 'shake 0.3s ease-in-out'
+            animation: 'fadeIn 0.25s ease-out'
           }}>
             <AlertTriangle size={18} color="#ef4444" style={{ flexShrink: 0 }} />
             <span>{errorMsg}</span>

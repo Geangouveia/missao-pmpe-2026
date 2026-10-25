@@ -70,9 +70,7 @@ export function getCurrentDeviceId(): string {
         hash |= 0;
       }
       const hexHash = Math.abs(hash).toString(16).padStart(8, '0');
-      const randomSalt = Math.random().toString(36).substring(2, 8);
-
-      devId = `dev_hw_${hexHash}_${randomSalt}`;
+      devId = `dev_hw_${hexHash}`;
       localStorage.setItem('pmpe_device_fingerprint_id', devId);
       sessionStorage.setItem('pmpe_device_fingerprint_id', devId);
     }
@@ -121,12 +119,27 @@ export function normalizeUserName(name: string): string {
 }
 
 /**
+ * Normaliza e simplifica nomes para busca resiliente (remove acentos e prefixos militares comuns)
+ */
+export function simplifyNameForSearch(name: string): string {
+  if (!name) return '';
+  return name
+    .trim()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // remove acentos (joão -> joao)
+    .replace(/^(soldado|sd\.?|recruta|aluno|guerreiro|pmpe)\s+/i, '') // remove prefixos militares
+    .replace(/[_\-\s]+/g, ' ')
+    .trim();
+}
+
+/**
  * Verifica se a conta é o Comandante Titular Gean
  */
 export function isMasterUser(name: string): boolean {
   if (!name) return false;
-  const clean = name.trim().toLowerCase().replace(/_/g, ' ');
-  return clean === 'gean' || clean === 'soldado gean' || clean === 'comandante gean';
+  const clean = simplifyNameForSearch(name);
+  return clean === 'gean' || clean === 'gean gouveia' || clean === 'comandante gean' || clean === 'soldado gean';
 }
 
 export const PURGED_LEGACY_KEYS: string[] = [];
@@ -634,7 +647,8 @@ export async function unbindUserDevice(targetKeyOrName: string): Promise<boolean
 /**
  * Encontra a chave exata no registro
  */
-function findUserKey(registry: Record<string, UserAccessRecord>, targetKeyOrName: string): string | null {
+export function findUserKey(registry: Record<string, UserAccessRecord>, targetKeyOrName: string): string | null {
+  if (!targetKeyOrName) return null;
   if (registry[targetKeyOrName]) return targetKeyOrName;
   const norm = normalizeUserName(targetKeyOrName);
   if (registry[norm]) return norm;
@@ -644,6 +658,24 @@ function findUserKey(registry: Record<string, UserAccessRecord>, targetKeyOrName
       return k;
     }
   }
+
+  // Busca resiliente com remoção de acentos e prefixos militares (ex: "sd lucas" encontra "Lucas" ou "Soldado Lucas")
+  const simplifiedTarget = simplifyNameForSearch(targetKeyOrName);
+  if (simplifiedTarget) {
+    for (const [k, u] of Object.entries(registry)) {
+      const simplifiedKey = simplifyNameForSearch(k);
+      const simplifiedUserName = u.name ? simplifyNameForSearch(u.name) : '';
+      if (
+        simplifiedKey === simplifiedTarget ||
+        simplifiedUserName === simplifiedTarget ||
+        simplifiedUserName.split(' ')[0] === simplifiedTarget ||
+        simplifiedTarget.split(' ')[0] === simplifiedUserName
+      ) {
+        return k;
+      }
+    }
+  }
+
   return null;
 }
 
@@ -895,7 +927,8 @@ export async function validateLoginAttempt(
   passAttempt: string
 ): Promise<LoginValidationResult> {
   const cleanName = name.trim();
-  const cleanPass = passAttempt.trim().toUpperCase();
+  const rawPass = passAttempt.trim();
+  const cleanPass = rawPass.toUpperCase();
 
   if (!cleanName) {
     return {
@@ -905,12 +938,8 @@ export async function validateLoginAttempt(
     };
   }
 
-  const key = normalizeUserName(cleanName);
   const registry = await fetchRegistryFromCloud();
-
-  const existingKey = Object.keys(registry).find(
-    k => k === key || k.toLowerCase() === key || (registry[k].name && registry[k].name.trim().toLowerCase() === cleanName.toLowerCase())
-  );
+  const existingKey = findUserKey(registry, cleanName);
 
   // Aluno não cadastrado pelo Comandante Gean
   if (!existingKey && !isMasterUser(cleanName)) {
@@ -927,7 +956,7 @@ export async function validateLoginAttempt(
   if (user.isAdmin || isMasterUser(cleanName)) {
     const hasCustomPass = Boolean(user.personalPassword && user.personalPassword.toUpperCase() !== 'PMPE2026');
     const isMasterPassValid = hasCustomPass
-      ? (user.personalPassword && cleanPass === user.personalPassword.toUpperCase())
+      ? (user.personalPassword && (cleanPass === user.personalPassword.toUpperCase() || rawPass === user.personalPassword))
       : (DEFAULT_PASSCODES.includes(cleanPass) || cleanPass === 'GEAN2026' || cleanPass === 'COMANDANTE');
 
     if (isMasterPassValid) {
@@ -952,13 +981,13 @@ export async function validateLoginAttempt(
   if (user.status === 'pending') {
     user.status = 'approved';
     user.approvedAt = new Date().toISOString();
-    const registry = getLocalUsersRegistry();
-    const key = normalizeUserName(cleanName);
-    if (registry[key]) {
-      registry[key].status = 'approved';
-      registry[key].approvedAt = user.approvedAt;
-      saveLocalUsersRegistry(registry);
-      pushRegistryToCloud(registry);
+    const localReg = getLocalUsersRegistry();
+    const localUserKey = findUserKey(localReg, cleanName);
+    if (localUserKey && localReg[localUserKey]) {
+      localReg[localUserKey].status = 'approved';
+      localReg[localUserKey].approvedAt = user.approvedAt;
+      saveLocalUsersRegistry(localReg);
+      pushRegistryToCloud(localReg);
     }
   }
 
@@ -974,7 +1003,13 @@ export async function validateLoginAttempt(
   // 3. Usuário APROVADO: Checagem de Senha e Dispositivo
   // Caso 3.1: Já cadastrou senha pessoal própria
   if (user.hasChangedPassword && user.personalPassword) {
-    if (cleanPass === user.personalPassword.toUpperCase() || cleanPass === user.personalPassword) {
+    const userPass = user.personalPassword.trim();
+    const isPassValid = 
+      cleanPass === userPass.toUpperCase() || 
+      rawPass === userPass || 
+      cleanPass === userPass;
+
+    if (isPassValid) {
       // Senha correta -> Checa a trava de dispositivo único
       const deviceCheck = await verifyDeviceLock(cleanName, user);
       if (!deviceCheck.allowed) {
@@ -1002,7 +1037,7 @@ export async function validateLoginAttempt(
   }
 
   // Caso 3.2: Usuário novo definindo senha ou usando chave padrão
-  const isDefaultValid = DEFAULT_PASSCODES.includes(cleanPass);
+  const isDefaultValid = DEFAULT_PASSCODES.includes(cleanPass) || DEFAULT_PASSCODES.includes(rawPass);
   if (isDefaultValid) {
     return {
       allowed: false,
@@ -1011,11 +1046,11 @@ export async function validateLoginAttempt(
       userRecord: user,
       isFirstLogin: true,
     };
-  } else if (cleanPass.length >= 4) {
+  } else if (rawPass.length >= 4) {
     // Aluno digitou uma senha pessoal inédita no login: grava e vincula dispositivo
-    await setUserPersonalPassword(cleanName, cleanPass);
+    await setUserPersonalPassword(user.name || cleanName, rawPass);
     user.hasChangedPassword = true;
-    user.personalPassword = cleanPass;
+    user.personalPassword = rawPass;
 
     const deviceCheck = await verifyDeviceLock(cleanName, user);
     if (!deviceCheck.allowed) {

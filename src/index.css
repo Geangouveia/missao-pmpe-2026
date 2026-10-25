@@ -1413,7 +1413,15 @@ button:focus-visible {
   .login-card-container {
     padding: 1.5rem 1.15rem !important;
     border-radius: 20px !important;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
+}
+
+.login-card-container {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ==========================================================================
