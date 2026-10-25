@@ -1602,29 +1602,25 @@ export const CommanderDashboardView: React.FC<CommanderDashboardViewProps> = ({
                         <span>Laudo Tático</span>
                       </button>
 
-                      {/* Liberar / Revogar Cronograma VIP (R$ 4,00) */}
-                      <button
-                        onClick={() => handleToggleScheduleAccess(userKey, user.name, !user.hasScheduleAccess)}
-                        disabled={isProcessing}
+                      {/* Cronograma de Estudos 100% Liberado */}
+                      <div
                         style={{
                           padding: '0.6rem 0.95rem',
                           borderRadius: '10px',
-                          background: user.hasScheduleAccess ? 'rgba(234, 179, 8, 0.2)' : 'rgba(255, 255, 255, 0.08)',
-                          border: user.hasScheduleAccess ? '1px solid #eab308' : '1px solid rgba(255, 255, 255, 0.2)',
-                          color: user.hasScheduleAccess ? '#fbbf24' : '#e2e8f0',
+                          background: 'rgba(34, 197, 94, 0.15)',
+                          border: '1px solid rgba(34, 197, 94, 0.4)',
+                          color: '#86efac',
                           fontWeight: 800,
                           fontSize: '0.82rem',
-                          cursor: 'pointer',
                           display: 'flex',
                           alignItems: 'center',
-                          gap: '0.4rem',
-                          transition: 'all 0.2s'
+                          gap: '0.4rem'
                         }}
-                        title={user.hasScheduleAccess ? 'Revogar acesso ao Cronograma VIP' : 'Liberar Cronograma VIP (R$ 4,00)'}
+                        title="Cronograma de Estudos 100% Liberado e Gratuito para todos os alunos"
                       >
-                        <Calendar size={15} color={user.hasScheduleAccess ? '#fbbf24' : '#cbd5e1'} />
-                        <span>{user.hasScheduleAccess ? 'Cronograma VIP (Ativo)' : 'Liberar Cronograma VIP'}</span>
-                      </button>
+                        <Calendar size={15} color="#4ade80" />
+                        <span>Cronograma (Liberado)</span>
+                      </div>
 
                       {/* Copiar Credenciais para WhatsApp */}
                       <button

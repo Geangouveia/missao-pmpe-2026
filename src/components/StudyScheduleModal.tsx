@@ -60,7 +60,7 @@ export const StudyScheduleModal: React.FC<StudyScheduleModalProps> = ({
   onClose,
   userName,
 }) => {
-  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [isUnlocked, setIsUnlocked] = useState(true);
   const [vipCodeInput, setVipCodeInput] = useState('');
   const [vipError, setVipError] = useState('');
   const [vipSuccess, setVipSuccess] = useState('');
@@ -96,11 +96,10 @@ export const StudyScheduleModal: React.FC<StudyScheduleModalProps> = ({
     }
   };
 
-  // Verifica desbloqueio ao abrir
+  // Verifica desbloqueio ao abrir (100% Liberado para todos)
   useEffect(() => {
+    setIsUnlocked(true);
     if (!userName) return;
-    const unlocked = isScheduleUnlocked(userName);
-    setIsUnlocked(unlocked);
 
     // Carrega dados salvos do cronograma
     const saved = localStorage.getItem(`pmpe_schedule_plan_${userName}`);
@@ -443,16 +442,16 @@ export const StudyScheduleModal: React.FC<StudyScheduleModalProps> = ({
                 </h2>
                 <span
                   style={{
-                    background: 'rgba(234, 179, 8, 0.2)',
-                    border: '1px solid rgba(234, 179, 8, 0.45)',
-                    color: '#fbbf24',
+                    background: 'rgba(34, 197, 94, 0.2)',
+                    border: '1px solid rgba(34, 197, 94, 0.45)',
+                    color: '#86efac',
                     padding: '0.15rem 0.55rem',
                     borderRadius: '8px',
                     fontSize: '0.72rem',
                     fontWeight: 900,
                   }}
                 >
-                  MENTORIA PMPE
+                  100% LIBERADO PARA TODOS
                 </span>
               </div>
               <p style={{ margin: 0, fontSize: '0.8rem', color: '#86efac' }}>
@@ -462,7 +461,7 @@ export const StudyScheduleModal: React.FC<StudyScheduleModalProps> = ({
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-            {isUnlocked && hasGenerated && (
+            {hasGenerated && (
               <button
                 type="button"
                 onClick={handlePrintSchedule}
@@ -510,170 +509,7 @@ export const StudyScheduleModal: React.FC<StudyScheduleModalProps> = ({
         {/* CORPO DO MODAL */}
         <div style={{ padding: '1.5rem', overflowY: 'auto', flex: 1 }}>
           {/* TELA DE BLOQUEIO VIP / REQUER AUTORIZAÇÃO DO COMANDANTE */}
-          {!isUnlocked ? (
-            <div
-              style={{
-                textAlign: 'center',
-                padding: '2.5rem 1.5rem',
-                maxWidth: '620px',
-                margin: '0 auto',
-              }}
-            >
-              <div
-                style={{
-                  width: '74px',
-                  height: '74px',
-                  borderRadius: '24px',
-                  background: 'rgba(245, 158, 11, 0.15)',
-                  border: '2px solid rgba(245, 158, 11, 0.5)',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '1.25rem',
-                  boxShadow: '0 0 30px rgba(245, 158, 11, 0.25)',
-                }}
-              >
-                <Lock size={36} color="#fbbf24" />
-              </div>
-
-              <h3 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#ffffff', margin: '0 0 0.5rem' }}>
-                Área Exclusiva da Mentoria Militar
-              </h3>
-              <p style={{ fontSize: '0.92rem', color: '#94a3b8', lineHeight: 1.6, margin: '0 0 1.5rem' }}>
-                O <strong>Cronograma Inteligente de Estudos</strong> é uma ferramenta de alta tecnologia que
-                monta seu plano de aprovação personalizado segundo sua rotina, turnos e dificuldades, aplicando
-                o <em>Ciclo de Ebbinghaus</em> e a <em>Regra 70/30 de Questões</em> da banca <strong>Instituto AOCP</strong>.
-              </p>
-
-              {/* CARD DE OFERTA / VALOR TAXA ÚNICA R$ 4,00 */}
-              <div
-                style={{
-                  background: 'linear-gradient(135deg, rgba(24, 34, 27, 0.95), rgba(16, 24, 18, 0.95))',
-                  border: '1.5px solid rgba(234, 179, 8, 0.45)',
-                  borderRadius: '18px',
-                  padding: '1.35rem 1.5rem',
-                  marginBottom: '1.75rem',
-                  textAlign: 'left',
-                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
-                }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <Sparkles size={20} color="#fbbf24" />
-                    <span style={{ fontSize: '0.9rem', fontWeight: 900, color: '#f8fafc', textTransform: 'uppercase' }}>
-                      Liberação pelo Comandante Gean
-                    </span>
-                  </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <span style={{ fontSize: '0.75rem', color: '#94a3b8', textDecoration: 'line-through', marginRight: '0.4rem' }}>
-                      R$ 29,90
-                    </span>
-                    <span style={{ fontSize: '1.35rem', fontWeight: 900, color: '#4ade80' }}>
-                      R$ 4,00
-                    </span>
-                    <span style={{ fontSize: '0.7rem', color: '#86efac', display: 'block' }}>taxa única de ativação</span>
-                  </div>
-                </div>
-
-                <ul style={{ margin: 0, paddingLeft: '1.25rem', color: '#cbd5e1', fontSize: '0.84rem', lineHeight: 1.6 }}>
-                  <li>Plano adaptado para horário comercial, 12x36 ou 24x72;</li>
-                  <li>Intercalação cognitiva entre RLM, Português e Leis;</li>
-                  <li>Revisões automáticas espaçadas de 24h, 7 dias e simulados aos sábados;</li>
-                  <li>Exportação e impressão direta em folha de metas A4.</li>
-                </ul>
-
-                {/* BOTÃO WHATSAPP COMANDANTE GEAN */}
-                <div style={{ marginTop: '1.25rem', textAlign: 'center' }}>
-                  <a
-                    href="https://wa.me/5581987960927?text=Comandante%20Gean,%20quero%20liberar%20meu%20Cronograma%20Inteligente%20de%20Estudos%20PMPE%20(R$%204,00)"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.6rem',
-                      padding: '0.85rem 1.5rem',
-                      borderRadius: '12px',
-                      background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
-                      color: '#ffffff',
-                      fontWeight: 900,
-                      fontSize: '0.95rem',
-                      textDecoration: 'none',
-                      boxShadow: '0 8px 20px rgba(34, 197, 94, 0.4)',
-                    }}
-                  >
-                    <MessageCircle size={20} />
-                    <span>Falar no WhatsApp com Comandante Gean</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* FORMULÁRIO DE INSERÇÃO DO CÓDIGO VIP */}
-              <div
-                style={{
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: '16px',
-                  padding: '1.25rem',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', marginBottom: '0.75rem', color: '#cbd5e1', fontSize: '0.82rem', fontWeight: 700 }}>
-                  <KeyRound size={16} color="#fbbf24" />
-                  <span>Já possui o Código / Chave VIP do Comandante? Digite abaixo:</span>
-                </div>
-
-                <form onSubmit={handleUnlockWithCode} style={{ display: 'flex', gap: '0.5rem', maxWidth: '440px', margin: '0 auto' }}>
-                  <input
-                    type="text"
-                    placeholder="Ex: CRONO-PMPE-2026"
-                    value={vipCodeInput}
-                    onChange={(e) => {
-                      setVipCodeInput(e.target.value);
-                      setVipError('');
-                    }}
-                    style={{
-                      flex: 1,
-                      padding: '0.75rem 1rem',
-                      background: 'rgba(15, 23, 18, 0.9)',
-                      border: '1px solid rgba(71, 85, 105, 0.6)',
-                      borderRadius: '10px',
-                      color: '#ffffff',
-                      fontSize: '0.9rem',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em',
-                      outline: 'none',
-                    }}
-                  />
-                  <button
-                    type="submit"
-                    style={{
-                      padding: '0.75rem 1.25rem',
-                      background: 'linear-gradient(135deg, #eab308 0%, #ca8a04 100%)',
-                      border: 'none',
-                      borderRadius: '10px',
-                      color: '#0f172a',
-                      fontWeight: 900,
-                      fontSize: '0.86rem',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    Ativar
-                  </button>
-                </form>
-
-                {vipError && (
-                  <p style={{ margin: '0.6rem 0 0', color: '#f87171', fontSize: '0.8rem', fontWeight: 700 }}>
-                    {vipError}
-                  </p>
-                )}
-                {vipSuccess && (
-                  <p style={{ margin: '0.6rem 0 0', color: '#4ade80', fontSize: '0.8rem', fontWeight: 700 }}>
-                    {vipSuccess}
-                  </p>
-                )}
-              </div>
-            </div>
-          ) : !hasGenerated ? (
+          {!hasGenerated ? (
             /* ETAPA 1: DIAGNÓSTICO DO ALUNO (ROTINA & DIFICULDADES) */
             <div style={{ maxWidth: '750px', margin: '0 auto' }}>
               <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>

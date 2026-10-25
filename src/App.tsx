@@ -27,7 +27,6 @@ import { CommanderAccessModal } from './components/CommanderAccessModal';
 import { CommanderDashboardView } from './components/CommanderDashboardView';
 import { StudyScheduleModal } from './components/StudyScheduleModal';
 import { QuestionPdfModal } from './components/QuestionPdfModal';
-import { PromotionalAdModal } from './components/PromotionalAdModal';
 import { OrderRequestsModal } from './components/OrderRequestsModal';
 import { MilitaryLawBookletModal } from './components/MilitaryLawBookletModal';
 import { MilitaryLawBookletView } from './components/MilitaryLawBookletView';
@@ -184,7 +183,6 @@ export function App() {
   const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false);
   const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
   const [isLawBookletOpen, setIsLawBookletOpen] = useState(false);
-  const [isPromoAdOpen, setIsPromoAdOpen] = useState(false);
   const [isOrderRequestsOpen, setIsOrderRequestsOpen] = useState(false);
   const [isCompetitionModalOpen, setIsCompetitionModalOpen] = useState(false);
   const [isMistakeNotebookOpen, setIsMistakeNotebookOpen] = useState(false);
@@ -269,19 +267,7 @@ export function App() {
     return () => clearInterval(interval);
   }, [currentUser]);
 
-  // Exibe o mini anúncio promocional da mentoria para o guerreiro
-  useEffect(() => {
-    if (currentUser) {
-      const shown = sessionStorage.getItem('pmpe_promo_ad_shown');
-      if (!shown) {
-        const timer = setTimeout(() => {
-          setIsPromoAdOpen(true);
-          sessionStorage.setItem('pmpe_promo_ad_shown', 'true');
-        }, 1000);
-        return () => clearTimeout(timer);
-      }
-    }
-  }, [currentUser]);
+
 
   // Monitorar solicitações pendentes de acesso para a conta Titular do Comandante Gean
   const checkPendingUsers = async () => {
@@ -786,11 +772,6 @@ export function App() {
     setStats(userStats);
     setDailyQuote(getDailyMotivationalQuote());
     setIsMotivationModalOpen(true);
-
-    // Exibe sempre o anúncio promocional VIP para o guerreiro recém-logado
-    setTimeout(() => {
-      setIsPromoAdOpen(true);
-    }, 700);
   };
 
   const handleLogout = () => {
@@ -1967,13 +1948,7 @@ export function App() {
         userName={currentUser}
       />
 
-      {/* MODAL: MINI ANÚNCIO DE ENTRADA & MONETIZAÇÃO */}
-      <PromotionalAdModal
-        isOpen={isPromoAdOpen}
-        onClose={() => setIsPromoAdOpen(false)}
-        onOpenSchedule={() => setIsScheduleModalOpen(true)}
-        onOpenOrders={() => setIsOrderRequestsOpen(true)}
-      />
+
 
       {/* MODAL: CANAL DE PEDIDOS & DÚVIDAS */}
       <OrderRequestsModal

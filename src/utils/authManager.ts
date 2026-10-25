@@ -1198,17 +1198,10 @@ export async function clearActiveSession(userName: string): Promise<void> {
 
 /**
  * Verifica se o aluno tem o Cronograma de Estudos VIP liberado
+ * 100% LIBERADO E GRATUITO PARA TODOS OS ALUNOS DA PMPE
  */
-export function isScheduleUnlocked(userName: string, userRecord?: UserAccessRecord): boolean {
-  if (!userName) return false;
-  if (isMasterUser(userName)) return true;
-  const key = normalizeUserName(userName);
-  // Checagem local imediata
-  if (localStorage.getItem(`pmpe_vip_schedule_${key}`) === 'true') return true;
-  if (userRecord && userRecord.hasScheduleAccess) return true;
-  const local = getLocalUsersRegistry();
-  if (local[key] && local[key].hasScheduleAccess) return true;
-  return false;
+export function isScheduleUnlocked(_userName?: string, _userRecord?: UserAccessRecord): boolean {
+  return true;
 }
 
 /**
