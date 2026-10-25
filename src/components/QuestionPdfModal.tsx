@@ -90,6 +90,10 @@ export const QuestionPdfModal: React.FC<QuestionPdfModalProps> = ({
       list = questions.filter((q) => q.categoryId === 'constitucional' && q.id.startsWith('const_inedita_100'));
     } else if (selectedSimulado === 'caderno_100_humanos_leis_aocp') {
       list = questions.filter((q) => q.categoryId === 'humanos_leis' && q.id.startsWith('humanos_leis_inedita_100'));
+    } else if (selectedSimulado === 'caderno_100_leg_extravagante_aocp') {
+      list = questions.filter((q) => q.categoryId === 'legislacao_extravagante' && q.id.startsWith('leg_ext_inedita_100'));
+    } else if (selectedSimulado === 'caderno_100_legislacao_pmpe_aocp') {
+      list = questions.filter((q) => q.categoryId === 'legislacao_pmpe' && q.id.startsWith('leg_pmpe_inedita_100'));
     } else {
       list = questions.filter((q) => q.simuladoOrigem === selectedSimulado);
     }
@@ -545,9 +549,11 @@ export const QuestionPdfModal: React.FC<QuestionPdfModalProps> = ({
                 outline: 'none',
               }}
             >
-              <option value="caderno_pmpe_estatuto">🛡️ Legislação da PMPE & Estatuto (114 Questões)</option>
+              <option value="caderno_100_leg_extravagante_aocp">🚨 100 Inéditas: Legislação Extravagante AOCP</option>
+              <option value="caderno_100_legislacao_pmpe_aocp">🛡️ 100 Inéditas: Legislação da PMPE (Estatuto & LC 108)</option>
+              <option value="caderno_pmpe_estatuto">🛡️ Legislação da PMPE & Estatuto (Acervo Completo)</option>
               <option value="caderno_direitos_humanos">🕊️ Direitos Humanos & Pacto de São José (200 Questões)</option>
-              <option value="caderno_leg_extravagante">🚨 Legislação Extravagante (250 Questões)</option>
+              <option value="caderno_leg_extravagante">🚨 Legislação Extravagante (Acervo Completo)</option>
               <option value="caderno_rlm_probabilidade">🧠 RLM & Probabilidade com Passo a Passo (250 Questões)</option>
               <option value="caderno_const_pmpe">⚖️ Direito Constitucional & Art. 144 (160 Questões)</option>
               <option value="caderno_portugues_aocp">📖 Língua Portuguesa AOCP (250 Questões)</option>

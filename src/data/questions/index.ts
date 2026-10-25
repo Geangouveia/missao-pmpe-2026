@@ -32,6 +32,8 @@ import { BANCO_100_RACIOCINIO_AOCP } from './banco100IneditasRaciocinioAocp';
 import { BANCO_100_INFORMATICA_AOCP } from './banco100IneditasInformaticaAocp';
 import { BANCO_100_CONSTITUCIONAL_AOCP } from './banco100IneditasConstitucionalAocp';
 import { BANCO_100_HUMANOS_LEIS_AOCP } from './banco100IneditasDireitosHumanosLeisAocp';
+import { BANCO_100_LEGISLAO_EXTRAVAGANTE_AOCP } from './banco100IneditasLegislacaoExtravaganteAocp';
+import { BANCO_100_LEGISLAO_PMPE_AOCP } from './banco100IneditasLegislacaoPmpeAocp';
 
 export {
   SIMULADO_SEMANA_1,
@@ -63,11 +65,15 @@ export {
   BANCO_100_RACIOCINIO_AOCP,
   BANCO_100_INFORMATICA_AOCP,
   BANCO_100_CONSTITUCIONAL_AOCP,
-  BANCO_100_HUMANOS_LEIS_AOCP
+  BANCO_100_HUMANOS_LEIS_AOCP,
+  BANCO_100_LEGISLAO_EXTRAVAGANTE_AOCP,
+  BANCO_100_LEGISLAO_PMPE_AOCP
 };
 
 export const SIMULADOS_LIST = [
-  { id: 'all', name: '⭐ Acervo Geral Soldado PMPE (Questões 100% Inéditas e Sem Repetição)', count: 2752, tag: '⭐ Acervo Geral (2.752 Q)' },
+  { id: 'all', name: '⭐ Acervo Geral Soldado PMPE (Questões 100% Inéditas e Sem Repetição)', count: 2952, tag: '⭐ Acervo Geral (2.952 Q)' },
+  { id: 'caderno_100_leg_extravagante_aocp', name: '🚨 100 Inéditas: Legislação Extravagante AOCP (Drogas, Desarmamento, Hediondos, Trânsito)', count: 100, tag: '🚨 100 Leg. Extravagante' },
+  { id: 'caderno_100_legislacao_pmpe_aocp', name: '🛡️ 100 Inéditas: Legislação da PMPE (Estatuto, LC 108/08, BOPE, Choque, Const. PE)', count: 100, tag: '🛡️ 100 Leg. PMPE' },
   { id: 'caderno_600_ineditas_edital', name: '⭐ Super Caderno PMPE: 600 Questões Inéditas do Edital AOCP (100 por Matéria)', count: 600, tag: '⭐ 600 Inéditas (100/Matéria)' },
   { id: 'caderno_100_portugues_aocp', name: '📖 100 Inéditas: Língua Portuguesa AOCP 2026', count: 100, tag: '📖 100 Português' },
   { id: 'caderno_100_historia_pe_aocp', name: '🦁 100 Inéditas: História de Pernambuco AOCP', count: 100, tag: '🦁 100 História PE' },
@@ -79,11 +85,11 @@ export const SIMULADOS_LIST = [
   { id: 'caderno_400_novas_edital', name: '🔥 Super Acervo Especial: 400 Questões Inéditas do Edital (50 de Cada Matéria)', count: 400, tag: '🔥 400 Inéditas (50/Matéria)' },
   { id: 'caderno_edital_aocp_300', name: '🎯 Caderno de Elite: Questões Cirúrgicas do Edital AOCP 2026', count: 70, tag: '🎯 Edital AOCP (70 Q)' },
   { id: 'caderno_direitos_humanos', name: '🕊️ Bloco Especial: Direitos Humanos & Pacto de São José da Costa Rica (250 Questões)', count: 250, tag: '🕊️ Direitos Humanos (250 Q)' },
-  { id: 'caderno_leg_extravagante', name: '🚨 Bloco Especial: Legislação Extravagante (200 Questões Inéditas)', count: 200, tag: '🚨 Leis Extravagantes (200 Q)' },
+  { id: 'caderno_leg_extravagante', name: '🚨 Bloco Especial: Legislação Extravagante (300 Questões Inéditas)', count: 300, tag: '🚨 Leis Extravagantes (300 Q)' },
   { id: 'caderno_rlm_probabilidade', name: '🧠 Bloco Especial: RLM & Probabilidade com Passo a Passo (200 Inéditas)', count: 200, tag: '🧠 RLM & Probabilidade (200 Inéditas)' },
   { id: 'caderno_const_pmpe', name: '⚖️ Bloco Especial: Direito Constitucional & Art. 144 (210 Questões)', count: 210, tag: '⚖️ Constitucional (210 Q)' },
   { id: 'caderno_portugues_aocp', name: '📖 Bloco Especial: Língua Portuguesa AOCP (200 Inéditas)', count: 200, tag: '📖 Português AOCP (200 Inéditas)' },
-  { id: 'caderno_pmpe_estatuto', name: '🛡️ Caderno Oficial: Legislação PMPE & Estatuto (Lei 6.783/74) (164 Questões)', count: 164, tag: '🛡️ Estatuto PMPE (164 Q)' },
+  { id: 'caderno_pmpe_estatuto', name: '🛡️ Caderno Oficial: Legislação PMPE & Estatuto (Lei 6.783/74) (264 Questões)', count: 264, tag: '🛡️ Estatuto PMPE (264 Q)' },
   { id: 'caderno_informatica', name: '💻 Bloco Especial: Noções de Informática PMPE AOCP (350 Questões)', count: 350, tag: '💻 Informática PMPE (350 Q)' },
   { id: 'caderno_historia_pe', name: '🦁 Bloco Especial: História de Pernambuco AOCP (200 Inéditas • Zero Geografia)', count: 200, tag: '🦁 História de PE (200 Inéditas)' },
   { id: 'aocp_elite', name: 'Caderno de Elite AOCP (Resoluções & Contas Tintim por Tintim)', count: 25, tag: 'Elite Didática' },
@@ -98,6 +104,8 @@ export const SIMULADOS_LIST = [
 // Filtro rigoroso de singularidade: NENHUMA questão repetida ou duplicada é servida ao aluno
 export const ALL_QUESTIONS: QuizQuestion[] = (() => {
   const rawList: QuizQuestion[] = [
+    ...BANCO_100_LEGISLAO_EXTRAVAGANTE_AOCP,
+    ...BANCO_100_LEGISLAO_PMPE_AOCP,
     ...BANCO_100_PORTUGUES_AOCP,
     ...BANCO_100_HISTORIA_PE_AOCP,
     ...BANCO_100_RACIOCINIO_AOCP,
