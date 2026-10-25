@@ -22,10 +22,16 @@ import {
   HelpCircle,
   TrendingUp,
   LayoutGrid,
-  BookOpen
+  BookOpen,
+  Check,
+  ChevronRight,
+  ChevronLeft,
+  Compass,
+  Target
 } from 'lucide-react';
 import type { QuizQuestion } from '../types/game';
 import { sound } from '../utils/sound';
+import { haptics } from '../utils/haptics';
 import { speakQuestion, stopSpeaking } from '../utils/speechNarrator';
 import confetti from 'canvas-confetti';
 
@@ -34,6 +40,25 @@ interface SundaySimuladoModalProps {
   userName: string;
   onClose: () => void;
   onQuestionAnswered?: (isCorrect: boolean, xpGained: number) => void;
+}
+
+// 6 Disciplinas Oficiais do Edital AOCP PMPE (10 questões cada = 60 questões)
+const SIMULADO_DISCIPLINES = [
+  { id: 'portugues', name: 'Língua Portuguesa', shortName: 'Português', range: [0, 9], bloco: 'Bloco I' },
+  { id: 'raciocinio', name: 'Raciocínio Lógico (RLM)', shortName: 'RLM', range: [10, 19], bloco: 'Bloco II' },
+  { id: 'historia_pe', name: 'História de Pernambuco', shortName: 'História PE', range: [20, 29], bloco: 'Bloco I' },
+  { id: 'informatica', name: 'Noções de Informática', shortName: 'Informática', range: [30, 39], bloco: 'Bloco II' },
+  { id: 'constitucional', name: 'Direito Constitucional', shortName: 'Constitucional', range: [40, 49], bloco: 'Bloco III' },
+  { id: 'humanos_leis', name: 'Direitos Humanos & Legislação', shortName: 'Humanos/Leis', range: [50, 59], bloco: 'Bloco III' }
+];
+
+// Limpeza tática do enunciado: remove marcadores internos [Simulado PMPE AOCP - Questão 119] que poluem a tela
+function cleanQuestionText(text: string): string {
+  if (!text) return '';
+  return text
+    .replace(/^\[(?:Simulado|AOCP|PMPE|Questão|Q\d+)[^\]]*\]\s*/gi, '')
+    .replace(/^\[.*?\]\s*/, '')
+    .trim();
 }
 
 export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
@@ -77,6 +102,18 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
   const [activeTab, setActiveTab] = useState<'caderno' | 'cartao'>('caderno');
   const [reviewFilter, setReviewFilter] = useState<'all' | 'wrong' | 'correct'>('all');
 
+  const questionTrackRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll da régua de questões para manter a questão atual sempre visível e centralizada
+  useEffect(() => {
+    if (questionTrackRef.current) {
+      const activeBtn = questionTrackRef.current.children[currentIdx] as HTMLElement;
+      if (activeBtn) {
+        activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }
+  }, [currentIdx]);
+
   // Timer regressivo cravado em 4 horas (sem pausar, conforme regras reais de concurso)
   useEffect(() => {
     if (isFinished) return;
@@ -109,9 +146,15 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
 
   const currentQ = examQuestions[currentIdx];
 
+  // Identifica a disciplina atual
+  const currentDiscipline = useMemo(() => {
+    return SIMULADO_DISCIPLINES.find((d) => currentIdx >= d.range[0] && currentIdx <= d.range[1]) || SIMULADO_DISCIPLINES[0];
+  }, [currentIdx]);
+
   const handleSelectOption = (optIdx: number) => {
     if (isFinished) return;
     sound.playClick();
+    haptics.tap();
     setAnswers((prev) => ({ ...prev, [currentIdx]: optIdx }));
   };
 
@@ -122,7 +165,8 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
       setIsNarrating(false);
     } else {
       setIsNarrating(true);
-      speakQuestion(currentQ.question, currentQ.options, {
+      const textToRead = cleanQuestionText(currentQ.question);
+      speakQuestion(textToRead, currentQ.options, {
         onStart: () => setIsNarrating(true),
         onEnd: () => setIsNarrating(false),
         onError: () => setIsNarrating(false)
@@ -134,13 +178,14 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
     stopSpeaking();
     setIsNarrating(false);
     sound.playMilitaryAchievement();
+    haptics.levelUp();
     setIsFinished(true);
 
     confetti({
       particleCount: 130,
       spread: 85,
       origin: { y: 0.4 },
-      colors: ['#fbbf24', '#22c55e', '#3b82f6', '#f59e0b', '#dc2626']
+      colors: ['#d4af37', '#10b981', '#3b82f6', '#f59e0b', '#dc2626']
     });
 
     // Registra respostas para telemetria
@@ -149,6 +194,24 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
       const isCorrect = chosen === q.correctIndex;
       onQuestionAnswered?.(isCorrect, isCorrect ? 30 : 0);
     });
+  };
+
+  // Pular direto para a próxima questão não respondida
+  const handleJumpToNextUnanswered = () => {
+    sound.playClick();
+    haptics.tap();
+    for (let i = currentIdx + 1; i < examQuestions.length; i++) {
+      if (typeof answers[i] !== 'number') {
+        setCurrentIdx(i);
+        return;
+      }
+    }
+    for (let i = 0; i < currentIdx; i++) {
+      if (typeof answers[i] !== 'number') {
+        setCurrentIdx(i);
+        return;
+      }
+    }
   };
 
   // Cálculo do Resultado Oficial e Nota de Corte Estimada
@@ -193,24 +256,24 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
     } else if (correctCount >= 46) {
       cutoffTier = {
         status: '🏆 DENTRO DAS VAGAS DIRETAS (EXCELÊNCIA)',
-        color: '#4ade80',
-        bg: 'rgba(34, 197, 94, 0.2)',
+        color: '#10b981',
+        bg: 'rgba(16, 185, 129, 0.2)',
         text: 'Pontuação de elite (≥76%). Histórico de convocação direta nas primeiras turmas do CFSD.',
         projection: 'Ampla Concorrência • Vaga Direta com altíssima probabilidade!'
       };
     } else if (correctCount >= 41) {
       cutoffTier = {
         status: '🎯 ZONA SEGURA DE CONVOCAÇÃO PRO TAF',
-        color: '#fbbf24',
-        bg: 'rgba(245, 158, 11, 0.2)',
+        color: '#d4af37',
+        bg: 'rgba(212, 175, 55, 0.2)',
         text: 'Nota compatível com o corte histórico da ampla concorrência PMPE 2024 (cerca de 42-44 pontos).',
         projection: 'Classificado para correção de redação e convocação pro TAF!'
       };
     } else if (correctCount >= 35) {
       cutoffTier = {
         status: '⚠️ ZONA DE RISCO / LISTA DE ESPERA',
-        color: '#f97316',
-        bg: 'rgba(249, 115, 22, 0.2)',
+        color: '#f59e0b',
+        bg: 'rgba(245, 158, 11, 0.2)',
         text: 'Atingiu os critérios mínimos do edital, porém abaixo da nota de corte média para ampla concorrência.',
         projection: 'Pode alcançar vaga em cotas ou cadastro de reserva caso a prova venha muito difícil.'
       };
@@ -264,6 +327,7 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
 
   const handleCopyReport = () => {
     sound.playClick();
+    haptics.tap();
     navigator.clipboard.writeText(generateReportText());
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 3000);
@@ -316,7 +380,7 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
               (q, idx) => `
             <div class="q-item">
               <span class="q-num">QUESTÃO ${idx + 1} (${q.materiaNome || 'Geral'})</span>
-              <div class="q-text">${q.question}</div>
+              <div class="q-text">${cleanQuestionText(q.question)}</div>
               ${q.options
                 .map(
                   (opt, oIdx) => `
@@ -361,283 +425,301 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
     }, 400);
   };
 
+  const answeredCount = Object.keys(answers).length;
+  const progressPct = Math.round((answeredCount / 60) * 100);
+
   return (
     <div
       style={{
         position: 'fixed',
         inset: 0,
         zIndex: 99999,
-        background: 'rgba(3, 7, 18, 0.96)',
-        backdropFilter: 'blur(14px)',
+        background: 'rgba(4, 5, 8, 0.96)',
+        backdropFilter: 'blur(16px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '1rem',
-        animation: 'fadeIn 0.25s ease'
+        padding: '0.75rem',
+        animation: 'fadeIn 0.2s ease'
       }}
     >
       <div
         style={{
           width: '100%',
-          maxWidth: '1100px',
-          maxHeight: '94vh',
-          background: 'linear-gradient(180deg, #0b1528 0%, #060b17 100%)',
-          border: '2px solid rgba(245, 158, 11, 0.45)',
-          borderRadius: '20px',
-          boxShadow: '0 0 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(245, 158, 11, 0.2)',
+          maxWidth: '1120px',
+          height: '95vh',
+          maxHeight: '95vh',
+          background: 'linear-gradient(180deg, #0e1118 0%, #07080b 100%)',
+          border: '1.5px solid rgba(212, 175, 55, 0.45)',
+          borderRadius: '18px',
+          boxShadow: '0 24px 65px rgba(0, 0, 0, 0.9), 0 0 40px rgba(212, 175, 55, 0.12)',
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden'
         }}
       >
-        {/* BARRA SUPERIOR */}
+        {/* ================================================================= */}
+        {/* CABEÇALHO UNIFICADO E COMPACTO (1 ÚNICA BARRA LIMPA E ORGANIZADA) */}
+        {/* ================================================================= */}
         <div
           style={{
-            padding: '1.15rem 1.5rem',
-            background: 'linear-gradient(90deg, rgba(30, 58, 138, 0.35) 0%, rgba(10, 17, 32, 0.98) 100%)',
-            borderBottom: '1px solid rgba(245, 158, 11, 0.35)',
+            padding: '0.75rem 1.25rem',
+            background: 'linear-gradient(90deg, rgba(20, 24, 34, 0.98) 0%, rgba(12, 14, 20, 0.98) 100%)',
+            borderBottom: '1px solid rgba(212, 175, 55, 0.25)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: '1rem',
+            gap: '0.75rem',
             flexWrap: 'wrap'
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+          {/* IDENTIFICAÇÃO DO SIMULADO */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <div
               style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+                width: '38px',
+                height: '38px',
+                borderRadius: '10px',
+                background: 'linear-gradient(135deg, #d4af37, #967117)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 16px rgba(245, 158, 11, 0.5)',
-                color: '#ffffff'
+                boxShadow: '0 0 14px rgba(212, 175, 55, 0.35)',
+                color: '#07080a',
+                flexShrink: 0
               }}
             >
-              <FileText size={24} />
+              <ShieldCheck size={22} />
             </div>
 
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                <h2 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 900, color: '#ffffff' }}>
-                  SIMULADO OFICIAL CRONOMETRADO (AOCP PMPE)
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                <h2 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 900, color: '#ffffff', letterSpacing: '0.02em' }}>
+                  SIMULADO OFICIAL PMPE 2026
                 </h2>
                 <span
                   style={{
-                    background: 'rgba(245, 158, 11, 0.25)',
-                    border: '1px solid #f59e0b',
-                    color: '#fbbf24',
-                    padding: '0.15rem 0.55rem',
-                    borderRadius: '6px',
-                    fontSize: '0.72rem',
+                    background: 'rgba(212, 175, 55, 0.15)',
+                    border: '1px solid rgba(212, 175, 55, 0.4)',
+                    color: '#d4af37',
+                    padding: '0.1rem 0.45rem',
+                    borderRadius: '4px',
+                    fontSize: '0.68rem',
                     fontWeight: 900
                   }}
                 >
-                  60 QUESTÕES • 4H
+                  60 QUESTÕES AOCP • 4H
                 </span>
               </div>
-              <div style={{ fontSize: '0.78rem', color: '#93c5fd', marginTop: '0.15rem' }}>
-                Espelho Fiel da Prova da PMPE • Gabarito Oculto até a entrega • Nota de Corte Estimada
+              <div style={{ fontSize: '0.74rem', color: '#a1a1aa' }}>
+                Espelho fiel da prova • Gabarito oculto até a entrega
               </div>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
-            {/* BOTÃO DE IMPRESSÃO EM PAPEL */}
-            <button
-              onClick={handlePrintPaperExam}
-              title="Gerar PDF em 2 Colunas para Treino Impresso"
+          {/* CENTRO: CRONÔMETRO DIGITAL REAL */}
+          {!isFinished && (
+            <div
               style={{
-                background: 'rgba(255, 255, 255, 0.08)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                color: '#e2e8f0',
-                padding: '0.45rem 0.85rem',
-                borderRadius: '10px',
-                fontWeight: 800,
-                fontSize: '0.78rem',
+                background: secondsRemaining < 1800 ? 'rgba(239, 68, 68, 0.2)' : 'rgba(0, 0, 0, 0.6)',
+                border: secondsRemaining < 1800 ? '1.5px solid #ef4444' : '1px solid rgba(212, 175, 55, 0.4)',
+                color: secondsRemaining < 1800 ? '#fca5a5' : '#fbbf24',
+                padding: '0.35rem 0.85rem',
+                borderRadius: '8px',
+                fontWeight: 900,
+                fontSize: '0.95rem',
+                fontFamily: 'monospace',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.4rem',
-                cursor: 'pointer'
+                gap: '0.45rem',
+                boxShadow: secondsRemaining < 1800 ? '0 0 12px rgba(239, 68, 68, 0.3)' : 'none'
               }}
+              title="Tempo restante de prova (4 horas oficiais)"
             >
-              <Printer size={15} />
-              <span>Imprimir Simulado</span>
-            </button>
+              <Clock size={16} />
+              <span>{formatTimer(secondsRemaining)}</span>
+            </div>
+          )}
 
-            {/* TIMER REGRESSIVO */}
+          {/* AÇÕES DA BARRA: TABS, IMPRESSÃO, ENTREGA E FECHAR */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', flexWrap: 'wrap' }}>
+            {/* SELETOR DE VISTA: CADERNO VS CARTÃO ÓPTICO */}
             {!isFinished && (
               <div
                 style={{
-                  background: secondsRemaining < 1800 ? 'rgba(239, 68, 68, 0.25)' : 'rgba(30, 58, 138, 0.35)',
-                  border: secondsRemaining < 1800 ? '1px solid #ef4444' : '1px solid rgba(59, 130, 246, 0.5)',
-                  color: secondsRemaining < 1800 ? '#fca5a5' : '#67e8f9',
-                  padding: '0.45rem 0.95rem',
-                  borderRadius: '10px',
-                  fontWeight: 900,
-                  fontSize: '0.95rem',
+                  background: 'rgba(0, 0, 0, 0.5)',
+                  padding: '3px',
+                  borderRadius: '8px',
                   display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.45rem'
+                  border: '1px solid #27272a'
                 }}
               >
-                <Clock size={16} />
-                <span>{formatTimer(secondsRemaining)}</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    sound.playClick();
+                    haptics.tap();
+                    setActiveTab('caderno');
+                  }}
+                  style={{
+                    background: activeTab === 'caderno' ? '#d4af37' : 'transparent',
+                    color: activeTab === 'caderno' ? '#07080a' : '#cbd5e1',
+                    border: 'none',
+                    padding: '0.3rem 0.65rem',
+                    borderRadius: '6px',
+                    fontSize: '0.74rem',
+                    fontWeight: 800,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.35rem'
+                  }}
+                >
+                  <BookOpen size={13} />
+                  <span>Caderno</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    sound.playClick();
+                    haptics.tap();
+                    setActiveTab('cartao');
+                  }}
+                  style={{
+                    background: activeTab === 'cartao' ? '#d4af37' : 'transparent',
+                    color: activeTab === 'cartao' ? '#07080a' : '#cbd5e1',
+                    border: 'none',
+                    padding: '0.3rem 0.65rem',
+                    borderRadius: '6px',
+                    fontSize: '0.74rem',
+                    fontWeight: 800,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.35rem'
+                  }}
+                >
+                  <LayoutGrid size={13} />
+                  <span>Cartão ({answeredCount}/60)</span>
+                </button>
               </div>
             )}
 
+            {/* BOTÃO IMPRIMIR SIMULADO EM PAPEL */}
+            <button
+              type="button"
+              onClick={handlePrintPaperExam}
+              title="Gerar Prova A4 com Folha de Respostas para Imprimir"
+              style={{
+                background: 'rgba(255, 255, 255, 0.06)',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                color: '#e2e8f0',
+                padding: '0.4rem 0.65rem',
+                borderRadius: '8px',
+                fontWeight: 700,
+                fontSize: '0.75rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                cursor: 'pointer'
+              }}
+            >
+              <Printer size={14} />
+              <span className="hidden-mobile">Imprimir</span>
+            </button>
+
+            {/* BOTÃO ENTREGAR CARTÃO-RESPOSTA */}
             {!isFinished && (
               <button
-                onClick={handleFinishExam}
+                type="button"
+                onClick={() => {
+                  if (answeredCount < 60) {
+                    const confirmFinish = window.confirm(
+                      `Atenção candidato: Você respondeu ${answeredCount} de 60 questões.\nRestam ${60 - answeredCount} em branco.\n\nDeseja realmente entregar e ver seu resultado e gabarito oficial agora?`
+                    );
+                    if (!confirmFinish) return;
+                  }
+                  handleFinishExam();
+                }}
                 style={{
-                  background: 'linear-gradient(135deg, #16a34a, #15803d)',
+                  background: 'linear-gradient(135deg, #10b981, #059669)',
                   color: '#ffffff',
                   border: 'none',
-                  padding: '0.55rem 1.15rem',
-                  borderRadius: '10px',
+                  padding: '0.45rem 0.95rem',
+                  borderRadius: '8px',
                   fontWeight: 900,
-                  fontSize: '0.84rem',
-                  cursor: 'pointer'
+                  fontSize: '0.8rem',
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 10px rgba(16, 185, 129, 0.35)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.35rem'
                 }}
               >
-                Entregar Cartão-Resposta
+                <CheckCircle2 size={15} />
+                <span>Entregar Prova</span>
               </button>
             )}
 
+            {/* BOTÃO FECHAR */}
             <button
+              type="button"
               onClick={() => {
                 stopSpeaking();
                 onClose();
               }}
               style={{
-                background: 'rgba(255, 255, 255, 0.08)',
+                background: 'rgba(255, 255, 255, 0.06)',
                 border: '1px solid rgba(255, 255, 255, 0.15)',
                 color: '#ffffff',
-                width: '38px',
-                height: '38px',
-                borderRadius: '10px',
+                width: '32px',
+                height: '32px',
+                borderRadius: '8px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer'
               }}
+              title="Sair do Simulado"
             >
-              <X size={20} />
+              <X size={18} />
             </button>
           </div>
         </div>
 
-        {/* NAVEGAÇÃO DE ABAS (CADERNO VS CARTÃO-RESPOSTA VIRTUAL) */}
-        {!isFinished && (
-          <div
-            style={{
-              padding: '0.65rem 1.5rem',
-              background: 'rgba(5, 9, 18, 0.9)',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-              display: 'flex',
-              gap: '0.75rem',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              flexWrap: 'wrap'
-            }}
-          >
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <button
-                onClick={() => {
-                  sound.playClick();
-                  setActiveTab('caderno');
-                }}
-                style={{
-                  background: activeTab === 'caderno' ? '#f59e0b' : 'rgba(255, 255, 255, 0.06)',
-                  color: activeTab === 'caderno' ? '#060b17' : '#cbd5e1',
-                  border: 'none',
-                  padding: '0.4rem 0.95rem',
-                  borderRadius: '8px',
-                  fontSize: '0.82rem',
-                  fontWeight: 900,
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.4rem'
-                }}
-              >
-                <BookOpen size={15} />
-                <span>Caderno de Questões</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  sound.playClick();
-                  setActiveTab('cartao');
-                }}
-                style={{
-                  background: activeTab === 'cartao' ? '#f59e0b' : 'rgba(255, 255, 255, 0.06)',
-                  color: activeTab === 'cartao' ? '#060b17' : '#cbd5e1',
-                  border: 'none',
-                  padding: '0.4rem 0.95rem',
-                  borderRadius: '8px',
-                  fontSize: '0.82rem',
-                  fontWeight: 900,
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.4rem'
-                }}
-              >
-                <LayoutGrid size={15} />
-                <span>Cartão-Resposta Virtual (Folha de Bolinhas)</span>
-                <span
-                  style={{
-                    background: activeTab === 'cartao' ? '#060b17' : 'rgba(245, 158, 11, 0.25)',
-                    color: activeTab === 'cartao' ? '#fbbf24' : '#fbbf24',
-                    padding: '0.1rem 0.4rem',
-                    borderRadius: '10px',
-                    fontSize: '0.72rem',
-                    fontWeight: 900
-                  }}
-                >
-                  {Object.keys(answers).length}/60
-                </span>
-              </button>
-            </div>
-
-            <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
-              🔒 <strong style={{ color: '#fbbf24' }}>Gabarito Oculto:</strong> Explicações e respostas liberadas somente ao entregar.
-            </div>
-          </div>
-        )}
-
-        {/* CORPO DO SIMULADO */}
+        {/* ================================================================= */}
+        {/* CORPO DO SIMULADO: CADERNO, CARTÃO ÓPTICO OU RESULTADO FINAL      */}
+        {/* ================================================================= */}
         <div
           style={{
             flex: 1,
             overflowY: 'auto',
-            padding: '1.25rem 1.5rem',
+            padding: '1rem 1.25rem',
             display: 'flex',
             flexDirection: 'column',
-            gap: '1rem'
+            gap: '0.85rem'
           }}
         >
           {isFinished ? (
-            /* ================= TELA DE RESULTADO & BOLETIM MILITAR ================= */
+            /* ============================================================= */
+            /* TELA DE RESULTADO & BOLETIM OFICIAL COM GABARITO COMENTADO   */
+            /* ============================================================= */
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               {/* PLACAR E NOTA DE CORTE ESTIMADA */}
               <div
                 style={{
                   textAlign: 'center',
-                  padding: '2rem 1.5rem',
-                  borderRadius: '20px',
+                  padding: '1.8rem 1.5rem',
+                  borderRadius: '16px',
                   background: results.isApprovedMinimo
-                    ? 'linear-gradient(135deg, rgba(34, 197, 94, 0.18) 0%, rgba(10, 17, 32, 0.95) 100%)'
-                    : 'linear-gradient(135deg, rgba(239, 68, 68, 0.18) 0%, rgba(10, 17, 32, 0.95) 100%)',
-                  border: results.isApprovedMinimo ? '2px solid rgba(34, 197, 94, 0.6)' : '2px solid rgba(239, 68, 68, 0.6)',
-                  boxShadow: results.isApprovedMinimo ? '0 0 35px rgba(34, 197, 94, 0.25)' : '0 0 35px rgba(239, 68, 68, 0.25)'
+                    ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(10, 14, 20, 0.98) 100%)'
+                    : 'linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(10, 14, 20, 0.98) 100%)',
+                  border: results.isApprovedMinimo ? '2px solid rgba(16, 185, 129, 0.6)' : '2px solid rgba(239, 68, 68, 0.6)',
+                  boxShadow: results.isApprovedMinimo ? '0 0 35px rgba(16, 185, 129, 0.25)' : '0 0 35px rgba(239, 68, 68, 0.25)'
                 }}
               >
-                <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>
+                <div style={{ fontSize: '2.8rem', marginBottom: '0.4rem' }}>
                   {results.isApprovedMinimo ? '🎖️' : '⚠️'}
                 </div>
 
@@ -647,68 +729,68 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
                     background: results.cutoffTier.bg,
                     border: `1px solid ${results.cutoffTier.color}`,
                     color: results.cutoffTier.color,
-                    padding: '0.35rem 1.25rem',
+                    padding: '0.35rem 1.15rem',
                     borderRadius: '999px',
-                    fontSize: '0.85rem',
+                    fontSize: '0.82rem',
                     fontWeight: 900,
-                    letterSpacing: '0.06em',
+                    letterSpacing: '0.04em',
                     textTransform: 'uppercase',
-                    marginBottom: '0.75rem'
+                    marginBottom: '0.65rem'
                   }}
                 >
                   {results.cutoffTier.status}
                 </div>
 
-                <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: 900, color: '#ffffff' }}>
+                <h1 style={{ margin: 0, fontSize: '2.4rem', fontWeight: 900, color: '#ffffff' }}>
                   {results.correctCount}{' '}
-                  <span style={{ fontSize: '1.2rem', color: '#94a3b8' }}>/ {results.totalQuestions} acertos</span>
+                  <span style={{ fontSize: '1.15rem', color: '#94a3b8' }}>/ {results.totalQuestions} acertos</span>
                 </h1>
 
-                <div style={{ fontSize: '1.05rem', color: '#cbd5e1', marginTop: '0.35rem' }}>
-                  Aproveitamento Global: <strong style={{ color: '#fbbf24' }}>{results.scorePercentage}%</strong> • Tempo:{' '}
+                <div style={{ fontSize: '0.98rem', color: '#cbd5e1', marginTop: '0.3rem' }}>
+                  Aproveitamento: <strong style={{ color: '#d4af37' }}>{results.scorePercentage}%</strong> • Tempo:{' '}
                   <strong style={{ color: '#67e8f9' }}>{formatTimer(4 * 3600 - secondsRemaining)}</strong>
                 </div>
 
                 {/* PARECER PROJETIVO DE NOTA DE CORTE */}
                 <div
                   style={{
-                    marginTop: '1rem',
-                    background: 'rgba(0, 0, 0, 0.35)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    marginTop: '0.9rem',
+                    background: 'rgba(0, 0, 0, 0.4)',
+                    border: '1px solid rgba(212, 175, 55, 0.2)',
                     borderRadius: '12px',
-                    padding: '0.85rem 1.25rem',
+                    padding: '0.85rem 1.15rem',
                     maxWidth: '680px',
-                    margin: '1rem auto 0',
-                    fontSize: '0.88rem',
+                    margin: '0.9rem auto 0',
+                    fontSize: '0.86rem',
                     color: '#e2e8f0',
                     textAlign: 'left'
                   }}
                 >
-                  <div style={{ fontWeight: 800, color: results.cutoffTier.color, marginBottom: '0.25rem' }}>
-                    📈 Projeção Estatística PMPE 2026:
+                  <div style={{ fontWeight: 800, color: results.cutoffTier.color, marginBottom: '0.2rem' }}>
+                    📈 Parecer Estatístico da Banca AOCP:
                   </div>
                   <div>{results.cutoffTier.text}</div>
                   <div style={{ marginTop: '0.35rem', fontSize: '0.8rem', color: '#94a3b8' }}>
-                    <strong style={{ color: '#fbbf24' }}>Veredito Operacional: </strong>
+                    <strong style={{ color: '#d4af37' }}>Veredito Operacional: </strong>
                     {results.cutoffTier.projection}
                   </div>
                 </div>
               </div>
 
-              {/* DETALHAMENTO POR MATÉRIA */}
+              {/* DETALHAMENTO POR MATÉRIA DO EDITAL */}
               <div
                 style={{
-                  background: 'rgba(10, 17, 32, 0.85)',
+                  background: 'rgba(16, 18, 24, 0.9)',
                   border: '1px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: '16px',
-                  padding: '1.25rem'
+                  borderRadius: '14px',
+                  padding: '1.15rem'
                 }}
               >
-                <h3 style={{ margin: '0 0 1rem', fontSize: '1.1rem', color: '#ffffff', fontWeight: 900 }}>
-                  Boletim por Disciplina do Edital
+                <h3 style={{ margin: '0 0 0.85rem', fontSize: '1rem', color: '#ffffff', fontWeight: 900 }}>
+                  Boletim por Disciplina do Edital AOCP
                 </h3>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '0.75rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '0.65rem' }}>
                   {Object.entries(results.subjectStats).map(([subj, data]) => {
                     const pct = Math.round((data.correct / Math.max(1, data.total)) * 100);
                     const isZero = data.correct === 0;
@@ -719,25 +801,25 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
                         style={{
                           background: 'rgba(255, 255, 255, 0.03)',
                           border: isZero ? '1px solid #ef4444' : '1px solid rgba(255, 255, 255, 0.08)',
-                          borderRadius: '12px',
-                          padding: '0.85rem 1rem',
+                          borderRadius: '10px',
+                          padding: '0.75rem 0.95rem',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between'
                         }}
                       >
                         <div>
-                          <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#ffffff' }}>{subj}</div>
-                          <div style={{ fontSize: '0.75rem', color: isZero ? '#f87171' : '#94a3b8' }}>
+                          <div style={{ fontSize: '0.86rem', fontWeight: 800, color: '#ffffff' }}>{subj}</div>
+                          <div style={{ fontSize: '0.74rem', color: isZero ? '#f87171' : '#94a3b8' }}>
                             {data.correct} de {data.total} acertos ({pct}%)
                           </div>
                         </div>
 
                         <div
                           style={{
-                            fontSize: '1.1rem',
+                            fontSize: '1.05rem',
                             fontWeight: 900,
-                            color: pct >= 70 ? '#4ade80' : pct >= 50 ? '#fbbf24' : '#f87171'
+                            color: pct >= 70 ? '#10b981' : pct >= 50 ? '#d4af37' : '#ef4444'
                           }}
                         >
                           {data.correct}/{data.total}
@@ -748,22 +830,22 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
                 </div>
               </div>
 
-              {/* REVISÃO COMPLETA QUESTÃO POR QUESTÃO COM GABARITO COMENTADO */}
+              {/* REVISÃO COMPLETA QUESTÃO POR QUESTÃO */}
               <div
                 style={{
-                  background: 'rgba(8, 12, 22, 0.95)',
-                  border: '1px solid rgba(245, 158, 11, 0.35)',
-                  borderRadius: '16px',
-                  padding: '1.25rem',
+                  background: 'rgba(12, 14, 20, 0.95)',
+                  border: '1px solid rgba(212, 175, 55, 0.3)',
+                  borderRadius: '14px',
+                  padding: '1.15rem',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '1rem'
+                  gap: '0.85rem'
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <Eye size={20} color="#fbbf24" />
-                    <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#ffffff', fontWeight: 900 }}>
+                    <Eye size={18} color="#d4af37" />
+                    <h3 style={{ margin: 0, fontSize: '1rem', color: '#ffffff', fontWeight: 900 }}>
                       Gabarito Oficial Comentado (Revisão das 60 Questões)
                     </h3>
                   </div>
@@ -771,14 +853,15 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
                   {/* Filtro de Revisão */}
                   <div style={{ display: 'flex', gap: '0.35rem' }}>
                     <button
+                      type="button"
                       onClick={() => setReviewFilter('all')}
                       style={{
-                        padding: '0.3rem 0.7rem',
+                        padding: '0.25rem 0.65rem',
                         borderRadius: '6px',
-                        fontSize: '0.75rem',
+                        fontSize: '0.74rem',
                         fontWeight: 800,
-                        background: reviewFilter === 'all' ? '#f59e0b' : 'rgba(255,255,255,0.08)',
-                        color: reviewFilter === 'all' ? '#060b17' : '#cbd5e1',
+                        background: reviewFilter === 'all' ? '#d4af37' : 'rgba(255,255,255,0.06)',
+                        color: reviewFilter === 'all' ? '#07080a' : '#cbd5e1',
                         border: 'none',
                         cursor: 'pointer'
                       }}
@@ -786,39 +869,41 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
                       Todas (60)
                     </button>
                     <button
+                      type="button"
                       onClick={() => setReviewFilter('wrong')}
                       style={{
-                        padding: '0.3rem 0.7rem',
+                        padding: '0.25rem 0.65rem',
                         borderRadius: '6px',
-                        fontSize: '0.75rem',
+                        fontSize: '0.74rem',
                         fontWeight: 800,
-                        background: reviewFilter === 'wrong' ? '#ef4444' : 'rgba(255,255,255,0.08)',
+                        background: reviewFilter === 'wrong' ? '#ef4444' : 'rgba(255,255,255,0.06)',
                         color: reviewFilter === 'wrong' ? '#ffffff' : '#fca5a5',
                         border: 'none',
                         cursor: 'pointer'
                       }}
                     >
-                      Apenas Erros ({60 - results.correctCount})
+                      Erros ({60 - results.correctCount})
                     </button>
                     <button
+                      type="button"
                       onClick={() => setReviewFilter('correct')}
                       style={{
-                        padding: '0.3rem 0.7rem',
+                        padding: '0.25rem 0.65rem',
                         borderRadius: '6px',
-                        fontSize: '0.75rem',
+                        fontSize: '0.74rem',
                         fontWeight: 800,
-                        background: reviewFilter === 'correct' ? '#22c55e' : 'rgba(255,255,255,0.08)',
-                        color: reviewFilter === 'correct' ? '#060b17' : '#86efac',
+                        background: reviewFilter === 'correct' ? '#10b981' : 'rgba(255,255,255,0.06)',
+                        color: reviewFilter === 'correct' ? '#07080a' : '#86efac',
                         border: 'none',
                         cursor: 'pointer'
                       }}
                     >
-                      Apenas Acertos ({results.correctCount})
+                      Acertos ({results.correctCount})
                     </button>
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                   {examQuestions.map((q, idx) => {
                     const chosen = answers[idx];
                     const isCorrect = chosen === q.correctIndex;
@@ -833,26 +918,26 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
                         style={{
                           background: 'rgba(255, 255, 255, 0.02)',
                           border: isCorrect
-                            ? '1px solid rgba(34, 197, 94, 0.35)'
+                            ? '1px solid rgba(16, 185, 129, 0.35)'
                             : '1px solid rgba(239, 68, 68, 0.45)',
-                          borderRadius: '12px',
-                          padding: '1rem',
+                          borderRadius: '10px',
+                          padding: '0.9rem',
                           display: 'flex',
                           flexDirection: 'column',
-                          gap: '0.6rem'
+                          gap: '0.5rem'
                         }}
                       >
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <span style={{ fontSize: '0.82rem', fontWeight: 800, color: '#fbbf24' }}>
+                          <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#d4af37' }}>
                             Questão {idx + 1} • {q.materiaNome}
                           </span>
                           <span
                             style={{
                               fontSize: '0.72rem',
                               fontWeight: 900,
-                              padding: '0.15rem 0.55rem',
-                              borderRadius: '6px',
-                              background: isCorrect ? 'rgba(34, 197, 94, 0.2)' : 'rgba(239, 68, 68, 0.2)',
+                              padding: '0.15rem 0.5rem',
+                              borderRadius: '5px',
+                              background: isCorrect ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)',
                               color: isCorrect ? '#4ade80' : '#f87171'
                             }}
                           >
@@ -860,11 +945,11 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
                           </span>
                         </div>
 
-                        <div style={{ fontSize: '0.95rem', color: '#ffffff', lineHeight: 1.5 }}>
-                          {q.question}
+                        <div style={{ fontSize: '0.92rem', color: '#ffffff', lineHeight: 1.5 }}>
+                          {cleanQuestionText(q.question)}
                         </div>
 
-                        {/* Alternativas com indicação da correta e marcada */}
+                        {/* Alternativas */}
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
                           {q.options.map((opt, oIdx) => {
                             const isThisCorrect = oIdx === q.correctIndex;
@@ -876,8 +961,8 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
                             let optColor = '#cbd5e1';
 
                             if (isThisCorrect) {
-                              optBorder = '#22c55e';
-                              optBg = 'rgba(34, 197, 94, 0.15)';
+                              optBorder = '#10b981';
+                              optBg = 'rgba(16, 185, 129, 0.15)';
                               optColor = '#86efac';
                             } else if (isThisChosen && !isThisCorrect) {
                               optBorder = '#ef4444';
@@ -894,7 +979,7 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
                                   color: optColor,
                                   borderRadius: '8px',
                                   padding: '0.45rem 0.75rem',
-                                  fontSize: '0.85rem',
+                                  fontSize: '0.83rem',
                                   display: 'flex',
                                   alignItems: 'center',
                                   gap: '0.5rem'
@@ -902,8 +987,8 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
                               >
                                 <strong>({letter})</strong>
                                 <span>{opt}</span>
-                                {isThisCorrect && <span style={{ marginLeft: 'auto', fontWeight: 900 }}>[GABARITO OFICIAL]</span>}
-                                {isThisChosen && !isThisCorrect && <span style={{ marginLeft: 'auto', fontWeight: 900 }}>[SUA RESPOSTA]</span>}
+                                {isThisCorrect && <span style={{ marginLeft: 'auto', fontWeight: 900, fontSize: '0.72rem' }}>[GABARITO OFICIAL]</span>}
+                                {isThisChosen && !isThisCorrect && <span style={{ marginLeft: 'auto', fontWeight: 900, fontSize: '0.72rem' }}>[SUA RESPOSTA]</span>}
                               </div>
                             );
                           })}
@@ -913,16 +998,16 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
                         {q.explanation && (
                           <div
                             style={{
-                              background: 'rgba(245, 158, 11, 0.08)',
-                              borderLeft: '3px solid #f59e0b',
-                              padding: '0.65rem 0.85rem',
+                              background: 'rgba(212, 175, 55, 0.08)',
+                              borderLeft: '3px solid #d4af37',
+                              padding: '0.6rem 0.8rem',
                               borderRadius: '0 8px 8px 0',
-                              fontSize: '0.82rem',
+                              fontSize: '0.8rem',
                               color: '#fef3c7',
                               lineHeight: 1.5
                             }}
                           >
-                            <strong style={{ color: '#fbbf24' }}>Comentário da Banca AOCP: </strong>
+                            <strong style={{ color: '#d4af37' }}>Comentário da Banca AOCP: </strong>
                             {q.explanation}
                           </div>
                         )}
@@ -933,39 +1018,41 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
               </div>
 
               {/* BOTÕES DE COMPARTILHAMENTO DO BOLETIM */}
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
                 <button
+                  type="button"
                   onClick={handleCopyReport}
                   style={{
-                    padding: '0.85rem 1.6rem',
-                    borderRadius: '12px',
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    border: '1px solid rgba(255, 255, 255, 0.25)',
+                    padding: '0.75rem 1.4rem',
+                    borderRadius: '10px',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
                     color: '#ffffff',
                     fontWeight: 900,
-                    fontSize: '0.92rem',
+                    fontSize: '0.88rem',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.5rem'
                   }}
                 >
-                  <Copy size={18} />
+                  <Copy size={16} />
                   <span>{isCopied ? 'Boletim Copiado!' : 'Copiar Boletim Completo'}</span>
                 </button>
 
                 <button
+                  type="button"
                   onClick={() => {
                     stopSpeaking();
                     onClose();
                   }}
                   style={{
-                    padding: '0.85rem 1.6rem',
-                    borderRadius: '12px',
-                    background: 'linear-gradient(135deg, #f59e0b, #d97706)',
-                    color: '#060b17',
+                    padding: '0.75rem 1.4rem',
+                    borderRadius: '10px',
+                    background: 'linear-gradient(135deg, #d4af37, #967117)',
+                    color: '#07080a',
                     fontWeight: 900,
-                    fontSize: '0.92rem',
+                    fontSize: '0.88rem',
                     border: 'none',
                     cursor: 'pointer'
                   }}
@@ -975,14 +1062,16 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
               </div>
             </div>
           ) : activeTab === 'cartao' ? (
-            /* ================= CARTÃO-RESPOSTA VIRTUAL (BOLINHAS ÓPTICAS) ================= */
+            /* ============================================================= */
+            /* CARTÃO-RESPOSTA VIRTUAL (FOLHA ÓPTICA COM 6 BLOCOS LIMPOS)   */
+            /* ============================================================= */
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div
                 style={{
-                  background: 'rgba(245, 158, 11, 0.1)',
-                  border: '1px solid rgba(245, 158, 11, 0.3)',
-                  borderRadius: '12px',
-                  padding: '0.85rem 1.25rem',
+                  background: 'rgba(212, 175, 55, 0.08)',
+                  border: '1px solid rgba(212, 175, 55, 0.25)',
+                  borderRadius: '10px',
+                  padding: '0.75rem 1rem',
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
@@ -991,101 +1080,129 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
                 }}
               >
                 <div>
-                  <div style={{ fontWeight: 800, color: '#fef08a', fontSize: '0.95rem' }}>
-                    Cartão Óptico Oficial de Respostas (Simulação Real da Prova)
+                  <div style={{ fontWeight: 800, color: '#fbbf24', fontSize: '0.9rem' }}>
+                    Folha Óptica Virtual Oficial (Espelho da Prova da PMPE)
                   </div>
-                  <div style={{ fontSize: '0.78rem', color: '#cbd5e1' }}>
+                  <div style={{ fontSize: '0.75rem', color: '#cbd5e1' }}>
                     Clique diretamente nas bolinhas para marcar a alternativa ou clique no número da questão para lê-la.
                   </div>
                 </div>
 
-                <div style={{ fontSize: '0.9rem', fontWeight: 900, color: '#4ade80' }}>
-                  {Object.keys(answers).length} de 60 preenchidas
+                <div style={{ fontSize: '0.85rem', fontWeight: 900, color: '#10b981' }}>
+                  {answeredCount} de 60 preenchidas ({progressPct}%)
                 </div>
               </div>
 
-              {/* GRADE DE BOLINHAS (COLUNAS DE QUESTÕES) */}
+              {/* GRADE DE BOLINHAS AGRUPADAS POR DISCIPLINA */}
               <div
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                  gap: '0.75rem',
-                  maxHeight: '62vh',
-                  overflowY: 'auto',
-                  paddingRight: '0.35rem'
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                  gap: '0.85rem'
                 }}
               >
-                {examQuestions.map((q, idx) => {
-                  const isCurrent = currentIdx === idx;
-                  const chosenOpt = answers[idx];
+                {SIMULADO_DISCIPLINES.map((disc) => {
+                  const [startIdx, endIdx] = disc.range;
+                  const discQuestions = examQuestions.slice(startIdx, endIdx + 1);
+                  const discAnswered = discQuestions.filter((_, i) => typeof answers[startIdx + i] === 'number').length;
 
                   return (
                     <div
-                      key={idx}
+                      key={disc.id}
                       style={{
-                        background: isCurrent ? 'rgba(245, 158, 11, 0.12)' : 'rgba(255, 255, 255, 0.03)',
-                        border: isCurrent ? '1.5px solid #f59e0b' : '1px solid rgba(255, 255, 255, 0.08)',
-                        borderRadius: '10px',
-                        padding: '0.55rem 0.85rem',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between'
+                        background: 'rgba(16, 18, 24, 0.95)',
+                        border: '1px solid rgba(255, 255, 255, 0.08)',
+                        borderRadius: '12px',
+                        padding: '0.75rem 0.95rem'
                       }}
                     >
-                      <button
-                        onClick={() => {
-                          sound.playClick();
-                          setCurrentIdx(idx);
-                          setActiveTab('caderno');
-                        }}
-                        style={{
-                          background: 'none',
-                          border: 'none',
-                          color: isCurrent ? '#fbbf24' : '#e2e8f0',
-                          fontSize: '0.82rem',
-                          fontWeight: 800,
-                          cursor: 'pointer',
-                          textAlign: 'left'
-                        }}
-                      >
-                        Q{idx + 1 < 10 ? `0${idx + 1}` : idx + 1}{' '}
-                        <span style={{ fontSize: '0.72rem', color: '#94a3b8' }}>
-                          ({q.materiaNome?.slice(0, 10)})
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.65rem', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '0.4rem' }}>
+                        <span style={{ fontSize: '0.82rem', fontWeight: 800, color: '#d4af37' }}>
+                          {disc.name}
                         </span>
-                      </button>
+                        <span style={{ fontSize: '0.72rem', color: discAnswered === 10 ? '#10b981' : '#a1a1aa', fontWeight: 700 }}>
+                          {discAnswered}/10 preenchidas
+                        </span>
+                      </div>
 
-                      {/* 5 BOLINHAS ÓPTICAS (A, B, C, D, E) */}
-                      <div style={{ display: 'flex', gap: '0.35rem' }}>
-                        {[0, 1, 2, 3, 4].map((optIdx) => {
-                          const letter = String.fromCharCode(65 + optIdx);
-                          const isMarked = chosenOpt === optIdx;
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+                        {discQuestions.map((q, localIdx) => {
+                          const globalIdx = startIdx + localIdx;
+                          const isCurrent = currentIdx === globalIdx;
+                          const chosenOpt = answers[globalIdx];
 
                           return (
-                            <button
-                              key={optIdx}
-                              onClick={() => {
-                                sound.playClick();
-                                setAnswers((prev) => ({ ...prev, [idx]: optIdx }));
-                              }}
+                            <div
+                              key={globalIdx}
                               style={{
-                                width: '28px',
-                                height: '28px',
-                                borderRadius: '50%',
-                                background: isMarked ? '#22c55e' : 'rgba(255, 255, 255, 0.06)',
-                                border: isMarked ? '2px solid #ffffff' : '1px solid rgba(255, 255, 255, 0.2)',
-                                color: isMarked ? '#060b17' : '#cbd5e1',
-                                fontWeight: 900,
-                                fontSize: '0.75rem',
                                 display: 'flex',
                                 alignItems: 'center',
-                                justifyContent: 'center',
-                                cursor: 'pointer',
-                                transition: 'all 0.15s'
+                                justifyContent: 'space-between',
+                                background: isCurrent ? 'rgba(212, 175, 55, 0.12)' : 'rgba(255, 255, 255, 0.02)',
+                                border: isCurrent ? '1px solid #d4af37' : '1px solid rgba(255, 255, 255, 0.05)',
+                                borderRadius: '8px',
+                                padding: '0.35rem 0.65rem'
                               }}
-                              title={`Marcar opção (${letter}) para Questão ${idx + 1}`}
                             >
-                              {letter}
-                            </button>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  sound.playClick();
+                                  haptics.tap();
+                                  setCurrentIdx(globalIdx);
+                                  setActiveTab('caderno');
+                                }}
+                                style={{
+                                  background: 'none',
+                                  border: 'none',
+                                  color: isCurrent ? '#fbbf24' : '#e2e8f0',
+                                  fontSize: '0.78rem',
+                                  fontWeight: 800,
+                                  cursor: 'pointer',
+                                  textAlign: 'left'
+                                }}
+                              >
+                                Questão {globalIdx + 1 < 10 ? `0${globalIdx + 1}` : globalIdx + 1}
+                              </button>
+
+                              {/* 5 BOLINHAS ÓPTICAS (A, B, C, D, E) */}
+                              <div style={{ display: 'flex', gap: '0.35rem' }}>
+                                {[0, 1, 2, 3, 4].map((optIdx) => {
+                                  const letter = String.fromCharCode(65 + optIdx);
+                                  const isMarked = chosenOpt === optIdx;
+
+                                  return (
+                                    <button
+                                      key={optIdx}
+                                      type="button"
+                                      onClick={() => {
+                                        sound.playClick();
+                                        haptics.tap();
+                                        setAnswers((prev) => ({ ...prev, [globalIdx]: optIdx }));
+                                      }}
+                                      style={{
+                                        width: '26px',
+                                        height: '26px',
+                                        borderRadius: '50%',
+                                        background: isMarked ? '#10b981' : 'rgba(255, 255, 255, 0.06)',
+                                        border: isMarked ? '2px solid #ffffff' : '1px solid rgba(255, 255, 255, 0.2)',
+                                        color: isMarked ? '#ffffff' : '#cbd5e1',
+                                        fontWeight: 900,
+                                        fontSize: '0.72rem',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        cursor: 'pointer',
+                                        transition: 'all 0.15s'
+                                      }}
+                                      title={`Marcar opção (${letter}) para Questão ${globalIdx + 1}`}
+                                    >
+                                      {letter}
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            </div>
                           );
                         })}
                       </div>
@@ -1096,17 +1213,19 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
 
               <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0.5rem' }}>
                 <button
+                  type="button"
                   onClick={() => {
                     sound.playClick();
+                    haptics.tap();
                     setActiveTab('caderno');
                   }}
                   style={{
-                    padding: '0.65rem 1.5rem',
-                    borderRadius: '10px',
-                    background: 'linear-gradient(135deg, #1d4ed8, #2563eb)',
-                    color: '#ffffff',
-                    fontWeight: 800,
-                    fontSize: '0.85rem',
+                    padding: '0.55rem 1.4rem',
+                    borderRadius: '8px',
+                    background: 'linear-gradient(135deg, #d4af37, #967117)',
+                    color: '#07080a',
+                    fontWeight: 900,
+                    fontSize: '0.84rem',
                     border: 'none',
                     cursor: 'pointer'
                   }}
@@ -1116,126 +1235,221 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
               </div>
             </div>
           ) : (
-            /* ================= TELA DE RESOLUÇÃO DO SIMULADO ================= */
+            /* ============================================================= */
+            /* CADERNO DE QUESTÕES (RESOLUÇÃO LIMPA, CLARA E ORGANIZADA)     */
+            /* ============================================================= */
             <>
-              {/* GRADE DE QUESTÕES 1 A 60 */}
+              {/* 1. SELETOR RÁPIDO DE DISCIPLINAS (ATALHOS 1 A 6) */}
               <div
                 style={{
-                  background: 'rgba(6, 11, 23, 0.85)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: '14px',
-                  padding: '0.85rem',
                   display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '0.4rem',
-                  maxHeight: '110px',
-                  overflowY: 'auto'
+                  gap: '0.45rem',
+                  overflowX: 'auto',
+                  paddingBottom: '0.2rem',
+                  scrollbarWidth: 'none'
                 }}
               >
-                {examQuestions.map((_, idx) => {
-                  const isCurrent = currentIdx === idx;
-                  const isAnswered = typeof answers[idx] === 'number';
+                {SIMULADO_DISCIPLINES.map((disc) => {
+                  const isActive = currentIdx >= disc.range[0] && currentIdx <= disc.range[1];
+                  const [startIdx, endIdx] = disc.range;
+                  const answeredInDisc = examQuestions
+                    .slice(startIdx, endIdx + 1)
+                    .filter((_, i) => typeof answers[startIdx + i] === 'number').length;
 
                   return (
                     <button
-                      key={idx}
+                      key={disc.id}
+                      type="button"
                       onClick={() => {
                         sound.playClick();
-                        setCurrentIdx(idx);
+                        haptics.tap();
+                        setCurrentIdx(disc.range[0]);
                       }}
                       style={{
-                        width: '32px',
-                        height: '32px',
-                        borderRadius: '6px',
-                        background: isCurrent
-                          ? '#f59e0b'
-                          : isAnswered
-                          ? 'rgba(34, 197, 94, 0.3)'
-                          : 'rgba(255, 255, 255, 0.06)',
-                        border: isCurrent
-                          ? '2px solid #ffffff'
-                          : isAnswered
-                          ? '1px solid #22c55e'
-                          : '1px solid rgba(255, 255, 255, 0.12)',
-                        color: isCurrent ? '#060b17' : isAnswered ? '#86efac' : '#cbd5e1',
-                        fontWeight: 900,
-                        fontSize: '0.78rem',
+                        padding: '0.35rem 0.65rem',
+                        borderRadius: '8px',
+                        background: isActive ? 'rgba(212, 175, 55, 0.18)' : 'rgba(255, 255, 255, 0.04)',
+                        border: isActive ? '1.5px solid #d4af37' : '1px solid rgba(255, 255, 255, 0.08)',
+                        color: isActive ? '#fbbf24' : '#a1a1aa',
+                        fontSize: '0.74rem',
+                        fontWeight: 800,
                         cursor: 'pointer',
+                        whiteSpace: 'nowrap',
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'center'
+                        gap: '0.35rem',
+                        flexShrink: 0,
+                        transition: 'all 0.15s'
                       }}
                     >
-                      {idx + 1}
+                      <span>{disc.shortName}</span>
+                      <span
+                        style={{
+                          fontSize: '0.68rem',
+                          padding: '0.05rem 0.35rem',
+                          borderRadius: '4px',
+                          background: answeredInDisc === 10 ? '#10b981' : 'rgba(0,0,0,0.4)',
+                          color: answeredInDisc === 10 ? '#ffffff' : '#fbbf24',
+                          fontWeight: 900
+                        }}
+                      >
+                        {answeredInDisc}/10
+                      </span>
                     </button>
                   );
                 })}
               </div>
 
-              {/* CARD DA QUESTÃO ATUAL */}
+              {/* 2. RÉGUA HORIZONTAL DE 60 QUESTÕES (NÃO ENCOLHE, NÃO CORTA) */}
+              <div
+                style={{
+                  background: 'rgba(12, 14, 20, 0.95)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  borderRadius: '12px',
+                  padding: '0.45rem',
+                  display: 'flex',
+                  alignItems: 'center'
+                }}
+              >
+                <div
+                  ref={questionTrackRef}
+                  style={{
+                    display: 'flex',
+                    gap: '0.4rem',
+                    overflowX: 'auto',
+                    padding: '0.2rem',
+                    width: '100%',
+                    scrollbarWidth: 'thin'
+                  }}
+                >
+                  {examQuestions.map((_, idx) => {
+                    const isCurrent = currentIdx === idx;
+                    const isAnswered = typeof answers[idx] === 'number';
+
+                    return (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => {
+                          sound.playClick();
+                          haptics.tap();
+                          setCurrentIdx(idx);
+                        }}
+                        style={{
+                          width: '32px',
+                          height: '32px',
+                          minWidth: '32px',
+                          borderRadius: '8px',
+                          background: isCurrent
+                            ? '#d4af37'
+                            : isAnswered
+                            ? '#10b981'
+                            : 'rgba(255, 255, 255, 0.05)',
+                          border: isCurrent
+                            ? '2px solid #ffffff'
+                            : isAnswered
+                            ? '1px solid #10b981'
+                            : '1px solid rgba(255, 255, 255, 0.12)',
+                          color: isCurrent ? '#07080a' : isAnswered ? '#ffffff' : '#cbd5e1',
+                          fontWeight: 900,
+                          fontSize: '0.78rem',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flexShrink: 0,
+                          boxShadow: isCurrent ? '0 0 12px rgba(212, 175, 55, 0.5)' : 'none',
+                          transition: 'all 0.15s'
+                        }}
+                        title={`Questão ${idx + 1} (${isAnswered ? 'Respondida' : 'Em branco'})`}
+                      >
+                        {idx + 1}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* 3. CARD DA QUESTÃO ATUAL E ALTERNATIVAS */}
               {currentQ && (
                 <>
+                  {/* BARRA DE STATUS DA QUESTÃO */}
                   <div
                     style={{
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      background: 'rgba(255, 255, 255, 0.04)',
-                      padding: '0.65rem 1.15rem',
+                      background: 'rgba(255, 255, 255, 0.03)',
+                      border: '1px solid rgba(255, 255, 255, 0.06)',
+                      padding: '0.55rem 0.95rem',
                       borderRadius: '10px',
-                      fontSize: '0.82rem',
-                      color: '#93c5fd',
+                      fontSize: '0.8rem',
+                      color: '#a1a1aa',
                       flexWrap: 'wrap',
                       gap: '0.5rem'
                     }}
                   >
-                    <span>
-                      Questão {currentIdx + 1} de 60 • <strong>{currentQ.materiaNome}</strong>
-                    </span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <span style={{ color: '#ffffff', fontWeight: 900 }}>
+                        Questão {currentIdx + 1} de 60
+                      </span>
+                      <span>•</span>
+                      <span style={{ color: '#d4af37', fontWeight: 800 }}>
+                        {currentDiscipline.name}
+                      </span>
+                      <span style={{ fontSize: '0.7rem', padding: '0.1rem 0.4rem', borderRadius: '4px', background: 'rgba(212, 175, 55, 0.15)', color: '#d4af37', fontWeight: 800 }}>
+                        {currentDiscipline.bloco}
+                      </span>
+                    </div>
 
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
                       {/* BOTÃO DO NARRADOR DE VOZ */}
                       <button
+                        type="button"
                         onClick={handleToggleAudio}
                         style={{
-                          background: isNarrating ? 'rgba(239, 68, 68, 0.25)' : 'rgba(245, 158, 11, 0.2)',
-                          border: isNarrating ? '1px solid #ef4444' : '1px solid #f59e0b',
-                          color: isNarrating ? '#fca5a5' : '#fbbf24',
-                          padding: '0.25rem 0.65rem',
-                          borderRadius: '8px',
-                          fontSize: '0.75rem',
+                          background: isNarrating ? 'rgba(239, 68, 68, 0.25)' : 'rgba(212, 175, 55, 0.15)',
+                          border: isNarrating ? '1px solid #ef4444' : '1px solid rgba(212, 175, 55, 0.4)',
+                          color: isNarrating ? '#fca5a5' : '#d4af37',
+                          padding: '0.2rem 0.55rem',
+                          borderRadius: '6px',
+                          fontSize: '0.72rem',
                           fontWeight: 800,
                           display: 'flex',
                           alignItems: 'center',
-                          gap: '0.35rem',
+                          gap: '0.3rem',
                           cursor: 'pointer'
                         }}
                       >
-                        {isNarrating ? <VolumeX size={15} /> : <Volume2 size={15} />}
-                        <span>{isNarrating ? 'Parar Leitura' : 'Ouvir Questão'}</span>
+                        {isNarrating ? <VolumeX size={14} /> : <Volume2 size={14} />}
+                        <span>{isNarrating ? 'Parar Áudio' : 'Ouvir Enunciado'}</span>
                       </button>
 
-                      <span>Respondidas: {Object.keys(answers).length}/60</span>
+                      <span style={{ fontSize: '0.76rem', color: answeredCount === 60 ? '#10b981' : '#94a3b8', fontWeight: 700 }}>
+                        {answeredCount}/60 Respondidas ({progressPct}%)
+                      </span>
                     </div>
                   </div>
 
+                  {/* ENUNCIADO LIMPO (SEM PREFIXOS CONFUSOS) */}
                   <div
                     style={{
-                      background: 'rgba(10, 17, 32, 0.95)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      borderRadius: '16px',
-                      padding: '1.25rem',
-                      fontSize: '1.02rem',
-                      lineHeight: 1.6,
+                      background: 'rgba(16, 18, 24, 0.95)',
+                      border: '1.5px solid rgba(212, 175, 55, 0.3)',
+                      borderRadius: '14px',
+                      padding: '1.15rem 1.35rem',
+                      fontSize: '1rem',
+                      lineHeight: 1.65,
                       color: '#ffffff',
-                      fontWeight: 600
+                      fontWeight: 500,
+                      boxShadow: '0 4px 18px rgba(0, 0, 0, 0.5)'
                     }}
                   >
-                    {currentQ.question}
+                    {cleanQuestionText(currentQ.question)}
                   </div>
 
-                  {/* OPÇÕES */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                  {/* OPÇÕES DE RESPOSTA (A, B, C, D, E) */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
                     {currentQ.options.map((opt, optIdx) => {
                       const letter = String.fromCharCode(65 + optIdx);
                       const isChosen = answers[currentIdx] === optIdx;
@@ -1243,93 +1457,152 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
                       return (
                         <button
                           key={optIdx}
+                          type="button"
                           onClick={() => handleSelectOption(optIdx)}
                           style={{
-                            background: isChosen ? 'rgba(245, 158, 11, 0.25)' : 'rgba(255, 255, 255, 0.03)',
-                            border: isChosen ? '2px solid #f59e0b' : '1px solid rgba(255, 255, 255, 0.1)',
-                            color: isChosen ? '#fef08a' : '#e2e8f0',
-                            borderRadius: '12px',
-                            padding: '0.9rem 1.15rem',
+                            background: isChosen ? 'rgba(212, 175, 55, 0.15)' : 'rgba(255, 255, 255, 0.03)',
+                            border: isChosen ? '1.5px solid #d4af37' : '1px solid rgba(255, 255, 255, 0.08)',
+                            color: isChosen ? '#ffffff' : '#cbd5e1',
+                            borderRadius: '10px',
+                            padding: '0.8rem 1rem',
                             textAlign: 'left',
-                            fontSize: '0.94rem',
+                            fontSize: '0.92rem',
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '0.85rem',
+                            gap: '0.75rem',
                             cursor: 'pointer',
-                            transition: 'all 0.15s'
+                            transition: 'all 0.15s ease',
+                            boxShadow: isChosen ? '0 0 12px rgba(212, 175, 55, 0.2)' : 'none'
                           }}
                         >
                           <div
                             style={{
-                              width: '30px',
-                              height: '30px',
+                              width: '32px',
+                              height: '32px',
                               borderRadius: '8px',
-                              background: isChosen ? '#f59e0b' : 'rgba(255, 255, 255, 0.08)',
-                              color: isChosen ? '#060b17' : '#ffffff',
+                              background: isChosen ? '#d4af37' : 'rgba(255, 255, 255, 0.08)',
+                              color: isChosen ? '#07080a' : '#ffffff',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
                               fontWeight: 900,
+                              fontSize: '0.85rem',
                               flexShrink: 0
                             }}
                           >
                             {letter}
                           </div>
-                          <span>{opt}</span>
+                          <span style={{ lineHeight: 1.45 }}>{opt}</span>
                         </button>
                       );
                     })}
                   </div>
 
-                  {/* NAVEGAÇÃO ANTERIOR / PRÓXIMO */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem' }}>
+                  {/* RODAPÉ DE NAVEGAÇÃO: ANTERIOR, PULAR NÃO RESPONDIDA E PRÓXIMA */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.5rem', flexWrap: 'wrap', gap: '0.5rem' }}>
                     <button
+                      type="button"
                       disabled={currentIdx === 0}
                       onClick={() => {
                         sound.playClick();
+                        haptics.tap();
                         setCurrentIdx((prev) => Math.max(0, prev - 1));
                       }}
                       style={{
-                        padding: '0.65rem 1.25rem',
-                        borderRadius: '10px',
-                        background: 'rgba(255, 255, 255, 0.08)',
-                        border: '1px solid rgba(255, 255, 255, 0.15)',
+                        padding: '0.55rem 1.15rem',
+                        borderRadius: '8px',
+                        background: 'rgba(255, 255, 255, 0.06)',
+                        border: '1px solid rgba(255, 255, 255, 0.12)',
                         color: '#ffffff',
                         fontWeight: 800,
+                        fontSize: '0.82rem',
                         cursor: currentIdx === 0 ? 'not-allowed' : 'pointer',
-                        opacity: currentIdx === 0 ? 0.4 : 1,
+                        opacity: currentIdx === 0 ? 0.35 : 1,
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '0.45rem'
+                        gap: '0.4rem'
                       }}
                     >
-                      <ArrowLeft size={16} />
+                      <ArrowLeft size={15} />
                       <span>Anterior</span>
                     </button>
 
-                    <button
-                      disabled={currentIdx === examQuestions.length - 1}
-                      onClick={() => {
-                        sound.playClick();
-                        setCurrentIdx((prev) => Math.min(examQuestions.length - 1, prev + 1));
-                      }}
-                      style={{
-                        padding: '0.65rem 1.25rem',
-                        borderRadius: '10px',
-                        background: 'linear-gradient(135deg, #1d4ed8, #2563eb)',
-                        border: 'none',
-                        color: '#ffffff',
-                        fontWeight: 800,
-                        cursor: currentIdx === examQuestions.length - 1 ? 'not-allowed' : 'pointer',
-                        opacity: currentIdx === examQuestions.length - 1 ? 0.4 : 1,
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.45rem'
-                      }}
-                    >
-                      <span>Próxima</span>
-                      <ArrowRight size={16} />
-                    </button>
+                    {/* BOTÃO TÁTICO: PULAR PARA PRÓXIMA NÃO RESPONDIDA */}
+                    {answeredCount < 60 && (
+                      <button
+                        type="button"
+                        onClick={handleJumpToNextUnanswered}
+                        style={{
+                          padding: '0.45rem 0.9rem',
+                          borderRadius: '8px',
+                          background: 'rgba(212, 175, 55, 0.12)',
+                          border: '1px solid rgba(212, 175, 55, 0.3)',
+                          color: '#fbbf24',
+                          fontWeight: 800,
+                          fontSize: '0.78rem',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.35rem'
+                        }}
+                        title="Ir direto para a próxima questão que ainda não foi respondida"
+                      >
+                        <Target size={14} />
+                        <span>Próxima em Branco</span>
+                      </button>
+                    )}
+
+                    {currentIdx < examQuestions.length - 1 ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          sound.playClick();
+                          haptics.tap();
+                          setCurrentIdx((prev) => Math.min(examQuestions.length - 1, prev + 1));
+                        }}
+                        style={{
+                          padding: '0.55rem 1.25rem',
+                          borderRadius: '8px',
+                          background: 'linear-gradient(135deg, #d4af37, #967117)',
+                          border: 'none',
+                          color: '#07080a',
+                          fontWeight: 900,
+                          fontSize: '0.84rem',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.4rem',
+                          boxShadow: '0 2px 10px rgba(212, 175, 55, 0.3)'
+                        }}
+                      >
+                        <span>Próxima</span>
+                        <ArrowRight size={15} />
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          handleFinishExam();
+                        }}
+                        style={{
+                          padding: '0.55rem 1.25rem',
+                          borderRadius: '8px',
+                          background: 'linear-gradient(135deg, #10b981, #059669)',
+                          border: 'none',
+                          color: '#ffffff',
+                          fontWeight: 900,
+                          fontSize: '0.84rem',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.4rem',
+                          boxShadow: '0 2px 12px rgba(16, 185, 129, 0.4)'
+                        }}
+                      >
+                        <span>Finalizar Simulado</span>
+                        <CheckCircle2 size={15} />
+                      </button>
+                    )}
                   </div>
                 </>
               )}

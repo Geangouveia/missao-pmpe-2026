@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'feat: painel tatico de comando, telemetria aocp 3 blocos, haptics e caderno de anotacoes';
+  const commitMsg = 'feat: organizacao completa e redesign do simulado oficial de domingo aocp';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;
