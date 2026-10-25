@@ -1,7 +1,5 @@
-const CACHE_NAME = 'missao-pmpe-cache-v4-bope';
+const CACHE_NAME = 'missao-pmpe-cache-v10-ultra';
 const ASSETS_TO_CACHE = [
-  './',
-  './index.html',
   './manifest.json',
   './brasao-pmpe.png'
 ];
@@ -36,7 +34,17 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Para navegação ou scripts/estilos: tenta rede primeiro
+  // Para navegação HTML (index.html): NUNCA entrega versão antiga do cache, sempre busca versão fresca
+  if (event.request.mode === 'navigate' || event.request.destination === 'document') {
+    event.respondWith(
+      fetch(event.request, { cache: 'no-store' })
+        .then((response) => response)
+        .catch(() => caches.match('./index.html'))
+    );
+    return;
+  }
+
+  // Para outros assets: tenta rede primeiro
   event.respondWith(
     fetch(event.request)
       .then((networkResponse) => {
@@ -48,14 +56,6 @@ self.addEventListener('fetch', (event) => {
         }
         return networkResponse;
       })
-      .catch(() => {
-        // Se a rede falhar (offline), busca no cache
-        return caches.match(event.request).then((cachedResponse) => {
-          if (cachedResponse) return cachedResponse;
-          if (event.request.mode === 'navigate') {
-            return caches.match('./index.html');
-          }
-        });
-      })
+      .catch(() => caches.match(event.request))
   );
 });
