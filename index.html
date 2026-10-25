@@ -24,14 +24,38 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
+      // Purga imediata de caches de versões antigas do PWA
+      if ('caches' in window) {
+        caches.keys().then((names) => {
+          names.forEach((name) => {
+            if (name.includes('v4') || name.includes('v3') || name.includes('v2') || name.includes('v1')) {
+              caches.delete(name);
+            }
+          });
+        });
+      }
+
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js').then((reg) => {
+          navigator.serviceWorker.register('./sw.js?v=' + Date.now()).then((reg) => {
             reg.update();
-            console.log('🛡️ [PWA] Service Worker PMPE registrado com sucesso:', reg.scope);
+            reg.addEventListener('updatefound', () => {
+              const newWorker = reg.installing;
+              if (newWorker) {
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'activated') {
+                    window.location.reload();
+                  }
+                });
+              }
+            });
           }).catch((err) => {
             console.warn('⚠️ [PWA] Falha ao registrar Service Worker:', err);
           });
+        });
+
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          window.location.reload();
         });
       }
     </script>

@@ -1246,7 +1246,9 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
                   gap: '0.45rem',
                   overflowX: 'auto',
                   paddingBottom: '0.2rem',
-                  scrollbarWidth: 'none'
+                  scrollbarWidth: 'none',
+                  flexShrink: 0,
+                  minHeight: '38px'
                 }}
               >
                 {SIMULADO_DISCIPLINES.map((disc) => {
@@ -1308,7 +1310,9 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
                   borderRadius: '12px',
                   padding: '0.45rem',
                   display: 'flex',
-                  alignItems: 'center'
+                  alignItems: 'center',
+                  flexShrink: 0,
+                  minHeight: '48px'
                 }}
               >
                 <div
@@ -1319,7 +1323,8 @@ export const SundaySimuladoModal: React.FC<SundaySimuladoModalProps> = ({
                     overflowX: 'auto',
                     padding: '0.2rem',
                     width: '100%',
-                    scrollbarWidth: 'thin'
+                    scrollbarWidth: 'thin',
+                    alignItems: 'center'
                   }}
                 >
                   {examQuestions.map((_, idx) => {
