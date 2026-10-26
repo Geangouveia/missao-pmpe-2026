@@ -46,8 +46,15 @@ try {
   const newCommit = execSync(commitCmd).toString().trim();
   console.log('🎉 Novo commit criado:', newCommit);
 
-  console.log('📤 Enviando para origin/gh-pages...');
+  console.log('📤 Enviando para origin/gh-pages (Novo repositório seguro)...');
   execSync(`git push origin ${newCommit}:refs/heads/gh-pages`, { stdio: 'inherit' });
+
+  try {
+    console.log('📤 Sincronizando com o link oficial dos alunos (oficial/gh-pages)...');
+    execSync(`git push oficial ${newCommit}:refs/heads/gh-pages`, { stdio: 'inherit' });
+  } catch (e) {
+    console.warn('Aviso ao sincronizar oficial:', e.message);
+  }
 
   // Atualiza branch local gh-pages se existir
   try {
