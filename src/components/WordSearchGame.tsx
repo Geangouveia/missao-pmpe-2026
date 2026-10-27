@@ -56,6 +56,9 @@ export const WordSearchGame: React.FC<WordSearchGameProps> = ({ onExit, onAwardX
   const [radarHintCell, setRadarHintCell] = useState<WordSearchPathCell | null>(null);
   const [hintsRemaining, setHintsRemaining] = useState<number>(4);
 
+  // Filtro de Bloco do Edital
+  const [selectedBlocoFilter, setSelectedBlocoFilter] = useState<'todos' | 'bloco_1' | 'bloco_2' | 'bloco_3'>('todos');
+
   // Modal Educacional da Palavra Encontrada
   const [activeConceptModal, setActiveConceptModal] = useState<WordSearchItem | null>(null);
 
@@ -428,7 +431,58 @@ export const WordSearchGame: React.FC<WordSearchGameProps> = ({ onExit, onAwardX
         </div>
       </div>
 
-      {/* SELETOR DE MISSÕES (ABAS 1 A 5) */}
+      {/* FILTROS POR BLOCO DO EDITAL PMPE */}
+      <div 
+        style={{ 
+          display: 'flex', 
+          gap: '0.45rem', 
+          overflowX: 'auto', 
+          paddingBottom: '0.2rem', 
+          scrollbarWidth: 'none' 
+        }}
+      >
+        {[
+          { id: 'todos', label: 'Todos os Assuntos (10 Missões)', badge: '📚' },
+          { id: 'bloco_1', label: 'Bloco 1 (Português & História)', badge: '🏛️' },
+          { id: 'bloco_2', label: 'Bloco 2 (RLM & Informática)', badge: '💻' },
+          { id: 'bloco_3', label: 'Bloco 3 (Direito & Legislação)', badge: '⚔️' }
+        ].map((tab) => {
+          const isSelected = selectedBlocoFilter === tab.id;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => {
+                sound.playClick();
+                setSelectedBlocoFilter(tab.id as 'todos' | 'bloco_1' | 'bloco_2' | 'bloco_3');
+              }}
+              style={{
+                padding: '0.45rem 0.85rem',
+                borderRadius: '20px',
+                border: isSelected 
+                  ? '1.5px solid #38bdf8' 
+                  : '1px solid rgba(255, 255, 255, 0.08)',
+                background: isSelected 
+                  ? 'rgba(56, 189, 248, 0.22)' 
+                  : 'rgba(255, 255, 255, 0.03)',
+                color: isSelected ? '#38bdf8' : '#94a3b8',
+                fontWeight: isSelected ? 800 : 600,
+                fontSize: '0.78rem',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                transition: 'all 0.15s ease'
+              }}
+            >
+              <span>{tab.badge}</span>
+              <span>{tab.label}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* SELETOR DE MISSÕES COM TODAS AS MATÉRIAS DO EDITAL */}
       <div 
         style={{
           display: 'flex',
@@ -439,6 +493,9 @@ export const WordSearchGame: React.FC<WordSearchGameProps> = ({ onExit, onAwardX
         }}
       >
         {WORD_SEARCH_BOARDS.map((b, idx) => {
+          if (selectedBlocoFilter !== 'todos' && b.bloco !== selectedBlocoFilter) {
+            return null;
+          }
           const isCurrent = idx === boardIndex;
           const isDone = completedBoards.includes(b.id);
 
@@ -471,12 +528,13 @@ export const WordSearchGame: React.FC<WordSearchGameProps> = ({ onExit, onAwardX
               }}
             >
               <span>{b.badge}</span>
-              <span>Missão {idx + 1}</span>
+              <span>{b.title.replace('Missão ', 'M')}</span>
               {isDone && <Check size={14} color="#34d399" />}
             </button>
           );
         })}
       </div>
+
 
       {/* ÁREA CENTRAL: MATRIZ DE CAÇA-PALAVRAS + PAINEL DE TERMOS */}
       <div 
