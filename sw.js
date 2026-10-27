@@ -1,4 +1,4 @@
-const CACHE_NAME = 'missao-pmpe-cache-v10-ultra';
+const CACHE_NAME = 'missao-pmpe-cache-v11-caca-palavras';
 const ASSETS_TO_CACHE = [
   './manifest.json',
   './brasao-pmpe.png'
