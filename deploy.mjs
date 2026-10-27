@@ -38,7 +38,7 @@ try {
     console.log('ℹ️ Nenhum commit anterior encontrado em gh-pages');
   }
 
-  const commitMsg = 'feat: liberacao total do cronograma de estudos para todos e remocao definitiva do anuncio promocional';
+  const commitMsg = 'feat: adiciona caca-palavras tatico com 10 missoes completas do edital PMPE';
   const commitCmd = parentCommit
     ? `git commit-tree ${treeHash} -p ${parentCommit} -m "${commitMsg}"`
     : `git commit-tree ${treeHash} -m "${commitMsg}"`;
