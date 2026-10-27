@@ -17,6 +17,7 @@ import { MatchGame } from './components/MatchGame';
 import { BossBattleGame } from './components/BossBattleGame';
 import { FlashcardGame } from './components/FlashcardGame';
 import { TacticalMazeGame } from './components/TacticalMazeGame';
+import { WordSearchGame } from './components/WordSearchGame';
 import { AchievementsModal } from './components/AchievementsModal';
 import { DeckCreatorModal } from './components/DeckCreatorModal';
 import { SummaryModal } from './components/SummaryModal';
@@ -1874,6 +1875,16 @@ export function App() {
             if (summary.xpEarned) addXp(summary.xpEarned);
           }}
           onQuestionAnswered={handleQuestionAnswered}
+        />
+      )}
+
+      {/* NOVO MODO: CAÇA-PALAVRAS TÁTICO (VARREDURA) */}
+      {activeMode === 'wordsearch' && (
+        <WordSearchGame
+          key={`wordsearch-${gameSessionNonce}`}
+          userName={currentUser || ''}
+          onAwardXp={addXp}
+          onExit={() => setActiveMode(null)}
         />
       )}
 

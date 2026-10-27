@@ -1,6 +1,6 @@
 import React from 'react';
 import type { GameMode } from '../types/game';
-import { Target, Network, Swords, Compass, ArrowRight, Flame, Zap } from 'lucide-react';
+import { Target, Network, Swords, Compass, ArrowRight, Flame, Zap, Search } from 'lucide-react';
 import { sound } from '../utils/sound';
 
 interface ModeSelectorProps {
@@ -25,6 +25,23 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
       iconBorder: '1px solid rgba(212, 175, 55, 0.45)',
       shadow: 'rgba(212, 175, 55, 0.35)',
       borderColor: 'rgba(212, 175, 55, 0.35)'
+    },
+    {
+      id: 'wordsearch' as GameMode,
+      title: 'Caça-Palavras Tático: Varredura',
+      subtitle: 'Varredura Visual • Termos & Leis PMPE',
+      description: 'Encontre termos jurídicos, crimes e artigos do edital escondidos na matriz tática. Selecione palavras na horizontal, vertical e diagonal para desbloquear conceitos comentados e ganhar XP!',
+      icon: <Search size={26} color="#38bdf8" />,
+      badge: 'Novo Modo 🔍',
+      badgeColor: '#38bdf8',
+      badgeBg: 'rgba(56, 189, 248, 0.15)',
+      badgeBorder: 'rgba(56, 189, 248, 0.4)',
+      color: '#38bdf8',
+      subtitleColor: '#7dd3fc',
+      accentBg: 'linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(14, 165, 233, 0.12))',
+      iconBorder: '1px solid rgba(56, 189, 248, 0.45)',
+      shadow: 'rgba(56, 189, 248, 0.35)',
+      borderColor: 'rgba(56, 189, 248, 0.35)'
     },
     {
       id: 'maze' as GameMode,
@@ -95,6 +112,7 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
       borderColor: 'rgba(212, 175, 55, 0.25)'
     }
   ];
+
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>

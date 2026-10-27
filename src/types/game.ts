@@ -1,4 +1,4 @@
-export type GameMode = 'quiz' | 'match' | 'battle' | 'flashcards' | 'survival' | 'maze';
+export type GameMode = 'quiz' | 'match' | 'battle' | 'flashcards' | 'survival' | 'maze' | 'wordsearch';
 
 export type CategoryId = 
   | 'portugues' 
